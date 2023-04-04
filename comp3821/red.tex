@@ -83,4 +83,74 @@ For each vitamin \(V_j\), you are given the recommended daily intake of \(w_j\) 
 
 \paragraph{Task} 
 Find a combination of quantities of food sources such that:
-\begin{}
+\begin{itemize}
+    \item the total number of calories in all of the chosen food is equal to a recommended daily value of 2000 calories
+    \item the total intake of each vitamin \(V_j\) is at least the daily intake of \(w_j\) milligrams for all \(1 \leq j \leq 13\)
+    \item the price of all food per day is as low as possible.
+\end{itemize}
+
+\paragraph{Solution}
+To obtain the corresponding constraints let us assume that we take \(x_i\) grams of each food source \(f_i\) for \(1 \leq i \leq n\). Then:
+\begin{itemize}
+    \item the total number of calories must satisfy \(\sum_{i=1}^n x_ic_i = 2000;\)
+    \item for each vitamin \(V_j\) the total amount in all food must satisfty
+    \[\sum_{i=1}^n x_iv(i,j) \geq w_j \quad (1\leq j \leq 13);\]
+    \item an implicy assumption is that all quantities must be non-negative \(x_i \geq 0, 1 \leq i \leq n.\)
+\end{itemize}
+Our goal is to minimise the objective function which is the total cost \(y = \sum_{i=1}^n x_ip_i\). Note that here all the equalities and inequalities, as well as the objective function are linear. 
+
+\subsubsection{Infrastructure Politics - Integer Programming}
+\paragraph{Setting} 
+You are the (Shadow?) Treasurer and you want to make certain promises to the electorate that will ensure that your party will win in the forthcoming elections. You promise that you will build 
+\begin{itemize}
+    \item a certain number of bridges, each 3 billion a piece. Each bridge you promise brings you 5\% of city votes, 7\% of suburban votes and 9\% of rural votes.
+    \item a certain number of rural airports, each 2 billion a piece. Each rural airport you promise brings you no city votes, 2\% of suburban votes and 15\% of rural votes.
+    \item a certain number of olympic swimming pools each a billion a piece. Each olympic swimming pool promised brings you 12\% of city votes, 3\% of suburban votes and no rural votes.
+\end{itemize}
+
+\paragraph{Task} 
+In order to win, you have to get at least 51\% of each of the city, suburban and rural votes. Win the election by cleverly making a promise that appears to blow as small hole in the budget as possible. 
+
+\paragraph{Solution}
+Let the number of bridges, airports and swimming pools to be \(x_b, x_a, x_p\) respectively.
+The problem amounts to minimising the objective \(y = 3x_b + 2x_a + x_p\), while making sure that the following constraints are satisfied. 
+\begin{align*}
+    0.05 x_b + 0.12x_p & \geq 0.51 \tag{securing majority of city votes} \\
+    0.07 x_b + 0.02x_a + 0.03x_p & \geq 0.51 \tag{securing majority of suburban votes} \\ 
+    0.09 x_b + 0.15x_a & \geq 0.51 \tag{securing majority of rural votes} \\
+    x_b, x_a, x_p & \geq 0. 
+\end{align*}
+This is an example of Integer Linear Programming which is much harder than the ''plain'' Linear Programming and is in fact NP hard!
+
+\subsection{NP Completeness}
+A decision problem \(A(x)\) is in non-deterministic polynomial time, denotes by \(A\in\textbf{NP}\), if:
+\begin{enumerate}
+    \item there exists a problem \(B(x,y)\) such that for every input \(x, A(x)\) is true just in case there exists \(y\) such that \(B(x,y)\) is true; and
+    \item such that the truth of \(B(x,y)\) can be verified by an algorithm running in polynomial time in the length of \(x\) only.
+\end{enumerate}
+We call \(y\) a certificate of \(x\).
+
+\paragraph{Examples}
+COMPOSITE, Vertex Cover, SAT
+
+\paragraph{NP-hardness}
+A problem is NP-hard if any problem in NP is reducible to it. I.e., a problem \(P\) is NP-hard if for any other problem \(P'\) that is in the class NP, there exists a polynomial reduction \(f_{P'}\) from \(P'\) to \(P\). A problem is NP-complete if it is both NP-hard and in the class NP. 
+\paragraph{Proving NP completeness} 
+Sometimes the distinction between a problem in P and an NP complete problem can be subtle!
+
+\begin{tabularx}{0.9\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X | }
+ \hline
+ \textbf{in P} & \textbf{NP complete} \\
+ \hline
+Given a graph \(G\) and two vertices \(s\) and \(t\), is there a path from \(s\) to \(t\) of length \textbf{at most} \(K\)?  & Given a graph \(G\) and two vertices \(s\) and \(t\), is there a simple path from \(s\) to \(t\) of length \textbf{at least} \(K\)?  \\
+\hline
+Given a propositional formula in CNF form such that every clause has at most \textbf{two} propositional variables, does the formula have a satisfying assignment? & Given a propositional formula in CNF form such that every clause has at most \textbf{three} propositional variables, does the formula have a satisfying assignment? \\
+\hline 
+Given a graph \(G\), does \(G\) have a tour where every \textbf{edge} is traversed exactly once? (An Euler tour.) & Given a graph \(G\), does \(G\) have a tour where every \textbf{vertex} is visited exactly once? (A Hamiltonian cycle.) \\
+\hline
+\end{tabularx}
+
+\paragraph{Theorem} 
+Let \(U\) be an NP-hard problem and let \(V\) be another decision problem. If \(U\) is polynomially reducible to \(V\) then \(V\) is also NP-hard.
