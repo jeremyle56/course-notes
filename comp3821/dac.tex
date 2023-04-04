@@ -1,0 +1,179 @@
+
+\section{Divide and Conquer}
+\subsection{Foundations for Divide and Conquer}
+\paragraph{Method} 
+\begin{itemize}
+    \item Split the data into 2 or more parts (Divide)
+    \item Solve the corresponding sub-problems by recursion (Conquer)
+    \item Combine the solutions of the sub-problems into a solution.
+\end{itemize}
+
+\paragraph{Complexity (runtime)} Assume:
+\begin{itemize}
+    \item \(n\) is the input size
+    \item we divide in \(a\) parts
+    \item each part has size \(\frac{n}{b}\)
+    \item Combining solutions costs \(f(n)\)
+\end{itemize}
+Then the runtime \(T\) of such an algorithm satisfies the equation
+\[T(n) = a T\left( \frac{n}{b} \right) + f(n).\]
+
+\subsection{Integer Addition and Multiplication}
+
+\paragraph{Notation and Basic Methodology}
+We let \(n\) be the number of bits in the integer.
+Addition occurs by moving from the least to most significant bit, adding each
+bit at a time in \(O(n)\). Multiplication is much of the same but,
+in \(O(n^2)\).
+
+\paragraph{The Karatsuba Trick}
+This happens in \(O(n^{\log_2 3})\).
+
+\subsection{Matrix multiplication}
+\paragraph{Brute Force Computation} 
+The product of multiplying two \(n \times n\) matrices is  a matrix 
+of size \(n \times n\), so \(n^2\) entries. For each entry in that product 
+we do \(n\) multiplications. So matrix product by brute force is \(\Theta(n^3)\).
+
+\paragraph{Strassen's Algorithm}
+This happens in \(\Theta(n^{\log_2 7})\).
+
+\subsection{Master Theorem}
+
+\paragraph{Setup Master Theorem}
+Let \(a \geq 1\)  be an integer and \(b > 1\) be a real number,
+\(f(n) > 0\) be a non-decreasing function defined on the positive integers.
+Then, \(T(n)\) is the solution of the recurrence
+\[T(n) = a T\left( \frac{n}{b} \right) + f(n).\]
+
+\paragraph{Master Theorem}
+\begin{enumerate}
+    \item If \(f(n) = O(n^{\log_b a-\epsilon})\) for some \(\epsilon > 0\) then,
+    \(T(n) = \Theta(n^{\log_b a})\).
+    \item If \(f(n) = \Theta(n^{\log_b a})\) then,
+    \(T(n) = \Theta (n^{\log_b a}\log n)\).
+    \item  If \(f(n) = \Omega(n^{\log_b a + \epsilon})\) for some \(\epsilon > 0\)
+    and, for some \(c < 1\), and some \(n_0\),
+    \[a f(\frac{n}{b}) \leq c f(n)\]
+    holds for all \(n > n_0\) then, \(T(n) = \Theta(f(n))\).
+\end{enumerate}
+If the conditions above do not hold then, the master theorem is not
+applicable.
+
+\subsection{Polynomial Interpolation}
+\paragraph{From Coefficient to Value Representation}
+Every polynomial \(A(x)\) of degree \(d\) is uniquely determined by its values at any 
+\(d+1\) distinct input values \(x_0, x_1, \dots, x_d\):
+\[A(x) \leftrightarrow \{(x_0, A(x_0)), (x_1, A(x_1)), \dots, (x_d, A(x_d))\}\]
+For \(A(x) = \boldsymbol{a}_d x^d + \boldsymbol{a}_{d-1}x^{d-1}+ \dots + \boldsymbol{a}_0\),
+these values can be obtained via a matrix multiplication:
+\[
+\begin{pmatrix}
+1 & x_0 & x_0^2 & \dots & x_0^d\\
+1 & x_1 & x_1^2 & \dots & x_1^d\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+1 & x_d & x_d^2 & \dots & x_d^d\\
+\end{pmatrix}
+\begin{pmatrix}
+\boldsymbol{a}_0 \\
+\boldsymbol{a}_1 \\
+\vdots \\
+\boldsymbol{a}_d
+\end{pmatrix}
+=
+\begin{pmatrix}
+A(x_0) \\
+A(x_1) \\
+\vdots \\
+A(x_d)
+\end{pmatrix}
+\]
+Such a matrix is called the \textit{Vandermonde matrix}.
+
+\paragraph{From Value to Coefficient Representation} It can be shown that if \(x_i\) are 
+all distinct then this matrix is invertible.
+Thus if, all \(x_i\) are all distinct, given any values \(A(x_0), A(x_1), \dots, A(x_d)\)
+the coefficients \(\boldsymbol{a}_0, \boldsymbol{a}_1, \dots, \boldsymbol{a}_d\) of the 
+polynomial \(A(x)\) are uniquely determined:
+\[
+\begin{pmatrix}
+\boldsymbol{a}_0 \\
+\boldsymbol{a}_1 \\
+\vdots \\
+\boldsymbol{a}_d
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & x_0 & x_0^2 & \dots & x_0^d\\
+1 & x_1 & x_1^2 & \dots & x_1^d\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+1 & x_d & x_d^2 & \dots & x_d^d\\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+A(x_0) \\
+A(x_1) \\
+\vdots \\
+A(x_d)
+\end{pmatrix}
+\]
+
+\subsection{Counting Inversions}
+\paragraph{Brute Force}
+An easy way to count the total number of inversions between two lists is by looking
+at all pairs \(i < j\) of items on one list and determining if they are inverted 
+in the second list, but this would produce a quadratic time algorithm, 
+\(T(n) = \Theta(n^2)\).
+
+\paragraph{Divide and Conquer Method} 
+The main idea is to tweak the Merge Sort  algorithm, by extending it to recursively 
+both sort an array \(A\) and determine the number of inversions in \(A\). 
+This can be done much more efficiently, in time \(\Theta(n\log n)\).
+
+We split the array \(A\) into two equal parts \(A_{top}\) and \(A_{bottom}\).
+We may sort both \(A_{top}\) and \(A_{bottom}\).
+Then, we seek to merge the arrays together. Every time we pull an element from
+\(A_{bottom}\), such an element is in an inversion with all the remaining elements
+in \(A_{top}\) and we add the total number of elements remaining in \(A_{top}\)
+to the total number of inversions. 
+
+\subsection{Discrete Fourier Transform}
+For \(\boldsymbol{a}=\langle a_0, a_1, \dots, a_{n-1} \rangle\) a sequence of \(n\)
+real or complex numbers. We can form the corresponding polynomial \(P_A(x) = \sum_{j=0}^{n-1}
+a_jx^j\), and evaluate it at all complex roots of unity of order \(n\):
+\[\text{For all } 0\leq k\leq n-1, \text{ we compute } P_A(w_n^k)=A_k=\sum_{j=0}^{n-1}a_jw_n^{jk}.\]
+
+The DFT of a sequence \(a\) is a sequence \(A\) of the same length.
+
+\paragraph{Inverse Discrete Fourier Transform}
+The \textbf{IDFT} of a sequence \(\boldsymbol{A}=\langle A_0, A_1, \dots, A_{n-1} \rangle\)
+is the sequence of values \(\boldsymbol{a} = \langle a_0, a_1, \dots, a_{n-1} \rangle = 
+\langle \frac{P_a(1)}{n}, \frac{P_a(\omega_n^{-1)}}{n}, \dots, 
+\frac{P_a(\omega_n^{1-n})}{n}\ \rangle\). \\[0.2cm]
+We can show  that IDFT(DFT(\(a\)) = \(a\) and DFT(IDFT(\(A\))) = \(A\).
+
+\paragraph{Computation} Brute force computation of the DFT takes \(\Theta(n^2)\)
+, same for IDFT. The DFT of a sequence can be computed in \(\Theta(n\lg n)\)
+ using the FFT (as can be the IDFT).
+
+ \subsection{Convolution}
+ \paragraph{(Linear) Convolution}
+ \[
+    A \star B = \langle \boldsymbol{c}_0, \boldsymbol{c}_1, \dots, \boldsymbol{c}_{n+m} \rangle
+    \text{ where } \boldsymbol{c}_j = \sum_{i+k=j} \boldsymbol{a}_i \boldsymbol{b}_k.
+\]
+
+\paragraph{Interpretation in terms of Polynomials}
+Form the two corresponding polynomials and multiply them \(C(x) = A(x) \cdot B(x)\)
+\[A(x) = \sum_{i=0}^n \boldsymbol{a}_ix^i \hspace{3cm} B(x) = \sum_{k=0}^m \boldsymbol{b}_kx^k\]
+\[
+    C(x) = \sum_{j=0}^{m+n} \biggl( \sum_{i+k=j} \boldsymbol{a}_i{b}_k \biggl) x^j 
+    = \sum_{j=0}^{n+m} \boldsymbol{c}_jx^j
+\]
+The sequence of coefficients of the product polynomial is the convolution of the
+coefficients of the factors:
+\(\langle \bm{c}_0, \bm{c}_1, \dots, \bm{c}_{n+m} \rangle 
+= \langle \bm{a}_0, \bm{a}_1, \dots, \bm{a}_{n} \rangle \star 
+\langle \bm{b}_0, \bm{b}_1, \dots, \bm{b}_{m} \rangle\). 
+
+For a more visual understanding watch: 3Blue1Brown's video on convolutions 
+\href{https://www.youtube.com/watch?v=KuXjwB4LzSA}{here}.

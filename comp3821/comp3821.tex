@@ -1,0 +1,50 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{bm}
+
+\usepackage{hyperref}
+\hypersetup {                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{'./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}	
+\title{Extended Algorithms and Programming Techniques \\ COMP3821 UNSW}
+\author{Jeremy Le \\ (Based of Hussain Nawaz's COMP3121 Notes)}
+\date{2023T1}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+    \newpage
+    \subfile{rem.tex}
+    \subfile{smp.tex}
+    \subfile{dac.tex}
+    \subfile{gdy.tex}
+    \subfile{mf.tex}
+    \subfile{dyp.tex}
+    \subfile{red.tex}
+\end{document}

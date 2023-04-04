@@ -1,0 +1,86 @@
+
+\section{Reductions}
+
+\subsection{Decision Problems}
+A \textit{decision problem} is a problem with a YES/NO answer.
+
+\paragraph{Certificates and Counter-Example}
+For a given problem P and a given instance \(x\),
+\begin{itemize}
+    \item a certificate for \(x\) is data that lets us verify easily that \(P(x)=\)YES.
+    \item a counter-example for \(x\) is data that lets us verify easily that \(P(x)=\)NO.
+\end{itemize}
+
+\paragraph{Polynomial Time Algorithms}
+A decision problem \(A\) is in polynomial time if there exists a polynomial time algorithm that solves it. An algorithm runs in polynomial time for every input if it terminates in polynomially many steps in the length of the input (i.e. \(T(n) = O(n^k)\) where \(k\) is a natural number and \(n\) is the size of the input). We denote this by \(A\in \textbf{P}\).
+
+\paragraph{Input}
+The length of an input is the number of symbols needed to describe the input precisely.
+
+\paragraph{Reductions}
+Decision problem \(U\) is reducible to dec. prob. \(V\) if there is a function \(f\) such that
+\begin{enumerate}
+    \item \(f\) maps instances of \(U\) into instances of \(V\);
+    \item For every instance \(x\) of \(U\), \(U(x)\) is true iff \(V(f(x))\) is true.
+\end{enumerate}
+If \(f\) is commutable in polynomial time then \(U\) is polynomially reducible to \(V\).
+
+\paragraph{Polynomial Reduction from SAT to 3SAT}
+Every instance of SAT (Boolean SATisfiability Problem) is polynomially reducible to an instance of 3SAT. (See Video/Slide)
+
+\subsection{Linear Programming}
+
+\paragraph{Variables} 
+\[x_j \text{ for } 1 \leq j \leq n\]
+\paragraph{Objective}
+\[\text{ maximise or minimise } \sum_{j=1}^n c_j x_j\]
+\paragraph{Constraints}
+\[\sum_{j=1}^n (a_{ij}x_j)\mathcal{R}_ib_i, \qquad \text{for } 1\leq i \leq m \text{ with } \mathcal{R}_i \in \{\leq, =, \geq \}\]
+A feasible solution is a variable assignment satisfying all constraints. An optimal solution is a feasible solution satisfying the objective.
+
+\paragraph{Canonical Form}
+\begin{itemize}
+    \item Objective: maximise \(\sum_{j=1}^n c_jx_j\)
+    \item Constraints: \(\sum_{j=1}^n a_{ij}x_j \leq b_i,\) for \(1 \leq i \leq m\) and \(x_j \geq 0\) for \(1 \leq j \leq n\).
+\end{itemize}
+
+\paragraph{Matrix Form}
+To specify a linear programming problem we can simply provide a triplet \((A,\textbf{b},\textbf{c})\) where \(A\) is a matrix and  \(\textbf{b},\textbf{c}\) are column vectors (see slide).
+
+\paragraph{Standard Form}
+\begin{itemize}
+    \item maximise \(z = \textbf{c}^T\textbf{x}\)
+    \item subject to the constraints \(A\textbf{x}+I\textbf{s}=\textbf{b}\) and \(\textbf{x} \geq 0\) and \(\textbf{s} \geq 0\).
+\end{itemize}
+\(\textbf{s}\) are the slack and surplus variables that are used to transform constraints using inequalities into equality constraints.
+
+\paragraph{Transformations}
+Any LP can be transformed into a canonical form or into standard form if needed. In general a Linear Program does not necessarily produce the non-negativity constraints for all variables. However, in the standard form such constraints are required for all of the variables. This is not a problem because each occurrence of an unconstrained variable \(x_j\) can be replaced by the expression \(x_j'-x_j*\) where \(x_j', x_j*\) are new variables satisfying the constraints \(x_j', x_j* \geq 0\). Similarly constraints of the form \(|A\textbf{x}| \leq \textbf{b}\) can be replaced to two linear constraints: \(A\textbf{x} \leq \textbf{b} , -A\textbf{x} \leq \textbf{b}\).
+
+\paragraph{Algorithms}
+\begin{itemize}
+    \item Simplex (1947): Exponential runtime in the worst case, very efficient in practice 
+    \item Ellipsoid Method (1979): Polynomial Algorithm \(O(n^6L) (n\) variables, input of size \(L)\)
+    \item Interior Point algorithms: Worst-case \(O(n^{3.5}L^2\lg L \lg \lg L)\), farily efficient in practice 
+\end{itemize}
+
+\paragraph{Variants}
+\begin{itemize}
+    \item Integer Linear Programs (ILP) (NP-complete)
+    \item Mixed Integer Linear Programs (continuous and integer variables)
+    \item 0-1 Linear Programming (variables are \(\in \{0, 1\}\))
+\end{itemize}
+
+\subsubsection{Decide Diet}
+\paragraph{Setting}
+You are given a list of food sources \(f_1,f_2,\dots f_n\) for each source \(f_i\) you are given:
+\begin{itemize}
+    \item its price per gram \(p_i\)
+    \item the number of calories \(c_i\) per gram and
+    \item for each of 13 vitamins \(V_1, V_2, \dots, V_{13}\) you are given the content \(v(i,j)\) of milligrams of vitamin \(V_j\) in one gram of food source \(f_i\).
+\end{itemize}
+For each vitamin \(V_j\), you are given the recommended daily intake of \(w_j\) milligrams.
+
+\paragraph{Task} 
+Find a combination of quantities of food sources such that:
+\begin{}

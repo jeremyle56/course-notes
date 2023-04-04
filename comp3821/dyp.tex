@@ -1,0 +1,236 @@
+
+\section{Dynamic Programming}
+\subsection{Foundations for Dynamic Programming}
+\paragraph{Method}
+Build an optimal solution to the problem from optimal solutions for subproblems.
+\begin{itemize}
+    \item Subproblems are chosen in a way that allows recursive construction of optimal solutions to problems from optimal solutions to smaller-size problems.
+    \item The efficiency of DP comes from the fact that the sets of subproblems needed to solve large problems heavily overlap; each subproblem is solved only once and its solution is stored in a table for multiple uses for solving many larger problems.
+\end{itemize}
+
+\subsection{Activity Selection II}
+\paragraph{Setting}
+A list of activities \(a_i, 1 \leq i \leq n\) with starting time \(s_i\) and finishing times \(f_i\). No two activities can take place simultaneously. 
+\paragraph{Task} 
+Find a subset of compatible activities of maximal total duration. 
+
+\paragraph{Algorithm}
+We start by sorting these activities by their finishing time into a non-decreasing sequence, so will assume that \(f_1 \leq f_2 \leq \dots \leq f_n\).
+
+For \(1 \leq i \leq n,\) the \textbf{Subproblem} \(P(i)\) is to find a subset \(S_i\) of activities \(A_i = \{a_1, a_2, \dots, a_i\}\) such that:
+\begin{enumerate}
+    \item \(S_i\) consists of non-overlapping activities;
+    \item \(S_i\) ends with activity \(a_i\);
+    \item \(S_i\) is of maximal total duration among all subsets of \(A_i\) satisfying 1 and 2.
+\end{enumerate}
+
+Let \(T(i)\) be the total duration of the solution \(S_i\) of the subproblem \(P(i)\). \\
+For \(S_1\) we choose \(a_1\)l thus \(T(1) = f_1 - s_1\); \\
+\textbf{Recursion:} assuming that we have solved subproblems for all \(j < i\) and stored them in a table, we let 
+\[T(i) = \max \{T(j) + f_i - s_i \mid 1 \leq j < i, f_j < s_i\}\]
+
+\paragraph{Correctness}
+Let the optimal solution of subproblem \(P(i)\) be the sequence \(S_i = (a_{k_1}, a_{k_2}, \dots a_{k_{m-1}}, a_{k_m})\) where \(k_m = i\). 
+
+We claim that the truncated subsequence \(S' = (a_{k_1}, a_{k_2}, \dots, a_{k_{m-1}}\) is an optimal solution to the subproblem \(P(k_{m-1}\), where \(k_{m-1} < i\). 
+
+If there were a sequence \(S^*\) of a larger total duration of sequence \(S'\) and also ending with activity \(a_{k_{m-1}}\), we could obtain a sequence \(\hat{S}\) by extending the sequence \(S^*\) with activity \(a_{k_m}\) and obtain a solution for subproblem \(P(i)\) with a longer total duration than the total duration of sequence \(S_i\), contradicting the optimally of \(S_i\). Continuing with the solution of the problem, we now let 
+\[T_{\max} = \max \{T(i) \mid i \leq n\}.\]
+We can now reconsturct the optimal sequence which solves our problem from the table of partial solutions, because in the \(i^{\text{th}}\) slot of the table, besides \(T(i)\), we also store \(j\) such that the optimal solution of \(P(i)\) extends the optimal solution of subproblem \(P(j)\).
+
+If such optimal solution ends with activity \(a_k\), it would have been obtained as the optimal solution of problem \(P(k)\).
+
+\paragraph{Complexity}
+\begin{enumerate}
+    \item Sorting takes \(O(n \lg n\)
+    \item We need to solve \(n\) subproblems. Each subproblem requires examining the preceding subproblems and their optimal solutions. This takes \(O(n^2)\).
+    \item We need \(O(n)\) to compute \(T_{\max}\) and conclude.
+\end{enumerate}
+Thus, the overall time is \(O(n^2)\).
+
+\subsection{Longest Increasing Subeqence}
+\paragraph{Setting} 
+Given a sequence of \(n\) real numbers \(A[1\dots n]\).
+
+\paragraph{Task}
+Determine a subsequence (not necessarily contiguous) of maximum length in which the values in the subsequence are strictly increasing.
+
+\paragraph{Algorithm}
+For each \(1 \leq i \leq n\) \textbf{Subproblem} \(P(i)\): Find a subsequence of the sequence \(A[1\dots i]\) of maximum length in which the values are strictly increasing and which ends with \(A[i]\).
+
+\textbf{Recursion:} Assume we have solved all the subproblems for \(j < i\);
+We now look for all \(A[m]\) such that \(m < i\) and such that \(A[m] < A[i]\);
+
+Among those, we pick \(m\) which produced the longest increasing subsequence ending with \(A[m]\) and extend it with \(A[i]\) to obtain the longest increasing subsequence which ends with \(A[i]\).
+
+\paragraph{Correctness}
+We claim that truncating the optimal solution for \(P(i)\) will produce an optimal solution for \(P(m)\) and follow a very similar proof to the activity selection problem.
+
+\paragraph{Time Complexity}
+This algorithm runs in \(O(n^2)\). This problem can be done in \(O(n\log n)\) time.
+
+\subsection{Integer Knapsack Problem (without Duplicates)}
+\paragraph{Setting}
+You have \(n\) items (some of which can be identical); item \(I_i\) is of weight \(w_i\) and value \(v_i\). You also have a knapsack of capacity \(C\).
+
+\paragraph{Task}
+Chose a combination of available items which all fit in the knapsack and whose value is as large as possible. 
+
+\paragraph{Algorithm}
+For all \(1 \leq i \leq n\) and \(0 \leq c \leq C\), the subproblems \(P(i,c)\) is of the form
+
+\textit{Choose from items \(I_2, I_2, \dots, I_i\) a subset which fits in a knapsack of capacity c and is of the largest possible total value.} \\
+Let \(m(i,c)\) be this largest value.
+\begin{itemize}
+    \item This is an example of ''2D'' recursion; we are filling a table of size \(n \times C\), row by row.
+    \item Fix now \(i \leq n\) and \(c \leq C\) and assume we have solved the subproblems for:
+    \begin{enumerate}
+        \item all \(j < i\) and all knapsacks of capcities from 1 to \(C\);
+        \item for \(i\) we have solved the problem for all capactities \(d < c\).
+    \end{enumerate}
+\end{itemize}
+
+We now have two options: either we take item \(I_i\) or we do not. So we look at optimal solutions \(m(i-1, c-w_i)\) and \(m(i - 1, c)\).
+\[m(i,c) = \max(m(i-1,c-w_i) + v_i, m(i-1,c))\]
+Final solution will be given by \(m(n,C)\).
+
+\paragraph{Edge Cases}
+\begin{itemize}
+    \item What happens if \(c - w_i < 0\)? Knapsack capacity exceeded!
+    \item What if \(i - 1 < 1\)? No more items to be taken!
+\end{itemize}
+Let \(m(i,c) = -\infty\) for \(c < 0\). \hspace{1cm} Let \(m(0, c) = 0\) for \(c \geq 0\).
+
+\subsection{Balanaced Partition}
+\paragraph{Setting}
+You have a set \(S\) of \(n\) integers.
+
+\paragraph{Task}
+Partition \(S\) into two subsets \(S_1, S_2\) such that you minimise \(|s_1-s_2|\), where \(s_1\) and \(s_2\) denote the sums of the elements in each of the two subsets.
+
+\paragraph{Solution}
+Let \(s\) be the total num of all integers in the set; consider the Knapsack problem (without duplicates) with the knapsack of size \(s/2\) and with each integer \(x_i\) of both size and value equal to \(x_i\).
+
+\paragraph{Claim}
+The best packing of such knapsack produces optimally balanced partition, with \(S_1\) being all the integers in the knapsack and \(S_2\) all the integers left out of the knapsack. 
+
+Since \(s = s_1 + s_2\) we obtain \(2(\frac{s}{2} - s_1 = s - 2s_1 = s_2 - s_1\). Thus, minimising \(\frac{s}{2} - s_1\) will minimise \(s_2 - s_1\). So, all we have to do is find the subset of these numbers with the largest possible total sum which fits inside a knapsack of size \(s/2\). 
+
+\subsection{Assembly Line Scheduling}
+\paragraph{Setting}
+Two assembly lines with workstations for \(n\) jobs.
+\begin{itemize}
+    \item Executing the \(k^{th}\) job on assembly line \(i\) takes \(a_k^i\) units of time to complete \(i \in \{1,2\}, (1 \leq k \leq n)\).
+    \item Moving the product from stations \(k\) on assembly line \(i\) to stations \(k+1\) on line \((2-i)\) takes \(t_k^i\) units of time.
+    \item Bringing an unfinished product to assembly line \(i\) takes \(e^i\) time.
+    \item Shipping a finished product off assembly line \(i\) takes \(x^i\) time.
+\end{itemize}
+
+\paragraph{Task}
+Find a \textit{fastest way} to assemble a product using both lines as necessary.
+
+\paragraph{Subproblem}
+For \(1 \leq k \leq n\) and \(i \in \{1, 2\}\), the subproblem \(P(i,k)\) is to find the minimal amount of time \(m(i,k)\) needed to finish the first \(k\) jobs, such that \(k^{th}\) job is finished on the \(k^{th}\) workstation on the \(i^{th}\) line.
+\begin{itemize}
+    \item We solve \(P(1,k)\) and \(P(2,k)\) by simultaneous recursion on \(k\):
+    \item Inital step: \(m(1,1)=e^1 + a_1^1\) and \(m(2,1) = e^2 + a_1^2\).
+    \item Heredity step 
+    \[m(1,k+1) = \min\{m(1,k) + a_{k+1}^1, m(2,k) + t_k^2 + a_{k+1}^1\}\]
+    \[m(2,k+1) = \min\{m(2,k) + a_{k+1}^2, m(1,k) + t_k^1 + a_{k+1}^2\}\]
+    \item Finally, the overall solution is \(opt = \min\{m(1,n) + x^1, m(2,n) + x^2\}\)
+\end{itemize}
+
+\paragraph{Shortest Path Solution}
+\begin{itemize}
+    \item Split every station into 2 vertices, ''station entry'' and ''station exit''.
+    \item Cost \(a_k^i\) between the entry and the exit of a station.
+    \item Cost 0 between exit and entry of consecutive stations on the same line.
+\end{itemize}
+
+\subsection{Pseudo-Polynomial Time}
+\subsubsection{Making Change}
+\paragraph{Setting}
+You are given \(n\) types of coin denominations of values \(v_1 < v_2 < \dots < v_n\) (all integers). Assume \(v_1 = 1\), so that you can always make change for any integer amount. Assume that you have an unlimited supply of coins of each denomination.
+
+\paragraph{Task}
+Give an algorithm which makes change for any given integer amount \(C\) with as few coins as possible.
+
+\paragraph{Main Idea}
+\begin{itemize}
+    \item Consider an optimal solution \(S_i\) for amount \(i \leq C\).
+    \item If \(i > 0\), then \(S_i\) includes at least one coin, say, of denomination \(v_k\).
+    \item Removing this coin must produce an optimal solution for the amount \(i - v_k\), \(S_i - v_k\), again by our \textit{cut-and paste argument}.
+    \item We do not know which coins \(S_i\) includes, so we try all the available coins and then pick \(k\) for which \(S{i - v_k}\) uses the fewest number of coins.
+\end{itemize}
+
+\paragraph{Algorithm}
+\begin{itemize}
+    \item For \(O \leq i \leq C\), subproblem \(P(i)\) is to make change for amount \(i\) with as few coins as possible. Let \(m(i)\) be the number of coins required.
+    \item If \(i=0\) the solution is trivial: you don't need any coin, \(m(0) = 0\).
+    \item Assume optimal solution for amounts \(j < i\) and find an optimal solution for amount \(i\). That is, \(m(i) = \min\{m(i - v_k) + 1 \mid 1 \leq k \leq n, i - v_k \geq 0\}\).
+    \item Don't forget the condition \(i - v_k \geq 0\) or else define \(m(i) = \infty\) for \(i < 0\).
+\end{itemize}
+
+\paragraph{Complexity}
+The time complexity of our algorithm is \(\Theta(nC)\).\\
+Length of input: \(O(\lg C + \lg v_1 + \lg v_2 + \cdots \lg v_n) = O(n\lg C)\). \\
+Our algorithm is NOT polynomial in the length of the input! But this is the best that we have at out disposal...\\
+Because \textit{Making Change} is an NP-Complete Problem.
+
+\subsubsection{Integer Knapsack Problem with Duplicates}
+\paragraph{Setting}
+You have \(n\) types of items; all items of kind \(i\) are identical and of weight \(w_i\) and value \(v_i\). You also have a knapsack of capacity \(C\).
+
+\paragraph{Task}
+Choose a combination of items which all fit in the knapsack and whose value is as large as possible. You can take any number of items of each kind.
+
+\paragraph{Solution}
+DP recursion on the capacity \(C\) of the knapsack. We build a table of optimal solutions for all knapsacks of capacities \(i \leq C\). Assume we have solved the problems for all knapsacks of capacities \(j < i\). We now look at optimal solutions \(m(i - w_m\) for all knapsacks of capacities \(i - w_m\) for all \(1 \leq m \leq n\). Chose the one for which \(m(i - w_m) + v_m\) is the largest. Add to it the item \(m\) to obtain a packing of a knapsack of size \(i\) of the highest possible value. Thus, \(m(i) = \max\{m(i - w_m) + v_m : 1 \leq m \leq n\}\). After \(C\) many steps we obtain \(m(C)\) which is what we need. 
+
+Again, our algorithm is NOT polynomial in length of the input.
+
+\subsubsection{Pseudo-Polynomial Time}
+Consider a problem with numerical input of magnitude \(N\) and optionally non-numerical input size \(n\). A pseudo-polynomial algorithm to solve this problem is an algorithm that runs in time \(O(P(n)P'(N))\) where \(P\) and \(P'\) are polynomials.
+
+\paragraph{Example: Making Change}
+Numerical input: the denominations \(v_1, \dots, v_n\) and the target \(C\). So the magnitude is \(N = |C| + \sum|v_i|\). All input is numerical and our proposed algorithm runs in \(O(N)\) so it is pseudo-polynomial.
+
+\subsection{Shortest Path Algorithms}
+\subsubsection{Bellman-Ford: Shortest Paths with Negative Weights}
+\paragraph{Setting}
+A directed weighted graph \(G=(V,E)\) with weights which can be negative, but without cycles of negative total weight and a vertex \(s \in V\).
+
+\paragraph{Task}
+Find the shortest path from vertex \(s\) to every other vertex \(t\).
+
+\paragraph{Solution}
+Since there are no negative weight cycles, the shortest path cannot contain cycles, because a cycle can be excised to produce a shorter path. Thus, every shortest path can have at most \(|V| - 1\) edges. \\
+\textbf{Subproblems:}
+For every \(v \in V\) and every \(i, (1 \leq i \leq n -1)\), let \(opt(i,v)\) be the length of a shortest path from \(s\) to \(v\) which contains at most \(i\) edges. Our goal is to find for every vertex \(t \in G\) the value of \(opt(n-1,t)\) and the path which achieves such a length.
+
+Note that if the shortest path from a vertex \(v\) to \(t\) is \((v, p_1, p_2, \dots, p_k, t)\) then \((p_1, p_2, \dots, p_k, t)\) must be the shortest path from \(p_1\) to \(t\) and \((v, p_1, p_2, \dots, p_k)\) must also be the shortest path from \(v\) to \(p_k\).
+
+Let us denote the length of the shortest path from \(s\) to \(v\) among all paths which contain at most \(i\) edges by \(opt(i,v)\) and let \(pred(i,v)\) be the immediate predecessor of vertex \(v\) on such shortest path. \\
+\textbf{Recursion:}
+\begin{align*}
+    opt(i,v) & = \min(opt(i-1,v), \min_{p\in V} \{opt(i-1,p) + w(e(p,v))\}; \\
+    pred(i,v) & =     
+    \begin{cases}
+        pred(i-1, v) \quad \text{if } \min_{p\in V} \{opt(i-1,p) + w(e(p,v))\} \geq pred(i-1,v)\\
+        \arg\min_{p \in V} \{opt(i-1,p) + w(e(p,v))\} \quad \text{otherwise}
+    \end{cases}
+\end{align*}
+(here \(w(e(p,v))\) is the weight of the edge \(e(p,v)\) from vertex \(p\) to vertex \(v\).)
+Algorithm produces shortest paths from \(s\) to every other vertex in the graph.
+
+\paragraph{Time Complexity}
+Computation \(opt(i,v)\) runs in time \(O(|V| \times |E|)\), because \(i \leq |V| - 1\) and for each \(v\), min is taken over all edges \(e(p,v)\) incident to \(v\); thus in each round all edges are inspected.
+
+\subsubsection{Floyd-Warshall}
+Let again \(G = (V,E)\) be a directed weighted graph where \(V = \{v_1, v_2, \dots, v_n \}\) and where weights \(w(e(v_p, v_q))\) of edges \(e(v_p, v_q)\) can be negative, but there are no negative weight cycles. We can use a somewhat similar idea to obtain the shortest paths from every vertex \(v_p\) to every vertex \(v_q\) (including back to \(v_p\)).
+
+Let \(opt(k, v_p, v_q)\) be the length of the shortest path from a vertex \(v_p\) to a vertex \(v_q\) such that all intermediate verticies are among verticies \(\{v_1, v_2, \dots, v_k\}, (1 \leq k \leq n)\). Then
+\[opt(k,v_p,v_q) = \min\{opt(k-1,v_p,v_q), opt(k-1, v_p, v_k) + opt(k_1, v_k, v_q)\}\]
+
+Thus, we gradually relax the constraint that the intermediate vertices have to belong to \(\{v_1, v_2, \dots, v_k\}\). The algorithm runs in time \(|V|^3\).
+

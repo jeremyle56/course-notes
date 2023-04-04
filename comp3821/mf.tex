@@ -1,0 +1,155 @@
+
+\section{Maximum Flow}
+
+\subsection{Flow Networks}
+\paragraph{Flow Network} A \textit{flow network} 
+\( G = (V, E) \) is a directed graph where each edge \( e = (u, v) \in  E \) has a 
+positive integer capacity \( c(u, v) > 0 \).
+
+There are two distinguished vertices. A source \( s \) and sink  \( t \).
+There are no outgoing edges for a sink and likewise, no incoming edges
+for a source. \\
+
+\paragraph{Flow} 
+A \textit{flow} in \( G \) is a function  \( f: E \to  \mathbb R^+ \), 
+\(  f(u, v) \geq 0 \). which satisfies
+\begin{enumerate}
+  \item \textbf{Capacity Constraints:} for all edges \(e(u,v) \in E\) we require 
+  \(f(u,v) \leq c(u, v)\).
+  \item \textbf{Flow Conservation:} For all \( v \in V \setminus \{(s, t)\} \),
+    we require 
+    \[
+        \sum_{(u, v) \in E} f(u, v) = \sum_{(v, w) \in  E} f(v, w)
+    .\]
+    That is, the incoming flow must be equal to the outgoing flow.
+\end{enumerate}
+
+\paragraph{Value of flow} 
+The \textit{value of the flow} is defined as 
+\[|f| = \sum_{v:(s,v) \in E} f(s,v) = \sum_{v:(v,t)\in E} f(v,t).\]
+
+\paragraph{Residual Flow Network} 
+The \textit{residual flow network} for a flow network with some flow in it: the network 
+with the leftover capacities.
+
+\paragraph{Augmenting Path} 
+Residual flow networks can be used to increase the total flow through the network
+by adding an \textit{augmenting path}.
+
+The capacity of an augmenting path is the capacity of its ''bottleneck"
+edge, i.e., the capacity of the smallest capacity edge on that path.
+
+We should then send that amount of flow along the augmenting path, recalculating
+the flow and the residual capacities for each edge used.
+
+\subsection{Ford-Fulkerson Algorithm}
+\textbf{Ford-Fulkerson algorithm for finding maximal flow in a flow network:}
+\begin{itemize}
+    \item Keep adding flow through new augmenting paths for as long as it is possible.
+    \item When there are no more augmenting paths, you have achieved the largest 
+    possible flow in the network.
+\end{itemize}
+
+\paragraph{Cut}
+A \textit{cut} in a flow network is any partition of the vertices of the underlying 
+graph into two subsets \(S\) and \(T\) such that:
+\begin{enumerate}
+    \item \(S \cup T = V\)
+    \item \(S \cap T = \emptyset\)
+    \item \(s \in S \text{ and } t \in T\).
+\end{enumerate}
+
+\paragraph{Capacity of a Cut}
+The \textit{capacity} \(c(S,T)\) \textit{of a cut} \((S, T)\) is the sum of capacities
+of all edges leaving \(S\) and entering \(T\), i.e.
+\[c(S,T) = \sum_{(u,v) \in E} \{c(u,v):u\in S \text{ \& } v \in T\}\]
+Note that the capacities of edges going in the opposite direction, i.e., from \(T\)
+to \(S\) do not count.
+
+\paragraph{Flow of Cut}
+The \textit{flow through a cut} \(f(S,T)\) is the total flow through edges from
+\(S to T\) minus the total flow through edges from \(T\) to \(S\):
+\[
+    f(S,T) = \sum_{u,v} \in E \{f(u,v): u \in S \text{ \& } v \in T\}
+    - \sum_{(u,v) \in E} \{f(u,v): u \in T \text{ \& } v \in S\}
+\]
+Clearly, \(f(S,T) \leq c(S,T)\) because for every edge \((u, v) \in E\) we assumed
+\(f(u,v) \leq c(u,v)\) and \(f(u,v) \geq 0\).
+
+\paragraph{Max Flow Min Cut Theorem}
+The maximal amount of flow in a flow network is equal to the capacity of the
+cut of minimal capacity.
+
+\paragraph{Edmonds-Karp Algorithm}
+The Edmonds-Karp algorithm improves the Ford-Fulkerson algorithm in a simple way:
+always choose the shortest path from source \(s\) to the sink \(t\), where
+the ``shortest path" means the fewest number of edges, regardless of their capacities
+(i.e., each edge has the same unit weight). This algorithm runs in time \(O(|V||E|^2)\).
+
+The fastest max flow algorithm to date, an extension of the \texttt{PREFLOW-PUSH}
+algorithm runs in time \(|V|^3\).
+
+\subsection{Solving Different Problems with Maximum Flow}
+\subsubsection{Networks with Multiple Sources and Sinks}
+Flow networks with multiple sources and sinks are reducible to networks with
+a single source and single sink by adding a ``super-sink" and ``super-source" and
+connecting them to all sources and sinks, respectively, by edges of infinite capacities.
+
+\subsubsection{Maximum Matching In Bipartite Graphs}
+We will consider bipartite graphs; i.e., graphs whose vertices can be split into two
+subsets, \(L\) and \(R\) such that every edge \(e \in E\) has one end in the set \(L\)
+and the other in the set \(R\).
+
+\paragraph{Matching} 
+A \textit{matching} in a graph \(G\) is a subset \(M\) of all edges \(E\) such that each 
+vertex of the graph belongs to at most one of the edges in the matching \(M\).
+
+\paragraph{Maximum Matching} 
+A \textit{maximum matching} in a bipartite graph \(G\) is a matching containing the 
+largest possible number of edges.
+
+We turn a Maximum Matching problem into a Max Flow problem by adding a super
+source and a super sink, and by giving all edges a capacity of 1.
+
+Note how the residual flow networks allow rerouting the flow in order to increase
+the total throughput.
+
+\subsubsection{Max Flow with Vertex Capacities}
+Sometimes not only the edges but also the vertices \(v_i\) of the flow graph might
+have capacities \(C(v_i)\), which limit the total throughput of the flow coming to
+the vert (and, consequently, also leaving the vertex):
+\[\sum_{e(u,v) \in E} f(u,v) = \sum_{e(v,w) \in E} f(u,w) \leq C(v).\]
+Such a case is reduced to the case where only edges have capacities by splitting
+each vertex \(v\) with limited capacity \(C(v)\) into two vertices \(v_{in}\)
+and \(v_{out}\) so that all edges coming into \(v\) go into \(v_{in}\), all edges
+leaving \(v\) now leave \(v_{out}\) and by connecting the new vertices \(v_{in}\) and
+\(v_{out}\) with an edge \(e^* = (v_{in}, v_{put})\) with capacity equal to the capacity
+of the original vertex \(v\).
+
+\subsection{Applications of Max Flow Algorithm}
+\subsubsection{Allocation: Movie Rental}
+ \paragraph{Problem}
+ Assume you have a movie rental agency. At the moment you have \(k\) movies in stock,
+ with \(m_i\) copies of the movie \(i\). Each of \(n\) customers can rent out at most 5
+ movies at a time. The customers have sent you their preferences which are a list
+ of movies they would like to see. Your goal is to dispatch the largest possible
+ number of movies.
+
+ \subsubsection{Multiple Sources and Sinks: Cargo Allocation}
+ \paragraph{Problem} The storage space of a ship is in the form of a rectangular grid of 
+ cells with \(n\)  rows and \(m\) columns. Some of the cells are taken by support pillars 
+ and cannot be used for storage, so they have 0 capacity. You are given the capacity of
+ every cell; cell in row \(r_i\) and column \(c_j\) has capacity \(C(i,j)\). To ensure
+ the stability of the ship, the total weight in each row \(r_i\) must not exceed 
+ \(C(r_i)\) and the total weight in each column \(c_j\) must not exceed \(C(c_j)\).
+ Find how to allocate the cargo weight to each cell to maximise to total load without
+ exceeding the limits per column, limits per row and limits per available cell.
+
+ \subsubsection{Vertex Capacities: Disjoint Paths}
+ \paragraph{Problem}
+ You are given a connected, directed graph \(G\) with \(N\) vertices. Out of these \(N\)
+ vertices \(k\) are painted red, \(m\) are painted blue, and the remaining \(N-k-m >0\)
+ of the vertices are black. Red vertices have only outgoing edges and blue vertices have 
+ only incoming edges. Your task is to determine the largest possible number of disjoint
+ (i.e., non-intersecting) paths in this graph, each of which starts at a red vertex
+ and finishes at a blue vertex.

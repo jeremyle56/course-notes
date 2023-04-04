@@ -1,0 +1,106 @@
+
+\section{Stable Matchings and the Gale-Shapely Algorithm}
+
+\subsection{Stable Matching Problem}
+\paragraph{Setting:}
+Assume that you are running a speed dating agency and have $n$ men and
+$n$ women as customers. They all attend a dinner party; after the party
+\begin{itemize}
+    \item every man gives you his ranking of all the women present, \textbf{and}
+    \item every woman gives you her ranking of all men present;
+\end{itemize}
+
+\paragraph{Task:}
+Design an algorithm which produces a \textit{stable matching}: 
+a set of $n$ pairs $p=(m,w)$ of a man $m$ and a woman $w$ so that the following
+the situation never happens:
+
+
+for two pairs $p=(m,w)$ and $p^\prime=(m^\prime, w^\prime)$:
+\begin{itemize}
+    \item man $m$ prefers woman $w^\prime$ to woman $w$, \textbf{and}
+    \item woman $w^\prime$ prefers man $m$ to man $m^\prime$.
+\end{itemize}
+
+\paragraph{Existence} A stable matching exists for every possible collection
+of $n$ lists of preferences provided by all men, and $n$ lists of preferences 
+provided by all women.
+
+\paragraph{Brute Force} Takes $n! \approx (n/e)^n$ time to form $n$ couples.
+
+\subsection{Gale-Shapley Algorithm}
+\paragraph{Assumptions}
+\begin{itemize}
+    \item Produces pairs in stages, with possible revisions;
+    \item A man who has not been paired with a woman will be called \textit{free}.
+    \item Men will be proposing to women.
+    \item Women will decide if they accept a proposal or not.
+\end{itemize}
+
+\paragraph{Algorithm}
+Start with all men free;
+
+\textbf{While} there exists a free man who has not proposed to all women
+pick such a free man $m$ and have him propose to the highest-ranking woman $w$
+on his list to whom he has not proposed yet;
+
+\hspace{\parindent} \textbf{If} no one has proposed to $w$ yet 
+she always accepts and a pair $p=(m,w)$ is formed;
+
+\hspace{\parindent} \textbf{Else} she is already in a pair $p^\prime=(m^\prime,w);$ 
+
+\hspace{\parindent}\hspace{\parindent} \textbf{If} $m$ is higher on 
+her preference list than $m^\prime$ the pair $p^\prime=(m^\prime,w)$ is deleted;
+
+\hspace{\parindent}\hspace{\parindent} $m^\prime$ becomes a free man;
+
+\hspace{\parindent}\hspace{\parindent} \textbf{Else} $m$ is lower on her
+preference list than $m^\prime$; 
+
+\hspace{\parindent}\hspace{\parindent} the proposal is rejected and $m$ remains free.
+
+\paragraph{Proving termination after $n^2$}
+\begin{itemize}
+    \item In every round of the \textit{While} loop one man proposes to one woman;
+    \item every man can propose to a woman at most once;
+    \item thus, every man can make at most $n$ proposals;
+    \item there are $n$ men, so in total they can make $\leq n^2$ proposals
+\end{itemize}
+Thus the \textit{While} loops can be executed no more than $n^2$ many times.\\
+With appropriate data structures, the Gale-Shapley alg. runs in $O(n^2).$
+
+\paragraph{Proving Production of Matching} 
+Proof (by contradiction).
+\begin{itemize}
+    \item Assume that the \textit{While} loop has terminated, but $m$ is still free.
+    \item This means that $m$ has already proposed to every woman.
+    \item Thus, every woman is paired with a man, because a woman is not paired with
+    anyone only if no one has made a proposal to her.
+    \item But this would mean that $n$ women are paired with all of $n$ men so
+    $m$ cannot be free.
+\end{itemize}
+\textbf{Contradiction!}
+
+\paragraph{Proving Stable Matching} Proof (by contradiction).
+Note that during the \textit{While} loop:
+\begin{itemize}
+    \item a woman is paired with men of increasing ranks on her list;
+    \item a man is paired with women of decreasing ranks on his list.
+\end{itemize}
+Assume now the opposite, that the matching is not stable;\\
+Thus, there are two pairs $p=(m,w)$ and $p^\prime=(m^\prime,n^\prime)$ such that:
+\begin{center}
+    $m$ prefers $w^\prime$ over $w$; \hspace{50pt} 
+    $w^\prime$ prefers $m$ over $m^\prime$.
+\end{center}
+\begin{itemize}
+    \item $m$ prefers $w^\prime$ over $w$, so $m$ has proposed to $w^\prime$ before
+    proposing to w;
+    \item Since he is paired with $w$, woman $w^\prime$ must have either:
+    \begin{itemize}
+        \item rejected him because she was already with someone she prefers, or
+        \item dropped him later after a proposal from someone she prefers;
+    \end{itemize}
+    \item In both cases she would now be with $m^\prime$ whom she prefers over $m$.
+\end{itemize}
+\textbf{Contradiction!}

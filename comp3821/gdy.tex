@@ -1,0 +1,218 @@
+
+\section{Greedy Algorithms}
+
+\subsection{Foundations for The Greedy Method}
+\paragraph{Method}
+Search for an admissible solution of maximal reward (/minimal cost)
+\begin{itemize}
+    \item Introduce problem \textit{elements}
+    \item Establish which combinations of elements are \textit{admissible}
+    \item Define a \textit{quality} measure on problem's elements
+    \item Build a solution step by step by adding elements of highest quality
+\end{itemize}
+
+\paragraph{Optimality proof method (exchange argument)}
+\begin{itemize}
+    \item Pick any solution \(S\)
+    \item morph it by swapping elements with higher quality ones
+    \item show that any swap leads to a solution with higher reward
+    \item stop when we arrive at the greedy solution \(G\)
+    \item Conclude that the reward \(G\) is larger than \(S\)
+\end{itemize}
+
+\subsection{Activity Selection Problem}
+\paragraph{Setting} 
+A list of activites \(a_i, (1 \leq i \leq n)\) with starting times
+\(s_i\) and finishing times \(f_i\). No two activities can take place simultaneously.
+
+\paragraph{Task} 
+Find a \textit{maximum size} subset of compatible activities.
+
+\paragraph{Solution} 
+Among the activities which do not conflict with the previously chosen activities always chose
+the one with the earliest end time.
+
+\paragraph{Proof} 
+Claim: any solution \(S\) has \(\leq\) number of activities than the greedy solution \(G\).
+\begin{enumerate}
+    \item Find the first place where the chosen activity violates the greedy choice.
+    \item Show that replacing that activity with the greedy choice produces a non-conflicting 
+    selection \(S^\prime\) with the same number of activities. 
+    \item Continue until all activities match those in the greedy solution \(G\).
+    selection
+\end{enumerate}
+
+\paragraph{Complexity} 
+We sort activities using their finishing times in increasing order in \(O(n\log n)\) time.
+Then loop through all activities linearly for a total time of \(O(n\log n)\).
+
+\paragraph{Setting} A list of activities \(a_i, (1 \leq i \leq n)\) with starting times \(s_i\)
+and finishing times \(f_i = s_i + d\). Thus, all activities are of  the same duration. No two
+activities can take place simultaneously.
+
+\paragraph{Task} Find a subset of compatible activities of \textit{maximal total duration}.
+
+\paragraph{Solution} Since all activities are of the same duration, this is equivalent to finding
+a selection with the largest number of non-conflicting activities, i.e., the previous problem.
+
+A greedy strategy no longer works - we need a more sophisticated technique.
+
+\subsection{Dijkstra's Shortest Path Algorithm}
+
+\paragraph{Updating our Heap Data Structure}
+%summeraise this bruh 
+We will use heaps represented by arrays; the left child of \(A[i]\) is stored in \(A[2i]\)
+and the right child in \(A[2i + 1]\). We will store in heaps vertices of graphs with key 
+computed in various ways; if a graph has \(n\) vertices we will label them with positive 
+integers 1 to \(n\). Thus every element of \(A\) is of the form \((i, k(i))\) where \(k(i)\)
+is the key of element \(i\).
+
+Besides the array \(A\) which represents the heap, we will use another array \(P\) of the 
+same length which stores the position of elements in the heap; thus \(A[P[i]]=(i,k(i))\).
+Changing the key of an element \(i\) is now an \(O(\lg n)\) operation: we look up its 
+position \(P[i]\) in \(A\), change the key of the element in \(A[P[i]]\) and then perform
+the Heappify operation to make sure the Heap property is being preserved. 
+
+\paragraph{Setting} Let \(G=(V,E)\) be a directed graph with non-negative weight \(w(e) \geq 0\)
+assigned to each edge \(e \in E\). We are also given a vertex \(v \in V\). For simplicity, we
+assume that any \(u \in V\) can be reached from \(v\).
+
+\paragraph{Task} Find for every \(u \in V\) the shortest path from \(v\) to \(u\).
+
+\paragraph{Algorithm}
+Starting from a set of vertices \(S = \{v\}\) which contains a single source vertex. At each
+stage of construction we add the element \(u \in V \setminus S\) which has the shortest path
+from \(v\) to \(u\) with all intermediate vertices already in \(S\).
+
+\paragraph{Correctness}
+Assume that there exists a shorter path from \(v\) to \(u\) in \(G\). By our choice of \(u\)
+such a path cannot be entirely in \(S\). Let \(z\) be the first vertex outside \(S\) on 
+such a shortest path. But then the path from \(v\) to such \(z\) would be shorter than the path
+from \(v\) to \(u\), contradicting our choice of \(u\).
+
+\paragraph{Efficient Implementation}
+\begin{enumerate}
+    \item All vertices expect \(v\) placed in heap with additional position array, weights
+    \(w(u, v)\) if \((v, u)\in E\) or \(\infty\) as the key.
+    \item Key of each element \(u\) will be updated with length \(lh_{S,v} (u)\) of the 
+    shortest path from \(v\) to \(u\) which has all intermediate vertices on such a 
+    path in \(S\).
+    \item Pop the element \(u\) from the priority queue  with smallest key and add to \(S\).
+    \item For all elements \(z \in V \setminus S\) for which \((u,z) \in E\), if 
+    \(lh_{S,v} (u) + w(u, z) < lh_{s,v} (z)\) update key of \(z\) to \(lh_{S,v} (u) + w(u, z)\).
+\end{enumerate} 
+
+\paragraph{Complexity} For a graph with \(n\) vertices and \(m\) edges, each edge is 
+inspected only once, and popping an element with the smallest key and updating a vertex 
+key takes \(O(\lg n)\) many steps each. So in total, the algorithm runs in \(O(m\lg n)\) time.
+
+\subsection{Huffman Code}
+\paragraph{Encoding Texts}
+Given a set of symbols you want to encode these symbols using binary strings, so that 
+sequences of such symbols can be decoded in an unambiguous way.
+
+\textbf{Fixed-width Encodings} Reverse bit strings of equal and sufficient length, given
+the number of distinct symbols to be encoded. This is the main idea behind the ASCII code.
+
+\paragraph{Towards Variable-Width Encoding}
+The previous method is not economical: all symbols have codes of equal length. 
+One would prefer an encoding in which frequent symbols have short codes
+while infrequent ones can have longer codes.
+
+\paragraph{Prefix Code}
+The previous method was unable to partition a bitstream uniquely into segments.
+To do this we use a prefix code. A prefix code is a map from symbols to bit sequences
+such that no code of a symbol is a prefix of a code for another symbol.
+
+\paragraph{The Huffman Code} 
+Given the frequencies of each symbol, design an optimal prefix code, i.e. a prefix code 
+such that the expect length of an encoded text is as small as possible. 
+
+\subsection{Union-Find}
+
+\paragraph{Three Operations}
+\begin{itemize}
+    \item \texttt{MakeUnionFind(S)} - Given a set \(S\) returns a structure in which all elements
+    are placed into distinct singleton sets. Runs in \(O(n)\) time where \(n = |S|\).
+    \item \texttt{Find(v)} - Given a vertex \(v\), returns the set to which
+    \(v\) belong. Runs in \(O(1)\) time.
+    \item \texttt{Union(A, B)} - Given two sets \(A, B\), changes the data
+    structure by replacing sets \(A\) and \(B\) with the set \(A \cup B\). Initial
+    sequence of \(k\) consecutive \texttt{Union} operations runs in time \(O(k\lg k)\).
+        \begin{itemize}
+            \item Run time of single \texttt{Union} not given. This approach is amortized analysis.
+            \item \textit{inital} sequence of \(k\) \texttt{Union} operations means we start 
+            with all sets being singletons and then apply \(k\) \texttt{Union} operations.
+            \item \textit{consecutive} sequence of \texttt{Union} means a sequence of 
+            \texttt{Union} operations possibly interspered with some \texttt{FIND} operations
+            but not other \texttt{Union} operations not belonging to the considered sequence
+            of \(k\) \texttt{Union} operations.
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Implementation}
+The simplest implementation of the UF data structure consists of:
+\begin{enumerate}
+    \item an array \(A\) such that \(A[i] = j\) means that \(i\) belongs to set labeled by \(j\);
+    \item an array \(B\) such that \(B[i]\) contains the number of elements in the set \(i\) and
+    pointers to the first and last elements of the list of elements in the set \(i\).
+\end{enumerate}
+\texttt{Union(\(i, j\))} if defined as follows: if the set labeled by \(i\) has \(\geq\)
+elements than the set labeled by \(j\) then labels in array \(A\) of all elements in the set
+labeled by \(j\) is changed to \(i\) and array \(B\) is updated accordingly. Else do the 
+opposite. 
+
+\paragraph{Complexity}
+Any sequence of \(k\) initial consecutive \texttt{Union} operations can touch at most \(2k\)
+elements of \(S\). Every \texttt{Union} operation at least doubles the size of the set
+and could change fewer than \(\lg 2k\) many times. Thus any sequence of \(k\) initial 
+consecutive \texttt{Union} operations will have in total fewer than \(2k \lg 2k\) many
+label changes. Thus, every sequence of \(k\) inital consecutive \texttt{Union} operations
+has time complexity of \(O(k \lg k)\).
+
+\subsection{Minimum Spanning Trees}
+Let \(G = (V, E)\) be a connected undirected graph. 
+
+\paragraph{Spanning Tree} A \textit{spanning tree} is a subgraph \(T=(V, E_T)\) of \(G\)
+such that \(T\) does not contain any cycle and is connected.
+
+\paragraph{Minimum Spanning Tree} If \(G\) is a (edge-) weighted graph, then a
+\textit{minimum spanning tree} is a spanning tree of minimum weight. 
+
+\paragraph{Kruskal's Algorithm}
+Sort all edges \(E\) in non-decreasing order by weight. Then, starting from the lowest weight to
+highest, if adding an edge will not result in a cycle, then add it to the graph. Otherwise,
+discard that edge. The process terminates when the list of all edges has been exhausted.
+
+\paragraph{Correctness} 
+(Spanning Tree) 
+Let \(T\) be the output of the algorithm, we know that \(T\) does not contian any cycle.
+Assume there are two or more connected components \(C_1\) and \(C_2\). \(G\) is connected,
+so there are some edges connecting \(C_1\) to \(C_2\) in \(G\). The first of such edges would 
+have been added to \(T\) because it would not create any cycle in \(T\). So \(T\) is a spanning
+tree. \\[0.2cm]
+(Minimality)
+We consider the case where all weights are distinct. Let \(T\) be the output of KA.
+Consider a spanning tree \(T'\) distinct from \(T\). Let \(e = \{u, v\}\) be the smallest-weight
+edge in \(T\) that is not in \(T'\). \(T'\) is spanning so there exists a path \(P\) from
+\(u\) to \(v\). \(T\) has no cycles, so there exists an edge \(f \in P\) that is not in \(T\).
+Let \(T''=(V, \{e\} \cup E_{T'} \setminus \{f\})\); it is a spanning tree. \(w(e) < w(f)\) because
+otherwise KA would have added \(f\) to \(T\) instead of \(e\). Furthermore, \(T''\) weighs
+less than \(T'\), so \(T'\) is no an MST. \(G\) has an MST and any \(T' \neq T\) is not an
+MST, so \(T\) is an MST.
+
+\paragraph{Implementation}
+The \texttt{Union-Find} data structure lets us efficiently implement Kurskal's algorithm
+on graph \(G = (V, E)\) with \(n\) vertices and \(m\) edges. We first sort \(m\) edges
+which takes \(O(m \lg m)\). Since \(m \leq n^2\) this step also takes \(O(m \lg n^2) = O(m\log n)\).
+For the algorithm we making connected components and merge them into a single connected 
+component which is the same as \texttt{Union-Find}.
+
+For each edge \(e = (v, u)\) we use two \texttt{Find} operations \texttt{Find(\(u\))} and
+\texttt{Find(\(v\))} to determine if they belong in the same component. If they are
+we add edge \(e = (u, v)\) to the spanning tree and perform \texttt{Union(\(i,j\))} to 
+place \(u\) and \(v\) into the same connected component.
+
+In total we perform \(2m\) \texttt{Find} operations, each costing \(O(1)\), in total coasting 
+\(O(m)\). We also perform \(n-1\) \texttt{Union} operations which cost \(O(n \lg n)\).
+In total, together with the initial sorting the time complexity is \(O(m \log n)\).
