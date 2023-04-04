@@ -1,3 +1,3 @@
-# [Click here for PDF](./MATH2111.pdf)
+# [Click here for PDF](./COMP1531.pdf)
 
 Main: [main.tex](./main.tex)
