@@ -4,7 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - name: Github Action for LaTeX
-       uses: xu-cheng/latex-action@v2
-       with:
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+    - name: Github Action for LaTeX
+      uses: xu-cheng/latex-action@v2
+      with:
         root_file: main.tex
