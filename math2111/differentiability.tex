@@ -1,0 +1,332 @@
+
+\section{Differentiation}
+
+\subsection{Differentiability, Derivatives and Affine Approximations}
+
+\paragraph{Differentiability in \(\mathbb{R}\)}
+\(f: \mathbb{R}\to \mathbb{R}\) is differentiable at some \(a\in \mathbb{R}\)
+means there is a \textit{good} straight-line approximation to \(f\) near \(a\) called a
+tangent line.
+This approximating function is given by
+\[T(x) = f(a) + f'(a)(x-a) = f(a) -f'(a)a + f'(a)x = y_0 + L(x)\]
+where for all \(a\), \(y_0 = f(a) - f'(a)a\) is a fixed number
+and \(L: \mathbb{R}\to \mathbb{R} = f'(a)x\) is the linear map.
+
+Recall that \[f'(a) = \lim_{x\to a} \frac{f(x) - f(a)}{x-a}.\]
+
+\paragraph{Linear Maps} A function \(L: \mathbb{R}^n \to \mathbb{R}^m\) is called
+linear iff for all \(x,y \in \mathbb{R}^n\) for all \(\lambda\in\mathbb{R}:\)
+\[L(x+y) = L(x) + L(y) \text{  and  } L(\lambda x) = \lambda L(x).\]
+
+\paragraph{Affine Maps} A function \(T: \mathbb{R}^n \to \mathbb{R}^m\) is affine
+means there is \(y_0 \in \mathbb{R}^m\) and a linear map (ie matrix) 
+\(\textbf{L}: \mathbb{R}^n \to \mathbb{R}^m\) such that 
+\[T(\textbf{x}) = \textbf{y}_0 + \textbf{L}(\textbf{x}).\]
+A function \(f: \mathbb{R} \to \mathbb{R}\) is affine iff \(f(x) = ax + b\), for some
+\(a, b \in \mathbb{R}\).
+
+\paragraph{Affine approximation}
+The function \(f: \Omega \subseteq \mathbb{R}^n \to \mathbb{R}^m\) has an affine
+approximation at a point \(a \in \Omega\) if and only if there exists a matrix
+\(A \in M_{m\times n} (\mathbb{R})\) such that 
+\[\lim_{x\to a} \frac{d(f(x) - f(a), A(x-a))}{d(x, a)} = 0\]
+If \(f\) has an affine approximation at a point \(a \in \Omega\), then the matrix \(A\)
+in the definition is called the derivative of \(f\) at \(a\) and is denoted by \(Df(a)\)
+(or \(Daf\)).
+
+The function \(T_af:\mathbb{R}^n \to \mathbb{R}^m\) defined by 
+\[T_af(x) = Df(a)(x-a) + f(a)\] is called the best affine approximation of \(f\) at \(a\).
+
+\paragraph{Differentiability in \(\mathbb{R}^n\to \mathbb{R}^n\)}
+
+A function \(f: \Omega\subset \mathbb{R}^n \to \mathbb{R}^m\) is differentiable for some
+\(a\in\Omega\) if there exists a linear map \(L: \mathbb{R}n\to \mathbb{R}^m\)
+such that
+\[
+\lim_{x\to a} \frac{
+    \left|\left|f(x) - f(a) -L(x-a)\right|\right|
+} {
+    \left|\left|L(x-a)\right|\right|
+} = 0.
+\]
+
+Notation: the matrix of the linear map \(L\), the derivative of \(f\) at
+\(a\) is denoted by \(D_af\).
+
+\paragraph{Delta Epsilon Definition of Differentiability}
+A function \(f: \Omega\subset \mathbb{R}\to \mathbb{R}^m\) is 
+differentiable on \(a\in \Omega\) if there is a linear map \(L: \mathbb{R}^n\to \mathbb{R}^m\)
+such that \(\forall \epsilon > 0 \exists \delta > 0 \)
+such that for all \(x\in \Omega\)
+\[
+\left|\left|x - a\right|\right| < \delta
+\to
+\left|\left|f(x) - f(a) - L(x-a)\right|\right|
+< \epsilon\left|\left|x - a\right|\right|. 
+\]
+
+\subsection{Partial Derivatives}
+Let \(\textbf{a}\in\mathbb{R}^n\) and \(f:\Omega\to\mathbb{R}\) be a function with 
+coordinates \(x_i\) and standard basis vectors \(\textbf{e}_i, i\in \{1,\dots,n\}\).
+The partial derivative of \(f\) in direction \(i\) is defined as
+\[
+    \frac{\partial f}{\partial x_i} = \lim_{h\to 0} 
+    \frac{f(\textbf{a}+h\textbf{e}_i -f(\textbf{a})}{h}
+\]
+assuming the limit exists.
+
+\paragraph{Claiaut's Theorem}
+ If 
+ \(f, \dfrac{\partial f}{\partial x_i}, \dfrac{\partial f}{\partial x_j}, \dfrac{\partial^2 f}{\partial x_i x_j}, \dfrac{\partial^2 f}{\partial x_j x_i}\) all exist and are continuous on
+ an open set around \(\textbf{a}\) then
+ \[\frac{\partial^2 f}{\partial x_i x_j}(\textbf{a})=\frac{\partial^2 f}{\partial x_j x_i }(\textbf{a}).\]
+ That is the partial derivatives commute.
+
+\subsection{Jacobian Matrix}
+\paragraph{Definition}
+If all partial derivatives of \(\textbf{f}:\Omega \to \mathbb{R}^m\) exists at 
+\(\textbf{a}\in \omega \subseteq \mathbb{R}^n\), then the Jacobian matrix of \(\textbf{f}\)
+at \(\textbf{a}\) is
+\[
+    J_a f = 
+    \begin{pmatrix}
+        \dfrac{\partial f_1}{\partial x_1}(\textbf{a)} & \dfrac{\partial f_1}{\partial x_2}
+        (\textbf{a}) & \cdots & \dfrac{\partial f_1}{\partial x_n}(\textbf{a}) \\
+        \dfrac{\partial f_2}{\partial x_1}(\textbf{a}) & \dfrac{\partial f_2}{\partial x_2}
+        (\textbf{a}) & \cdots & \dfrac{\partial f_2}{\partial x_n}(\textbf{a}) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \dfrac{\partial f_n}{\partial x_1}(\textbf{a}) & \dfrac{\partial f_n}{\partial x_2}
+        (\textbf{a}) & \cdots & \dfrac{\partial f_m}{\partial x_n}(\textbf{a}) \\
+    \end{pmatrix}.
+\]
+
+\paragraph{Theorem}
+Let \(\Omega \subseteq \mathbb{R}^n, \textbf{a} \in \Omega\) be an interior point and 
+\(\textbf{f}:\Omega\to \mathbb{R}^m\) be a function. If \(\textbf{f}\) is differentiable
+at \(\textbf{a}\) then all partial derivatives \(\dfrac{\partial f_j}{\partial x_i}\) exist at 
+\(\textbf{a}\) and 
+\[D\textbf{f}(\textbf{a}) = J\textbf{f}(\textbf{a}).\]
+Best affine approximation: \(T_af(x) = Jf(a)(x-a) + f(a)\).
+
+\subsection{Differentiable and Continuous}
+\paragraph{Limit at 0} 
+For \(\textbf{x} \in \mathbb R^n\) and \(L\) an \(m \times n\) matrix, 
+\[\lim_{x\to \textbf{0}} ||L\textbf{x}|| = 0.\]
+
+\paragraph{Open Sets}
+Let \(\Omega\in\mathbb R^n\) be open and let \(f:\Omega \to \mathbb R^m\) be a
+function that is differentiable on \(\Omega\). Then \(f\) is continuous on \(\Omega\).
+
+\paragraph{Partial Derivatives + Continuity}
+Let \(\Omega \subseteq \mathbb R^n\) be open and let \(f: \Omega \to \mathbb R^m\)
+be a function. If for all \(i = 1, \dots, n\) and all \(j = 1,\dots, m\) the partial
+derivative \(\dfrac{\partial f_j}{\partial x_i}\) exists and is continuous on \(\Omega\)
+then \(f\) is differentiable on \(\Omega\).
+
+\subsection{Chain Rule, Gradient, Directional Derivatives, Tangent Planes}
+\paragraph{Chain Rule}
+Let \(\Omega \subseteq \mathbb{R}^n, \Omega' \subseteq \mathbb{R}^m\) and let 
+\(\textbf{a} \in \Omega\). Suppose \(\textbf{f}:\Omega \to \mathbb R^m\) and
+\(\textbf{g}:\Omega'\to\mathbb R^k\) are functions such that 
+\(\textbf{f}(\Omega)\subseteq\Omega'\). If \(\textbf{f}\) is differentiable at \(\textbf{a}\)
+and \(\textbf{g}\) is differentiable at \(\textbf{f}(\textbf{a})\), then 
+\(\textbf{g}\circ\textbf{f}\) is differentiable at \(\textbf{a}\) and 
+\[
+    D(\textbf{g}\circ\textbf{f})(\textbf{a})=
+    D\textbf{g}(\textbf{f}(\textbf{a}))D\textbf{f}(\textbf{a}).
+\]
+
+\paragraph{Gradient}
+For \(f: \Omega\subset \mathbb{R}^n\to \mathbb{R}\), if the Jacobian exists,
+then it is given by the \(1\times n\) matrix
+\[
+    Jf = \begin{pmatrix}
+        \dfrac{\partial f}{\partial x_1} \\
+        \dfrac{\partial f}{\partial x_2} \\
+        \cdots                           \\
+        \dfrac{\partial f}{\partial x_n} \\
+    \end{pmatrix}.
+\]
+This is equivalent to the gradient of \(f\). That is,
+\[
+    \text{grad}(f) = \grad f = 
+    \begin{pmatrix}
+        \dfrac{\partial f}{\partial x_1} \\
+        \dfrac{\partial f}{\partial x_2} \\
+        \cdots                           \\
+        \dfrac{\partial f}{\partial x_n} \\
+    \end{pmatrix}.
+\]
+
+\paragraph{Directional Derivative}
+The directional derivative of \(f: \Omega \subset \mathbb R^n \to \mathbb R\)
+in the direction of the unit vector \(\hat{\textbf{u}}\) at \(\textbf{a}\in \Omega\) is
+\[
+    D_{\hat{\textbf{u}}}f(\textbf{a})=f_{\hat{\textbf{u}}}'(\textbf{a})=\lim_{h\to 0}
+    \frac{f(\textbf{a}+h\hat{\textbf{u}})-f(\textbf{a})}{h}.
+\]
+if the limit exists.
+
+Equivalently, if \(f: \Omega \subset \mathbb{R}^n \to \mathbb{R}\)
+is differentiable at \(a\) then for a unit vector \(u\)
+\[
+    D_u f(a) = f_u'(a) = \grad f(a)\cdot u.
+\]
+
+Alternatively, allowing \(\theta\) to be the angle between
+\(\grad f(a)\) and \(u\),
+\[D_u f(a) = |\grad f(a)| \cdot |u| \cdot \cos\theta.\]
+
+\paragraph{Affine Approximation}
+Allow \(f:\Omega\subset\mathbb{R}^n \to \mathbb{R}\) to be a differentiable
+function at \(a\in \Omega\).
+The best affine approximation to \(f\) at \(a\) may be written in terms of
+the gradient vector as
+\[
+    T(x) = f(a) + \grad f(a) \cdot (x-a).
+\]
+
+\paragraph{Tangent Planes}
+The tangent plane to a function \(z = f(x, y)\) is given by
+\[ z = T(x, y).\]
+
+\subsection{Taylor Series and Theorem}
+
+\paragraph{Taylor's Theorem}
+For all continuous and differentiable functions \(f: \mathbb{R}\to \mathbb{R}\),
+\[
+    f(x)
+    \approx
+    P_{k,a}(x) = 
+    \sum_{n=0}^{k} \frac{f^{(n)}(a)}{n!} (x-a)^n
+    + R_{k,a}(x)
+\]
+where the remainder \(R\) is
+\[
+    R_{k,a}(x) = \frac{f^{(k+1)}(z)}{(k+1)!} (x-a)^{k+1}
+\]
+for some \(z\) between \(x\) and \(a\).
+
+\(P_{0,a}, P_{1,a},  P_{2,a}, P_{3,a}\) are the best constant, affine, quadratic, cubic
+approximations.
+
+\paragraph{Hessian Matrix}
+For \(\Omega \subseteq \mathbb R^n\) and \(f:\Omega\to\mathbb R\), the 
+\textit{Hessain matrix of f at a point \(a \in \Omega\)} is the \(n \times n\) matrix
+\[
+    Hf(a) =
+    \begin{pmatrix}
+        \dfrac{\partial^2 f}{\partial x_1^2}(a) & \dfrac{\partial^2 f}{\partial x_2 \partial x_1}(a) & \cdots &\dfrac{\partial^2 f}{\partial x_n \partial x_1}(a) \\
+        \dfrac{\partial^2 f}{\partial x_1 \partial x_2}(a) & \dfrac{\partial^2 f}{\partial x_2^2}(a) & \cdots &\dfrac{\partial^2 f}{\partial x_n \partial x_2}(a) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \dfrac{\partial^2 f}{\partial x_1 \partial x_n}(a) & \dfrac{\partial^2 f}{\partial x_2 \partial x_n}(a) & \cdots &\dfrac{\partial^2 f}{\partial x_n^2}(a) \\
+    \end{pmatrix}.
+\]
+assuming the 2\textsuperscript{nd} order partial derivatives exist.
+
+\paragraph{Class}
+A function \(f:\Omega \to \mathbb R, \Omega \subseteq \mathbb R^n\) open,
+is called (of class) \(C^r\) if all partial derivatives of \(f\) of order \(\leq r\)
+exist and are continuous.
+
+\paragraph{Taylor Polynomials}
+Let \(\Omega \subseteq \mathbb R^n\) be open, let \(a \in \Omega\), and let 
+\(f:\Omega \to \mathbb R\) be a function of class \(C^2\). The polynomial
+\[P_{1, a}(x) = f(a) + \grad f(a)\cdot (x-a)\]
+is called the Taylor polynomial of order 1 about \(a\) and the polynomial
+\[P_{2, a}(x) = f(a) + \grad f(a)\cdot (x-a) + \frac{1}{2}(x-a)\cdot Hf(a)(x-a)\]
+is called the Taylor Polynomial of order 2 about \(a\).
+
+In general, if \(f:\Omega \to \mathbb R\) is \(C^r, \Omega \text{ open }, a \in \Omega\):
+\begin{align*}
+    P_{r,a}(x) & = f(a) + \grad f(a)\cdot (x-a) + \frac{1}{2}(x-a)\cdot Hf(a)(x-a) \\
+    & +\cdots + \frac{1}{r!}\sum_{i_1,\dots,i_r=1}^n \frac{\partial^r f}{\partial x_{i_1} \dots \partial x_{i_r}}(a)(x_{i_1} - a_{i_1}) \cdot \dots \cdot (x_{i_r}-a_{i_r}).
+\end{align*}
+
+\paragraph{Taylor's Theorem (1\textsuperscript{st} order)}
+Let \(\Omega \in \mathbb R^n\) be open, let \(f:\Omega \to \mathbb R\) be a function
+of class \(C^2\). Let \(x, a \in \Omega\) s.t. the line segment between \(x\) and \(a\) is
+contained in \(\Omega.\) Then there exist \(z\) on this line segment such that 
+\[f(x) = f(a) + \grad f(a) \cdot (x-a) + R_{1,a}(x)\]
+where \(R_{1,a}(x) = \frac{1}{2}(x-a) \cdot (Hf(z)(z-a))\).
+
+\paragraph{Taylor's Theorem (2 \textsuperscript{nd} order)}
+Let \(\Omega \in \mathbb R^n\) be open, let \(f:\Omega \to \mathbb R\) be a function
+of class \(C^3\). Let \(x, a \in \Omega\) s.t. the line segment between \(x\) and \(a\) is
+contained in \(\Omega.\) Then there exist \(z\) on this line segment such that 
+\[f(x) = f(a) + \grad f(a) \cdot (x-a) + \frac{1}{2}(x-a)Hf(a)(x-a) + R_{2,a}(x)\]
+where \(R_{2,a}(x): \Omega \to \mathbb R\) is a function such that 
+\(\frac{R_{2,a}(x)|}{|x-a|^2} \to 0\) as \(x \to a\).
+
+\subsection{Maxima, Minima and Saddle Points}
+\paragraph{Definitions} Let \(a \in \Omega \subseteq \mathbb R^n\) and \(f: \Omega \to \mathbb R\) be a function. Then
+\begin{itemize}
+    \item \(a\) is an absolute or \textit{global maximum} of \(f\) if \(f(a) \geq f(x)\) for all \(x \in \Omega\).
+    \item \(a\) is an absolute or \textit{global minimum} of \(f\) if \(f(a) \leq f(x)\) for all \(x \in \Omega\).
+    \item \(a\) is a \textit{local maximum} of \(f\) if there is an open \(A \subseteq \Omega\) containing \(a\) such that \(f(a) \geq f(x)\) for all \(x \in A\).
+    \item \(a\) is a \textit{local minimum} of \(f\) if there is an open \(A \subseteq \Omega\) containing \(a\) such that \(f(a) \leq f(x)\) for all \(x \in A\).
+    \item \(a\) is a \textit{stationary point} of \(f\) if \(f\) is differentiable at \(a\) and \(\grad f(a) = 0\).
+    \item \(a\) is a \textit{saddle point} of \(f\) if \(a\) is a stationary point of \(f\) but it's neither a local max nor a local minimum of \(f\).
+\end{itemize}
+
+\paragraph{Critical Points}
+Let \(a\in\Omega\subseteq\mathbb R^n\) and \(f:\Omega \to \mathbb R\) be a function. If \(a\)
+is a local maximum or a local minimum then
+\begin{enumerate}
+    \item \(a\) is a stationary, or
+    \item \(a \in \partial\Omega \Longleftrightarrow a\) is a boundary pt, or
+    \item \(f\) is not differentiable at \(a\).
+\end{enumerate}
+Points satisfying \(1,2\) or \(3\) are called critical points.
+
+\subsection{Classification of Stationary Points}
+\paragraph{Definition:}
+An \(n \times n\) martix \(H\) is 
+\begin{itemize}
+    \item positive definite \(\iff\) all eigenvalues are \(> 0\)
+    \item positive semi-definite \(\iff\) all eigenvalues are \(\geq 0\)
+    \item positive definite \(\iff\) all eigenvalues are \(< 0\)
+    \item positive semi-definite \(\iff\) all eigenvalues are \(\leq 0\)
+\end{itemize}
+
+\paragraph{Criterion for Local Extrema}
+Let \(\Omega \subseteq \mathbb R^n\) be open, \(a\in\Omega\) and let \(f:\Omega \to \mathbb R\)
+be a function such that all paritial derivaitves of \(f\) of order at most \(2\) exists on \(\Omega\) and \(\grad f(a) = 0\). Then
+\begin{itemize}
+    \item \(Hf(a)\) is positive definite \(\implies f\) has a local minimum at \(a\);
+    \item \(Hf(a)\) is negative definite \(\implies f\) has a local maximum at \(a\);
+    \item \(f\) has a local minimum at \(a \implies Hf(a)\) is positive semi-definite;
+    \item \(f\) has a local maximum at \(a \implies Hf(a)\) is negative semi-definite;
+\end{itemize}
+
+\paragraph{Sylvesetr's Criterion}
+If \(H_k\) is the upper \(k \times k\) matrix of \(H\) and \(\Delta_k = det(H_k)\), then
+\begin{itemize}
+    \item \(H\) is positive definite \(\iff \Delta_k > 0\) for all \(k\)
+    \item \(H\) is positive semi-definite \(\implies \Delta_k \geq 0\) for all \(k\)
+    \item \(H\) is negative definite \(\iff \Delta_k < 0\) for all odd k and \(\Delta_k > 0\) for all even k
+    \item \(H\) is negative semi-definite \(\implies \Delta_k \leq 0\) for all odd k and \(\Delta_k \geq 0\) for all even k
+\end{itemize}
+
+\subsection{Lagrange Multipliers, Implicit and Inverse Function Theorems}
+\paragraph{Lagrange Multipliers}
+Suppose \(f: \mathbb R^n \to \mathbb R\) and \(\varphi: \mathbb R^n \to \mathbb R\) 
+are differentiable and \(S = \{ x \in \mathbb R^n: \varphi(x) = c \}\) defines a smooth
+surface on \(\mathbb R^n\). If \(f\) attains a local maximum or minimum at a point \(a \in S\)
+then \(\grad f(a)\) and \(\grad\varphi(a)\) are parallel. If \(\grad\varphi(a) \neq 0\), 
+there exist a Lagrange multiplier \(\lambda \in \mathbb R\) such that 
+\[\grad f(a) = \lambda\grad\varphi(a).\]
+
+\paragraph{Inverse Function Theorem for \(f: \mathbb R \to \mathbb R\)}
+If \(f: \mathbb R \to \mathbb R\) is differentiable on an open interval \(I \in \mathbb R\)
+and \(f'(x) \neq 0\) for all \(x \in I\), then \(f\) is invertible on \(I\) and the inverse
+\(f^{-1}:f(I)\to \mathbb R\) is differentiable with
+\[(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}.\]
+
+\paragraph{Generalising the Inverse Function Theorem}
+Let \(\Omega\subseteq\mathbb R^n\) be open, \(f:\Omega \to \mathbb R^n\) be \(C^1\) and 
+suppose \(a \in \Omega\). If \(Df(a)\) is invertible (as a matrix) then \(f\) is invertible
+on an open set \(U\) containing \(a\). That is,
+\[f^{-1}:f(U) \to U\]
+exists. Furthermore, \(f^{-1}\) is \(C^1\) and for \(x \in U\),
+\[D_{f(x)}f^{-1} = (D_x f)^{-1}.\]

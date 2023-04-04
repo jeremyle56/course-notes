@@ -1,0 +1,192 @@
+
+\section{Fourier Series}
+
+\paragraph{Fourier Series}
+A Fourier series is the approximation of simple periodic functions by
+the sum of period functions of the form \(\sin(x), \cos(x)\).
+Note that unlike Taylor series, a function \(f\) may be discontinuous.
+However, any lack of continuity leads to an infinite sum in the Fourier series.
+
+\subsection{Inner Products and Norms}
+\paragraph{Inner Products}
+Let \(V\) be a (real) vector space. An inner product on \(V\) is a map
+that assigns each \(f,g\in V\) a real number \(\langle f, g \rangle\)
+in such a way that
+\begin{itemize}
+    \item \(\langle f, f \rangle \geq 0\),
+    \item \(\langle f, f \rangle = 0\) if and only if \(f\) is zero,
+    \item \(\langle \lambda f + \mu g, h\rangle\),
+    = \(\lambda\langle f, h\rangle\) + \(\mu\langle g, h\rangle\),
+    \item \(\langle g, f \rangle = \langle f, g \rangle\).
+\end{itemize}
+for all functions \(f,g,h \in V\) and all real constants \(\lambda, \mu\).
+
+\paragraph{Usual Inner Products}
+\begin{itemize}
+    \item The vector space \(\mathbb R^n\) consisting of all \(n\)-dimensional vector admits the following inner product
+    \[ \langle v, w \rangle = v\cdot w = \sum_{i=1}^n v_i w_i.\]
+    \item The vector space \(C[a, b]\) consisting of all continuous
+    function defined on the interval \([a, b]\) admits the following inner product
+    \[\langle f, g \rangle = \int_{a}^{b} f(x) g(x) \, dx.\]
+\end{itemize}
+
+\paragraph{Norms}
+A norm on \(V\) is a map that assigns each \(f \in V\) a real number \(||f||\) in such a way that 
+\begin{itemize}
+    \item \(||f|| > 0\),
+    \item \(||f|| = 0\) if and only if \(f = 0\),
+    \item \(||\lambda f|| = |\lambda| \, ||f||\),
+    \item \(||f + g|| \leq ||f|| + ||g|| \quad\) (triangle inequality)
+\end{itemize}
+for all functions \(f, g \in V\) and all real constant \(\lambda\).
+
+\paragraph{Usual Norms}
+Consider a vector space \(C[a,b]\) consisting of all continuous functions on \([a,b]\).
+\begin{itemize}
+    \item The 2-norm (\(L^2\)-norm) is a norm on \(C[a, b]\):
+    \[||f||_2 = \sqrt{\int_a^b f(x)^2 \, dx}\]
+    \item The max norm is a norm on \(C[a, b]\):
+    \[||f||_\infty = \max_{a \leq x \leq b} \{|f(x)|\}\]
+\end{itemize}
+
+\paragraph{Theorem}
+Every inner product on a vector space \(V\) induces a norm given by 
+\[||f|| = \sqrt{\langle f, f\rangle},\]
+and the Cauchy-Schwartz inequality holds:
+\[|\langle f, g \rangle| \leq ||f|| \, ||g|| \text{ for all } f,g \in V.\]
+
+\subsection{Fourier Coefficients and Fourier Series}
+\paragraph{Fourier Series} 
+Suppose that a given function \(f: \mathbb R \to \mathbb R\) is a \(2\pi\)-periodic and is square integrable (i.e., \(\int_{-\pi}^\pi f(x)^2 \, dx < \infty\)). Its Fourier series is given by 
+\[S_f(x) = \frac{a_0}{2}+\sum_{k=1}^n [a_k\cos(kx) + b_k\sin(kx)]\]
+where 
+\[a_k = \frac{1}{\pi} \int_{-\pi}^\pi f(x)\cos(kx) \, dx, \quad k = 0, 1,2,\dots\]
+and 
+\[b_k = \frac{1}{\pi} \int_{-\pi}^\pi f(x)\sin(kx) \, dx, \quad k = 1,2,\dots\]
+
+\subsection{Pointwise Convergence of Fourier Series}
+
+\paragraph{Piecewise Continuous Functions}
+Consider a function \(f: \mathbb R \to \mathbb R\) and a point \(c \in \mathbb R\). Suppose that the one-sided limits \(f(c^+) = \lim_{x\to c^+}f(x)\) and \(f(c^-) = \lim_{x\to c^-} f(x)\) exists. 
+\begin{itemize}
+    \item If \(f(c^+) = f(c^-) = f(c)\), then \(f\) is continuous at \(c\).
+    \item If \(f(c^+) = f(c^-) \neq f(c)\) or if \(f(c^+) = f(c^-)\) but \(f(c)\) is undefined, then \(f\) has a removable discontinuity at \(c\).
+    \item If \(f(c^+) \neq f(c^-)\), then \(f\) has a jump discontinuity at \(c\).
+\end{itemize}
+A function \(f:[a,b] \to \mathbb R\) is piecewise continuous on \([a,b]\) if and only if 
+
+\begin{enumerate}[label=(\arabic*)]
+    \item For each \(x \in [a,b), f(x^+)\) exists;
+    \item For each \(x \in (a,b], f(x^-)\) exists;
+    \item \(f\) is continuous on \((a,b)\) except at (most) a finite number of points.
+\end{enumerate}
+Note that if \(f\) is only piecewise continuous then the partial sum of the Fourier series does not necessarily converge to \(f\) for all \(x\).
+
+\paragraph{Piecewise Differentiable Functions}
+Consider a function \(f:\mathbb R \to \mathbb R\) and a point \(c\in\mathbb R\). We write 
+\[D^+f(c) = \lim_{h\to 0^+} \frac{f(c+h)-f(c^+)}{h}\]
+if this one-sided limit exists. Likewise,
+\[D^-f(c) = \lim_{h\to 0^-} \frac{f(c+h)-f(c^-)}{h}.\]
+A function \(f\) is  differentiable at \(c\) if and only if \(f(c^+) = f(c) = f(c^-)\) and \(D^+f(c) = D^-f(c)\). A function \(f\) is piecewise differentiable on \([a,b]\) if and only if
+\begin{enumerate}[label=(\arabic*)]
+    \item For each \(x \in [a,b), D^+f(x)\) exists;
+    \item For each \(x \in (a,b], D^-f(x)\) exists;
+    \item \(f\) is differentiable on \((a,b)\) except at (most) a finite number of points.
+\end{enumerate}
+
+\paragraph{Pointwise Convergence}
+Let \(c \in \mathbb R\) and suppose that a function \(f: \mathbb R \to \mathbb R\) has the following properties:
+\begin{enumerate}
+    \item \(f\) is \(2\pi\)-periodic;
+    \item \(f\) is piecewise continuous on \([-\pi, \pi]\);
+    \item \(D^+f(c)\) and \(D^-f(c)\) exists.
+\end{enumerate}
+If \(f\) is continuous at \(c\) then,
+\[S_f(c) = f(c).\]
+If \(f\) has a jump/removable discontinuity at \(c\), then 
+\[S_f(c) = \frac{1}{2}[f(c^+) + f(c^-)].\]
+
+\subsection{General Periodic, Half Range + Odd and Even Functions}
+\paragraph{General Periodic Functions} Suppose that \(f\) has period \(2L\), instead of \(2\pi\):
+\[f(x+2L) = f(x) \text{ for } x\in\mathbb R.\]
+Note that \(\cos\left(\frac{\pi}{L}x\right)\) and \(\sin\left(\frac{\pi}{L}x\right)\) are periodic functions with period \(2L\). So, the decomposition becomes
+\[f(x) = \frac{a_0}{2} + \sum_{k=1}^\infty \left(a_k\cos\left(\frac{k\pi}{L}x\right) + b_k\sin\left(\frac{k\pi}{L}x\right)\right) \]
+where 
+\[a_k = \frac{1}{L}\int_{-L}^{L} f(x)\cos\left(\frac{k\pi x}{L}\right) \, dx, \quad k=0,1,2,\dots\]
+and 
+\[b_k = \frac{1}{L} \int_{-L}^L f(x)\sin\left(\frac{k\pi x}{L}\right) \, dx, \quad k = 1,2,\dots\]
+
+\paragraph{Half Range Expansion}
+Let \(f\) be defined on \([0, L]\). We can extend \(f\) to an even function (or odd function) on \([-L, L]\) and calculate its Fourier Series.
+
+\paragraph{Odd and Even Functions}
+We define an odd and even functions by the conditions \(f(-x)=-f(x)\) and \(f(-x) = f(x)\) respectively for a function \(f\). The following elementary properties hold: 
+\begin{itemize}
+    \item Odd \(\times\) Even = Odd
+    \item Odd \(\times\) Odd = Even
+    \item Even \(\times\) Even  = Even
+    \item \(\int_{-L}^{L}\) Odd = 0
+\end{itemize}
+
+\paragraph{Odd and Even Functions for Fourier Series}
+If \(f\) is odd, then
+\[a_k = \frac{1}{L}\int_{-L}^{L} f(x)\cos\left(\frac{k\pi x}{L}\right) \, dx = 0\]
+and 
+\[b_k = \frac{1}{L} \int_{-L}^L f(x)\sin\left(\frac{k\pi x}{L}\right) \, dx = \frac{2}{L}\int_0^L f(x)\sin\left(\frac{k\pi x}{L}\right) \, dx.\]
+So the Fourier series becomes
+\[S_f(x) = \sum_{k=1}^\infty b_k\sin\left(\frac{k\pi x}{L}\right). \tag{Fourier Sine Series}\]
+If \(f\) is even, then
+\[a_k = \frac{1}{L}\int_{-L}^{L} f(x)\cos\left(\frac{k\pi x}{L}\right) \, dx = \frac{2}{L}\int_0^L f(x)\cos\left(\frac{k\pi x}{L}\right) \, dx.\]
+and 
+\[b_k = \frac{1}{L}\int_{-L}^{L} f(x)\sin\left(\frac{k\pi x}{L}\right) \, dx = 0\]
+So the Fourier series becomes
+\[S_f(x) = \frac{a_0}{2} + \sum_{k=1}^\infty a_k\cos\left(\frac{k\pi x}{L}\right). \tag{Fourier Cosine Series}\]
+
+\subsection{Convergence of Sequences}
+\paragraph{Pointwise Convergence}
+Let \(f_k: \mathbb R \to \mathbb R\). We say \(f_k\) converges to \(f\) on \([a,b]\) pointwisely iff, for every \(x \in [a,b], f_k(x)\to f(x)\) as \(k\to\infty\). In this case, \(f\) is called the pointwise limit.
+In terms of \(\epsilon - \delta\) language:
+
+For every \(x \in [a,b], \epsilon > 0\), there exists an \(K\) (depends on \(\epsilon\) and \(x\)), such that 
+\[|f_k(x) - f(x)| \leq \epsilon \text{ for all } k \geq K.\]
+
+\paragraph{Uniform Convergence}
+Let \(f_k:\mathbb R \to \mathbb R\). We say \(f_k\) converges to \(f\) on \([a,b]\) uniformly iff for every \(\epsilon > 0\), there exists an \(K\) (depends on \(\epsilon\) only), such that 
+\[\sup_{x\in[a,b]} |f_k(x) - f(x)| \leq \epsilon \text{ for all } k\geq K.\]
+
+\paragraph{Uniform Convergence Theorem}
+If \(f_k: \mathbb R \to \mathbb R\) is continuous on \([a,b]\) for all \(k\) if:
+\begin{itemize}
+    \item \(f_k \to f\) uniformly on \([a,b]\) then \(f\) is continuous on \([a,b]\).
+    \item \(f\) has at least one discontinuity on \([a,b]\), \(f_k\) cannot converge uniformly to \(f\) on \([a,b]\).
+\end{itemize}
+
+\paragraph{Weierstrass Test}
+Let \(f_k:\mathbb R \to \mathbb R\) be a sequence of function defined on \([a,b]\). Suppose that there exists a sequence of numbers \(c_k\) such that
+\[|f_k(x)| \leq c_k \text{ for all } x \in [a,b] \]
+and \(\sum_{k=1}^\infty c_k\) converges (or exists as a real number). Then \(\sum_{k=1}^\infty f_k\) converges uniformly to a function \(f\) on \([a,b]\).
+
+Note that this test also holds for functions \(f: \mathbb{R}^n \to \mathbb{R}\) for \(x\in \Omega\) where \(\Omega\) is a closed bounded set in \(\mathbb{R}^n\).
+
+\paragraph{Norm Convergence}
+Consider the supremum norm \(||f|| = \sup_{x\in[a,b]} |f(x)|\). The definition of uniform convergence can be equivalently written as:
+for every \(\epsilon > 0\), there exists an \(K\) such that
+\[
+    ||f_k - f|| \leq \epsilon \text{ for all } k \geq K.
+\]
+Equivalently,
+\[\lim_{k\to\infty} ||f_k - f|| = 0.\]
+Here, the norm is defined as the supremum norm.
+Extending this idea, we can define norm convergence for any arbitrary norm. \\
+
+Let \(V\) be a vector space of functions \(f\) equipeed with a norm \(||f||\). We say a sequence of functions \(f_1, \dots f_k, \dots,\) (norm) converges to \(f\) in \(V\) if \(f\in V\) and 
+\[\lim_{k\to\infty} ||f_k - f|| = 0.\] 
+
+As such, the \(L^2\) norm convergence, also known as mean square convergence
+is equivalent to the following
+\[\lim_{k\to\infty} \int_a^b [f_k(x)-f(x)]^2 dx = 0.\]
+
+\paragraph{Parseval Theorem}
+Let \(f\) be \(2\pi\) periodic, bounded and \(\int_{-\pi}^{\pi} f(x)^2 \, dx < +\infty\). Then, the Fourier series of \(f\) converges to \(f\) in the mean square sense. Moreover, the following Parseval's identity holds: 
+\[\int_{-\pi}^{\pi} f^2(x) \, dx = ||f||_2^2 = \frac{\pi}{2}a_0^2 + \pi \sum_{k=1}^\infty (a_k^2 + b_k^2).\]
+This identity continues to hold for \(2L\) periodic functions integrated over \([-L,L]\).

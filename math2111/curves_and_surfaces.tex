@@ -1,0 +1,38 @@
+
+\section{Curves and Surfaces}
+
+\subsection{Curves}
+The parameterisation of a curve in \(\mathbb{R}^n\) is a vector-valued function
+\[\boldsymbol{c} : \boldsymbol{I} \rightarrow \mathbb{R}^n\]
+where \(I\) is an interval on \(\mathbb{R}\).
+\begin{itemize}
+    \item A multiple point is a point through which the curve passes more than once.
+    \item If \(\boldsymbol{I} = [a, b]\) then \(\boldsymbol{c}(a)\) and \(\boldsymbol{c}(b)\)
+    are called end points.
+    \item A curve is closed if its end points are the same point,
+    \(\boldsymbol{c}(a) = \boldsymbol{c}(b)\).
+\end{itemize}
+
+\subsection{Limits and Calculus for Curves}
+For an interval \(\boldsymbol{I} \subset \mathbb{R}\) and curve \(\boldsymbol{c}: \boldsymbol{I}
+\rightarrow \mathbb{R}^n\) with
+\[\boldsymbol{c}(t) = (c_1(t), c_2(t), \dots c_n(t)),\]
+the functions \(c_i: \boldsymbol{I} \rightarrow \mathbb{R}, i = 1,2, \dots, n\) are called
+the components of \(\boldsymbol{c}\).
+\begin{itemize}
+    \item If \(\lim_{t\to a} c_i(t)\) exists for all \(i\), then \(\lim_{t\to a} 
+    \boldsymbol{c}(t)\) and 
+    \[\lim_{t\to a}\boldsymbol{c}(t) = \Bigl(\lim_{t\to a}c_1(t), \lim_{t\to a}c_2(t), \dots
+    \lim_{t\to a} c_n(t)\Bigl)\]
+    \item If \(c_i^\prime(t)\) exists for all \(i\), then
+    \[\boldsymbol{c}^\prime(t) = (c^\prime_1(t), c^\prime_2(t), \dots, c^\prime_n(t))\]
+\end{itemize}
+
+\subsection{Surfaces}
+You have seen surfaces in \(\mathbb{R}^3\) described in 3 ways.
+\begin{itemize}
+    \item Graph: \(z = f(x, y)\)
+    \item Implicitly: \(x^2+y^2+z^2 = 1\)
+    \item Parametrically: 
+    \(\textbf{x} = \textbf{x}_0 + \lambda_1\textbf{v}_1 + \lambda_2\textbf{v}_2\)
+\end{itemize}

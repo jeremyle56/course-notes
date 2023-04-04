@@ -1,0 +1,56 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bigints}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+\usepackage{subfiles}
+
+
+\usepackage{hyperref}
+\hypersetup {                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{'./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}	
+\title{Higher Several Variable Calculus \\ Math2111 UNSW}
+\author{Jeremy Le \\ (Based of Hussain Nawaz's Notes)}
+\date{2023T1}
+
+\rhead{}
+\lhead{}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+    \newpage
+    \subfile{introduction.tex}
+    \subfile{curves_and_surfaces.tex}
+    \subfile{analysis.tex}
+    \subfile{differentiability.tex}
+    \subfile{integration.tex}
+    \subfile{fourier_series.tex}
+    %       \subfile{vector_fields.tex}
+    %       \subfile{path_and_vector_integrals.tex}
+    %       \subfile{surface_integrals.tex}
+    %       \subfile{integral_theorems.tex}
+\end{document}

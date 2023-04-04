@@ -1,0 +1,228 @@
+
+\section{Analysis}
+
+\subsection{Formal Definition of a Limit}
+\paragraph{1-variable Calculus}
+Recall that \(\lim_{x\to a} f(x) = L\) requires that for all \(\epsilon > 0\),
+there exists a \(\delta > 0 \) such that if \(|x-a| < \delta\)
+then \[|f(x) - L| < \epsilon.\]
+
+\subsection{Distance Functions (metrics)}
+A function 
+\(d: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\)
+which satisfies the following three properties is called a metric.
+\begin{itemize}
+    \item \textbf{Positive Definite}: for all \(x,y \in \mathbb{R}^n\), \(d(x,y) > 0\)
+    and \(d(x, y) = 0\) iff \(x = y\).
+    \item \textbf{Symmetric}: for all \(x,y \in \mathbb{R}^n\), \(d(x,y) = d(y, x)\).
+    \item \textbf{Triangle Inequality} for all \(x,y,z \in \mathbb{R}^n\), 
+    \(d(x,y) + d(y,z) \geq d(x, z)\).
+\end{itemize}
+
+\paragraph{Euclidean Distance} The Euclidean distance between \(x\) and \(y\) defined by 
+\[d(x,y) = ||x - y|| = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}\]
+is a metric.
+
+\paragraph{Equivalent Metrics}
+Two metrics \(d\) and \(\delta\) are considered equal if 
+there exists constants \(0 < c < C < \infty\) such that
+\[ c\delta (x,y) \leq d(x,y) \leq C \delta(x, y).\]
+
+\subsection{Limits of Sequences}
+\paragraph{Ball} A ball around \(\textbf{a} \in \mathbb{R}^n\) of radius \(\epsilon > 0\)
+is the set 
+\[B(\textbf{a}, \epsilon) = 
+\{ \textbf{x} \in \mathbb{R}^n : d(\textbf{a},\textbf{x}) < \epsilon \}.\]
+
+\paragraph{Limit of Sequences} For a sequence \(\{\textbf{x}_i\}\) of points in \(\mathbb{R}^n\)
+we say that \(\textbf{x}\) is the limit of the sequence if and only if 
+\[\forall \epsilon > 0 \exists N \text{ such that } 
+n \geq N \implies d(\textbf{x}, \textbf{x}_n) < \epsilon\]
+or equivalently
+\[\forall \epsilon > 0 \exists N \text{ such that } 
+n \geq N \implies \textbf{x}_n \in B(\textbf{x}, \epsilon).\]
+If \(\textbf{x}\) is the limit of the sequence \(\{\textbf{x}_i\}\) then for each positive
+\(\epsilon\) there is a point in the sequence beyond which all points of the sequence are inside
+\(B(\textbf{x}, \epsilon)\).
+
+\paragraph{Convergence}
+\begin{align*}
+    \text{A} & \text{ sequence } \textbf{x}_k \text{ converges to a limit \(\textbf{x}\)}\\
+    &\Leftrightarrow \text{the components of } \textbf{x}_k
+    \text{ converge to the components of } \textbf{x} \\
+    & \Leftrightarrow d(\textbf{x}_k, \textbf{x}) \rightarrow 0.
+\end{align*}
+
+\paragraph{Cauchy Sequences} A sequence \(\{\textbf{x}_k\}\) in \(\mathbb{R}^n\) is a Cauchy
+sequence if 
+\[\forall \epsilon > 0 \exists K \text{ such that } k, l > K \implies 
+d(\textbf{x}_k, \textbf{x}_l) < \epsilon.\]
+
+A sequence \(\{\textbf{x}_k\}\) converges in \(\mathbb{R}^n \text{ to a limit if and only if }
+\{\textbf{x}_k\}\) is a Cauchy sequence.
+
+\subsection{Open and Closed Sets}
+\paragraph{Definitions}
+Consider \(x_k\)
+\begin{itemize}
+    \item \(x_0\in\Omega\) is an \underline{interior point} of \(\Omega\) if there is a ball around \(x_0\) completely contained in \(\Omega\). That is, there exists a \(\epsilon > 0\) such that \(B(x_0, \epsilon) \subseteq \Omega\).
+    \item  \(\Omega\) is \underline{open} if every point of \(\Omega\) is an interior point.
+    \item \(\Omega\) is \underline{closed} if its complement is open.
+    \item \(x_0\in\Omega\) is a \underline{boundary point} of \(\Omega\) if every ball around \(x_0\) contains points in \(\Omega\) and points not in \(\Omega\).
+\end{itemize}
+
+\paragraph{Closed Sets}
+\(\Omega\subset\mathbb{R}^n\) is closed if and only if it contains all of its boundary points.
+
+\paragraph{Union and Intersection}
+\begin{itemize}
+    \item A finite union/intersection of open sets is open.
+    \item A finite union/intersection of closed sets is closed.
+\end{itemize}
+
+\paragraph{Limit Points and Sets}
+\(\textbf{x}_0\) is a limit point (or accumulation point) of \(\Omega\) if there is a sequence \(\{\textbf{x}_i\}\) 
+in \(\Omega\) with limit \(\textbf{x}_0\) and \(\textbf{x}_i \neq \textbf{x}\).
+
+\begin{itemize}
+    \item Every interior points of \(\Omega\) is a limit point of \(\Omega\).
+    \item \(\textbf{x}_0\) is not necessarily in \(\Omega\).
+    \item A set is closed \(\Leftrightarrow\) it contains all of its limit points.
+\end{itemize}
+
+\paragraph{Variations of a Set}
+Consider the set \(\Omega \in \mathbb{R}^n\).
+\begin{itemize}
+    \item The \underline{interior} of \(\Omega\) is the set of all its interior points (denoted Int\((\Omega)\)).
+    \item The \underline{boundary}  of \(\Omega\) is the set of all its boundary points (denoted \(\partial \Omega\)).
+    \item The \underline{closure} of \(\Omega\) is \(\Omega \cup \partial \Omega\) (denoted by \(\bar{\Omega}\)).
+\end{itemize}
+The interior is the largest open subset and the closure is the smallest closed set containing \(\Omega\). \\
+
+\subsection{Limits}
+\paragraph{Limit of a Function at a Point} Let \(\textbf{b} \in \mathbb{R}^m, 
+\Omega \subseteq \mathbb{R}^n, \textbf{a} \in \bar\Omega\) and let 
+\(\textbf{f}: \Omega \rightarrow \mathbb{R}^m\) be a function. We say that 
+\(\textbf{f}(\textbf{x})\) converges to \(\textbf{b}\) as \(\textbf{x}\to \textbf{a}\) if
+\[\forall \epsilon > 0 \text{ } \exists \delta > 0 \text{ such that for } \textbf{x} \in \Omega:\]
+\[0 < d(\textbf{x}, \textbf{x}_0) < \delta \implies 
+d(\textbf{f}(\textbf{x}), \textbf{b}) < \epsilon.\]
+or alternatively
+\[\textbf{x} \in B(\textbf{a}, \delta) \cap \Omega \implies \textbf{f}(\textbf{x}) 
+\in B(\textbf{b}, \epsilon).\]
+If such \(\textbf{b}\) exists, then it is unique and we write 
+\[\lim_{x\to a} \textbf{f}(\textbf{x}) = \textbf{b}.\]
+
+\paragraph{Useful Limit Theorems}
+Let \(\textbf{b} \in \mathbb{R}^m, \Omega \subseteq \mathbb{R}^n, \textbf{a} \in \bar\Omega\)
+and let \(\textbf{f}:\Omega\rightarrow\mathbb{R}^m\) be a function. Then
+\begin{align*}
+    \lim_{\textbf{x}\to\textbf{a}} \textbf{f}(\textbf{x}) = \textbf{b} & \iff
+    \lim_{\textbf{x}\to \textbf{a}}f_i(\textbf{x})=b_i \text{ for all } i=1,\dots,m \\
+    \lim_{\textbf{x}\to \textbf{a}}\textbf{f}(\textbf{x}) = \textbf{b} & \iff
+    \lim_{k\to\infty} \textbf{f}(\textbf{x}_k) = \textbf{b}
+\end{align*}
+for every sequence \(\{\textbf{x}_k\}_{k=1}^\infty \subseteq \Omega\) with 
+\(\lim_{k \rightarrow\infty} \textbf{x}_k = \textbf{a}\). 
+
+The first theorem is useful to show that a limit exists whilst the second is useful to
+show the limit does not exist.
+
+\paragraph{Algebra of limits}
+Given that, \(\lim_{x\to x_0} f(x) = a\) and \(\lim_{x\to x_0} g(x) = b,\) then,
+\begin{align*}
+    \lim_{x\to x_0} (f + g)(x) & = a + b \\
+    \lim_{x\to x_0} (fg)(x) & = ab \\
+    \lim_{x\to x_0} (\frac{f}{g})(x) & = \frac{a}{b}, \text{ given } b \neq 0.
+\end{align*}
+
+\paragraph{Pinching Principle}
+Let \(\Omega \subset \mathbb{R}^n\), let \(\textbf{a}\) be a limit point of \(\Omega\)
+and let \(f,g ,h: \Omega \rightarrow \mathbb{R}\) be functions such that there exists
+\(\epsilon > 0\) such that 
+\[
+    g(\textbf{x}) \leq f(\textbf{x}) \leq h(\textbf{x}) \qquad
+    \forall \textbf{x} \in B(\textbf{a}, \epsilon) \cap \Omega.
+\] 
+Then
+\[
+    \lim_{x\to \textbf{a}} g(\textbf{x}) = \textbf{b} = \lim_{x\to \textbf{a}} h(\textbf{x}) 
+    \implies \lim_{x\to \textbf{a}} f(\textbf{x}) = \textbf{b}.
+\]
+
+\subsection{Continuity}
+Continuity is like an extension to limits. It first requires that the limit exists and that
+the limit equals the actual value at that point.
+\paragraph{Definition}
+Let \(\textbf{a}\in\Omega \subseteq\mathbb{R}^n\) and let \(f:\Omega\rightarrow\mathbb{R}^m\) 
+be a function. Then \(f\) is continuous at \(\textbf{a}\) if and only if 
+\[\lim_{x\to a} f(\textbf{x}) = f(\textbf{a})\]
+\(f\) is said to be continuous on \(\Omega\) if it is continuous at \(\textbf{a}\)
+for every \(\textbf{a}\in\Omega\).
+
+
+\paragraph{Epsilon-Delta Interpretation}
+\[
+    \text{For all } \epsilon > 0 \text{ there exists } \delta > 0 \text{ such that if }
+    x\in B(\textbf{a}, \delta) \cap \Omega \implies f(x) \in B(f(\textbf{a}), \epsilon).
+\]
+
+\paragraph{Continuity by Components} 
+All component functions \(f_i: \Omega \rightarrow \mathbb{R}\) are continuous at \(\textbf{a}\).
+
+\paragraph{Continuity through Sequences}
+For every sequence \(\{\textbf{x}_k\}_{k=1}^\infty\) with \(\textbf{x}_k \in \Omega\) for all
+\(k\), if \(\{\textbf{x}_k\}_{k=1}^\infty\) has limit \(\textbf{a}\) then 
+\(\{f(\textbf{x}_k)\}_{k=1}^\infty\) converges to \(f(a)\).
+
+\paragraph{Elementary Functions}
+If \(f: \Omega \subseteq \mathbb{R}^n \rightarrow \mathbb{R}\) is an elementary function,
+then \(f\) is continuous on \(\Omega\).
+
+\paragraph{Preimage}
+Suppose that  \(\Omega \subseteq \mathbb{R}^n\) and  \(f: \Omega \rightarrow \mathbb{R}^m\) 
+is a function. The preimage of a set \(U \subseteq \mathbb{R}^m\) is defined by 
+\[ f^{-1}(U) = \{ x \in \mathbb{R}^n: f(x) \in U \}.\]
+
+\paragraph{Continuity - Using Preimage} 
+Suppose that \(f: \Omega \subset \mathbb{R}^n \rightarrow \mathbb{R}^m\). The following two
+statements are equivalent.
+\begin{itemize}
+    \item \(f\) is continuous on \(\Omega\).
+    \item \(f^{-1}(U)\) is open in \(\mathbb{R}^n\) for every open subset \(U\) of \(\mathbb{R}^m\).
+\end{itemize}
+
+\subsection{Path Connected Sets}
+\paragraph{Definition} A set \(\Omega \subseteq \mathbb{R}^n\) is said to be path connected
+if for any \(\textbf{x}, \textbf{y} \in \Omega\), there is a continuous function
+\(\varphi\) such that \(\varphi(t) \in \Omega\) for all \(t \in [0, 1]\) and 
+\(\varphi(0) = \textbf{x}\) and \(\varphi(1) = \textbf{y}\).
+
+\paragraph{Theorem} Let \(\Omega \subseteq \mathbb{R}^n\) and 
+\(\textbf{f}: \Omega \rightarrow \mathbb{R}^m\) be continuous. Then
+\[
+    B \subseteq \Omega \text{ and } B \text{ path connected } \implies \textbf{f}(B)
+    \text{ path connected}.
+\]
+
+\subsection{Compact Sets}
+\paragraph{Bounded} A set \(\Omega \subseteq \mathbb{R}^n\) is bounded if there is
+an \(M \in \mathbb{R}\) such that \(d(\textbf{x}, \textbf{0}) \leq M\) for all 
+\(\textbf{x} \in \Omega \Longleftrightarrow \Omega \subseteq B(\textbf{0}, M)\) .
+
+\paragraph{Compact} A set \(\Omega \subseteq \mathbb{R}^n\) is compact if it is closed
+and bounded.
+
+\paragraph{Theorem} Let \(\Omega \subseteq \mathbb{R}^n\) and 
+\(f: \Omega \rightarrow \mathbb{R}^m\) be continuous. Then
+\[
+    K \subseteq \Omega \text{ and } K \text{ compact } \implies f(K) \text{ compact.}
+\]
+
+\subsection{Bolzano-Weierstrass Theorem}
+For \(\Omega \subseteq \mathbb{R}^n\), the following are equivalent.
+\begin{enumerate}
+    \item \(\Omega\) is compact.
+    \item Every sequence in \(\Omega\) has a subsequence that converges to an element of 
+    \(\Omega\). 
+\end{enumerate}
