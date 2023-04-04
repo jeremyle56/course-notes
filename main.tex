@@ -1,0 +1,36 @@
+\docmentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{MATH1081 - Assignment 22T2}
+\author{Jeremy}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Question 1}
+\textbf{Problem.} Prove that $\log_{18} 12$ is irrational.
+\newline
+\textbf{Proof} by contradiction. Suppose that $\log_{18} 12$ is not irrational. Then we can write
+
+\begin{equation*}
+\log_{18} 12 = \frac{m}{n}
+\end{equation*}
+where $m$ and $n$ are positive integers (as $\log_{18} 12 > 0$) with no common factors. Rearranging the equation leads to 
+\begin{equation*}
+18^m = 12^n.
+\end{equation*}
+Finding the respective prime factorisation,
+\begin{equation*}
+    2^m 3^{2m} = 2^{2n} 3^n,
+\end{equation*}
+and simplifying gives
+\begin{equation*}
+    2^{m-2n} = 3^{n-2m}.
+\end{equation*}
+But $2$ and $3$ are different primes, as such no power of $2$ can equal a power of $3$ besides the solution $m = n = 0$ which is a contradiction. Therefore, our original assumption (that $\log_{18} 12$ is not irrational) must be false; that is, $log_{18} 12$ is irrational. 
+
+
+\end{document}
+
