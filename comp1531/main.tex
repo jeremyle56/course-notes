@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Correctness}
+\textbf{Verification}
+\begin{itemize}
+    \renewcommand\labelitemi{--}
+    \item Verification in a system life cycle context is a set of activities that compares a product of the system life cycle against the required characteristics for that product.
+    \item Checking if the system has been built correctly.
+    \item \textbf{Static} $=>$ Type Safety, linting.
+    \item \textbf{Dynamic} $=>$ Preformed during the execution of software, testing if your program works as intended.
+    \begin{itemize}
+        \item \textbf{Small tests} $->$ Unit tests, testing of individual software components.
+        \item \textbf{Larger tests} $->$ Performed to expose defects in the interfaces and in the interactions between integrated components or systems.
+    \end{itemize}
+\end{itemize}
+\textbf{Exceptions}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item An exception is an action that disrupts the normal flow of a program.
+        \item This action is often representative of an error being thrown.
+        \item  Exceptions are ways that we can elegantly recover from errors.
+    \end{itemize}
+\textbf{Coverage}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item \textbf{Test Coverage}: a measure of how much of the feature set is covered with tests. 
+        \item \textbf{Code Coverage}: a measure of how much code is executed during testing.
+    \end{itemize}
+
+\section{Agile}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Philosophy and culture that are used to inform a range of different processes. 
+        \item \textbf{Waterfall method} - Requirements, Design, Implementation, Testing, Deployment \& Maintenance    
+    \end{itemize}
+
+\section{Full Stack}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item \textbf{Standard Interfaces} - A universal method of connecting different systems together. 
+        \item \textbf{JSON} - A format made up of braces for objects, square brackets for arrays, where all non-numeric items must be wrapped in quotations. Similar to JS structures.
+        \item \textbf{YAML} - Ease of editing and concise, indentation matters, dash used to begin a list item.
+        \item \textbf{XML} - More verbose, demanding to process, more bytes to store.
+        \item \textbf{Authentication}: Process of verifying the identity of a user.
+        \item \textbf{Authorisation}: Process of determining an authenticated user's access privileges.
+    \end{itemize}
+    
+\section{Continuous $\int$}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Practice of automating the integration of code changes from multiple contributors into a single software project.
+        \item Planning $->$ Analysis $->$ Design $->$ Implementation $->$ Testing and $\int$ $->$ Maintenance
+        \item Coding $->$ Build $->$ Test $->$ Report $->$ Merge $->$ Release
+        \item \textbf{Continuous Delivery} - Allows accepted code changes to be deployed to customers quickly and sustainably. (By pressing button)
+        \item \textbf{Continuous Deployment} - Allows changes to be deployed automatically as long as all tests pass.
+    \end{itemize}
+
+\section{Design}
+\textbf{Maintainability}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Software in the real world changes over time. The less easily maintainable software is,
+the harder it is to adapt to these changes.
+        \item Maintainable software resists the tendency to break as software changes or grows.
+        \item To improve software maintainability, testing, system design and code design.
+        \item One source of truth, DRY, KISS, Refactoring code etc...
+    \end{itemize}
+\textbf{Modelling}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Simplified representation to assist in understanding something more complex.
+        \item Conceptual model captures a system
+        \item State Diagrams
+    \end{itemize}
+\textbf{Complexity}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Essential / Accidental
+        \item \textbf{Coupling} - Measure of how closely connected different software components are. Loose coupling is good.
+        \item \textbf{Cohesion} - The degree to which elements of a module belong together. High cohesion is good.
+        \item \textbf{Cyclomatic Complexity} Convert functions into a control flow graph, use formula $V(G) = e - n + 2$
+    \end{itemize}
+
+\section{Requirements}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item A condition or capability needed by a user to solve a problem or achieve an objective
+        \item Good requirements are the following: clear, concise, atomic, verifiable, attainable, abstract 
+        \item \textbf{Functional} specify a specific capability/service that the system should provide. It's what the system does.
+        \item \textbf{Non-functional} place a constraint on how the system can achieve that. Performance characteristic.
+        \item Elicitation, Analysis, Specification, Validation
+    \end{itemize}
+\textbf{User stuff}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item User Stories
+        \item User Acceptance Criteria
+        \item Use Cases (list or diagram)
+    \end{itemize}
+\textbf{Validation}
+    \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item Validation in a system life cycle context is a set of activities ensuring and gaining confidence that a system is able to accomplish its intended use, goals and objectives.
+        \item Right system has been built.
+        \item Done by User Acceptance Testing, formal testing with respect to user needs. 
+    \end{itemize}
+
+\end{document}
