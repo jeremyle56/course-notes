@@ -1,1 +1,10 @@
-# [PDF](./COMP3821.pdf)
+# [Click here for PDF](./COMP3821.pdf)
+
+Main [[comp3821]](./comp3821.tex)
+- Mathematical Reminders [[rem.tex]](./rem.tex)
+- Stable Matching Problem [[smp.tex]](./smp.tex)
+- Divide and Conquer [[dac.tex]](./dac.tex)
+- Greey Algorithms [[gdy.tex]](./gdy.tex)
+- Maximum Flow [[mf.tex]](./mf.tex)
+- Dynamic Programming [[dyp.tex]](./dyp.tex)
+- Reductions [[red.tex]](./red.tex)
