@@ -1,0 +1,3 @@
+- nae: Github Action for LaTeX
+  uses: xu-cheng/latex-action@v2
+m
