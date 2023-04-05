@@ -71,7 +71,7 @@ Any LP can be transformed into a canonical form or into standard form if needed.
     \item 0-1 Linear Programming (variables are \(\in \{0, 1\}\))
 \end{itemize}
 
-\subsubsection{Decide Diet}
+\subsubsection{Decide Diet - Linear Programming}
 \paragraph{Setting}
 You are given a list of food sources \(f_1,f_2,\dots f_n\) for each source \(f_i\) you are given:
 \begin{itemize}
@@ -130,9 +130,6 @@ A decision problem \(A(x)\) is in non-deterministic polynomial time, denotes by 
 \end{enumerate}
 We call \(y\) a certificate of \(x\).
 
-\paragraph{Examples}
-COMPOSITE, Vertex Cover, SAT
-
 \paragraph{NP-hardness}
 A problem is NP-hard if any problem in NP is reducible to it. I.e., a problem \(P\) is NP-hard if for any other problem \(P'\) that is in the class NP, there exists a polynomial reduction \(f_{P'}\) from \(P'\) to \(P\). A problem is NP-complete if it is both NP-hard and in the class NP. 
 \paragraph{Proving NP completeness} 
@@ -154,3 +151,16 @@ Given a graph \(G\), does \(G\) have a tour where every \textbf{edge} is travers
 
 \paragraph{Theorem} 
 Let \(U\) be an NP-hard problem and let \(V\) be another decision problem. If \(U\) is polynomially reducible to \(V\) then \(V\) is also NP-hard.
+
+\paragraph{NP Hard Optimisation}
+If an optimisation problem is NP-hard, we do not try to solve it exactly, but instead, try to find a feasible (i.e., P time) algorithm which produces a solution that is not too bad. Examples (extra info in slides):
+\begin{itemize}
+    \item Vertex Cover: We use an approximation algorithm that always produces a covering set with at most twice the number of the smallest vertex cover.
+    \item Metric Traveling Salesman: Has an approximation algorithm producing a tour of total length at most twice the length of the optimal, minimal length tour.  
+\end{itemize}
+
+\paragraph{Cook's Theorem}
+Every NP problem is polynomially reducible to the SAT problem.
+
+\paragraph{NP Complete Examples} 
+3SAT, Travelling Salesman, Register Allocation, Set Cover,...
