@@ -1,0 +1,71 @@
+
+\section{Vector Fields}
+\subsection{Vector Fields and Flow}
+\paragraph{Vector Fields}
+A vector field in 3D space has components that are functions and is of the type 
+\begin{align*}
+    \textbf{F}(\textbf{x}) & = \textbf{F}(x,y,z) \\
+    & = (F_1(x,y,z), F_2(x,y,z), F_3(x,y,z)) \\
+    & = F_1(x,y,z)\textbf{i} + F_2(x,y,z)\textbf{j} + F_3(x,y,z)\textbf{k}.
+\end{align*}
+A vector field in 2D has components that are functions and is of the type 
+\begin{align*}
+    \textbf{F}(\textbf{x}) & = \textbf{F}(x,y) \\
+    & = (F_1(x,y), F_2(x,y)) \\
+    & = F_1(x,y)\textbf{i} + F_2(x,y)\textbf{j}.
+\end{align*}
+
+\paragraph{Flow Lines}
+If \(\textbf{F}\) is a vector field, a \textit{flow line} for \(\textbf{F}\) is a path \(\textbf{c}(t)\) such that 
+\[\textbf{c}'(t) = \textbf{F}(\textbf{c}(t)).\]
+That is, \(\textbf{F}\) yields the velocity field of the path \(\textbf{c}(t)\).
+
+\paragraph{The Del \(\grad\) operator}
+The vector differential operator \(\grad\) is not a vector, but an operator. It may be considered a symbolic vector. The differential operator may be written as 
+\[\grad = \frac{\partial}{\partial x}\textbf{i} + \frac{\partial}{\partial y}\textbf{j} + \frac{\partial}{\partial z}\textbf{k}.\]
+
+\paragraph{Divergence}
+If \(\textbf{F} = F_1\textbf{i} + F_2\textbf{j} + F_3\textbf{k}\), the divergence of \(\textbf{F}\) is the scalr field
+\[\text{div }\textbf{F} = \div \textbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}.\]
+
+Divergence may be thought as a type of derivative that describes the measure at which a vector field \textit{spreads away} from a certain point. If the divergence is positive, then there is a net outflow while there is net inflow if the divergence is negative. 
+
+Observe that the divergence of a vector field will be real-valued.
+
+\paragraph{Curl}
+If \(\textbf{F} = F_1\textbf{i} + F_2\textbf{j} + F_3\textbf{k}\), the curl of \(\textbf{F}\) is the vector field
+\begin{align*}
+    \text{curl } \textbf{F} = \curl \textbf{F} & = 
+    \begin{vmatrix}
+        \textbf{i} & \textbf{j} & \textbf{k}\\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        F_1 & F_2 & F3
+    \end{vmatrix} \\
+    & = \left( \frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z}\right)\textbf{i} + \left( \frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x}\right)\textbf{j} + \left( \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y}\right)\textbf{k}.
+\end{align*}
+
+Curl is also analogous to a type of derivative for vector fields. The curl may be thought as the measure at which the vector field \textit{swirls} around a point. A positive swirl can be thought of as a counterclockwise rotation.
+
+Observe that the curl of a vector field is also a vector field.
+
+\subsection{Vector Identities}
+
+
+\paragraph{Basic Vector Identities}
+
+\begin{enumerate}
+    \item \(\grad(f + g) = \grad f + \grad g\)
+    \item \(\grad (\lambda f) = \lambda \grad f\) where \(\lambda \in \mathbb{R}\)
+    \item \(\grad (fg) =  f \grad g + g \grad f\). You may draw analogies to the product.
+    \item \(\grad (\dfrac{f}{g}) = \dfrac{g\grad f - f\grad g}{g^2}\) where \(g\neq 0\). This is analogous to the quotient rule.
+    \item \(\div (\textbf{F} + \textbf{G}) = \div \textbf{F} + \div \textbf{G}\)
+    \item \(\curl (\textbf{F} + \textbf{G}) = \curl \textbf{F} + \curl \textbf{G}\)
+    \item \(\div (f\textbf{F}) = f\div \textbf{F} + \textbf{F}\cdot \grad f\)
+    \item \(\div (\textbf{F}\times \textbf{G}) = \textbf{G} \cdot (\curl \textbf{F}) - \textbf{F} \cdot (\curl \textbf{G})\)
+    \item \(\div(\curl \textbf{F}) = 0\)
+    \item \(\curl (f\textbf{F}) = f\curl \textbf{F} = \grad f \times \textbf{F}\)
+    \item  \(\curl (\grad f) = 0\)
+    \item \(\grad^2 (fg) = f\grad^2 g + 2(\grad f \cdot \grad g) + g\grad^2f\)
+    \item \(\div (\grad f \times \grad g) = 0\)
+    \item \(\div(f\grad g - g\grad f) = f\grad^2 g - g\grad f^2\)
+\end{enumerate}
