@@ -1,0 +1,28 @@
+
+\section{Path Integrals}
+\subsection{Path Integrals}
+\paragraph{Path (scalar line) Integrals}
+We say that a vector-valued function \(\textbf{c}(t)\) parametrises a curve \(C\) for \(a < t < b\) if the image of \(\textbf{c}\) traces out the curve \(C\). 
+
+\paragraph{Computing a Scalar Line Integral}
+Let \(\textbf{c}(t)\) be a parametrisation of a curve \(C \in \mathbb R^3\) for \(a < t < b\). Assume that \(f(x,y,z)\) and \(\textbf{c}'(t)\) are continuous. Then 
+\[\int_C f(x,y,z) \, ds = \int_a^b f(\textbf{c}(t))||\textbf{c}'(t)|| \, dt \]
+The value of the integral on the right does not depend on the choice of parametrisation. For \(f(x,y,z) = 1\), we obtain the length of \(C\):
+\[\text{Length of } C = \int_C ||\textbf{c}'(t)|| \, dt\]
+
+\paragraph{Elementary Properties of Path Integral}
+\begin{itemize}
+    \item \(\int_C f_1 \, ds + \int_C f_2 \, ds = \int_C (f_1 + f_2) \, ds\)
+    \item \(\int_C \lambda f \, ds = \lambda \int_C f \, ds, \quad \lambda \in \mathbb R\)
+\end{itemize}
+
+\subsection{Applications of Path Integrals}
+\paragraph{Mass}
+Suppose that \(\delta = \delta(x,y,z)\) which is a density function.
+\[M = \int_C \delta(x,y,z) \, dz\]
+\paragraph{First Moments About the Coordinate Planes}
+\[M_{yz} = \int_C x \delta \, ds, \qquad M_{xz} = \int_C y\delta \, ds, \qquad M_{xy} = \int_C z\delta \, ds\]
+\paragraph{Coordinates of the Center of Mass}
+\[\bar x = \frac{M_{yz}}{M}, \qquad \bar y = \frac{M_{xz}}{M}, \qquad \bar z = \frac{M_{xy}}{M}\]
+\paragraph{Moments of Inertia about Axes}
+\[I_x = \int_C (y^2+z^2)\delta \, dx, \qquad I_y = \int_C (x^2+z^2) \delta \, ds, \qquad I_z = \int_C (x^2+y^2)\delta \, ds\]
