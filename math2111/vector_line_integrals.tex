@@ -1,0 +1,96 @@
+\section{Vector Line Integrals}
+\subsection{Vector Line Integrals}
+\paragraph{Vector Line Integrals}
+There is an important distinction between vector and scalar line integrals. To define a vector line integral we must specify a direction along the path or curve \(C\).
+
+A curve \(C\) can be traversed in one of two directions. We say that \(C\) is oriented if one of these two directions is specified. We refer to the specified direction as the forward direction along the curve.
+
+\paragraph{Computing a Line Integral}
+Let \(\textbf{c}(t)\) be a parameterisation of an oriented curve \(C\) for \(a \leq t \leq b\). The line integral of a vector field \(\textbf{F}\) along \(C\) is the defined by 
+\[\int_C \textbf{F} \cdot ds = \int_a^b \textbf{F}(\textbf{c}(t)) \cdot \textbf{c}'(t) \, dt.\]
+
+\paragraph{Link with the path integral}
+Let \(\textbf{c}(t)\) be a parametrisation of an oriented smooth curve \(C\) and let \(\hat{\textbf{T}}\) denotes the unit tangent vector pointing in the forward direction of \(C\). 
+\[\hat{\textbf{T}}(\textbf{c}(t)) = \frac{\textbf{c}'(t)}{||\textbf{c}'(t)||}\]
+Then, the line integral of a vector field \(\textbf{F}\) over the oriented curve \(C\) is the path integral of the tangential component of \(\textbf{F}\) along \(C\), that is
+\[\int_c \textbf{F} \cdot ds = \int_C \textbf{F} \cdot \hat{\textbf{T}} \, ds.\]
+
+\paragraph{Summing Paths}
+Let \(C_i, i = 1,\dots, m\) be curves with continuous differentiable parameterisations. Let \(C = C_1 + C_2 + \cdots + C_m\), that is, \(C\) is the union of curves \(C_i\), which are joined end-to-end. Then, we define
+\[\int_C \textbf{F} \cdot ds = \sum_{i=1}^m \int_{C_i} \textbf{F} \cdot ds.\]
+
+\paragraph{Work notation}
+Denote \(\textbf{c}(t) = (x(t), y(t), z(t))\) and \(\textbf{F}=(M,N,P) = M\textbf{i}, N\textbf{j}, P\textbf{k}\). Then, we can denote work as any of the following notations:
+\begin{align*}
+    W & = \int_C \textbf{F} \cdot ds \\
+    & = \int_a^b \textbf{F}(\textbf{c}(t)) \cdot \textbf{c}'(t) \, dt \tag{Definition} \\
+    & = \int_a^b \left( M\frac{dx}{dt} + N\frac{dy}{dt} + P\frac{dz}{dt} \right) \, dt\\
+    & = \int_C Mdx + Ndy + Pdz. \tag{Alternative form}
+\end{align*}
+
+\paragraph{Properties of Line Integrals}
+Let \(C\) be a smooth oriented curve and let \(\textbf{F}\) and \(\textbf{G}\) be vector fields.
+\begin{enumerate}[label = (\roman*)]
+    \item Linearity: 
+    \begin{align*}
+        & \int_C (\textbf{F} + \textbf{G}) \cdot ds = \int_C \textbf{F} \cdot ds + \int_C \textbf{G} \cdot ds \\
+        & \int_C k\textbf{F} \cdot ds = k \int_C \textbf{F} \cdot ds \qquad (k \text{ a constant})
+    \end{align*}
+    \item Reversing orientation:
+    \[\int_{-C} \textbf{F} \cdot ds = - \int_C \textbf{F} \cdot ds\]
+    \item Additivity: If \(C\) is a union of \(n\) smooth curves \(C_1 + \cdots + C_n\), then
+    \[\int_C \textbf{F} \cdot ds = \int_{C_1} + \cdots + \int_{C_n} \textbf{F} \cdot ds\]
+\end{enumerate}
+
+\subsection{Other Applications}
+\paragraph{Flow Integral, Circulation}
+If \(\textbf{r}(t)\) is a smooth curve in the domain of a continuous velocity field \(\textbf{F}\), the flow along the curve from \(t = a\) to \(t = b\) is
+\[\text{Flow} = \int_a^b \textbf{F} \cdot \hat{\textbf{T}} \, ds\]
+The integral in this case is called a flow integral. If the curve is a closed loop, the flow is called the circulation around the curve. 
+
+\paragraph{Flux Across a Closed Curve in the Plane}
+If \(C\) is a smooth closed curve in the domain of a continuous vector field \(\textbf{F} = M(x,y)\textbf{i} + N(x,y)\textbf{j}\) in the plane and if \(\hat{\textbf{n}}\) is the outward-pointing unit normal vector on \(C\), the flux of \(\textbf{F}\) across \(C\) is
+\[\text{Flux of \textbf{F} across } C = \int_C \textbf{F} \cdot \hat{\textbf{n}} \, ds.\]
+
+\paragraph{Calculating Flux Across a Smooth Closed Plane Curve}
+\[(\text{Flux of } \textbf{F} = M\textbf{i} + N\textbf{j} \text{ across } C) = \oint_C M \, dy - N \, dx \]
+The integral can be evaluated from any smooth parametrisation \(x = g(t), y = h(t), a \leq t \leq b\), that traces \(C\) counterclockwise exactly once.
+
+\subsection{Fundamental Theorem of Line Integrals}
+\paragraph{(Second) Fundamental Theorem of Calculus in One Vairable}
+Let \(f: \mathbb R \to \mathbb R\) and \(\varphi: \mathbb R \to \mathbb R\). If \(f(x) = \varphi'(x)\), then 
+\[\int_a^b \varphi'(x) \, dx = \int_a^b f(x) \, dx = \varphi(b) - \varphi(a).\]
+
+\paragraph{Gradient Fields}
+A vector field \(\textbf{F}\) is called a gradient vector field if there exists a real-valued function \(\varphi\) such that \(\textbf{F} = \grad\varphi\). That is, \((M, N, P) = (\frac{\partial \varphi}{\partial x}, \frac{\partial \varphi}{\partial y}, \frac{\partial \varphi}{\partial z})\). A vector field \(\textbf{F}\) with this property is called conservative and \(\varphi\) is called the potential function of \(\textbf{F}\).
+
+\paragraph{Fundamental Theorem for Gradient Vector Fields}
+If \(\textbf{F} = \grad\varphi\) on a domain \(\mathcal{D}\), then for every oriented smooth curve \(C\) in \(\mathcal D\) with initial point \(P\) and terminal point \(Q\).
+\[\int_C \textbf{F} \cdot ds = \varphi(Q) - \varphi(P)\]
+If \(C\) is closed (i.e., if \(P = Q\)), then \(\oint_C \textbf{F} \cdot ds = 0\).
+
+\paragraph{Cross Partials of a Gradient Vector Field are Equal}
+Let \(\textbf{F} = (F_1, F_2, F_3)\) be a gradient vector field whose components have continuous partial derivatives. Then the cross partials are equal:
+\[\frac{\partial F_1}{\partial y} = \frac{\partial F_2}{\partial x}, \quad \frac{\partial F_2}{\partial z} = \frac{\partial F_3}{\partial y}, \quad \frac{\partial F_3}{\partial x} = \frac{\partial F_1}{\partial z}\]
+Similarly, if the vector field in the plane \(\textbf{F} = (F_1, F_2)\) is the gradient vector field, then \(\dfrac{\partial F_1}{\partial y} = \dfrac{\partial F_2}{\partial x}\). Equivalently, \(\curl \textbf{F} = \textbf{0}\).
+
+\subsection{Green's Theorem}
+Green's Theorem connects double integrals with line integrals and is very useful for line integrals over complicated vector fields with simpler partial derivatives. 
+
+\paragraph{Green's Theorem (Flux-divergence or Normal Form)}
+Let \(D\) be a bounded simple region in \(\mathbb R^2\) with nonempty interior, whose boundary consists of a finite number of smooth curves. Let \(C\) be the boundary of \(D\) with a positive (counter-clockwise) direction. Let \(\textbf{F} = M\textbf{i} + N\textbf{j}\) be a vector field which is continuously differentiable on \(D\).  Then, the outward flux of \(\textbf{F}\) across the curve \(C\) equals the double integral of divergence \(\div F\) over \(D\), that is
+\[\oint_C \textbf{F} \cdot \hat{\textbf{n}} \, ds = \oint_C - N \, dx + M \, dy = \int\int_D \left(\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} \right) \, dxdy\]
+Three key assumptions:
+\begin{itemize}
+    \item The region \(D\) is bounded and simple region with nonempty interior.
+    \item The boundary \(C\) is oriented in the positive (counter-clockwise) direction, and is a finite union of smooth curves.
+    \item The vector field \textbf{F} is continuously differentiable on \(D\).
+\end{itemize}
+
+\paragraph{Green's Theorem (Circulation-curl or Tangential Form)}
+Let \(D\) be a bounded simple region in \(\mathbb R^2\) with nonempty interior, whose boundary consists of a finite number of smooth curves. Let \(C\) be the boundary of \(D\) with a positive (counter-clockwise) direction. Let \(\textbf{F} = M\textbf{i} + N\textbf{j}\) be a vector field which is continuously differentiable on \(D\). Then, the counter-clockwise circulation of \(\textbf{F}\) around \(C\) equals the double integral \(\curl F \cdot k\) over \(D\), that is
+\[\oint_C \textbf{F} \cdot \hat{\textbf{T}} \, ds = \oint_C M \, dx + N \, dy = \int\int_D \left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right) \, dxdy\]
+
+\paragraph{Area of a Region}
+Let \(D\) be a simple and bounded region with non-empty interior and let \(C\) be its boundary with positive (counter-clockwise) direction which is a finite union of smooth curves. Then, the area of \(D\) can be calculated by 
+\[\text{Area}(D) = \frac{1}{2}\oint_C (-y \, dx + x \, dy).\]
