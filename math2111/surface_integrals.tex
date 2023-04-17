@@ -1,0 +1,28 @@
+\section{Surface Integrals}
+\subsection{Parametrised Surfaces}
+\paragraph{Parametrised Surface}
+A parametrised surface is a function \(\phi: D \subseteq \mathbb R^2 \to \mathbb R^3\), where \(D\) is some domain in \(\mathbb R^2\), that is,
+\[\phi (u,v) = (x(u,v), y(u,v), z(u,v)).\]
+The surface \(S\) corresponding to the function \(\phi\) is its image: \(S = \phi(D)\). If \(\phi\) is differentiable (resp. continuously differentiable), then we call \(S\) a differentiable (resp. continuously differentiable) surface.
+
+\paragraph{Cone}
+The cone \(z^2 = x^2 + y^2\) has the parametrisation 
+\[\phi(u,v) = (u\cos v, u\sin v, u), \qquad 0 \leq v \leq 2\pi, \, u \in \mathbb R.\]
+
+\paragraph{Cylinder}
+The cylinder of radius \(R, x^2 + y^2 = R^2\) has the parametrisation
+\[\phi(\theta, z) = (R\cos\theta, R\sin\theta, z), \qquad 0\leq\theta\leq 2\pi, \, z\in\mathbb R.\]
+
+\paragraph{Sphere}
+The sphere of radius \(R, x^2 + y^2 + z^2 = R^2\) has the parametrisation
+\[\Phi(\theta,\phi) = (R\cos\theta\sin\theta, R\sin\theta\sin\theta, R\cos\theta), \qquad 0 \leq \theta \leq 2\pi, \, 0 \leq \phi \leq \pi.\]
+
+\subsection{Surface Area}
+In the rest of this section we consider smooth parametrised surfaces and also piecewise smooth parametrised surfaces.
+
+\paragraph{Area of a Surface}
+Let \(\Phi(u,v)\) be parametrisation of a smooth surface \(S\) with parameter domain \(D\). The area of the surface \(S\) is
+\[\text{Area}(S) = \int\int_D ||\textbf{T}_u \times \textbf{T}_v|| \, dudv.\]
+Sometimes we write
+\[||\textbf{n}(u,v)|| = ||\textbf{T}_u \times \textbf{T}_v||.\]
+Note that this \(\textbf{n}(u,v)\) is not necessarily a unit vector and neither are the tangent vectors.
