@@ -10,4 +10,4 @@
 - [Vector Fields](./vector_fields.tex)
 - [Path Integrals](./path_integrals.tex)
 - [Vector Line Integrals](./vector_line_integrals.tex)
-- [Surface Integrals](./surface_integrals)
+- [Surface Integrals](./surface_integrals.tex)
