@@ -14,4 +14,4 @@ A collection of course notes I've written for courses I've taken at UNSW.
 
 ### Issues
 
-If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention in an `issue`.
+If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.
