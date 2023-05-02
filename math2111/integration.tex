@@ -10,34 +10,34 @@ For a bounded function \(f: R \to \mathbb R\), if there exists a unique numder \
     \overline{\mathcal S}_{\mathcal P_{\textbf{1}}, \mathcal P_{\textbf{2}}}(f)
 \]
 for every pair of partitions \(\mathcal{P}_1, \mathcal{P}_2\) of \(R\), then \(f\) is Riemann integrable on \(R\) and
-\[I = \int\int_R f = \int\int_R f(x, y) dA.\]
+\[I = \iint_R f = \iint_R f(x, y) dA.\]
 \(I\) is called the Riemann integral of \(f\) over \(R\).
 
 \paragraph{Properties of the Riemann Integral}
-For a function of one variable, the Riemann integral is interpreted as the (signed) area bounded by the graph \(y = f(x)\) and the \(x\)-axis over the interval \([a,b]\). For a function of two variables \(\int\int_R f\) is the (signed) volume bounded by the graph \(z=f(x,y)\) and the \(xy\)-plane over the rectangle \(R\).
+For a function of one variable, the Riemann integral is interpreted as the (signed) area bounded by the graph \(y = f(x)\) and the \(x\)-axis over the interval \([a,b]\). For a function of two variables \(\iint_R f\) is the (signed) volume bounded by the graph \(z=f(x,y)\) and the \(xy\)-plane over the rectangle \(R\).
 If \(f\) and \(g\) are integrable on \(R\),
 \begin{itemize}
-    \item Linearity: \(\int\int_R \alpha f + \beta g = \alpha \int\int_R f + \beta \int \int_R g, \qquad \alpha, \beta \in \mathbb R\).
-    \item Positivity (monotonicity): If \(f(x)\leq g(x), \forall x\in R\) then \(\int\int_R f \leq \int\int_R g\)
-    \item \(\left| \int\int_R f \right| \leq \int\int_R \left| f \right | \)
+    \item Linearity: \(\iint_R \alpha f + \beta g = \alpha \iint_R f + \beta \int \int_R g, \qquad \alpha, \beta \in \mathbb R\).
+    \item Positivity (monotonicity): If \(f(x)\leq g(x), \forall x\in R\) then \(\iint_R f \leq \iint_R g\)
+    \item \(\left| \iint_R f \right| \leq \iint_R \left| f \right | \)
     \item If \(R = R_1 \cup R_2\) and \((\text{interior }R_1) \cap (\text{interior }R_2) = \emptyset\) then
-    \[\int\int_R f = \int\int_{R_1} f + \int\int_{R_2} f.\]
+    \[\iint_R f = \iint_{R_1} f + \iint_{R_2} f.\]
 \end{itemize}
 
 \subsection{Fubini's Theorem}
 \paragraph{Fubini's Theorem - Rectangles}
 Let \(f: R \to \mathbb R\) be continuous on a rectangular domain \(R = [a, b] \times [c,d].\) Then \(f\) is a bounded function and is integerable over \(R\). Moreover,
-\[\int_a^b\int_c^d f(x,y) \, dydx = \int_c^d\int_a^b f(x,y) \, dxdy = \int\int_R f.\]
+\[\int_a^b\int_c^d f(x,y) \, dydx = \int_c^d\int_a^b f(x,y) \, dxdy = \iint_R f.\]
 
 \paragraph{Fubini's Theorem - Discontinuous}
 Let \(f: R \to \mathbb R\) be bounded on a rectangular domain \(R= [a,b] \times [c,d]\) with the discontinuities of \(f\) confined to a finite union of graphs of continuous functions. If the integral \(\int_c^d f(x,y) \, dy\) exists for each \(x\in[a,b]\) then
-\[\int\int_R f = \int_a^b \left(\int_c^d f(x,y) \, dy\right) dx.\]
+\[\iint_R f = \int_a^b \left(\int_c^d f(x,y) \, dy\right) dx.\]
 Similarly, if the integral \(\int_a^b f(x,y) \, dx\) exists for each \(y\in[c,d]\), then
-\[\int\int_R f = \int_c^d \left(\int_a^b f(x,y) \, dx\right) dy.\]
+\[\iint_R f = \int_c^d \left(\int_a^b f(x,y) \, dx\right) dy.\]
 
 \paragraph{Iterated Integrals for Elementary Regions}
 Suppose \(D\) is a \(y\)-simple region bounded by \(x=a, x=b, y= \varphi_1(x)\) and \(y=\varphi_2(x)\) and \(f:D\to \mathbb R\) is continuous. Then
-\[\int\int_D f = \int_a^b \int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) \, dx dy.\]
+\[\iint_D f = \int_a^b \int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) \, dx dy.\]
 A simile result hols for integrals over \(x\)-simple regions.
 
 \subsection{Leibniz' Rule}
@@ -56,4 +56,4 @@ Note: If \(\varphi_1(x) \equiv c, \varphi_2(x) \equiv d\) where \(c, d\) are con
 
 \subsection{Change of Variable}
 Let \(\Omega\subseteq\mathbb R^n\) and \(F:\Omega \to \mathbb R^n\) be an injective and continuously differentiable function such that \(\det JF(x)) \neq 0\) for all \(x \in \Omega\). If \(f\) is any function that is integrable on \(\Omega' = F(\Omega)\) then
-\[\int\int_{\Omega'} (f \circ F)|\det JF|.\]
+\[\iint_{\Omega'} (f \circ F)|\det JF|.\]
