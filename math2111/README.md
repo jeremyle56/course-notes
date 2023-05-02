@@ -11,3 +11,4 @@
 - [Path Integrals](./path_integrals.tex)
 - [Vector Line Integrals](./vector_line_integrals.tex)
 - [Surface Integrals](./surface_integrals.tex)
+- [Integral Theorems](./integral_theorems.tex)
