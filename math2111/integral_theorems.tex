@@ -1,0 +1,13 @@
+\section{Integral Theorems}
+\subsection{Stokes Theorem}
+Stokes theorem gives the relationship between a surface integral over a  surface \(S\) and a linear integral around the boundary curve of \(S\).
+
+Let \(S\) be a smooth oriented surface defined by a one-to-one parametrisation \(\Phi: D \subset R^2 \to S\), where \(D\) is a region to which Green's theorem applies. Let \(\partial S\) denote the oriented boundary of \(S\) and let \(\textbf{F}\) be a \(C^1\) vector field on \(S\). Then
+\[\iint_S (\curl F) \cdot dS = \int_{\partial S} F \cdot ds.\]
+
+\subsection{(Gauss) Divergence Theorem}
+The divergence theorem gives the relationship between a triple integral over a region \(W\) and a surface integral over its boundary surface \(S\).
+
+Let \(W \subseteq \mathbb R^3\) be a bounded, solid and simple region, and let \(\textbf{F}\) be a vector field in \(\mathbb R^3\) which is continuously differentiable on \(W\). Let \(S\) be the boundary of \(W\) which is a piece-wise smooth parameterised surface formed by a finite union of oriented smooth surfaces (say \(S_i\)). Then, the outward flux of \(\textbf{F}\) across the surface \(S\) equals the triple integral of divergence div\(\textbf{F}\) over \(W\), that is 
+\[\iint_S \textbf{F} \cdot dS = \iiint_W \div \textbf{F} \, dV\]
+where \(\iint_S \textbf{F} \cdot dS = \sum \iint_{S_i} \textbf{F} \cdot dS\) and the surface are oriented such that the normal vector points outwards.

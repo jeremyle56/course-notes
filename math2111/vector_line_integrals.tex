@@ -79,7 +79,7 @@ Green's Theorem connects double integrals with line integrals and is very useful
 
 \paragraph{Green's Theorem (Flux-divergence or Normal Form)}
 Let \(D\) be a bounded simple region in \(\mathbb R^2\) with nonempty interior, whose boundary consists of a finite number of smooth curves. Let \(C\) be the boundary of \(D\) with a positive (counter-clockwise) direction. Let \(\textbf{F} = M\textbf{i} + N\textbf{j}\) be a vector field which is continuously differentiable on \(D\).  Then, the outward flux of \(\textbf{F}\) across the curve \(C\) equals the double integral of divergence \(\div F\) over \(D\), that is
-\[\oint_C \textbf{F} \cdot \hat{\textbf{n}} \, ds = \oint_C - N \, dx + M \, dy = \int\int_D \left(\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} \right) \, dxdy\]
+\[\oint_C \textbf{F} \cdot \hat{\textbf{n}} \, ds = \oint_C - N \, dx + M \, dy = \iint_D \left(\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} \right) \, dxdy\]
 Three key assumptions:
 \begin{itemize}
     \item The region \(D\) is bounded and simple region with nonempty interior.
@@ -89,7 +89,7 @@ Three key assumptions:
 
 \paragraph{Green's Theorem (Circulation-curl or Tangential Form)}
 Let \(D\) be a bounded simple region in \(\mathbb R^2\) with nonempty interior, whose boundary consists of a finite number of smooth curves. Let \(C\) be the boundary of \(D\) with a positive (counter-clockwise) direction. Let \(\textbf{F} = M\textbf{i} + N\textbf{j}\) be a vector field which is continuously differentiable on \(D\). Then, the counter-clockwise circulation of \(\textbf{F}\) around \(C\) equals the double integral \(\curl F \cdot k\) over \(D\), that is
-\[\oint_C \textbf{F} \cdot \hat{\textbf{T}} \, ds = \oint_C M \, dx + N \, dy = \int\int_D \left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right) \, dxdy\]
+\[\oint_C \textbf{F} \cdot \hat{\textbf{T}} \, ds = \oint_C M \, dx + N \, dy = \iint_D \left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right) \, dxdy\]
 
 \paragraph{Area of a Region}
 Let \(D\) be a simple and bounded region with non-empty interior and let \(C\) be its boundary with positive (counter-clockwise) direction which is a finite union of smooth curves. Then, the area of \(D\) can be calculated by 

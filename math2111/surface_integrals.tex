@@ -18,11 +18,35 @@ The sphere of radius \(R, x^2 + y^2 + z^2 = R^2\) has the parametrisation
 \[\Phi(\theta,\phi) = (R\cos\theta\sin\theta, R\sin\theta\sin\theta, R\cos\theta), \qquad 0 \leq \theta \leq 2\pi, \, 0 \leq \phi \leq \pi.\]
 
 \subsection{Surface Area}
-In the rest of this section we consider smooth parametrised surfaces and also piecewise smooth parametrised surfaces.
+In the rest of this section, we consider smooth parametrised surfaces and also piecewise smooth parametrised surfaces.
 
 \paragraph{Area of a Surface}
 Let \(\Phi(u,v)\) be parametrisation of a smooth surface \(S\) with parameter domain \(D\). The area of the surface \(S\) is
-\[\text{Area}(S) = \int\int_D ||\textbf{T}_u \times \textbf{T}_v|| \, dudv.\]
+\[\text{Area}(S) = \iint_D ||\textbf{T}_u \times \textbf{T}_v|| \, dudv.\]
 Sometimes we write
 \[||\textbf{n}(u,v)|| = ||\textbf{T}_u \times \textbf{T}_v||.\]
 Note that this \(\textbf{n}(u,v)\) is not necessarily a unit vector and neither are the tangent vectors.
+
+\subsection{Surface Integral}
+Let \(\Phi(u,v)\) be a parametrisation of a smooth parametrised surface \(S\) with parameter domain \(D\). The surface integral of \(f\) over \(S\) is
+\begin{align*}
+    & \iint_S f(x,y,z) \, dS \\
+    = & \iint_D f(\Phi(u,v))||\textbf{T}_{\textbf{u}} \times \textbf{T}_\textbf{v} || \, dudv \\
+    = & \iint_D f(\Phi(u,v))||\textbf{n}(u,v)|| \, dudv.
+\end{align*}
+
+If \(S\) is piecewise smooth parameterised surface \(S\) which are made up of finitely many smooth surface \(S_i, i = 1,\dots,m\), then, the surface integral of \(f\) over \(S\) is 
+\[\iint_S f(x,y,z) \, dS = \sum_{i=1}^m \iint_{S_i} f(x,y,z) \, dS.\]
+
+\subsection{Surface Integrals of Vector-Valued Functions}
+The surface integral of a vector field \(\textbf{F}\) over an oriented smooth parametrerised surface \(S\) is defined as 
+\[\iint_S \textbf{F} \cdot dS = \iint_S (\textbf{F} \cdot \hat{\textbf{n}}) \, dS.\]
+More generally, for a piecewise smooth parametrised surface \(S\) formed by finite union of oriented smooth surfaces \(S_i, i = 1,\dots, m\), then
+\[\iint_S \textbf{F} \cdot dS = \sum_{i=1}^m \iint_{S_i} \textbf{F} \cdot dS.\]
+
+If \(S\) is a smooth parametrised oriented surface and \(\Phi\) parameterises the surface \(S\) (i.e., \(\hat{\textbf{n}}\) in the normal direction specificed by the orientation of \(S\)) then,
+\begin{align*}
+    \iint_S \textbf{F} \cdot dS & = \iint_S (\textbf{F} \cdot \hat{\textbf{n}}) \, dS \\
+    & = \iint_D \left(\textbf{F}(\Phi(u,v)) \cdot \frac{\textbf{T}_\textbf{u} \times \textbf{T}_\textbf{v}}{||\textbf{T}_\textbf{u} \times \textbf{T}_\textbf{v}||} \right) ||\textbf{T}_\textbf{u} \times \textbf{T}_\textbf{v}|| \, dudv \\
+    & = \iint_D \textbf{F}(\Phi(u,v)) \cdot (\textbf{T}_\textbf{u} \times \textbf{T}_\textbf{v}) \, dudv
+\end{align*}
