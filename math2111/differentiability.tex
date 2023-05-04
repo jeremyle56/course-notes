@@ -71,7 +71,7 @@ coordinates \(x_i\) and standard basis vectors \(\textbf{e}_i, i\in \{1,\dots,n\
 The partial derivative of \(f\) in direction \(i\) is defined as
 \[
     \frac{\partial f}{\partial x_i} = \lim_{h\to 0} 
-    \frac{f(\textbf{a}+h\textbf{e}_i -f(\textbf{a})}{h}
+    \frac{f(\textbf{a}+h\textbf{e}_i) -f(\textbf{a})}{h}
 \]
 assuming the limit exists.
 
@@ -256,7 +256,7 @@ of class \(C^3\). Let \(x, a \in \Omega\) s.t. the line segment between \(x\) an
 contained in \(\Omega.\) Then there exist \(z\) on this line segment such that 
 \[f(x) = f(a) + \grad f(a) \cdot (x-a) + \frac{1}{2}(x-a)Hf(a)(x-a) + R_{2,a}(x)\]
 where \(R_{2,a}(x): \Omega \to \mathbb R\) is a function such that 
-\(\frac{R_{2,a}(x)|}{|x-a|^2} \to 0\) as \(x \to a\).
+\(\frac{|R_{2,a}(x)|}{|x-a|^2} \to 0\) as \(x \to a\).
 
 \subsection{Maxima, Minima and Saddle Points}
 \paragraph{Definitions} Let \(a \in \Omega \subseteq \mathbb R^n\) and \(f: \Omega \to \mathbb R\) be a function. Then
