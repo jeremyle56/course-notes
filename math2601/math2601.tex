@@ -1,0 +1,81 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+\usepackage{subfiles}
+
+% For Vector Commands
+\renewcommand{\vec}{\mathbf}
+\renewcommand{\vu}{\mathbf{u}}
+\renewcommand{\va}{\mathbf{a}}
+\renewcommand{\vb}{\mathbf{b}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\vs}{\mathbf{v}}
+\newcommand{\vt}{\mathbf{t}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vz}{\mathbf{z}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\valpha}{\mathbf{\alpha}}
+% 
+\newcommand{\spans}{\mathrm{span}}
+\newcommand{\img}{\mathrm{im}}
+\newcommand{\nullity}{\mathrm{nullity}}
+\newcommand{\col}{\mathrm{col}}
+\newcommand{\row}{\mathrm{row}}
+\newcommand{\id}{\mathrm{id}}
+% \newcommand{\rank}{\mathrm{rank}}
+
+% Augmented Matrix
+%\newenvironment{amatrix}[1]{%
+%   \left(\begin{array}{@{}*{#1}{c}|c@{}}
+% }{%
+%   \end{array}\right)
+% }
+
+\usepackage{hyperref}
+\hypersetup {                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}	
+\title{Higher Linear Algebra \\ MATH2601 UNSW}
+\author{Jeremy Le \\ (Based of \href{https://github.com/imagine-hussain/math2601_notes/blob/main/main.pdf}{Hussain Nawaz's Notes})}
+\date{2023T2}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+    \subfile{groups_and_fields.tex}
+    % \subfile{vector_spaces.tex}
+    % \subfile{linear_transformations.tex}
+    % \subfile{inner_product_spaces.tex}
+    % \subfile{determinants.tex}
+    % \subfile{eigenvalues_eigenvectors.tex}
+    % \subfile{canonical_forms.tex}
+    % \subfile{matrix_functions_ode_systems.tex}
+\end{document}

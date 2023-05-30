@@ -1,0 +1,79 @@
+\section{Group and Fields}
+\subsection{Groups}
+
+\paragraph{Definition} 
+A group \(G\) is a non-empty set with a binary operation defined on it. That is 
+\begin{enumerate}
+    \item \textbf{Closure:} for all \(a,b\) in \(G\) a composition \(a * b\) is defined and in \(G\),
+    \item \textbf{Associativity:} \((a * b) * c = a * (b * c)\) for all \(a,b,c \in G\),
+    \item \textbf{Identity:} there is an element \(e\in G\) such that \(a * e = e * a\) for all \(a \in G\),
+    \item \textbf{Inverse:} for each \(a \in G\) there is an \(a'\) in \(G\) such that \(a * a' = a' * a = e\),
+\end{enumerate}
+If \(G\) is a finite set then the order of \(G\) is \(|G|\), the number of elements in G.
+
+Groups are defined as \((G, *)\). We say this as ''the group \(G\) under the operation \(*\)''.
+
+\paragraph{Abelian Groups}
+A group \(G\) is abelian if the operation satisfies the commutative law
+\[a * b = b * a \qquad \text{for all} \quad a,b \in G\]
+
+\paragraph{Notation}
+\begin{itemize}
+    \item We use power notation for repeated applications: \(a * a \cdots * a = a^n\) and \(a^{-n} = (a^{-1})^n\).
+    \item For group operation, \(\times\) we use 1 for the identity and \(a^{-1}\) for inverse of \(a\).
+    \item For group operation, \(+\) we use 0 for the identity and \(-a\) for the inverse of \(a\).
+    \item We would then write \(na\) for \(a+a+\cdots a\) (repeated addition, not multiplying by \(n\)).
+\end{itemize}
+
+\paragraph{Trivial Groups}
+The trivial group is the group consisting of exactly one element, \(\{e\}\). It is the smallest possible group, since there has to be at least one element in a group.
+
+\paragraph{More Properties of Groups}
+\begin{itemize}
+    \item There is only one identity element in \(G\).
+    \item Each element of \(G\) only has one inverse.
+    \item For each \(a \in G, (a^{-1})^{-1} = a\)
+    \item For every, \(a,b \in G, (a *  b)^{-1} = b^{-1} * a^{-1}\).
+    \item Let \(a,b,c \in G\). Then if \(a * b = a * c, b = c\). 
+\end{itemize}
+
+\subsubsection{Permutation Groups}
+Let \(\Omega_n = \{1,2,\dots,n\}\). As an ordered set \(\Omega_n = (1,2,\dots,n)\) has \(n!\) rearrangements. We may think of these permutations as being functions \(f:\Omega_n \to \Omega_n\). These are bijections.
+
+Observe that the set \(\mathcal{S}_n\) of all permutations of \(n\) objects forms a group under composition of order \(n!\).
+
+\paragraph{Small Finite Groups}
+Small groups can be pictured using a multiplication table, where the row element is multiplied on the left of the column element.
+
+In a multiplication table of finite group each row must be a permutation of the elements of the group, because:
+\begin{itemize}
+    \item If we had repetition in a row (or column), so that \(xa = xb\), then the cancellation rule will give \(a=b\). Hence each element occurs no more than once in a row (or column).
+    \item If \(a^2 = a\) then multiplying by \(a^{-1}\) gives \(a=e\), so the identity is the only element that can be fixed.
+\end{itemize}
+
+\subsection{Fields}
+A field \((\mathbb{F}, +, \times)\) is a set \(\mathbb{F}\) with two binary operations on it, addition (+) and multiplcation (\(\times\)), where 
+\begin{enumerate}
+    \item \((\mathbb{F}, +)\) is an abelian group,
+    \item \(\mathbb{F}^* = \mathbb{F}\setminus\{0\}\) is an abelian group under multiplication,
+    \item The distributive laws \(a \times (b + c) = a \times b + a \times c\) and \((a+b) \times c = a \times c + b \times c\) hold.
+\end{enumerate}
+
+\paragraph{Additional Notes}
+\begin{itemize}
+    \item Our definition is equivalent to saying \(\mathbb{F}\) satisfies the \(12 = 5 + 5 + 2\) number laws.
+    \item We use juxtaposition for the multiplication in fields and 1 for the identity under multiplication.
+    \item The smallest possible field has two elements, and is written \(\{0,1\}\) with \(1 + 1 = 0\).
+\end{itemize}
+
+\paragraph{Finite Fields}
+The only finite fields are those of size \(p^k\) for some prime \(p\) (referred to as the characteristic of the field) and positive integer \(k\). These fields are called Galois fields of size \(p^k\), \(\operatorname{GF}(p^k)\). Note that \(\operatorname{GF}(p^k) \neq \mathbb{Z}_{p^k}\) unless \(k=1\).
+
+\paragraph{Properties of Fields}
+Let \(\mathbb{F}\) be a field and \(a,b,c \in \mathbb{F}\). Then
+\begin{itemize}
+    \item \(a0=0\)
+    \item \(a(-b) = -(ab)\)
+    \item \(a(b - c) = ab - ac\)
+    \item if \(ab = 0\) then either \(a = 0\) or \(b = 0\).
+\end{itemize}
