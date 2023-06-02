@@ -1,0 +1,73 @@
+\section{Vector Spaces}
+\subsection{Vector Spaces}
+
+\paragraph{Motivation for Vector Spaces}
+The concept of a vector space is a natural and important generalisation of \(\bR^n\). It is natural to consider them whenever possible to add objects and multiply them by scalars.
+
+It may be convenient to consider a field \(\mathbb{F}\) as a vector
+space over one of its subfields.
+
+\paragraph{Vector Spaces}
+Let \(\bF\) be a field. A vector space over the field \(\bF\) consists of an abelian group \((V, +)\) plus a function from \(\bF \times V\) to \(V\) called scalar multiplication and written \(\alpha\vv\) where
+\begin{enumerate}
+    \item \(\alpha(\beta\vv) = (\alpha\beta)\vv\) for all \(\alpha, \beta \in \bF\) for all \(\vv \in V\).
+    \item \(1\vv = \vv\) for all \(\vv \in V\).
+    \item \(\alpha(\vu + \vv) = \alpha\vu + \alpha\vu\) for all \(\alpha \in \bF\) for all \(\vu, \vv \in V\).
+    \item \((\alpha + \beta)\vu + \alpha\vu + \beta\vu\) for all \(\alpha, \beta \in \bF\) for all \(\vu \in V\).
+\end{enumerate}
+
+\paragraph{Properties and Notation for Vector Spaces}
+\(\vec{dsdfa}\)
+\begin{enumerate}
+    \item There are ten axioms here: 5 from the abelian group, closure of scalar multiplication and the four explicit ones.
+    \item Addition in \(V\) is called vector addition to distinguish it from the addition in \(\bF\).
+    \item Being a group, \(V\) cannot be empty.
+    \item Bold face letters are used to distinguish elements of \(V\) from elements of \(\bF\).
+\end{enumerate}
+
+\paragraph{Vector Space Lemma}
+Let \(V\) be a vector space over a field \(\bF\). For all \(\vv, \vw\) in \(V\) and \(\lambda \in \bF\):
+\begin{enumerate}
+    \item \(0\vv = \zero\) and \(\lambda\zero = \zero\).
+    \item \((-1)\vv = -\vv\).
+    \item \(\lambda\vv = \zero\) implies either \(\lambda = 0\) or \(\vv = \zero\).
+    \item if \(\lambda\vv = \lambda\vw\) and \(\lambda \neq 0\) then \(\vv = \vw\).
+\end{enumerate}
+
+\subsection{Standard Examples of Vector Spaces}
+\paragraph{The Space \(\bF^n\) over \(\bF\)}
+The set \(\bF^n\) consists of all \(n\)-tuples of elements of \(\bF\):
+\[\bF^n = \left\{ \begin{pmatrix}
+    \alpha_1 \\ \vdots \\ \alpha_n
+\end{pmatrix}: \alpha_i \in \bF \right\}.\]
+If \(\vx = (\alpha_i)_{1 \leq i \leq n}, \vy = (\beta_i)_{1 \leq i \leq n}\) are elements of \(\bF^n\), then vector addition on \(\bF^n\) is defined as 
+\[\vx + \vy = (\alpha_i + \beta_i)_{1 \leq i \leq n}.\]
+Scalar multiplication on \(\bF^n\) is \(\lambda\vx = (\lambda\alpha_i)_{1 \leq i \leq n}\).
+
+With these operations, \(\bF^n\) is a vector space over \(\bF\).
+
+\paragraph{Geometric Vectors}
+Geometric vectors are ordered pairs of points in \(\bR^n\), joined by labelled arrows. We add these objects by placing them head to tail and scalar multiplying is just stretching the vector's length while preserving the direction.
+
+The set of all geometric vectors does not form a vector space. However, if you define 2 geometric vectors to be equivalent if one is a translation of the other then the set of equivalence classes of geometric vectors is a vector space.
+
+\paragraph{Matrices}
+For any positive integers \(p\) and \(q\) the set \(M_{p,q}(\bF)\) is the set of \(p \times q\) matrices with element from \(\bF\). Then \(M_{p,q}(\bF)\) is a vector space over \(\bF\) with vector addition the usual addition of matrices and scalar multiplication multiplying each element of the matrix.
+
+\paragraph{Polynomials}
+The set of all polynomials with coefficients in \(\bF, \mathcal{P}(\bF)\), is a vector space over \(\bF\) with 
+\begin{align*}
+(f+g)(x) & = f(x) + g(x) \quad \text{for all } x \in \bF \\
+(\lambda f)(x) & = \lambda f(x) \quad \text{for all } \lambda, x \in \bF
+\end{align*}
+Similarly, \(\mathcal{P}_n(F)\) (polynomials of degree \(n\) or less) is a vector space over \(\bF\).
+
+\paragraph{Function Spaces}
+Let \(X\) be a non-empty set and \(\bF\) be a field. Then define
+\[\mathcal{F}[X] = \{ f: X \to \bF \}.\]
+The set \(\mathcal{F}[X]\) is a vector space over \(\bF\) if we define
+\begin{itemize}
+    \item the zero in \(\mathcal{F}[X]\) to be the zero function: \(x \to 0\) for all \(x \in X\)
+    \item \((f + g)(x) = f(x) + g(x)\) for all \(x \in X\)
+    \item \((\lambda f)(x) = \lambda(f(x))\) for all \(x \in X\)
+\end{itemize}

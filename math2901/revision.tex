@@ -1,0 +1,132 @@
+\section{Probability}
+\subsection{Experiment, Sample Space, Event}
+
+\paragraph{Experiment}
+An experiment is any process leading to recorded observations.
+
+\paragraph{Outcome}
+An outcome is a possible result of an experiment.
+
+\paragraph{Sample Space}
+The set \(\Omega\) of all possible outcomes is the sample space of an experiment. \(\Omega\) is discrete if it contains a countable (finite or countably infinite) number of outcomes.
+
+\paragraph{Events}
+An event is a set of outcomes, i.e. a subset of \(\Omega\). An event occurs if the result of the experiment is one of the outcomes in that event.
+
+\paragraph{Mutual Exclusion}
+Events are mutually exclusive (disjoint) if they have no outcomes in common.
+
+\paragraph{Set Operations} 
+If you have trouble remembering the above rules, then one can essentially replace \(\cup\) by multiplication and \(\cap\) by addition. \\
+(The associative law) If \(A, B, C\) are sets then
+\begin{align*}
+    (A \cup B) \cup C & = A \cup (B \cup C) \\
+    (A \cap B) \cap C & = A \cap (B \cap C)
+\end{align*}
+(Distributive Law) If \(A, B, C\) are sets then
+\begin{align*}
+    A \cap (B \cup C) & = (A \cap B) \cup (A \cap C) \\
+    A \cup (B \cap C) & = (A \cup B) \cap (A \cup C)
+\end{align*}
+
+\subsection{Sigma-algebra}
+The \(\sigma-\)algebra must be defined for rigorously working with probability. The \(\sigma-\)algebra can be thought of as the family of all possible events in a sample space. Analogously, this may be conceptualised as the power set of the sample space. 
+
+\paragraph{Probability}
+A probability is a set function, which is usually denoted by \(\bP\), that maps events from the \(\sigma-\)algebra to \([0,1]\) and satisfies certain properties.
+
+\paragraph{Probability Space}
+The triplet \((\Omega, \mathcal{A}, \bP)\) is the probability/sample space where
+\begin{itemize}
+    \item \(\Omega\) is the sample space,
+    \item \(\mathcal{A}\) is the \(\sigma\)-algebra,
+    \item \(\bP\) is the probability function.
+\end{itemize}
+
+\paragraph {Properties of Probability}
+Given the probability/sample space \((\Omega, \mathcal{A}, \bP)\), the probability
+function \(\bP\) must satisfy
+\begin{itemize}
+    \item For every set \(A\in \mathcal{A}\), \(\bP(A) \geq 0\)
+    \item \(\bP(\Omega) = 1\) 
+    \item (Countably additive) Suppose the family of sets \((A_i)_{i\in\mathbb{N}}\) are mutually exclusive, then
+    \[\bP \left(\bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty \bP(A_i)\]
+\end{itemize}
+
+\paragraph{Probability Lemmas}
+\begin{itemize}
+    \item Given a family of disjoint sets \((A_i)_{i=1,\dots,k}\)
+    \[\bP \left(\bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k \bP(A_i) \]
+    \item \(\bP(\phi) = 0\)
+    \item For any \(A\in\mathcal{A}, \bP(A) \leq 1\) and \(\bP(A^c) = 1 - \bP(A)\)
+    \item Suppose \(B,A\in \mathcal{A}\) and \(A\subseteq B\), then \(\bP(A) \leq \bP(B)\).
+\end{itemize}
+
+\paragraph {Continuity from Below}
+Given an increasing sequence of events \(A_1 \subset A_2 \subset \dots\) then, 
+\[
+    \bP\left(
+        \bigcup_{n=1}^{\infty} A_n
+    \right)
+    =
+    \lim_{n\to\infty} \bP (A_n)
+\]
+
+\paragraph {Continuity from Above}
+Given a decreasing sequence of events \(A_1 \supset A_2 \supset \dots\) then, 
+\[
+    \bP\left(
+        \bigcap_{n=1}^{\infty} A_n
+    \right)
+    =
+    \lim_{n\to\infty} \bP (A_n)
+\]
+
+\subsection{Conditional Probability and Independence}
+\paragraph{Conditional Probability}
+The conditional probability that an event \(A\) occurs given that an event \(B\) has occurred is 
+\[\bP(A|B) = \frac{\bP(A\cup B)}{\bP(B)}, \quad \bP(B) > 0\]
+
+\paragraph{Independence}
+Events \(A\) and \(B\) are independent if \(\bP(A \cup B) = \bP(A)\bP(B).\)
+
+Lemma - Given two events \(A\) and \(B\) then \(\bP(A|B) = \bP(A)\) if and only if \(\bP(B|A) = \bP(B)\).
+
+\paragraph{Independence of Sequences}
+\begin{itemize}
+    \item A countable sequence of event \((A_i)_{i=\bN}\) is pairwise independent if \(\bP(A_i \, \cap \, A_j) = \bP(A_i)\bP(A_j)\) for all \(i \neq j\).
+    \item A countable sequence of events \((A_i)_{i=\bN}\) are independent if for any sub-collection \(A_{i_1}, \dots, A_{i_n}\) we have 
+    \[\bP(A_{i_1} \cap A_{i_2} \cdots \cap A_{i_n}) = \prod_{j=1}^n \bP(A_{i_j})\]
+\end{itemize}
+Independence implies pairwise independence, but pairwise independence does not imply independence. 
+
+\paragraph{Multiplicative Law}
+Given events \(A\) and \(B\) then
+\[\bP(A \cap B) = \bP(A|B)\bP(B),\]
+and similarly, if you have events \(A, B, C\) then
+\[\bP(A_1 \cap A_2 \cap A_3) = \bP(A_3 | A_2 \cap A_1)\bP(A_2|A_1)\bP(A_1)\]
+
+\paragraph{Additive Law}
+Let \(A\) and \(B\) be events then
+\[\bP(A \cup B) = \bP(A) + \bP(B) - \bP(A \cap B)\]
+
+\paragraph{Law of Total Probability}
+Suppose \((A_i)_{i=1,\dots,k}\) are mutually exclusive and exhaustive of \(\Omega\), that is \(\bigcup_{i=1}^k A_i = \Omega\), then for any event \(B\), we have 
+\[\bP(B) = \sum_{i=1}^k \bP(B|A_i)\bP(A_i)\]
+
+\paragraph{Bayes Formula}
+Given sets \(B, A\) and a family of disjoint and exhaustive sets \((A_i)_{i=1,\dots,k}\) then
+\[\bP(A|B) = \frac{\bP(B|A)\bP(A)}{\sum_{i=1}^k \bP(B|A_i)\bP(A_i)}\]
+
+\subsection{Descriptive Statistics and R}
+\paragraph{Categorical}
+Data can be sorted into a finite set of (unordered) categories. e.g. Gender
+
+\paragraph{Quantitative}
+Responses are measured on some sort of scale. e.g. Weight.
+
+\paragraph{Numerical Summaries of the Quantitative Data}
+Given observations \(x = (x_1, \dots, x_n)\). The sample mean (estimated mean) or average is given by 
+\[\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\]
+Sample variance (estimated variance)
+\[s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2\]

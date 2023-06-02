@@ -19,7 +19,7 @@
 \renewcommand{\va}{\mathbf{a}}
 \renewcommand{\vb}{\mathbf{b}}
 \newcommand{\vc}{\mathbf{c}}
-\newcommand{\vs}{\mathbf{v}}
+\newcommand{\vs}{\mathbf{s}}
 \newcommand{\vt}{\mathbf{t}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\vw}{\mathbf{w}}
@@ -43,6 +43,16 @@
 % }{%
 %   \end{array}\right)
 % }
+
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bF}{\mbb{F}}
+\newcommand{\bR}{\mbb{R}}
+\newcommand{\bC}{\mbb{C}}
+\newcommand{\bE}{\mbb{E}}
+
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\im}{\operatorname{im}}
 
 \usepackage{hyperref}
 \hypersetup {                                % Formatting for hyperlinks
@@ -71,7 +81,7 @@
 \tableofcontents
 \newpage
     \subfile{groups_and_fields.tex}
-    % \subfile{vector_spaces.tex}
+    \subfile{vector_spaces.tex}
     % \subfile{linear_transformations.tex}
     % \subfile{inner_product_spaces.tex}
     % \subfile{determinants.tex}

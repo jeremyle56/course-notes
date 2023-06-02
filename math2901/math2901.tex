@@ -1,0 +1,71 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+% \usepackage{pgfplots}
+\usepackage{subfiles}
+
+\usepackage{hyperref}
+\hypersetup {                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{{./assets/}}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}	
+
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Hyp}{\mathrm{Hyp}}
+\newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\Norm}{\mathcal{N}} \newcommand{\Cor}{\mathrm{Corr}}
+\newcommand{\Poisson}{\mathrm{Poisson}}
+\newcommand{\Bernoulli}{\mathrm{Bernoulli}}
+\newcommand{\Bias}{\mathrm{Bias}}
+\newcommand{\MSE}{\mathrm{MSE}}
+\newcommand{\Se}{\mathrm{Se}}
+\newcommand{\power}{\mathrm{power}}
+
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bN}{\mbb{N}}
+\newcommand{\bP}{\mbb{P}}
+
+\title{Higher Theory of Statistics \\ Math2901 UNSW}
+\author{Jeremy Le \\ (Based of \href{https://github.com/imagine-hussain/math2901_notes/blob/main/math2901_main.pdf}{Hussain Nawaz's Notes})}
+\date{2023T2}
+
+\rhead{}
+\lhead{}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+    \subfile{revision.tex}
+    % \subfile{random_variables.tex}
+    % \subfile{common_distributions.tex}
+    % \subfile{bivariate_distributions.tex}
+    % \subfile{distribution_sum_avg_central_limit.tex}
+    % \subfile{estimators.tex}
+    % \subfile{parameter_estimation_inference.tex}
+    % \subfile{hypothesis_testing.tex}
+    % \subfile{small_sample_inference.tex}
+\end{document}

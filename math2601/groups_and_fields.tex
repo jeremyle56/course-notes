@@ -52,28 +52,99 @@ In a multiplication table of finite group each row must be a permutation of the 
 \end{itemize}
 
 \subsection{Fields}
-A field \((\mathbb{F}, +, \times)\) is a set \(\mathbb{F}\) with two binary operations on it, addition (+) and multiplcation (\(\times\)), where 
+A field \((\bF, +, \times)\) is a set \(\bF\) with two binary operations on it, addition (+) and multiplcation (\(\times\)), where 
 \begin{enumerate}
-    \item \((\mathbb{F}, +)\) is an abelian group,
-    \item \(\mathbb{F}^* = \mathbb{F}\setminus\{0\}\) is an abelian group under multiplication,
+    \item \((\bF, +)\) is an abelian group,
+    \item \(\bF^* = \bF\setminus\{0\}\) is an abelian group under multiplication,
     \item The distributive laws \(a \times (b + c) = a \times b + a \times c\) and \((a+b) \times c = a \times c + b \times c\) hold.
 \end{enumerate}
 
 \paragraph{Additional Notes}
 \begin{itemize}
-    \item Our definition is equivalent to saying \(\mathbb{F}\) satisfies the \(12 = 5 + 5 + 2\) number laws.
+    \item Our definition is equivalent to saying \(\bF\) satisfies the \(12 = 5 + 5 + 2\) number laws.
     \item We use juxtaposition for the multiplication in fields and 1 for the identity under multiplication.
     \item The smallest possible field has two elements, and is written \(\{0,1\}\) with \(1 + 1 = 0\).
 \end{itemize}
 
 \paragraph{Finite Fields}
-The only finite fields are those of size \(p^k\) for some prime \(p\) (referred to as the characteristic of the field) and positive integer \(k\). These fields are called Galois fields of size \(p^k\), \(\operatorname{GF}(p^k)\). Note that \(\operatorname{GF}(p^k) \neq \mathbb{Z}_{p^k}\) unless \(k=1\).
+The only finite fields are those of size \(p^k\) for some prime \(p\) (referred to as the characteristic of the field) and positive integer \(k\). These fields are called Galois fields of size \(p^k\), \(\operatorname{GF}(p^k)\). Note that \(\operatorname{GF}(p^k) \neq \mbb{Z}_{p^k}\) unless \(k=1\).
 
 \paragraph{Properties of Fields}
-Let \(\mathbb{F}\) be a field and \(a,b,c \in \mathbb{F}\). Then
+Let \(\bF\) be a field and \(a,b,c \in \bF\). Then
 \begin{itemize}
     \item \(a0=0\)
     \item \(a(-b) = -(ab)\)
     \item \(a(b - c) = ab - ac\)
     \item if \(ab = 0\) then either \(a = 0\) or \(b = 0\).
 \end{itemize}
+
+\subsection{Subgroups and Subfields}
+\paragraph{Subgroups}
+Let \((G,*)\) be a group and \(H\) a non-empty subset of \(G\). If \(H\) is a group under the restriction of \(*\) to \(H\), we call it a subgroup of \(G\). We write this as \(H \leq G\) and say \(H\) inherits the group structure from \(G\).
+
+\paragraph{The Subgroup Lemma}
+Let \((G,*)\) be a group and \(H\) a non-empty subset of \(G\). Then \(H\) is a subgroup of \(G\) if and only if 
+\begin{enumerate}
+    \item for all \(a,b \in H, a * b \in H\)
+    \item for all \(a \in H, a^{-1} \in H\).
+\end{enumerate}
+i.e. \(H\) is closed under \(*\) and \(^{-1}\).
+
+Note that every non-trivial group \(G\) has at least two subgroups: \(\{e\}\) and \(G\).
+
+\paragraph{General Linear Groups}
+Let \(n \geq 1\) be an integer. The set of invertible \(n \times n\) matrices over field \(\bF\) is a group under matrix multiplication. This is a special case of a bijection function \(f: S \to S\) with \(S = \bF^n\) and is non-abelian if \(n > 1\).
+
+It is called the general linear group, \(\GL(n,f)\).
+
+The groups \(\GL(n,\bR)\) and \(\GL(n,\bC)\) are especially important in this course.
+They have many important subgroups, such as 
+\begin{itemize}
+    \item the special linear groups \(\SL(n,\bR)\) and \(\SL(n,\bC)\) of matrices with determinant 1.
+    \item \(O(n) \leq \GL(n,\bR)\) the group of orthogonal matrices.
+    \item \(\operatorname{SO}(n) = O(n) \cap \SL(n,\bR)\) of special orthogonal matrices.
+\end{itemize}
+
+\paragraph{Subfields}
+If \((\bF, +, \times)\) is a field and \(\bE \subseteq \bF\) is also a field under the same operations (restricted to \(\bE\)), then \((\bE, +, \times)\) is a subfield of \((\bF, +, \times)\), usually written \(\bE \leq \bF\).
+
+\paragraph{The Subfield Lemma}
+Let \(\bE \neq \{0\}\) be a non-empty subset of field \(\bF\). Then \(\bE\) is a subfield of \(\bF\) if and only iff for all \(a,b \in \bE\):
+\[a + b \in \bE, \qquad -b \in \bE, \qquad a \times b \in \bE, \qquad b^{-1} \in \bE \quad \text{\textbf{if}} \quad  b \neq 0.\]
+
+\paragraph{Rational + Irrational Field}
+Let \(\alpha\) be any (non-rational) real or complex number. We defined \(\mbb{Q}(a)\) to be the smallest field containing both \(\mbb{Q}\) and \(\alpha\). Such fields are important in number theory and can clearly be generalised to e.g. \(\mbb{Q}(\alpha, \beta)\). For example, it can be shown
+\[\mbb{Q}(\sqrt{2}) = \{a + b\sqrt{2}: a,b \in \mbb{Q}\}\]
+
+\subsection{Morphisms}
+A morphism is a category of ''nice'' maps between the members.
+
+\paragraph{Homomorphism}
+Let \((G, *)\) and \((H, \circ)\) be two groups. A (group) homomorphism from \(G\) to \(H\) is a map \(\phi: G \to H\) that respects the two operations, that is where
+\[\phi(a*b) = \phi(a) \circ \phi(b) \quad \text{for all } \, a,b \in G.\]
+
+\paragraph{Isomorphism}
+A bijective homomorphism \(\phi: G \to H\) is called an isomorphism: the groups are then said to be isomorphic. That is, \(G \cong H\).
+
+\paragraph{Isomorphism Lemmas}
+Let \((G, *)\) and \((H, \circ)\) be two groups and \(\phi\) a homomorphism between them. Then
+\begin{itemize}
+    \item \(\phi\) maps the identity of \(G\) to the identity of \(H\).
+    \item \(\phi\) maps inverses to inverse, i.e. \(\phi(a^{-1} = (\phi(a))^{-1}\) for all \(a \in G\).
+    \item if \(\phi\) is an isomorphism from \(G\) to \(H\) then \(\phi^{-1}\) is an isomorphism from \(H\) to \(G\).
+\end{itemize}
+
+\paragraph{Images and Kernel}
+Let \(\phi: G \to H\) be a group homorphism, with \(e'\) the identity of \(H\).
+The kernal of \(\phi\) is the set 
+\[\ker(\phi) = \{g \in G: \phi(g) = e'\}\]
+The image of \(\phi\) is the set 
+\[\operatorname{im}(\phi) = \{h \in H: h = \phi(g), \text{ some } g \in G\}.\]
+Note that \(\ker\phi \leq G\) and \(\operatorname{im}\phi \leq H\).
+
+\paragraph{One-to-One Homomorphism}
+A homomorphism \(\phi\) is one-one if and only if \(\ker\phi = \{e\}\), with \(e\) the identity of \(G\).
+If \(\phi\) is one-one then \(\im(\phi)\) is isomorphic to \(G\).
+
+\paragraph{Linear Groups}
+A common use of group homomorphisms is to look for a homomorphism \(\phi: G \to \GL(n,\bF)\) for some \(n\) and some field \(\bF\). The group \(\im(\phi)\) is called a (linear) representation of \(G\) on \(\bF^n\). If \(\phi\) is one-one (so every element maps to a distinct matrix), we call the representation faithful. 
