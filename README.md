@@ -4,6 +4,7 @@ A collection of course notes I've written for courses I've taken at UNSW. Below 
 
 ## 2022 T3
 
+- <a href="./comp1531/COMP1531.pdf" target="_blank">COMP1531 (Software Engineering Fundamentals)</a>
 - [COMP1531 (Software Engineering Fundamentals)](./comp1531/COMP1531.pdf)
 
 ## 2023 T1
