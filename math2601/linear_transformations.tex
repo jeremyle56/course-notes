@@ -1,0 +1,149 @@
+\section{Linear Transformations}
+
+\subsection{Linear Transformations}
+\paragraph{Linear Transformation}
+Suppose \(V\) and \(W\) are vector spaces over the field \(\bF\). A function \(T: V \to W\) is a linear transformation or a linear map (or simply linear) if
+\begin{itemize}
+    \item \(T(\vu + \vv) = T(\vu) + T(\vv)\), and
+    \item \(T(\lambda\vv) = \lambda T(\vv)\),
+\end{itemize}
+for all \(\vu, \vv \in V\) and for all \(\lambda \in \bF\).
+
+\paragraph{Identity Map, Zero Vector and Negatives}
+Let \(V\) and \(W\) be vector spaces over the field \(\bF\).
+\begin{itemize}
+    \item The identity map, \(\id:V \to V\) defined by \(\id(\vv) = \vv\) is linear.
+    \item If \(T: V \to W\) is linear then \(T(\vzero) = \vzero\) and \(T(-\vv) = -T(\vv)\).
+\end{itemize}
+
+\paragraph{Linearity Test Lemma}
+A function \(T: V \to W\) between vector spaces over the same field \(\bF\) is linear if and only if 
+\[T(\lambda\vu + \vv) = \lambda T(\vu) + T(\vv)\]
+for all \(\lambda \in \bF\), and \(\vu, \vv \in V\).
+
+\paragraph{Linear Transformations are Vector Spaces}
+Let \(V\) and \(W\) be two vector spaces over field \(\bF\). The set \(L(V,W)\) of all linear transformations from \(V\) to \(W\) is a vector space under the operations
+\[(S+T)(\vv) = S(\vv) + T(\vv), \qquad (\lambda S)(\vv) = \lambda S(\vv).\]
+
+\paragraph{Composition of Linear Maps}
+Let \(T: V \to W\) and \(S:W \to X\) be linear maps between vector spaces. Then \(S \circ T: V \to X\) is also linear.
+
+\paragraph{Linearity of Inverse}
+Let \(T: V \to W\) be an invertible linear map between two vector spaces over field \(\bF\). Then \(T^{-1}: W \to V\) is linear.
+
+\paragraph{Invertible Linear Maps are Groups}
+The invertible linear maps in \(L(V,V)\) form a group under compositions. Note that composition of maps is always associative so and the inverse exists by definition of \(L(V, V)\), only closure and the identity need to be proved.
+
+Closure exists since composition of linear transformations are vector spaces. The identity map is linear and clearly invertible and so, also exists in the group.
+
+\paragraph{Taking Coordinates is Linear}
+Let \(V\) be a (finite-dimensional) vector space over \(\bF\) with a basis \(\mathcal{B} = \{\vv_1, \dots, \vv_p\}\). Then the function \(S: V \to \bF^p\) defined by \(S(\vx) = [\vx]_\mathcal{B}\) is linear.
+
+\subsection{Kernel and Image}
+\paragraph{Kernel} 
+Let \(T: V \to W\) be a linear transformation. The kernel (or nullspace) of \(T\) is the set
+\[\ker T = \{\vv \in V: T(\vv) = \vzero\}.\]
+
+\paragraph{Image}
+If \(U \leq V\) then the image of \(U\) is the set
+\[T(U) = \{T(\vu) : \vu\in U\}.\]
+We also define the image of \(T\) (or range of \(T\)), \(\im(T)\) as the image of all of \(V:\im(T) = T(V)\).
+
+\paragraph{Kernal and Image of Linear Transformations}
+Let \(T: V \to W\) be a linear transformation between vector spaces over \(\bF\) and \(U \leq V\). Then
+\begin{enumerate}
+    \item \(\ker T\) is a subspace of \(V\).
+    \item \(T(U)\) is a subspace of \(W\), and so \(\im(T) \leq W\).
+    \item If \(U\) is finite-dimensional, so is \(T(U)\), so if \(V\) is finite dimensional, so is \(\im(T)\).
+\end{enumerate}
+
+\paragraph{Rank and Nullity}
+If \(T\) is a linear transformation, then the dimension of the kernel of \(T\) is called the nullity of \(T\), and the dimension of its image is called the rank of \(T\).
+
+\paragraph{Nullity - One to One}
+A linear map \(T: V \to W\) is one-to-one if and only if \(\nullity(T) = 0\).
+
+\paragraph{Rank-Nullity Theorem}
+If \(V\) is a finite dimensional vector space over \(\bF\) and \(T: V \to W\) is linear then
+\[\rank(T) + \nullity(T) = \dim(V).\]
+
+\paragraph{Bijective, Injective, Surjective}
+Let \(V, W\) be vector spaces over \(\bF\) with \(\dim(V) = \dim(W)\) finite and \(T: V \to W\) be linear. The following are equivalent:
+\begin{itemize}
+    \item \(T\) is invertible (bijective).
+    \item \(T\) is one-ton-one (injective) i.e. \(\nullity(T) = 0\).
+    \item \(T\) is onto (subjective) i.e. \(\rank(T) = \dim(V)\).
+\end{itemize}
+
+\paragraph{Isomorphism}
+An invertible linear map \(T: V \to W\) is called an isomorphism of the vector spaces \(V\) and \(W\). 
+
+\paragraph{Isomorphism + Dimensions}
+Finite dimension vector spaces \(V\) and \(W\) over \(\bF\) are isomorphic if and only if they have the same dimension.
+
+\subsection{Spaces Associated with Matrices}
+\paragraph{Kernel, Image, Nullity and Rank}
+Let \(A\) be a \(p \times q\) matrix over field \(\bF\), and define a map \(T:\bF^q \to \bF^p\) by \(T(\vx) = A\vx\). The kernel, image, nullity and rank of \(A\) are by definition the same as those of this map \(T\).
+
+\paragraph{Column Space}
+Suppose \(A\) has columns \(\vc_1, \dots, \vc_q\) (all in \(\bF^p\)). Then
+\begin{align*}
+    \im(A) & = \{A\vx : \vx \in \bF^q\} \\
+    & = \{ x_1\vc_1 + \cdots x_q\vc_q : x_i \in \bF \} \\
+    & = \span(\{\vc_1, \dots, \vc_q\})
+\end{align*}
+That is, \(\im(A)\) is the space spanned by the columns of \(A\): the column space of \(A, \col(A)\), a subspace of \(\bF^p\). The rank of \(A\) is thus the dimension of the column space of \(A\).
+
+\paragraph{Rank-Nullity Theorem for Matrices}
+For \(A \in M_{p,q}(\bF), \rank(A) + \nullity(A) = q,\) the number of columns of \(A\).
+
+\paragraph{Row Space}
+The row space of \(A, \row(A)\), is defined similarly as the space spanned by the rows: it is a subspace of \(\bF^q\). Note that \(\row(A) = \col(A^T) = \im(A^T)\).
+
+\paragraph{Row and Col Spaces}
+Let \(A \in M_{p,q}(\bF)\). The spaces \(\row(A)\) and \(\col(A)\) have the same dimension.
+
+\subsection{The Matrix of a Linear Map}
+\paragraph{Matrices of Linear Maps}
+Let \(V,W\) be two finite dimensional vector spaces over \(\bF\). Suppose \(\dim(V) = q\) and \(V\) has basis \(\mathcal{B}\) and also \(\dim(W) = p\) and \(W\) has basis \(\mathcal{C}\). If \(T: V \to W\) is linear then there is a unique \(A \in M_{p,q}(\bF)\) with
+\[[T(\vv)]_\mathcal{C} = A[\vv]_\mathcal{B}.\]
+Conversely, for any \(A \in M_{p,q}(\bF)\), the equation defines a unique linear map from \(V\) to \(W\).
+
+\paragraph{Notation}
+We call \(A\) in the above theorem the matrix of \(T\) with respect to \(\mathcal{B}\) and \(\mathcal{C}\). A useful notation is to denote this matrix by \([T]_\mathcal{C}^\mathcal{B}\) and then the equation takes the form
+\[[T(\vv)]_\mathcal{C} = [T]_\mathcal{C}^\mathcal{B}[\vv]_\mathcal{B}.\]
+
+\paragraph{Dimension of Linear Map}
+If \(\dim(V) = q\) and \(\dim(W) = p\) then \(\dim(L(V,W)) = pq\).
+
+\paragraph{Composition of Linear Maps as Matrices}
+Let \(T: V \to W\) and \(S: W \to X\) be linear maps between vector spaces and suppose \(V, W\) and \(X\) have bases \(\mathcal{A}, \mathcal{B}, \mathcal{C}\) respectively. Then, the matrix \(S \circ T : V \to X\) is the product of the matrices of \(T\) and \(S\), all taken with respect to the appropriate bases:
+\[ [S \circ T]_\mathcal{C}^\mathcal{A} = [S]_\mathcal{C}^\mathcal{B} \cdot [T]_\mathcal{B}^\mathcal{A}.\]
+
+\paragraph{Inverting Matricies as Transformations}
+If \(T: V \to W\) is linear and invertible, the matrix of \(T^{-1}\) is the inverse of the matrix of \(T\). Thus the group of invertible linear maps on an \(n\)-dimensional vector space over \(\bF\) is isomorphic to \(\GL(n,\bF)\). Formally,
+\[[T^{-1}]_\mathcal{B}^\mathcal{C} = ([T]_\mathcal{C}^\mathcal{B})^{-1}.\]
+
+\paragraph{Change of Basis Matrix}
+If vector space \(V\) has two bases \(\mathcal{B}\) and \(\mathcal{C}\), the matrix \([\id]_\mathcal{C}^\mathcal{B}\) of the identity map is called the change of basis matrix (from \(\mathcal{B}\) to \(\mathcal{C}\)). This can be used to change coordinates:
+\[[\vv]_\mathcal{C} = [\id]_\mathcal{C}^\mathcal{B}[\vv]_\mathcal{B}.\]
+
+\paragraph{Rank and Nullity of Matrices}
+Let \(T: V \to W\) be a linear map between finite dimensional vector spaces over \(\bF\) and \(A\) its matrix with respect to any two bases in \(V\) and \(W\). Then
+\[\nullity(A) = \nullity(T) \quad \text{ and } \quad \rank(A) = \rank(T).\]
+
+\paragraph{Invariant Subspace}
+Let \(V\) be a vector space over \(\bF\) and \(T: V \to V\) a linear map. If \(X \leq V\) is such that \(T(X) \leq X\), we call \(X\) and invariant subspace of \(T\).
+
+\paragraph{Linear Maps of Invariant Subspaces}
+Let \(T: V \to V\) be a linear map on a finite dimensional vector space. Suppose \(V = X \oplus Y\) with both \(X\) and \(Y\) invariant subspaces of \(T\) with dimensions \(p\) and \(q\) respectively. Then there is a basis \(\mathcal{B}\) for \(V\) in which the matrix \([T]_\mathcal{B}^\mathcal{B}\) of \(T\) is of the form
+\[[T]_\mathcal{B}^\mathcal{B} = \begin{pmatrix}
+    A & \vzero \\
+    \vzero & B
+\end{pmatrix}
+\]
+with \(A\) a \(p \times p\) and \(B\) a \(q \times q\) matrix.
+
+\subsection{Isomorphisms Again}
+\paragraph{Invertiable Maps and Matrices}
+Let \(T: V \to W\) be a linear map between finite-dimensional spaces, and let \(A\) be a matrix of \(T\) (with respect to any bases). Then \(T\) is invertible if and only if \(A\) is invertible. If this is the case, then the matrix of \(T^{-1}\) (with respect to the same bases) is \(A^{-1}\).
