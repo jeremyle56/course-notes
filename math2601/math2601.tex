@@ -19,6 +19,7 @@
 \renewcommand{\va}{\mathbf{a}}
 \renewcommand{\vb}{\mathbf{b}}
 \newcommand{\vc}{\mathbf{c}}
+\newcommand{\ve}{\mathbf{e}}
 \newcommand{\vi}{\mathbf{i}}
 \newcommand{\vj}{\mathbf{j}}
 \newcommand{\vk}{\mathbf{k}}
@@ -38,6 +39,7 @@
 \newcommand{\col}{\mathrm{col}}
 \newcommand{\row}{\mathrm{row}}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\proj}{\mathrm{proj}}
 % \newcommand{\rank}{\mathrm{rank}}
 
 % Augmented Matrix
@@ -59,6 +61,8 @@
 \newcommand{\im}{\operatorname{im}}
 
 \newcommand{\basis}{\mathcal{B}}
+
+\renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
 
 \usepackage{hyperref}
 \hypersetup {                                % Formatting for hyperlinks
@@ -89,7 +93,7 @@
     \subfile{groups_and_fields.tex}
     \subfile{vector_spaces.tex}
     \subfile{linear_transformations.tex}
-    % \subfile{inner_product_spaces.tex}
+    \subfile{inner_product_spaces.tex}
     % \subfile{determinants.tex}
     % \subfile{eigenvalues_eigenvectors.tex}
     % \subfile{canonical_forms.tex}

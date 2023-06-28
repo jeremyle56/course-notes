@@ -144,6 +144,26 @@ Let \(T: V \to V\) be a linear map on a finite dimensional vector space. Suppose
 \]
 with \(A\) a \(p \times p\) and \(B\) a \(q \times q\) matrix.
 
-\subsection{Isomorphisms Again}
-\paragraph{Invertiable Maps and Matrices}
-Let \(T: V \to W\) be a linear map between finite-dimensional spaces, and let \(A\) be a matrix of \(T\) (with respect to any bases). Then \(T\) is invertible if and only if \(A\) is invertible. If this is the case, then the matrix of \(T^{-1}\) (with respect to the same bases) is \(A^{-1}\).
+\subsection{Similarity}
+\paragraph{Definition}
+Matrices \(A\) and \(B\) in \(M_{p,p}(\bF)\) are similar if there exists a matrix \(P \in \GL(p,\bF)\) such that \(B = P^{-1}AP\).
+
+\paragraph{Similar Matrices over Different Bases}
+Matrices \(A_1\) and \(A_2\) are similar if and only if they are the matrices of the same linear transformation with respect to two choices of bases.
+
+\paragraph{Similarity Invariant}
+A property of matrices is called a similarity invariant if it is the same for all similar matrices. 
+
+The determinant, rank, nullity and trace of matrices are all similarity invariants.
+
+\subsection{Multilinear Maps}
+\paragraph{Bilinear}
+Let \(V_1, V_2\) and \(W\) be vector spaces over field \(\bF\). A map \(T: V_1 \times V_2 \to W\) is bilinear if it is linear in each argument, that is 
+\begin{align*}
+  T(\lambda\vv_1 + \vv_1', \vv_2) & = \lambda T(\vv_1, \vv_2) + T(\vv_1', \vv_2) \\  
+  T(\vv_1, \lambda\vv_2 + \vv_2') & = \lambda T(\vv_1, \vv_2) + T(\vv_1, \vv'_2)
+\end{align*}
+for all suitable vectors and scalars. If \(V_2 = V_1\) we call \(T\) bilinear on \(V_1\).
+
+\paragraph{Symmertric and Alternating Multilinear Maps}
+A multilinear map \(T\) on \(V\) is said to be symmetric if its value on any ordered set of vectors is unchanged when any two of the vectors are swapped. If such a swap always simply changes the sign of the value, \(T\) is called alternating.

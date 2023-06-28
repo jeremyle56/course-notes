@@ -7,3 +7,145 @@ The joint density function of two continuous random variables \(X\) and \(Y\) is
     \item For any (measurable) set \(A,B \in \bR\)
     \[\int_B \int_A f_{X,Y}(x,y) \, dxdy = \bP(X \in A, Y \in B).\]
 \end{enumerate}
+
+\paragraph{Min and Max} 
+We write \(a \lor b = \max(a, b)\) and \(a \land b = \min(a, b)\).
+
+\paragraph{Tonelli's Theorem}
+Suppose \(f: \bR^2 \to \bR_+\) then
+\[\int_\bR\int_\bR f(x,y) \, dxdy = \int_\bR\int_\bR f(x,y) \, dydx\]
+
+\paragraph{Fubini - Tonelli's Theorem} 
+Suppose \(f: \bR^2 \to \bR\), if either
+\[\int_\bR\int_\bR |f(x,y) \, dxdy < \infty \text{ or } \int_\bR\int_\bR | f(x,y) \, dydx < \infty\]
+then
+\[\int_\bR\int_\bR f(x,y) \, dxdy = \int_\bR\int\_\bR f(x,y) \, dydx\]
+
+\paragraph{Expected Value of Bounded Borel Functions}
+For any (bounded Borel) function \(g: \bR^2 \to \bR\) and random variables \(X\) and \(Y\), then (given these integrals/sum are finite)
+\[\bE(g(X,Y)) = \begin{cases}
+    \sum_{\forall x}\sum_{\forall x} g(x,y) \bP(X=x,Y=y) & \text{ discrete} \\[0.3cm]
+    \int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y) f_{X,Y}(x,y) \, dxdy, & \text{ continuous}
+\end{cases}
+\]
+
+\paragraph{Marginal Probability/Density Function}
+The marginal densities are given by
+\begin{align*}
+    f_X(x) & = \int_\bR f_{X,Y}(x,y) \, dy \\
+    f_Y(y) & = \int_\bR f_{X,Y}(x,y) \, dx
+\end{align*}
+and similarly for discrete random variables \(X\) and \(Y\).
+\begin{align*}
+    \bP(X = x) & = \sum_y \bP(X = x, Y = y) \\
+    \bP(Y = y) & \sum_x \bP(X = x, Y = y)
+\end{align*}
+
+\subsection{Independence}
+\paragraph{Independence}
+Two random discrete variables \(X\) and \(Y\) are independent if for all outcomes \(x\) and \(y\),
+\[\bP(X = x, Y = y) = \bP(X = x)\bP(Y = y)\]
+or if \(X\) are \(Y\) are continuous random variable with joint probability density \(f_{X,Y}\) then
+\[f_{X,Y} (x,y) = f_X(x) f_Y(y)\]
+for all \((x,y)\) in the domain of \(f_{X,Y}\).
+
+\paragraph{Independence - Generalised}
+\(X\) and \(Y\) are independent if and only if for all \(x,y \in \bR^2\),
+\[\bP(X \leq x, Y \leq y) = F_X(x)F_Y(y)\]
+and in general, for any bounded functions \(g,f:\bR \to \bR\)
+\[\bE(g(X)f(Y)) = \bE(g(X))\bE(f(Y))\]
+
+\subsection{Conditional Probability}
+\paragraph{Conditional Probability}
+Suppose \(X\) and \(Y\) are
+\begin{enumerate}
+    \item discrete random variables, then the conditional probability function of \(X\) are given the set \(\{Y = y\}\) is given by
+    \[\bP(X = x \mid Y = y) := \frac{\bP(X = x, Y = y)}{\bP(Y = y)}\]
+    \item continuous random variables, then the conditional probability density function of \(X\) given the set \(Y\) is given by
+    \[f_{X \mid Y}(x \mid y) := \frac{f_{X,Y}(x,y)}{f_Y(y)}\]
+\end{enumerate}
+
+\paragraph{Multivariate Gaussian}
+A random vector \(X = (X_1, X_2)\) is said to be Gaussian with \(\mu_X = (\mu_{X_1}, \mu_{X_2})\) and Covariance matrix \(V\) if
+\[f_X(x) = \frac{1}{\sqrt{(2\pi)^d|V|}}\exp(-\frac{1}{2}(X-\mu_X)^T V^{-1}(X-\mu_X)).\]
+Here \(d = 2\) (dimension), \(V^{-1}\) is the matrix inverse of \(V\) and \(|V|\) i the determinant of \(V\).
+
+\paragraph{Variance Matrix}
+The variance matrix is a symmetric matrix with entries 
+\[V_{ij} = \Cov(X_i, X_j) \qquad \text{ where } i = 1, \dots, d \text{ and } j = 1, \dots, d.\]
+If \(X = (X_1, X_2)\) is multivariate Gaussian then \(X_i\) for \(i = 1,2\) must be one-dimensional Gaussian but the converse is not true. 
+
+\paragraph{Conditional Expectations and Variance}
+Given any bound (Borel) function \(g\), the conditional expectation of \(g(X)\) given the set \(\{ Y = y \}\) is
+\[\bE(g(X)\mid Y = y) = \begin{cases}
+    \sum_{x} g(x) \bP(X=x \mid Y=y) & \text{ discrete} \\[0.3cm]
+    \int_{-\infty}^\infty g(x) f_{X\mid Y}(x \mid y) \, dx & \text{ continuous}
+\end{cases}
+\]
+The conditional variance of \(X\) given the set \(\{ Y = y \}\) is 
+\[\Var(X \mid Y = y) = \bE(X^2 \mid Y = y) - (\bE(X \mid Y = y))^2\]
+
+\paragraph{Independent Conditional Expectation and Variance}
+Suppose the random variables \(X\) and \(Y\) are independent then
+\begin{enumerate}
+    \item The conditional expectation of \(X\) given \(Y\) is simply the expectation of \(X\),
+    \[\bE(X \mid Y = y) = \bE(X)\]
+    \item The conditional variance of \(X\) is simply the variance of \(X\). 
+    \[\Var(X \mid Y = y) = \Var(X)\]
+\end{enumerate}
+
+\paragraph{Bounded Borel Conditional Expectation}
+Given random variables \(X\) and \(Y\) a (bounded Borel) function \(g: \bR^2 \to \bR\)
+\[\bE(g(X,Y)) = \int_\bR \bE(g(X,y) \mid Y = y) f_Y(y) \, dy\]
+where we define
+\[\bE(g(X,y) \mid Y = y) := \int_\bR g(x, y)f_{X \mid Y}(x \mid y) \, dx\]
+
+\subsection{Covariance and Correlation}
+\paragraph{Covariance}
+Given two random variables \(X\) and \(Y\), the covariance of \(X\) and \(Y\) is given by
+\[\Cov(X,Y) = \bE((X-\bE(X))(Y-\bE(Y)))\]
+
+\paragraph{Properties of Covariance}
+The covaiance satisfies the following properties. For random variables \(X\) and \(Y\)
+\begin{enumerate}
+    \item \(\Cov(X,X) = \Var(X)\),
+    \item \(\Cov(X, Y) = \bE(XY) - \bE(X)\bE(Y)\),
+    \item if \(X\) and \(Y\) are independent then \(\Cov(X,Y) = 0\)
+    \item The covariance is symmetric, i.e. \(\Cov(X,Y) = \Cov(Y,X)\).
+    \item The covariance is a bilinear function, i.e. for all \(a, b \in \bR\) and random variables \(X, Y\) and \(Z\)
+    \begin{align*}
+        \Cov(aX + bY, Z) & = a\Cov(X, Z) + b\Cov(Y, Z) \\
+        \Cov(X, aY + bZ) & = a\Cov(X,Y) + b\Cov(X, Z)
+    \end{align*}
+\end{enumerate}
+
+\paragraph{Correlation}
+The correlation between two random variable \(X\) and \(Y\) is defined to be
+\[\Cor(X,Y) := \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}\]
+
+\paragraph{Properties of Correlation}
+Given two random variable \(X\) and \(Y\), the following property holds for the correlation function
+\begin{enumerate}
+    \item \(|\Cor(X,Y)| \leq 1\)
+    \item \(\Cor(X,Y) = -1\) iff there exists \(a \in \bR\) and \(b < 0\) such that \(\bP(Y = a + bX) = 1\)
+    \item \(\Cor(X,Y) = 1\) iff there exists \(a \in \bR\) and \(b < 0\) such that \(\bP(Y = a + bX) = 1\)
+\end{enumerate}
+
+\subsection{Bivariate Transforms}
+\paragraph{Montone Probability Density}
+Let \(X\) be a random variable with density \(f_X\), if h is monotone over the set \(\{ x: f_X(x) > 0 \}\) then the probability density of \(Y := h(X)\) is given by 
+\[f_Y(y) = f_X(x) \left| \frac{dx}{dy} \right| = f_X \circ h^{-1}(y) \left|\frac{dh^{-1}(y)}{dy} \right|\]
+
+\paragraph{CDF Strictly Increasing}
+Suppose \(X\) has density \(f_X\) and its CDF \(F_X\) strictly increasing (once it is greater than zero) then \(Y := F_X(X) \sim \operatorname{Uniform}[0,1]\).
+
+\paragraph{Bivariate Transforms}
+Given random variable \(X\) and \(Y\), suppose \(U\) and \(V\) are transforms of \(X\) and \(Y\) taking value in \(\bR\), then
+\[f_{U,V}(u,v) = f_{X,Y}(x,y)|\det(J)|\]
+where \(\det(J)\) is the determintant of the Jacobian (of the inverse)
+\[J = \begin{pmatrix}
+    \dfrac{dx}{du} & \dfrac{dx}{dv} \\
+    \dfrac{dy}{du} & \dfrac{dy}{dv}
+\end{pmatrix}
+\]
+

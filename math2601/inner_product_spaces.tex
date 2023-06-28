@@ -1,0 +1,98 @@
+\section{Inner Product Spaces}
+\subsection{The Dot product in \texorpdfstring{\(\bR^p\)}{R\textasciicircum p}}
+
+\paragraph{Positive Definite}
+A bilinear \(\bF\)-valued map, \(T\), on \(\bF^p\) is positive definite if for all \(\va \in \bF^p, T(\va, \va) \geq 0\) and \(T(\va, \va) = 0\) if and only if \(\va = 0\).
+
+\paragraph{Cauchy-Schawrz Inequality in \(\bR^p\)}
+For any \(\va, \vb \in \bR^p\) we have
+\[-||\va||||\vb|| \leq \va \cdot \vb \leq ||\va||||\vb||.\]
+If \(\va \neq 0, \vb \neq 0\) then
+\[-1 \leq \frac{\va \cdot \vb}{||\va||||\vb||} \leq 1.\]
+
+\paragraph{Angle between Two Vectors}
+If \(\va, \vb \in \bR^n\) are non-zero then the angle \(\theta\) between \(\va\) and \(\vb\) is defined by 
+\[\cos \theta = \frac{\va \cdot \vb}{||\va||||\vb||}, \quad \theta \in [0, \pi]\]
+We call non-zero vectors \(\va\) and \(\vb\) orthogonal if \(\va \cdot \vb = 0\).
+
+\paragraph{Orthogonal Complement}
+Let \(X \leq \bR^p\) for some \(p\). The space
+\[Y = \{\vy \in \bR^p: \vy \cdot \vx = 0 \text{ for all } \vx \in X\}\]
+is called the orthogonal complement of \(X, X^\perp\)
+
+\paragraph{Orthogonal Sets}
+A set \(S = \{\vv_1, \dots, \vv_k\} \subseteq \bR^p\) of non-zero vectors is orthogonal if \(\vv_i \cdot \vj = 0, i \neq j\). We say \(S\) is orthonomral if \(\vv_i \cdot \vv_j = \delta_{ij} = \begin{cases}
+    0 & i \neq j \\
+    1 & \text{ else}
+\end{cases}\).
+
+An orthogonal set \(S\) in \(\bR^p\) is linearly independent.
+
+\paragraph{The Triangle Inequality}
+For \(\va, \vb \in \bR^p\) - \(||\va + \vb|| \leq ||\va|| + ||\vb||\).
+
+\subsection{Dot product in \texorpdfstring{\(\bC^p\)}{C\textasciicircum p}}
+\paragraph{Dot Product}
+The standard dot product on \(\bC^p\) is defined by
+\[\va \cdot \vb \sum_{i=1}^p \overline{a_i}b_i = \overline{\va}^T \vb.\]
+
+\paragraph{Notation}
+We will use \(\va^*\) as a useful shorthand for \(\overline{\va}^T\) from now on, so that \(\va \cdot \vb = \va^*\vb\).
+
+\paragraph{Properties of the Dot Product}
+The standard dot product on \(\bC^p\) has the following properties:
+\begin{enumerate}
+    \item \(\va \cdot (\lambda\vb + \vc) = \lambda\va \cdot \vb + \va \cdot \vc\) for \(\lambda \in \bC\).
+    \item \(\vb \cdot \va = \overline{\va \cdot \vb}\).
+    \item \((\lambda\vb + \vc) \cdot \va = \overline{\lambda}\vb \cdot \va + \vc \cdot \va\) for \(\lambda \in \bC\).
+    \item \(||\va|| \geq 0\) and \(||\va|| = 0 \iff \va = 0\).
+\end{enumerate}
+
+\subsection{Inner Product Spaces}
+\paragraph{Inner Product}
+If \(V\) is a vector space over \(\bF\) then an inner product on \(V\) is a function \(\langle,\rangle: V \times V \to \bF\), that is, for all \(\vu, \vv \in V \langle\vu, \vv \rangle \in \bF\), such that
+\begin{itemize}
+    \item [IP1] \(\innerproduct{\vu}{\vv + \vw} = \innerproduct{\vu}{\vv} + \innerproduct{\vu}{\vw}\).
+    \item [IP2] \(\innerproduct{\vu}{\alpha\vv} = \alpha\innerproduct{\vu}{\vv}\).
+    \item [IP3] \(\innerproduct{\vv}{\vu} = \overline{\innerproduct{\vu}{\vv}}\).
+    \item [IP4] \(\innerproduct{\vv}{\vv}\) is real and \(> 0\) if \(\vv \neq 0\) and \(= 0\) if \(\vv = 0\).
+\end{itemize}
+We call \(V\) with \(\langle , \rangle\) an inner product space.
+
+The norm of the vector is then \(\norm{\vv} = \innerproduct{\vv}{\vv}^{1/2}\).
+
+\paragraph{Properties of the Inner Product}
+Let \(V\) be an inner product space. Then for \(\vu, \vv, \vw \in V\) and \(\alpha \in \bC\):
+\begin{enumerate}
+    \item \(\norm{\vu} > 0\) if and only if \(\vu \neq 0\).
+    \item \(\innerproduct{\vu + \vv}{\vw} = \innerproduct{\vu}{\vw} + \innerproduct{\vv}{\vw}\).
+    \item \(\innerproduct{\alpha\vu}{\vv} = \overline{\alpha}\innerproduct{\vu}{\vv}\) and \(\norm{\alpha\vu} = |\alpha|\norm{\vu}\).
+    \item \(\innerproduct{\vx}{\vu} = 0\) for all \(\vu\) if and only if \(\vx = 0\).
+    \item \(|\innerproduct{\vu}{\vv} \leq \norm{\vu}\norm{\vv}\) (Cauchy - Schwarz inequality).
+    \item \(\norm{\vu}{\vv} \leq \norm{\vu} + \norm{\vv}\) (The Triangle Inequality).
+\end{enumerate}
+
+\subsection{Orthogonality and Orthonormality}
+\paragraph{Orthogonal}
+Let \(V\) be an inner product space. Non-zero vectors \(\vu\) and \(\vv\) are orthogonal if \(\innerproduct{u}{v} = 0;\) we will use the notation \(\vu \perp \vv\) for this.
+
+A set \(S = \{\vv_1, \dots, \vv_k\} \subseteq V\) of non-zero vectors is orthogonal if \(\innerproduct{\vv_i}{\vv_j} = 0, i \neq j\).
+
+\paragraph{Orthonormal}
+We say \(S\) is orthonormal if \(\innerproduct{\vv_i}{\vv_j} = \delta_{ij} = \begin{cases}
+    1 & i = j \\
+    0 & i \neq j
+\end{cases}\).
+
+\paragraph{Projection}
+In inner product space \(V\) let \(\vv \neq \vzero\). The projection of \(\vu \in V\) onto \(\vv\) is defined as
+\[\proj_\vv(\vu) = \frac{\innerproduct{\vv}{\vu}}{\innerproduct{\vv}{\vv}}\vv.\]
+Note: \(\vu - \alpha\vv \perp \vv \iff \vu - \alpha\vv = \vu - \proj_\vv\vu\).
+
+\paragraph{Orthogonal and Orthonomral Sets}
+If \(S = \{\vv_1, \dots, \vv_k\}\) is an orthogonal set of non-zero vectors in inner product space \(V\) and \(\vv \in \spans(S)\) then \(\vv = \sum_{i=1}^k \proj_{\vv_i}\vv\).
+
+If \(S\) is an orthonormal set \(\vv = \sum_{i=1}^k \innerproduct{\vv_i}{\vv}\vv_i\).
+
+\paragraph{Orthonormal Basis}
+If \(\{\ve_1, \dots, \ve_n\}\) is an orthonormal basis for \(V\) then \(\vv = \sum_{i=1}^n \innerproduct{\ve_i}{\vv}\ve_i\).
