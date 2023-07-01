@@ -1,0 +1,53 @@
+\section{Central Limit Theorem}
+
+\subsection{Central Limit Theorem}
+\paragraph{Central Limit Theorem}
+Let \((X_n)_{n\in \bN_+}\) be an independent identically distributed sequence of random variables with common mean \(\mu = \bE(X_1)\) and variance \(\sigma^2 = \Var(X_1) < \infty\). Let \(\overline{X}_n = \frac{1}{n} \sum_{i=1}^n X_i\) then
+\[\frac{\overline{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} Z \sim \mathcal{N}(0,1)\]
+
+\subsection{Convergences}
+\paragraph{Convergence in Distribution}
+Let \((X_i)_{i \in \bN_+}\) be a sequence of random variables, we say that \(X_n\) converges to \(X\) in distribution if for all \(x\), for which \(F_X(x)\) is continuous
+\[\lim_{n\to\infty} F_{X_n}(x) = F_X(x).\]
+In this case, we write \(X_n \xrightarrow{d} X.\)
+
+\paragraph{Convergence of Moment Generating Functions and Existence of CDF}
+Let \((X_n)_{n\in \bN_+}\) be a sequence of r.v each with moment generating function \(M_{X_n}(t)\). Suppose that 
+\[M(t) = \lim_{n \to \infty} M_{X_n}(t)\]
+exists then there exists an unique valid cumulative distribution function \(F\) and r.v \(X\) such that \(F_X = F\).
+
+\paragraph{Convergence of Random Variables}
+A sequence of random variables \((X_n)_{n=1,\dots,}\) converges in probability to a r.v \(X\) if for all \(\epsilon > 0\),
+\[\lim_{n \to \infty} \bP(|X_n - X| > \epsilon) = 0\]
+and we write \(X_n \xrightarrow{\bP} X\).
+
+\paragraph{Law of Large Numbers}
+Let \((X_n)_{n \in \bN}\) be a sequence of independent r.vs with mean \(\mu\) and finite variance \(\sigma^2\), we set \(\overline{X}_n = \frac{1}{n}\sum_{i=1}^n X_i\), then
+\[\overline{X}_n \xrightarrow{\bP}\mu\]
+
+(Strong Version): Same Thing but using \textit{almost surely} probability for convergence.
+
+\paragraph{Equal Almost Surely}
+Two random variables \(X\) and \(Y\) are said to be equal almost surely if \(\bP(Y = X) = 1\) and we write \(X = Y\) a.s.
+
+\paragraph{Almost Surely Convergence}
+Given a random variable \(X\), a sequence \((X_n)_{n \in\bN}\) converges to almost surely to \(X\), if
+\[\bP(\lim_{n\to 0} X_n = X) = 1\]
+and we write \(X \xrightarrow{a.s} X\).
+
+\paragraph{Convergence in \(L^p\)}
+A sequence of random variables \((X_i)_{i \in \bN_+}\) is said to converge in \(L^p\) to another random variable \(X\) if for \(p \geq 1\),
+\[\lim_{n \to \infty} \bE(|X_n - X|^p) = 0\]
+in particular, if \(p = 2\), we say that \(X_n\) converges to \(X\) in the mean square sense.
+
+\paragraph{Convergence in \(L^p\) and Probability}
+Suppose \((X_n)_{n \in \bN}\) is a sequence of r.vs converging to \(X\) in \(L^p\) for \(p \geq 1\), then \(X_n\) converges to \(X\) in probability.
+\[X_n \xrightarrow{L^p} X \implies X_n \xrightarrow{\bP} X\]
+
+\paragraph{Convergence in Probability and Distribution}
+Convergence in probability implies convergence in distribution. That is given \(X\) and a sequence \((X_n)_{n \in\bN_+}\),
+\[X_n \xrightarrow{a.s.} X \implies X_n \xrightarrow{\bP} X \implies X_n \xrightarrow{d} X\]
+
+\paragraph{Convergence Remark}
+We have shown the following implications
+\[X_n \xrightarrow{L^p} X \implies X_n \xrightarrow{\bP} X \implies X_n \xrightarrow{d} X\]

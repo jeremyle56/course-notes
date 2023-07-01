@@ -96,3 +96,97 @@ If \(S\) is an orthonormal set \(\vv = \sum_{i=1}^k \innerproduct{\vv_i}{\vv}\vv
 
 \paragraph{Orthonormal Basis}
 If \(\{\ve_1, \dots, \ve_n\}\) is an orthonormal basis for \(V\) then \(\vv = \sum_{i=1}^n \innerproduct{\ve_i}{\vv}\ve_i\).
+
+\subsection{The Gram-Schmidt Process}
+\paragraph{Gram-Schmidt Process}
+Every finite dimensional inner product space has an orthonomral basis.
+
+The process uses this idea to transform any basis into an orthnoromal basis. Suppose \(S = \{\vv_1, \dots, \vv_p\}\) is a basis for \(V\) over \(\bF\). Then
+\begin{align*}
+    \vw_1 & = \vv_1 \\
+    \vw_2 & = \vv_2 - \proj_{\vw_1}(\vv_2) \\
+    \vw_3 & = \vv_3 - \proj_{\vw_1}(\vv_3) - \proj_{\vw_2}(\vv_3) \\
+    \vdots &  \qquad \vdots \quad \dots\dots\dots\dots\dots \quad \vdots  \\
+    \vw_{k+1} & = \vv_{k+1} - \sum_{j=1}^k \proj_{\vw_j}(\vv_{k+1})
+\end{align*}
+where \(W = \{\vw_1, \dots, \vw_k\}\) forms an orthonomal basis.
+
+\subsection{Orthogonal Complements}
+\paragraph{Orthogonal Complement}
+Let \(X \leq V\) for some inner product space \(V\). The space
+\[Y = \{\vy \in V: \innerproduct{\vy}{\vx} = 0 \quad \text{ for all } \vx \in X\}\]
+is called the orthogonal complement of \(X, X^\perp\).
+
+\paragraph{Existence of Orthogonal Complement}
+Suppose \(V\) is a finite dimensional inner product space, \(W \leq V\) and \(\vv \in V\) then
+\[\vv = \va + \vb, \va \in W, \vb \in W^\perp\]
+where \(\va\) and \(\vb\) are unique.
+
+\paragraph{Properties of the Projection}
+In finite dimensional product space \(V\) with \(W \leq V\):
+\begin{itemize}
+    \item If \(\vv \in V\) then \(\vv - \proj_\vw(\vv)\) is in \(W^\perp\).
+    \item If \(\vw \in W\) then \(\proj_W(\vw) = \vw\). Consequently, the projection mapping is idempotent: that is, \((\proj_W) \circ (\proj_W) = \proj_W\).
+    \item For all \(\vw \in V\) we have \(||\proj_W(\vv) || \leq ||v||\).
+    \item The function \(\proj_W + \proj_{(W^\perp)}\) is the identity function of \(V\).
+\end{itemize}
+
+\paragraph{Length Inequality}
+Let \(W\) be a subspace of a finite-dimensional inner product space \(V\), and let \(\vv \in V\). For every \(\vw \in W\) we have
+\[||\vv - \vw|| \geq ||\vv - \proj_W(\vv)||,\]
+with equality if and only if \(\vw = \proj_W(\vv), i.e. \vv - \vw \in W^\perp\).
+
+\subsection{Adjoints}
+\paragraph{Linear Maps}
+If \((V, \innerproduct{}{})\) is a finite dimensional inner product space and \(T:V \to \bF\) is linear then there is a unique vector \(\vt \in V\) such that for all \(\vv \in V, T(\vv) = \innerproduct{\vt}{\vv}\).
+
+\paragraph{Adjoint Linear Maps}
+For any linear map \(T: V \to W\) between finite-dimensional inner product spaces, there is a unique linear map \(T^*: W \to V\) called the adjoint of \(T\) with
+\[\innerproduct{\vw}{T(\vv)} = \innerproduct{T^*(\vw)}{\vv}\]
+for all \(\vv \in V\) and \(\vw \in W\).
+
+\paragraph{Identity Adjoint}
+For any inner product space, \(V\), the identity map on \(V\) is its own adjoint.
+
+\paragraph{Adjoint Properties}
+Suppose that \(V\) and \(W\) are finite-dimensional inner product spaces; let \(S\) and \(T\) be linear transformations from \(V\) to \(W\). Then
+\begin{enumerate}
+    \item \((S + T)^* = S^* + T^*\)
+    \item for any scalar \(\alpha\) we have \((\alpha T)^* = \overline{\alpha}T^*\);
+    \item \((T^*)^* = T\).
+    \item if \(U: W \to X\) is linear then \((U \circ T)^* = T^* \circ U^*\)
+\end{enumerate}
+
+\paragraph{Change of Basis}
+Let \(V\) and \(W\) be finite-dimensional inner product spaces with orthonormal bases \(\mathcal{B}\) and \(\mathcal{C}\) respectively. If \(A\) is the matrix of the linear transformation \(T: V \to W\) with respect to bases \(\mathcal{B}\) and \(\mathcal{C}\), then the matrix of \(T^*: W \to V\) with respect to bases \(\mathcal{C}\) and \(\mathcal{B}\) is the adjoint of \(A\).
+
+\subsubsection{Maps with Special Adjoints}
+\paragraph{Unitary, Isometry and Self-Adjoint}
+Let \(T: V \to V\) be a linear map on a finite-dimensional inner product space \(V\). The \(T\) is said to be 
+\begin{itemize}
+    \item unitary if \(T^* = T^{-1}\)
+    \item an isometry if \(||T(\vv)|| = ||\vv||\) for all \(\vv \in V\);
+    \item self-adjoint or Hermitian if \(T^* = T\).
+\end{itemize}
+
+\paragraph{Unitary Properties}
+\begin{enumerate}
+    \item A map \(T\) is unitarty if and only if \(T^*\) is unitary.
+    \item The set of all unitary transformations on \(V\) forms a group under composition.
+\end{enumerate}
+
+\paragraph{Unitary and Isometry Maps}
+Let \(T\) be a linear map on a finite-dimensional inner product space \(V\). Then the following are equivalent:
+\begin{enumerate}
+    \item \(T\) is an isometry;
+    \item \(\innerproduct{T(\vv)}{T(\vw)} = \innerproduct{\vv}{\vw}\) for all \(\vv, \vw \in V\) (i.e. \(T\) preserves inner products);
+    \item \(T\) is unitary (i.e. \(T^* \circ T\) is the identity);
+    \item \(T^*\) is an isometry;
+    \item if \(\{\ve_1, \dots, \ve_n\}\) is an orthonormal basis for \(V\) then so is \(\{T(\ve_1), \dots, T(\ve_n)\}\).
+\end{enumerate}
+
+\paragraph{Unitary, Hermitian, Orthogonal and Symmetric Matrices}
+A matrix \(A \in M_{p,p}(\bC)\) is called unitary if \(A^* = A^{-1}\) and Hermitian if \(A^* = A\). A matrix \(A \in M_{p,p}(\bR)\) is called orthogonal if \(A^T = A^{-1}\) and symmetric if \(A^T = A\).
+
+\paragraph{Orthonormal Basis and Unitary}
+The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bC^p\) if and only if \(A\) is unitary. The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bR^p\) if and only if \(A\) is orthogonal. The same result apply to rows.
