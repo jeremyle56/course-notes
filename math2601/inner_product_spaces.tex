@@ -190,3 +190,14 @@ A matrix \(A \in M_{p,p}(\bC)\) is called unitary if \(A^* = A^{-1}\) and Hermit
 
 \paragraph{Orthonormal Basis and Unitary}
 The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bC^p\) if and only if \(A\) is unitary. The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bR^p\) if and only if \(A\) is orthogonal. The same result apply to rows.
+
+\subsection{QR Factorisations}
+\paragraph{QR Factorisation}
+If \(A\) is \(p \times q\) of rank \(q\) so (\(p \geq q\)) then we can write \(A = QR\) where \(Q\) is an \(p \times q\) matrix with orthonormal columns, and \(R\) is an \(q \times q\) invertible upper triangular matrix.
+
+\paragraph{QR Factorisation with \(\Tilde{Q}\) Square Matrix}
+Let \(A \in M_{p,q}(\bF)\) with \(p > q\) and \(\rank(A) = q\). Then we can write \(A = \Tilde{Q}\Tilde{R}\), with \(\Tilde{Q}\) being \(p \times p\) unitary (or orthogonal), and \(\Tilde{R}\) being \(p \times q\), of rank \(q\) and in echelon form.
+
+\subsection{Least Squares}
+\paragraph{Normal Equations}
+A least squares solution to the system of equations \(A\vx = \vb\) is a solution to the equations \(A^* A\vx = A*\vb\) which are known as the normal equations.

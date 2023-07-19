@@ -51,3 +51,32 @@ Convergence in probability implies convergence in distribution. That is given \(
 \paragraph{Convergence Remark}
 We have shown the following implications
 \[X_n \xrightarrow{L^p} X \implies X_n \xrightarrow{\bP} X \implies X_n \xrightarrow{d} X\]
+
+\subsection{Applications of the Central Limit Theorem}
+\paragraph{Normal approximation to Binomial Distribution}
+Suppose \(X \sim \Binomial(n,p)\) then
+\[\frac{X - np}{\sqrt{np(1-p)}} \xrightarrow{d} \Normal(0,1)\]
+
+\paragraph{Convergence to Constant in Distribution and Probability}
+Suppose the sequence of r.vs \((X_n)_{n\in\bN}\) converges to a constant \(c\) in distribution, then \((X_n)_{n\in\bN}\) converges to a constant \(c\) in probability. That is
+\[X_n \xrightarrow{d} c \implies X_n \xrightarrow{\bP}c\]
+
+\paragraph{Continuous Mapping Lemma}
+Suppose \(X_n \xrightarrow{\bP}X\) in probability then for any continuous function, \(g, g(X_n) \xrightarrow{\bP}g(X)\).
+
+\paragraph{Slutsky' Theorem}
+Let \((X_n)_{n\in\bN_+}\) be a sequence of r.vs converging to \(X\) in distribution and \((Y_i)_{i\in\bN_+}\) is another sequence of r.vs that converges in probability to a constnat \(c\), then
+\begin{enumerate}
+    \item \(X_n + Y_n \xrightarrow{d} X + c\)
+    \item \(X_nY_n \xrightarrow{d} Xc\)
+\end{enumerate}
+
+\subsection{Delta Method}
+\paragraph{Delta Method}
+Let \(\frac{(X_n - \theta)}{\sigma - \sqrt{n}} \xrightarrow{d} Z \sim \Normal(0,1)\) and \(g\) is differentiable in a neighbourhood of \(\theta\) and \(g'(\theta) \neq 0\) then
+\[\sqrt{n}(g(X_n) - g(\theta)) \xrightarrow{d} \Normal(0, \sigma^2[g'(\theta)]^2)\]
+
+\paragraph{Extend Delta Method}
+Let \(\frac{(X_n - \theta)}{\sigma - \sqrt{n}} \xrightarrow{d} Z \sim \Normal(0,1)\) and \(g\) is \(k\)-times differentiable in a neighbourhood of \(\theta\) and \(g^{(r)}(\theta) = 0\) for all \(r < k \in \bN\) then
+\[n^{\frac{k}{2}}(g(Y_n) - g(\theta)) \xleftarrow{d} \frac{1}{k!}g^{(k)}(\theta)Z^k\]
+As a special case, for \(k = 2\), we have that the limiting distribution is \(\mathcal{X}^2\).

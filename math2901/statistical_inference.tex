@@ -1,0 +1,27 @@
+\section{Statistical Inference}
+
+\subsection{Data and Models}
+\paragraph{Samples and Data}
+We have a sequence of (random) observations \((X_1, \dots, X_n)\) which is called a set of random samples and \((x_1, \dots, x_n)\) the sample data. The aim is usually to find appropriate models to describe this sequence of random observations.
+
+\paragraph{Parametric Models and Space}
+A parametric model for a random sample \((X_1, \dots, X_n)\) is a family of probability/density functions \(f(x:\theta)\) where \(\theta \in \Theta\), where \(\Theta \subset \bR^d\) is called the parameter space.
+
+\subsection{Estimators}
+\paragraph{Estimators}
+Suppose \((X_1, \dots, X_n) \sim \{f_X(x;\theta), \theta \in \Theta\}\). An estimator of \(\theta\), denoted by \(\hat{\theta}_n\) is any real valued function of \(X_1, \dots, X_n\), that is
+\[\hat{\theta}_n = \hat{\theta}_n(X_1, \dots, X_n) = g(X_1, \dots, X_n)\]
+where \(g: \bR^n \to \bR\).
+\begin{itemize}
+    \item An estimator of a parameter is a random variable! It is a function of the random variables \((X_1, \dots, X_n)\).
+    \item An estimator also has its own probability distribution and can be computed from the distribution of \((X_1, \dots, X_n)\).
+\end{itemize}
+
+\paragraph{Bias}
+Let \(\hat{\theta}\) be an estimator of the parameter \(\theta\). The bias of the estimator \(\hat{\theta}\)s defined to be
+\[\Bias(\hat{\theta}) = \bE(\hat{\theta}) - \theta.\]
+If \(\Bias(\hat{\theta}) = 0\), then \(\hat{\theta}\) is aid to be an unbiased estimator of \(\theta\).
+
+\paragraph{Student \(t\)-distribution}
+A random variable \(T\) is said to have \(t\)-distribution with degree of freedom \(\nu\), if its probability density function
+\[f_T(x) = \frac{\Gamma(\frac{\nu}{2})}{\Gamma(\nu / 2)\Gamma(1 / 2)}\nu^{-1/2}\left(1 + \frac{x^2}{\nu}\right)^{-(\nu+1)/2}, \quad x\in (-\infty, \infty)\]

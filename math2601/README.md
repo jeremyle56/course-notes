@@ -5,3 +5,5 @@
 - [Vector Spaces](./vector_spaces.tex)
 - [Linear Transformations](./linear_transformations.tex)
 - [Inner Product Spaces](./inner_product_spaces.tex)
+- [Determinants](./determinants.tex)
+- [Eigenvalues and Eigenvectors](./eigenvalues_eigenvectors.tex)
