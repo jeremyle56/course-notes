@@ -16,8 +16,8 @@ Notes are deployed at: https://jeremyle56.github.io/course-notes/
 
 ## 2023 T2
 
-- [MATH2601 (Higher Linear Algebra)](./math2601/MATH2601.pdf)
-- [MATH2901 (Higher Theory of Statistics)](./math2901/MATH2901.pdf)
+- [MATH2601 (Higher Linear Algebra)](./math2601/math2601.pdf)
+- [MATH2901 (Higher Theory of Statistics)](./math2901/math2901.pdf)
 
 ### Issues
 
