@@ -26,7 +26,7 @@ Suppose \(F_X\) is a cumulative distribution function of \(X\), then
 A r.v \(X\) is said to be discrete if the image of \(X\) consists of countable many values \(x\), for which \(\bP(X = x) > 0\).
 
 \paragraph{Discrete Probability Function}
-The probability function of a discrete r.v \(X\) is the function \(\grad F_X(x) = \bP(X = x)\) and satisfies
+The probability function of a discrete r.v \(X\) is the function \(\nabla F_X(x) = \bP(X = x)\) and satisfies
 \[\sum_{\text{all possible } x} \bP(X = x) = 1\]
 
 \paragraph{Continuous Random Variables}
@@ -59,7 +59,7 @@ For any continuous random variable \(X\) with the density \(f_X\),
 The expectation of a r.v \(X\) is denoted by \(\bE(X)\) and it is computed by 
 \begin{enumerate}
     \item Let \(X\) be a discrete r.v. then 
-    \[\bE(X) := \sum_{\text{all possible } x} x\bP(X = x) = \sum_{\text{all possible} x} x\grad F_X(x)\]
+    \[\bE(X) := \sum_{\text{all possible } x} x\bP(X = x) = \sum_{\text{all possible} x} x\nabla F_X(x)\]
     \item Let \(X\) be a continuous r.v. with density function \(f_X(x)\) then
     \[\bE(x) := \int_{-\infty}^\infty xf_X(x) \, dx\]
 \end{enumerate}
