@@ -17,7 +17,6 @@ Let \(\bF\) be a field. A vector space over the field \(\bF\) consists of an abe
 \end{enumerate}
 
 \paragraph{Properties and Notation for Vector Spaces}
-\(\vec{dsdfa}\)
 \begin{enumerate}
     \item There are ten axioms here: 5 from the abelian group, closure of scalar multiplication and the four explicit ones.
     \item Addition in \(V\) is called vector addition to distinguish it from the addition in \(\bF\).
@@ -28,9 +27,9 @@ Let \(\bF\) be a field. A vector space over the field \(\bF\) consists of an abe
 \paragraph{Vector Space Lemma}
 Let \(V\) be a vector space over a field \(\bF\). For all \(\vv, \vw\) in \(V\) and \(\lambda \in \bF\):
 \begin{enumerate}
-    \item \(0\vv = \zero\) and \(\lambda\zero = \zero\).
+    \item \(0\vv = \vzero\) and \(\lambda\vzero = \vzero\).
     \item \((-1)\vv = -\vv\).
-    \item \(\lambda\vv = \zero\) implies either \(\lambda = 0\) or \(\vv = \zero\).
+    \item \(\lambda\vv = \vzero\) implies either \(\lambda = 0\) or \(\vv = \vzero\).
     \item if \(\lambda\vv = \lambda\vw\) and \(\lambda \neq 0\) then \(\vv = \vw\).
 \end{enumerate}
 
@@ -60,14 +59,199 @@ The set of all polynomials with coefficients in \(\bF, \mathcal{P}(\bF)\), is a 
 (f+g)(x) & = f(x) + g(x) \quad \text{for all } x \in \bF \\
 (\lambda f)(x) & = \lambda f(x) \quad \text{for all } \lambda, x \in \bF
 \end{align*}
-Similarly, \(\mathcal{P}_n(F)\) (polynomials of degree \(n\) or less) is a vector space over \(\bF\).
+Similarly, \(\mathcal{P}_n(\bF)\) (polynomials of degree \(n\) or less) is a vector space over \(\bF\).
 
 \paragraph{Function Spaces}
 Let \(X\) be a non-empty set and \(\bF\) be a field. Then define
 \[\mathcal{F}[X] = \{ f: X \to \bF \}.\]
 The set \(\mathcal{F}[X]\) is a vector space over \(\bF\) if we define
 \begin{itemize}
-    \item the zero in \(\mathcal{F}[X]\) to be the zero function: \(x \to 0\) for all \(x \in X\)
+    \item the vzero in \(\mathcal{F}[X]\) to be the vzero function: \(x \to 0\) for all \(x \in X\)
     \item \((f + g)(x) = f(x) + g(x)\) for all \(x \in X\)
     \item \((\lambda f)(x) = \lambda(f(x))\) for all \(x \in X\)
 \end{itemize}
+
+\paragraph{Exotic Example}
+Let \(V = \bR^+\), the set of positive real numbers. Define addition and scalar multiplication on \(V\) by 
+\[\vv \, \oplus \, \vw = \vv\vw, \qquad \alpha \, \otimes \, \vv = \vv^\alpha\]
+Then with these operations, \(V\) is a vector space over \(\bR\) whose addition and multiplication and whose scalar multiplication is exponentiation.
+
+\subsection{Subspaces}
+\paragraph{Subspaces} 
+If \(V\) is a vector space over \(\bF\) and \(U \subseteq V\), then \(U\) is a subspace of \(V\), written \(U \leq V\), if it is a vector space over \(\bF\) with the same addition and scalar multiplication as in \(V\).
+
+Every vector space has \(\{\vzero\}\) (the trivial subspace) and itself as subspaces.
+
+\paragraph{Subspace Test Lemma}
+Suppose \(V\) is a vector space over the field \(\bF\) and \(U\) is a non-empty subset of \(V\). Then \(U\) is a subspace of \(V\) if and only if for all \(\vu, \vv \in U\) and \(\alpha \in \bF, \alpha\vu + \vv \in U\).
+
+\subsection{Linear Combinations, Spans and Independence}
+\paragraph{Linear Combination}
+Let \(V\) be a vector space over \(\bF\). A (finite) linear combination of vectors \(\vv_1, \vv_2, \dots, \vv_n\) in \(V\) is any vector which can be expressed 
+\[\alpha_1\vv_1 + \alpha_2\vv_2 + \cdots + \alpha_n\vv_n\]
+where the \(\alpha_k\) are scalars.
+
+\paragraph{Span} 
+If \(S\) is a subset of \(V\), then the span of is
+\[\spans(S) = \{ \text{ all finite linear combinations of vectors in } S \}.\]
+We say that \(S\) spans \(V\), or is a spanning set for \(V\), if \(\spans(S) = V\).
+
+If \(S\) is a non-empty subset of a vector space \(V\), then \(\spans(S)\) is a subspace of \(V\).
+
+\paragraph{Linear Independence}
+A subset \(S\) of a vector space \(V\) is linearly independent if for all vectors \(\vv_1, \vv_2, \dots, \vv_n\) in \(S\) (with \(n \geq 1\)) the equation
+\[\alpha_1\vv_1 + \alpha_2\vv_2 + \cdots + \alpha_n\vv_n = \vzero\]
+with \(\alpha_i \in \bF\), implies \(\alpha_i = 0\) for all \(i = 1 \dots n\).
+
+\paragraph{Linear Dependence Lemma}
+If \(S = \{\vv_1, \dots, \vv_n\}\) is a linearly dependent set of non-zero vectors in \(V\) then there is an \(i, 2 \leq i \leq k\) such that 
+\[\vv_i = \sum_{j=1}^{i-1} \beta_j\vv_j.\]
+In other words in a ordered linearly dependent set at least one vector is a linear combination of its predecessors.
+
+\paragraph{Properties of Linear Independence, Dependence and Spanning Sets}
+In any vector space
+\begin{enumerate}
+    \item Any subset of a linearly independent set is linearly independent.
+    \item \begin{enumerate}
+        \item If \(\vv \in \spans(S)\) and \(\vv \notin S\), then \(S \cup \{\vv\}\) is linearly dependent.
+        \item If \(S\) is linearily independent and \(S \cup \{\vv\}\) is linearly dependent then \(v \in \spans(S)\).
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item If \(S_1 \subseteq S_2\), then \(\spans(S_1) \subseteq \spans(S_2)\).
+        \item If \(S_1 \subseteq \spans(S_2)\), then \(\spans(S_1) \subseteq \spans(S_2)\).
+    \end{enumerate}
+    \item \(\spans(S \cup \{\vv\}) = \spans(S)\) if and only if \(\vv \in \spans(S)\).
+    \item If \(S\) is linearly dependent, then there is a vector \(\vv\) in \(S\) such that \(\spans(S \setminus \{\vv\}) = \spans(S)\).
+    \item In \(\bF^p\), if \(P \in \GL(p, \bF)\) is an invertible matrix and \(\{\vv_i\}\) linearly independent, then the set \(\{P\vv_i\}\) is also linearly independent. 
+\end{enumerate}
+
+\subsection{Bases}
+Let \(S \subseteq V\). The set \(S\) is a basis for \(V\) over \(\bF\) if and only if \(V = \spans(S)\), and \(S\) is a linearly independent set.
+
+\subsubsection{Examples of Bases}
+\paragraph{\(\bF^n \text{ over } \bF\)}
+The standard basis of \(\bF^n\) as a vector space over \(\bF\) is \(\basis = \{\mathbf{e}_i : 1 \leq i \leq n\}\) where
+\[\mathbf{e}_i = \begin{pmatrix}
+    0 \\
+    \vdots \\
+    0 \\
+    1 \\
+    0 \\
+    \vdots \\
+    0
+\end{pmatrix}
+\leftarrow i\text{th place, written }
+\begin{pmatrix}
+    \phantom{0} \\
+    \phantom{0} \\
+    1 \\
+    \phantom{0} \\
+    \phantom{0}
+\end{pmatrix}
+\leftarrow i
+\]
+We also use \(\vi, \vj, \vk\) as the standard basis of \(\bR^3\).
+
+\paragraph{Matrix Spaces}
+Define the matrices 
+\[E_{ij} = (e_{hl}) = \begin{cases}
+    1 & h = 1 \text{ and } l = j. \\
+    0 & \text{ otherwise.}
+\end{cases}\]
+The set 
+\[\basis = \{E_{ij} : 1 \leq i \leq p, 1 \leq j \leq q\},\]
+is the standard basis of \(M_{p,q}(\bF)\) as a vector space over \(\bF\).
+
+\paragraph{Polynomial Spaces}
+The standard basis of \(\mathcal{P}_n(\bF)\) as a vector space over \(\bF\) is 
+\[\basis = \{1, t, \dots, t^n \}.\]
+
+\paragraph{Function Spaces}
+The space \(\mathcal{F}(X)\) has no obvious basis unless \(X\) is finite. 
+
+Let \(X = \{a_1, \dots, a_n \}\), and for each \(i\) for \(i = 1, \dots, n\) define \(f_i : X \to \bF\) by
+\[f_i(a_j) = \delta_{ij} = \begin{cases}
+    1 & \text{ if } i = j \\
+    0 & i \neq j
+\end{cases}\]
+The set \(\basis = \{f_1, f_2, \dots, f_n\}\) is a basis for \(\mathcal{F}(X)\). 
+
+(We call the \(\delta_{ij}\) defined here the Kronecker delta symbol.)
+
+\paragraph{Fields}
+The set \(\{1,i\}\) is a basis for \(\bC\) as a vector space over \(\bR\). Similarly, \(\bQ(\sqrt{2})\) as a vector space over \(\bQ\) has a basis \(\{1, \sqrt{2}\}\).
+
+\subsection{Dimension}
+\paragraph{Elements of Bases}
+If vector space \(V\) admits a finite spanning set, it admits a finite basis and all bases contain the same number of elements.
+
+\paragraph{Basis and Spanning Sets}
+Let \(V\) be a vector space over \(\bF\) and \(S\) a finite spanning set. Then \(S\) contains a finite basis for \(V\).
+
+\paragraph{The Exchange Lemma} 
+Suppose that \(S\) is a finite spanning set for \(V\) and that \(T\) is a (finite) linearly independent subset of \(V\) with \(|T| \leq |S|\). Then there is a spanning set \(S'\) of \(V\) such that 
+\[T \subseteq S' \text{ and } |S'| = |S|.\]
+
+\paragraph{Independent Set Size}
+If \(S\) is a finite spanning set for a vector space \(V\) and \(T\) is a linearly independent subset of \(V\), then \(T\) is finite and \(|T| \leq |S|\).
+
+In other words, independent sets are no larger than spanning sets.
+
+\paragraph{Linearly Independent Sets to Basis}
+Let \(V\) be a vector space over \(\bF\) with a finite spanning set and \(T\) a linearly independent subset of \(V\). Then there is a basis \(B\) of \(V\) which contains \(T\).
+
+\paragraph{Dimension}
+The dimension of a vector space \(V\) is the size of a basis if \(V\) has a finite basis or infinity otherwise. The notation is \(\dim(V) = n\) or \(\dim(V) = \infty\).
+
+\paragraph{Properties}
+Let \(V\) be a finite dimensional vector space and suppose \(\dim(V) = n\).
+\begin{enumerate}
+    \item The number of elements in any spanning set is at least \(n\).
+    \item The number of elements in any independent set is no more than \(n\).
+    \item If \(\spans(S) = V\) and \(|S| = n\) then \(S\) is a basis.
+    \item If \(S\) is a linearly independent set and \(|S| = n\) then \(S\) is a basis.
+\end{enumerate}
+
+\paragraph{Combinations, Spanning and Independence}
+Let \(V\) be a finite dimensional vector space over \(\bF\). Then \(\basis = \{\vv_1, \dots, \vv_n\}\) is a basis for \(V\) if and only if every \(\vx \in V\) can be written uniquely as \(\vx = \sum_{i=1}^n \alpha_i\vv_i, \alpha_1 \in \bF\).
+
+\subsection{Coordinates}
+\paragraph{Coordinate}
+Suppose \(V\) is a vector space of dimension \(n\) over \(\bF\) and \(\basis = \{\vv_1, \dots, \vv_n\}\) is an ordered basis of \(V\) over \(\bF\). If \(\vv \in V\) then \(\vv = \sum_{i=1}^n \alpha_i\vv_i\) with the \(\alpha_i\) unique.
+
+We call \(\alpha = \begin{pmatrix}
+    \alpha_1 \\
+    \vdots \\
+    \alpha_n
+\end{pmatrix}\) the coordinate vector of \(\vv\) with respect to \(\basis\), and refer to the \(\alpha_i\) as the coordinates of \(\vv\). A useful notation is 
+\[\vec{\alpha} = [\vv]_\basis \text{ if } \vv = \sum_{i=1}^n \alpha_i\vv_i.\]
+
+\paragraph{Properties of Coordinates}
+\begin{enumerate}
+    \item \(\vu = \vv\) if and only if \([\vu]_\basis = [\vv]_\basis\) for all bases \(\basis\).
+    \item \([\vu + \vv]_\basis = [\vu]_\basis + [\vv]_\basis\) for any basis \(\basis\).
+    \item \([\lambda\vu]_\basis = \lambda[\vu]_\basis\) for any basis \(\basis\).
+\end{enumerate}
+
+\subsection{Sums and Direct Sums}
+\paragraph{Definitions}
+The sum \(S + T\) of two subspaces is defined as 
+\[S + T = \{\va + \vb : \va \in S, \vb \in T \}.\]
+If \(S \cap T = \{\vzero\}\) then we call the sum a direct sum and denote it as \(S \oplus T\). 
+
+\paragraph{Direct Sum}
+The sum of subspaces \(S\) and \(T\) is direct if and only if any vector \(\vx \in S + T\) can be written in a unique way as \(\vx = \va + \vb, \va \in S, \vb \in T\).
+
+\paragraph{Dimensions of Sum of Subspaces}
+Suppose \(S\) and \(T\) are finite dimensional subspaces of vector spaces \(V\). Then 
+\[\dim(S) + \dim(T) = \dim(S + T) + \dim(S \cap T).\]
+For a direct sum of finite dimensional spaces
+\[\dim(S) + \dim(T) = \dim(S \oplus T)\]
+
+\paragraph{Complementary Subspace}
+Let \(V\) be a finite dimensional vector space and \(X \leq V\). Then there is a subspace \(Y\) for which \(V = X \oplus Y\).
+
+\paragraph{External Direct Sum}
+Let \(X\) and \(Y\) be two vector spaces over the same field \(\bF\). The Cartesian product \(X \times Y\) can be made into a vector space over \(\bF\) with the obvious definitions
+\[(\vx_1, \vy_1) + (\vx_2, \vy_2) = (\vx_1 + \vx_2, \vy_1 + \vy_2) \quad \text{ and } \quad \lambda(\vx_1, \vy_1)v = (\lambda\vx_1, \lambda\vy_1)\]
+With this structure we call the Cartesian product the (external) direct sum of \(X\) and \(Y\), \(X \oplus Y\). 

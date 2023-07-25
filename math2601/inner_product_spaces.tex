@@ -1,0 +1,203 @@
+\section{Inner Product Spaces}
+\subsection{The Dot product in \texorpdfstring{\(\bR^p\)}{R\textasciicircum p}}
+
+\paragraph{Positive Definite}
+A bilinear \(\bF\)-valued map, \(T\), on \(\bF^p\) is positive definite if for all \(\va \in \bF^p, T(\va, \va) \geq 0\) and \(T(\va, \va) = 0\) if and only if \(\va = 0\).
+
+\paragraph{Cauchy-Schawrz Inequality in \(\bR^p\)}
+For any \(\va, \vb \in \bR^p\) we have
+\[-||\va||||\vb|| \leq \va \cdot \vb \leq ||\va||||\vb||.\]
+If \(\va \neq 0, \vb \neq 0\) then
+\[-1 \leq \frac{\va \cdot \vb}{||\va||||\vb||} \leq 1.\]
+
+\paragraph{Angle between Two Vectors}
+If \(\va, \vb \in \bR^n\) are non-zero then the angle \(\theta\) between \(\va\) and \(\vb\) is defined by 
+\[\cos \theta = \frac{\va \cdot \vb}{||\va||||\vb||}, \quad \theta \in [0, \pi]\]
+We call non-zero vectors \(\va\) and \(\vb\) orthogonal if \(\va \cdot \vb = 0\).
+
+\paragraph{Orthogonal Complement}
+Let \(X \leq \bR^p\) for some \(p\). The space
+\[Y = \{\vy \in \bR^p: \vy \cdot \vx = 0 \text{ for all } \vx \in X\}\]
+is called the orthogonal complement of \(X, X^\perp\)
+
+\paragraph{Orthogonal Sets}
+A set \(S = \{\vv_1, \dots, \vv_k\} \subseteq \bR^p\) of non-zero vectors is orthogonal if \(\vv_i \cdot \vj = 0, i \neq j\). We say \(S\) is orthonomral if \(\vv_i \cdot \vv_j = \delta_{ij} = \begin{cases}
+    0 & i \neq j \\
+    1 & \text{ else}
+\end{cases}\).
+
+An orthogonal set \(S\) in \(\bR^p\) is linearly independent.
+
+\paragraph{The Triangle Inequality}
+For \(\va, \vb \in \bR^p\) - \(||\va + \vb|| \leq ||\va|| + ||\vb||\).
+
+\subsection{Dot product in \texorpdfstring{\(\bC^p\)}{C\textasciicircum p}}
+\paragraph{Dot Product}
+The standard dot product on \(\bC^p\) is defined by
+\[\va \cdot \vb \sum_{i=1}^p \overline{a_i}b_i = \overline{\va}^T \vb.\]
+
+\paragraph{Notation}
+We will use \(\va^*\) as a useful shorthand for \(\overline{\va}^T\) from now on, so that \(\va \cdot \vb = \va^*\vb\).
+
+\paragraph{Properties of the Dot Product}
+The standard dot product on \(\bC^p\) has the following properties:
+\begin{enumerate}
+    \item \(\va \cdot (\lambda\vb + \vc) = \lambda\va \cdot \vb + \va \cdot \vc\) for \(\lambda \in \bC\).
+    \item \(\vb \cdot \va = \overline{\va \cdot \vb}\).
+    \item \((\lambda\vb + \vc) \cdot \va = \overline{\lambda}\vb \cdot \va + \vc \cdot \va\) for \(\lambda \in \bC\).
+    \item \(||\va|| \geq 0\) and \(||\va|| = 0 \iff \va = 0\).
+\end{enumerate}
+
+\subsection{Inner Product Spaces}
+\paragraph{Inner Product}
+If \(V\) is a vector space over \(\bF\) then an inner product on \(V\) is a function \(\langle,\rangle: V \times V \to \bF\), that is, for all \(\vu, \vv \in V \langle\vu, \vv \rangle \in \bF\), such that
+\begin{itemize}
+    \item [IP1] \(\innerproduct{\vu}{\vv + \vw} = \innerproduct{\vu}{\vv} + \innerproduct{\vu}{\vw}\).
+    \item [IP2] \(\innerproduct{\vu}{\alpha\vv} = \alpha\innerproduct{\vu}{\vv}\).
+    \item [IP3] \(\innerproduct{\vv}{\vu} = \overline{\innerproduct{\vu}{\vv}}\).
+    \item [IP4] \(\innerproduct{\vv}{\vv}\) is real and \(> 0\) if \(\vv \neq 0\) and \(= 0\) if \(\vv = 0\).
+\end{itemize}
+We call \(V\) with \(\langle , \rangle\) an inner product space.
+
+The norm of the vector is then \(\norm{\vv} = \innerproduct{\vv}{\vv}^{1/2}\).
+
+\paragraph{Properties of the Inner Product}
+Let \(V\) be an inner product space. Then for \(\vu, \vv, \vw \in V\) and \(\alpha \in \bC\):
+\begin{enumerate}
+    \item \(\norm{\vu} > 0\) if and only if \(\vu \neq 0\).
+    \item \(\innerproduct{\vu + \vv}{\vw} = \innerproduct{\vu}{\vw} + \innerproduct{\vv}{\vw}\).
+    \item \(\innerproduct{\alpha\vu}{\vv} = \overline{\alpha}\innerproduct{\vu}{\vv}\) and \(\norm{\alpha\vu} = |\alpha|\norm{\vu}\).
+    \item \(\innerproduct{\vx}{\vu} = 0\) for all \(\vu\) if and only if \(\vx = 0\).
+    \item \(|\innerproduct{\vu}{\vv} \leq \norm{\vu}\norm{\vv}\) (Cauchy - Schwarz inequality).
+    \item \(\norm{\vu}{\vv} \leq \norm{\vu} + \norm{\vv}\) (The Triangle Inequality).
+\end{enumerate}
+
+\subsection{Orthogonality and Orthonormality}
+\paragraph{Orthogonal}
+Let \(V\) be an inner product space. Non-zero vectors \(\vu\) and \(\vv\) are orthogonal if \(\innerproduct{u}{v} = 0;\) we will use the notation \(\vu \perp \vv\) for this.
+
+A set \(S = \{\vv_1, \dots, \vv_k\} \subseteq V\) of non-zero vectors is orthogonal if \(\innerproduct{\vv_i}{\vv_j} = 0, i \neq j\).
+
+\paragraph{Orthonormal}
+We say \(S\) is orthonormal if \(\innerproduct{\vv_i}{\vv_j} = \delta_{ij} = \begin{cases}
+    1 & i = j \\
+    0 & i \neq j
+\end{cases}\).
+
+\paragraph{Projection}
+In inner product space \(V\) let \(\vv \neq \vzero\). The projection of \(\vu \in V\) onto \(\vv\) is defined as
+\[\proj_\vv(\vu) = \frac{\innerproduct{\vv}{\vu}}{\innerproduct{\vv}{\vv}}\vv.\]
+Note: \(\vu - \alpha\vv \perp \vv \iff \vu - \alpha\vv = \vu - \proj_\vv\vu\).
+
+\paragraph{Orthogonal and Orthonomral Sets}
+If \(S = \{\vv_1, \dots, \vv_k\}\) is an orthogonal set of non-zero vectors in inner product space \(V\) and \(\vv \in \spans(S)\) then \(\vv = \sum_{i=1}^k \proj_{\vv_i}\vv\).
+
+If \(S\) is an orthonormal set \(\vv = \sum_{i=1}^k \innerproduct{\vv_i}{\vv}\vv_i\).
+
+\paragraph{Orthonormal Basis}
+If \(\{\ve_1, \dots, \ve_n\}\) is an orthonormal basis for \(V\) then \(\vv = \sum_{i=1}^n \innerproduct{\ve_i}{\vv}\ve_i\).
+
+\subsection{The Gram-Schmidt Process}
+\paragraph{Gram-Schmidt Process}
+Every finite dimensional inner product space has an orthonomral basis.
+
+The process uses this idea to transform any basis into an orthnoromal basis. Suppose \(S = \{\vv_1, \dots, \vv_p\}\) is a basis for \(V\) over \(\bF\). Then
+\begin{align*}
+    \vw_1 & = \vv_1 \\
+    \vw_2 & = \vv_2 - \proj_{\vw_1}(\vv_2) \\
+    \vw_3 & = \vv_3 - \proj_{\vw_1}(\vv_3) - \proj_{\vw_2}(\vv_3) \\
+    \vdots &  \qquad \vdots \quad \dots\dots\dots\dots\dots \quad \vdots  \\
+    \vw_{k+1} & = \vv_{k+1} - \sum_{j=1}^k \proj_{\vw_j}(\vv_{k+1})
+\end{align*}
+where \(W = \{\vw_1, \dots, \vw_k\}\) forms an orthonomal basis.
+
+\subsection{Orthogonal Complements}
+\paragraph{Orthogonal Complement}
+Let \(X \leq V\) for some inner product space \(V\). The space
+\[Y = \{\vy \in V: \innerproduct{\vy}{\vx} = 0 \quad \text{ for all } \vx \in X\}\]
+is called the orthogonal complement of \(X, X^\perp\).
+
+\paragraph{Existence of Orthogonal Complement}
+Suppose \(V\) is a finite dimensional inner product space, \(W \leq V\) and \(\vv \in V\) then
+\[\vv = \va + \vb, \va \in W, \vb \in W^\perp\]
+where \(\va\) and \(\vb\) are unique.
+
+\paragraph{Properties of the Projection}
+In finite dimensional product space \(V\) with \(W \leq V\):
+\begin{itemize}
+    \item If \(\vv \in V\) then \(\vv - \proj_\vw(\vv)\) is in \(W^\perp\).
+    \item If \(\vw \in W\) then \(\proj_W(\vw) = \vw\). Consequently, the projection mapping is idempotent: that is, \((\proj_W) \circ (\proj_W) = \proj_W\).
+    \item For all \(\vw \in V\) we have \(||\proj_W(\vv) || \leq ||v||\).
+    \item The function \(\proj_W + \proj_{(W^\perp)}\) is the identity function of \(V\).
+\end{itemize}
+
+\paragraph{Length Inequality}
+Let \(W\) be a subspace of a finite-dimensional inner product space \(V\), and let \(\vv \in V\). For every \(\vw \in W\) we have
+\[||\vv - \vw|| \geq ||\vv - \proj_W(\vv)||,\]
+with equality if and only if \(\vw = \proj_W(\vv), i.e. \vv - \vw \in W^\perp\).
+
+\subsection{Adjoints}
+\paragraph{Linear Maps}
+If \((V, \innerproduct{}{})\) is a finite dimensional inner product space and \(T:V \to \bF\) is linear then there is a unique vector \(\vt \in V\) such that for all \(\vv \in V, T(\vv) = \innerproduct{\vt}{\vv}\).
+
+\paragraph{Adjoint Linear Maps}
+For any linear map \(T: V \to W\) between finite-dimensional inner product spaces, there is a unique linear map \(T^*: W \to V\) called the adjoint of \(T\) with
+\[\innerproduct{\vw}{T(\vv)} = \innerproduct{T^*(\vw)}{\vv}\]
+for all \(\vv \in V\) and \(\vw \in W\).
+
+\paragraph{Identity Adjoint}
+For any inner product space, \(V\), the identity map on \(V\) is its own adjoint.
+
+\paragraph{Adjoint Properties}
+Suppose that \(V\) and \(W\) are finite-dimensional inner product spaces; let \(S\) and \(T\) be linear transformations from \(V\) to \(W\). Then
+\begin{enumerate}
+    \item \((S + T)^* = S^* + T^*\)
+    \item for any scalar \(\alpha\) we have \((\alpha T)^* = \overline{\alpha}T^*\);
+    \item \((T^*)^* = T\).
+    \item if \(U: W \to X\) is linear then \((U \circ T)^* = T^* \circ U^*\)
+\end{enumerate}
+
+\paragraph{Change of Basis}
+Let \(V\) and \(W\) be finite-dimensional inner product spaces with orthonormal bases \(\mathcal{B}\) and \(\mathcal{C}\) respectively. If \(A\) is the matrix of the linear transformation \(T: V \to W\) with respect to bases \(\mathcal{B}\) and \(\mathcal{C}\), then the matrix of \(T^*: W \to V\) with respect to bases \(\mathcal{C}\) and \(\mathcal{B}\) is the adjoint of \(A\).
+
+\subsubsection{Maps with Special Adjoints}
+\paragraph{Unitary, Isometry and Self-Adjoint}
+Let \(T: V \to V\) be a linear map on a finite-dimensional inner product space \(V\). The \(T\) is said to be 
+\begin{itemize}
+    \item unitary if \(T^* = T^{-1}\)
+    \item an isometry if \(||T(\vv)|| = ||\vv||\) for all \(\vv \in V\);
+    \item self-adjoint or Hermitian if \(T^* = T\).
+\end{itemize}
+
+\paragraph{Unitary Properties}
+\begin{enumerate}
+    \item A map \(T\) is unitarty if and only if \(T^*\) is unitary.
+    \item The set of all unitary transformations on \(V\) forms a group under composition.
+\end{enumerate}
+
+\paragraph{Unitary and Isometry Maps}
+Let \(T\) be a linear map on a finite-dimensional inner product space \(V\). Then the following are equivalent:
+\begin{enumerate}
+    \item \(T\) is an isometry;
+    \item \(\innerproduct{T(\vv)}{T(\vw)} = \innerproduct{\vv}{\vw}\) for all \(\vv, \vw \in V\) (i.e. \(T\) preserves inner products);
+    \item \(T\) is unitary (i.e. \(T^* \circ T\) is the identity);
+    \item \(T^*\) is an isometry;
+    \item if \(\{\ve_1, \dots, \ve_n\}\) is an orthonormal basis for \(V\) then so is \(\{T(\ve_1), \dots, T(\ve_n)\}\).
+\end{enumerate}
+
+\paragraph{Unitary, Hermitian, Orthogonal and Symmetric Matrices}
+A matrix \(A \in M_{p,p}(\bC)\) is called unitary if \(A^* = A^{-1}\) and Hermitian if \(A^* = A\). A matrix \(A \in M_{p,p}(\bR)\) is called orthogonal if \(A^T = A^{-1}\) and symmetric if \(A^T = A\).
+
+\paragraph{Orthonormal Basis and Unitary}
+The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bC^p\) if and only if \(A\) is unitary. The columns of a \(p \times p\) matrix are an orthonormal basis of \(\bR^p\) if and only if \(A\) is orthogonal. The same result apply to rows.
+
+\subsection{QR Factorisations}
+\paragraph{QR Factorisation}
+If \(A\) is \(p \times q\) of rank \(q\) so (\(p \geq q\)) then we can write \(A = QR\) where \(Q\) is an \(p \times q\) matrix with orthonormal columns, and \(R\) is an \(q \times q\) invertible upper triangular matrix.
+
+\paragraph{QR Factorisation with \(\Tilde{Q}\) Square Matrix}
+Let \(A \in M_{p,q}(\bF)\) with \(p > q\) and \(\rank(A) = q\). Then we can write \(A = \Tilde{Q}\Tilde{R}\), with \(\Tilde{Q}\) being \(p \times p\) unitary (or orthogonal), and \(\Tilde{R}\) being \(p \times q\), of rank \(q\) and in echelon form.
+
+\subsection{Least Squares}
+\paragraph{Normal Equations}
+A least squares solution to the system of equations \(A\vx = \vb\) is a solution to the equations \(A^* A\vx = A*\vb\) which are known as the normal equations.

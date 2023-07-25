@@ -1,0 +1,99 @@
+\section{Common Distributions}
+
+\subsection{Common Discrete Distributions}
+\paragraph{Bernoulli Trail}
+A Bernoulli trial is an experiment with two possible outcomes. The outcomes are often labelled 'success' and 'failure'. A Bernoulli trial defines a random variable \(X\), given by 
+\[ X = \begin{cases}
+    1 & \text{ if the trail is a success} \\
+    0 & \text{ if the trail is a failure}
+\end{cases}\]
+\begin{itemize}
+    \item Let \(p \in [0,1]\) be the probability of success
+    \item We write \(X \sim \Bernoulli(p)\)
+    \item The probability function is given by \(\bP(X = 1) = p\) and \(\bP(X = 0) = 1 - p\)
+    \item \(\bE(X) = p\)
+    \item \(\Var(X) = \bE(X^2) - \bE(X)^2 = p(1-p)\)
+\end{itemize}
+
+\paragraph{Binomial Distribution}
+Consider a sequence of \(n\) independent Bernoulli trials each with probability of success \(p\). Let
+\[X := \text{ total number of successes}\]
+then \(X\) is a Binomial r.v with parameter \(n\) and \(p\), and we write \(X \sim \Bin(n,p)\).
+
+If \((Y_i)_{i=1,\dots,n}\) is a sequence of independent \(\Bernoulli(p)\) random variable then \(X := \sum_{i=1}^n Y_i\) is \(\Bin(n,p)\). The expectation of a Binomial random variable.
+\[\bE(X) = \bE\left(\sum_{i=1}^n Y_i\right) = \sum_{i=1}^n \bE(Y_i) = np\]
+
+\paragraph{Poisson Distribution}
+A r.v \(X\) is said to follow the Poisson distribution with parameter \(\lambda\), if it's probability function is given
+\[\bP(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \qquad k = 0,1,\dots\]
+where \(\lambda = \bE(X) = \Var(X)\).
+
+\paragraph{Hypergeometric Distribution}
+A random variable has hypergeometric distribution with parameter \(N,m,n\) and we write \(X \sim \Hyp(n,m,N)\) if 
+\[\bP(X = x) = \frac{C_x^m C_{n-x}^{n-m}}{C_n^N} \qquad x = 1,\dots,n\]
+
+\subsection{Continuous Distribution}
+\paragraph{Normal Random Variable}
+A random variable \(X\) is said to be a normal random variable with parameters \(\mu\) and \(\sigma^2\) if its probability density function is 
+\[f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad x \in \bR\]
+and we write \(X \sim \mathcal{N}(\mu, \sigma^2)\).
+
+\paragraph{Linear Transform}
+Let X be a r.v with probability density function \(f_X\), let \(Y := a + bX\) then for \(b > 0\) and \(a \in \bR\),
+\[f_Y(x) = \frac{1}{b}f_X\left(\frac{x-a}{b}\right)\]
+
+\paragraph{Linear Transform of Normally Distributed Random Variable}
+Suppose \(X \sim \mathcal{N}(\mu, \sigma^2)\) and \(a \in \bR\) and \(b > 0\). The random variable \(Y := a + bX\) is also normally distributed with parameter \((a + b\mu, b^2\sigma^2)\), i.e. \(Y \sim \mathcal{N}(a + b\mu, b^2\sigma^2)\).
+
+\paragraph{Standardisation}
+Suppose \(X \sim \mathcal{N}(\mu, \sigma^2)\) then
+\[Z := \frac{X - \mu}{\sigma} \sim \mathcal{N}(0,1)\]
+
+\paragraph{Exponential Distribution}
+A random variable \(X\) is said to be exponentially distributed with parameter \(\lambda > 0\) if its probability density function is given by 
+\[f_X(x) = \frac{1}{\lambda}e^{-\frac{1}{\lambda}x}, \qquad x > 0\]
+and we write \(X \sim \exp(\lambda)\). Then \(\bE(x) = \lambda\) and \(\Var(X) = \lambda^2\).
+
+\paragraph{Gamma Distribution}
+A random variable \(X\) is said to be Gamma distributed with parameter \(\alpha, \beta > 0\) if its probability density function is given by 
+\[f_X(x;\alpha,\beta) = \frac{e^{\frac{-x}{\beta}}x^{\alpha-1}}{\Gamma(\alpha)\beta^\alpha}, \qquad x > 0\]
+and we write \(X \sim \mathrm{Gamma}(\alpha,\beta)\) where \(\bE(X) = \alpha\beta\) and \(\Var(X) = \alpha\beta^2\).
+
+\paragraph{Beta Distribution}
+The Beta function is given by 
+\[B(x,y) = \int_0^1 t^{x-1}(1-t)^{y-1} \, dt, \qquad x,y > 0\]
+and the Beta and Gamma functions satisfies the following relationship
+\[B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}, \qquad x,y > 0\]
+
+A random variable is said to follow a Beta distribution with parameters \(\alpha, \beta > 0\) if its density function is given by 
+\[f_X(x; \alpha, \beta) = \frac{x^{\alpha - 1}(1-x)^{\beta - 1}}{B(\alpha, \beta)}, \qquad x \in (0,1)\]
+and we write \(X \sim \operatorname{Beta}(\alpha, \beta)\).
+
+\subsubsection{QQ-plot}
+\paragraph{Quantile}
+Suppose \(X\) is a continuous random variable with CDF given by \(F_X\). The \(k\%\)-th quantile of \(X\) is given by
+\[Q_X(k) := F_X^{-1}(k), \qquad k \in [0,1]\]
+where \(F_X^{-1}\) is the inverse of the CDF \(F_X\).
+
+\paragraph{Quantile Plot}
+Given continuous r.vs \(X\) and \(Y\), the theoretical qunatile plot of \(X\) against \(Y\) is the graph
+\[(Q_X(k), Q_Y(k)), \qquad k\in[0,1]\]
+
+Suppose we are given \(X\) and \(Y = aX + b\) for some \(a > 0, b \in \bR\) then the quantile plot of \(X\) against \(Y\) is a straight line.
+
+Given r.v.s \(X\) and \(Y\) and suppose that the quantile plot of \(X\) against \(Y\) is a straight line. Then the distribution of \(X\) is equal to the distribution of a linear transform of \(Y\).
+
+\subsubsection{Indicator Functions}
+\begin{itemize}
+    \item A indicator function of a set \(A\) is defined by 
+    \[I_A(x) = \begin{cases}
+        1 & x \in A \\
+        0 & x \in A^c 
+    \end{cases}\]
+    \item Indicator function of an interval is given as 
+    \[I_[a,b](x) = I_{\{a\leq x \leq b\}} \qquad \text{ or } \qquad I_{(a,b]}(x) = I_{\{a<x\leq b\}}\]
+    \item The indicator unifies expectation \(\bE\) and probability \(\bP\) notation since, the probability is the expectation of the indicator function. Therefore, it may be written that 
+\[
+    \mathbb{P}(X\in A) = \int_{A} f_X(x)dx = \int_{-\infty}^{\infty} I_A(x) f_X(x) dx = \mathbb{E}(I_A(X))
+.\]
+\end{itemize}

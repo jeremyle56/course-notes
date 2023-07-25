@@ -31,40 +31,46 @@
 \renewcommand{\footrulewidth}{0pt}	
 
 \newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cor}{\mathrm{Corr}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Hyp}{\mathrm{Hyp}}
 \newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\Binomial}{\mathrm{Binomial}}
 \newcommand{\Normal}{\mathcal{N}}
-\newcommand{\Norm}{\mathcal{N}} \newcommand{\Cor}{\mathrm{Corr}}
+\newcommand{\Norm}{\mathcal{N}} 
 \newcommand{\Poisson}{\mathrm{Poisson}}
 \newcommand{\Bernoulli}{\mathrm{Bernoulli}}
+
 \newcommand{\Bias}{\mathrm{Bias}}
 \newcommand{\MSE}{\mathrm{MSE}}
 \newcommand{\Se}{\mathrm{Se}}
 \newcommand{\power}{\mathrm{power}}
+\newcommand{\GammaW}{\mathrm{Gamma}} % For the word Gamma
 
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bN}{\mbb{N}}
 \newcommand{\bP}{\mbb{P}}
+\newcommand{\bR}{\mbb{R}}
+\newcommand{\bE}{\mbb{E}}
 
-\title{Higher Theory of Statistics \\ Math2901 UNSW}
-\author{Jeremy Le \\ (Based of \href{https://github.com/imagine-hussain/math2901_notes/blob/main/math2901_main.pdf}{Hussain Nawaz's Notes})}
+\title{Higher Theory of Statistics \\ MATH2901 UNSW}
+\author{Jeremy Le\footnote{With some inspiration from \href{https://github.com/imagine-hussain/math2901_notes/blob/main/math2901_main.pdf}{Hussain Nawaz's Notes}}}
 \date{2023T2}
 
 \rhead{}
 \lhead{}
-
 
 \begin{document}
 \maketitle
 \tableofcontents
 \newpage
     \subfile{revision.tex}
-    % \subfile{random_variables.tex}
-    % \subfile{common_distributions.tex}
-    % \subfile{bivariate_distributions.tex}
-    % \subfile{distribution_sum_avg_central_limit.tex}
-    % \subfile{estimators.tex}
+    \subfile{random_variables.tex}
+    \subfile{common_distributions.tex}
+    \subfile{bivariate_distributions.tex}
+    \subfile{sum_of_variables.tex}
+    \subfile{central_limit_theorem.tex}
+    \subfile{statistical_inference.tex}
     % \subfile{parameter_estimation_inference.tex}
     % \subfile{hypothesis_testing.tex}
     % \subfile{small_sample_inference.tex}

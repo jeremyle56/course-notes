@@ -1,0 +1,137 @@
+\section{Random Variables}
+\subsection{Random Variables}
+\paragraph{Random Variables}
+A random variable (r.v) \(X\) is a function from \(\Omega\) to \(\bR\) such that \(\forall \mathbf{x} \in \bR\), the set \(A_{\mathbf{x}} = \{\omega \in \Omega, X(\omega) \leq \mathbf{x}\}\) belongs to the \(\sigma\)-algebra \(\mathcal{A}\).
+
+\paragraph{Cumulative Distribution Function}
+The cumulative distribution function of a r.v \(X\) is defined by
+\[F_X(\mathbf{x}) := \bP(\{\omega: X(\omega) \leq \mathbf{x} \}) = \bP(X \leq \mathbf{x})\]
+
+\paragraph{Cumulative Distribution Theorems}
+Suppose \(F_X\) is a cumulative distribution function of \(X\), then
+\begin{itemize}
+    \item it is bounded between zero and one, and 
+    \[\lim_{x \downarrow -\infty} F_X(x) = 0 \quad \text{ and } \quad \lim_{x \uparrow \infty} F_X(x) = 1\]
+    \item it is non-decreasing, that is if \(x \leq y\) then \(F_X(x) \leq F_X(y)\)
+    \item for any \(x < y\),
+    \[\bP(x < X \leq y) = \bP(X \leq y) - \bP(X \leq x) = F_X(y) - F_X(x)\]
+    \item it is right continuous, that is 
+    \[\lim_{n \uparrow \infty} F_X(x + \frac{1}{n}) = F_X(x)\]
+    \item it has finite left limit and 
+    \[\bP(X < x) = \lim_{n \to \infty} F_X(x - \frac{1}{n})\]
+    which we denote by \(F_X(x-)\).
+\end{itemize}
+
+\paragraph{Discrete Random Variables}
+A r.v \(X\) is said to be discrete if the image of \(X\) consists of countable many values \(x\), for which \(\bP(X = x) > 0\).
+
+\paragraph{Discrete Probability Function}
+The probability function of a discrete r.v \(X\) is the function \(\grad F_X(x) = \bP(X = x)\) and satisfies
+\[\sum_{\text{all possible } x} \bP(X = x) = 1\]
+
+\paragraph{Continuous Random Variables}
+A r.v \(X\) is said to be continuous if the image of \(X\) takes a continuum of values.
+
+\paragraph{Continuous Probability Density Function}
+The probability density function of a continuous r.v is a real-valued function \(f_X\) on \(\bR\) with the property that 
+\[\bP(X \in A) = \int_A f_X(y) \, dy\]
+for any 'Borel' subset of \(\bR\).
+
+For a function \(f: \bR \to \bR\) to be a valid density function, the function \(f\) must satisfty the following properties. 
+\begin{enumerate}
+    \item for all \(x \in \bR, f(x) \geq 0\)
+    \item \(\int_{-\infty}^{\infty} f(x) \, dx = 1\)
+\end{enumerate}
+
+\paragraph{Useful Properties (for continuous random variable)}
+For any continuous random variable \(X\) with the density \(f_X\),
+\begin{enumerate}
+    \item by taking \(A = ( -\infty, x], \bP(X \in (-\infty, x]) = \bP(X \leq x)\) and 
+    \[F_X(x) = \int_{-\infty}^x f_X(y) \, dy\]
+    \item For any \(a < b \in \bR\), one can compute \(\bP(a < X \leq b)\) by 
+    \[F_X(b) - F_X(a) = \int_a^b f_X(x) \, dx\]
+    \item From the fundamental theorem of calculus and 1, we have
+    \[F'_X(x) = \frac{d}{dx}\int_{-\infty}^x f_X(y) \, dy = f_X(x).\]
+\end{enumerate}
+
+\subsection{Expectation and Variance}
+\paragraph{Expectation}
+The expectation of a r.v \(X\) is denoted by \(\bE(X)\) and it is computed by 
+\begin{enumerate}
+    \item Let \(X\) be a discrete r.v. then 
+    \[\bE(X) := \sum_{\text{all possible } x} x\bP(X = x) = \sum_{\text{all possible} x} x\grad F_X(x)\]
+    \item Let \(X\) be a continuous r.v. with density function \(f_X(x)\) then
+    \[\bE(x) := \int_{-\infty}^\infty xf_X(x) \, dx\]
+\end{enumerate}
+
+\paragraph{Expectation of Transformed Random Variables}
+Suppose \(g: \bR \to \bR\), then the expectation of the transformed r.v \(g(X)\) is 
+\[\bE(g(X)) = \begin{cases}
+    \int_\bR g(x)f_X(x) \, dx & \text{ continuous} \\
+    \sum_x g(x)\bP(X = x) & \text{ discrete}
+\end{cases}
+\]
+usually one is interested in computing \(\bE(X^r)\) for \(r \in \bN\), which is called the \(r\)-th moment of \(X\).
+
+\paragraph{Linearity of Expectation}
+The expectation \(\bE\) is linear, i.e., for any constants \(a,b \in \bR\),
+\[\bE(aX + b) = a\bE(X) + b.\]
+
+\paragraph{Variance}
+Let \(X\) be a r.v and we set \(\mu = \bE(X)\). The variance is \(X\) is denoted by \(\operatorname{Var}(X)\) and 
+\[\operatorname{Var}(X) := \bE((X - \mu)^2)\]
+and the standard deviation of \(X\) is the square root of the variance.
+
+\paragraph{Properties of Variance}
+Given a random variable \(X\) then for any constant \(a,b \in \bR\),
+\begin{enumerate}
+    \item \(\operatorname{Var}(X) = \bE(X^2) - (\bE(X))^2\)
+    \item \(\operatorname{Var}(ax) = a^2\operatorname{Var}(X)\)
+    \item \(\operatorname{Var}(X + b) = \operatorname{Var}(X)\)
+    \item \(\operatorname{Var}(b) = 0\)
+\end{enumerate}
+
+\subsection{Moment Generating Functions}
+\paragraph{Moments}
+A moment of the random variable is denoted by
+\[ \mathbb{E}[X^r], \quad r = 1, 2, \dots \]
+
+Moments measure mean, variance, skewness, and kurtosis, all ways of looking at the shape of the distribution.
+
+\paragraph{Moment Generating Function}
+The moment generating function (MGF) of a r.v \(X\) is denoted by 
+\[M_X(u) := \bE(e^{uX})\]
+and we say that the MGF of \(X\) exists if \(M_X(u)\) is finite in some interval containing zero.
+
+The moment generating function of \(X\) exists if there exists \(h > 0\) such that the \(M_X(x)\) is finite for \(x \in [-h,h]\).
+
+\paragraph{Calculating Raw Moments}
+Suppose the moment generating function of a r.v \(X\) exists then 
+\[\bE(X^r) = \lim_{u \to 0} M_X^{(r)}(u) = \lim_{u \to 0} \frac{d^r}{du}M_X(u)\]
+
+\paragraph{Equivalence of Moment Generating Functions}
+Let \(X\) and \(Y\) be two r.vs such that the moment generating function of \(X\) and \(Y\) exists and \(M_Y(u) = M_X(u)\) for all \(u\) in some interval containing zero then \(F_X(x) = F_Y(x)\) for all \(x \in \bR\).
+
+This theorem tells you that if the moment generating function exists then it uniquely characterises the cumulative distribution function of the random variable.
+
+\subsubsection{Useful Inequalities}
+\paragraph{The Markov Inequality (Chebychev's First Inequality)}
+For any non-negative r.v \(X\) and \(a > 0\),
+\[\bP(X \geq a) \leq \frac{\bE(X)}{a}\]
+
+\paragraph{Chebychev's Second Inequality}
+Suppose \(X\) is any r.v with \(\bE(X) = \mu, \operatorname{Var}(X) = \sigma^2\) and \(k > 0\) then
+\[\bP(|X - \mu| > k\sigma) \leq \frac{1}{k^2}\]
+
+\paragraph{Convex (Concave) Functions}
+A function \(h\) is convex (concave) if for any \(\lambda \in [0,1]\) and \(x_1\) and \(x_2\) in the domain of \(h\), we have
+\[h(\lambda x_1 + (1 - \lambda)x_2) \leq (\geq) \lambda h(x_1) + (1 - \lambda)h(x_2)\]
+
+\paragraph{Jensen's Inequality}
+Suppose \(h\) is a convex (concave) function and \(X\) is a r.v then
+\[h(\bE(X)) \leq (\geq) \bE(h(X))\]
+
+By using Jensen's inequality, one can show
+\[ \text{Arithmetic Mean} \geq \text{Geometric Mean} \geq \text{Harmonic Mean}. \]
+That is given a sequence of number \((a_i)_{i=1,\dots,n},\) we have
+\[\frac{1}{n} \sum_{i=1}^n a_i \geq \left(\prod_{i=1}^n a_i\right)^{\frac{1}{n}} \geq n \left(\sum_{i=1}^n a_i^{-1}\right)^{-1}\]

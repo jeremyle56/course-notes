@@ -1,0 +1,26 @@
+\section{Sum of Variables}
+\paragraph{Sum of Independent Random Variable}
+If \(X\) and \(Y\) are independent discrete random variabels then
+\[\bP(X + Y = z) = \sum_y \bP(X = z - y)\bP(Y = y)\]
+where the sum is taken over all possible outcomes of \(Y\).
+
+\paragraph{Sum of Independent Continuous Random Variables}
+(Convolution formula) Suppose \(X\) and \(Y\) are independent continuous r.vs with density \(f_X\) and \(f_Y\). Let \(Z = X + Y\) then
+\[f_Z(z) = \int_{-\infty}^\infty f_X(z-y)f_Y(y) \, dy\]
+
+\paragraph{Moment Generating Function Approach}
+If \(X\) and \(Y\) are independent random variables for which the moment generating function exists then
+\[M_{X+Y}(t) = M_X(t)M_Y(t)\]
+In general if \((X_i)_i\) is an independent sequence of random variables, then 
+\[M_{\sum_{i=1}^n X_i}(t) = \prod_{i=1}^n M_{X_i}(t)\].
+
+\paragraph{Useful Results}
+Using the method of moment generating function method one can show the following. Suppose \((X_i)_{i=1,\dots,n}\) be a =n independent identically distributed (iid) sequence of random variables and we set \(Y := \sum_{i=1}^n X_i\) then if
+\begin{itemize}
+    \item \(X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)\) then \(Y \sim \mathcal{N}(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2\)
+    \item \(X_i \sim \exp(\lambda)\) or \(\GammaW(1, \lambda)\) then \(Y \sim \GammaW(n, \lambda)\)
+    \item \(X_i \sim \GammaW(\alpha_i, \beta)\) then \(Y \sim \GammaW(\sum_{i=1}^n \alpha_i, \beta)\)
+    \item \(X_i \sim \Poisson(\lambda_i)\) then \(Y \sim \Poisson(\sum_{i=1}^n \lambda_i)\).
+    \item \(X_i \sim \Bernoulli(p_i)\) then \(Y \sim \Binomial(n,p)\).
+    \item \(X_i \sim \Binomial(n_i, p)\) then \(Y \sim \Binomial(\sum_{i=1}^n n_i, p)\)
+\end{itemize}
