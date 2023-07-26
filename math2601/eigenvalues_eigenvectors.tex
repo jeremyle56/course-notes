@@ -95,3 +95,85 @@ Let \(T: V \to V\) be linear on finite dimensional space \(V\). The following fo
 
 \paragraph{Diagonalizable Distinct Roots}
 Linear map \(T\) on a \(p\)-dimensional space \(V\) over \(\bF\) is diagonalizable if \(\charp_T(t)\) has \(p\) distinct roots in \(\bF\).
+
+\subsection{Normal Operators}
+\paragraph{Normal Definition}
+A linear transformation on an inner product space is normal if and only if \(T^* \circ T = T \circ T^*\) and an \(n \times n\) matrix is normal if and only if \(A^*A = AA^*\).
+
+\paragraph{Inner Product Spaces and Normal Linear Maps}
+Let \(V\) be a finite dimensional inner product space and \(T\) a normal linear map on \(V\). Then
+\begin{enumerate}[label=(\alph*)]
+    \item For all \(\vv \in V, ||T(\vv)|| = ||T^*(\vv)||\)
+    \item For any scalar, \(\alpha, (T - \alpha\id)\) is also normal.
+    \item If \(T\) has eigenvalue \(\lambda\) then \(\overline{\lambda}\) is an eigenvalue of \(T^*\).
+    \item \(E_\lambda(T) = E_{\overline{\lambda}}(T^*)\).
+    \item If \(\lambda \neq \mu\) then \(E_\lambda(T) \perp E_\mu(T)\).
+\end{enumerate}
+
+\paragraph{Algebraic and Geometric Multiplicity}
+If \(T\) is normal with eigenvalue \(\lambda\) then the algebraic multiplicity of \(\lambda\) equals the geometric multiplicity of \(\lambda\).
+
+\paragraph{The Spectral Theorem for Normal Operators}
+If \(V\) is a finite dimensional inner product space over \(\bC\) and \(T \in L(V,V)\) is normal then there is an orthonormal basis \(\basis\) of \(V\) consisting of eigenvectors of \(T\). Hence if \(A \in M_{p,p}(\bC)\) is normal there is a unitary \(P\) such that \(P^{-1}AP = P^*AP\) is diagonal. Conversely if \([T]_\basis^\basis = A = PDP^{-1}\), with \(D\) diagonal and \(P\) unitary (so \(\basis\) is orthonormal) then both \(A\) and \(T\) are normal. 
+
+\paragraph{Normal Operators and Matricies}
+If \(A\) is normal with eigenvalues \(\lambda_i\), then there are matrices \(P_i\) with
+\begin{align*}
+    A = \sum_i \lambda_iP_i, & \qquad P_i^2 = P_i = P_i^*, \\
+    P_iP_j = 0 \quad i \neq j, & \qquad \sum_i P_i = \id.
+\end{align*}
+
+\subsection{Self-Adjoint Maps and Matrices}
+\paragraph{Self-Adjoint, Hermitian and Symmetric}
+Suppose \(V\) is a finite dimensional inner product space over field \(\bF\) (where \(\bF\) is \(\bR\) or \(\bC\)) and \(T \in L(V,V))\).
+\begin{enumerate}[label=\alph*)]
+    \item If \(T\) is self-adjoint (that is Hermitian if \(\bF = \bC\) or symmetric if \(\bF = \bR\)) then the eigenvalues of \(T\) are real.
+    \item If \(\bF = \bC\) and \(T\) is Hermitian there is a unitary basis for \(V\) consisting of eigenvectors of \(T\).
+    \item If \(\bF = \bR\) and \(T\) is symmetric, then there is a real orthonormal basis of \(V\) consisting of eigenvectors of \(T\). 
+\end{enumerate} 
+
+\subsection{Unitary and Orthogonal Maps and Matrices}
+\paragraph{Eigenvalues and Eigenvectors of a Unitary Map}
+Suppose \(V\) is a \(p\)-dimensional inner product space over field \(\bF\) (where \(\bF\) is \(\bR\) or \(\bC\)), with \(T \in L(V,V)\) a unitary map. Then the eigenvalues of \(T\) lie on the unit circle in \(\bC\), that is are \(e^{i\alpha_k}\) for real \(\alpha_k\) and \(V\) has a unitary basis of eigenvectors of \(T\). 
+
+\paragraph{Isometries}
+Suppose \(T\) is an isometry on a real inner product space \(V\). Then its characteristic polynomial is of the form
+\[\charp_T(t) = (t-1)^a(t+1)^b \prod_{j=1}^k(t - e^{i\alpha_j})(t-e^{-i\alpha_j})\]
+where \(a + b + 2k = \dim(V)\) and \(\alpha_j \in (0 , \pi)\). Also there is an orthonormal basis of \(V\) in which the matrix of \(T\) is of the form
+\[I_a \oplus (-I_b) \bigoplus_{j=1}^k R(\alpha_j).\]
+
+\subsection{The Singular Value Decomposition}
+\paragraph{Singular Value Decomposition (SVD)}
+Let \(A \in M_{p,q}(\bC)\). A singular value decomposition of \(A\) is a factorization of \(A\) as \(U\sum V^*\) where \(U\) and \(V\) are square and unitary and \(\sum\) is a \(p \times q\) matrix with zero off diagonal terms and diagonal entries called the singular values satisfy
+\[\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_q \geq 0.\]
+The columns of \(U\) are called left singular vectors and the columns of \(V\) right singular vectors.
+
+\paragraph{Rank and Nullity}
+Let \(A \in M_{p,q}(\bF)\) for \(\bF\) either \(\bR\) or \(\bC\). Then
+\begin{enumerate}[label = \alph*)]
+    \item \(\ker(A*A) = \ker(A)\)
+    \item \(\rank(A*A) = \rank(A)\)
+\end{enumerate}
+
+\paragraph{Existence of SVD}
+For any matrix \(A\) an \(SVD\) exists and the singular values are unique.
+
+\paragraph{Reduced Singular Value Decomposition}
+If \(A \in M_{p,q}(\bC)\) is rank \(k\) then the reduced singular value decomposition is the decomposition
+\[A = \hat{U}\hat{\Sigma}\hat{V}^*\]
+where \(\hat{U}\) and \(\hat{V}\) have orthonormal columns and \(\hat{\Sigma}\) is \(k \times k\) invertible and diagonal.
+
+\paragraph{Orthonormal Basis}
+For any \(p \times q\) matrix of rank \(k\):
+\begin{enumerate}[label = \alph*)]
+    \item The last \(q -k\) right singular vectors are an orthonormal basis of \(\ker(A)\).
+    \item The first \(k\) left singular vectors are an orthonormal basis of \(\im(A)\).
+    \item \(\sum_{i=1}^k \omega_i^2 = \tr(\vec{A}^*\vec{A}) = \sum_{i=1}^p\sum_{j=1}^q |a_{ij}|^2.\)
+\end{enumerate}
+
+\paragraph{Pseudoinverse}
+For an arbitray \(A\) with reduced SVD \(\hat{U}\hat{\Sigma}\hat{V}^*\) we define the pseudoinverse of \(A, A^+\) by
+\[A^+ = \hat{V}\hat{\Sigma}^{-1}\hat{U}^*.\]
+
+\paragraph{Least Squares}
+The least squares solution to \(A\vx = \vb\) for \(A\) of full rank is given by \(\vx = A^+\vb\).
