@@ -28,7 +28,7 @@ Let \(T: V \to V\) be linear. Then
 A matrix \(A \in M_{p,p}(\bF)\) is diagonalisable over \(\bF\) if there is an invertible matrix \(P \in \GL(p,\bF)\) such that \(P^{-1}AP\) is diagonal - that is, A is similar over \(\bF\) to a diagonal matrix. A linear map \(T: V \to V\) is diagonalisable if there is a basis of \(V\) with respect to which the matrix of \(T\) is diagonal.
 
 \paragraph{Diagonalisability Regarding Basis}
-If \(T \in L(V,v)\) where \(V\) is a finite dimensional vector space over \(\bF\), then \(T\) is diagonalisable if and only if \(V\) has a basis whose elements are all eigenvectors of \(T\). Similarly, \(A \in M_{p,p}(\bF)\) is diagonalisble if and only if \(\bF^p\) has a basis consisting of eigenvectors of \(A\). 
+If \(T \in L(V,v)\) where \(V\) is a finite dimensional vector space over \(\bF\), then \(T\) is diagonalisable if and only if \(V\) has a basis whose elements are all eigenvectors of \(T\). Similarly, \(A \in M_{p,p}(\bF)\) is diagonalisable if and only if \(\bF^p\) has a basis consisting of eigenvectors of \(A\). 
 
 \paragraph{Diagonalisability Regarding Eigenvalues}
 A \(p \times p\) matrix with \(p\) distinct eigenvalues is diagonalisable.
@@ -68,3 +68,30 @@ Given matrix \(A\)
     \item If \(\sum_\alpha \dim(E_\alpha(A)) = n\) then \(A\) is diagonalizable.
     \item If \(A\) is diagonalisable construct \(P\), whose columns are a basis of \(V\) consisting of eigenvectors of \(A\) so that \(D = P^{-1}AP\) is diagonal.
 \end{enumerate}
+
+\subsection{Multiplicities}
+\paragraph{Geometric and Algebraic Multiplicity}
+Suppose \(T\) is a linear map on finite dimensional vector space \(V\). Suppose further that \(\lambda\) is an eigenvalue of \(T\) so that \(t - \lambda\) is a factor of the characteristic polynomial of \(T\). 
+\begin{itemize}
+    \item The geometric multiplicity (g.m.) of \(\lambda\) is \(\dim(E_\lambda(T))\).
+    \item The algebraic multiplicity (a.m.) of \(\lambda\) is its multiplicity as a factor of \(\charp_T(t)\).
+\end{itemize}
+Let \(T: V \to V\) be linear on finite dimensional space \(V\) and \(\lambda\) an eigenvalue of \(T\). Then
+\[1 \leq \text{geometric multiplicity } \lambda \leq \text{algebraic multiplicity } \lambda.\]
+
+\paragraph{Solutions, Determinant and Trace with Eigenvalues}
+Suppose \(A \in M_{p,p}(\bC)\). Then \(A\) has \(p\) eigenvalues \(\alpha_1, \dots, \alpha_p\) counting algebraic multiplicities. Also
+\[\det(A) = \prod_{i=1}^p \alpha_i \text{ and } \tr(A) = \sum_{i=1}^p \alpha_i.\]
+
+\paragraph{Equivalent Properties}
+Let \(T: V \to V\) be linear on finite dimensional space \(V\). The following four statements are equivalent:
+\begin{enumerate}
+    \item \(T\) is diagonalisable.
+    \item There is a basis for \(V\) consisting of eigenvectors for \(T\).
+    \item \(V = E_{\lambda_1}(T) \oplus E_{\lambda_2}(T) \oplus \cdots \oplus E_{\lambda_k}(T)\) where \(\lambda_1, \dots, \lambda_k\) are the distinct eigenvalues of \(T\).
+    \item The sum of the geometric multiplicities of the distinct eigenvalues is \(\dim V\). That is,
+    \[\sum_{j=1}^k \dim E_{\lambda_j}(T) = \dim V.\]
+\end{enumerate}
+
+\paragraph{Diagonalizable Distinct Roots}
+Linear map \(T\) on a \(p\)-dimensional space \(V\) over \(\bF\) is diagonalizable if \(\charp_T(t)\) has \(p\) distinct roots in \(\bF\).
