@@ -9,8 +9,8 @@ A parametric model for a random sample \((X_1, \dots, X_n)\) is a family of prob
 
 \subsection{Estimators}
 \paragraph{Estimators}
-Suppose \((X_1, \dots, X_n) \sim \{f_X(x;\theta), \theta \in \Theta\}\). An estimator of \(\theta\), denoted by \(\hat{\theta}_n\) is any real valued function of \(X_1, \dots, X_n\), that is
-\[\hat{\theta}_n = \hat{\theta}_n(X_1, \dots, X_n) = g(X_1, \dots, X_n)\]
+Suppose \((X_1, \dots, X_n) \sim \{f_X(x;\theta), \theta \in \Theta\}\). An estimator of \(\theta\), denoted by \(\htheta_n\) is any real valued function of \(X_1, \dots, X_n\), that is
+\[\htheta_n = \htheta_n(X_1, \dots, X_n) = g(X_1, \dots, X_n)\]
 where \(g: \bR^n \to \bR\).
 \begin{itemize}
     \item An estimator of a parameter is a random variable! It is a function of the random variables \((X_1, \dots, X_n)\).
@@ -18,10 +18,44 @@ where \(g: \bR^n \to \bR\).
 \end{itemize}
 
 \paragraph{Bias}
-Let \(\hat{\theta}\) be an estimator of the parameter \(\theta\). The bias of the estimator \(\hat{\theta}\)s defined to be
-\[\Bias(\hat{\theta}) = \bE(\hat{\theta}) - \theta.\]
-If \(\Bias(\hat{\theta}) = 0\), then \(\hat{\theta}\) is aid to be an unbiased estimator of \(\theta\).
+Let \(\htheta\) be an estimator of the parameter \(\theta\). The bias of the estimator \(\htheta\)s defined to be
+\[\Bias(\htheta) = \bE(\htheta) - \theta.\]
+If \(\Bias(\htheta) = 0\), then \(\htheta\) is aid to be an unbiased estimator of \(\theta\).
 
 \paragraph{Student \(t\)-distribution}
 A random variable \(T\) is said to have \(t\)-distribution with degree of freedom \(\nu\), if its probability density function
 \[f_T(x) = \frac{\Gamma(\frac{\nu}{2})}{\Gamma(\nu / 2)\Gamma(1 / 2)}\nu^{-1/2}\left(1 + \frac{x^2}{\nu}\right)^{-(\nu+1)/2}, \quad x\in (-\infty, \infty)\]
+
+\paragraph{Evaluating Estimators}
+Suppose \(\htheta\) is an estimator of \(a\) (vector of) parameter \(\theta\). The standard error or standard deviation of \(\htheta\) is
+\[\Se(\htheta) = \sqrt{\Var(\htheta)}\]
+and the estimated standard error is
+\[\hat{\mathrm{S}}\mathrm{e}(\htheta) = \left. \sqrt{\Var(\htheta)} \right|_{\theta = \htheta}\]
+i.e. it is the standard error with \(\htheta\) instead of \(\theta\).
+
+\paragraph{Mean Square Error}
+The Mean Square Error (MSE) of an estimator is
+\[\MSE(\htheta) := \bE((\htheta - \theta)^2)\]
+The MSE can be further decomposed into 
+\[\MSE(\htheta) = \Var(\htheta) + [\Bias(\htheta)]^2\]
+
+\paragraph{Consistency}
+The estimator \(\htheta\) is a consistent estimator of \(\theta\) if, \(n \to \infty\),
+\[\htheta_n \xrightarrow{\bP} \theta\]
+
+\paragraph{Asymptotic Normal}
+An estimator \(\htheta_n\) of \(\theta\) is asymptotically normal if
+\[\frac{\htheta_n - \theta}{\Se(\htheta)} \xrightarrow{d} Z \sim \Norm(0,1)\]
+
+\subsection{Confidence Intervals}
+Let \(X_1, \dots, X_n\) be a random sample from a parametric model which has \(\theta \in \Theta\) as a parameter. Let \(L := L(X_1, \dots, X_n)\) and \(U := U(X_1, \dots, X_n)\) be such that for all \(\theta \in \Theta\)
+\[\bP(L < \theta \leq U) \geq 1 - \alpha.\]
+The interval \((L,U)\) is called a \((1 - \alpha)100\%\) confidence interval.
+
+The thing to remember is that the interval \((L,U)\) is random, since \(L\) and \(U\) are functions of the random sample \(X_1, \dots, X_n\).
+
+\paragraph{Scaling and Independent Gamma Distributions}
+\begin{itemize}
+    \item If \(X \sim \Gamma(\alpha, \beta)\) then \(cX \sim \Gamma(\alpha, c\beta)\).
+    \item If \(X_i \sim \Gamma(\alpha_i, \beta)\) then \(\sum_i^n X_i \sim \Gamma\left(\sum_{i=1}^n \alpha_i, \beta\right)\).
+\end{itemize}

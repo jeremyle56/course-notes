@@ -1,0 +1,12 @@
+\section{Parameter, Estimation and Inference}
+
+\subsection{Maximum Likelihood Estimator}
+\paragraph{Likelihood Function}
+Suppose \(x_1, \dots, x_n\) be observations from the parametric family \(f(x; \theta)\) where \(\theta \in \Theta \subset \bR^d\) and \(x \in \bR\). The likelihood function \(L(\theta; x_1, \dots, x_n)\) given the observations is defined by
+\[L(\theta; x_1, \dots, x_n) = \prod_{i=1}^n \]
+and the log likelihood function \(l(\theta; x_1, \dots, x_n)\) is given
+\[l(\theta; x_1, \dots, x_n) = \ln(L(\theta; x_1, \dots, x_n)) = \sum_{i=1}^n \ln(f(x_i; \theta))\]
+
+\paragraph{Maximum Likelihood Estimator}
+The maximum likelihood estimator of \(\theta\), is \(\htheta\) which satisfies
+\[L(\htheta; x_1, \dots, x_n) \geq L(\theta; x_1, \dots, x_n), \qquad \theta \in \Theta.\]
