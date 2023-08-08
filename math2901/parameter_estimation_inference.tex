@@ -2,11 +2,74 @@
 
 \subsection{Maximum Likelihood Estimator}
 \paragraph{Likelihood Function}
-Suppose \(x_1, \dots, x_n\) be observations from the parametric family \(f(x; \theta)\) where \(\theta \in \Theta \subset \bR^d\) and \(x \in \bR\). The likelihood function \(L(\theta; x_1, \dots, x_n)\) given the observations is defined by
-\[L(\theta; x_1, \dots, x_n) = \prod_{i=1}^n \]
+Suppose \(x_1, \dots, x_n\) be observations from the parametric family \(f(x; \theta)\) where \(\theta \in \Theta \subset \bR^d\) and \(x \in \bR\). The likelihood function \(\mathcal{L}(\theta; x_1, \dots, x_n)\) given the observations is defined by
+\[\mathcal{L}(\theta; x_1, \dots, x_n) = \prod_{i=1}^n f(x_i;\theta) \]
 and the log likelihood function \(l(\theta; x_1, \dots, x_n)\) is given
-\[l(\theta; x_1, \dots, x_n) = \ln(L(\theta; x_1, \dots, x_n)) = \sum_{i=1}^n \ln(f(x_i; \theta))\]
+\[\ell(\theta; x_1, \dots, x_n) = \ln(\mathcal{L}(\theta; x_1, \dots, x_n)) = \sum_{i=1}^n \ln(f(x_i; \theta))\]
 
 \paragraph{Maximum Likelihood Estimator}
 The maximum likelihood estimator of \(\theta\), is \(\htheta\) which satisfies
-\[L(\htheta; x_1, \dots, x_n) \geq L(\theta; x_1, \dots, x_n), \qquad \theta \in \Theta.\]
+\[\mathcal{L}(\htheta; x_1, \dots, x_n) \geq \mathcal{L}(\theta; x_1, \dots, x_n), \qquad \theta \in \Theta.\]
+
+\subsection{Variance and Standard Error}
+
+\paragraph{Fisher Score}
+The Fisher Score is defined to be 
+\[S_n(\theta) := \partial_\theta \ell(\theta; X_1, \dots, X_n)\]
+where \(\ell(\theta; x_1, \dots, x_n)\) is the log likelihood.
+
+\paragraph{Fisher Information}
+The Fisher information given \(X_1, \dots, X_n\) is defined to be
+\begin{align*}
+    I_n(\theta) & := -\bE(\partial_\theta^2 \ell(\theta; X_1, \dots, X_n)) \\
+    & = -\int_{\bR^n} \partial_\theta^2 \ell(\theta; x_1, \dots, x_n) \prod_{i=1}^n f(x_i;\theta) \, dx_i
+\end{align*}
+
+\paragraph{Properties of Fisher Score and Information}
+The Fisher Score and Fisher informations satisfies the following properties
+\begin{itemize}
+    \item \(\bP(S_n(\theta)) = 0\) 
+    \item \(\Var(S_n(\theta)) = \bE([\partial_\theta L(\theta; X_1, \dots, X_n)]^2) = I_n(\theta)\).
+\end{itemize}
+
+\paragraph{Likelihood Based Confidence Intervals}
+Suppose \(\hat{\theta}\) satisfies the asymptotic normality property then
+\[\frac{\hat{\theta} - \theta}{\hat{\Se}(\hat{\theta})} \xrightarrow{d} \Normal(0,1)\]
+and also
+\[\sqrt{I_n(\hat{\theta})}(\hat{\theta} - \theta) \xrightarrow{d} \Normal(0,1)\]
+where \(I_n(\hat{\theta}) = I_n(\theta)|_{\theta = \hat{\theta}}\) i.e. the estimated fisher information.
+
+\paragraph{Asymptotic Normality of Maximum Likelihood Estimators}
+Let \(\frac{(\hat{\theta}_n - \theta)}{\sqrt{\Var(\hat{\theta}_n)}} \xrightarrow{d} Z \sim \Normal(0,1)\) and \(g\) is a differentiable in a neighbourhood of \(\theta\) and \(g'(\theta) \neq 0\) then
+\[\frac{(g(\hat{\theta}) - g(\theta))}{\sqrt{\Var(g(\hat{\theta}_n))}} \xrightarrow{d} \Normal(0,1)\]
+where we have \(\Var(g(\hat{\theta})) \approx [g'(\theta)]^2I_n^{-1}(\theta)\).
+
+\paragraph{Lower Bound on Variance}
+Let \(\tilde{\theta}_n\) be any other estimator of \(\theta\) then
+\[\Var(\tilde{\theta}_n) \geq \frac{[\partial_\theta \bE(\tilde{\theta}_n)]^2}{nI_1(\theta)}\]
+where \(nI_1(\theta) = I_n(\theta)\).
+
+\subsection{Multi-parameter Maximal Likelihood Inference}
+
+\paragraph{Fisher Information Matrix}
+For multi-parameter models, that is \(\theta \in \bR^k\), then the Fisher information matrix is given by
+\[I_n(\theta) = -\bE(H) = -\begin{pmatrix}
+    \bE(H_{11}) & \dots & \bE(H_{1n}) \\
+    \vdots & \ddots & \vdots \\
+    \bE(H_{n1}) & \dots & \bE(H_{nn})
+\end{pmatrix}\]
+where \(H\) is the Hessian matrix of \(I\) and \(H_{ij} = \partial_{\theta_i \theta_j}^2\ell(\theta; x_1, \dots, x_n)\).
+
+\paragraph{Maximal Likelihood Inference}
+Let \(g(\theta)\) be some function of the parameters \(\theta = (\theta_1, \dots, \theta_k)\), the MLE of \(g(\theta)\) is \(g(\hat{\theta})\) where \(\hat{\theta}\) is the MLE of \(\theta\). Then under some regularity conditions
+\[\frac{g(\hat{\theta}) - g(\theta)}{\hat{\Se}(g(\hat{\theta}))} \xrightarrow{d} \Normal(0, 1)\]
+where asymptotically,
+\[\hat{Se}(g(\hat{\theta})) \approx \sqrt{\nabla g(\hat{\theta})^T I_n^{-1}\nabla g(\hat{\theta})}.\]
+
+\paragraph{Graident Vector}
+The estimated Fisher information matrix \(I_n(\hat{\theta})\) and
+\[\nabla g(\hat{\theta}) = \begin{pmatrix}
+    \partial_{\theta_1} g(\hat{\theta}) \\
+    \vdots \\
+    \partial_{\theta_k} g(\hat{\theta})
+\end{pmatrix}.\]

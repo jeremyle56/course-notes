@@ -1,0 +1,73 @@
+\section{Hypothesis Testing}
+
+\subsection{Stating The Hypotheses}
+\paragraph{Null and Alternative Hypothesis}
+\begin{itemize}
+  \item \textbf{Null Hypothesis:} Labelled as \(H_0\), this is a claim that, a parameter
+    of interest  \(\theta\), takes a values \(\theta_0\). Hence,
+      \(H_0\) is of the form  \(\theta = \theta_0\) for some pre-specified
+      value of \(\theta_0\).
+  \item \textbf{Alternative Hypothesis:} Labelled as \(H_1\),
+    this is a more general hypothesis about  \(\theta\) that we accept as true if the
+    evidence contradicting the Null Hypothesis is strong enough. \(H_1\) is usually
+    of the following forms:
+     \begin{itemize}
+      \item \(H_1: \theta \neq  \theta_0\),
+      \item \(H_1: \theta <  \theta_0\),
+      \item \(H_1: \theta >  \theta_0\).
+    \end{itemize}
+\end{itemize}
+In a hypothesis test, we use our data to test \(H_0\), by measuring how much evidence our data offer against \(H_0\) in favour of \(H_1\).
+
+\subsection{Rejection Regions}
+The rejection region is the set of values of the test statistic for which \(H_0\) is rejected in favour of \(H_1\).
+
+\paragraph{Intuitive Interpretation}
+Intuitively, under \(H_0\), the test statistics \(T\) measures the standardised distance of \(\bar{X}\) (a estimator of \(\mu\)) away from \(\mu_0\). Therefore, it measures the distance between of what we observe and what is assumed.
+
+Intuitively, if this distance is too big, then it is probable that what we assumed (\(\mu = \mu_0\)) is not correct in view of the collected data. i.e. we should reject \(H_0: \mu = \mu_0\).
+
+\paragraph{Numerical Rejection Regions}
+Iin the case of \(H_1 : \mu < \mu_0\) or \(H_1: \mu > \mu_0\), the test statistics is given by \(T_\mu(X) := \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}\) and the rejection region is given by
+\[R_1 = \left\{ x; \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} <c_1 \right\} \text{ or } R_2 = \left\{x; \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} > c_2\right\}\]
+respectively.
+
+\paragraph{Type I and Type II Error}
+\begin{itemize}
+    \item Type I error corresponds to rejection of the null hypothesis when it is really true.
+    \item Type II error corresponds to acceptance of the null hypothesis when it is really false.
+\end{itemize}
+
+\paragraph{Likelihood Ratio Test}
+The LRT (likelihood-ratio test) statistic is given by
+\[T(x) = \frac{\sup_{\theta \in \Theta_0} L(\theta; x)}{\sup_{\theta \in \Theta} L(\theta; x)}\]
+were \(\Theta\) is the whole parameter space.
+
+\subsection{P-values}
+\paragraph{P-values}
+Given a test statistic, the p-value is the probability of observing a more 'extreme' or 'unusual' value of the test statistic than what is already observed under the null hypothesis.
+
+\paragraph{One-Sided Hypothesis Test}
+A one-sided hypothesis test about a parameter \(\theta\) is either of the form:
+\[H_0: \theta = \theta_0 \text{ versus } H_1: \theta < \theta_0\]
+or
+\[H_0: \theta = \theta_0 \text{ versus } H_1: \theta > \theta_0.\]
+
+\paragraph{Two-Sided Hypothesis Test}
+A two-sided hypothesis test about \(\theta\) is of the form
+\[H_0: \theta = \theta_0 \text{ versus } H_1: \theta \neq \theta_0.\]
+
+\subsection{Power of a Statistical Test}
+
+\paragraph{Power Function}
+The power function of a hypothesis test with rejection region \(R\) is a function of \(\theta\), defined by
+\[\beta(\theta) := \bP(X \in R; \theta)\]
+the notation \(\bP(X \in R; \theta)\) is just \(\bP(X \in R)\), but the computed probability depends on \(\theta\).
+
+\paragraph{Power and Type II Error}
+Power and Type II error are inversely related:
+\[\bP(\text{Type II error}) = 1 - \mathrm{power}(\mu).\]
+
+\paragraph{Test with Power Function}
+For \(0 \leq \alpha \leq 1\), a test with power function \(\beta(\theta)\) is a size (level) \(\alpha\) test if \(\sup_{\theta \in \Theta_0} \beta(\theta) = (\leq)\alpha\).
+
