@@ -1,0 +1,168 @@
+\section{Canonical Forms}
+
+\subsection{Similarity Invariants}
+\paragraph{Generalised Eigenvector}
+Let \(A \in M_{p,p}(\bC)\) and \(\lambda\) be an eigenvalue of \(A\). Then \(\vv \in \bC^p\) is a generalised eigenvector (for eigenvalue \(\lambda\))
+iff
+\[\vv \in \ker(A - \lambda I)^k, \text{ for some integer } k \geq 1.\]
+
+\paragraph{Generalised Eigenspace}
+The generalised eigenspace of \(\lambda, \GE_\lambda(A)\), is the space of all generalised eigenvectors of eigenvalue \(\lambda\).
+
+\paragraph{Complete Set of Similarity Invariants}
+The collection of all the integers \(\nullity(A - \lambda I)^k\) for all the eigenvalues \(\lambda\) and all integers \(k \geq 1\) is a complete set of similarity invariants of \(A\).
+
+\subsection{The Generalised Eigenspaces}
+\paragraph{Notation for Eigen Subspaces}
+Let \(T \in L(V,V)\) and suppose \(\lambda\) is an eigenvalue of \(T\). For each integer \(j\), define the spaces \(V_j(\lambda) = \ker(T - \lambda\id)^j\).
+
+\paragraph{Maximum Growth of \(V_m\)}
+If for \(T \in L(V,v)\) and some eigenvalue \(\lambda\) and integer \(m \geq 1\) we have \(V_{m+1}(\lambda) = V_m(\lambda)\) then \(V_{m+\ell}(\lambda) = V_m(\lambda)\) for all integers \(\ell \geq  1\).
+
+\paragraph{Height of Eigenspace}
+Let \(\lambda\) be an eigenvalue of \(T \in L(V,V)\), where \(\dim(V) = p\) is finite. Then there is a least a integer \(h\), the height of \(\lambda\), with \(1 \leq h \leq p\) such that
+\[\GE_\lambda(T) = \ker(T - \lambda\id)^h.\]
+
+\paragraph{Increasing Dimension of Generalised Eigenspaces}
+Let \(\lambda\) be an eigenvalue of \(T \in L(V,V)\), where \(\dim(V) = p\) is finite. Define
+\[d_k = \dim(V_k(\lambda)) = \nullity(T - \lambda\id)^k,\]
+then
+\[0 = d_0 < d_1 < d_2 < \cdots < d_{h-1} < d_h = d_{h + \ell} \leq \dim(V),\]
+for all positive integers \(\ell\).
+
+\paragraph{Transformation in Subspace}
+With the previous notation for \(k > 1\) if
+\[\vv \in Z_k(\lambda) \setminus \{\vzero\} \text{ then } (T - \lambda\id)(\vv) \in V_{k-1}(\lambda) \setminus V_{k-2}(\lambda).\]
+
+\paragraph{Definition of \(Z_k\)}
+We can find non-trivial Subspaces \(Z_k(\lambda)\) of \(V\) such that
+\[V_k(\lambda) = V_{k-1}(\lambda) \oplus Z_k(\lambda) \quad \text{ for } k = 2,3,\dots, h,\]
+and we define \(Z_1(\lambda) = V_1(\lambda) = \ker(T - \lambda\id)\).
+
+\paragraph{Difference in Dimension}
+With the same notation as above
+\[d_1 - d_0 \geq d_2 - d_1 \geq d_3 - d_2 \geq \cdots,\]
+i.e.
+\[\dim(Z_1(\lambda)) \geq \dim(Z_2(\lambda)) \geq \dim(Z_3(\lambda)) \geq \cdots.\]
+
+\paragraph{Jordan Chain}
+A ordered set of non-zero vectors \(\{\vv_1, \vv_2, \dots, vv_k\}\) such that
+\[T(\vv_1) = \lambda\vv_1 \text{ and } T(\vv_i) = \lambda\vv_i + \vv_{i-1} \text{ if} 1 < i \leq k\]
+is called a Jordan chain (of length \(k\)) for eigenvalue \(\lambda\).
+We will call a Jordan chain maximal if it is not part of a longer chain.
+
+\paragraph{Jordan Blocks}
+A matrix of the shape of \(J_k(\lambda)\) below is called  Jordan block (for eigenvalue \(\lambda\)).
+\[J_k(\lambda) = \begin{pmatrix}
+    \lambda & 1 & \cdots & 0 & 0 \\
+    0 & \lambda & \cdots & 0 & 0 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \cdots & \lambda & 1 \\
+    0 & 0 & \cdots & 0 & \lambda
+\end{pmatrix}\]
+
+\paragraph{Jordan Matrix}
+A matrix consisting of a direct sum of Jordan blocks is called a Jordan matrix.
+
+\paragraph{Jordan Basis}
+A basis with respect to which the matrix of \(T \in L(V,V)\) is a Jordan matrix is called a Jordan basis of \(T\).
+
+\paragraph{Properties of the Span of a Jordan Chain}
+Let \(U = \spans\{\vv_1, \vv_2, \dots, \vv_k\}\) be the space spanned by a Jordan chain of length \(k\) for eigenvalue \(\lambda\). Then \(U\) is invariant under \(T\), i.e. \(T(U) \subseteq U\). Furthermore, if we write \(U = X \oplus Y\) for some \(X\) and \(Y\) both invariant under \(T\) then either \(X\) or \(Y\) is trivial.
+
+\subsection{Decomposition of a Space}
+\paragraph{Invariant Kernel and Image}
+Let \(S\) and \(T\) be linear transformations on a vector space \(V\), and suppose that \(S \circ T = T \circ S\). Then the kernel and image of \(S\) are invariant under \(T\).
+
+\paragraph{Indecomposable Invariant Subspace}
+Let \(T: V \to V\) be a linear map and \(U \leq V\) be an invariant subspace. If \(U\) is indecomposable with respect to \(T\) then it is indecomposable with respect to \(T|_U\), with the restriction of \(T\) to \(U\).
+
+\paragraph{Properties by Subtracting Multiplies of the Identity}
+Let \(T: V \to V\) be a linear map and \(\lambda\) be a scalar. Define \(S = T - \lambda\id\). Then \(U \leq V\) is 
+\begin{enumerate}[label=\alph*)]
+    \item invariant under \(S\) if and only if it is invariant under \(T\);
+    \item decomposable with respect to \(S\) if and only if it is decomposable with respect to \(T\). 
+\end{enumerate}
+
+\paragraph{The Decomposition Lemma}
+Let \(T\) be a linear transformation on a vector space \(V\) of non-zero finite dimension. Then for some integer \(m \geq 1\), there exist \(T\)-invariant subspaces \(U_1, \dots, U_m\), each indecomposable with respect to \(T\), such that
+\[V = U_1 \oplus \cdots \oplus U_m.\]
+
+\paragraph{Kernel-Image Decomposition}
+If \(T\) is a linear map on a finite-dimensional space \(V\), then there exists a positive integer \(m\) such that 
+\[V = (\ker T^m) \oplus (\im T^m).\]
+
+\paragraph{The Jordan Form}
+Let \(T\) be a linear transformation on a non-zero, finite-dimensional complex vector space \(V\). Then there is a basis of \(V\) with respect to which the matrix of \(T\) is a Jordan matrix. 
+
+\paragraph{Definition of Jordan Form}
+The matrix of \(T\) in a Jordan basis is called a Jordan (canonical) form of \(T\).
+
+\paragraph{Jordan Chains as Similarity Invariants}
+The number and lengths of the maximal Jordan chains are similarity invariants.
+
+\paragraph{Splitting Spaces Equals Independent Eigenvectors Equals Maximal Jordan Chains}
+The number of splitting spaces in The Decomposition Lemma, is the same as the number of Independent eigenvectors, which is the same as the number of maximal Jordan chains in any Jordan basis.
+
+\paragraph{Jordan Form Similarity Invariant}
+The Jordan form is a complete similarity invariant for complex matrices.
+
+\subsubsection{The Technical Proofs}
+Recall the following definition and results:
+\begin{enumerate}[label=\alph*)]
+    \item For \(T: V \to V, U \leq V\) is indecomposable and invariant w.r.t \(T\);
+    \item \(T|_U: U \to U\) is thus well defined and has an eigenvalue \(\lambda\);
+    \item \(S: U \to U\) is defined as \(S = T|_U - \lambda\id\);
+    \item \(k\) is the smallest positive integer such that \(S^k\) is the zero map on \(U\);
+    \item \(\vu \in U\) is some vector with \(S^{k-1}(\vu) \neq \vzero\);
+    \item \(\basis = \{\vu, S(\vu), S^2(\vu), \dots, S^{k-1}(\vu) \}\) is independent.
+    \item \(W = \spans(\basis)\)
+\end{enumerate}
+
+\paragraph{Existence of \(S(\vv) \in X\)}
+With the given notation, if \(X\) is a subspace of \(U\) such that
+\[S(X) \subseteq X, \quad W \cap X = \{\vzero\}, \quad W \oplus X \neq U,\]
+then there exists \(\vv \in U\) such that
+\[\vv \in W \oplus X \quad \text{and} \quad S(\vv) \in X.\]
+
+\paragraph{\(W\) is equal to \(U\)}
+With the above notation, \(W = U\).
+
+\subsection{More on the Jordan Form}
+\paragraph{Properties of the Jordan Form}
+\begin{enumerate}[label=\alph*)]
+    \item The eigenvalues of \(T\) are the \(\lambda_i\) in its Jordan form and conversely.
+    \item The number of Jordan blocks for each eigenvalue \(\lambda_i\) is the geometric multiplicity of \(\lambda_i\).
+    \item The algebraic multiplicity of an eigenvalue is the sum of the sizes of all the Jordan blocks for that eigenvalue.
+    \item The height, \(h_i\), of eigenvalue \(\lambda_i\) is the size of the largest Jordan block for \(\lambda_i, h_i \leq a_i\) and \((T - \lambda_i\id)^{h_i}\) is the zero map on each splitting space for \(\lambda_i\).
+    \item Each of the splitting spaces for \(T\) consists of generalised eigenvectors.
+    \item \(\ker(T - \lambda_i\id)^k\) for \(k \geq h_i\) is the generalised eigenspace of \(\lambda_i\).
+    \item \(\GE_\lambda(T)\) is spanned by the union of the Jordan chains for eigenvalue \(\lambda\), and \(\dim\GE_\lambda(T)\) is the algebraic multiplicity of \(\lambda\).
+    \item \(V\) is the direct sum of all the generalised eigenspaces for \(T \in L(V,V)\).
+\end{enumerate}
+All these results have equivalent matrix formulations.
+
+\subsubsection{Matrix Polynomials}
+\paragraph{The Caylet-Hamilton Theorem}
+For any matrix \(A \in M_{p,p}(\bC), \charp_A(A)\) is zero.
+
+\paragraph{Maximal Dimension of Matrix Powers}
+The space spanned by \(\{I, A, A^2, A^3, \dots\}\) is at most \(p\)-dimensional.
+
+\paragraph{Minimal Polynomial}
+The polynomial \(\minp_A(t) = \prod_{i=1}^m (t - \lambda_i)^{h_i}\) is called the minimal polynomial of \(A\).
+
+It is the monic polynomial of least degree for which this is true.
+
+\subsection{Calculating the Jordan Form}
+\paragraph{Properties for Finding Jordan Form}
+\begin{itemize}
+    \item We know \(d_1 - d_0 = d_1 = \nullity(A - \lambda I)\) is the number of Jordan blocks.
+    \item The value of \(d_2 - d_1\) will tell us how many chains of length at least 2 we have.
+    \item Generalising \(d_k - d_{k-1}\) tells us how many chains of length at least \(k\) we have.
+    \item The horizontal layers correspond to the spaces \(Z_j\) and the vertical stacks correspond to the Jordan chains.
+\end{itemize}
+
+\paragraph{Matricies with One Eigenvalue}
+If matrix \(A \in M_{p,p}(\bC)\) has only one eigenvalue, \(\lambda\), then
+\(\GE_\lambda(A) = \bC^p\). Furthermore, if such an \(A\) is diagonalisable then it is \(\lambda I\).

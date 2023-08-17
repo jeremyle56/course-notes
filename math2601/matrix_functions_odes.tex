@@ -1,0 +1,106 @@
+\section{Matrix Functions and ODEs}
+
+\subsection{Powers and the Jordan Form}
+
+\paragraph{Powers of Matricies}
+\begin{itemize}
+    \item If \(A = PBP^{-1}\), then \(A^n = PB^nP^{-1}\).
+    \item If \(M = A \oplus B\) then \(M^n = A^n \oplus B^n\).
+    \item If \(A\vv = \lambda\vv\) then \(A^n\vv = \lambda^n\vv\).
+\end{itemize}
+
+\paragraph{Binomial Theorem for Commuting Matricies}
+Let \(A\) and \(B\) be \(p \times p\) matrices for which \(AB = BA\). Then for any integer \(n \geq 0\) we have
+\[(A + B)^n = A^n + \binom{n}{1}A^{n-1}B + \binom{n}{2}A^{n-2}B^2 + \cdots + B^n.\] 
+
+\subsection{Power Series of Matrices}
+\paragraph{Convergence Entrywise Definition}
+Suppose \(A^(k) = \begin{pmatrix} a_{ij}^{(k)} \end{pmatrix}\) for \(k = 1,2,3,\dots\) is a sequence of \(p \times q\) matrices then we say \(A^(k)\) converges entrywise to \(A\) as \(k \to \infty\) iff \(a_{ij}^{(k)} \to a_{ij}\) as \(k \to \infty\) for all \(i,j\).
+
+\paragraph{Norms on Matrices}
+Let \(A \in M_{p,p}(\bC)\).
+
+The \(\infty\)-norm of \(A\) is defined by
+\[||A||_\infty = \max\{|a_{ij}|: 1 \leq i,j \leq p\}.\]
+
+The operator norm (or 2-norm) of \(A\) is defined as
+    \[||A||_\oper = \max\{||A\vv||: \vv \in \bC^p \text{ and } ||\vv|| = 1\},\]
+
+The Frobenius norm of \(A\) is defined as \(||A||_F = \sqrt{\tr(A*A)}\), which is the same as \(\sqrt{\sum_{i,j}|a_{ij}|^2}\).
+
+\paragraph{Operator and Forenius Norm Relationship}
+Suppose \(A \in M_{p,p}(\bC)\) has non-zero singular values \(\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_k \geq 0\).
+Then \(||A||_\oper = \sigma_1\) and \(||A||_F = \sqrt{\sigma_1^2 + \cdots \sigma_k^2}\). It follows that for all such \(A\),
+\[||A||_\oper \leq ||A||_F \leq \sqrt{p}||A||_\oper.\]
+
+\paragraph{Forenius and Infinity Norm}
+For any matrix \(A \in M_{p,p}(\bC)\) we have
+\[||A||_F \geq ||A||_\infty \geq \frac{1}{p}||A||_F.\]
+
+\paragraph{Convergence in Norm}
+Suppose \(N\) is some norm on \(p \times p\) matrices and \(A^{(k)}\) is a sequence of \(p \times p\) matrices. Then we say \(A^(k)\) converges to \(A\) in the norm \(N\) iff \(N(A^{(k)} - A) \to 0\) as \(k \to \infty\).
+
+\paragraph{Norm Equivalance}
+A sequence of \(p \times p\) matrices \(A^{(k)}\) converges to \(A\) in the \(\infty\)-norm iff it converges to \(A\) in the Frobenius norm iff it converges to \(A\) in the operator norm.
+
+\paragraph{Convergence Entrywise by \(\infty\)-norm}
+A sequence \(A^{(k)}\) tends to \(A\) entrywise if and only if it converges to \(A\) in the \(\infty\)-norm.
+
+\paragraph{\(\infty\)-norm Products}
+Let \(A\) and \(B\) be \(p \times p\) complex matrices. Then
+\[||AB||_\infty \leq p||A||_\infty||B||\infty.\]
+
+\paragraph{Convergence is Preserved Under Similarity}
+Suppose sequence \(A^{(k)} \in M_{p,p}(\bC)\) converges to \(A\) and \(P\) is \(p \times p\) and invertible. Then the sequence \(B^{(k)} = P^{-1}A^{(k)}P\) converges to \(B = P^{-1}AP\).
+
+\paragraph{Convergence of Power Series}
+Suppose \(f: \bC \to \bC\) has a power series expansion \(f(t) = \sum_{k=0}^\infty a_kt^k\) with a radius of convergence \(R, (R \text{possibly} \infty)\). Then if \(A \in M_{p,p}(\bC), \sum a_kA^k\) converges provided \(p||A||_\infty < R\). The limit is then called \(f(A)\).
+
+\paragraph{Power Series Properties}
+Suppose \(f: \bC \to \bC\) has a power series expansion. Then
+\begin{enumerate}
+    \item If \(f(A)\) is defined and \(B = PAP^{-1}\), then \(f(B)\) is defined and \(f(B) = Pf(A)P^{-1}\).
+    \item If \(M = A \oplus B\) and \(f(A)\) and \(f(B)\) are defined, so is \(f(M)\) and \(f(M) = f(A) \oplus f(B)\).
+    \item If \(f(A)\) is defined and \(A\vv = \lambda\vv\) then \(f(\lambda)\) is defined and \(f(A)\vv = f(\lambda)\vv\).
+\end{enumerate}
+
+\subsection{The Matrix Exponential}
+\paragraph{Matrix Exponential Definition}
+Suppose \(A \in M_n(\bC)\). Then
+\[e^A = exp(A) = I + A + \frac{1}{2!}A^2 + \cdots = \sum_{k=0}^\infty \frac{1}{k!}A^k.\]
+
+\paragraph{Dervivative of The Matrix Exponential}
+For any \(A \in M_{p,p}(\bC), \expo(tA)\) is differentiable and
+\[\frac{d}{dt}\expo(tA) = A\expo(tA) = \exp(tA)A.\]
+
+\paragraph{Solution to Inital Value Problem}
+Let \(A \in M_{p,p}(\bC)\) and \(\vc \in \bC^p\); then
+\[\vy(t) = e^{tA}\vc\]
+is a solution of the initial value problem
+\[\vy' = A\vy, \quad \vy(0) = \vc.\]
+
+\paragraph{Invertible is Inverse}
+For each \(t\) and any \(A, e^{tA}\) is invertible and has inverse \(e^{-tA}\).
+
+\paragraph{Uniqueness of Solution}
+Let \(A \in M_{p,p}(\bC)\). Then
+\begin{enumerate}
+    \item If \(\vy' = A\vy\) and \(\vy(0) = \vzero\), then \(\vy \equiv \vzero\).
+    \item The set of solutions of \(\vy' = A\vy\) is a vector space of dimension \(p\) and the columns of \(e^{tA}\) form a basis for this space. 
+    \item The initial value problem \(\vy' = A\vy, \vy(0) = \vc\) has a unique solution \(\vy = e^{tA}\vc\).
+\end{enumerate}
+
+\paragraph{Commutitivity}
+If \(A, B\) in \(M_{p,p}(\bC)\) commute \((AB = BA)\) then
+\[\expo(A + B) = \expo(A) \cdot \exp(B).\]
+
+\subsection{The Column Method}
+For a generalised eigenvector, \(\vv\), finding \(e^{tA}\vv\) only involves a finite summation.
+
+If \(A\) has only one eigenvalue, \(\lambda\) say, then
+\[e^{tA} = e^{\lambda t}(I + t(A - \lambda I) + \cdots + \frac{1}{(k-1)!}t^{k-1}(A - \lambda I)^{k-1})\]
+where the largest Jordan block is \(k \times k\), since every vector is a generalised eigenvector and in \(\ker((A - \lambda I)^k)\).
+
+\subsection{Systems of Homogeneous Linear ODEs}
+\paragraph{Fundamental Matrix}
+A square matrix whose columns are independent as functions of \(t\) and are solutions of \(\vy' = \vec{A}\vy\) is called a fundamental matrix for the system and is denoted by \(\phi(t)\).
