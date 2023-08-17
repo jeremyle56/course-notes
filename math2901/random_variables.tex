@@ -37,19 +37,19 @@ The probability density function of a continuous r.v is a real-valued function \
 \[\bP(X \in A) = \int_A f_X(y) \, dy\]
 for any 'Borel' subset of \(\bR\).
 
-For a function \(f: \bR \to \bR\) to be a valid density function, the function \(f\) must satisfty the following properties. 
+For a function \(f: \bR \to \bR\) to be a valid density function, the function \(f\) must satisfy the following properties. 
 \begin{enumerate}
     \item for all \(x \in \bR, f(x) \geq 0\)
     \item \(\int_{-\infty}^{\infty} f(x) \, dx = 1\)
 \end{enumerate}
 
 \paragraph{Useful Properties (for continuous random variable)}
-For any continuous random variable \(X\) with the density \(f_X\),
+For any continuous random variable \(X\) with the density \(f_X\):
 \begin{enumerate}
-    \item by taking \(A = ( -\infty, x], \bP(X \in (-\infty, x]) = \bP(X \leq x)\) and 
-    \[F_X(x) = \int_{-\infty}^x f_X(y) \, dy\]
+    \item By taking \(A = ( -\infty, x], \bP(X \in (-\infty, x]) = \bP(X \leq x)\)  
+    \[F_X(x) = \int_{-\infty}^x f_X(y) \, dy.\]
     \item For any \(a < b \in \bR\), one can compute \(\bP(a < X \leq b)\) by 
-    \[F_X(b) - F_X(a) = \int_a^b f_X(x) \, dx\]
+    \[F_X(b) - F_X(a) = \int_a^b f_X(x) \, dx.\]
     \item From the fundamental theorem of calculus and 1, we have
     \[F'_X(x) = \frac{d}{dx}\int_{-\infty}^x f_X(y) \, dy = f_X(x).\]
 \end{enumerate}
@@ -59,7 +59,7 @@ For any continuous random variable \(X\) with the density \(f_X\),
 The expectation of a r.v \(X\) is denoted by \(\bE(X)\) and it is computed by 
 \begin{enumerate}
     \item Let \(X\) be a discrete r.v. then 
-    \[\bE(X) := \sum_{\text{all possible } x} x\bP(X = x) = \sum_{\text{all possible} x} x\nabla F_X(x)\]
+    \[\bE(X) := \sum_{\text{all possible } x} x\bP(X = x) = \sum_{\text{all possible } x} x\nabla F_X(x)\]
     \item Let \(X\) be a continuous r.v. with density function \(f_X(x)\) then
     \[\bE(x) := \int_{-\infty}^\infty xf_X(x) \, dx\]
 \end{enumerate}
@@ -86,7 +86,7 @@ and the standard deviation of \(X\) is the square root of the variance.
 Given a random variable \(X\) then for any constant \(a,b \in \bR\),
 \begin{enumerate}
     \item \(\operatorname{Var}(X) = \bE(X^2) - (\bE(X))^2\)
-    \item \(\operatorname{Var}(ax) = a^2\operatorname{Var}(X)\)
+    \item \(\operatorname{Var}(aX) = a^2\operatorname{Var}(X)\)
     \item \(\operatorname{Var}(X + b) = \operatorname{Var}(X)\)
     \item \(\operatorname{Var}(b) = 0\)
 \end{enumerate}
