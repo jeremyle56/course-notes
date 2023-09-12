@@ -8,3 +8,5 @@
 - [Inner Product Spaces](./inner_product_spaces.tex)
 - [Determinants](./determinants.tex)
 - [Eigenvalues and Eigenvectors](./eigenvalues_eigenvectors.tex)
+- [Canonical Forms](./canonical_forms.tex)
+- [Matrix Functions and ODES](./matrix_functions_odes.tex)
