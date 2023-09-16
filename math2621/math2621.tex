@@ -1,0 +1,55 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+\usepackage{subfiles}
+
+\usepackage{hyperref}
+\hypersetup {                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bC}{\mbb{C}}
+\newcommand{\bR}{\mbb{R}}
+
+\newcommand{\ball}{\mathrm{B}}
+\newcommand{\ballz}{\mathrm{B}(z_0, \epsilon)}
+\newcommand{\conjw}{\bar{w}}
+\newcommand{\conjz}{\bar{z}}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{Higher Linear Algebra \\ MATH2621 UNSW}
+\author{Jeremy Le \footnote{With some inspiration from \href{https://github.com/imagine-hussain/math2621-notes/blob/main/2621.pdf}{Hussain Nawaz's Notes}}}
+\date{2023T2}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+    \subfile{assumed.tex}
+    \subfile{inequalities_sets.tex}
+    \subfile{functions.tex}
+\end{document}

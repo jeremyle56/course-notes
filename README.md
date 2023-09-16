@@ -19,6 +19,10 @@ Notes are deployed at: https://jeremyle56.github.io/course-notes/
 - [MATH2601 (Higher Linear Algebra)](./math2601/math2601.pdf)
 - [MATH2901 (Higher Theory of Statistics)](./math2901/math2901.pdf)
 
+## 2023 T3
+
+- [MATH2621 (Higher Complex Analysis)](./math2621/math2621.pdf)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.

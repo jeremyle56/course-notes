@@ -1,0 +1,47 @@
+\section{Functions of a Complex Variable}
+
+\paragraph{Complex Function}
+A complex function is one whose domain, or whose range, or both, is a subset of the complex plane \(\bC\) that is not a subset of the real line \(\bR\).
+
+\paragraph{Complex Polynomial}
+A complex polynomial is a function \(p: \bC \to \bC\) of the form
+\[p(z) = a_dz^d + \cdots + a_1z + a_0,\]
+where \(a_d, \dots, a_1, a_0 \in \bC\). If \(a_d \neq 0\), we say that \(p\) is of degree \(d\). A rational function is a quotient of polynomials.
+
+\paragraph{The Fundamental Theorem of Algebra}
+Every nonconstant complex polynomial \(p\) of degree \(d\) factorizes: there exists \(\alpha_1, \alpha_2, \dots, \alpha_d\) and \(c\) in \(\bC\) such that
+\[p(z) = c \prod_{j=1}^d (z - a_j).\]
+
+\paragraph{Polynomial Division and Partial Fractions}
+Suppose that \(p\) and \(q\) are polynomials. Then
+\[\frac{p(z)}{q(z)} = s(z) + \frac{r(z)}{q(z)},\]
+where \(r\) and \(s\) are polynomials, and the degree of \(r\) is strictly less than the degree of \(q\). Further, if
+\[q(z) = c\prod_{j=1}^e(z-\beta_j)^{m_j},\]
+then we may decompose the term \(r / q\) into partial fractions:
+\[\frac{r(z)}{q(z)} = \sum_{j=1}^e\sum_{k=1}^{m_j} \frac{a_{jk}}{(z-\beta_j)^k}.\]
+
+\paragraph{Real and Imaginary Parts}
+To a function \(f: S \to \bC\), where \(S \subseteq \bC\), we associate two real-valued functions \(u\) and \(v\) of two real variables:
+\[f(x + iy) = u(x, y) + iv(x, y).\]
+Then \(u(x,y) = \Re f(x + iy)\) and \(v(x,y) = \Im f(x + iy)\).
+
+\subsection{The function \texorpdfstring{\(w = 1 / z\)}{w = 1/z}}
+Consider the mapping \(w = 1 /z\).
+\begin{enumerate}[label=(\arabic*)]
+    \item The image of a line through 0 (with the origin removed) is a line through 0 (with the origin removed).
+    \item The image of a line that does not pass through 0 is a circle (with the origin removed). If \(p\) is the closest point on the line to 0, then the line segment between 0 and 1/p is a diameter of the circle.
+    \item The image of a circle that passes through 0 is a line. If \(q\) is the furthest point on the circle from 0, then the closest point on the line to 0 is \(1/q\).
+    \item The image of a circle that does not pass through 0 is a circle. If \(p\) and \(q\) are the closest and furthest point on the circle from 0, then the closest and furthest point on the image circle to 0 are \(1 / q\) and \(1 / p\).
+\end{enumerate}
+
+\subsection{Fractional Linear Transformations}
+\paragraph{Factorising Matrices}
+Every \(2 \times 2\) complex matrix with determinant 1 may be written as a product f at most three matrices of the following special types:
+\[\begin{pmatrix}
+    a & b \\
+    0 & d
+\end{pmatrix} \qquad \text{ and } \qquad
+\begin{pmatrix}
+    0 & 1 \\
+    -1 & 0
+\end{pmatrix}.\]

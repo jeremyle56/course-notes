@@ -1,0 +1,65 @@
+\section{Inequalities and Sets of Complex Numbers}
+\subsection{Equalities and Inequalities}
+\paragraph{Modulus Squared of a Sum}
+For all complex numbers \(w\) and \(z\),
+\[|w + z| ^2 = |w|^2 + 2\Re(w\conjz) + |z|^2.\]
+
+\paragraph{Triangle Inequality}
+For all complex numbers \(w\) and \(z\),
+\[|w + z| \leq |w| + |z| \qquad \forall w,z, \in \bC.\]
+
+\paragraph{Circle Inequality}
+For all complex numbers \(w\) and \(z\),
+\[\left||w| - |z|\right| \leq |w - z|.\]
+
+\paragraph{Modulus of \(e^z\)}
+If \(z \in \bC\), then
+\[|e^z| = e^{\Re(z)}.\]
+
+\paragraph{Modolus of \(e^z - 1\) inequality}
+For all real numbers \(\theta\),
+\[|e^{i\theta} - 1 | \leq |\theta|.\]
+
+\subsection{Properties of Sets}
+\paragraph{Open Ball}
+The open ball with centre \(z_0\) and radius \(\epsilon\), written \(\ballz\), is the set \(\{z \in \bC: |z - z_0| < \epsilon\}\).
+
+\paragraph{Punctured Open Ball}
+The punctured open ball with centre \(z_0\) and radius \(\epsilon\), written \(B^\circ(z_0, \epsilon)\), is the set \(\{z \in \bC : 0 < |z - z_0 | < \epsilon\}\).
+
+\paragraph{Interior, Exterior and Boundary Points}
+Suppose that \(S \subseteq \bC\). For any point \(z_0\) in \(\bC\), there are three mutually exclusive and exhaustive possibilities:
+\begin{enumerate}[label=(\arabic*)]
+    \item When the positive real number \(\epsilon\) is sufficiently small, \(\ballz\) is a subset of \(S\), that is, \(\ballz \cap S = \ballz\). In this case, \(z_0\) is an interior point of \(S\).
+    \item When the positive real number \(epsilon\) is sufficiently small, \(\ballz\) does not meet \(S\), that is, \(\ballz\ cap S = \emptyset\). In this case, \(z_0\) is an exterior point of \(S\).
+    \item No matter how small the positive real number \(\epsilon\) is, neither of the above holds, that is, \(\emptyset \subset \ballz \cap S \subset \ballz\). In this case, \(z_0\) is a boundary point of \(S\).
+\end{enumerate}
+
+\paragraph{Open, Closed, Closure, Bounded, Compact, Region Sets}
+Suppose that \(S \subseteq \bC\).
+\begin{enumerate}[label=(\arabic*)]
+    \item The set \(S\) is open if all its points are interior points.
+    \item The set \(S\) is closed if it contains all of its boundary points, or equivalently, if its complement \(\bC \setminus S\) is open.
+    \item The closure of the set \(S\) is the set consisting of the points of \(S\) together with the boundary points of \(S\).
+    \item The set is bounded if \(S \subseteq \ball(0, R)\) for some \(R \in \bR^+\)
+    \item The set \(S\) is compact if it is both closed and bounded.
+    \item The set \(S\) is a region if it is an open set together with none, some, or all of its boundary points.
+\end{enumerate}
+
+\subsection{Arcs}
+\paragraph{Polygonal Arc}
+A polygonal arc is a finite sequence of finite directed line segments, where the end point of one line segment is the initial point of the next one.
+
+\paragraph{Simple Closed Polygonal Arc}
+A simple closed polygonal arc is a polygonal arc that does not cross itself, but the final point of the last segment is the initial point of the first segment.
+
+\paragraph{Interior and Exterior Arc}
+The complement of a simple closed polygonal arc is made up of two pieces: one, the interior of the arc, is bounded, and the other, exterior is not.
+
+\paragraph{Polygonally Path-connectedness}
+Let \(X \subseteq \bC\) be a subset of the complex plane.
+\begin{enumerate}[label=(\arabic*)]
+    \item The set \(X\) is polygonally path-connected if any two points of \(X\) can be joined by a polygonal arc lying inside \(X\).
+    \item The set \(X\) is simply polygonally connected if it is polygonally path-connected and if the interior of every simple closed polygonal arc in \(X\) lies in \(X\), that is, if "\(X\) has no holes".
+    \item The set \(X\) is a domain if it is open and polygonally path-connected.
+\end{enumerate}
