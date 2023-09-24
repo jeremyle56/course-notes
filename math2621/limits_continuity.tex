@@ -1,0 +1,80 @@
+\section{Limits and Continuity}
+\subsection{Limits}
+\paragraph{Definition of a Limit}
+Suppose that \(f\) is a complex function and that \(z_0\) is in Domain\((f)^-\). We say that \(f(z)\) tends to \(\ell\) as \(z\) tends to \(z_0\), or that \(\ell\) is the limit of \(f(z)\) as \(z\) tends to \(z_0\), and we write \(f(z) \to \ell\) as \(z \to z_0\), or
+\[\lim_{z \to z_0}f(z) = \ell,\]
+if, for every \(\epsilon \in \bR^+\), there exists \(\delta \in \bR^+\) such that \(|f(z) - \ell| < \epsilon\) provided that \(z\) is in Domain(\(f\)) and \(0 < |z - z_0 | < \delta\).
+
+\paragraph{Limit within a Subset}
+Suppose also \(S\) is a subset of Domain(\(f\)) and that \(z_0 \in \bar{S}\). We say that \(f(z)\) tends to \(\ell\) as \(z\) tends to \(z_0\) in \(S\), or that \(\ell\) is the limit of \(f(z)\) as \(z\) tends to \(z_0\) in \(S\), and write \(f(z) \to \ell\) as \(z \to z_0\) in S, or
+\[\lim_{\substack{z \to z_0 \\ z \in S}} f(z) = \ell,\]
+if, for every \(\epsilon \in \bR^+\), there exists \(\delta \in \bR^+\) such that \(|f(z) - \ell| < \epsilon\) provided that \(z \in S\) and \(0 < |z - z_0| < \delta\).
+
+\paragraph{Limits at Infinity}
+Suppose that \(f\) is a complex function, that \(\ell \in \bC \subset \{\infty\}\), and that either \(z_0 \in \Domain(f)^-\) or \(Domain(f)\) is not bounded and \(z_0 = \infty\). We say that \(f(z)\) tends to \(\ell\) as \(z\) tends to \(z_0\), or that \(\ell\) is the limit of \(f(z)\) as \(z\) tends to \(z_0\), and we write \(f(z) \to \ell\) as \(z \to z_0\), or
+\[\lim_{z \to z_0} f(z) = \ell,\]
+if for all \(\epsilon \in \bR^+\), there exists \(\delta \in \bR^+\) such that \(f(z) \in \ball(\ell, \epsilon)\) provided that \(z \in \ball^\circ(z_0, \delta)\).
+
+\paragraph{Standard Limits}
+Suppose that \(\alpha, c \in \bC\). Then
+\[
+    \begin{aligned}[c]
+        \lim_{z \to \alpha} c & = c \\
+        \lim_{z \to \alpha} z - c & = \alpha - c \\
+        \lim_{z \to \alpha} \frac{1}{z - \alpha} & = \infty
+    \end{aligned}
+    \qquad \qquad \qquad
+    \begin{aligned}[c]
+        \lim_{z \to \infty} c & = c \\
+        \lim_{z \to \infty} z - \alpha & = \infty \\
+        \lim_{z \to \alpha} \frac{1}{z - \alpha} & = 0
+    \end{aligned}
+\]
+
+\paragraph{Lemmas on Limits}
+\begin{enumerate}
+    \item Suppose that \(f\) is a complex function, that \(T \subseteq S \subseteq \Domain(f)\), and that \(z_0 \in \bar{T}\). If \(\lim_{\substack{z \to z_0 \\ z \in S}} f(z)\) exists, then so does \(\lim_{\substack{z \to z_0 \\ z \in T}} f(z)\), and they are equal.
+    \item Suppose that \(f\) is a complex function, and that \(z_0 \in \Domain(f)^-\). If \(\lim_{z \to z_0}f(z)\) exists, then it is unique.
+\end{enumerate}
+
+\paragraph{Algebra of Limits}
+Suppose that \(f\) and \(g\) are complex functions and that \(c \in \bC\). Then
+\begin{align*}
+    \lim_{z \to z_0} cf(z) & = c \lim_{z \to z_0} f(z) \\
+    \lim_{z \to z_0} f(z) + g(z) & = \lim_{z \to z_0} f(z) + \lim_{z \to z_0} g(z) \\
+    \lim_{z \to z_0} f(z) g(z) & = \lim_{z \to z_0} f(z) \lim_{z \to z_0} g(z) \\
+    \lim_{z \to z_0} \frac{f(z)}{g(z)} & = \frac{\lim_{z \to z_0} f(z)}{\lim_{z \to z_0} g(z)},
+\end{align*}
+in the sense that if the right hand side exists, then so does the left hand size and they are equal. In particular, for the quotient, we require that \(\lim_{z \to z_0} g(z) \neq 0\).
+
+\paragraph{Limits and Complex Conjugation}
+Suppose that \(f\) is a complex function and that either \(\Domain(f)\) is unbounded and \(z_0 = \infty\) or \(z_0 \in \Domain(f)^-\). Then
+\begin{align*}
+    \lim_{z \to z_0} \bar{f(z)} & = \bar{\lim_{z \to z_0} f(z)} \\
+    \lim_{z \to z_0} \Re(f(z)) & = \Re \lim_{z \to z_0} f(z) \\
+    \lim_{z \to z_0} \Im(f(z)) & = \Im \lim_{z \to z_0} f(z) \\
+    \lim_{z \to z_0} f(z) & = \lim_{z \to z_0} \Re(f(z)) + i \lim_{z \to z_0} \Im(f(z)),
+\end{align*}
+in the sense that if the right hand side exists, then so does the left hand size, and they are equal. In particular, \(f(z)\) tends to \(\ell\) as \(z\) tends to \(z_0\) if and only if \(\Re(f(z))\) tends to \(\Re(\ell)\) and \(\Im(f(z))\) tends to \(\Im(\ell)\) as \(z\) tends to \(z_0\).
+
+\subsection{Continuity}
+\paragraph{Definition}
+Suppose that the complex function \(f\) is defined in a set \(S \subseteq \bC\), and that \(z_0 \in S\). We say that \(f\) is continuous at \(z_0\) if
+\[\lim_{z \to z_0} f(z) = f(z_0);\]
+that is, the limit exists, \(f(z_0)\) exists, and they are equal.
+
+We say that \(f\) is continuous in \(S\) if it is continuous at all points of \(S\), and continuous if it is continuous in its domain.
+
+\paragraph{Properties of Continuous Functions}
+\begin{itemize}
+    \item Suppose that \(c \in \bC\), and that \(f : S \to \bC\) and \(g: S \to \bC\) are continuous complex functions in \(S \subseteq \bC\). Then \(cf, f + g, |f|, \bar{f}, \Re f, \Im f\) and \(fg\) are continuous in \(S\), as is \(f / g\) provided that \(g(z) \neq 0\) for any \(z\) in \(S\).
+    \item Suppose that \(f: S \to \bC\) and \(g: T \to \bC\) are continuous complex functions in \(S \subseteq \bC\) and \(T \subseteq \bC\). Then \(f \circ g\) is continuous where it is defined, that is, in \(\{z \in T, g(z) \in S \}\).
+\end{itemize}
+
+\paragraph{Continuity and Boundedness}
+Suppose that the set \(S \subseteq \bC\) is compact (i.e., closed and bounded) and that \(f\) is a continuous complex function defined on \(S\). Then there exists a point \(z_0\) in \(S\) such that
+\[|f(z_0)| = \max\{|f(z)| : z \in S\}.\]
+
+\paragraph{The Log Function}
+The function \(\Log: \bC \setminus \{0\} \to \bC\) is defined by
+\[\Log(z) = \ln|z| + i\Arg(z).\]
