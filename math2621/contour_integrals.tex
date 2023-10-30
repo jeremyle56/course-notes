@@ -1,0 +1,57 @@
+\section{Contour Integrals}
+
+\paragraph{Curves}
+Suppose that \(\gamma: [a, b] \to \bC\) is a curve and
+\[\gamma(t) = \gamma_1(t) + i\gamma_2(t),\]
+where \(\gamma_1, \gamma_2: [a, b] \to \bR\). Then we define
+\[\gamma'(t) = \gamma'_1(t) + i\gamma'_2(t),\]
+when both \(\gamma'_1(t)\) and \(\gamma_2'(t)\) exist.
+That is,
+\[\Re(\gamma'(t)) = (\Re(\gamma))' \quad \text{ and } \quad \Im(\gamma') = (\Im(\gamma))'.\]
+
+\paragraph{Contour}
+A contour is an oriented range of a piecewise smooth curve in the complex plane.
+
+\paragraph{Integral of a Complex-Valued Function}
+Suppose that \(u, v: [a, b] \to \bR\) are real-valued functions, and that \(f: [a, b] \to \bC\) is given by \(f = u + iv\). We define
+\[\int_a^b f(t) dt = \int_a^b (u(t) = iv(t)) dt = \int_a^b u(t) dt + i \int_a^b v(t) dt,\]
+provided that the two real integrals on the right hand side exist.
+
+That is,
+\[\Re\left( \int_a^b f(t) dt\right) = \int_a^b \Re(f(t)) dt \quad \text{ and } \quad \Im\left(\int_a^b f(t) dt\right) = \int_a^b \Im(f(t)) dt.\]
+
+\paragraph{Properties of Integration}
+For \(a,b,c,d \in \bR, \lambda, \mu \in \bC\), a real-valued differentiable function \(h: [c, d] \to [a, b]\) such that \(h(c) = a\) and \(h(d) = b\), and complex-valued functions \(f\) and \(g\).
+\begin{align*}
+    \int_a^b \lambda f(t) + \mu g(t) dt & = \lambda \int_a^b f(t) dt + \mu \int_a^b g(t) dt \\
+    \int_c^d f(h(t))h'(t) dt & = \int_a^b f(s) ds \\
+    \int_a^b f'(t) g(t) dt & = [f(b)g(b) - f(a)g(a)] - \int_a^b f(t)g'(t) dt \\
+    \int_a^b e^{\lambda t} dt & = \left[\frac{e^{\lambda t}}{\lambda}\right]_{t=a}^{t=b} = \frac{e^{\lambda b} - e^{\lambda a}}{\lambda} \\
+    |\int_a^b f(t) dt | & \leq \int_a^b |f(t)| dt.
+\end{align*}
+
+\paragraph{Complex Line Integrals}
+Given a (not necessarily simple) piecewise smooth curve \(\gamma: [a, b] \to \bC\) and a continuous (not necessarily differentiable) function \(f\) defined on the range of \(\gamma\), we define the complex line integral \(\int_\gamma f(z) dz\) by
+\[\int_\gamma f(z) dz = \int_a^b f(\gamma(t))\gamma'(t) dt,\]
+provide that the integral on the right hand side exists.
+
+\paragraph{Properties of Complex Line Integrals}
+Suppose that \(\lambda, \mu \in \bC\), that \(\lambda: [a, b] \to \bC\) is a piecewise smooth curve, and that \(f\) and \(g\) are complex functions defined on \(\mathrm{Range}(\lambda)\). Then the following hold.
+\begin{enumerate}[label=(\alph*)]
+    \item The integral is linear:
+    \[\int_\gamma \lambda f(z) + \mu g(z) dz = \lambda \int_\gamma f(z) dz + \mu \int_\gamma g(z) dz.\]
+    \item The integral is independent of parametrisation: if \(\delta\) is a reparametrisation of \(\gamma\) that is also a piecewise smooth curve, then
+    \[\int_\lambda f(z) dz = \int_\delta f(z) dz.\]
+    \item The integral is additive for joins: if \(\gamma = \alpha \sqcup \beta\), then
+    \[\int_\gamma f(z) dz = \int_\alpha f(z) dz + \int_\beta f(z) dz.\]
+    \item The integral depends on the orientation:
+    \[\int_{\gamma*} f(z) dz = -\int_\gamma f(z) dz.\]
+    \item We may estimate the size of the integral:
+    \[|\int_\gamma f(z) dz| \leq ML,\]
+    where \(L\) is the length of \(\gamma\) and M is a number such that \(|f(z)| \leq M\) for all \(z \in \mathrm{Range}(\gamma)\).
+\end{enumerate}
+
+\paragraph{Contour Integrals}
+We define
+\[\int_\Gamma f(z) dz = \int_\gamma f(z) dz,\]
+where \(\gamma\) is any parametrisation of \(\Gamma\).

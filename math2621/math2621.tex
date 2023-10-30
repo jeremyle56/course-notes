@@ -23,9 +23,13 @@
     urlcolor=black
 }
 
+\newcommand{\defn}{\paragraph{Definition}}
+
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bC}{\mbb{C}}
+\newcommand{\bN}{\mbb{N}}
 \newcommand{\bR}{\mbb{R}}
+\newcommand{\bZ}{\mbb{Z}}
 
 \newcommand{\ball}{\mathrm{B}}
 \newcommand{\ballz}{\mathrm{B}(z_0, \epsilon)}
@@ -34,6 +38,8 @@
 \newcommand{\Domain}{\mathrm{Domain}}
 \newcommand{\Log}{\mathrm{Log}}
 \newcommand{\Arg}{\mathrm{Arg}}
+\newcommand{\powerseries}{\sum_{n=0}^{\infty} a_n(z - z_0)^n}
+\newcommand{\Int}{\mathrm{Int}}
 
 
 \graphicspath{./assets}
@@ -58,4 +64,14 @@
     \subfile{functions.tex}
     \subfile{limits_continuity.tex}
     \subfile{differentiability.tex}
+    \subfile{harmonic_functions.tex}
+    \subfile{power_series.tex}
+    \subfile{exponential_hyperbolic_trignonmetric.tex}
+    \subfile{logarithms_roots.tex}
+    \subfile{inverses_exponential_related_functions.tex}
+    \subfile{contour_integrals.tex}
+    \subfile{cauchy_goursat.tex}
+
+    \subfile{cauchy_integral.tex}
+    \subfile{morera_theorem.tex}
 \end{document}

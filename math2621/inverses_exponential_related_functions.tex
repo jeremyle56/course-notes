@@ -1,0 +1,34 @@
+\section{Inverses of Exponential and Related Functions}
+
+\subsection{The Exponential Function}
+\paragraph{Inverse of The Exponential Function}
+The principle branch of the complex logarithm is the function \(\Log\) from \(\bC \setminus \{0\}\) to \(\bC\), given by
+\[\Log(z) = \ln|z| + i\Arg(z),\]
+where \(\Arg(z)\) takes values in the range \((-\pi, \pi]\).
+
+\paragraph{Differentiability}
+For any branch \(\log_\theta\) of the complex logarithm,
+\[\log'_\theta (w) = \frac{1}{w}\]
+for all \(w \in \bC \setminus R_\theta\).
+
+\subsection{Complex Powers}
+\paragraph{Definition}
+Given \(z \in \bC \setminus \{0\}\) and \(\alpha \in \bC\), we define
+\[z^\alpha = \exp(\alpha\log(z)).\]
+The principle branch of \(z^\alpha\) is found by using \(\Log\), the principle branch of the logarithm. That is, \(\mathrm{PV}z^\alpha = \exp(\alpha\Log(z))\).
+
+\paragraph{Differentiability of Complex Powers}
+The function \(z \mapsto \mathrm{PV}z^\alpha\) is differentiable in \(C \setminus (-\infty, 0]\), with derivative \(\alpha\mathrm{PV}z^\alpha / z\).
+
+\subsection{Inverse Hyperbolic Trigonometric Functions}
+\paragraph{Inverse Hyperbolic Sine}
+The principal branch of the inverse hyperbolic sine function is given by
+\[\mathrm{PV}\sinh^{-1} w = \Log(w + \mathrm{PV}(w^2 + 1)^{1/2}).\]
+
+\paragraph{Differentiability of Inverse Hyperbolic Cosine}
+The principle branch of the inverse hyperbolic sine function is differentiable in \(\bC \setminus ([i, +i\infty) \cup (-i\infty, -i])\). Further,
+\[(\mathrm{PV}\sinh^{-1})'(w) = \frac{1}{\mathrm{PV}\sqrt{w^2 +1}}.\]
+
+\paragraph{Inverse Hyperbolic Cosine}
+Similarly, we define
+\[\mathrm{PV}\cosh^{-1}(w) = \Log(w + \mathrm{PV}(w + 1)^{1/2}\mathrm{PV}(w-1)^{1/2}).\]

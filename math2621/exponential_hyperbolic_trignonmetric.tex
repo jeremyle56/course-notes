@@ -1,0 +1,51 @@
+\section{Exponential, Hyperbolic and Trigonometric Functions}
+\subsection{The Exponential Function}
+\paragraph{Definition}
+We define the exponential series by the formula
+\[\exp(z) = \sum_{n=0}^{\infty} \frac{z^n}{n!} \qquad \forall z \in \bC.\]
+
+\paragraph{Properties of the Exponential Series}
+\begin{enumerate}
+    \item \(\exp(0) = 1\);
+    \item \(\exp(z + w) = \exp(z)\exp(w)\) for all \(z, w \in \bC\);
+    \item \(\exp(-z) = \exp(z)^{-1}\) for all \(z \in \bC\);
+    \item \(\exp(z) \neq 0\) for all \(z \in \bC\);
+    \item \(\exp'(z) = \exp(z)\) for all \(z \in \bC\);
+    \item if a function \(f: \bC \to \bC\) satisfies \(f(0) = 1\) and \(f'(z) = f(z)\) for all \(z \in \bC\), then \(f(z) = \exp(z)\) for all \(z \in \bC\);
+    \item \(\exp(x + iy) = e^x(\cos(y) + i\sin(y))\) for all \(x,y \in \bR\).
+\end{enumerate}
+
+\paragraph{Periodicity of the Exponential Mapping}
+The exponential \(\exp\) maps \(\bC\) onto \(\bC \setminus \{0\}\), and \(\exp(z_1) = \exp(z_2)\) if and only if \(z_1 - z_2  \in 2\pi i\bZ\).
+
+\subsection{The Hyperbolic Functions}
+\defn
+We define the complex hyperbolic cosine and sine by the formulae
+\[\cosh(z) = \frac{\exp(z) + \exp(-z)}{2} = \sum_{n\in\bN} \frac{z^{2n}}{(2n)!}\]
+and
+\[\sinh(z) = \frac{\exp(z) - \exp(-z)}{2} = \sum_{n\in\bN} \frac{z^{2n+1}}{(2n + 1)!}\]
+for all \(z \in \bC\).
+
+\paragraph{Properties of the Hyperbolic Sine and Cosine}
+\begin{enumerate}[label=(\roman*)]
+    \item \(\cosh(-z) = \cosh(z)\)
+    \item \(\sinh(-z) = -\sinh(z)\)
+    \item \(\cosh'(z) = \sinh(z)\)
+    \item \(\sinh'(z) = \cosh(z)\)
+    \item \(\cosh(z + 2\pi ik) = \cosh(z)\)
+    \item \(\sinh(z + 2\pi ik) = \sinh(z)\)
+    \item \(\cosh(z + w) = \cosh(z)\cosh(w) + \sinh(z)\sinh(w)\)
+    \item \(\sinh(z + w) = \sinh(z)\cosh(w) + \cosh(z)\sinh(w)\)
+    \item \(\cosh^2(z) - \sinh^2(z) = 1\)
+    \item \(\cosh(x + iy) = \cosh(x)\cos(y) + i\sinh(y)\sin(y)\)
+    \item \(\sinh(x + iy) = \sinh(x)\cos(y) + i\cosh(x)\sin(y)\).
+\end{enumerate}
+for all \(w, z \in \bC\), all \(k \in \bZ\) and all \(x,y \in \bR\).
+
+\subsection{The Trigonometric Functions}
+\defn
+We define the complex cosine and sine by the formulae
+\[\cos(z) = \frac{\exp(iz) + \exp(-iz)}{2} = \sum_{n \in \bN}\frac{(-1)^n z^{2n}}{(2n)!}\]
+and
+\[\sin(z) = \frac{\exp(iz) - \exp(-iz)}{2i} = \sum_{n \in \bN} \frac{(-1)^n z^{2n + 1}}{(2n + 1)!}\]
+for all \(z \in \bC\).

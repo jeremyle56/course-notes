@@ -1,0 +1,52 @@
+\section{Power Series}
+
+\paragraph{Definition}
+A (complex) power series is an expression of the form
+\[\powerseries,\]
+where the centre \(z_0\) and the coefficients \(a_n\) are all fixed complex numbers, and the variable \(z\) is complex. We take \((z - z_0)^0\) to be \(1\) for all \(z\), even when \(z = z_0\).
+
+\paragraph{Radius of Convergence}
+Every power series \(\powerseries\) has a radius of convergence \(\rho\), given by the formulae
+\[\rho = \left(\lim_{n\to\infty}\sup|a_n|^{1/n} \right)^{-1} = \left(\lim_{k\to\infty}\sup_{n\geq k}|a_n|^{1/n} \right)^{-1}.\]
+The radius of convergence \(\rho \in [0, +\infty]\) satisfies:
+\begin{enumerate}[label=(\alph*)]
+    \item \(\powerseries\) converges if \(|z - z_0| < \rho\)
+    \item \(\powerseries\) does not converge if \(|z - z_0| > \rho\)
+    \item \(\powerseries\) may converge for no, some or all \(z\) such that \(|z - z_0| = \rho\).
+\end{enumerate}
+
+\paragraph{The Ratio Test}
+The radius of convergence is given by
+\[\rho = \lim_{n\to\infty} \frac{|a_n|}{|a_{n+1}|},\]
+as long as the limit exists or is \(+\infty\).
+
+\paragraph{The Root Test}
+The radius of convergence is given by
+\[\rho = \lim_{n\to\infty} \frac{1}{|a_n|^{1/n}}.\]
+as long as the limit exists or is \(+\infty\).
+
+\paragraph{The Algebra of Power series}
+Suppose that \(\powerseries\) and \(\sum_{n=0}^{\infty} b_n(z - z_0)^n\) converge in \(B(z_0, \rho)\) to \(f(z)\) and \(g(z)\), and that \(c \in \bC\). Then the following series also converge in \(B(z_0, \rho)\):
+\begin{enumerate}[label=(\alph*)]
+    \item \(\sum_{n=0}^{\infty} c a_n(z - z_0)^n\), and its sum is \(c f(z)\);
+    \item \(\sum_{n=0}^{\infty} (a_n + b_n)(z - z_0)^n\), and its sum is \(f(z) + g(z)\);
+    \item \(\sum_{n=0}^{\infty} c_n(z - z_0)^n\), where \(c_n = \sum_{j=0}^{n}a_jb_{n-j}\), and its sum is \(f(z)g(z)\).
+\end{enumerate}
+
+\paragraph{Power Series are Differentiable}
+Suppose that \(f(z) = \powerseries\) in \(B(z_0, \rho)\) and \(\rho > 0\). Then \(f\) is differentiable in \(B(z_0, \rho)\), and
+\[f'(z) = \sum_{n=1}^{\infty}a_n n(z - z_0)^{n-1} = \sum_{m=0}^{\infty} a_{m+1} (m+1)(z - z_0)^m\]
+in \(B(z_0, \rho)\).
+
+\paragraph{Repeatedly Differentiating Power Series}
+Suppose that \(f(z) = \powerseries\) in \(B(z_0, \rho)\). Then \(f\) may be differentiated as many times as desired, and
+\[f^{(k)}(z) = \sum_{n=k}^{\infty} n(n-1)\dots(n - k + 1)a_n(z - z_0)^{n - k}.\]
+In particular,
+\[f^{(k)}(z_0) = k!a_k\].
+Further, the real valued functions \(u\) and \(v\), such that \(f(x + iy) = u(x,y) + iv(x, y)\), may be differentiated as many times as desired, and all their partial derivatives are continuous.
+
+\paragraph{Power Series that Vanish on an Interval}
+Suppose that \(g(z) = \powerseries\) in \(B(z_0, \rho)\), and that \(\epsilon > 0\). If \(g(z_0 + t) = 0\) for all real \(t\) in \((-\epsilon, \epsilon)\), then \(g(z) = 0\) for all \(z\) in \(B(z_0, \rho)\).
+
+\paragraph{Power Series that are Equal near the Centre}
+Suppose that \(f(z) = \powerseries\) and moreover that \(g(z) = \sum_{n=0}^{\infty} b_n(z - z_0)^n\) in \(B(z_0, \rho)\). If \(f(z_0 + t) = g(z_0 + t)\) for all \(t \in (-\epsilon, \epsilon)\), then \(f(z) = g(z)\) for all \(z \in B(z_0, \rho)\).

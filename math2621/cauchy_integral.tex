@@ -1,0 +1,36 @@
+\section{Cauchy's Integral Formula}
+
+\paragraph{Cauchy's Integral Formula}
+Suppose that \(\Omega\) is a simply connected domain in \(\bC\), that \(f \in H(\Omega)\), that \(\Gamma\) is a simple closed contour in \(\Omega\) and that \(w \in \mathrm{Int}(\Gamma)\). Then
+\[f(w) = \frac{1}{2\pi i} \int_\Gamma \frac{f(z)}{z - w} dz.\]
+
+\paragraph{Independence of Contour}
+Suppose that \(w\) lies in a simply connected domain \(\Omega\), and that \(f \in H(\Omega)\). If \(Gamma\) and \(\Delta\) are simple closed contours such that \(w \in \Int(\Gamma)\) and \(w \in \Int(\Delta)\), then
+\[\int_\Gamma \frac{f(z)}{z - w} dz = \int_\Delta \frac{f(z)}{z - w} dz.\]
+
+\paragraph{Mean Value Formula}
+Suppose that \(\Omega\) is a simply connected domain in \(\bC\), that \(f \in H(\Omega)\), and that \(w \in \Omega\). If \(\bar{B}(w, r) \subset \Omega\), then
+\[f(w) = \frac{1}{2\pi} \int_0^{2\pi} f(w + re^{i\theta}) d\theta.\]
+
+\paragraph{Cauchy's Generalised Integral Formula}
+Suppose that \(f \in H(B(z_0, R))\), and that \(\Gamma\) is a simple closed contour in \(B(z_0, R)\) such that \(z_0 \in \Int(\Gamma)\). Then
+\[f(w) = \sum_{n=0}^\infty c_n(w - z_0)^n \qquad \forall w \in B(z_0, R),\]
+where
+\[c_n = \frac{1}{2\pi i} \int_\Gamma \frac{f(z)}{(z - z_0)^{n + 1}} dz.\]
+The radius of convergence of the power series is at least \(R\).
+
+This combined with the fact that \(f^{(n)}(z_0) = n!c_n\), implies that
+\[f^{(n)}(z_0) = \frac{n!}{2\pi i}\int_\Gamma \frac{f(z)}{(z - z_0)^{n+1}} dz.\]
+
+\paragraph{Liouville's Theorem}
+Suppose that \(f\) is a bounded entire function. Then \(f\) is constant.
+
+\paragraph{The Fundamental Theorem of Algebra}
+Suppose that \(f\) is a nonconstant complex polynomial. Then \(f\) has at least one root, and hence \(f\) may be factorised as a product of a constant and finitely many linear factors.
+
+\paragraph{Holomorphic Function Near a Zero}
+Suppose that \(f(z) = \sum_{n=0}^\infty a_n(z - w)^n\) for all \(z \in B(w,r)\), and that \(a_n \neq 0\) for some \(n \in \bN\). Let \(N = \min\{n \in \bN: a_n \neq 0\}\). Then
+\[\lim_{z \to w} \frac{f(z)}{a_N(z-w)^N} = 1.\]
+
+\paragraph{Zeros of a Holomorphic Funciton are Isolated}
+Suppose that \(\Omega\) is an open set, that \(f \in H(\Omega)\), and that \(f(w) = 0\) for some \(w \in \Omega\). Then there exists \(r \in \bR^+\) such that either \(f(z) = 0\) for all \(z \in B(w, r)\) or \(f(z) \neq 0\) for all \(z \in B^\circ(w,r)\).

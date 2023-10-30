@@ -1,0 +1,18 @@
+\section{Harmonic Functions}
+\paragraph{Harmonic Functions}
+Suppose that \(u: \Omega \to \bR\) is a function, where \(\Omega\) is an open subset of \(\bR^2\), and that \(u\) is twice continuously differentiable, that is, all the partial derivatives \(\partial u / \partial x, \partial u / \partial y, \partial^2 u / \partial x^2, \partial^2 u / \partial x\partial y, \partial^2 u / \partial y\partial x\) and \(\partial^2 u / \partial y^2\) exists and are continuous. Then we say that \(u\) is harmonic in \(\Omega\) if
+\[\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0.\]
+
+\paragraph{Finding Harmonic Functions}
+Suppose that \(f \in H(\Omega)\), where \(\Omega\) is an open subset of \(\bC\), that \(f\) is twice continuously differentiable in \(\Omega\), and that
+\[f(x + iy) = u(x,y) + iv(x, y)\]
+in \(\Omega\), where \(u\) and \(v\) are real-valued. Then \(u\) and \(v\) are harmonic functions.
+
+\paragraph{Existence of Harmonic Functions}
+If \(\Omega\) is a simply polygonally connected domain, and \(u: \Omega \to \bR\) is harmonic, then there exists a harmonic function \(v: \Omega \to \bR\) such that \(f\), given by
+\[f(x + iy) = u(x, y) + iv(x, y)\]
+in \(\Omega\) is holomorphic. Any two such functions \(v\) differ by an additive constant.
+
+\paragraph{Harmonic Conjugate}
+The function \(v\) is called a harmonic conjugate of \(u\). The function \(f\) may often be determined using the fact that
+\[f'(x + iy) = u_x(x, y) + iv_x(x, y) = u_x(x, y) - iu_y(x, y).\]

@@ -1,6 +1,74 @@
-\section{Differentiability}
+\section{Complex Differentiability}
 
 \paragraph{Definition}
 Suppose that \(S \subseteq \bC\) and that \(f: S \to \bC\) is a complex function. Then we say that \(f\) is differentiable at the point \(z_0\) in \(S\) if
 \[\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}, \qquad \text{or equivalently} \qquad \lim_{h \to 0}\frac{f(z_0 + h) - f(z_0)}{h},\]
 exists. If it exists, it is called the derivative of \(f\) at \(z_0\), and written \(f'(z_0)\) or \(\dfrac{df(z_0)}{dz}\).
+
+
+\subsection{The Cauchy-Riemann Equations}
+
+\paragraph{Definition}
+Suppose that \(\Omega\) is an open subset of \(\bC\), that \(f\) is a complex function defined in \(\Omega\), that \(f(x + iy) = u(x,y) + iv(x,y)\), where \(u\) and \(v\) are real-valued functions of two real variables, adn that \(f\) is differentiable at \(z_0 \in \Omega\). Then the partial derivative
+\[\frac{\partial u}{\partial x}(x_0, y_0), \qquad \frac{\partial u}{\partial y}(x_0, y_0), \qquad \frac{\partial v}{\partial x}(x_0, y_0), \qquad \frac{\partial v}{\partial y}(x_0, y_0)\]
+all exists, and
+\[\frac{\partial u}{\partial x}(x_0, y_0) = \frac{\partial v}{\partial y}(x_0, y_0) \qquad \text{ and } \qquad \frac{\partial u}{\partial y}(x_0, y_0) = -\frac{\partial v}{\partial x}(x_0, y_0).\]
+Further,
+\[f'(z_0) = \frac{\partial u}{\partial x}(x_0, y_0) + i\frac{\partial v}{\partial x}(x_0, y_0).\]
+
+\paragraph{Differentiability by Cauchy-Riemann}
+If the four partial derivatives \(\partial u / \partial x, \partial v / \partial x, \partial u / \partial y\) and \(\partial v / \partial y\) are all continuous in an open set \(\Omega\), then \(f\) is complex differentiable at \(z_0 \in \Omega\) if and only if the Cauchy-Riemann equations hold at \(z_0\), and if so, then
+\[f'(x_0 + iy_0) = \frac{\partial u}{\partial x}(x_0, y_0) + i\frac{\partial v}{\partial x}(x_0, y_0).\]
+
+
+\subsection{Properties of the Derivative}
+\paragraph{Differentiability Implies Continuity}
+Suppose that \(f\) is a complex function and that \(z_0 \in \Domain(f)\). If \(f\) is differentiable at \(z_0\), then \(f\) is continuous at \(z_0\).
+
+\paragraph{Algebra of Derivatives}
+Suppose that \(z_0 \in \bC\), that the complex functions \(f\) and \(g\) are differentiable at \(z_0\), and that \(c \in \bC\). Then the functions \(cf, f + g\) and \(fg\) are differentiable at \(z_0\) and
+\begin{align*}
+    (cf)'(z_0) & = cf'(z_0), \\
+    (f + g)'(z_0) & = f'(z_0) + g'(z_0), \\
+    (fg)'(z_0) & = f'(z_0)g(z_0) + f(z_0)g'(z_0).
+\end{align*}
+Further, if \(g(z_0) \neq 0\), then the function \(f/g\) is differentiable at \(z_0\), and
+\[\left(\frac{f}{g}\right)'(z_0) = \frac{f'(z_0)g(z_0) - f(z_0)g'(z_0)}{g(z_0)^2}.\]
+
+\paragraph{Composed Functions}
+Suppose that \(z_0 \in \bC\), that the complex function \(f\) is differentiable at \(g(z_0)\), and that the complex function\(g\) ios differentiable at \(z_0\). Then the function \(f \circ g\) is differentiable at \(z_0\), and
+\[(f \circ g)'(z_0) = f'(g(z_0))g'(z_0).\]
+
+\paragraph{L'H\(\hat{\mathbf{o}}\)pital's Rule}
+Suppose that \(z_0 \in \bC \cup \{\infty\}\) and that the complex functions \(f\) and \(g\) are differentiable at \(z_0\). If \(\lim_{z \to z_0} f(z) / g(z)\) is indeterminate, that is, of the form \(0 / 0\) or \(\infty / \infty\), and if \(\lim_{z \to z_0} f'(z) / g'(z)\) exists, then
+\[\lim_{z \to z_0} \frac{f(z)}{g(z)} = \lim_{z \to z_0}\frac{f'(z)}{g'(z)}.\]
+
+\paragraph{Consequences of the Cauchy-Riemann Equations}
+Suppose that \(f\) is differentiable in a domain \(\Omega\) in \(\bC\). Then
+\begin{enumerate}[label=(\alph*)]
+    \item if \(f' = 0\) in \(\Omega\), then \(f\) is constant on \(\Omega\);
+    \item if \(|f|\) is constant, then \(f\) is constant on \(\Omega\);
+    \item if \(\Re(f)\) or \(\Im(f)\) is constant, then \(f\) is constant on \(\Omega\).
+\end{enumerate}
+
+\paragraph{Polar Coordinates}
+Suppose that the complex function \(f\) is differentiable at the point \(z_0 \in \bC \setminus \{0\}\), and that \(z_0 = r_0e^{i\theta_0}\). Then
+\[\frac{\partial u}{\partial \theta}(r_0, \theta_0) = -r_0\frac{\partial v}{\partial r}(r_0, \theta_0) \qquad \text{ and } \qquad \frac{\partial v}{\partial \theta}(r_0, \theta_0) = r_0\frac{\partial u}{\partial r}(r_0, \theta_0).\]
+Further,
+\begin{align*}
+    f'(z_0) & = e^{-i\theta_0}\left(\frac{\partial u}{\partial r}(r_0, \theta_0) + i\frac{\partial v}{\partial r}(r_0, \theta_0)\right) \\
+    & = \frac{-ie^{-i\theta_0}}{r}\left(\frac{\partial u}{\partial \theta}(r_0, \theta_0) + i\frac{\partial v}{\partial \theta}(r_0, \theta_0)\right).
+\end{align*}
+
+\paragraph{Log is Differentiable}
+The function \(\Log\) is differentiable in \(\bC \setminus (-\infty, 0]\).
+
+\subsection{Inverse Functions}
+\paragraph{Differentiability of Inverse Functions}
+Suppose that \(\Omega\) and \(\curlyvee\) are open subsets of \(\bC\), that \(f: \Omega \to \curlyvee\) is one-to-one, and that \(f(z_0) = w_0\). If \(f\) is differentiable at \(z_0\) and \(f^{-1}\) is differentiable at \(w_0\), then \((f^{-1})'(w_0) = 1/f'(z_0)\).
+
+\subsection{Differentiable Definition}
+\paragraph{Holomorphic}
+Suppose that \(\Omega\) is an open subset of \(\bC\) and \(f:\Omega \to \bC\) is a function. If \(f\) is differentiable in \(\Omega\), that is, if it is differentiable at every point of \(\Omega\), then we say that \(f\) is holomorphic or (complex) analytic or regular in \(\Omega\), and we write \(f \in H(\Omega)\).
+
+\paragraph{Entire} If \(\Omega = \bC\) and \(f\) is differentiable in \(\Omega\), then we say that \(f\) is entire.

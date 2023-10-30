@@ -1,0 +1,31 @@
+\section{The Cauchy-Goursat Theorem}
+
+\subsection{Simply Connected Domains}
+\paragraph{The Cauchy-Goursat Theorem}
+Suppose that \(\Omega\) is a simply connected domain, that \(f \in H(\Omega)\), and that \(\Gamma\) is a closed contour in \(\Omega\). Then
+\[\int_\Gamma f(z) dz = 0.\]
+
+\paragraph{Independence of Contour}
+Suppose that \(\Omega\) is a simply connected domain in \(\bC\), that \(f \in H(\Omega)\), and that \(\Gamma\) and \(\Delta\) are contours with the same initial point \(p\) and the same final point \(q\). Then
+\[\int_\Gamma f(z) dz = \int_\Delta f(z) dz.\]
+
+\paragraph{Existence of Primitives}
+Suppose that \(\Omega\) is a simply connected domain in \(\bC\), and that \(f \in H(\Omega)\). Then there exists a function \(F\) on \(\Omega\) such that
+\[\int_\Gamma f(z) dz = F(q) - F(p)\]
+for all simple contours \(\Gamma\) in \(\Omega\) from \(p\) to \(q\). Further, \(F\) is differentiable, and \(F' = f\). Finally, if \(F_1\) is any other function such that \(F'_1 = f\), then \(F_1 - F\) is a constant and
+\[\int_\Gamma f(z) dz = F_1(q) - F_1(p),\]
+where \(p\) and \(q\) are the initial and final points of \(\Gamma\).
+
+\subsection{Multiply Connected Domains}
+\paragraph{Cauchy-Goursat}
+Suppose that \(\Omega\) is a bounded domain whose boundary \(\partial\Omega\) consists of finitely many contours, \(\Gamma_0, \Gamma_1, \dots, \Gamma_n\). Suppose also that \(f \in H(\Upsilon)\), where \(\bar{\Omega} \subset \Upsilon\). Then
+\[\int_\partial\Omega f(z) dz = \sum_{i=0}^n \int_{\Gamma_j} f(z) dz = 0.\]
+
+\paragraph{Corollary}
+Suppose that \(\Upsilon\) is a simply connected domain, that \(\Gamma\) is a simple closed contour in \(\Upsilon\), and that \(f\) is a differentiable function in \(\Upsilon\). Then
+\[\int_\Gamma f(z) dz = 0.\]
+
+\paragraph{Existence of Primitives}
+Suppose that \(\Omega\) is a bounded domain whose boundary \(\partial\Omega\) consists of finitely many contours \(\Gamma_0, \Gamma_1, \dots, \Gamma_n\), that \(\bar{\Omega} \subset \Upsilon\), and that \(f\) is a differentiable function in \(\Upsilon\). If \(\int_{\Gamma_j} f(z) dz = 0\) when \(j = 1, \dots, n\), then \(\int_\Gamma f(z) dz = 0\) for any closed contour in \(\Omega\), and further, there is a differentiable function \(F\) in \(\Omega\) such that \(F' = f\) and
+\[\int_\Delta f(z) dz = F(q) - F(p)\]
+for all simple contours \(\Delta\) in \(\Omega\) from \(p\) to \(q\).

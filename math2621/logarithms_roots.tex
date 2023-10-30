@@ -1,0 +1,18 @@
+\section{Logarithms and Roots}
+
+\paragraph{Square Root}
+We define the principle value of the square root as:
+\[\mathrm{PV}w^{1/2} = \begin{cases}
+    |w|^{1/2}e^{i\Arg(w)/2} & \text{if } w \neq 0 \\
+    0 & \text{if } w = 0.
+\end{cases}\]
+
+\paragraph{Logarithm}
+Suppose that \(w = e^z\) and \(z = x + iy\). Then \(w = e^xe^{iy}\), so
+\[|w| = e^x \qquad \text{ and } \qquad \Arg w = \Arg e^{iy}.\]
+Then \(x = \ln|w|\), and \(x\) is single-valued, but \(y = \Arg(w) + 2\pi k\), where \(k \in \bZ\); and \(y\) is multiple-valued. When \(w \neq 0\), we write \(z = \log(w)\) to indicate that \(z\) can be any one of the infinitely many complex numbers such that \(e^z = w\) and we write \(z = \Log(w)\) to indicate the choice that \(z = \ln|w| + i\Arg(w)\).
+
+\paragraph{\(n\)th Roots}
+The principle value of the \(n\)th root is given by
+\[\mathrm{PV} z^{1/n} = \exp(\frac{\Log(z)}{n}) = |z|^{1/n}e^{i\Arg(z)/n}.\]
+The function \(\mathrm{PV}z^{1/n}\) is differentiable in \(\bC \setminus (-\infty, 0]\).
