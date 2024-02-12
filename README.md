@@ -21,7 +21,7 @@ Notes are deployed at: https://jeremyle56.github.io/course-notes/
 
 ## 2023 T3
 
-- [MATH2621 (Higher Complex Analysis)](./math2621/math2621.pdf)
+- [**INCOMPLETE** MATH2621 (Higher Complex Analysis)](./math2621/math2621.pdf)
 
 ### Issues
 
