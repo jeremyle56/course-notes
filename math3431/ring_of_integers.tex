@@ -86,10 +86,10 @@ For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
 
 \defn{Associates, Irreducibles and Primes}{
     \begin{itemize}
-        \item Elements \am and \bm of an integral domain \Rm are called associates if \(a = ub\), for some unit \(u\) of \Rm.
+        \item Elements \(a\) and \(b\) of an integral domain \(R\) are called associates if \(a = ub\), for some unit \(u\) of \(R\).
         \item An element \(\rho\) of the integral domain \(R\) is said to be irreducible if it has the property
               \[\forall \alpha, \beta \in R, \; \text{ if } \rho = \alpha\beta \text{ then } \alpha \text{ or } \beta \text{ is a unit}.\]
-        \item A non-zero, non-unit element \(\rho\) of the integral domain \Rm is said to be prime if it has the property
+        \item A non-zero, non-unit element \(\rho\) of the integral domain \(R\) is said to be prime if it has the property
               \[\forall \alpha, \beta \in R, \text{ if} \rho \mid \alpha\beta \text{ then } \rho \mid \alpha \text{ or } \rho \mid \beta.\]
     \end{itemize}
 }
@@ -99,16 +99,16 @@ For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
 }
 
 \thrm{Greatest Common Divisor}{
-    Let \(a, b\) be integers, not both zero. Then \am positive intger \(g\) is the greatest common divisor of \am and \bm if and only if \(g\) is a common divisor and every common divisor is a factor of \(g\).
+    Let \(a, b\) be integers, not both zero. Then \(a\) positive intger \(g\) is the greatest common divisor of \(a\) and \(b\) if and only if \(g\) is a common divisor and every common divisor is a factor of \(g\).
 }
 
 \defn{GCD in Rings}{
-    Let \(a, b\) be elements in a commutative ring \Rm. An element \(g \in R\) is a greatest common divisor of \am and \bm in \Rm if \(g \mid a, g \mid b\) and every common divisor of \am and \bm is a factor of \(g\).
+    Let \(a, b\) be elements in a commutative ring \(R\). An element \(g \in R\) is a greatest common divisor of \(a\) and \(b\) in \(R\) if \(g \mid a, g \mid b\) and every common divisor of \(a\) and \(b\) is a factor of \(g\).
 }
 
 \subsection{Ideals}
 \defn{Ideal}{
-    Let \Rm be a commutative ring with identity. A subset \(I\) of \Rm is called an ideal of \Rm if it has the following three proprties:
+    Let \(R\) be a commutative ring with identity. A subset \(I\) of \(R\) is called an ideal of \(R\) if it has the following three proprties:
     \begin{itemize}
         \item 0 is in \(I\).
         \item If \(a, b\) are in \(I\) then \(a + b\) is in \(I\).
@@ -117,13 +117,13 @@ For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
 }
 
 \prop{Smallest Ideal}{
-    Let \Rm be a commutative ring with identity, and \(\{a_1, \dots, a_n\} \subset R\). Then the set
+    Let \(R\) be a commutative ring with identity, and \(\{a_1, \dots, a_n\} \subset R\). Then the set
     \[\{r_1a_1 + \cdots + r_na_n: r_1, \dots, r_n \in R\}\]
-    is the smallest ideal of \Rm containing \(\{a_1, \dots, a_n\}\).
+    is the smallest ideal of \(R\) containing \(\{a_1, \dots, a_n\}\).
 }
 
 \defn{Pinrcipal Ideal}{
-    An ideal \(I\) of a ring \Rm is said to be principal if there exists \(a \in R\) such that \(I = \langle a \rangle  = \{ax : x \in R\}\).
+    An ideal \(I\) of a ring \(R\) is said to be principal if there exists \(a \in R\) such that \(I = \langle a \rangle  = \{ax : x \in R\}\).
 }
 
 \thrm{Every Ideal is Principal}{
@@ -135,7 +135,7 @@ For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
 }
 
 \thrm{Integral and Principal Ideal Domains}{
-    Let \Rm be an integral domain.
+    Let \(R\) be an integral domain.
     \begin{enumerate}[label=\alph*.]
         \item If \(R\) has a division algorithm then \(R\) is a principal ideal domain.
         \item If \(R\) is a principal ideal domain, then every non-zero element of \(R\) which is not a unit has a unique (up to associates and order) factorisation into irreducibles.
@@ -146,7 +146,7 @@ For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
     For two functions \(f(x), \, f: \bR \to \bC\), and \(g(x), \, g: \bR \to \bR^+\), we say that
     \begin{itemize}
         \item \(f(x) = O(g(x))\) iff \(\lim \sup_{x \to \infty}\abs*{f(x)}/g(x) < \infty\) or, alternatively iff there is a constant \(c > 0\) such that \(\abs*{f(x)} \leq cg(x)\) for all sufficiently large \(x\).
-        \item \(f(x) = o(g(x))\) if \(\lim_{x \to \infty}\abs*{f(x)}/g(x) = 0\) or, alternatively, iff for any \(\epsilon > 0\) we have \(\abs*{f(x)} \leq \epsilon g(x)\) for all sufficiently large \(x\).
+        \item \(f(x) = o(g(x))\) iff \(\lim_{x \to \infty}\abs*{f(x)}/g(x) = 0\) or, alternatively, iff for any \(\epsilon > 0\) we have \(\abs*{f(x)} \leq \epsilon g(x)\) for all sufficiently large \(x\).
     \end{itemize}
 }
 
