@@ -1,0 +1,59 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{esint}
+\usepackage{subfiles}
+
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newcommand{\defn}{\paragraph{Definition}}
+
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bR}{\mbb{R}}
+\newcommand{\bZ}{\mbb{Z}}
+
+\def\mbf#1{\mathbf{#1}}
+\newcommand{\bx}{\mbf{x}}
+\newcommand{\by}{\mbf{y}}
+\newcommand{\bzero}{\mbf{0}}
+
+\newcommand{\fx}{f(\bx)}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{Optimization \\ MATH3161 UNSW}
+\author{Jeremy Le}
+\date{2024T1}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\subfile{prerequistie.tex}
+\subfile{introduction.tex}
+\end{document}

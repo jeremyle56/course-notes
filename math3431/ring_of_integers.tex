@@ -1,0 +1,156 @@
+\section{The Ring of Integers}
+
+\subsection{The Set of All Integers}
+\defn{Divisor}{
+    Let \(a\) and \(b\) be integers. We say that \(a\) is a divisor of \(b\) if there exists an integer \(k\) such that \(b = ka\). If \(a\) is a divisor not equal to \(b\) we call it a proper divisor.
+}
+
+\prop{Divisibility Properties}{
+    Let \(a, b, c \in \bZ\). Then
+    \begin{enumerate}[label=\alph*)]
+        \item If \(a \mid b\) and \(b \mid c\) then \(a \mid c\).
+        \item \(a \mid a\).
+        \item If \(a \mid b\) and \(b \mid a\) then \(b = \pm a\).
+        \item If \(a \mid b\) and \(a \mid c\) then \(a \mid (xb + yc)\) for any \(x, y \in \bZ\).
+    \end{enumerate}
+}
+
+\thrm{Euclid's Theorem}{
+    There are infinitely many primes in \(\bZ\).
+}
+
+\subsection{Ring}
+\defn{Ring}{
+    A ring consist of a non-empty set \(R\) together with two operations defined on elements of \(R\), addition (+) and multiplication (denoted by juxtaposition, or sometimes by \(\star\) or \(\times\)) where all the following properties hold:
+    \begin{enumerate}
+        \item Closure under addition: if \(a, b \in R\) then \(a + b \in R\).
+        \item Commutativity of addition: for all \(a, b \in R, a + b = b + a\).
+        \item Associativity of addition: for all \(a, b, c \in R, (a + b) + c = a + (b + c)\).
+        \item Zero element: There is an element 0 of \(R\) such that if \(a \in R\) then \(a + 0 = a\)/
+        \item Negatives. \(\forall a \in R\) there is \(-a \in R\) such that \(a + (-a) = 0\).
+        \item Closure under multiplication: if \(a, b \in R\) then \(ab \in R\).
+        \item Associativity of multiplication: \(\forall a, b, c \in R, (ab)c = a(bc)\).
+        \item Distributive laws: for all \(a, b, c \in R, a(b + c) = ab + ac\) and \((a + b)c = ac + bc\).
+    \end{enumerate}
+}
+
+\paragraph{Subtraction}
+For any \(a, b\) in a ring \(R\), we define \(a - b = a + (-b)\)
+
+\prop{Ring Properities}{
+    Let \(R\) be a ring and \(a, b, c \in R\). Then the following hold:
+    \begin{enumerate}
+        \item if \(a + b = a +c\) then \(b = c\);
+        \item 0 is unique and \(0a = a0 = 0\);
+        \item for each \(a, -a\) is unique;
+        \item \(a - b =0\) if and only if \(a = b\);
+        \item \(-(ab) = (-a)b = a(-b)\);
+        \item \(ab - ac = a(b - c)\) and \(ac - bc = (a - b)c\).
+    \end{enumerate}
+}
+
+\defn{Commutative Ring}{
+    A commutative ring is a ring \(R\) in which multiplication is commutative, that is, \(ab = ba\) for all \(a, b \in R\).
+}
+
+\defn{Identity Element}{
+    An identity element in the ring \(R\) is an element, usually denoted by 1, with the propery that \(1a = a1 = a\) for all \(a \in R\). Sometimes we are more explicit and call 1 the multiplicative identity.
+}
+
+\defn{Divisors of Zero}{
+    In a ring \(R\), if \(a\) and \(b\) are non-zero elements such that \(ab = 0\), then \(a\) and \(b\) are called divisors of zero.
+}
+
+\defn{Integral Domain}{
+    An integeral domain is a commutative ring with identity in which there are no divisors of zero. Explicilty, an integral domain is a non-empty set \(R\) together with operations of addition and multiplcation, such that the ring axioms (1) - (8) hold as well as the following:
+    \begin{enumerate}
+        \setcounter{enumi}{8}
+        \item Commutativity of multiplication. If \(a, b \in R\) then \(ab = ba\).
+        \item Identity element. There exists an element 1 of \(R\) such that if \(a \in R\) then \(1a = a\).
+        \item No divisors of zero. For all \(a, b \in R\), if \(ab = 0\) then either \(a = 0\) or \(b = 0\).
+    \end{enumerate}
+}
+
+\thrm{Cancellation Law for Integral Domains}{
+    Let \(R\) be an integral domain and \(a,b ,c \in R\) and suppose \(a \neq 0\). If \(ab = ac\) then \(b = c\).
+}
+
+\subsection{Divisibility in Commutative Rings}
+\defn{Divisors in Rings}{
+    Let \(\alpha, \beta\) be elements in a commutative ring \(R\). We say that \(\alpha\) is a divisor of \(\beta\), denoted by \(\alpha \mid \beta\), if there exists an element \(\kappa\) of \(R\) usch that \(\beta = \kappa\alpha\).
+}
+
+\defn{Unit of Rings}{
+    Let \(R\) be a commutative ring with identity. An element of \(R\) having a multiplicative increase is called a unit of \(R\).
+}
+
+\defn{Associates, Irreducibles and Primes}{
+    \begin{itemize}
+        \item Elements \am and \bm of an integral domain \Rm are called associates if \(a = ub\), for some unit \(u\) of \Rm.
+        \item An element \(\rho\) of the integral domain \(R\) is said to be irreducible if it has the property
+              \[\forall \alpha, \beta \in R, \; \text{ if } \rho = \alpha\beta \text{ then } \alpha \text{ or } \beta \text{ is a unit}.\]
+        \item A non-zero, non-unit element \(\rho\) of the integral domain \Rm is said to be prime if it has the property
+              \[\forall \alpha, \beta \in R, \text{ if} \rho \mid \alpha\beta \text{ then } \rho \mid \alpha \text{ or } \rho \mid \beta.\]
+    \end{itemize}
+}
+
+\thrm{Primes are Irreducible}{
+    In an integral domain every prime is irreducible.
+}
+
+\thrm{Greatest Common Divisor}{
+    Let \(a, b\) be integers, not both zero. Then \am positive intger \(g\) is the greatest common divisor of \am and \bm if and only if \(g\) is a common divisor and every common divisor is a factor of \(g\).
+}
+
+\defn{GCD in Rings}{
+    Let \(a, b\) be elements in a commutative ring \Rm. An element \(g \in R\) is a greatest common divisor of \am and \bm in \Rm if \(g \mid a, g \mid b\) and every common divisor of \am and \bm is a factor of \(g\).
+}
+
+\subsection{Ideals}
+\defn{Ideal}{
+    Let \Rm be a commutative ring with identity. A subset \(I\) of \Rm is called an ideal of \Rm if it has the following three proprties:
+    \begin{itemize}
+        \item 0 is in \(I\).
+        \item If \(a, b\) are in \(I\) then \(a + b\) is in \(I\).
+        \item If \(a \in I\) and \(x \in R\) then \(ax \in I\).
+    \end{itemize}
+}
+
+\prop{Smallest Ideal}{
+    Let \Rm be a commutative ring with identity, and \(\{a_1, \dots, a_n\} \subset R\). Then the set
+    \[\{r_1a_1 + \cdots + r_na_n: r_1, \dots, r_n \in R\}\]
+    is the smallest ideal of \Rm containing \(\{a_1, \dots, a_n\}\).
+}
+
+\defn{Pinrcipal Ideal}{
+    An ideal \(I\) of a ring \Rm is said to be principal if there exists \(a \in R\) such that \(I = \langle a \rangle  = \{ax : x \in R\}\).
+}
+
+\thrm{Every Ideal is Principal}{
+    Every ideal in \(\bZ\) is principal. In particular, if \(a, b\) are not both zero then \(\langle a, b \rangle = \langle \gcd(a, b) \rangle\).
+}
+
+\defn{Principal Ideal Domain}{
+    A principal ideal domain is an integral domain in which every ideal is principal.
+}
+
+\thrm{Integral and Principal Ideal Domains}{
+    Let \Rm be an integral domain.
+    \begin{enumerate}[label=\alph*.]
+        \item If \(R\) has a division algorithm then \(R\) is a principal ideal domain.
+        \item If \(R\) is a principal ideal domain, then every non-zero element of \(R\) which is not a unit has a unique (up to associates and order) factorisation into irreducibles.
+    \end{enumerate}
+}
+
+\defn{Big-Oh and Little-Oh Notations}{
+    For two functions \(f(x), \, f: \bR \to \bC\), and \(g(x), \, g: \bR \to \bR^+\), we say that
+    \begin{itemize}
+        \item \(f(x) = O(g(x))\) iff \(\lim \sup_{x \to \infty}\abs*{f(x)}/g(x) < \infty\) or, alternatively iff there is a constant \(c > 0\) such that \(\abs*{f(x)} \leq cg(x)\) for all sufficiently large \(x\).
+        \item \(f(x) = o(g(x))\) if \(\lim_{x \to \infty}\abs*{f(x)}/g(x) = 0\) or, alternatively, iff for any \(\epsilon > 0\) we have \(\abs*{f(x)} \leq \epsilon g(x)\) for all sufficiently large \(x\).
+    \end{itemize}
+}
+
+\thrm{Prime Number Theorem (PNT)}{
+    For \(x \to \infty\), we have
+    \[\pi(x) = \frac{x}{\log x} + o\left(\frac{x}{\log x}\right) = (1 + o(1))\frac{x}{\log x}.\]
+}

@@ -23,6 +23,11 @@ Notes are deployed at: https://jeremyle56.github.io/course-notes/
 
 - [**INCOMPLETE** MATH2621 (Higher Complex Analysis)](./math2621/math2621.pdf)
 
+## 2024 T1
+
+- [MATH3161 (Optimization)](./math3161/math3161.pdf)
+- [MATH3431 (Number Theory)](./math3431/math3431.tex)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.

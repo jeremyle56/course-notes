@@ -1,0 +1,126 @@
+\section{Optimization - What is it?}
+
+\paragraph{Optimization/Optimisation}
+Optimization is a process that finds the ``best'' possible solutions from a set of feasible solutions. When you optimize something, you are ``making it best''.
+
+\paragraph{What is an optimization problem?}
+An optimization problem is a mathematical problem of finding the best possible solution from a set of feasible solutions. It has the form of minimizing (or maximizing) an objective function subject to constraints.
+
+\subsection{Mathematics of Optimization}
+
+\paragraph{Outline}
+\begin{itemize}
+    \item Mathematical model - Model formulation
+    \item Characterising optima \(\iff\) Optimality principles
+    \item Finding optima \(\Rightarrow\) Numerical methods
+    \item Convexity
+    \item Duality
+    \item Maximum principle
+\end{itemize}
+
+\paragraph{Decision variables:}
+what can you change
+\begin{itemize}
+    \item Finite dimensional \(\mathbf{x} \in \bR^n\), Number of variables \(n\)
+    \item Infinite dimensional: the control
+\end{itemize}
+
+\paragraph{Objective}
+A mathematical function of the variables quantifying the idea of ``best''.
+\begin{itemize}
+    \item Finite dimensional: variables \(\mathbf{x} \in \bR^n\), OBjective function \(f: \bR^n \to \bR\)
+    \item Infinite dimensional: \(f: C([0, T] \to \bR)\), variables \(u \in C([0, T])\)
+    \item Co-domain of objective function must be ordered (total order)
+\end{itemize}
+
+\paragraph{Constraints}
+Describe restrictions on the allowable values of variables. Constraint structure for variables \(\mathbf{x} \in \bR^n\).
+\begin{itemize}
+    \item Equality constraints
+    \item Inequality constraints
+    \item Feasible region
+    \item Unconstrained
+    \item Standard formulation
+    \item Algebraic structure of constraints
+\end{itemize}
+
+\paragraph{Standard formulation}
+The standard formulation of a continuous finite dimensional optimization is
+\begin{align*}
+    \text{Minimize} \quad   & \fx                                          \\
+    \bx \in \bR^n \quad     &                                              \\
+    \text{subject to} \quad & c_i(\bx) = 0, \quad i = 1,\dots, m_E;        \\
+                            & c_i(\bx) \leq 0, \quad i = m_E + 1, \dots, m
+\end{align*}
+
+\paragraph{Vector Norm}
+A vector norm of \(\bR^n\) is a function \(\norm*{.}\) from \(\bR^n\) to \(\bR\) such that
+\begin{enumerate}
+    \item \(\norm*{\bx} \geq 0\) for all \(\bx \in \bR^n\) and \(\norm*{\bx} = 0 \iff \bx = \mbf{0}\).
+    \item \(\norm*{\bx + \by} \leq \norm*{\bx} + \norm*{\by}\) for all \(\bx, \by \in \bR^n\). \qquad (Triangle Inequality)
+    \item \(\norm*{\alpha\bx} = \abs*{\alpha}\norm*{\bx}\) for all \(\alpha \in \bR, \bx \in \bR^n\).
+\end{enumerate}
+
+\subsection{Optima and Optimizers}
+\paragraph{Global minimum and maximizer}
+A point \(\bx* \in \Omega\) is a global minimizer or maximizer of \(\fx\) over \(\Omega \subseteq \bR^n \iff f(\bx^*) \leq \text{or} \geq \fx\) for all \(\bx \in \Omega\). The global minimum is \(f(\bx^*)\).
+
+\paragraph{Strict global minimum and maximizer}
+A point \(\bx* \in \Omega\) is a strict global minimizer or maximizer of \(\fx\) over \(\Omega \subseteq \bR^n \iff f(\bx^*) < \text{or} > \fx\) for all \(\bx \in \Omega, \bx \neq \bx^*\).
+
+\paragraph{Local minimum and maximizer}
+A point \(\bx* \in \Omega\) is a local minimizer or maximizer of \(\fx\) over \(\Omega \subseteq \bR^n \iff\) there exists a \(\delta > 0\) such that \(f(\bx^*) \leq \text{or} \geq \fx\) for all \(\bx \in \Omega\) with \(\norm*{\bx - \bx^*} \leq \delta\). Then \(f(\bx^*)\) is a local minimum.
+
+\paragraph{Strict local minimum and maximizer}
+A point \(\bx* \in \Omega\) is a strict local minimizer or maximizer of \(\fx\) over \(\Omega \subseteq \bR^n \iff\) there exists a \(\delta > 0\) such that \(f(\bx^*) < \text{or} > \fx\) for all \(\bx \in \Omega\) with \(0 < \norm*{\bx - \bx^*} \leq \delta\).
+
+\paragraph{Extrema}
+The global/local extreme of \(f\) over \(\Omega\) are all the global/local minima and all the global/local maxima.
+
+\paragraph{Existence of a global extrema}
+Let \(\Omega\) be a compact set and let \(f\) be continuous on \(\Omega\). Then the global extrema of \(f\) over \(\Omega\) exist.
+
+\paragraph{Relaxation}
+If \(f: \bR^n \to \bR\) and \(\bar{\Omega} \subseteq \Omega\) then
+\[\min_{\bx \in \Omega} \fx \leq \min_{\bx \in \bar{\Omega}} \fx\]
+Thus, the minimum value of the relaxation problem \(\leq\) the minimum value of the original problem.
+
+\subsection{Calculus Aspects}
+\paragraph{Graident}
+Let \(f :\bR^n \to \bR\) be continuously differentiable. The graident \(\grad f: \bR^n \to \bR^n\) of \(f\) at \(\bx\) is
+\[\grad \fx = \begin{bmatrix}
+        \frac{\partial \fx}{\partial x_1} \\
+        \frac{\partial \fx}{\partial x_2} \\
+        \vdots                            \\
+        \frac{\partial \fx}{\partial x_n} \\
+    \end{bmatrix}
+\]
+
+\paragraph{Hessian}
+Let \(f: \bR^n \to \bR\) be continuously differentiable. The Hessian \(\grad^2 f: \bR^n \to \bR^{n \times n}\) of \(f\) at \(\bx\) is
+\[
+    \begin{bmatrix}
+        \dfrac{\partial^2 \fx}{\partial x_1^2}            & \dfrac{\partial^2 \fx}{\partial x_1 \partial x_2} & \cdots & \dfrac{\partial^2 \fx}{\partial x_1 \partial x_n}  \\
+        \dfrac{\partial^2 \fx}{\partial x_2\partial x_1}  & \dfrac{\partial^2 \fx}{\partial x_2^2}            & \cdots & \dfrac{\partial^2 \fx}{\partial x_n2 \partial x_n} \\
+        \vdots                                            & \vdots                                            & \ddots & \vdots                                             \\
+        \dfrac{\partial^2 \fx}{\partial x_n \partial x_1} & \dfrac{\partial^2 \fx}{\partial x_n \partial x_2} & \cdots & \dfrac{\partial^2 \fx}{\partial x_n^2}             \\
+    \end{bmatrix}
+\]
+
+\paragraph{Linear and Quadratic Functions}
+Let \(f_0 \in \bR, \mbf{g} \in \bR^n\) and \(G \in \bR^{n \times n}, G\) symmetric, be fixed. Find the gradient \(\grad \fx \) and Hessian \(\grad^2 \fx\) for the
+\begin{itemize}
+    \item Linear function \quad \(\fx = \mbf{g}^Tb\bx;\) \quad Affine function \(\fx = \mbf{g}^x\bx + f_0\)
+    \item Quadratic function \quad \(\fx = \frac{1}{2}\bx^TG\bx + \mbf{g}^T\bx + f_0\)
+\end{itemize}
+
+\subsection{Matrices}
+\paragraph{Positive definite matrcies}
+A real square matrix \(A \in \bR^{n \times n}\) is
+\begin{itemize}
+    \item positive definite \(\iff \bx^TA\bx > 0\) for all \(\bx \in \bR^n, \bx \neq 0\)
+    \item positive semi-definite \(\iff \bx^TA\bx \geq 0\) for all \(\bx \in \bR^n\)
+    \item negative definite \(\iff \bx^TA\bx < 0\) for all \(\bx \in \bR^n, \bx \neq 0\)
+    \item negative semi-definite \(\iff \bx^TA\bx \leq 0\) for all \(\bx \in \bR^n\)
+    \item indefinite \(\iff\) there exits \(\bx_0, \by_0 \in \bR^n: \bx_0^TA\bx_0 > 0\) and \(\by_0^TA\by_0 < 0\)
+\end{itemize}
