@@ -25,7 +25,7 @@ Notes are deployed at: https://jeremyle56.github.io/course-notes/
 
 ## 2024 T1
 
-- [MATH3161 (Optimization)](./math3161/math3161.pdf)
+- [**DROPPED** MATH3161 (Optimization)](./math3161/math3161.pdf)
 - [MATH3431 (Number Theory)](./math3431/math3431.pdf)
 
 ### Issues

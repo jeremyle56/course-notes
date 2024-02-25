@@ -1,0 +1,50 @@
+\section{Diophantine Equations and Congruences}
+\subsection{Congruences}
+\thrm{Cancelling in Congruences}{
+    Let \(a, b, c\) and \(m\) be integers, with \(c \neq 0\).
+    \begin{enumerate}[label=\alph*)]
+        \item The congruences \(cax \equiv cb \pmod{cm}\) and \(ax \equiv b \pmod m\) have the same solutions.
+        \item If \(\gcd(c, m) = 1\) then the congruences \(cax \equiv cb \pmod m\) and \(ax \equiv b \pmod m\) have the same solutions.
+    \end{enumerate}
+}
+
+\defn{Multiplicative Inverse}{
+    Let \(a \in \bZ_m\) and \(m \in \bZ^+\). If \(ax \equiv 1 \pmod m\), we call \(x\) the multiplicative inverse of a modulo \(m\), or the multiplicative inverse of \(a\) in \(\bZ_m\).
+}
+
+\subsection{Arithmetic Functions}
+\defn{Notation of Factors}{
+    For any positive integer \(n\) we define \(\dn\) to be the number of (positive) factors of \(n\), and \(\sn\) to be the sum of all (positive) factors of \(n\).
+}
+
+\thrm{Formula for \(\mathbf{\dn}\)}{
+If \(n \in \bZ^+\) has canonical factorisation into prime powers \(n = p_1^{\alpha_1}p_2^{\alpha_2} \dots p_s^{\alpha_s}\) then
+\[\dn = (\alpha_1 + 1)(\alpha_2 + 1) \cdots (\alpha_s + 1) = \prod_{k=1}^s(\alpha_k + 1)\]
+}
+
+\thrm{Formula for \(\mathbf{\sn}\)}{
+    If \(n \in \bZ^+\) has canonical factorisation into prime powers
+    \begin{align*}
+        n = p_1^{\alpha_1}p_2^{\alpha_2} & \dots p_s^{\alpha_s} \text{ then}                                                                \\
+        \sn                              & = (1 + p_1 + p_1^2 + \cdots + p_1^{\alpha_1}) \cdots (1 + p_s + p_s^2 + \cdots + p_s^{\alpha_s}) \\
+                                         & = \prod_{k=1}^s \frac{p_k^{a_k + 1} - 1}{p_k - 1}
+    \end{align*}
+}
+
+\defn{Multiplicative Functions}{
+    Suppose that \(f\) is a function with domain \(\bZ^+\). We call \(f\) multiplicative if
+    \[f(mn) = f(m)f(n),\]
+    whenever \(\gcd(m, n) = 1\).
+}
+
+\thrm{\(\mathbf{d, \sigma}\) Multiplicative}{
+    Both \(d\) and \(\sigma\) are multiplicative.
+}
+
+\defn{Perfect Numbers}{
+    A number \(n\) is called perfect if \(\sn = 2n\).
+}
+
+\thrm{Euclid-Euler}{
+    Let \(n\) be even. Then \(n\) is perfect if and only if there is an integer \(k > 1\) such that \(n = 2^{k-1}(2^k - 1)\) and \(2^k - 1\) is prime.
+}
