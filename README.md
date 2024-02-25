@@ -1,8 +1,8 @@
 # course-notes
 
-A collection of course notes I've written for courses I've taken at UNSW. Below are links to view the notes for the respective subject. I recommend you download the PDFs rather than use the GitHub Viewer.
+A collection of course notes I've written for courses I've taken at UNSW. Below are links to view the notes for the respective subject. I recommend you download the PDFs rather than use the GitHub Viewer, otherwise visit the deployed site to open the PDFs.
 
-Notes are deployed at: https://jeremyle56.github.io/course-notes/
+Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jeremyle56.github.io/course-notes/)
 
 ## 2022 T3
 
