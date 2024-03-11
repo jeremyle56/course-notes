@@ -63,3 +63,62 @@
 \thrm{Euler's Theorem}{
     Let \(n\) be a positive integer, and let \(a\) be an integer relatively prime to \(n\). Then \(a^{\varphi(n)} \equiv 1 \pmod n\)
 }
+
+\subsection{Direct Product of Groups}
+\defn{Cartesian Product}{
+    Let \(A\) and \(B\) be two sets. The Cartesian production of the two sets is defined by
+    \[A \times B = \{(a, b) : a \in A, b \in B\}.\]
+}
+
+\prop{Cartesian Proudct of Any Sets is a Group}{
+    Let \(H\) and \(K\) groups with operation \(\star\) and \(\times\), respectively. The set \(H \times K\) with the operation \(\bullet\) defined by
+    \[(h_1, k_1) \bullet (h_2, k_2) = (h_1 \star h_2, k_1 \star k_2)\]
+    is a group.
+}
+
+\defn{Cartesian Product of Groups}{
+    The group in the above Lemma is called the direct product of \(H\) and \(K\) and it is denoted by \(H \otimes K\).
+}
+
+\thrm{Condition of I somorphism for Cartesian Products}{
+    Let \(G\) be a finite abelian group. If \(H\) and \(K\) are subgroups of \(G\) such that \(|H||K| = |G|\) and \(H \cap K = \{e\}\), then the mapping
+    \[\psi: H \otimes K \to G, \quad \text{ where } \quad \psi((h, k)) = h,k\]
+    is an isomorphism.
+}
+
+\defn{Direct Sum}{
+    The direct sum of two additive abelian subgroups \(H\) and \(K\) is
+    \[H \otimes K = \{(h, k) \mid h \in H \text{ and } k \in K\},\]
+    with operation defined by
+    \[(h_1, k_1) + (h_2, k_2) = (h_1 + h_2, k_1 + k_2).\]
+}
+
+\thrm{Decomposition of \(\bZ_n\)}{
+    Suppose positive integer \(n\) factorises as \(n = st\). \\
+    If \(s\) and \(t\) are relatively prime, then \(\bZ_n \cong \bZ_s \oplus \bZ_t\). \\
+    Conversly, if \(s\) and \(t\) are not relatively prime, then \(\bZ_n \ncong \bZ_s \oplus \bZ_t\).
+}
+
+\thrm{Direct Sum Cyclic if Pairwise Relatively Prime}{
+    Let \(s_1, s_2, \dots, s_k\) be positive integers. Then the direct sum \(\bZ_{s_1} \oplus \bZ_{s_2} \oplus \cdots \oplus \bZ_{s_k}\) is cyclic if and only if \(s_1, s_2, \dots, s_k\) are pairwise relatively prime.
+}
+
+\thrm{The Chinese Remainder Theorem}{
+    Suppose that the integers \(m_1, m_2, \dots, m_t\) are pairwise coprime, and let \(b_1, b_2, \dots, b_t\) be any intergers. Then the simulataneous congruences
+    \[x \equiv b_1 \pmod{m_1}, \quad x \equiv b_2 \pmod{m_2}, \quad \dots \quad , x \equiv b_t \pmod{m_t}\]
+    have a unique solution modulo \(m_1m_2\cdots m_t\).
+}
+
+\subsection{Decomposition of \(\bU_m\)}
+\thrm{Decomposition of \(\bU_m\)}{
+    If \(n = st\) is a positive integer, \(\bU_n \cong \bU_s \otimes \bU_t\) if and only if \(s\) and \(t\) are coprime.
+}
+
+\prop{Euler Function Multiplicative}{
+    The Euler's function \(\varphi\) is multiplicative.
+}
+
+\thrm{Formula for \(\varphi(n)\)}{
+Let \(n\) be a positive integer with canonical factorisation \(n = p^{\alpha_1}_1p^{\alpha_2}_2\cdots p^{\alpha_s}_s\). Then
+\[\varphi(n) = \prod_{k=1}^s\left(p^{a_k}_k - p^{a_k - 1}_k\right) = \prod_{k=1}^s\left(p_k - 1\right)p^{a_k-1}_k = n \prod_{p\mid n} \left(1 - \frac{1}{p}\right).\]
+}
