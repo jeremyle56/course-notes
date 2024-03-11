@@ -1,8 +1,8 @@
 \section{Group and Fields}
 \subsection{Groups}
 
-\paragraph{Definition} 
-A group \(G\) is a non-empty set with a binary operation defined on it. That is 
+\paragraph{Definition}
+A group \(G\) is a non-empty set with a binary operation defined on it. That is
 \begin{enumerate}
     \item \textbf{Closure:} for all \(a,b\) in \(G\) a composition \(a * b\) is defined and in \(G\),
     \item \textbf{Associativity:} \((a * b) * c = a * (b * c)\) for all \(a,b,c \in G\),
@@ -34,7 +34,7 @@ The trivial group is the group consisting of exactly one element, \(\{e\}\). It 
     \item Each element of \(G\) only has one inverse.
     \item For each \(a \in G, (a^{-1})^{-1} = a\)
     \item For every, \(a,b \in G, (a *  b)^{-1} = b^{-1} * a^{-1}\).
-    \item Let \(a,b,c \in G\). Then if \(a * b = a * c, b = c\). 
+    \item Let \(a,b,c \in G\). Then if \(a * b = a * c, b = c\).
 \end{itemize}
 
 \subsubsection{Permutation Groups}
@@ -52,7 +52,7 @@ In a multiplication table of finite group each row must be a permutation of the 
 \end{itemize}
 
 \subsection{Fields}
-A field \((\bF, +, \times)\) is a set \(\bF\) with two binary operations on it, addition (+) and multiplcation (\(\times\)), where 
+A field \((\bF, +, \times)\) is a set \(\bF\) with two binary operations on it, addition (+) and multiplcation (\(\times\)), where
 \begin{enumerate}
     \item \((\bF, +)\) is an abelian group,
     \item \(\bF^* = \bF\setminus\{0\}\) is an abelian group under multiplication,
@@ -83,7 +83,7 @@ Let \(\bF\) be a field and \(a,b,c \in \bF\). Then
 Let \((G,*)\) be a group and \(H\) a non-empty subset of \(G\). If \(H\) is a group under the restriction of \(*\) to \(H\), we call it a subgroup of \(G\). We write this as \(H \leq G\) and say \(H\) inherits the group structure from \(G\).
 
 \paragraph{The Subgroup Lemma}
-Let \((G,*)\) be a group and \(H\) a non-empty subset of \(G\). Then \(H\) is a subgroup of \(G\) if and only if 
+Let \((G,*)\) be a group and \(H\) a non-empty subset of \(G\). Then \(H\) is a subgroup of \(G\) if and only if
 \begin{enumerate}
     \item for all \(a,b \in H, a * b \in H\)
     \item for all \(a \in H, a^{-1} \in H\).
@@ -98,7 +98,7 @@ Let \(n \geq 1\) be an integer. The set of invertible \(n \times n\) matrices ov
 It is called the general linear group, \(\GL(n,f)\).
 
 The groups \(\GL(n,\bR)\) and \(\GL(n,\bC)\) are especially important in this course.
-They have many important subgroups, such as 
+They have many important subgroups, such as
 \begin{itemize}
     \item the special linear groups \(\SL(n,\bR)\) and \(\SL(n,\bC)\) of matrices with determinant 1.
     \item \(O(n) \leq \GL(n,\bR)\) the group of orthogonal matrices.
@@ -130,15 +130,15 @@ A bijective homomorphism \(\phi: G \to H\) is called an isomorphism: the groups 
 Let \((G, *)\) and \((H, \circ)\) be two groups and \(\phi\) a homomorphism between them. Then
 \begin{itemize}
     \item \(\phi\) maps the identity of \(G\) to the identity of \(H\).
-    \item \(\phi\) maps inverses to inverse, i.e. \(\phi(a^{-1} = (\phi(a))^{-1}\) for all \(a \in G\).
+    \item \(\phi\) maps inverses to inverse, i.e. \(\phi(a^{-1}) = (\phi(a))^{-1}\) for all \(a \in G\).
     \item if \(\phi\) is an isomorphism from \(G\) to \(H\) then \(\phi^{-1}\) is an isomorphism from \(H\) to \(G\).
 \end{itemize}
 
 \paragraph{Images and Kernel}
 Let \(\phi: G \to H\) be a group homorphism, with \(e'\) the identity of \(H\).
-The kernal of \(\phi\) is the set 
+The kernel of \(\phi\) is the set
 \[\ker(\phi) = \{g \in G: \phi(g) = e'\}\]
-The image of \(\phi\) is the set 
+The image of \(\phi\) is the set
 \[\operatorname{im}(\phi) = \{h \in H: h = \phi(g), \text{ some } g \in G\}.\]
 Note that \(\ker\phi \leq G\) and \(\operatorname{im}\phi \leq H\).
 
@@ -147,4 +147,4 @@ A homomorphism \(\phi\) is one-one if and only if \(\ker\phi = \{e\}\), with \(e
 If \(\phi\) is one-one then \(\im(\phi)\) is isomorphic to \(G\).
 
 \paragraph{Linear Groups}
-A common use of group homomorphisms is to look for a homomorphism \(\phi: G \to \GL(n,\bF)\) for some \(n\) and some field \(\bF\). The group \(\im(\phi)\) is called a (linear) representation of \(G\) on \(\bF^n\). If \(\phi\) is one-one (so every element maps to a distinct matrix), we call the representation faithful. 
+A common use of group homomorphisms is to look for a homomorphism \(\phi: G \to \GL(n,\bF)\) for some \(n\) and some field \(\bF\). The group \(\im(\phi)\) is called a (linear) representation of \(G\) on \(\bF^n\). If \(\phi\) is one-one (so every element maps to a distinct matrix), we call the representation faithful.
