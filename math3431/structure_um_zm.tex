@@ -139,15 +139,15 @@ Let \(n\) be a positive integer with canonical factorisation \(n = p^{\alpha_1}_
     \[\bU_{2^\alpha} \cong C_2 \otimes C_{2^{\alpha - 2}} \quad \text{ for } \quad a \geq 3.\]
 }
 
-\thrm{Cyclic for even \(n\)}{
-    Let \(n \geq 2\). Then \(\bU_n\) is cyclic if and only if \(n = 2, n = 4, n = p^\alpha\) or \(n = 2p^\alpha\), where \(p\) is an off prime and \(\alpha\) is a positive integer.
+\thrm{Condition for Cyclic Units}{
+    Let \(n \geq 2\). Then \(\bU_n\) is cyclic if and only if \(n = 2, n = 4, n = p^\alpha\) or \(n = 2p^\alpha\), where \(p\) is an odd prime and \(\alpha\) is a positive integer.
 }
 
-\thrm{}{
+\thrm{Generator Implies Order and Relatively Primes}{
     Suppose that \(G\) is a cyclic group of order \(n\) and that \(g\) is a generator of \(G\).
     Then
     \begin{enumerate}[label=\alph*)]
-        \item for any integer \(\alpha\), the order of \(g^\alpha\) is \(n\/ \gcd(\alpha, n)\);
+        \item for any integer \(\alpha\), the order of \(g^\alpha\) is \(n / \gcd(\alpha, n)\);
         \item \(g^\alpha\) generates \(G\) if and only if \(\alpha\) is relatively prime to \(n\).
     \end{enumerate}
 }
@@ -174,7 +174,7 @@ Let \(n\) be a positive integer with canonical factorisation \(n = p^{\alpha_1}_
     \[\alpha = \log_g a \quad \text{ or } \quad \alpha = \ind_g a.\]
 }
 
-\thrm{Addition and Multiplication of Discrete LOgarithm}{
+\thrm{Addition and Multiplication of Discrete Logarithm}{
     Let \(g\) be a primitve root in \(\bU_m\).
     \begin{enumerate}[label=\alph*)]
         \item If \(a, b \in \bU_m\) then \(\ind_g(ab) = \ind_g a+ \ind_g b \pmod{\varphi(m)}\).
