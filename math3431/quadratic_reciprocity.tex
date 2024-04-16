@@ -30,7 +30,7 @@
     \[\frac{a}{p} = \begin{cases}
             1  & \text{if } a \text{ is a quadratic residue} \mod p;             \\
             -1 & \text{if } a \text{ is a quadratic non-residue} \mod p;         \\
-            0  & \text{if } a \text{ is neither (i.e., if } a \equiv 0 \mod p).;
+            0  & \text{if } a \text{ is neither (i.e., if } a \equiv 0 \mod p).
         \end{cases}\]
 }
 
@@ -69,6 +69,11 @@
 
 \subsection{Gauss' Lemma}
 
+\thrm{Gauss' Lemma}{
+    For \(S = \{a, 2a, \dots, \frac{p - 1}{2}a \mod p\),
+    \[\leg{a}{p} = (-1)^k \text{ where } k = \left| \left\{s \in S: s > \frac{p - 1}{2} \right\}\right|.\]
+}
+
 \thrm{Formula for \(\leg{2}{p}\)}{
     If \(p\) is an odd prime, then \(\leg{2}{p} = (-1)^{\frac{p^2 - 1}{8}}\).
 }
@@ -90,10 +95,10 @@
 
 \thrm{The Law of Quadratic Reciprocity}{
     If \(p\) and \(q\) are odd primes, then
-    \begin{align}
+    \begin{align*}
         \leg{p}{q} & = \leg{q}{p}, \quad \text{if } p \equiv 1 \mod 4 \text{ or } q \equiv 1 \mod 4  \\
         \leg{p}{q} & = -\leg{q}{p}, \quad \text{if } p \equiv 3 \mod 4 \text{ or } q \equiv 3 \mod 4
-    \end{align}
+    \end{align*}
 }
 
 \thrm{\(\leg{a}{p}\) for Small Integers}{

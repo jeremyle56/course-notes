@@ -1,0 +1,135 @@
+\section{Gaussian Integers}
+
+
+\defn{Gaussian Integers}{
+    The Gaussian Integers are the complex numbers
+    \[\bZ[i] = \{ a + bi : a, b \in \bZ\},\]
+    where \(i\) is the square root of -1.
+}
+
+\prop{Gaussian Integers is an Integral Domain}{
+    \(\bZ[i]\) is an integral domain.
+}
+
+\defn{Norm}{
+    The norm \(\alpha = a + ib \in \bC\) is \(N(\alpha) = \alpha\bar{\alpha} = (a + ib)(a - ib) = a^2 + b^2\).
+}
+
+\thrm{Properties of the Norm}{
+    Let \(\alpha, \beta \in \bZ[i]\) and \(c \in \bZ\) be given. Then
+    \begin{itemize}
+        \item \(N(\alpha) \geq 0\) and \(N(\alpha) \in \bZ\);
+        \item \(\sqrt{N(\alpha + \beta)} \leq \sqrt{N(\alpha)} + \sqrt{N(\beta)}\);
+        \item \(N(\alpha\beta) = N(\alpha) + N(\beta)\)
+        \item \(N(\alpha) \leq N(\alpha\beta)\) for \(\beta \neq 0\)
+        \item \(N(c\alpha) = c^2 N(\alpha), N(c) = c^2,\) and \(N(N(\alpha)) = (N(\alpha))^2\);
+        \item \(N(\alpha) = 1\) if and only if \(\alpha \in \{\pm 1, \pm i\}\);
+        \item \(N(\alpha) = 0\) if and only if \(\alpha = 0\).
+    \end{itemize}
+}
+
+\thrm{Properties of the Identity Norm}{
+    The following are equivalent for \(a \in \bZ[i]\):
+    \begin{itemize}
+        \item \(\alpha\) is a unit;
+        \item \(N(\alpha) = 1\);
+        \item \(\alpha \in \{\pm 1, \pm i\}\).
+    \end{itemize}
+}
+
+\thrm{Division Algorithm for Gaussian Integers}{
+    For all Gaussian integers \(\alpha, \beta \neq 0\), there exist, \(q, r \in \bZ[i]\) for which
+    \[\alpha = q\beta + r \text{ and } 0 \leq N(r) < N(\beta).\]
+}
+
+\defn{GCD for Gaussian Integers}{
+    A greatest common divisor of Gaussian integes \(\alpha\) and \(\beta\) is an element \(\gamma \in \bZ[i]\) that is
+    \begin{itemize}
+        \item a factor of both \(\alpha\) and \(\beta\);
+        \item a multiple of every such common factor.
+    \end{itemize}
+    Let \(\gcd(\alpha, \beta)\) be the set of all greatest common divisors \(\alpha\) and \(\beta\).
+}
+
+\thrm{Euclidean Algorithm for Gaussian Integers}{
+    For \(\alpha, \beta \neq 0\), write \(r_0 = \beta\) and use the division algorithm to find \(q_1, r_1 \in \bZ[i]\) for which
+    \[\alpha = q_1\beta + r_1 \quad \text{ and } \quad 0 \leq N(r_1) < N(\beta).\]
+    If \(r_1 \neq 0\), then we write similarly,
+    \[\beta = q_2r_1 + r_2 \quad \text{ and } \quad 0 \leq N(r_2) < N(r_1).\]
+    Continuing like this while \(r_k \neq 0\), we find \(q_{k + 1}, r_{k + 1} \in \bZ[i]\) so that
+    \[r_{k - 1} = q_{k + 1}r_k + r_{k + 1} \quad \text{ and } \quad 0 \leq N(r_{k + 1}) < N(r_k).\]
+    Then \(r_{n + 1} = 0\) for some \(n \geq 0\), and \(\gcd(\alpha, \beta) = \{\pm r_n, \pm r_ni\}\).
+}
+
+\thrm{Ideals in Gaussian Integers}{
+    Every ideal in the Gaussian integers is principal.
+}
+
+\thrm{Generators for Gaussian Integers}{
+    For any element \(\alpha, \beta \in \bZ[i]\), suppose that \(\gamma \in \gcd(\alpha, \beta)\). Then \(\lvert \alpha, \beta \rvert\) and so \(\gamma = m\alpha + n\beta\) for some \(m,n \in \bZ[i]\).
+}
+
+\defn{Gaussian Primes}{
+    The primes of \(\bZ[i]\) are called Gaussian primes.
+}
+
+\prop{Every Prime is Irreducible in Integral Domains}{
+    Every prime elements of an integral domain is irreducible.
+}
+
+\thrm{Primes are Irreducible}{
+    A Gaussian integer is a prime if and only if it is irreducible.
+}
+
+\thrm{Factorising Gaussian Integers}{
+    Each Gaussian integers factors uniquely into Gaussian primes up to order and multiplication by units.
+}
+
+\thrm{Integer and Gaussian Primes}{
+    An integer prime \(p \in \bN\) is a Gaussian prime iff \(p \equiv 3 \mod 4\).
+}
+
+\thrm{Conditions for Gaussian Primes}{
+    A Gaussian interger \(a \in \bZ[i]\) is prime if and only if
+    \begin{itemize}
+        \item either \(N(\alpha)\) is a prime integer;
+        \item or \(\alpha = \epsilon p\) for a unit \(\epsilon \in \bZ[i]\) and a prime \(p \in \bN\) with \(p \equiv 3 \mod 4\).
+    \end{itemize}
+}
+
+\thrm{Sum of Two Squares}{
+    If \(m\) and \(n\) are both sum of two squares, then so is \(mn\).
+}
+
+\thrm{Sum of Integer Squares is not Gaussian Prime}{
+    For an odd prime \(p\), the following statements are equivalent:
+    \begin{itemize}
+        \item \(p\) is the sum of two integer squares;
+        \item \(p\) is not a Gaussian prime;
+        \item \(p \equiv 1 \mod 4\).
+    \end{itemize}
+}
+
+\prop{Solutions if \(p\) is a Sum of Two Squares}{
+    For each odd prime \(p\), \(x^2 \equiv -1 \mod p\) has a solution if and only if \(p\) is the sum of two squares.
+}
+
+\thrm{Expressed as Sum of Two Integer Squares}{
+    A positive number \(n\) is the sum of two squares if and only if \(p \equiv 1 \mod 4\) for all odd primes \(p\) that divide \(n\) an odd number of times.
+}
+
+\thrm{Sum of Three Squares}{
+    A positive integer \(n\) is the sum of three integer squares if and only if \(n \neq 4^k (8m + 7)\) for all non-negative intgers of \(n\) and \(k\).
+}
+
+\thrm{Sum of Four Squares}{
+    Every positive integer is the sum of four integer squares.
+}
+
+\defn{Waring Problem}{
+    Is it true for any integer \(k \geq 1\) there is a number \(g(k)\) such that every positive integer is the sum of \(g(k)\) integer k-th powers?
+}
+
+\thrm{David Hilbert}{
+    For any integer \(k \geq 1\) the number \(g(k)\) exists.
+}
