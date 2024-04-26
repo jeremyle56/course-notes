@@ -1,6 +1,0 @@
-[book]
-authors = ["Jeremy Le"]
-language = "en"
-multilingual = false
-src = "src"
-title = "COMP3891 Notes"

@@ -27,7 +27,6 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 
 - [**DROPPED** MATH3161 (Optimization)](./math3161/math3161.pdf)
 - [MATH3431 (Number Theory)](./math3431/math3431.pdf)
-- [COMP3891 (Extended Operating Systems)](./comp3891/)
 
 ### Issues
 
