@@ -1,0 +1,112 @@
+\section{Quadratic Reciprocity}
+
+\subsection{Quadratic Congruences}
+\thrm{Number of Solutions}{
+    If \(p\) is an odd prime and \(\gcd(a, p) = 1\) (so \(a \neq 0 \mod p\)), then \(x^2 \equiv a \mod p\) has exactly 2 solutions or it has no solutions.
+}
+
+\subsection{Quadratic Residues}
+\defn{Quadratic Residue}{
+    An integer \(a \neq 0\) is a quadratic residue if \(x^2 \equiv a \mod p\) has a solution; otherwise, \(a\) is a quadratic non-resiude.
+}
+
+\thrm{Half are Quadratic Residues}{
+    If \(p\) is an odd prime, then exaclty half of the integers \(1, 2, \dots, p - 1\) are quadratic residues modulo \(p\); furthermore, these are the even powers of any primitive root modulo \(p\).
+}
+
+\subsection{Euler's Criterion}
+\thrm{Euler's Criterion}{
+    If \(p\) is an odd prime that does not divide \(a\), then
+    \[x^2 \equiv a \mod p \text{ has a solution } \iff a^{\frac{p-1}{2}} \equiv 1 \mod p;\]
+    \begin{center}
+        equivalently
+    \end{center}
+    \[x^2 \equiv a \mod p \text{ has no solution } \iff a^{\frac{p - 1}{2}} \equiv -1 \mod p.\]
+}
+
+\subsection{Legendre's Symbol}
+\defn{Legendre Symbol}{
+    The Legendre symbol \(\leg{a}{p}\) is given by
+    \[\frac{a}{p} = \begin{cases}
+            1  & \text{if } a \text{ is a quadratic residue} \mod p;             \\
+            -1 & \text{if } a \text{ is a quadratic non-residue} \mod p;         \\
+            0  & \text{if } a \text{ is neither (i.e., if } a \equiv 0 \mod p).
+        \end{cases}\]
+}
+
+\thrm{Equivalent Statements}{
+    Let \(p\) be an odd prime and let \(a\) be an integer with \(\gcd(a, p) = 1\). Then the following statements are equivalent:
+    \begin{itemize}
+        \item \(x^2 \equiv a \mod p\) has a solution;
+        \item \(x^2 \equiv a \mod p\) has precisely two solutions;
+        \item \(a\) is a quadratic residue modulo \(p\);
+        \item \(a\) is an even power of some primitive root modulo \(p\);
+        \item \(a\) is not an odd power of any primitive root modulo \(p\);
+        \item \(a^\frac{p-1}{2} \not\equiv -1 \mod p\);
+        \item \(a^\frac{p-1}{2} \equiv 1 \mod p\);
+        \item \(\leg{a}{p} \neq -1\);
+        \item \(\leg{a}{p} = 1\).
+    \end{itemize}
+}
+
+\thrm{Properties of Legendre Symbol}{
+    Let \(p\) be an odd prime and let \(a\) and \(b\) be any integers. Then
+    \begin{itemize}
+        \item if \(a \equiv b \mod p\), then \(\leg{a}{p} = \leg{b}{p}\);
+        \item \(\leg{a^2}{p} = 1\) unless \(a \equiv 0 \mod p\);
+        \item \(\leg{ab}{p} = \leg{a}{p}\leg{b}{p}\) - multiplicatively;
+        \item \(\leg{-1}{p} = (-1)^{\frac{p-1}{2}}\).
+    \end{itemize}
+}
+
+\prop{Arithmetic Series - Legendre Symbol}{
+    If \(p\) is an odd prime, then \(\leg{1}{p} + \leg{2}{p} + \cdots + \leg{p - 1}{p} = 0\).
+}
+
+\thrm{Solutions to Quadratic Congruence}{
+    \(x^2 \equiv -1 \mod p\) has a solutions iff \(p \equiv 1 \mod 4\) or \(p = 2\); if \(p \equiv 1 \mod 4\), then \(\pm \leg{p - 1}{2}!\) are the solutions.
+}
+
+\subsection{Gauss' Lemma}
+
+\thrm{Gauss' Lemma}{
+    For \(S = \{a, 2a, \dots, \frac{p - 1}{2}a \} \mod p\),
+    \[\leg{a}{p} = (-1)^k \text{ where } k = \left| \left\{s \in S: s > \frac{p - 1}{2} \right\}\right|.\]
+}
+
+\thrm{Formula for \(\leg{2}{p}\)}{
+    If \(p\) is an odd prime, then \(\leg{2}{p} = (-1)^{\frac{p^2 - 1}{8}}\).
+}
+
+\prop{Corolloary Formula for \(\leg{2}{p}\)}{
+    For odd primes \(p\),
+    \[\leg{2}{p} =
+        \begin{cases}
+            1  & \text{if } p \equiv \pm 1 \mod 8; \\
+            -1 & \text{if } p \equiv \pm 3 \mod 8.
+        \end{cases}\]
+}
+
+\subsection{Quadratic Reciprocity}
+\prop{Equivlance between Legendre's}{
+    For \(a \in \bN\) and primes \(p, q\) with \(p \equiv \pm q \mod 4a\), we have
+    \[\leg{a}{p} = \leg{a}{q}.\]
+}
+
+\thrm{The Law of Quadratic Reciprocity}{
+    If \(p\) and \(q\) are odd primes, then
+    \begin{align*}
+        \leg{p}{q} & = \leg{q}{p}, \quad \text{if } p \equiv 1 \mod 4 \text{ or } q \equiv 1 \mod 4  \\
+        \leg{p}{q} & = -\leg{q}{p}, \quad \text{if } p \equiv 3 \mod 4 \text{ or } q \equiv 3 \mod 4
+    \end{align*}
+}
+
+\thrm{\(\leg{a}{p}\) for Small Integers}{
+    If \(p\) is an odd prime, then
+    \begin{itemize}
+        \item \(\leg{0}{p} = 0; \leg{1}{p} = 1\);
+        \item \(\leg{-1}{p} = 1\) if and only if \(p \equiv 1 \mod 4\);
+        \item \(\leg{2}{p} = 1\) if and only if \(p \equiv \pm 1 \mod 8\);
+        \item \(\leg{3}{p} = 1\) if and only if \(p \equiv \pm 1 \mod 12\).
+    \end{itemize}
+}

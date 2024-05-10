@@ -1,6 +1,6 @@
 \documentclass[12pt, letterpaper]{article}
 
-\usepackage[margin=0.60in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumitem}
@@ -81,11 +81,22 @@
 \newcommand{\Imath}{\(I\)}
 \newcommand{\Rm}{\(R\)}
 
+\newcommand{\dn}{d(n)}
+\newcommand{\sn}{\sigma(n)}
+
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bC}{\mbb{C}}
+\newcommand{\bF}{\mbb{F}}
+\newcommand{\bK}{\mbb{K}}
+\newcommand{\bG}{\mbb{G}}
+\newcommand{\bN}{\mbb{N}}
+\newcommand{\bQ}{\mbb{Q}}
 \newcommand{\bR}{\mbb{R}}
+\newcommand{\bU}{\mbb{U}}
 \newcommand{\bZ}{\mbb{Z}}
 
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
 \def\mbf#1{\mathbf{#1}}
 
 \graphicspath{./assets}
@@ -104,9 +115,15 @@
 \begin{document}
 \maketitle
 
-Definitions: Purple, Theorems: Blue, Properties/Lemmas: Green
+Definitions: Purple, Theorems: Blue, Corollary/Lemmas/Properties: Green
 \tableofcontents
 \newpage
 
 \subfile{ring_of_integers.tex}
+\subfile{diophantine_congruences.tex}
+\subfile{groups.tex}
+\subfile{structure_um_zm.tex}
+\subfile{quadratic_reciprocity.tex}
+\subfile{gaussian_integers.tex}
+\subfile{algebraic_number_fields.tex}
 \end{document}

@@ -1,0 +1,210 @@
+\section{Algebraic Number Fields}
+\subsection{Introduction}
+Throughout this chapter, let \(\bF\) be a field.
+
+\defn{Polynomial}{
+    A polynomial \(f\) over \(\bF\) is a sum of the form \((a_n \neq 0)\)
+    \[f = a_n x^n + a_{n - 1}x^{n - 1} + \cdots + a_1 x + a_0\]
+    where \(a_i \in F\) are the coefficients of \(f(x), a_n\) is the leading coefficient, \(a_0\) is the constant coefficient and \(x\) is a variable (or a indeterminate).
+}
+
+\vspace{12pt}
+If \(a_n = 1\), then \(f\) is monic.
+
+\defn{Set over Fields}{
+    Let \(\bF[x]\) denote the set of all polynomials f over \(\bF\). Note: \(\bF \subseteq \bF[x]\)
+}
+
+\thrm{Integral Domain}{
+    F[x] is an integral domain.
+}
+
+\defn{Degree}{
+    The degree of \(f = a_n x^n + \cdots + a_0 (a_n \neq 0)\) is \(\deg f = n;\) the degree of \(f = 0\) is \(\deg 0 = -\infty\).
+}
+
+\prop{Properties of the Degree}{
+    Let \(f, g \in \bF[x]\) and non-zero \(c \in \bF\) be given. Then
+    \begin{itemize}
+        \item \(\deg f\) is a non-negative integer unless \(f = 0\);
+        \item \(\deg(f + g) \leq \max\{\deg f, \deg g\}\);
+        \item \(\deg(fg) = \deg f + \deg g\);
+        \item \(\deg(cf) = \deg f\);
+        \item \(\deg f \leq \deg(fg)\) unless \(g = 0\).
+    \end{itemize}
+}
+
+\thrm{Units in Polynomial Ring}{
+    The following are equivalent for each non-zero \(f \in \bF[x]\):
+    \begin{itemize}
+        \item \(f\) is a unit;
+        \item \(\deg f = 0\);
+        \item \(f = c\) for some non-zero \(c \in F\).
+    \end{itemize}
+}
+
+\thrm{Division Algorithm for \(\bF[x]\)}{
+    For all polynomials \(f, g \in \bF[x]\) with \(f \neq 0\) and \(\deg g > 0\), there exist unique polynomials \(q, r \in \bF[x]\) so that \(f = qg + r\) and \(\deg r < \deg g\).
+}
+
+\prop{\(r\) is Constant}{
+    For each \(f \in \bF[x]\) and each \(c \in \bF\), there is a unique polynomial \(q \in \bF[x]\), which satisfies \(f = q(x - c) + f(c)\).
+}
+
+\prop{No Constant if Divisible}{
+    If \(f \in \bF[x]\) and \(c \in \bF\), then \(f(c) = 0\) if and only if \((x -c) \mid f\).
+}
+
+\defn{Roots}{
+    An element \(\alpha \in \bF\) is a root of \(f \in \bF[x]\) if \(f(\alpha) = 0\).
+}
+
+\prop{Lagrange Theorem}{
+    Each polynomial \(f \in \bF[x]\) has at most \(\deg f\) roots.
+}
+
+\defn{Greatest Common Divisor}{
+    \(d \in \bF[x]\) is a greatest common divisor of \(f, g \in \bF[x]\) if it divides both \(f\) and \(g\) and is a multiple of all other such common factors. Let \(\gcd(f, g)\) be the set of all greatest common divisors of \(f\) and \(g\).
+}
+
+\thrm{The Euclidean Algorithm for \(\bF[x]\)}{
+    For \(f, g \in \bF[x], g \neq 0\), set \(r_0 = g\) and use the division algoirthm to find \(q_1, r_1 \in \bF[x]\) for which
+    \[f = q_1 g + r_1 \quad \text{ with } \quad \deg r_1 < \deg g.\]
+    If \(r_1 \neq 0\), then write similarly
+    \[g = q_2 r_1 + r_2 \quad \text{ with } \quad \deg r_2 < \deg r_1.\]
+    Continuing like this while \(r_k \neq 0\), find \(q_{k + 1}, r_{k + 1} \in \bF[x]\) so that
+    \[r_{k - 1} = q_{k + 1}r_k + r_{k + 1} \quad \text{ with } \quad \deg r_{k + 1} < \deg r_k.\]
+    Then \(r_{n + 1} = 0\) for some \(n \geq 0\), and \(\gcd(f, g) = \{cr_n : c \in \bF, c \neq 0\}\).
+}
+
+\thrm{Generators are GCDs}{
+    If \(f, g \in \bF[x]\) and \(d \in \gcd(f, g)\), then \(\lvert f, g \rvert = \lvert d \rvert\) and there exist \(m, n \in \bF[x]\) so that \(d = mf + ng\), and these may be found by reversing the steps of the Euclidean algorithm.
+}
+
+\prop{Common Roots of GCD}{
+    The common roots of \(f, g \in \bF[x]\) are roots of all \(d \in \gcd(f, g)\).
+}
+
+\thrm{\(\bF[x]\) is a principal ideal domain.}{Any of the GCDs can generate the set of ideals in \(\bF\).}
+
+\subsection{Prime and Irreducible Polynomials}
+
+\thrm{Primes are Irreducible}{
+    Each element of \(\bF[x]\) is prime if and only if it is irreducible.
+}
+
+\thrm{Irreducible up to Units}{
+    Each \(f \in \bF[x]\) factors uniquely into prime polynomials, up to order and multiplication by units.
+}
+
+\prop{Iredducibility for degree 2 or 3}{
+    If \(f \in \bF[x]\) has degree 2 or 3, then \(f\) is iredducible if and only if \(f\) does not have a root.
+}
+
+\thrm{Eisenstein's Criterion}{
+    Let \(f = a_n x^n + \cdots + a_0 \in \bZ[x]\). If there is a prime \(p \in \bZ\) such that
+    \begin{itemize}
+        \item \(p\) does not divide the leading coefficient: \(p \nmid a_n\),
+        \item \(p\) divides every other coefficient of \(f\): \(p \mid a_i, i = 0, \dots, n - 1\),
+        \item \(p^2\) does not divide constant coefficient: \(p^2 \nmid a_0\),
+    \end{itemize}
+    then \(f\) is irreducible.
+}
+
+\prop{Root Fraction Divides Coefficients}{
+    If \(f = a_n x^n + \cdots + a_0 \in \bZ[x]\) has a root
+    \[\alpha = \frac{p}{q},\]
+    where \(p, q \in \bZ\) with \(\gcd(p, q) = 1\). Then \(p \mid a_0\) and \(q \mid a_n\).
+}
+
+\subsection{Extension Fields}
+
+\defn{Extension Field}{
+    A field \(\bK\) is an extension field of \(\bF\) if \(\bF\) is a subfield of \(\bK\).
+}
+
+\defn{Dimension in Extension Field}{
+    Suppose that a field \(\bK\) is an extension field over a field \(\bF\). Then let \([\bK : \bF]\) denote the vector space dimension \(\dim_\bF \bK\) of \(\bK\) over \(\bF\).
+}
+
+\thrm{Dimensions Multiplicative}{
+    If \(\bF \subseteq \bG \subseteq \bK\) for fields \(\bF, \bG, \bK\) then \([\bK : \bF] = [\bK : \bG][\bG : \bF]\)
+}
+
+\defn{Smallest Subfield and Subring}{
+    Let \(\bF\) be a subfield of a field \(\bK\) and suppose that \(\alpha \in \bK\). Then
+    \begin{itemize}
+        \item let \(\bF(a)\) denote the smallest subfield of \(\bK\) containing \(\bF\) and \(\alpha\);
+        \item let \(\bF[\alpha]\) denote the smallest subring of \(\bK\) containing \(\bF\) and \(\alpha\).
+    \end{itemize}
+}
+
+\prop{Properties of Subfield and Subring}{
+    If \(\bF\) is a subfield of a field \(\bK\) and \(\alpha \in \bK\), then
+    \begin{itemize}
+        \item \(\bF[\alpha]\) is an integral domain;
+        \item \(\bF[\alpha] \subseteq \bF(\alpha) \subseteq \bK\);
+        \item \(\bF[\alpha] = \bF(\alpha) = \bF\) whenever \(\alpha \in \bF\).
+    \end{itemize}
+}
+
+\thrm{Characterisation of Subfield and Subring}{
+    IF \(\bF\) is a subfield of a field \(\bK\) and \(\alpha \in \bK\), then
+    \begin{align*}
+        \bF[\alpha] & = \{ f(\alpha) : f \in \bF[x] \}; \\
+        \bF(\alpha) & = \left\{\frac{f(\alpha)}{g(\alpha)} : f,g \in \bF[x], g \neq 0\right\}.
+    \end{align*}
+}
+
+\defn{Algebraic and Transcendental}{
+    Let \(\bF\) be a subfield of a field \(\bK\) and suppose that \(\alpha \in \bK\). Then \(\alpha\) is algebraic over \(\bF\) if \(\alpha\) is the root of a polynomial \(f \in \bF[x]\); otherwise, \(\alpha\) is transcendental over \(\bF\).
+}
+
+\defn{Simple Algebraic Extension}{
+    If \(\alpha\) is algebraic over \(\bF\), then \(\bF(\alpha)\) is a simple algebraic extension of \(\bF\). If \(\bG \subseteq \bK\) is obtained by a sequence of simple algebraic extensions of \(\bF\), then \(\bG\) is an algebraic extension field of \(\bF\).
+}
+
+\defn{Minimal Polynomial}{
+    There is a unique monic, irreducible polynomial \(f \in \bF[x]\) which has \(\alpha\) as a root. This is the minimal (or irreducible) polynomial of \(\alpha\) over \(\bF\), and \(\deg f\) is the degree of \(\alpha\) over \(\bF\).
+}
+
+\thrm{Smallest Subfield Equals Smallest Subring}{
+    Let \(\bK\) be an extension field of a field \(\bF\) and consider \(\alpha \in \bK\). If \(\alpha\) is algebraic of degree \(n\) over \(\bF\), then
+    \begin{itemize}
+        \item \(\bF[\alpha] = \bF(\alpha)\);
+        \item \([\bF(\alpha) : F] = n\);
+        \item \(\{1, \alpha, \alpha^2, \dots, \alpha^{n - 1}\) is a basis for \(\bF(\alpha)\) over \(\bF\);
+        \item each element of \(\bF(\alpha)\) may be written uniquely in the form
+        \[a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n - 1} \quad \text{where} \quad a_i \in \bF.\]
+    \end{itemize}
+}
+
+\prop{Characterise Equality of Subfield and Subring}{
+    Let \(\bK\) be an extension field of a field \(\bF\) and consider \(\alpha \in \bK\). Then \(\alpha\) is algebraic over \(\bF\) if and only if \(\bF[\alpha] = \bf(\alpha)\).
+}
+
+\paragraph{Corollary} \(\alpha\) algebraic in \(\bF\) if and only if \([\bF(\alpha) : \bF] < \infty\).
+
+\paragraph{Theorem} The set of algebraic number over \(\bQ, \overline{\bQ}\), is a subfield of \(\bC\).
+
+\subsection{Composite Algebraic Extension Fields}
+\thrm{Special Case}{
+    If \(\bF \in \bC\) is a field and \(\alpha, \beta \in \bC\) are algebraic over \(\bF\), then \(\bF(\alpha, \beta) = \bF(\vartheta)\) for some \(\vartheta \in \bC\).
+}
+
+\prop{Primitive Element Theorem}{
+    If \(\bF \subseteq \bC\) is a field and \(\alpha_1, \dots, \alpha_s \in \bC\) are algebraic over \(\bF\), then \(\bF(\alpha_1, \dots, \alpha_s) = \bF(\varphi)\) for some \(\varphi \in \bC\).
+}
+
+\subsection{Diophantine Approximations}
+\thrm{Dirichlet's Approximation Theorem}{
+    Given an integer \(Q \geq 2\), any real number \(\alpha\) can be approximated as
+    \[\left| \alpha - \frac{a}{q} \right| < \frac{1}{qQ}, \quad \gcd(a, q) = 1, 1 \leq q \leq Q,\]
+    with some integers \(a\) and \(q\).
+}
+
+\prop{Approximating Irrational Numbers}{
+    For any irrational number \(\alpha\) there are infinitely many positive integers \(q\), such that
+    \[\left| \alpha - \frac{a}{q} \right| < \frac{1}{q^2}\]
+    with some integer \(a\) with \(\gcd(a, q) = 1\).
+}
