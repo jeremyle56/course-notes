@@ -1,0 +1,120 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+\definecolor{lightskyblue}{rgb}{0.53, 0.81, 0.98}
+\definecolor{celadon}{rgb}{0.67, 0.88, 0.69}
+\definecolor{pastelyellow}{rgb}{1, 0.93, 0.55}
+
+\newcommand{\defn}[2]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=brightlavender!25!white,
+        coltitle=black,
+        colframe=brightlavender!75!black,
+        fonttitle=\bfseries,
+        title={#1}
+    ]
+        #2
+    \end{tcolorbox}
+}
+
+\newcommand{\thrm}[2]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=lightskyblue!25!white,
+        coltitle=black,
+        colframe=lightskyblue!75!black,
+        fonttitle=\bfseries,
+        title={#1}
+    ]
+        #2
+    \end{tcolorbox}
+}
+
+\newcommand{\prop}[2]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=celadon!25!white,
+        coltitle=black,
+        colframe=celadon!75!black,
+        fonttitle=\bfseries,
+        title={#1}
+    ]
+        #2
+    \end{tcolorbox}
+}
+
+\newcommand{\exmp}[2]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=pastelyellow!25!white,
+        coltitle=black,
+        colframe=pastelyellow!75!black,
+        fonttitle=\bfseries,
+        title={#1}
+    ]
+        #2
+    \end{tcolorbox}
+}
+
+\def\mbb#1{\mathbb{#1}}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{Higher Theory and Applications of Differential Equations \\ MATH2221 UNSW}
+\author{Jeremy Le}
+\date{2024T2}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+
+Definitions: Purple, Theorems: Blue, Corollary/Lemmas/Properties: Green, Examples: Yellow
+\tableofcontents
+\newpage
+
+\exmp{hi}{hello}
+
+\end{document}
