@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper]{article}
+\documentclass[12pt, letterpaper]{book}
 
 \usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
@@ -10,6 +10,7 @@
 \usepackage{dirtytalk}                      % \say command for quotes
 \usepackage{wasysym}
 \usepackage{graphicx}
+\usepackage{pagecolor}
 \usepackage{physics}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable}
@@ -23,6 +24,11 @@
     linkcolor=black,
     urlcolor=black
 }
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
 
 \definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
 \definecolor{lightskyblue}{rgb}{0.53, 0.81, 0.98}
@@ -94,6 +100,7 @@
 }
 
 \def\mbb#1{\mathbb{#1}}
+\newcommand{\bR}{\mbb{R}}
 
 \graphicspath{./assets}
 
@@ -109,10 +116,15 @@
 \lhead{}
 
 \begin{document}
+% \pagecolor{yellow!20}
 \maketitle
 
-Definitions: Purple, Theorems: Blue, Corollary/Lemmas/Properties: Green, Examples: Yellow
-\tableofcontents
-\newpage
+% Definitions: Purple, Theorems: Blue, Corollary/Lemmas/Properties: Green, Examples: Yellow
+
+\begin{minipage}{\textwidth}
+    \vfill
+    \tableofcontents
+\end{minipage}
+\subfile{linear_odes.tex}
 
 \end{document}

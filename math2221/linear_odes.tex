@@ -1,0 +1,116 @@
+\chapter{Linear ODEs}
+
+\section{Introduction}
+Recall that a first-order ordinary differential equation (ODE) has, in its most general realisation, the form
+\[y'(t) = f(t, y(t)).\]
+A special case is the equation
+\[a(t)y'(t) + b(t)y(t) = f(t),\]
+with \(a(t) \neq 0\) on some interval \(I \in \bR\). This special first-order ODE is called a \textbf{linear first-order ODE}. Another special case is
+\[y'(t) = f(t)g(y),\]
+which is known as a \textbf{separable first-order ODE}. \\
+
+For a separable equation the solution is found (at least, implicitly by) writing:
+\[\int \frac{1}{g(y)} \, dy = \int f(t) \, dt.\]
+
+\exmp{Solving Seperable ODEs}{
+    Consider \(y' = t^2 y, y(0) = 3.\) This is seperable with \(f(t) = t^2\) and \(g(y) = y\). Then
+    \[\int \frac{1}{y} \, dy = \int t^2 \, dt\]
+    so that
+    \[\ln \abs*{y(t)} = \frac{1}{3}t^3 + C.\]
+    Now apply \(e^t\) to both sides to obtain
+    \[\abs*{y(t)} = e^{\frac{1}{3}t^3 + C} = e^C e^{\frac{1}{3} t^3}.\]
+    Thus, a general solution of the equation is
+    \[y(t) = Ae^{\frac{1}{3}t^3}.\]
+    Since \(y(0) = 3\), we see that the unique solution is \(y(t) = 3e^{\frac{1}{3}t^3}\).
+}
+
+In the case of a linear first-order equation, i.e. \(y' + a(t)y = f(t)\), a useful solution method is the integrating factor technique. The idea is to find a function \(\mu\) so that when we multiply both sides of the equation with \(\mu\) we find that
+\[[\mu y](t)' = \mu(t)(y' + a(t)y) = \mu(t)f(t),\]
+for if this happens, then the general solution of the ODE should be
+\[y(t) = \frac{1}{\mu(t)}\int \mu(t)f(t) \, dt + \frac{C}{\mu(t)}.\]
+
+\exmp{Solving Linear First-Order ODE}{
+    Solve \(y' - 2ty = 3t\). We pick
+    \[\mu(t) = e^{\int - 2t \, dt} = e^{-t^2}.\]
+    Then
+    \begin{align*}
+        (e^{-t^2}y)' & = 3te^{-t^2}                                        \\
+        e^{-t^2}y    & = \int 3te^{-t^2} \, dt  = -\frac{3}{2}e^{-t^2} + C \\
+        y(t)         & = -\frac{3}{2} + Ce^{t^2}.
+    \end{align*}
+}
+
+\section{Linear Differential Operators}
+In linear algebra, you have seen the compact notation \(A\bf{x} = \bf{b}\) for system of linear equations. A similar notation when dealing with a linear ordinary differential equations is
+\[Lu = f.\]
+Here, \(L\) is an operator (or transformation) that acts on a function \(u\) to create a new function \(Lu\).
+
+Given coefficients \(a_0(x), a_1(x), \dots, a_m(x)\) we define the \textbf{linear differential operator} \(L\) of \textbf{order} \(m\),
+\begin{align*}
+    Lu(x) & = \sum_{j=0}^{m} a_j(x) D^ju(x)               \\
+          & = a_mD^mu + a_{m-1}D^{m-1}u + \cdots + a_o u,
+\end{align*}
+where \(D^j u = d^j u / dx^j\) (with \(D^0 u = u\)). \\
+
+We refer to \(a_m\) as the \textbf{leading coefficient} of \(L\) and assume that each \(a_j(x)\) is a smooth function of \(x\). \\
+
+The ODE \(Lu = f\) is said to be \textbf{singular} with respect to an interval \([a, b]\) if the leading coefficient \(a_m(x)\) vanishes for any \(x \in [a, b]\). \\
+\exmp{Example}{
+    \(Lu = (x - 3)u''' - (1 + \cos x)u' + 6u\) is a linear differential of order 3, with leading coefficient \(x - 3\). Thus, \(L\) is singular on \([1, 4]\), but not singular on \([0 ,2]\).
+}
+\exmp{Example}{
+    \(N(u) = u'' + u^2u' - u\) is a nonlinear differential operator of order 2.
+}
+
+\paragraph{Linearity} For any constants \(c_1\) and \(c_2\) and any \(m\)-times differentiable functions \(u_1\) and \(u_2\),
+\[L(c_1u_1 + c_2u_2) = c_1 Lu_1 + c_2 Lu_2.\]
+
+Ordinary differential equations of the form \(Lu = 0\) are known as \textbf{homogenous}. Those of the form \(Lu = f\) are known as \textbf{inhomogeneous}. \\
+
+When the solution to a differential equation is prescribed at a particular point \(x = x_0\), that is
+\[u(x_0) = v_0, \quad u'(x_0) = v_1, \quad \dots, \quad u^{(m - 1)}(x_0) = v_{m - 1},\]
+we call it an \textbf{initial value problem}. Where a differential equation is order 2 or greater, solutions at 2 or more locations can be prescribed. Such problems are called \textbf{boundary value problems}. \\
+
+\thrm{Unique Solution to Linear Initial Problem}{
+    For an ODE \(Lu = f\) which is not singular with repsect to \(a, b\), with \(f\) continuous on \([a, b]\), the IVP for an \(m\)th-order linear differential operator with \(m\) inital values has a unique solution.
+}
+
+\thrm{Solution to mth Order Problem has Dimension m}{
+    Assume that the linear, \(m\)th-order differential operator \(L\) is not singular on \([a, b]\). Then the set of all solutions to the homogenous equation \(Lu = 0\) on \([a, b]\) is a vector space of dimension \(m\).
+}
+
+\bigskip
+If \(\{u_1, u_2, \dots, u_m\}\) is \textbf{any} basis for the solution space of \(Lu = 0\), then every solution can be written in a unique way as
+\[u(x) = c_1u_1(x) + c_2u_2(x) + \cdots + c_mu_m(x) \quad \text{for } a\leq x \leq 4.\]
+We refer to this as the \textbf{general solution} of the homogenous equation \(Lu = 0\) on \([a, b]\). \\
+
+\textbf{Linear superposition} refers to this technique of constructing a new solution out of a linear combination of old ones. \\
+
+\exmp{Example}{
+    The general solution to \(u'' - u' - 2u = 0\) is \(u(x) = c_1 e^{-x} + c_2 e^{2x}.\)
+}
+
+\bigskip
+Consider the inhomogeneous equation \(Lu = f\) on \([a, b]\), and fix a particular solution \(u_P\).
+
+For \textit{any} solution \(u\), the difference \(u - u_P\) is a solution of the homogenous equation because
+\[L(u - u_P) = Lu - Lu_P = f - f = 0 \text{ on } [a, b].\]
+Hence, \(u(x) - u_P(x) = c_1u_1(x) + \dots _cmu_m(x)\) for some constants \(c_1, \dots, c_m\) and so
+\[u(x) = u_P(x) + \underbrace{c_1u_1(x) + \cdots + c_mu_m(x)}_{u_H(x)}, \quad a \leq x \leq b,\]
+is the \textbf{general solution} of the inhomogeneous equation \(Lu = f\).
+
+\exmp{Example}{
+The inhomogenous ODE \(u'' - u' - 2u = -2e^x\) has a particular solution \(u_P(x) = e^x\).
+
+The general solution for its homogenous counterpart is \(u_H(x) = c_1e^{-x} + c_2e^{2x}\).
+
+So the general solution of the inhomogeneous ODE is
+\[u(x) = u_P(x) + u_H(x) = e^x + c_1 e^{-x} + c_2e^{2x}.\]
+}
+
+% \section{Differential Operators with Constant Coefficients}
+% \section{Wronskians and Linear Independence}
+% \section{Methods for Inhomogeneous Equations}
+% \section{Solution via Power Series}
+% \section{Singular ODEs}
+% \section{Bessel and Legendre Equations}
