@@ -108,8 +108,123 @@ So the general solution of the inhomogeneous ODE is
 \[u(x) = u_P(x) + u_H(x) = e^x + c_1 e^{-x} + c_2e^{2x}.\]
 }
 
-% \section{Differential Operators with Constant Coefficients}
-% \section{Wronskians and Linear Independence}
+\thrm{Reduction of Order}{
+    For \(u = u_1(x) \neq 0\), a solution to the ODE
+    \[u'' + p(x)u' + q(x) u = 0,\]
+    on some interval \(I\), then a second solution is
+    \[u = u_1(x) \int \frac{1}{u_1^2 \exp(\int p \, dx)} \, dx.\]
+}
+
+\exmp{Example}{
+    For the ODE \(u'' -6u' + 9u = 0\), take \(u_1 = e^{3x}\) and find \(v\). \textbf{Answer} \(xe^{3x}\).
+}
+
+\section{Differential Operators with Constant Coefficients}
+If \(L\) has constant coefficients, then the problem of solving \(Lu = 0\) reduces to that of factorising the polynomial having the same coefficients. \\
+
+Suppose that \(a_j\) is constant for \(0 \leq j \leq m\), with \(a_m \neq 0\). We define the associated polynomial of degree \(m\),
+\[p(z) = \sum_{j=0}^{m} a_jz^j = a_mz^m + a_{m - 1} z^{m-1} + \cdots + a_1z + a_0,\]
+so that if
+\[Lu = a_mu^{(m)} + a_{m-1}u^{(m -1) + \cdots + a_1 u + a_0},\]
+then formally, \(L = p(D)\). \\
+
+By the fundamental theorem of algebra,
+\[p(z) = a_m(z - \lambda_1)^{k_1}(z - \lambda_2)^{k_2} \cdots (z - \lambda)^{k_r}\]
+where \(\lambda_1, \lambda_@, \dots, \lambda_r\) satisfying
+\[k_1 + k_2 + \dots + k_r = m.\]
+
+\prop{Lemma}{
+\((D - \lambda)x^je^{\lambda x} = jx^{j-1}e^{\lambda x}\) for \(j \geq 0.\)
+}
+
+\prop{Lemma}{
+    \((D - \lambda)^k x^j e^{\lambda x} = 0 \) for \(j = 0, 1, \dots, k - 1\).
+}
+
+\prop{Basic Solutions}{
+If \((z - \lambda)^k\) is a factor of \(p(z)\) then the function \(u(x) = x^je^{\lambda x}\) is a solution of \(Lu = 0\) for \(0 \leq j \leq k - 1\).
+}
+
+\thrm{General Solution}{
+    For the constant-coefficient case, the general solution of the homogenous equation \(Lu = 0\) is
+    \[u(x) = \sum_{q=1}^{r} \sum_{l=0}^{k_q - 1} c_{ql}x^l e^{\lambda_q x},\]
+    where the \(c_{ql}\) are arbitrary constants.
+}
+
+\exmp{Repeated Real Root}{
+From the factorisation
+\[D^4 + 6D^3 + 9D^2 - 4D - 12= (D - 1)(D + 2)^2(D + 3)\]
+we see that the general solution of
+\[u'''' + 6u''' + 9'' - 4u' - 12u = 0\]
+is
+\[u = c_1e^x + c_2e^{-2x} + c_3xe^{-2x} + c_4e^{-3x}.\]
+}
+
+\exmp{Complex Root}{
+    From the factorisation
+    \begin{align*}
+        D^3 - 7D^2 + 17D - 15 & = (D^2 - 4D + 5)(D - 3)         \\
+                              & = (D - 2 - i)(D - 2 + i)(D - 3)
+    \end{align*}
+
+    we see that the general solution of
+    \[u''' - 7u'' + 17u' - 15u = 0\]
+    is
+    \begin{align*}
+        u(x) & = c_1e^{(2 + i)x} + c_2e^{(2 -i)x} + c_3e^{3x}       \\
+             & = c_4 e^{2x}\cos x + c_5 e^{2x} \sin x + c_3 e^{3x}.
+    \end{align*}
+}
+
+\bigskip
+Second-order ODEs arise naturally in classical mechanics for example a harmonic simple oscillator.
+
+\section{Wronskians and Linear Independence}
+We introduce a function, called the Wronskain that provides us with a way of testing whether a family of solutions to \(Lu = 0\) is linearly independent. \\
+
+Let \(u_1(x), u_2(x), \dots, u_m(x)\) be functions defined on an interval \(I \in \bR\). The functions \(u_1, \dots, u_m\) are called \textbf{linearly dependent} if there exist constant \(a_1, a_2, \dots, a_m\) \textbf{not all zero} such that
+\[a_1u_1(x) + a_2u_2(x) + \cdots + amu_m(x) = 0 \quad \forall x \in I.\]
+If the above equation only holds for
+\[a_i = 0, \quad i = 1, 2, \dots, m\]
+then the functions are \textbf{linearly independent}.
+
+\exmp{Example}{
+    \(u_1 = \sin 2x\) and \(u_2 = \sin x \cos x\) are linearly dependent. \\
+    \(u_1 = \sin x\) and \(u_2 = \cos x\) are linearly indepdent.
+}
+
+\bigskip The \textbf{Wronskian} of the functions \(u_1, u_2, \dots, u_m\) is the \(m \times m\) determinant
+\[W(x) = W(x; u_1, u_2, \dots, u_m) = \det[D^{i-1}u_j].\]
+
+\exmp{Example}{
+    The Wronskian of the functions \(u_1 = e^{2x}, u_2 = xe^{2x}\) and \(u_3 = e^{-x}\) is
+    \[
+        W = \begin{vmatrix}
+            e^{2x}  & xe^{2x}            & e^{-x}  \\
+            2e^{2x} & e^{2x} + 2xe^{2x}  & -e^{-x} \\
+            4e^{2x} & 4e^{2x} + 4xe^{2x} & e^{-x}
+        \end{vmatrix}
+        = 9e^{3x}.
+    \]
+}
+
+\prop{Lemma}{
+    If \(u_1, \dots, u_m\) are linearly dependent over an interval \([a, b]\) then \(W(x; u_1, \dots, u_m) = 0\) for \(a \leq x \leq b\).
+}
+
+\prop{Lemma}{
+    If \(u_1, u_2, \dots, u_m\) are solutions of \(Lu = 0\) on the interval \([a, b]\) then their Wronskain satisfies
+    \[a_m(x) W'(x) + a_{m-1}(x) W(x) = 0, \quad a \leq x \leq b.\]
+}
+
+\thrm{Linear Independence of Solutions}{
+    Let \(u_1, u_2, \dots, u_m\) be solutions of a non-singular, linear, homogenous, \(m\)-th order ODE \(Lu = 0\) on the interval \([a, b]\). \\
+    Either \\
+    \indent \(W(x) = 0\) for \(a \leq x \leq b\) and the \(m\) solutions are linearly \textbf{dependent}, \\
+    or else \\
+    \indent \(W(x) \neq 0\) for \(a \leq x \leq b\) and the \(m\) solutions are linearly \textbf{independent}.
+}
+
 % \section{Methods for Inhomogeneous Equations}
 % \section{Solution via Power Series}
 % \section{Singular ODEs}
