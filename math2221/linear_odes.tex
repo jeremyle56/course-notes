@@ -225,7 +225,209 @@ then the functions are \textbf{linearly independent}.
     \indent \(W(x) \neq 0\) for \(a \leq x \leq b\) and the \(m\) solutions are linearly \textbf{independent}.
 }
 
-% \section{Methods for Inhomogeneous Equations}
-% \section{Solution via Power Series}
-% \section{Singular ODEs}
-% \section{Bessel and Legendre Equations}
+\section{Methods for Inhomogeneous Equations}
+\subsection{Judicious Guessing Method}
+You would have learned the mthod of undetermined coefficients for constructing a particular solution \(u_P\) to an inhomogeneous second-order linear ODE \(Lu = f\) in some simple cases. We will study this method systematically for higher-order linear ODEs with constant coefficients.
+
+\exmp{Superposition of Solutions}{
+    Suppose that \(u_1\) solves \(Lu = e^{3x}\), and \(u_2\) solves \(Lu = \sin x\), where \(L\) is a linear differential operator. Then the solution of
+    \[Lu = e^{3x} + \sin x\]
+    is
+    \[u(x) = u_1(x) + u_2(x).\]
+    And a solution of
+    \[Lu = \frac{1}{2} e^{3x} - 5\sin x\]
+    is
+    \[u(x) = \frac{1}{2} u_1(x) - 5u_2(x).\]
+}
+
+\bigskip
+Now we want to investigate some methods for finding particular solutions - i.e., finding a solution of \(Lu = f\). One such method is the method of judicious guessing. For example:
+
+\begin{enumerate}
+    \item If \(f\) is a polynomial, then guess that \(u_p\) is a polynomial.
+    \item If \(f\) is a exponential, then guess that \(u_p\) is exponential.
+    \item If \(f\) is a sine or cosine, then guess that \(u_p\) is a combination of such functions.
+\end{enumerate}
+
+One problem with this method: it will only work for the types of functions identified above.
+
+\exmp{Example}{
+    Suppose that \(u'' - u' = t^2 + 2t\). Note as before that,
+    \[u_h(t) = c_1 + c_2e^t.\]
+    So guess,
+    \[u_p(t) = At^3 + Bt^2 + Ct + D.\]
+    Then
+    \[t^2 + 2t = u_p''-u' = -3At^2 + (6A - 2B)t + (2B - C).\]
+    So, equating coefficients of like power terms, we see that
+    \[A = -\frac{1}{3}, B = -2, C = -4, \text{ and } D \text{ is unrestricted.}\]
+    Therefore, reabsorbing \(D\) into \(c_1\), we see that
+    \[u(t) = u_h(t) + u_p(t) = c_1 + c_2e^t - \frac{1}{3}t^3 - 2t^2 - 4t.\]
+}
+
+\bigskip
+Now we look at this idea of judicious guessing in a more systematic way. Let \(L = p(D)\) be a linear differential operator of order \(m\) with constant coefficients.
+
+\thrm{Polynomial Solutions}{
+    Assume that \(a_0 = p(0) \neq 0\). For any integer \(r \geq 0\), there exists a unique polynomial \(u_P\) of degree \(r\) such that \(Lu_P = x^r\).
+}
+
+\thrm{Exponential Solutions}{
+    Let \(L = p(D), M \in \bR\) and \(\mu \in \bC\). If \(p(\mu) \neq 0\), then the function
+    \[u_P(x) = \frac{Me^{\mu x}}{p(\mu)}\]
+    satisfies \(Lu_P = Me^{\mu x}\).
+}
+
+\exmp{Example}{
+    A particular solution of \(u'' + 4u' - 3i = 3e^{2x}\) is \(u_P = e^{2x} / 3\).
+}
+
+\thrm{Product of Polynomial and Exponential}{
+    Let \(L = p(D)\) and assume that \(p(\mu) \neq 0\). For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\) such that \(u_P = v(x)e^{\mu x}\) satisfies \(Lu_P = x^r e^{\mu x}\).
+}
+
+\subsection{Annihilator Method}
+In the previous cases we proposed a solution \(u = u_P\) and showed that it satisfied \(Lu = f\). The following is a method to derive a particular solution given \(Lu = f\). If \(f(x)\) is differentiable at least \(n\) times and
+\[[a_nD^n + a_{n-1}D^{n-1} + \cdots a_1 D^1 + a_0]f(x) = 0\]
+then \([a_n D^n + a_{n-1}D^{n-1} + \cdots + a_1D^1 + a_0]\) \textbf{annihilates} \(f\).
+
+\exmp{Example}{
+\(D^n\) annhihilates \(x^{m - 1}\) for \(m \leq n\). \\
+\((D - \alpha)^n\) annihilates \(x^{m-1}e^{\alpha x}\) for \(m \leq n\).
+}
+
+\exmp{Annhilator Method: Simple Example}{
+    Given \(Lu = f\) we can apply the appropriate annhiliator to both sides and solving the resutling homogenous DE.
+
+    Let \(Lu = u'' - u'\) and suppose we want a solution such that \(Lu = x^2\). Annihilating both sides we have
+    \[D^3(u'' - u') = u^{(5)} - u^{(4)} = 0.\]
+    Setting \(w = u^{(4)}\), clearly \(w = Ce^x\) is the general solution. Integrating four times yields
+    \[u = Ce^x + Ex^3 + Fx^2 + Gx + H.\]
+    Clearly \(u_h = Ae^x + H\) and the form of the particular solution is \(u_P = x(Ex^2 + Fx + G\). Substituting find \(E = -1/3, F= -1\) and \(G = -2\).
+}
+
+\subsection{Judicious Guessing Method Continued}
+\thrm{Polynomial Solutions: The Reamining Case}{
+    Let \(L = p(D)\) and assume \(p(0) = p'(0) = \cdots = p^{(k - 1)}(0) = 0\) but \(p^{(k)}(0) \neq 0\) where \(1 \leq k \leq m - 1\). For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\)such that \(u_P(x) = x^Kv(x)\) satisfies \(Lu_P = x^r\).
+}
+
+\thrm{Exponential Times Polynomial: Remaining Case}{
+Let \(L = p(D)\) and assume \(p(\mu) = p'(\mu) = \cdots = p^{(k - 1)}(\mu) = 0\). But \(p^{(k)}(\mu) \neq 0\), where \(1 \leq k \leq m - 1.\) For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\) such that \(u_P(x) = x^kv(x)e^{\mu x}\) satisfies \(Lu_P = x^re^{\mu x}\).
+}
+
+\subsection{Variation of Parameters}
+\exmp{Example}{
+Find the general solution to \(u'' - 4u' + 4u = (x + 1)\exp 2x\).
+
+Note first that the general solution, \(u_h\), to \(u'' - 4u' + 4u = 0\) is
+\[u(x) = c_1 e^{2x} + c_2xe^{2x}\]
+since the characteristic equation is \(0 = r^2 - 4r + 4 = (r - 2)^2\). Then
+\[W(x) = \begin{vmatrix}
+        e^{2x}  & xe^{2x}           \\
+        2e^{2x} & e^{2x} + 2xe^{2x} \\
+    \end{vmatrix}
+    = e^{4x} + 2xe^{4x} - 2xe^{4x} = e^{4x}.
+\]
+
+So by the method of variation of parameters:
+\[v_1'(x) = e^{-4x} \cdot -xe^{2x}(x + 1)e^{2x} \text{ and } v_2'(x) = e^{-4x} \cdot e^{2x}(x+1)e^{2x}.\]
+In other words,
+\[v_1'(x) = -x^2 - x \text{ and } v_2'(x) = x + 1.\]
+Therefore \(u(x) = c_1e^{2x} + c_2xe^{2x} - (\frac{1}{3}x^3 + \frac{1}{2}x^2)e^{2x} + (\frac{1}{2}x^2 + x) xe^{2x}\).
+}
+
+\section{Solution via Power Series}
+
+\paragraph{General Case}
+Consider a general second-order, linear, homogenous ODE
+\[Lu = a_2(x)u'' + a_1(x)u' + a_0(x)u = 0.\]
+Equivalently,
+\[u'' + p(x)u' + q(x)u = 0,\]
+where
+\[p(x) = \frac{a_1(x)}{a_2(x)} \text{ and } q(x) = \frac{a_0(x)}{a_2(x)}.\]
+Assume that \(a_j\) is \textbf{analytic} at 0 for \(0 \leq j \leq 2\). Then \(p\) and \(q\) are analytic at 0, that is, they admit power series expansions
+\[p(z) = \sum_{k=0}^{\infty} p_kz^k \text{ and } q(z) = \sum_{k=0}^{\infty}q_kz^k \text{ for } |z| < \rho,\]
+for some \(\rho > 0\).
+
+\thrm{Convergence Theorem}{
+    If the coefficients \(p(z)\) and \(q(z)\) are analytic for \(|z| < \rho\), then the formal power series for the solution \(u(z)\), constructed above, is also analytic for \(|z| < \rho\).
+}
+
+\exmp{Power Series at Zero}{
+Consider
+\[Lu = (1-x^2)u'' - 5xu' - 4u = 0, \quad u(0) = 1, \quad u'(0) = 2.\]
+In this case,
+\[p(z) = \frac{-5z}{1-z^2} = -5\sum_{k=0}^{\infty}z^{2k + 1} \text{ and } q(z) = \frac{-4}{1 - z^2} = -4 \sum_{k=0}^{\infty}z^{2k}\]
+are analytic for \(|z| < 1\), so the theorem guarantees that \(u(z)\), given by the formal power series, is also analytic for \(|z| < 1\).
+}
+
+\paragraph{Expansion about a Point other than Zero}
+Suppose we want a power series expansion about a point \(c \neq 0\), for instance because the initial conditions are given at \(x = c\).
+
+A simple change of the independent variable allows us to write
+\[u = \sum_{k=0}^{\infty} A_k(z- c)^k = \sum_{k=0}^{\infty} A_kZ^k \text{ where } Z=z-c.\]
+
+Since \(du / dx = du / dZ\) and \(d^2u/dz^2 = d^2u/dZ^2\), we obtain the translated equation
+\[\frac{d^2u}{dZ^2} + p(Z + c) \frac{du}{dZ} + q(Z + c)u = 0.\]
+Now compute that \(A_k\) using the series expansions of \(p(Z + c)\) and \(q(Z + c)\) in powers of \(Z\).
+
+\section{Singular ODEs}
+In general, we do not want \(L\) to be singular on an interval for which we wish to solve \(Lu = f\). However, some important applications lead to singular ODEs so we now address this case.
+
+A second-order \textbf{Euler-Cauchy ODE} has the form
+\[Lu = ax^2u'' + bxu' + cu = f(x),\]
+where \(a, b\) and \(c\) are constants with \(a \neq 0\). This ODE is singular at \(x = 0\).
+
+Noticing that
+\[Lx^r = [ar(r - 1) + br + c]x^r,\]
+we see that \(u = x^r\) is a solution of the homogenous equation \((f = 0)\) iff
+\[ar(r - 1) + br + c = 0.\]
+
+\paragraph{Factorisation}
+Suppose \(ar(r - 1) + br + c = a(r - r_1)(r - r_2)\). If \(r_1 \neq r_2\) then the general solution of the homogenous equation \(Lu = 0\) is
+\[u(x) = C_1x^{r_1} + C_2x^{r_2}, \quad x > 0.\]
+
+\prop{Lemma}{
+If \(r_1 = r_2\) then the general solution of the homogenous Euler-Cauchy equation \(Lu = 0\) is
+\[u(x) = C_1x^{r_1} + C_2x^{r_1}\ln x, \quad x > 0.\]
+}
+
+\paragraph{Euler-Cauchy Equations with Nonreal Indicial Roots}
+Suppose that \(r_{1,2} = \alpha \pm \beta i\) are the roots of the indicial equation
+\[ar(r - 1) + br + c = 0\]
+associated to the Euler-Cauchy equation
+\[at^2u'' + btu' + cu = 0.\]
+Then the real-valued solutions can be derived as follows. First note that
+\[t^{\alpha + \beta i} = t^\alpha t^{\beta i}\]
+is a solution. Then notice that
+\[t^{\beta i} = e^{\ln t^{\beta i}} = e^{i \ln t^\beta} = \cos(\ln(t^\beta)) + i\sin(\ln(t^\beta)).\]
+So,
+\[t^\alpha t^{\beta i} = t^{\alpha} e^{\ln t^{\beta i}} = t^\alpha e^{i \ln t^\beta} = t^\alpha \left(\cos(\ln(t^\beta)) + i\sin(\ln(t^\beta))\right)\]
+is a solution. Finally, since each of the real part an the imaginary part is .separately a (linear independent) solution, we see that the general solution in this case is (for \(t > 0\))
+\[u(t) = t^{\alpha}\left(c_1 \cos(\ln(t^\beta)) + i\sin(\ln(t^\beta))\right).\]
+
+\exmp{Example}{
+    Consider \(t^2 u'' - tu' + 5u = 0\). Then the indicial equation is
+    \[r(r - 1) - r + 5 = 0 \implies r = 1 \pm 2i.\]
+    So the general solution is,
+    \[u(t) = t(c_1 \cos \ln t^2 + c_2 \sin\ln t^2).\]
+}
+
+\bigskip
+A number of important applications lead to ODEs that can be written in the \textbf{Frobenious normal form}
+\[z^2u'' + zP(z)u' + Q(z)u = 0,\]
+where \(P(z)\) and \(Q(z)\) are analytic at \(z = 0\):
+\[P(z) = \sum_{k=0}^{\infty}P_k z^k \text{ and } Q(z) = \sum_{k=0}^{\infty}Q_k z^k, \quad |z| < \rho.\]
+
+Now consider \(z^2u'' + zP(z) u' + Q(z)u = 0\). FOrmal manipulations show that \(Lu(z)\) equals
+\[I(r)A_0 z^r + \sum_{k=1}^{\infty}\left(I(k + r) A_k + \sum_{j=0}^{k-1} \left[(j + r)P_{k - j} + Q_{k - j} \right]A_j \right)z^{k + r},\]
+where \(I(r)\) is the indicial polynomial \(I(r) := r(r - 1)P_0 r + Q_0\), so we define \(A_0(r) = 1\) and
+\[A_k(r) = \frac{-1}{I(k + r)} \sum_{j=0}^{k-1}[(j + r)P_{k-j} + Q_{k - j}]A_j(r), \quad k \geq 1,\]
+provided \(I(k + r) \neq 0\) for all \(k \geq 1\).
+
+\section{Bessel and Legendre Equations}
+The \textbf{Beseel equation with parameter} \(\nu\) is
+\[z^2u'' + zu' + (z^2 - \nu^2)u = 0.\]
+This ODE is in Frobenius normal form, with indicial polynomial \(I(r) = (r + \nu)(r - \nu)\),
+and we seek a series solution
+\[u(z) = \sum_{k=0}^{\infty} A_k z^{k + r}.\]
+We assume \(\Re \nu \geq 0\), so \(r_1 = \nu\) and \(r_2 = -\nu\).
