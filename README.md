@@ -28,6 +28,10 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 - [**DROPPED** MATH3161 (Optimization)](./math3161/math3161.pdf)
 - [MATH3431 (Number Theory)](./math3431/math3431.pdf)
 
+## 2024 T2
+
+- [MATH2221 (Higher Theory and Applications of Differential Equations)](./math2221/math2221.pdf)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.
