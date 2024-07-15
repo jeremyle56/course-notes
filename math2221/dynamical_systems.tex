@@ -1,0 +1,128 @@
+\chapter{Dynamical Systems}
+\section{Terminology}
+We begin with some examples of how systems of differential equations arise in applications, and see how all such problems can be formulas as a \textbf{first-order} system
+\[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x}).\]
+
+Such a formulation leads to a natural geometric interpretation of a solution.
+
+\exmp{Lotka-Volterra Equations}{
+    Simplified ecology with two species:
+    \begin{align*}
+        F(t) & = \text{ number of foxes at time t},   \\
+        R(t) & = \text{ number of rabbits at time t}.
+    \end{align*}
+    Assume populations large enough at \(F\) and \(R\) can be treated as smoothly varying in time.
+
+    In the 1920s, Alfred Lotka and Vito Volterra independently proposed the predator-prey model
+    \begin{alignat*}{2}
+        \frac{dF}{dt} & = -aF + \alpha FR, \quad & F(0) = F_0, \\
+        \frac{dR}{dt} & = bR - \beta FR, \quad   & R(0) = R_0.
+    \end{alignat*}
+    Here \(a, \alpha, b\) and \(\beta\) are non-negative constants.
+}
+\bigskip
+Any first-order system for \(N\) ODEs in the form
+
+\begin{alignat*}{2}
+    \frac{dx}{dy}   & = F_1(x,y, \dots, x_N), \quad  &  & x(0) = x_{10},                \\
+    \frac{dy}{dt}   & = F_2(x, y, \dots, x_N), \quad &  & y(0) = x_{20},                \\
+                    & \vdots                         &  & \phantom{y(0) = x_{20}}\vdots \\
+    \frac{dx_N}{dt} & = F_N (x,y, dots, x_N), \quad  &  & x_N(0) = x_{N0},
+\end{alignat*}
+
+can be written in vector notation as
+\[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x}) \quad \mathbf{x}(0) = \mathbf{x}_0.\]
+The system of ODEs is determined by the \textbf{vector field} \(\mathbf{F}: \bR^N \to \bR^N\).
+
+A system of ODEs of the form
+\[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x})\]
+is said to be \textbf{autonomous}.
+
+In a \textbf{non-autonomous} system, \(\mathbf{F}\) will depend explicitly on \(t\):
+\[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x}, t).\]
+
+It can be shown that it is sufficient (in principle) to develop theory for the autonomous case as a non-autonomous system can be converted into an autonomous system.
+
+\paragraph{Second-order ODE}
+Consider an initial-value problem for a general (possibly non-autonomous) second-order ODE
+\[\frac{d^2 x}{dt^2} = f\left(x, \frac{dx}{dt}, t \right), \text{ with } x= x_0 \text{ and } \frac{dx}{dt} = y_0 \text{ at } t= 0.\]
+If \(x = x(t)\) is a solution, and if we let \(y = dx/dt\), then
+\[\frac{dy}{dt} = \frac{d^2x}{dt^2} = f\left(x, \frac{dx}{dt}, t \right) = f(x, y, t),\]
+that is, \((x, y)\) is a solution of the first-order system
+\begin{alignat*}{2}
+    \frac{dx}{dt} & = y,         & \quad x(0) = x_0, \\
+    \frac{dy}{dt} & = f(x, y, t) & \quad y(0) = y_0.
+\end{alignat*}
+
+
+\section{Existence and Uniqueness}
+The most fundamental question about a dynamical system
+\[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x}, t)\]
+is
+\begin{quote}
+    For a given initial value \(\bfx_0\), does a solution \(\bfx(t)\) satisfying \(\bfx(0) = \bfx_0\) exist, and if so is this solution unique?
+\end{quote}
+Answer is \textbf{yes}, whenever the vector field \(\bfF\) is \textbf{Lipschitz}. \\
+
+The number \(L\) is a \textbf{Lipschitz constant} for a function \(f: [a, b] \to \bR\) if
+\[|f(x) - f(y)| \leq L|x - y| \quad \text{ for all } x,y \in [a, b].\]
+
+\exmp{Example}{
+    Consider \(f(x) = 2x^2 -x + 1\) for \(0 \leq x \leq 1\). Since
+    \begin{align*}
+        f(x) - f(y) & = 2(x^2 - y^2) - (x - y) = 2(x + y)(x - y) - (x - y) \\
+                    & (2x + 2y - 1)(x - y)
+    \end{align*}
+    we have \(|f(x) - f(y)| = |2x + 2y - 1||x - y|\) so a Lipschitz constant is
+    \[L = \max_{x, y \in [0, 1]} |2x + 2y - 1| = 3.\]
+}
+\bigskip
+We say that the function \(f: [a, b] \to \bR\) is Lipschitz if a Lipschitz constant for \(f\) exists.
+
+\thrm{Lipschitz Continuity}{
+    If \(f\) is Lipshictz then \(f\) is (uniformly) continuous.
+}
+
+\exmp{Continous does not imply Lipschitz}{
+    Consider the (uniformly) continous function
+    \[f(x) = 3 + \sqrt{x} \text{ for } 0 \leq x \leq 4.\]
+    In this case, if \(x, y \in (0, 4]\) then
+    \begin{align*}
+        f(x) - f(y) & = \sqrt{x} - \sqrt{y} = \left(\sqrt{x} - \sqrt{y} \times \frac{\sqrt{x} + \sqrt{y}}{\sqrt{x} + \sqrt{y}}\right)
+                    & = \frac{x - y}{\sqrt{x} + \sqrt{y}}
+    \end{align*}
+    so if a Lipschitz constant \(L\) exists then
+    \[L \geq \frac{|f(x) - f(y)|}{|x - y|} = \frac{1}{\sqrt{x} + \sqrt{y}}\]
+    for arbitrarily small \(x\) and \(y\), a contradiction.
+}
+
+\bigskip
+A function \(f: I \to \bR\) is \(C^k\) if \(f, f', f'', \dots, f^{(k)}\) all exist and are continuos on the interval \(I\).
+
+\thrm{Theorem}{
+For any closed and bounded interval \(I = [a, b]\), if \(f\) is \(C^1\) on \(I\) then \(L = \max_{x \in I} |f'(X)|\) is a Lipschitz constant for \(f\) on \(I\)
+}
+
+\bigskip
+A vector field \(\bfF: S \in \bR^N\) is Lipschitz on \(S \subseteq \bR^N\) if
+\[\norm*{\bfF(\bfx) - \bfF(\bfy)} \leq L\norm*{\bfx - \bfy} \quad \text{ for all} \bfx, \bfy \in S\]
+Here,
+\[\norm*{\bfx} = \left(\sum_{j=1}^{N} x_j^2\right)^\frac{1}{2}\]
+denotes the \textbf{Euclidean norm} of the vector \(\bfx \in \bR^N\).
+
+We say that \(\bfF(\bfx, t)\) is \textbf{Lipschitz in \(\bfx\)} if
+\[\norm*{\bfF(\bfx, t) - \bfF(\bfy, t)} \leq L\norm*{\bfx - \bfy}.\]
+
+\thrm{Local Existence and Uniquness}{
+    Let \(\bfx_0 \in \bR^N\), fix \(r > 0\) and \(\tau > 0\), and put
+    \[S = \{ (\bfx, t) \in \bR^N \times \bR : \norm*{\bfx - \bfx_0} \leq r \text{ and } |t| \leq \tau\}.\]
+    If \(\bfF(\bfx, t)\) is Lipschitz in \(\bfx\) for \(\bfx, t \in S\), and if
+    \[\norm*{\bfF(\bfx, t)} \leq M \quad \text{ for } (\bfx, t) \in S,\]
+    then there exists a unique \(C^1\) function \(bfx(t)\) satisfying
+    \[\frac{d\bfx}{dt} = \bfF(\bfx, t) \quad \text{ for } |t| \leq \min \{r / M, \tau \}, \text{ with } \bfx(0) = \bfx_0.\]
+}
+
+% \section{Linear Dynamical Systems}
+% \section{Stability}
+% \section{Classification of 2D Linear Systems with \(\det A \neq 0\)}
+% \section{Final Remakes on Nonlinear DEs}

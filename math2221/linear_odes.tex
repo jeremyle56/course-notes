@@ -425,9 +425,58 @@ where \(I(r)\) is the indicial polynomial \(I(r) := r(r - 1)P_0 r + Q_0\), so we
 provided \(I(k + r) \neq 0\) for all \(k \geq 1\).
 
 \section{Bessel and Legendre Equations}
-The \textbf{Beseel equation with parameter} \(\nu\) is
+\subsection{Bessel Equations and Functions}
+The \textbf{Bessel equation with parameter} \(\nu\) is
 \[z^2u'' + zu' + (z^2 - \nu^2)u = 0.\]
 This ODE is in Frobenius normal form, with indicial polynomial \(I(r) = (r + \nu)(r - \nu)\),
 and we seek a series solution
 \[u(z) = \sum_{k=0}^{\infty} A_k z^{k + r}.\]
 We assume \(\Re \nu \geq 0\), so \(r_1 = \nu\) and \(r_2 = -\nu\).
+
+With the normalisation
+\[A_0 = \frac{1}{2^\nu\Gamma(1 + \nu)}\]
+the series solution is called the \textbf{Bessel function of order \(\mathbf{\nu}\)} and is denoted
+\[J_\nu (z) = \frac{(z/2)^\nu}{\Gamma(1+\nu)} \left[1 - \frac{(z/2)^2}{1+\nu} + \frac{(z/2)^4}{2!(1+\nu)(2+v)}- \cdots\right].\]
+
+From the functional equation \(\Gamma(1+z) = z\Gamma(z)\) we see that
+\[J_\nu (z) = \frac{(z/2)^\nu}{\Gamma(1+v)}-\frac{(z/2)^{\nu+2}}{\Gamma(2+\nu)} + \frac{(z/2)^{\nu + 4}}{2!\Gamma(3+v)} - \frac{(z/2)^{\nu + 6}}{3!\Gamma(4+\nu)}+ \cdots\]
+and so
+\[J_\nu (z) = \sum_{k=0}^{\infty} \frac{(-1)^k (z/2)^{2k + \nu}}{k!\Gamma(k + 1 + \nu)}.\]
+
+\subsection{Legendre Equation}
+The \textbf{Legendre equation} with parameter \(nu\) is
+\[(1-z^2)u'' - 2zu' + \nu(\nu + 1)u = 0.\]
+
+This ODE is not singular at \(z = 0\) so the solution has an ordinary Taylor series expansion
+\[u = \sum_{k = 0}^{\infty}A_kz^k.\]
+
+% skipped computation
+The \(A_k\) must satisfy
+\[(k+1)(k+2)A_{k+2} - [k(k+1) - \nu(\nu + 1)A_k] = 0\]
+for \(k \geq 0\), and since
+\[k(k+1) - \nu(\nu + 1) = (k - \nu)(k + \nu + 1),\]
+the recurrence relation is
+\[A_{k+1} = \frac{(k-\nu)(k + \nu + 1)}{(k + 1)(k+ 2)}A_k \text{ for } k \geq 0.\]
+
+We have
+\[u(z) = A_0u_0 (z) + A_1u_1(z)\]
+where
+\[u_0(z) = 1 - \frac{\nu(\nu + 1)}{2!}z^2 + \frac{(\nu - 2)\nu(\nu + 1)(\nu +3)}{4!}z^4 - \cdots\]
+and
+\[u_1(z) = z - \frac{(\nu - 1)(\nu + 2)}{3!}z^3 + \frac{(\nu - 3)(\nu - 1)(\nu + 2)(\nu + 4)}{5!}z^5 - \cdots.\]
+
+Suppose now that \(\nu = n\) is a non-negative integer. If \(n\) is even the series for \(u_0(z)\) terminates, whereas if \(n\) is odd then the series for \(u_1(z)\) terminates. \\
+
+The terminating solution is called the \textbf{Legendre polynomial} of degree \(n\) and is denoted by \(P_n(z)\) with the normalization
+\[P_n(1) = 1.\]
+
+\exmp{Lengdre Polynomials}{
+    The first few Legendre polynomials are \\
+    \begin{alignat*}{2}
+        P_0(z) & = 1,                     \quad &  & P_3(z)  = \frac{1}{2}(5z^3-3z),           \\
+        P_1(z) & = z,                     \quad &  & P_4(z)  = \frac{1}{8}(35z^4 - 30z^2 + 3), \\
+        P_2(z) & = \frac{1}{2}(3z^2 - 1), \quad &  & P_5(z)  = \frac{1}{8}(63z^5-70z^3 + 15z).
+    \end{alignat*}
+
+    Notice that \(P_n\) is an even or odd function according to whether \(n\) is even or odd.
+}
