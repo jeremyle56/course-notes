@@ -60,9 +60,9 @@ The most fundamental question about a dynamical system
 \[\frac{d\mathbf{x}}{dt} = \mathbf{F}(\mathbf{x}, t)\]
 is
 \begin{quote}
-    For a given initial value \(\bfx_0\), does a solution \(\bfx(t)\) satisfying \(\bfx(0) = \bfx_0\) exist, and if so is this solution unique?
+    For a given initial value \(\vx_0\), does a solution \(\vx(t)\) satisfying \(\vx(0) = \vx_0\) exist, and if so is this solution unique?
 \end{quote}
-Answer is \textbf{yes}, whenever the vector field \(\bfF\) is \textbf{Lipschitz}. \\
+Answer is \textbf{yes}, whenever the vector field \(\vF\) is \textbf{Lipschitz}. \\
 
 The number \(L\) is a \textbf{Lipschitz constant} for a function \(f: [a, b] \to \bR\) if
 \[|f(x) - f(y)| \leq L|x - y| \quad \text{ for all } x,y \in [a, b].\]
@@ -100,29 +100,225 @@ We say that the function \(f: [a, b] \to \bR\) is Lipschitz if a Lipschitz const
 A function \(f: I \to \bR\) is \(C^k\) if \(f, f', f'', \dots, f^{(k)}\) all exist and are continuos on the interval \(I\).
 
 \thrm{Theorem}{
-For any closed and bounded interval \(I = [a, b]\), if \(f\) is \(C^1\) on \(I\) then \(L = \max_{x \in I} |f'(X)|\) is a Lipschitz constant for \(f\) on \(I\)
+For any closed and bounded interval \(I = [a, b]\), if \(f\) is \(C^1\) on \(I\) then \(L = \max_{x \in I} |f'(X)|\) is a Lipschitz constant for \(f\) on \(I\).
 }
 
 \bigskip
-A vector field \(\bfF: S \in \bR^N\) is Lipschitz on \(S \subseteq \bR^N\) if
-\[\norm*{\bfF(\bfx) - \bfF(\bfy)} \leq L\norm*{\bfx - \bfy} \quad \text{ for all} \bfx, \bfy \in S\]
+A vector field \(\vF: S \in \bR^N\) is Lipschitz on \(S \subseteq \bR^N\) if
+\[\norm*{\vF(\vx) - \vF(\vy)} \leq L\norm*{\vx - \vy} \quad \text{ for all} \vx, \vy \in S\]
 Here,
-\[\norm*{\bfx} = \left(\sum_{j=1}^{N} x_j^2\right)^\frac{1}{2}\]
-denotes the \textbf{Euclidean norm} of the vector \(\bfx \in \bR^N\).
+\[\norm*{\vx} = \left(\sum_{j=1}^{N} x_j^2\right)^\frac{1}{2}\]
+denotes the \textbf{Euclidean norm} of the vector \(\vx \in \bR^N\).
 
-We say that \(\bfF(\bfx, t)\) is \textbf{Lipschitz in \(\bfx\)} if
-\[\norm*{\bfF(\bfx, t) - \bfF(\bfy, t)} \leq L\norm*{\bfx - \bfy}.\]
+We say that \(\vF(\vx, t)\) is \textbf{Lipschitz in \(\vx\)} if
+\[\norm*{\vF(\vx, t) - \vF(\vy, t)} \leq L\norm*{\vx - \vy}.\]
 
 \thrm{Local Existence and Uniquness}{
-    Let \(\bfx_0 \in \bR^N\), fix \(r > 0\) and \(\tau > 0\), and put
-    \[S = \{ (\bfx, t) \in \bR^N \times \bR : \norm*{\bfx - \bfx_0} \leq r \text{ and } |t| \leq \tau\}.\]
-    If \(\bfF(\bfx, t)\) is Lipschitz in \(\bfx\) for \(\bfx, t \in S\), and if
-    \[\norm*{\bfF(\bfx, t)} \leq M \quad \text{ for } (\bfx, t) \in S,\]
+    Let \(\vx_0 \in \bR^N\), fix \(r > 0\) and \(\tau > 0\), and put
+    \[S = \{ (\vx, t) \in \bR^N \times \bR : \norm*{\vx - \vx_0} \leq r \text{ and } |t| \leq \tau\}.\]
+    If \(\vF(\vx, t)\) is Lipschitz in \(\vx\) for \(\vx, t \in S\), and if
+    \[\norm*{\vF(\vx, t)} \leq M \quad \text{ for } (\vx, t) \in S,\]
     then there exists a unique \(C^1\) function \(bfx(t)\) satisfying
-    \[\frac{d\bfx}{dt} = \bfF(\bfx, t) \quad \text{ for } |t| \leq \min \{r / M, \tau \}, \text{ with } \bfx(0) = \bfx_0.\]
+    \[\frac{d\vx}{dt} = \vF(\vx, t) \quad \text{ for } |t| \leq \min \{r / M, \tau \}, \text{ with } \vx(0) = \vx_0.\]
 }
 
-% \section{Linear Dynamical Systems}
+\section{Linear Dynamical Systems}
+Linear differential equations are generally much easier to solve than nonlinear ones. Fortunately, linear DEs suffice for describing many important applications.
+
+We say that the \(N \times N\), first order system of ODEs
+\[\fracxt = \vF(\vx, t)\]
+is \textbf{linear} if the RHS has the form
+\[\vF(\vx, t) = A(t) \vx + \vb (t)\]
+for some \(N \times N\) matrix-valued function \(A(t) = [a_{ij}(t)]\) and a vector-valued function \(\mbf{b} = [b_i(t)]\). \\
+
+The system is autonomous precisely when \(A\) and \(\mbf{b}\) are constant.
+
+\thrm{Global Existence and Uniqueness}{
+    If the elements of \(A(t)\) and components of \(\mbf{b}\) are continuous for \(0 \leq t \leq T\), then the linear initial-value problem
+    \[\fracxt = A(t)\vx + \vb(t) \quad \text{ for } 0 \leq t \leq T, \quad \text{ with } \vx(0) = \vx_0,\]
+    has a unique solution \(\vx(t)\) for \(0 \leq t \leq T\).
+}
+
+\bigskip
+We now investigate the special case when \(A\) is constant and \(\vb(t) = \mbf{0}\):
+\[\fracxt = A\vx\]
+
+\paragraph{General Solution via Eigensystem}
+If \(\vv\) is a constant vector and \(A\vv = \lambda \vv\), we define \(\vx(t) = e^{\lambda t}\vv\). Then
+\[\fracxt = \lambda e^{\lambda t}\vv = e^{\lambda t}(\lambda \vv) = e^{\lambda t}(A \vv) = A(e^{\lambda t}\vv = A\vx)\]
+that is, \(\vx\) is a solution of \(d vx / dt = A\vx\).
+If \(A\vv_j = \lambda_j \vv_j\) for \(1 \leq j \leq N\), then the linear combination
+\[\vx(t) = \sum_{j=1}^N c_j e^{\lambda_j}t \vv_j\]
+is also a solution because the ODE is linear and homogenous. Provided the \(\vv_j\) are linearly independent, then the above equation is a \textbf{general solution} because given any \(x_0 \in \bR^N\) there exist unique \(c_j\) such that
+\[\vx(0) = \sum_{j=1}^N c_j \vv_j = \vx_0.\]
+
+\exmp{Example}{
+    Consider
+    \begin{alignat*}{2}
+        \frac{dx}{dt} & = -5x + 2y, & \quad x(0) = 5, \\
+        \frac{dy}{dt} & = -6x + 3y  & \quad y(0) = 7.
+    \end{alignat*}
+    Note that the initial value problem can be written in the vector form
+    \[\vx'(t) = \vA\vx(t), \vx(0) = \vx_0,\]
+    \[\vA = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3 \\
+        \end{bmatrix} \quad \text{ and } \vx_0 := \begin{bmatrix}
+            5 \\ 7
+        \end{bmatrix}\]
+
+    Solving the system, using the eigenpair approach, we would need to find the eigenvectors and eigenvalues.
+
+    Characteristic equation is
+    \[0 = |\vA - \lambda \vI| = (-5 - \lambda)(3 - \lambda) + 12 \implies \lambda_1 := -3 \text{ and } \lambda_2 = 1.\]
+    Next we find the associated eigenvectors.
+    \begin{align*}
+        \lambda_1 & = -3 : (\vA + 3\vI)\vv = \vzero \implies \vv_1 :=
+        \begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix}
+        \lambda_2 & = 1 : (\vA + \vI)\vv = \vzero \implies \vv_1 :=
+        \begin{bmatrix}
+            1 \\ 3
+        \end{bmatrix}
+    \end{align*}
+
+    This means that a general solution of the system \(\vx' = \vA\vx\) is
+    \[\vx(t) = c_1 e^{-3t}\begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix} + c_2e^t \begin{bmatrix}
+            1 \\ 3
+        \end{bmatrix}\]
+    Applying the initial value we can see that the unique solution is \(x(t) = 4e^{-3t} + e^t\) and \(y(t) = 4e^{-3t} + 3e^t\).
+}
+
+\bigskip
+A square matrix \(A \in \bC^{N \times N}\) is \textbf{diagonalisable} if there exists a non-singular matrix \(Q \in \bC^{N \times N}\) such that \(Q^{-1}AQ\) is diagonal.
+
+\thrm{Theorem}{
+    A square matrix \(A \in \bC^{N \times N}\) is diagonalisable if and only if there exists a basis \(    \{\vv_1, \vv_2, \dots, \vv_N\}\) for \(\bC^N\) consisting of eigenvectors of \(A\). Indeed if,
+    \[A\vv_j = \lambda_j \vv_j \text{ for } j = 1,2, \dots, N,\]
+    and we put \(Q = \begin{bmatrix}
+        \vv_1 & vv_2 & \cdots \vv_N
+    \end{bmatrix}\) then \(Q^{-1}AQ = A\) where
+    \[A = \begin{bmatrix}
+            \lambda_1           & \phantom{\cdots} & \phantom{\lambda_N} \\
+            \phantom{\lambda_1} & \ddots           & \phantom{\lambda_N} \\
+            \phantom{\lambda_1} & \phantom{\cdots} & \lambda_N
+        \end{bmatrix}
+    \]
+}
+
+\bigskip
+Consider a diagonalisable matrix \(A\). Since \(Q^{-1}AQ = \Lambda\), it follows that \(A\) has an eigenvalue decomposition
+\[A = Q\Lambda Q^{-1}.\]
+
+In general, we see by induction on \(k\) that
+\[A^k = Q\Lambda^k Q^{-1} \text{ for } k = 0,1,2, \dots\]
+
+\exmp{Example}{
+    \[A = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3
+        \end{bmatrix}\]
+    then
+    \[\Lambda = \begin{bmatrix}
+            -3 & 0 \\
+            0  & 1
+        \end{bmatrix}, \quad Q = \begin{bmatrix}
+            1 & 1 \\
+            1 & 3
+        \end{bmatrix}, \quad Q^{-1} = \frac{1}{2}\begin{bmatrix}
+            3  & -1 \\
+            -1 & 1
+        \end{bmatrix}
+    \]
+    so
+    \[A^k = Q\Lambda^k Q^{-1} = \frac{1}{2}
+        \begin{bmatrix}
+            (-1)^k \times 3^{k + 1} - 1 & (-1)^{k + 1} \times 3^k + 1 \\
+            (-1)^k \times 3^{k + 1} - 3 & (-1)^{k + 1} \times 3^k + 3
+        \end{bmatrix}.\]
+}
+
+\bigskip
+For any polynomial
+\[p(z) = c_0 + c_1z + c_2z^2 + \cdots + c_mz^m\]
+and any square matrix \(A\), we define
+\[p(A) = c_0I + c_1A + c_2A^2 + \cdots + c_mA^m.\]
+
+When \(A\) is diagonalisable, \(A^k = Q\Lambda^k Q^{-1}\) so
+\begin{align*}
+    p(A)   & = c_0QIQ^{-1} + c_1Q\Lambda Q^{-1} + \cdots + c_mQ\Lambda^m Q^{-1} \\
+    \vdots &                                                                    \\
+           & =      Q p(\Lambda)Q^{-1}
+\end{align*}
+
+\prop{Lemma}{
+    For any polynomial \(p\) and any diagonal matrix \(\Lambda\),
+    \[p(A) = \begin{bmatrix}
+            p(\lambda_1)            & \phantom{\cdots} & \phantom{p(\lambda_N)  } \\
+            \phantom{p(\lambda_1)}  & \ddots           & \phantom{p(\lambda_N)}   \\
+            \phantom{p(\lambda_1) } & \phantom{\cdots} & p(\lambda_N)
+        \end{bmatrix}\]
+}
+
+\thrm{Theorem}{
+    If two polynomials \(p\) and \(q\) are equal on the specturm of a diagonlisable matrix \(A\), that is, if
+    \[p(\lambda_j) = q(\lambda_j) \text{ for } j = 1,2, \dots, N,\]
+    then \(p(A) = q(A)\).
+}
+
+\exmp{Example}{
+    Recall that
+    \[A = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3 \\
+        \end{bmatrix}\]
+    has eigenvalues \(\lambda_1 = -3\) and \(\lambda_2 = 1\). Let
+    \[p(z) = z^2 - 4 \quad \text{ and } \quad q(z) = -2z - 1,\]
+    and observe
+    \[p(-3) = 5 = q(-3) \text{ and } p(1) = -3 = q(1).\]
+    We find
+    \[p(A) = A^2 - 4I = \begin{bmatrix}
+            9  & -4 \\
+            12 & -7
+        \end{bmatrix} = -2A - I = q(A).\]
+}
+
+\thrm{Exponential of a Diagonalisable Matrix}{
+    If \(A = Q\Lambda Q^{-1}\) is diagonalisable, then
+    \[e^A = Qe^\Lambda Q^{-1} \text{ and } e^\Lambda = \begin{bmatrix}
+            e^{\lambda_1} &               &        &               \\
+                          & e^{\lambda_2} &        &               \\
+                          &               & \ddots &               \\
+                          &               &        & e^{\lambda_N}
+        \end{bmatrix}\]
+}
+
+
+\paragraph{Nilpotent Matrix}
+A matrix is nilpotent if there exists a positive integer \(k\) such that \(\vA^k = \mbf{O}\), where \(\mbf{O}\) denotes the zero matrix.
+
+\exmp{Example}{
+    \[\vA^2 = \vA\vA = \begin{bmatrix}
+            0 & 0 \\
+            1 & 0
+        \end{bmatrix}\begin{bmatrix}
+            0 & 0 \\
+            1 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            0 & 0 \\
+            0 & 0
+        \end{bmatrix} = \mbf{O}.\]
+
+    Thereforem \(\vA\) is nilpotent and, in particular,
+    \[e^t\vA = \vI + t\vA = \begin{bmatrix}
+            1 & 0 \\
+            t & 1
+        \end{bmatrix}\]
+}
+
 % \section{Stability}
 % \section{Classification of 2D Linear Systems with \(\det A \neq 0\)}
 % \section{Final Remakes on Nonlinear DEs}
