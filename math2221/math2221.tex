@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper]{book}
+\documentclass[12pt, letterpaper, openany]{book}
 
 \usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
@@ -102,6 +102,7 @@
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bC}{\mbb{C}}
 \newcommand{\bR}{\mbb{R}}
+\newcommand{\bZ}{\mbb{Z}}
 
 \def\mbf#1{\mathbf{#1}}
 \renewcommand{\va}{\mbf{a}}
@@ -115,6 +116,8 @@
 \newcommand{\vF}{\mbf{F}}
 
 \newcommand{\fracxt}{\frac{d \vx}{dt}}
+
+\newcommand\inp[2]{\langle #1, #2 \rangle}
 
 \graphicspath{./assets}
 
@@ -141,5 +144,6 @@
 \end{minipage}
 \subfile{linear_odes.tex}
 \subfile{dynamical_systems.tex}
-
+\subfile{initial-boundary_value.tex}
+\subfile{generalised_fourier_series.tex}
 \end{document}

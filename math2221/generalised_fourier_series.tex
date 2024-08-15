@@ -1,0 +1,301 @@
+\chapter{Generalised Fourier Series}
+This chapter will cover how if we generalise the concept of Fourier expansions that include the familiar trigonometric Fourier series allows us to solve a range of partial differential equations by separating variables in curvilinear coordinates.
+
+\section{Separation of Variables for Linear PDEs}
+As an example of the \textbf{separation of variables technique for linear PDEs}
+consider the one-dimensional heat PDE, which is
+\[u_t = c^2u_{xx},\]
+where \(c\) is the thermal diffusivity of the material. We specifically consider as an example the following problem.
+
+\subsection{The Diffusion PDE}
+\begin{alignat*}{3}
+    u_t         & = u_{xx},  & 0 \leq x \leq 1, t \geq 0 \\
+    u(0, t) = 0 & = u(1, t), & t > 0                     \\
+    u(x, 0)     & = f(x),    & 0 < x < 1
+\end{alignat*}
+
+Let \(u(x, t) = X(x)T(t)\), so that
+\begin{align*}
+    XT'  & = X''T \quad \text{ for } 0 \leq x \leq 1, t \geq 0, \\
+    X(0) & = X(1) = 0.
+\end{align*}
+
+Now we obtain:
+\[\frac{X''}{X} = \frac{T'}{T}\]
+and we set this equal to a separation constant \(-\lambda\) that will help us find a basis for the solutions.
+% note either -lambda or lambada works
+
+\[\frac{X''}{X} = \frac{T'}{T} = -\lambda \implies X'' = -\lambda X, \quad T' = -\lambda T.\]
+
+Rearranging, we have:
+\[X'' + \lambda X = 0 \quad T' + \lambda T = 0.\]
+There are three cases for \(\lambda\): zero, positive, negative.
+
+\paragraph{Case 1: \(\lambda = 0\).}
+Then \(X'' = 0\), which gives us \(X = Ax + B\). The boundary conditions \(X(0) = X(1) = 0\) imply that \(B = 0\) and \(A = 0\), which gives us \(X = 0\).
+
+\paragraph{Case 2: \(\lambda < 0\).}
+So \(\lambda = -k^2\) for some \(k > 0\). Then \(X'' -k^2X = 0\), which results in \(X(x) = Ae^{kx} + Be^{-kx}\). However, the boundary conditions \(X(0) = X(1) = 0\) imply that \(A + B = 0\) and \(Ae^k + Be^{-k} = 0\). This results in \(A = -B\) so \(A(e^k - e^{-k}) = 0\), and so \(A = B = 0\). Thus again, \(X \equiv 0\).
+
+\paragraph{Case 3: \(\lambda > 0\).}
+So \(\lambda = k^2\) for some \(k > 0\). Then \(X'' + k^2X = 0\), which means \(X(x) = A\cos(kx) + B\sin(kx)\). The boundary conditions \(X(0) = X(1) = 0\) imply that \(A = 0\) and \(B\sin(k) = 0\). THis time, we can get non-trivial solutions, when \(k\) is a multiple of \(\pi\) i.e. \(k = n\pi\) for some \(n \in \bZ^+\)
+
+Thus we are interested in \(\lambda = n^2\pi^2, X(x) = B\sin(n\pi x)\) for \(n \in \bZ^+\).
+
+Now we deal with \(T\). Since we know \(\lambda\) now, we have
+\[T' + n^2\pi^2 T = 0\]
+for some \(n \in \bZ^+\). We can solve this 1st order ODE:
+\[T(t) = Ce^{-n^2\pi^2t}.\]
+So for each \(n\), we combine \(T(t)\) with \(X(x)\) to get
+\[u_n(x, t) = A_n e^{-n^2\pi^2 t} \sin n\pi x,\]
+for some constant \(A_n\). We then superimpose these solutions so,
+\[u(x, t) = \sum_{n=1}^{\infty} A_n e^{-n^2\pi^2 t} \sin n\pi x.\]
+Finally, we can use the initial conditions, yielding
+\[u(x, 0) = \sum_{n=1}^{\infty} A_n \sin n\pi x = f(x).\]
+
+This is the half-range Fourier sine series of \(f\), so
+\[A_n = 2 \int_0^1 f(x) \sin n\pi x \, dx.\]
+If we were given an explicit \(f\), we could evaluate this to get the final solution for \(u\).
+
+\subsection{Wave Equation}
+Our second example of the application of Fourier series methods is to the partial differential equation describing a vibrating string, such as in a musical instrument like a piano. \\
+
+Put \(c = \sqrt{T_0 / p}\) (which has the dimensions of length / time and is called the wave speed). Now suppose that the string is initially at rest with a known deflection \(u_0(x)\), then
+\begin{alignat*}{2}
+    \frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u }{\partial x^2} & = 0, \quad      & 0 <x < \ell, t > 0, \\
+    u(0, t)                                                                    & = 0, \quad      & t> 0,               \\
+    u(\ell, t)                                                                 & = 0, \quad      & t > 0,              \\
+    u(x, 0)                                                                    & = u_0(x), \quad & 0 < x < \ell,       \\
+    \frac{\partial u}{\partial t}(x, 0)                                        & = 0, \quad      & 0 < x < \ell.
+\end{alignat*}
+
+Then the separation of variables technique uses in the diffusion example follows almost exactly to solve for \(u\) in the wave equation.
+
+\section{Complete Orthogonal Systems}
+Expanding a function as a linear combination of orthogonal function leads naturally to the notion of a generalised Fourier series. \\
+
+If \(w : (a,b) \to \bR\) satisfies
+\[w(x) > 0 \quad \text{ for } a < x < b,\]
+then we define the inner product with \textbf{weight function} \(w\) by
+\[\inp{f}{g}_w = \inp{f}{gw} = \int_a^b f(x)g(x)w(x) \, dx,\]
+and the corresponding norm by
+\[\norm*{f}_w = \sqrt{\inp{f}{f}_w} = \sqrt{\int_a^b [f(x)]^2w(x) \, dx}.\]
+Two functions \(f\) and \(g\) are \textbf{orthogonal with respect to \(w\) over the interval \((a, b)\)} if \(\inp{f}{g}_w = 0\). \\
+
+A set of functions \(S \subseteq L_2(a, b, w)\) is said to be \textbf{orthogonal} if every pair of functions in \(S\) is orthogonal and if no function is identically zero on \((a, b)\). \\
+
+We say that \(S\) is \textbf{orthonormal} if, in addition, each function has norm 1.
+
+\prop{Orthogonal implies Independent}{
+    If \(S\) is orthogonal then \(S\) is linearly independent.
+}
+
+\prop{Generalised Pythagorus Theorem}{
+    If \(\{\phi_1, \dots, \phi_N\}\) is orthogonal then, for any \(C_1, \dots, C_N \in \bR\),
+    \[\norm{\sum_{j=1}^{N} C_j\phi_j}_w^2 = \sum_{j=1}^{N}C_j^2 \norm*{\phi_j}_w^2.\]
+}
+
+\prop{Generalised Fourier Coefficients}{
+    If \(f\) is in the span of an orthogonal set of functions \(\{\phi_1, \phi_2, \dots, \phi_N\}\) in \(L_2(a, b, w)\), then the coefficients in the representation
+    \[f(x) = \sum_{j=1}^{N}A_j\phi_j(x)\]
+    are given by
+    \[A_j = \frac{\inp{f}{\phi_j}_w}{\norm{\phi_j}_w^2} \quad \text{ for } 1 \leq j \leq N.\]
+}
+
+\bigskip
+We call \(A_j\) the \(j\)th \textbf{Fourier coefficient} of \(f\) with respect to the given orthogonal set of functions. \\
+
+Consider \textbf{approximating} a function \(f \in L_2(a, b, w)\) by a function in the span of an orthogonal set \(\{\phi_1, \phi_2, \dots, \phi_N \}\), that is finding coefficients \(C_j\) such that
+\[f(x) \approx \sum_{j=1}^{N}C_j\phi_j(x) \quad \text{ for } a < x < b.\]
+
+We seek to choose the \(C_j\) so that the \textbf{weighted mean-square error}
+\[\norm{f - \sum_{j=1}^{N}C_j\phi_j}_w^2 = \int_a^b \left(f(x) - \sum_{j=1 }^{N}C_j\phi_j (x)\right)^2 w(x) \, dx\]
+is as small as possible.
+
+\prop{Least-Squares Approximation}{
+    For all \(C_1, C_2, \dots, C_N\), the weighted mean-square error satisfies
+    \[\norm{f - \sum_{j=1}^{N}C_j\phi_j}_w^2 = \norm{f}_w^2 - \sum_{j=1}^{N}A_j^2\norm{\phi_j}_w^2 + \sum_{j=1}^{N}(C_j - A_j)^2\norm{\phi_j}_w^2.\]
+}
+
+\bigskip
+The Fourier coefficients satisfy Bessel's inequality, which is
+\[\sum_{j=1}^{\infty} A_j^2 \norm{\phi_j}_w^2 \leq \norm{f}_w^2.\]
+
+An orthogonal set \(S\) is \textbf{complete} if there is no non-trivial function in \(L_2(a, b, w)\) orthogonal to every function in \(S\), i.e. if the condition
+\[\inp{f}{\phi}_w = 0 \quad \text{ for every } \phi \in S\]
+implies that
+\[\norm{f}_w = 0.\]
+In particular, if \(S\) is a complete orthogonal set, then every proper subset of \(S\) \textbf{fails} to be complete.
+
+\exmp{Example}{
+    The set \(S = \{\sin jx : j \geq 1 \text{ and } j \neq 7\}\) is \textbf{not} complete in \(L_2(0, \pi)\) because \(\sin 7x\) is orthogonal to every function in \(S\).
+}
+
+\thrm{Equivalent Definitions of Completeness}{
+    If \(S = \{\phi_1, \phi_2, \dots\}\) is orthogonal in \(L_2(a, b, w)\), then the following properties are equivalent:
+    \begin{enumerate}
+        \item \(S\) is complete;
+        \item for each \(f \in L_2(a, b, w)\) if \(A_j\) denotes the \(j\)th Fourier coefficient of \(f\) then
+              \[\norm{f - \sum_{j=1}^{N}A_j\phi_j}_w \to 0 \text{ as } N \to \infty;\]
+        \item each function \(f \in L_2(a, b, w)\) satisfies \textbf{Parseval's identity}:
+              \[\norm{f}_w^2 = \sum_{j=1}^{\infty} A_j^2 \norm{\phi_j}_w^2.\]
+    \end{enumerate}
+}
+
+\prop{Least-squares Error}{
+    If \(S = \{\phi_1, \phi_2, \phi_3, \dots\}\) is a complete orthogonal sequence in \(L_2(a, b, w)\), then for any \(f \in L_2(a, b, w)\),
+    \[\norm{e_N}^2 = \sum_{j=N+1}^{\infty}A_j \norm{\phi_j}_w^2.\]
+}
+
+\section{Sturm-Liouville Problems}
+
+An ODE of the form
+\[[p(x)u']' + [\lambda r(x) - q(x)]u = 0, \quad a < x < b,\]
+is called a \textbf{Sturm-Liouville} equation. The coefficients \(p, q, r\) must all be real-valued with
+\[p(x) > 0 \text{ and } r > 0 \text{ for } a < x < b.\]
+Defining the formally self-adjoint differential operator
+\[Lu = -[p(x)u']' + q(x)u,\]
+we can write the ODE as
+\[Lu = \lambda ru \quad \text{ on } (a,b).\]
+
+Any non-trivial (possibly complex-valued) solution \(u\) satisfying \(Lu = \lambda ru\) on \((a, b)\) (plus appropriate boundary conditions) is said to be an \textbf{eigenfunction} of \(L\) with \textbf{eigenvalue} \(\lambda\). In this case, we refer to \((\phi, \lambda)\) as an \textbf{eigenpair}.
+
+\exmp{Legendre's Equation}{
+    Legendre's equation
+    \[(1 - x^2)u'' - 2xu' + \nu(\nu + 1)u  = 0\]
+    is equivalent to
+    \[[(1 -x^2)u']' + \nu(\nu + 1)u = 0\]
+    which is of the Sturm-Liouville form
+    \[p(x) = 1 - x^2, \quad q(x) = 0, \quad r(x) = 1, \quad \lambda = \nu(\nu + 1).\]
+}
+
+\bigskip
+Assume as before that \(p, q, r\) are real-valued with \(p(x) > 0\) and \(r(x) > 0\) for \(a < x < b\). A \textbf{regular Sturm-Liouville eigenproblem} is of the form
+\begin{alignat*}{3}
+    Lu                        & = \lambda ru & \quad & \text{ for } a < x < b, \\
+    B_1u = b_{11}u' + b_{10}u & = 0          & \quad & \text{ at } x = a,      \\
+    B_2u = b_{21}u' + b_{20}u & = 0          & \quad & \text{ at } x = b.      \\
+\end{alignat*}
+where \(a\) and \(b\) are finite with
+\[p(a) \neq 0 \text{ and } p(b) \neq 0,\]
+and where \(b_{10}, b_{11}, b_{20}, b_{21}\) are real with
+\[|b_{10}| + |b_{11}| \neq 0 \text{ and } |b_{20}| + |b_{21}| \neq 0.\]
+
+\thrm{Eigenfunctions are Orthogonal}{
+Let \(L\) be a Sturm-Liouville differential operator. If \(u, v: [a, b] \to \bC\) satisfy
+\[Lu = \lambda ru \text{ on } (a, b), \quad \text{ with } B_1u = 0 = B_2u,\]
+and
+\[Lv = \mu rv \text{ on } (a, b), \quad \text{ with } B_1v = 0 = B_2v,\]
+and if \(\lambda \neq \mu\), then \(u\) and \(v\) are orthogonal on the interval \((a, b)\) with respect to the weight function \(r(x)\), i.e.,
+\[\inp{u}{v}_r = \int_{a}^{b}u(x)v(x)r(x) \, dx = 0.\]
+}
+
+\thrm{Eigenvalues are Real}{
+Let \(L\) be a Sturm-Liouville differential operation. If \(u: [a, b] \to \bC\) is not identically zero and satisfies
+\[Lu = \lambda ru \text{ on } (a, b), \quad \text{ with } B_1u = 0 = B_2u,\]
+then \(\lambda\) is real.
+}
+
+\thrm{Completeness of the Eigenfunctions}{
+    The regular Sturm-Liouville problem has a infinite sequence of eigenfunctions \(\phi_1, \phi_2, \phi_3, \dots\) with corresponding eigenvalues \(\lambda_1, \lambda_2, \lambda_3, \dots\) and moreover:
+    \begin{enumerate}
+        \item the eigenfunctions \(\phi_1, \phi_2, \phi_3, \dots\) form a complete orthogonal system on the interval \((a, b)\) with respect to the weight function \(r(x)\);
+        \item the eigenvalues satisfy \(\lambda_1 < \lambda_2 < \lambda_3 < \cdots\) with \(\lambda_j \to \infty\) as \(j \to \infty\).
+    \end{enumerate}
+}
+
+\section{Elliptic Differential Operators}
+We now return to the study of PDEs by briefly introducing some concepts related to a more general study of second-order PDEs - namely, ellipticity and divergence form PDEs.
+
+\paragraph{Vector Calculus Notation}
+Partial derivative operator \(\partial_j = \partial / \partial x_j\).
+
+For a scalar field \(u : \bR^d \to \bR\), the \textbf{gradient} is the vector field \(\operatorname{grad} u : \bR^d \to \bR^d\) defined by
+\[\operatorname{grad} u = \grad u = \sum_{j=1}^{d} \partial_j u\mbf{e}_j = \begin{bmatrix}
+        \partial_1 u \\
+        \partial_2 u \\
+        \cdots       \\
+        \partial_d u
+    \end{bmatrix}\]
+
+For a vector field \(\mathbf{F}: \bR^d \to \bR^d\), the \textbf{divergence} is the scalar field \(\operatorname{div} \mathbf{F}: \bR^d \to \bR\) defined by
+\[\operatorname{div} \mathbf{F} = \div \mathbf{F} = \sum_{j=1}^{d}\partial_j F_j = \partial_1 F_1 + \partial_2 F_2 + \cdots + \partial_d F_d.\]
+
+\paragraph{Second-order Linear PDEs in \(\bR^d\)}
+The most general second-order linear partial differential operator in \(\bR^d\) has the form
+\[Lu = -\sum_{j=1}^{d}\sum_{k=1}^{d} a_{jk}(\vx)\partial_j\partial_k u + \sum_{k=1}^{d}b_k (\vx)\partial_k u + c(\vx)u.\]
+
+\exmp{Laplacian}{
+    The \textbf{Laplacian} is defined by \(\grad^2 u = \div (\grad u) = \operatorname{div}(\operatorname{grad} u)\), that is,
+    \[\grad^2 u = \sum_{j=1}^{d}\partial_j^2 u = \partial_1^2 u + \partial_2^2 u + \cdots + \partial_d^2 u.\]
+    Thus, \(- \grad^2 u\) has the form of the second-order linear PDE with
+    \[a_{jk}(\vx) = \delta_{jk}, \quad b_k(\vx) = 0, \quad c(\vx) = 0.\]
+}
+
+\bigskip
+We call
+\[L_0 u = \sum_{j=1}^{d}\sum_{k=1}^{d} a_{jk}(\vx)\partial_j\partial_k u\]
+the \textbf{principal part} of the partial differential operator. \\
+
+A second-order linear partial different operator is uniformly \textbf{elliptic} in a subset \(\omega \subseteq \bR^d\) if there exists a positive constant \(c\) such that
+\[\mbf{\xi^T} A(\va)\mbf{\xi} \geq c\norm{\mbf{\xi}}^2 \quad \text{ for all} \va \in \Omega \text{ and } \mbf{\xi} \in \bR^d.\]
+
+\exmp{Elliptic}{
+    The operator \(L = -\grad^2\) is elliptic (with \(c = 1\)) on any \(\Omega \subseteq \bR^d\), since
+    \[\sum_{j=1}^{d}\sum_{k=1}^{d}\delta_{jk} \xi_j \xi_k = \sum_{k=1}^{d}\xi_k^2 = \norm{\mbf{\xi}}^2.\]
+}
+
+\exmp{Not Elliptic}{
+    The operator \(L = -(\partial_1^2 + 2\partial_2^2 - \partial_3^2)\) is \textbf{not} elliptic in \(bR^3\) since in this case the quadratic form
+    \[\mbf{\xi}^TA\mbf{\xi} = \begin{bmatrix}
+            \xi_1 & \xi_2 & \xi_3
+        \end{bmatrix}\begin{bmatrix}
+            1 & 0 & 0  \\
+            0 & 2 & 0  \\
+            0 & 0 & -1
+        \end{bmatrix} \begin{bmatrix}
+            \xi_1 \\
+            \xi_2 \\
+            \xi_3
+        \end{bmatrix} = \xi_1^2 + 2\xi_2^2 - \xi_3^2\]
+    is negative if \(\xi_1 = \xi_2 = 0\) and \(\xi_3 \neq 0\).
+}
+
+\bigskip
+\paragraph{Symmetry and Skew-Symmetry}
+Put
+\begin{align*}
+    a_{jk}^{sy} & = \frac{1}{2} (a_{jk} + a_{kj}) = \text{ symmetric part of } a_{jk}       \\
+    a_{jk}^{sk} & = \frac{1}{2} (a_{jk} - a_{kj}) = \text{ skew-symmetric part of } a_{jk},
+\end{align*}
+so that
+\[a_{jk} = a_{jk}^{sy} + a_{jk}^{sk}, \quad a_{kj}^{sy} = a_{jk}^{sy}, \quad a_{kj}^{sk} = -a_{jk}^{sk}\]
+
+When investigating if \(L\) is elliptic, it suffices to look at \(a_{jk}^{sy}\).
+
+\prop{Lemma}{
+\[\sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}(\vx) \xi_j \xi_k = sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}^{sy}(\vx) \xi_j \xi_k\]
+}
+
+\thrm{Theorem}{
+    Denote the eigenvalues of the real symmetric matrix \([a_{jk}^sy]\) by \(\lambda_j(x)\) for \(1 \leq j \leq d.\) The operator of Second-order Linear PDEs is elliptic on \(\Omega\) if and only if t here exists a positive constant \(c\) such that
+    \[\lambda_j(\vx) \geq c \quad \text{ for } 1 \leq j \leq d \text{ and all} \vx \in \Omega.\]
+}
+
+\exmp{Elliptic}{
+    \begin{itemize}
+        \item \(L = -(3\partial_1^2 + 2\partial_1\partial_2 + 2\partial_2^2)\) is elliptic.
+        \item \(L = -(\partial_1^2 - 4\partial_1\partial_2 + \partial_2^2)\) is not elliptic.
+    \end{itemize}
+}
+
+\bigskip
+The Laplacian occurs in three of the most well studied PDEs:
+\begin{enumerate}
+    \item \textbf{Poisson equation (Laplace's equation if \(f \equiv 0\))} (elliptic):
+          \[-\grad^2 u = f.\]
+    \item \textbf{Diffusion equation} or \textbf{heat equation} (parabolic):
+          \[\frac{\partial u}{\partial t} -\grad^2 u = f.\]
+    \item \textbf{Wave equation} (hyperbolic):
+          \[\frac{\partial^2 u}{\partial t^2} -\grad^2 u = f.\]
+\end{enumerate}
