@@ -10,7 +10,7 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 
 ## 2023 T1
 
-- [COMP3821 (Extended Algorithms and Programming Techniques)](./comp3821/COMP3821.pdf)
+- [COMP3821 (Extended Algorithms and Programming Techniques)](./comp3821/comp3821.pdf)
 - [MATH2111 (Higher Several Variable Calculus)](./math2111/MATH2111.pdf)
 - [COMP3311 (Database Systems)](./comp3311/COMP3311.md)
 
