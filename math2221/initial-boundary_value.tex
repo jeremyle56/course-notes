@@ -114,7 +114,7 @@ we have the \textbf{Lagrange identity}
 The operator \(L\) is \textbf{formally self-adjoint} if \(L^* = L\).
 
 \thrm{Formally Self-Adjoint Condition}{
-    A second-orderr, linear differential operator L is formally self-adjoint iff it can be written in the form
+    A second-order, linear differential operator L is formally self-adjoint iff it can be written in the form
     \[Lu = -(pu')' + qu = -pu'' - p'u' + qu,\]
     in which case the Lagrange identity takes the form
     \[(Lu)v - u(Lv) = -(p(x)(u'v - uv'))',\]
@@ -140,9 +140,9 @@ then we can transform an ODE of the form \(a_2u'' + a_1u' + a_0u = f(x)\) to for
 \begin{align*}
     -pu'' - \frac{pa_1}{a_2}u' - \frac{pa_0}{a_2}u & = \frac{-pf(x)}{a_2}, \\
     -(pu'' + p'u') - \frac{pa_0}{a_2}u             & = \frac{-pf(x)}{a_2}, \\
-    -(pu')' + qu                                   & = f(x)
+    -(pu')' + qu                                   & = \tilde{f}(x)
 \end{align*}
-where \(q = -pa_0/a_2\) and \(f = -pf/a_2\).
+where \(q = -pa_0/a_2\) and \(\tilde{f} = -pf/a_2\).
 
 \exmp{Euler-Cauchy ODE}{
 Write the Euler-Cauchy ODE \(ax^2u'' + bxu' + cu = f(x)\) in formally self-adjoint form. Note that here \(a_2(x) = ax^2, a_1(x) = bx\) and \(a_0(x) \equiv c\).

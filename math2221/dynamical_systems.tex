@@ -27,7 +27,7 @@ Any first-order system for \(N\) ODEs in the form
     \frac{dx}{dy}   & = F_1(x,y, \dots, x_N), \quad  &  & x(0) = x_{10},                \\
     \frac{dy}{dt}   & = F_2(x, y, \dots, x_N), \quad &  & y(0) = x_{20},                \\
                     & \vdots                         &  & \phantom{y(0) = x_{20}}\vdots \\
-    \frac{dx_N}{dt} & = F_N (x,y, dots, x_N), \quad  &  & x_N(0) = x_{N0},
+    \frac{dx_N}{dt} & = F_N (x,y, \dots, x_N), \quad &  & x_N(0) = x_{N0},
 \end{alignat*}
 
 can be written in vector notation as
@@ -88,7 +88,7 @@ We say that the function \(f: [a, b] \to \bR\) is Lipschitz if a Lipschitz const
     \[f(x) = 3 + \sqrt{x}  \text{ for } 0 \leq x \leq 4.\]
     In this case, if \(x, y \in (0, 4]\) then
     \begin{align*}
-        f(x) - f(y) & = \sqrt{x} - \sqrt{y} = \left(\sqrt{x} - \sqrt{y} \times \frac{\sqrt{x} + \sqrt{y}}{\sqrt{x} + \sqrt{y}}\right)
+        f(x) - f(y) & = \sqrt{x} - \sqrt{y} = \left(\sqrt{x} - \sqrt{y} \times \frac{\sqrt{x} + \sqrt{y}}{\sqrt{x} + \sqrt{y}}\right) \\
                     & = \frac{x - y}{\sqrt{x} + \sqrt{y}}
     \end{align*}
     so if a Lipschitz constant \(L\) exists then
@@ -199,7 +199,7 @@ A square matrix \(A \in \bC^{N \times N}\) is \textbf{diagonalisable} if there e
     A square matrix \(A \in \bC^{N \times N}\) is diagonalisable if and only if there exists a basis \(    \{\vv_1, \vv_2, \dots, \vv_N\}\) for \(\bC^N\) consisting of eigenvectors of \(A\). Indeed if,
     \[A\vv_j = \lambda_j \vv_j  \text{ for } j = 1,2, \dots, N,\]
     and we put \(Q = \begin{bmatrix}
-        \vv_1 & vv_2 & \cdots \vv_N
+        \vv_1 & \vv_2 & \cdots \vv_N
     \end{bmatrix}\) then \(Q^{-1}AQ = A\) where
     \[A = \begin{bmatrix}
             \lambda_1           & \phantom{\cdots} & \phantom{\lambda_N} \\
@@ -440,7 +440,7 @@ Canonical form:
     All trajectories (except \(\vx(t) = \vzero\)) are repelled from equilibrium point which is unstable.
 }
 
-\exmp{(Un)stable stars: \(\lambda_1 = \lambda_2 \neq 0\)}{
+\exmp{(Un)stable Stars \((\lambda_1 = \lambda_2 \neq 0)\)}{
     \[\frac{dx}{dt} = \lambda_1x, \quad \frac{dy}{dt} = \lambda_1y, A = \lambda_1\begin{pmatrix}
             1 & 0 \\
             0 & 1
