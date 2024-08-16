@@ -38,7 +38,7 @@ Then \(X'' = 0\), which gives us \(X = Ax + B\). The boundary conditions \(X(0) 
 So \(\lambda = -k^2\) for some \(k > 0\). Then \(X'' -k^2X = 0\), which results in \(X(x) = Ae^{kx} + Be^{-kx}\). However, the boundary conditions \(X(0) = X(1) = 0\) imply that \(A + B = 0\) and \(Ae^k + Be^{-k} = 0\). This results in \(A = -B\) so \(A(e^k - e^{-k}) = 0\), and so \(A = B = 0\). Thus again, \(X \equiv 0\).
 
 \paragraph{Case 3: \(\lambda > 0\).}
-So \(\lambda = k^2\) for some \(k > 0\). Then \(X'' + k^2X = 0\), which means \(X(x) = A\cos(kx) + B\sin(kx)\). The boundary conditions \(X(0) = X(1) = 0\) imply that \(A = 0\) and \(B\sin(k) = 0\). THis time, we can get non-trivial solutions, when \(k\) is a multiple of \(\pi\) i.e. \(k = n\pi\) for some \(n \in \bZ^+\)
+So \(\lambda = k^2\) for some \(k > 0\). Then \(X'' + k^2X = 0\), which means \(X(x) = A\cos(kx) + B\sin(kx)\). The boundary conditions \(X(0) = X(1) = 0\) imply that \(A = 0\) and \(B\sin(k) = 0\). This time, we can get non-trivial solutions, when \(k\) is a multiple of \(\pi\) i.e. \(k = n\pi\) for some \(n \in \bZ^+\)
 
 Thus we are interested in \(\lambda = n^2\pi^2, X(x) = B\sin(n\pi x)\) for \(n \in \bZ^+\).
 
@@ -238,7 +238,7 @@ We call
 the \textbf{principal part} of the partial differential operator. \\
 
 A second-order linear partial different operator is uniformly \textbf{elliptic} in a subset \(\omega \subseteq \bR^d\) if there exists a positive constant \(c\) such that
-\[\mbf{\xi^T} A(\va)\mbf{\xi} \geq c\norm{\mbf{\xi}}^2 \quad \text{ for all} \va \in \Omega \text{ and } \mbf{\xi} \in \bR^d.\]
+\[\mbf{\xi^T} A(\va)\mbf{\xi} \geq c\norm{\mbf{\xi}}^2 \quad \text{ for all } \va \in \Omega \text{ and } \mbf{\xi} \in \bR^d.\]
 
 \exmp{Elliptic}{
     The operator \(L = -\grad^2\) is elliptic (with \(c = 1\)) on any \(\Omega \subseteq \bR^d\), since
@@ -246,7 +246,7 @@ A second-order linear partial different operator is uniformly \textbf{elliptic} 
 }
 
 \exmp{Not Elliptic}{
-    The operator \(L = -(\partial_1^2 + 2\partial_2^2 - \partial_3^2)\) is \textbf{not} elliptic in \(bR^3\) since in this case the quadratic form
+    The operator \(L = -(\partial_1^2 + 2\partial_2^2 - \partial_3^2)\) is \textbf{not} elliptic in \(\bR^3\) since in this case the quadratic form
     \[\mbf{\xi}^TA\mbf{\xi} = \begin{bmatrix}
             \xi_1 & \xi_2 & \xi_3
         \end{bmatrix}\begin{bmatrix}
@@ -261,7 +261,7 @@ A second-order linear partial different operator is uniformly \textbf{elliptic} 
     is negative if \(\xi_1 = \xi_2 = 0\) and \(\xi_3 \neq 0\).
 }
 
-\bigskip
+\
 \paragraph{Symmetry and Skew-Symmetry}
 Put
 \begin{align*}
@@ -274,12 +274,12 @@ so that
 When investigating if \(L\) is elliptic, it suffices to look at \(a_{jk}^{sy}\).
 
 \prop{Lemma}{
-\[\sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}(\vx) \xi_j \xi_k = sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}^{sy}(\vx) \xi_j \xi_k\]
+\[\sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}(\vx) \xi_j \xi_k = \sum_{j=1}^{d}\sum_{k=1}^{d}a_{jk}^{sy}(\vx) \xi_j \xi_k\]
 }
 
 \thrm{Theorem}{
-    Denote the eigenvalues of the real symmetric matrix \([a_{jk}^sy]\) by \(\lambda_j(x)\) for \(1 \leq j \leq d.\) The operator of Second-order Linear PDEs is elliptic on \(\Omega\) if and only if t here exists a positive constant \(c\) such that
-    \[\lambda_j(\vx) \geq c \quad \text{ for } 1 \leq j \leq d \text{ and all} \vx \in \Omega.\]
+    Denote the eigenvalues of the real symmetric matrix \([a_{jk}^{sy}]\) by \(\lambda_j(x)\) for \(1 \leq j \leq d.\) The operator of Second-order Linear PDEs is elliptic on \(\Omega\) if and only if t here exists a positive constant \(c\) such that
+    \[\lambda_j(\vx) \geq c \quad \text{ for } 1 \leq j \leq d \text{ and all } \vx \in \Omega.\]
 }
 
 \exmp{Elliptic}{

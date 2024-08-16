@@ -296,6 +296,11 @@ When \(A\) is diagonalisable, \(A^k = Q\Lambda^k Q^{-1}\) so
         \end{bmatrix}\]
 }
 
+\bigskip
+Given a forced linear system of the form \(\vx' - \vA\vx(t) = \mbf{f}(t).\) We can use the \textbf{variation of constants formula} to solve the vector equation.
+
+\[\vx(t) = e^{\vA t}\vx_0 + e^{\vA t} \int_0^t e^{-\vA s}\mbf{f}(s) \, ds.\]
+
 \paragraph{Fundamental Matrix}
 A fundamental matrix \(\Phi\) for the linear homogenous vector equation
 \[\vx'(t) = \vA\vx(t)\]
@@ -314,7 +319,13 @@ satisfies the following two properties.
 }
 
 \paragraph{Nilpotent Matrix}
-A matrix is nilpotent if there exists a positive integer \(k\) such that \(\vA^k = \mbf{O}\), where \(\mbf{O}\) denotes the zero matrix.
+A matrix is nilpotent if there exists a positive integer \(k\) such that \(\vA^k = \mbf{O}\), where \(\mbf{O}\) denotes the zero matrix. \\
+
+If \(\vA\) is nilpotent then we can easily find \(e^{\vA t}\). In particular,
+\begin{align*}
+    e^{\vA}   & = \sum_{k=0}^{\infty} \frac{\vA^k}{k!}     \\
+    e^{\vA t} & = \vI + t\vA + \frac{1}{2}t^2\vA^2 + \dots
+\end{align*}
 
 \exmp{Example}{
     \[\vA^2 = \vA\vA = \begin{bmatrix}
@@ -329,7 +340,7 @@ A matrix is nilpotent if there exists a positive integer \(k\) such that \(\vA^k
         \end{bmatrix} = \mbf{O}.\]
 
     Therefore \(\vA\) is nilpotent and, in particular,
-    \[e^t\vA = \vI + t\vA = \begin{bmatrix}
+    \[e^{\vA t} = \vI + t\vA = \begin{bmatrix}
             1 & 0 \\
             t & 1
         \end{bmatrix}\]

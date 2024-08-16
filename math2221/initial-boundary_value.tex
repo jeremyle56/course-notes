@@ -59,7 +59,7 @@ If a homogenous initial boundary value problem admits non-trivial solutions, the
 To formulate a condition that guarantees existence we require a short digression that introduces some ideas from functional analysis. \\
 
 The \textbf{inner product} \(\langle f, g \rangle\) of a pair of continuous functions \(f, g : [a, b] \to \bR\) is defined by
-\[\langle f, g \rangle = \int_a^n f(x)g(x) \, dx.\]
+\[\langle f, g \rangle = \int_a^b f(x)g(x) \, dx.\]
 
 The corresponding \textbf{norm} of \(f\) is defined by
 \[\norm*{f} = \sqrt{\langle f, f \rangle} = \left(\int_{a}^{b}[f(x)]^2\right)^{1/2}.\]
@@ -92,7 +92,7 @@ Define the \textbf{formal adjoint} as
 and the \textbf{bilinear concomitant}
 \[P(u, v) = u'(a_2 v) - u(a_2v)' + u(a_1v),\]
 we have the \textbf{Lagrange identity}
-\[\inp{Lu}{v} = \inp{u}{L^*v} + \]
+\[\inp{Lu}{v} = \inp{u}{L^*v} + [P(u, v)]_a^b.\]
 
 \exmp{Adjoint Operators and Lagrange identity}{
     If
@@ -156,13 +156,13 @@ the formally self-adjoint form is
 \[-(x^{\frac{b}{a}}u')' - \frac{c}{ax^2}x^{\frac{b}{a}}u = -\frac{1}{ax^2}x^{\frac{b}{a}}f(x).\]
 }
 
-\prop{}{
+\prop{Self-Adjointness and Boundary Operators}{
     Any formally self-adjoint operator \(L = -(pu')' + qu\) satisfies the identity
     \[\inp{Lu}{v} - \inp{u}{Lv} = \sum_{i=1}^{2}(B_iuR_iv - R_iuB_iv),\]
     for all \(v\) and \(v\) where
     \[R_1u = \frac{p(a)u(a)}{b_{11}} \text{ or } R_1u = -\frac{p(a)u'(a)}{b_{10}}\]
     and
-    \[R_2u = -\frac{p(b)u(b)}{b_{21}} \text{ or } R2_u = \frac{p(N)u'(b)}{b_{20}}.\]
+    \[R_2u = -\frac{p(b)u(b)}{b_{21}} \text{ or } R2_u = \frac{p(b)u'(b)}{b_{20}}.\]
 }
 
 \paragraph{Necessary Condition for Existence}
