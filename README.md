@@ -10,7 +10,7 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 
 ## 2023 T1
 
-- [COMP3821 (Extended Algorithms and Programming Techniques)](./comp3821/COMP3821.pdf)
+- [COMP3821 (Extended Algorithms and Programming Techniques)](./comp3821/comp3821.pdf)
 - [MATH2111 (Higher Several Variable Calculus)](./math2111/MATH2111.pdf)
 - [COMP3311 (Database Systems)](./comp3311/COMP3311.md)
 
@@ -27,6 +27,10 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 
 - [**DROPPED** MATH3161 (Optimization)](./math3161/math3161.pdf)
 - [MATH3431 (Number Theory)](./math3431/math3431.pdf)
+
+## 2024 T2
+
+- [MATH2221 (Higher Theory and Applications of Differential Equations)](./math2221/math2221.pdf)
 
 ### Issues
 

@@ -1,0 +1,482 @@
+\chapter{Linear ODEs}
+
+\section{Introduction}
+Recall that a first-order ordinary differential equation (ODE) has, in its most general realisation, the form
+\[y'(t) = f(t, y(t)).\]
+A special case is the equation
+\[a(t)y'(t) + b(t)y(t) = f(t),\]
+with \(a(t) \neq 0\) on some interval \(I \in \bR\). This special first-order ODE is called a \textbf{linear first-order ODE}. Another special case is
+\[y'(t) = f(t)g(y),\]
+which is known as a \textbf{separable first-order ODE}. \\
+
+For a separable equation the solution is found (at least, implicitly by) writing:
+\[\int \frac{1}{g(y)} \, dy = \int f(t) \, dt.\]
+
+\exmp{Solving Seperable ODEs}{
+    Consider \(y' = t^2 y, y(0) = 3.\) This is seperable with \(f(t) = t^2\) and \(g(y) = y\). Then
+    \[\int \frac{1}{y} \, dy = \int t^2 \, dt\]
+    so that
+    \[\ln \abs*{y(t)} = \frac{1}{3}t^3 + C.\]
+    Now apply \(e^t\) to both sides to obtain
+    \[\abs*{y(t)} = e^{\frac{1}{3}t^3 + C} = e^C e^{\frac{1}{3} t^3}.\]
+    Thus, a general solution of the equation is
+    \[y(t) = Ae^{\frac{1}{3}t^3}.\]
+    Since \(y(0) = 3\), we see that the unique solution is \(y(t) = 3e^{\frac{1}{3}t^3}\).
+}
+
+In the case of a linear first-order equation, i.e. \(y' + a(t)y = f(t)\), a useful solution method is the integrating factor technique. The idea is to find a function \(\mu\) so that when we multiply both sides of the equation with \(\mu\) we find that
+\[[\mu y](t)' = \mu(t)(y' + a(t)y) = \mu(t)f(t),\]
+for if this happens, then the general solution of the ODE should be
+\[y(t) = \frac{1}{\mu(t)}\int \mu(t)f(t) \, dt + \frac{C}{\mu(t)}.\]
+
+\exmp{Solving Linear First-Order ODE}{
+    Solve \(y' - 2ty = 3t\). We pick
+    \[\mu(t) = e^{\int - 2t \, dt} = e^{-t^2}.\]
+    Then
+    \begin{align*}
+        (e^{-t^2}y)' & = 3te^{-t^2}                                        \\
+        e^{-t^2}y    & = \int 3te^{-t^2} \, dt  = -\frac{3}{2}e^{-t^2} + C \\
+        y(t)         & = -\frac{3}{2} + Ce^{t^2}.
+    \end{align*}
+}
+
+\section{Linear Differential Operators}
+In linear algebra, you have seen the compact notation \(A\bf{x} = \bf{b}\) for system of linear equations. A similar notation when dealing with a linear ordinary differential equations is
+\[Lu = f.\]
+Here, \(L\) is an operator (or transformation) that acts on a function \(u\) to create a new function \(Lu\).
+
+Given coefficients \(a_0(x), a_1(x), \dots, a_m(x)\) we define the \textbf{linear differential operator} \(L\) of \textbf{order} \(m\),
+\begin{align*}
+    Lu(x) & = \sum_{j=0}^{m} a_j(x) D^ju(x)               \\
+          & = a_mD^mu + a_{m-1}D^{m-1}u + \cdots + a_o u,
+\end{align*}
+where \(D^j u = d^j u / dx^j\) (with \(D^0 u = u\)). \\
+
+We refer to \(a_m\) as the \textbf{leading coefficient} of \(L\) and assume that each \(a_j(x)\) is a smooth function of \(x\). \\
+
+The ODE \(Lu = f\) is said to be \textbf{singular} with respect to an interval \([a, b]\) if the leading coefficient \(a_m(x)\) vanishes for any \(x \in [a, b]\). \\
+\exmp{Example}{
+    \(Lu = (x - 3)u''' - (1 + \cos x)u' + 6u\) is a linear differential of order 3, with leading coefficient \(x - 3\). Thus, \(L\) is singular on \([1, 4]\), but not singular on \([0 ,2]\).
+}
+\exmp{Example}{
+    \(N(u) = u'' + u^2u' - u\) is a nonlinear differential operator of order 2.
+}
+
+\paragraph{Linearity} For any constants \(c_1\) and \(c_2\) and any \(m\)-times differentiable functions \(u_1\) and \(u_2\),
+\[L(c_1u_1 + c_2u_2) = c_1 Lu_1 + c_2 Lu_2.\]
+
+Ordinary differential equations of the form \(Lu = 0\) are known as \textbf{homogenous}. Those of the form \(Lu = f\) are known as \textbf{inhomogeneous}. \\
+
+When the solution to a differential equation is prescribed at a particular point \(x = x_0\), that is
+\[u(x_0) = v_0, \quad u'(x_0) = v_1, \quad \dots, \quad u^{(m - 1)}(x_0) = v_{m - 1},\]
+we call it an \textbf{initial value problem}. Where a differential equation is order 2 or greater, solutions at 2 or more locations can be prescribed. Such problems are called \textbf{boundary value problems}. \\
+
+\thrm{Unique Solution to Linear Initial Problem}{
+    For an ODE \(Lu = f\) which is not singular with repsect to \(a, b\), with \(f\) continuous on \([a, b]\), the IVP for an \(m\)th-order linear differential operator with \(m\) inital values has a unique solution.
+}
+
+\thrm{Solution to mth Order Problem has Dimension m}{
+    Assume that the linear, \(m\)th-order differential operator \(L\) is not singular on \([a, b]\). Then the set of all solutions to the homogenous equation \(Lu = 0\) on \([a, b]\) is a vector space of dimension \(m\).
+}
+
+\bigskip
+If \(\{u_1, u_2, \dots, u_m\}\) is \textbf{any} basis for the solution space of \(Lu = 0\), then every solution can be written in a unique way as
+\[u(x) = c_1u_1(x) + c_2u_2(x) + \cdots + c_mu_m(x) \quad \text{for } a\leq x \leq 4.\]
+We refer to this as the \textbf{general solution} of the homogenous equation \(Lu = 0\) on \([a, b]\). \\
+
+\textbf{Linear superposition} refers to this technique of constructing a new solution out of a linear combination of old ones. \\
+
+\exmp{Example}{
+    The general solution to \(u'' - u' - 2u = 0\) is \(u(x) = c_1 e^{-x} + c_2 e^{2x}.\)
+}
+
+\bigskip
+Consider the inhomogeneous equation \(Lu = f\) on \([a, b]\), and fix a particular solution \(u_P\).
+
+For \textit{any} solution \(u\), the difference \(u - u_P\) is a solution of the homogenous equation because
+\[L(u - u_P) = Lu - Lu_P = f - f = 0 \text{ on } [a, b].\]
+Hence, \(u(x) - u_P(x) = c_1u_1(x) + \dots _cmu_m(x)\) for some constants \(c_1, \dots, c_m\) and so
+\[u(x) = u_P(x) + \underbrace{c_1u_1(x) + \cdots + c_mu_m(x)}_{u_H(x)}, \quad a \leq x \leq b,\]
+is the \textbf{general solution} of the inhomogeneous equation \(Lu = f\).
+
+\exmp{Example}{
+The inhomogenous ODE \(u'' - u' - 2u = -2e^x\) has a particular solution \(u_P(x) = e^x\).
+
+The general solution for its homogenous counterpart is \(u_H(x) = c_1e^{-x} + c_2e^{2x}\).
+
+So the general solution of the inhomogeneous ODE is
+\[u(x) = u_P(x) + u_H(x) = e^x + c_1 e^{-x} + c_2e^{2x}.\]
+}
+
+\thrm{Reduction of Order}{
+    For \(u = u_1(x) \neq 0\), a solution to the ODE
+    \[u'' + p(x)u' + q(x) u = 0,\]
+    on some interval \(I\), then a second solution is
+    \[u = u_1(x) \int \frac{1}{u_1^2 \exp(\int p \, dx)} \, dx.\]
+}
+
+\exmp{Example}{
+    For the ODE \(u'' -6u' + 9u = 0\), take \(u_1 = e^{3x}\) and find \(v\). \textbf{Answer} \(xe^{3x}\).
+}
+
+\section{Differential Operators with Constant Coefficients}
+If \(L\) has constant coefficients, then the problem of solving \(Lu = 0\) reduces to that of factorising the polynomial having the same coefficients. \\
+
+Suppose that \(a_j\) is constant for \(0 \leq j \leq m\), with \(a_m \neq 0\). We define the associated polynomial of degree \(m\),
+\[p(z) = \sum_{j=0}^{m} a_jz^j = a_mz^m + a_{m - 1} z^{m-1} + \cdots + a_1z + a_0,\]
+so that if
+\[Lu = a_mu^{(m)} + a_{m-1}u^{(m -1) + \cdots + a_1 u + a_0},\]
+then formally, \(L = p(D)\). \\
+
+By the fundamental theorem of algebra,
+\[p(z) = a_m(z - \lambda_1)^{k_1}(z - \lambda_2)^{k_2} \cdots (z - \lambda)^{k_r}\]
+where \(\lambda_1, \lambda_@, \dots, \lambda_r\) satisfying
+\[k_1 + k_2 + \dots + k_r = m.\]
+
+\prop{Lemma}{
+\((D - \lambda)x^je^{\lambda x} = jx^{j-1}e^{\lambda x}\) for \(j \geq 0.\)
+}
+
+\prop{Lemma}{
+    \((D - \lambda)^k x^j e^{\lambda x} = 0 \) for \(j = 0, 1, \dots, k - 1\).
+}
+
+\prop{Basic Solutions}{
+If \((z - \lambda)^k\) is a factor of \(p(z)\) then the function \(u(x) = x^je^{\lambda x}\) is a solution of \(Lu = 0\) for \(0 \leq j \leq k - 1\).
+}
+
+\thrm{General Solution}{
+    For the constant-coefficient case, the general solution of the homogenous equation \(Lu = 0\) is
+    \[u(x) = \sum_{q=1}^{r} \sum_{l=0}^{k_q - 1} c_{ql}x^l e^{\lambda_q x},\]
+    where the \(c_{ql}\) are arbitrary constants.
+}
+
+\exmp{Repeated Real Root}{
+From the factorisation
+\[D^4 + 6D^3 + 9D^2 - 4D - 12= (D - 1)(D + 2)^2(D + 3)\]
+we see that the general solution of
+\[u'''' + 6u''' + 9'' - 4u' - 12u = 0\]
+is
+\[u = c_1e^x + c_2e^{-2x} + c_3xe^{-2x} + c_4e^{-3x}.\]
+}
+
+\exmp{Complex Root}{
+    From the factorisation
+    \begin{align*}
+        D^3 - 7D^2 + 17D - 15 & = (D^2 - 4D + 5)(D - 3)         \\
+                              & = (D - 2 - i)(D - 2 + i)(D - 3)
+    \end{align*}
+
+    we see that the general solution of
+    \[u''' - 7u'' + 17u' - 15u = 0\]
+    is
+    \begin{align*}
+        u(x) & = c_1e^{(2 + i)x} + c_2e^{(2 -i)x} + c_3e^{3x}       \\
+             & = c_4 e^{2x}\cos x + c_5 e^{2x} \sin x + c_3 e^{3x}.
+    \end{align*}
+}
+
+\bigskip
+Second-order ODEs arise naturally in classical mechanics for example a harmonic simple oscillator.
+
+\section{Wronskians and Linear Independence}
+We introduce a function, called the Wronskain that provides us with a way of testing whether a family of solutions to \(Lu = 0\) is linearly independent. \\
+
+Let \(u_1(x), u_2(x), \dots, u_m(x)\) be functions defined on an interval \(I \in \bR\). The functions \(u_1, \dots, u_m\) are called \textbf{linearly dependent} if there exist constant \(a_1, a_2, \dots, a_m\) \textbf{not all zero} such that
+\[a_1u_1(x) + a_2u_2(x) + \cdots + amu_m(x) = 0 \quad \forall x \in I.\]
+If the above equation only holds for
+\[a_i = 0, \quad i = 1, 2, \dots, m\]
+then the functions are \textbf{linearly independent}.
+
+\exmp{Example}{
+    \(u_1 = \sin 2x\) and \(u_2 = \sin x \cos x\) are linearly dependent. \\
+    \(u_1 = \sin x\) and \(u_2 = \cos x\) are linearly indepdent.
+}
+
+\bigskip The \textbf{Wronskian} of the functions \(u_1, u_2, \dots, u_m\) is the \(m \times m\) determinant
+\[W(x) = W(x; u_1, u_2, \dots, u_m) = \det[D^{i-1}u_j].\]
+
+\exmp{Example}{
+    The Wronskian of the functions \(u_1 = e^{2x}, u_2 = xe^{2x}\) and \(u_3 = e^{-x}\) is
+    \[
+        W = \begin{vmatrix}
+            e^{2x}  & xe^{2x}            & e^{-x}  \\
+            2e^{2x} & e^{2x} + 2xe^{2x}  & -e^{-x} \\
+            4e^{2x} & 4e^{2x} + 4xe^{2x} & e^{-x}
+        \end{vmatrix}
+        = 9e^{3x}.
+    \]
+}
+
+\prop{Lemma}{
+    If \(u_1, \dots, u_m\) are linearly dependent over an interval \([a, b]\) then \(W(x; u_1, \dots, u_m) = 0\) for \(a \leq x \leq b\).
+}
+
+\prop{Lemma}{
+    If \(u_1, u_2, \dots, u_m\) are solutions of \(Lu = 0\) on the interval \([a, b]\) then their Wronskain satisfies
+    \[a_m(x) W'(x) + a_{m-1}(x) W(x) = 0, \quad a \leq x \leq b.\]
+}
+
+\thrm{Linear Independence of Solutions}{
+    Let \(u_1, u_2, \dots, u_m\) be solutions of a non-singular, linear, homogenous, \(m\)-th order ODE \(Lu = 0\) on the interval \([a, b]\). \\
+    Either \\
+    \indent \(W(x) = 0\) for \(a \leq x \leq b\) and the \(m\) solutions are linearly \textbf{dependent}, \\
+    or else \\
+    \indent \(W(x) \neq 0\) for \(a \leq x \leq b\) and the \(m\) solutions are linearly \textbf{independent}.
+}
+
+\section{Methods for Inhomogeneous Equations}
+\subsection{Judicious Guessing Method}
+You would have learned the mthod of undetermined coefficients for constructing a particular solution \(u_P\) to an inhomogeneous second-order linear ODE \(Lu = f\) in some simple cases. We will study this method systematically for higher-order linear ODEs with constant coefficients.
+
+\exmp{Superposition of Solutions}{
+    Suppose that \(u_1\) solves \(Lu = e^{3x}\), and \(u_2\) solves \(Lu = \sin x\), where \(L\) is a linear differential operator. Then the solution of
+    \[Lu = e^{3x} + \sin x\]
+    is
+    \[u(x) = u_1(x) + u_2(x).\]
+    And a solution of
+    \[Lu = \frac{1}{2} e^{3x} - 5\sin x\]
+    is
+    \[u(x) = \frac{1}{2} u_1(x) - 5u_2(x).\]
+}
+
+\bigskip
+Now we want to investigate some methods for finding particular solutions - i.e., finding a solution of \(Lu = f\). One such method is the method of judicious guessing. For example:
+
+\begin{enumerate}
+    \item If \(f\) is a polynomial, then guess that \(u_p\) is a polynomial.
+    \item If \(f\) is a exponential, then guess that \(u_p\) is exponential.
+    \item If \(f\) is a sine or cosine, then guess that \(u_p\) is a combination of such functions.
+\end{enumerate}
+
+One problem with this method: it will only work for the types of functions identified above.
+
+\exmp{Example}{
+    Suppose that \(u'' - u' = t^2 + 2t\). Note as before that,
+    \[u_h(t) = c_1 + c_2e^t.\]
+    So guess,
+    \[u_p(t) = At^3 + Bt^2 + Ct + D.\]
+    Then
+    \[t^2 + 2t = u_p''-u' = -3At^2 + (6A - 2B)t + (2B - C).\]
+    So, equating coefficients of like power terms, we see that
+    \[A = -\frac{1}{3}, B = -2, C = -4, \text{ and } D \text{ is unrestricted.}\]
+    Therefore, reabsorbing \(D\) into \(c_1\), we see that
+    \[u(t) = u_h(t) + u_p(t) = c_1 + c_2e^t - \frac{1}{3}t^3 - 2t^2 - 4t.\]
+}
+
+\bigskip
+Now we look at this idea of judicious guessing in a more systematic way. Let \(L = p(D)\) be a linear differential operator of order \(m\) with constant coefficients.
+
+\thrm{Polynomial Solutions}{
+    Assume that \(a_0 = p(0) \neq 0\). For any integer \(r \geq 0\), there exists a unique polynomial \(u_P\) of degree \(r\) such that \(Lu_P = x^r\).
+}
+
+\thrm{Exponential Solutions}{
+    Let \(L = p(D), M \in \bR\) and \(\mu \in \bC\). If \(p(\mu) \neq 0\), then the function
+    \[u_P(x) = \frac{Me^{\mu x}}{p(\mu)}\]
+    satisfies \(Lu_P = Me^{\mu x}\).
+}
+
+\exmp{Example}{
+    A particular solution of \(u'' + 4u' - 3i = 3e^{2x}\) is \(u_P = e^{2x} / 3\).
+}
+
+\thrm{Product of Polynomial and Exponential}{
+    Let \(L = p(D)\) and assume that \(p(\mu) \neq 0\). For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\) such that \(u_P = v(x)e^{\mu x}\) satisfies \(Lu_P = x^r e^{\mu x}\).
+}
+
+\subsection{Annihilator Method}
+In the previous cases we proposed a solution \(u = u_P\) and showed that it satisfied \(Lu = f\). The following is a method to derive a particular solution given \(Lu = f\). If \(f(x)\) is differentiable at least \(n\) times and
+\[[a_nD^n + a_{n-1}D^{n-1} + \cdots a_1 D^1 + a_0]f(x) = 0\]
+then \([a_n D^n + a_{n-1}D^{n-1} + \cdots + a_1D^1 + a_0]\) \textbf{annihilates} \(f\).
+
+\exmp{Example}{
+\(D^n\) annhihilates \(x^{m - 1}\) for \(m \leq n\). \\
+\((D - \alpha)^n\) annihilates \(x^{m-1}e^{\alpha x}\) for \(m \leq n\).
+}
+
+\exmp{Annhilator Method: Simple Example}{
+    Given \(Lu = f\) we can apply the appropriate annhiliator to both sides and solving the resutling homogenous DE.
+
+    Let \(Lu = u'' - u'\) and suppose we want a solution such that \(Lu = x^2\). Annihilating both sides we have
+    \[D^3(u'' - u') = u^{(5)} - u^{(4)} = 0.\]
+    Setting \(w = u^{(4)}\), clearly \(w = Ce^x\) is the general solution. Integrating four times yields
+    \[u = Ce^x + Ex^3 + Fx^2 + Gx + H.\]
+    Clearly \(u_h = Ae^x + H\) and the form of the particular solution is \(u_P = x(Ex^2 + Fx + G)\). Substituting we find \(E = -1/3, F = -1\) and \(G = -2\).
+}
+
+\subsection{Judicious Guessing Method Continued}
+\thrm{Polynomial Solutions: The Reamining Case}{
+    Let \(L = p(D)\) and assume \(p(0) = p'(0) = \cdots = p^{(k - 1)}(0) = 0\) but \(p^{(k)}(0) \neq 0\) where \(1 \leq k \leq m - 1\). For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\)such that \(u_P(x) = x^Kv(x)\) satisfies \(Lu_P = x^r\).
+}
+
+\thrm{Exponential Times Polynomial: Remaining Case}{
+Let \(L = p(D)\) and assume \(p(\mu) = p'(\mu) = \cdots = p^{(k - 1)}(\mu) = 0\). But \(p^{(k)}(\mu) \neq 0\), where \(1 \leq k \leq m - 1.\) For any integer \(r \geq 0\), there exists a unique polynomial \(v\) of degree \(r\) such that \(u_P(x) = x^kv(x)e^{\mu x}\) satisfies \(Lu_P = x^re^{\mu x}\).
+}
+
+\subsection{Variation of Parameters}
+\exmp{Example}{
+Find the general solution to \(u'' - 4u' + 4u = (x + 1)\exp 2x\).
+
+Note first that the general solution, \(u_h\), to \(u'' - 4u' + 4u = 0\) is
+\[u(x) = c_1 e^{2x} + c_2xe^{2x}\]
+since the characteristic equation is \(0 = r^2 - 4r + 4 = (r - 2)^2\). Then
+\[W(x) = \begin{vmatrix}
+        e^{2x}  & xe^{2x}           \\
+        2e^{2x} & e^{2x} + 2xe^{2x} \\
+    \end{vmatrix}
+    = e^{4x} + 2xe^{4x} - 2xe^{4x} = e^{4x}.
+\]
+
+So by the method of variation of parameters:
+\[v_1'(x) = e^{-4x} \cdot -xe^{2x}(x + 1)e^{2x} \text{ and } v_2'(x) = e^{-4x} \cdot e^{2x}(x+1)e^{2x}.\]
+In other words,
+\[v_1'(x) = -x^2 - x \text{ and } v_2'(x) = x + 1.\]
+Therefore \(u(x) = c_1e^{2x} + c_2xe^{2x} - (\frac{1}{3}x^3 + \frac{1}{2}x^2)e^{2x} + (\frac{1}{2}x^2 + x) xe^{2x}\).
+}
+
+\section{Solution via Power Series}
+
+\paragraph{General Case}
+Consider a general second-order, linear, homogenous ODE
+\[Lu = a_2(x)u'' + a_1(x)u' + a_0(x)u = 0.\]
+Equivalently,
+\[u'' + p(x)u' + q(x)u = 0,\]
+where
+\[p(x) = \frac{a_1(x)}{a_2(x)} \text{ and } q(x) = \frac{a_0(x)}{a_2(x)}.\]
+Assume that \(a_j\) is \textbf{analytic} at 0 for \(0 \leq j \leq 2\). Then \(p\) and \(q\) are analytic at 0, that is, they admit power series expansions
+\[p(z) = \sum_{k=0}^{\infty} p_kz^k \text{ and } q(z) = \sum_{k=0}^{\infty}q_kz^k \text{ for } |z| < \rho,\]
+for some \(\rho > 0\).
+
+\thrm{Convergence Theorem}{
+    If the coefficients \(p(z)\) and \(q(z)\) are analytic for \(|z| < \rho\), then the formal power series for the solution \(u(z)\), constructed above, is also analytic for \(|z| < \rho\).
+}
+
+\exmp{Power Series at Zero}{
+Consider
+\[Lu = (1-x^2)u'' - 5xu' - 4u = 0, \quad u(0) = 1, \quad u'(0) = 2.\]
+In this case,
+\[p(z) = \frac{-5z}{1-z^2} = -5\sum_{k=0}^{\infty}z^{2k + 1} \text{ and } q(z) = \frac{-4}{1 - z^2} = -4 \sum_{k=0}^{\infty}z^{2k}\]
+are analytic for \(|z| < 1\), so the theorem guarantees that \(u(z)\), given by the formal power series, is also analytic for \(|z| < 1\).
+}
+
+\paragraph{Expansion about a Point other than Zero}
+Suppose we want a power series expansion about a point \(c \neq 0\), for instance because the initial conditions are given at \(x = c\).
+
+A simple change of the independent variable allows us to write
+\[u = \sum_{k=0}^{\infty} A_k(z- c)^k = \sum_{k=0}^{\infty} A_kZ^k \text{ where } Z=z-c.\]
+
+Since \(du / dx = du / dZ\) and \(d^2u/dz^2 = d^2u/dZ^2\), we obtain the translated equation
+\[\frac{d^2u}{dZ^2} + p(Z + c) \frac{du}{dZ} + q(Z + c)u = 0.\]
+Now compute that \(A_k\) using the series expansions of \(p(Z + c)\) and \(q(Z + c)\) in powers of \(Z\).
+
+\section{Singular ODEs}
+In general, we do not want \(L\) to be singular on an interval for which we wish to solve \(Lu = f\). However, some important applications lead to singular ODEs so we now address this case.
+
+A second-order \textbf{Euler-Cauchy ODE} has the form
+\[Lu = ax^2u'' + bxu' + cu = f(x),\]
+where \(a, b\) and \(c\) are constants with \(a \neq 0\). This ODE is singular at \(x = 0\).
+
+Noticing that
+\[Lx^r = [ar(r - 1) + br + c]x^r,\]
+we see that \(u = x^r\) is a solution of the homogenous equation \((f = 0)\) iff
+\[ar(r - 1) + br + c = 0.\]
+
+\paragraph{Factorisation}
+Suppose \(ar(r - 1) + br + c = a(r - r_1)(r - r_2)\). If \(r_1 \neq r_2\) then the general solution of the homogenous equation \(Lu = 0\) is
+\[u(x) = C_1x^{r_1} + C_2x^{r_2}, \quad x > 0.\]
+
+\prop{Lemma}{
+If \(r_1 = r_2\) then the general solution of the homogenous Euler-Cauchy equation \(Lu = 0\) is
+\[u(x) = C_1x^{r_1} + C_2x^{r_1}\ln x, \quad x > 0.\]
+}
+
+\paragraph{Euler-Cauchy Equations with Nonreal Indicial Roots}
+Suppose that \(r_{1,2} = \alpha \pm \beta i\) are the roots of the indicial equation
+\[ar(r - 1) + br + c = 0\]
+associated to the Euler-Cauchy equation
+\[at^2u'' + btu' + cu = 0.\]
+Then the real-valued solutions can be derived as follows. First note that
+\[t^{\alpha + \beta i} = t^\alpha t^{\beta i}\]
+is a solution. Then notice that
+\[t^{\beta i} = e^{\ln t^{\beta i}} = e^{i \ln t^\beta} = \cos(\ln(t^\beta)) + i\sin(\ln(t^\beta)).\]
+So,
+\[t^\alpha t^{\beta i} = t^{\alpha} e^{\ln t^{\beta i}} = t^\alpha e^{i \ln t^\beta} = t^\alpha \left(\cos(\ln(t^\beta)) + i\sin(\ln(t^\beta))\right)\]
+is a solution. Finally, since each of the real part an the imaginary part is .separately a (linear independent) solution, we see that the general solution in this case is (for \(t > 0\))
+\[u(t) = t^{\alpha}\left(c_1 \cos(\ln(t^\beta)) + i\sin(\ln(t^\beta))\right).\]
+
+\exmp{Example}{
+    Consider \(t^2 u'' - tu' + 5u = 0\). Then the indicial equation is
+    \[r(r - 1) - r + 5 = 0 \implies r = 1 \pm 2i.\]
+    So the general solution is,
+    \[u(t) = t(c_1 \cos \ln t^2 + c_2 \sin\ln t^2).\]
+}
+
+\bigskip
+A number of important applications lead to ODEs that can be written in the \textbf{Frobenious normal form}
+\[z^2u'' + zP(z)u' + Q(z)u = 0,\]
+where \(P(z)\) and \(Q(z)\) are analytic at \(z = 0\):
+\[P(z) = \sum_{k=0}^{\infty}P_k z^k \text{ and } Q(z) = \sum_{k=0}^{\infty}Q_k z^k, \quad |z| < \rho.\]
+
+Now consider \(z^2u'' + zP(z) u' + Q(z)u = 0\). Formal manipulations show that \(Lu(z)\) equals
+\[I(r)A_0 z^r + \sum_{k=1}^{\infty}\left(I(k + r) A_k + \sum_{j=0}^{k-1} \left[(j + r)P_{k - j} + Q_{k - j} \right]A_j \right)z^{k + r},\]
+where \(I(r)\) is the indicial polynomial \(I(r) := r(r - 1)P_0 r + Q_0\), so we define \(A_0(r) = 1\) and
+\[A_k(r) = \frac{-1}{I(k + r)} \sum_{j=0}^{k-1}[(j + r)P_{k-j} + Q_{k - j}]A_j(r), \quad k \geq 1,\]
+provided \(I(k + r) \neq 0\) for all \(k \geq 1\).
+
+\section{Bessel and Legendre Equations}
+\subsection{Bessel Equations and Functions}
+The \textbf{Bessel equation with parameter} \(\nu\) is
+\[z^2u'' + zu' + (z^2 - \nu^2)u = 0.\]
+This ODE is in Frobenius normal form, with indicial polynomial \(I(r) = (r + \nu)(r - \nu)\),
+and we seek a series solution
+\[u(z) = \sum_{k=0}^{\infty} A_k z^{k + r}.\]
+We assume \(\Re \nu \geq 0\), so \(r_1 = \nu\) and \(r_2 = -\nu\).
+
+With the normalisation
+\[A_0 = \frac{1}{2^\nu\Gamma(1 + \nu)}\]
+the series solution is called the \textbf{Bessel function of order \(\mathbf{\nu}\)} and is denoted
+\[J_\nu (z) = \frac{(z/2)^\nu}{\Gamma(1+\nu)} \left[1 - \frac{(z/2)^2}{1+\nu} + \frac{(z/2)^4}{2!(1+\nu)(2+v)}- \cdots\right].\]
+
+From the functional equation \(\Gamma(1+z) = z\Gamma(z)\) we see that
+\[J_\nu (z) = \frac{(z/2)^\nu}{\Gamma(1+v)}-\frac{(z/2)^{\nu+2}}{\Gamma(2+\nu)} + \frac{(z/2)^{\nu + 4}}{2!\Gamma(3+v)} - \frac{(z/2)^{\nu + 6}}{3!\Gamma(4+\nu)}+ \cdots\]
+and so
+\[J_\nu (z) = \sum_{k=0}^{\infty} \frac{(-1)^k (z/2)^{2k + \nu}}{k!\Gamma(k + 1 + \nu)}.\]
+
+\subsection{Legendre Equation}
+The \textbf{Legendre equation} with parameter \(nu\) is
+\[(1-z^2)u'' - 2zu' + \nu(\nu + 1)u = 0.\]
+
+This ODE is not singular at \(z = 0\) so the solution has an ordinary Taylor series expansion
+\[u = \sum_{k = 0}^{\infty}A_kz^k.\]
+
+% skipped computation
+The \(A_k\) must satisfy
+\[(k+1)(k+2)A_{k+2} - [k(k+1) - \nu(\nu + 1)A_k] = 0\]
+for \(k \geq 0\), and since
+\[k(k+1) - \nu(\nu + 1) = (k - \nu)(k + \nu + 1),\]
+the recurrence relation is
+\[A_{k+1} = \frac{(k-\nu)(k + \nu + 1)}{(k + 1)(k+ 2)}A_k \text{ for } k \geq 0.\]
+
+We have
+\[u(z) = A_0u_0 (z) + A_1u_1(z)\]
+where
+\[u_0(z) = 1 - \frac{\nu(\nu + 1)}{2!}z^2 + \frac{(\nu - 2)\nu(\nu + 1)(\nu +3)}{4!}z^4 - \cdots\]
+and
+\[u_1(z) = z - \frac{(\nu - 1)(\nu + 2)}{3!}z^3 + \frac{(\nu - 3)(\nu - 1)(\nu + 2)(\nu + 4)}{5!}z^5 - \cdots.\]
+
+Suppose now that \(\nu = n\) is a non-negative integer. If \(n\) is even the series for \(u_0(z)\) terminates, whereas if \(n\) is odd then the series for \(u_1(z)\) terminates. \\
+
+The terminating solution is called the \textbf{Legendre polynomial} of degree \(n\) and is denoted by \(P_n(z)\) with the normalization
+\[P_n(1) = 1.\]
+
+\exmp{Lengdre Polynomials}{
+    The first few Legendre polynomials are \\
+    \begin{alignat*}{2}
+        P_0(z) & = 1,                     \quad &  & P_3(z)  = \frac{1}{2}(5z^3-3z),           \\
+        P_1(z) & = z,                     \quad &  & P_4(z)  = \frac{1}{8}(35z^4 - 30z^2 + 3), \\
+        P_2(z) & = \frac{1}{2}(3z^2 - 1), \quad &  & P_5(z)  = \frac{1}{8}(63z^5-70z^3 + 15z).
+    \end{alignat*}
+
+    Notice that \(P_n\) is an even or odd function according to whether \(n\) is even or odd.
+}

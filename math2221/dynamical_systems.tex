@@ -1,0 +1,657 @@
+\chapter{Dynamical Systems}
+\section{Terminology}
+We begin with some examples of how systems of differential equations arise in applications, and see how all such problems can be formulas as a \textbf{first-order} system
+\[\frac{d\vx}{dt} = \mathbf{F}(\vx).\]
+
+Such a formulation leads to a natural geometric interpretation of a solution.
+
+\exmp{Lotka-Volterra Equations}{
+    Simplified ecology with two species:
+    \begin{align*}
+        F(t) & =  \text{ number of foxes at time t},   \\
+        R(t) & =  \text{ number of rabbits at time t}.
+    \end{align*}
+    Assume populations large enough at \(F\) and \(R\) can be treated as smoothly varying in time.
+
+    In the 1920s, Alfred Lotka and Vito Volterra independently proposed the predator-prey model
+    \begin{alignat*}{2}
+        \frac{dF}{dt} & = -aF + \alpha FR, \quad & F(0) = F_0, \\
+        \frac{dR}{dt} & = bR - \beta FR, \quad   & R(0) = R_0.
+    \end{alignat*}
+    Here \(a, \alpha, b\) and \(\beta\) are non-negative constants.
+}
+\bigskip
+Any first-order system for \(N\) ODEs in the form
+
+\begin{alignat*}{2}
+    \frac{dx}{dy}   & = F_1(x,y, \dots, x_N), \quad  &  & x(0) = x_{10},                \\
+    \frac{dy}{dt}   & = F_2(x, y, \dots, x_N), \quad &  & y(0) = x_{20},                \\
+                    & \vdots                         &  & \phantom{y(0) = x_{20}}\vdots \\
+    \frac{dx_N}{dt} & = F_N (x,y, \dots, x_N), \quad &  & x_N(0) = x_{N0},
+\end{alignat*}
+
+can be written in vector notation as
+\[\frac{d\vx}{dt} = \mathbf{F}(\vx) \quad \vx(0) = \vx_0.\]
+The system of ODEs is determined by the \textbf{vector field} \(\mathbf{F}: \bR^N \to \bR^N\).
+
+A system of ODEs of the form
+\[\frac{d\vx}{dt} = \mathbf{F}(\vx)\]
+is said to be \textbf{autonomous}.
+
+In a \textbf{non-autonomous} system, \(\mathbf{F}\) will depend explicitly on \(t\):
+\[\frac{d\vx}{dt} = \mathbf{F}(\vx, t).\]
+
+It can be shown that it is sufficient (in principle) to develop theory for the autonomous case as a non-autonomous system can be converted into an autonomous system.
+
+\paragraph{Second-order ODE}
+Consider an initial-value problem for a general (possibly non-autonomous) second-order ODE
+\[\frac{d^2 x}{dt^2} = f\left(x, \frac{dx}{dt}, t \right),  \text{ with } x= x_0  \text{ and } \frac{dx}{dt} = y_0  \text{ at } t= 0.\]
+If \(x = x(t)\) is a solution, and if we let \(y = dx/dt\), then
+\[\frac{dy}{dt} = \frac{d^2x}{dt^2} = f\left(x, \frac{dx}{dt}, t \right) = f(x, y, t),\]
+that is, \((x, y)\) is a solution of the first-order system
+\begin{alignat*}{2}
+    \frac{dx}{dt} & = y,         & \quad x(0) = x_0, \\
+    \frac{dy}{dt} & = f(x, y, t) & \quad y(0) = y_0.
+\end{alignat*}
+
+
+\section{Existence and Uniqueness}
+The most fundamental question about a dynamical system
+\[\frac{d\vx}{dt} = \mathbf{F}(\vx, t)\]
+is
+\begin{quote}
+    For a given initial value \(\vx_0\), does a solution \(\vx(t)\) satisfying \(\vx(0) = \vx_0\) exist, and if so is this solution unique?
+\end{quote}
+Answer is \textbf{yes}, whenever the vector field \(\vF\) is \textbf{Lipschitz}. \\
+
+The number \(L\) is a \textbf{Lipschitz constant} for a function \(f: [a, b] \to \bR\) if
+\[|f(x) - f(y)| \leq L|x - y| \quad  \text{ for all } x,y \in [a, b].\]
+
+\exmp{Example}{
+    Consider \(f(x) = 2x^2 -x + 1\) for \(0 \leq x \leq 1\). Since
+    \begin{align*}
+        f(x) - f(y) & = 2(x^2 - y^2) - (x - y) = 2(x + y)(x - y) - (x - y) \\
+                    & (2x + 2y - 1)(x - y)
+    \end{align*}
+    we have \(|f(x) - f(y)| = |2x + 2y - 1||x - y|\) so a Lipschitz constant is
+    \[L = \max_{x, y \in [0, 1]} |2x + 2y - 1| = 3.\]
+}
+\bigskip
+We say that the function \(f: [a, b] \to \bR\) is Lipschitz if a Lipschitz constant for \(f\) exists.
+
+\thrm{Lipschitz Continuity}{
+    If \(f\) is Lipshictz then \(f\) is (uniformly) continuous.
+}
+
+\exmp{Continous does not imply Lipschitz}{
+    Consider the (uniformly) continous function
+    \[f(x) = 3 + \sqrt{x}  \text{ for } 0 \leq x \leq 4.\]
+    In this case, if \(x, y \in (0, 4]\) then
+    \begin{align*}
+        f(x) - f(y) & = \sqrt{x} - \sqrt{y} = \left(\sqrt{x} - \sqrt{y} \times \frac{\sqrt{x} + \sqrt{y}}{\sqrt{x} + \sqrt{y}}\right) \\
+                    & = \frac{x - y}{\sqrt{x} + \sqrt{y}}
+    \end{align*}
+    so if a Lipschitz constant \(L\) exists then
+    \[L \geq \frac{|f(x) - f(y)|}{|x - y|} = \frac{1}{\sqrt{x} + \sqrt{y}}\]
+    for arbitrarily small \(x\) and \(y\), a contradiction.
+}
+
+\bigskip
+A function \(f: I \to \bR\) is \(C^k\) if \(f, f', f'', \dots, f^{(k)}\) all exist and are continuos on the interval \(I\).
+
+\thrm{Theorem}{
+For any closed and bounded interval \(I = [a, b]\), if \(f\) is \(C^1\) on \(I\) then \(L = \max_{x \in I} |f'(X)|\) is a Lipschitz constant for \(f\) on \(I\).
+}
+
+\bigskip
+A vector field \(\vF: S \in \bR^N\) is Lipschitz on \(S \subseteq \bR^N\) if
+\[\norm*{\vF(\vx) - \vF(\vy)} \leq L\norm*{\vx - \vy} \quad  \text{ for all} \vx, \vy \in S\]
+Here,
+\[\norm*{\vx} = \left(\sum_{j=1}^{N} x_j^2\right)^\frac{1}{2}\]
+denotes the \textbf{Euclidean norm} of the vector \(\vx \in \bR^N\).
+
+We say that \(\vF(\vx, t)\) is \textbf{Lipschitz in \(\vx\)} if
+\[\norm*{\vF(\vx, t) - \vF(\vy, t)} \leq L\norm*{\vx - \vy}.\]
+
+\thrm{Local Existence and Uniquness}{
+    Let \(\vx_0 \in \bR^N\), fix \(r > 0\) and \(\tau > 0\), and put
+    \[S = \{ (\vx, t) \in \bR^N \times \bR : \norm*{\vx - \vx_0} \leq r  \text{ and } |t| \leq \tau\}.\]
+    If \(\vF(\vx, t)\) is Lipschitz in \(\vx\) for \(\vx, t \in S\), and if
+    \[\norm*{\vF(\vx, t)} \leq M \quad  \text{ for } (\vx, t) \in S,\]
+    then there exists a unique \(C^1\) function \(bfx(t)\) satisfying
+    \[\frac{d\vx}{dt} = \vF(\vx, t) \quad  \text{ for } |t| \leq \min \{r / M, \tau \},  \text{ with } \vx(0) = \vx_0.\]
+}
+
+\section{Linear Dynamical Systems}
+Linear differential equations are generally much easier to solve than nonlinear ones. Fortunately, linear DEs suffice for describing many important applications.
+
+We say that the \(N \times N\), first order system of ODEs
+\[\fracxt = \vF(\vx, t)\]
+is \textbf{linear} if the RHS has the form
+\[\vF(\vx, t) = A(t) \vx + \vb (t)\]
+for some \(N \times N\) matrix-valued function \(A(t) = [a_{ij}(t)]\) and a vector-valued function \(\mbf{b} = [b_i(t)]\). \\
+
+The system is autonomous precisely when \(A\) and \(\mbf{b}\) are constant.
+
+\thrm{Global Existence and Uniqueness}{
+    If the elements of \(A(t)\) and components of \(\mbf{b}\) are continuous for \(0 \leq t \leq T\), then the linear initial-value problem
+    \[\fracxt = A(t)\vx + \vb(t) \quad  \text{ for } 0 \leq t \leq T, \quad \text{ with } \vx(0) = \vx_0,\]
+    has a unique solution \(\vx(t)\) for \(0 \leq t \leq T\).
+}
+
+\bigskip
+We now investigate the special case when \(A\) is constant and \(\vb(t) = \mbf{0}\):
+\[\fracxt = A\vx\]
+
+\paragraph{General Solution via Eigensystem}
+If \(\vv\) is a constant vector and \(A\vv = \lambda \vv\), we define \(\vx(t) = e^{\lambda t}\vv\). Then
+\[\fracxt = \lambda e^{\lambda t}\vv = e^{\lambda t}(\lambda \vv) = e^{\lambda t}(A \vv) = A(e^{\lambda t}\vv = A\vx)\]
+that is, \(\vx\) is a solution of \(d vx / dt = A\vx\).
+If \(A\vv_j = \lambda_j \vv_j\) for \(1 \leq j \leq N\), then the linear combination
+\[\vx(t) = \sum_{j=1}^N c_j e^{\lambda_j}t \vv_j\]
+is also a solution because the ODE is linear and homogenous. Provided the \(\vv_j\) are linearly independent, then the above equation is a \textbf{general solution} because given any \(x_0 \in \bR^N\) there exist unique \(c_j\) such that
+\[\vx(0) = \sum_{j=1}^N c_j \vv_j = \vx_0.\]
+
+\exmp{Example}{
+    Consider
+    \begin{alignat*}{2}
+        \frac{dx}{dt} & = -5x + 2y, & \quad x(0) = 5, \\
+        \frac{dy}{dt} & = -6x + 3y  & \quad y(0) = 7.
+    \end{alignat*}
+    Note that the initial value problem can be written in the vector form
+    \[\vx'(t) = \vA\vx(t), \vx(0) = \vx_0,\]
+    \[\vA = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3 \\
+        \end{bmatrix} \quad  \text{ and } \vx_0 := \begin{bmatrix}
+            5 \\ 7
+        \end{bmatrix}\]
+
+    Solving the system, using the eigenpair approach, we would need to find the eigenvectors and eigenvalues.
+
+    Characteristic equation is
+    \[0 = |\vA - \lambda \vI| = (-5 - \lambda)(3 - \lambda) + 12 \implies \lambda_1 := -3  \text{ and } \lambda_2 = 1.\]
+    Next we find the associated eigenvectors.
+    \begin{align*}
+        \lambda_1 & = -3 : (\vA + 3\vI)\vv = \vzero \implies \vv_1 :=
+        \begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix}
+        \lambda_2 & = 1 : (\vA + \vI)\vv = \vzero \implies \vv_1 :=
+        \begin{bmatrix}
+            1 \\ 3
+        \end{bmatrix}
+    \end{align*}
+
+    This means that a general solution of the system \(\vx' = \vA\vx\) is
+    \[\vx(t) = c_1 e^{-3t}\begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix} + c_2e^t \begin{bmatrix}
+            1 \\ 3
+        \end{bmatrix}\]
+    Applying the initial value we can see that the unique solution is \(x(t) = 4e^{-3t} + e^t\) and \(y(t) = 4e^{-3t} + 3e^t\).
+}
+
+\bigskip
+A square matrix \(A \in \bC^{N \times N}\) is \textbf{diagonalisable} if there exists a non-singular matrix \(Q \in \bC^{N \times N}\) such that \(Q^{-1}AQ\) is diagonal.
+
+\thrm{Theorem}{
+    A square matrix \(A \in \bC^{N \times N}\) is diagonalisable if and only if there exists a basis \(    \{\vv_1, \vv_2, \dots, \vv_N\}\) for \(\bC^N\) consisting of eigenvectors of \(A\). Indeed if,
+    \[A\vv_j = \lambda_j \vv_j  \text{ for } j = 1,2, \dots, N,\]
+    and we put \(Q = \begin{bmatrix}
+        \vv_1 & \vv_2 & \cdots \vv_N
+    \end{bmatrix}\) then \(Q^{-1}AQ = A\) where
+    \[A = \begin{bmatrix}
+            \lambda_1           & \phantom{\cdots} & \phantom{\lambda_N} \\
+            \phantom{\lambda_1} & \ddots           & \phantom{\lambda_N} \\
+            \phantom{\lambda_1} & \phantom{\cdots} & \lambda_N
+        \end{bmatrix}
+    \]
+}
+
+\bigskip
+Consider a diagonalisable matrix \(A\). Since \(Q^{-1}AQ = \Lambda\), it follows that \(A\) has an eigenvalue decomposition
+\[A = Q\Lambda Q^{-1}.\]
+
+In general, we see by induction on \(k\) that
+\[A^k = Q\Lambda^k Q^{-1}  \text{ for } k = 0,1,2, \dots\]
+
+\exmp{Example}{
+    \[A = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3
+        \end{bmatrix}\]
+    then
+    \[\Lambda = \begin{bmatrix}
+            -3 & 0 \\
+            0  & 1
+        \end{bmatrix}, \quad Q = \begin{bmatrix}
+            1 & 1 \\
+            1 & 3
+        \end{bmatrix}, \quad Q^{-1} = \frac{1}{2}\begin{bmatrix}
+            3  & -1 \\
+            -1 & 1
+        \end{bmatrix}
+    \]
+    so
+    \[A^k = Q\Lambda^k Q^{-1} = \frac{1}{2}
+        \begin{bmatrix}
+            (-1)^k \times 3^{k + 1} - 1 & (-1)^{k + 1} \times 3^k + 1 \\
+            (-1)^k \times 3^{k + 1} - 3 & (-1)^{k + 1} \times 3^k + 3
+        \end{bmatrix}.\]
+}
+
+\bigskip
+For any polynomial
+\[p(z) = c_0 + c_1z + c_2z^2 + \cdots + c_mz^m\]
+and any square matrix \(A\), we define
+\[p(A) = c_0I + c_1A + c_2A^2 + \cdots + c_mA^m.\]
+
+When \(A\) is diagonalisable, \(A^k = Q\Lambda^k Q^{-1}\) so
+\begin{align*}
+    p(A)   & = c_0QIQ^{-1} + c_1Q\Lambda Q^{-1} + \cdots + c_mQ\Lambda^m Q^{-1} \\
+    \vdots &                                                                    \\
+           & =      Q p(\Lambda)Q^{-1}
+\end{align*}
+
+\prop{Lemma}{
+    For any polynomial \(p\) and any diagonal matrix \(\Lambda\),
+    \[p(A) = \begin{bmatrix}
+            p(\lambda_1)            & \phantom{\cdots} & \phantom{p(\lambda_N)  } \\
+            \phantom{p(\lambda_1)}  & \ddots           & \phantom{p(\lambda_N)}   \\
+            \phantom{p(\lambda_1) } & \phantom{\cdots} & p(\lambda_N)
+        \end{bmatrix}\]
+}
+
+\thrm{Theorem}{
+    If two polynomials \(p\) and \(q\) are equal on the specturm of a diagonlisable matrix \(A\), that is, if
+    \[p(\lambda_j) = q(\lambda_j)  \text{ for } j = 1,2, \dots, N,\]
+    then \(p(A) = q(A)\).
+}
+
+\exmp{Example}{
+    Recall that
+    \[A = \begin{bmatrix}
+            -5 & 2 \\
+            -6 & 3 \\
+        \end{bmatrix}\]
+    has eigenvalues \(\lambda_1 = -3\) and \(\lambda_2 = 1\). Let
+    \[p(z) = z^2 - 4 \quad \text{ and } \quad q(z) = -2z - 1,\]
+    and observe
+    \[p(-3) = 5 = q(-3) \text{ and } p(1) = -3 = q(1).\]
+    We find
+    \[p(A) = A^2 - 4I = \begin{bmatrix}
+            9  & -4 \\
+            12 & -7
+        \end{bmatrix} = -2A - I = q(A).\]
+}
+
+\thrm{Exponential of a Diagonalisable Matrix}{
+    If \(A = Q\Lambda Q^{-1}\) is diagonalisable, then
+    \[e^A = Qe^\Lambda Q^{-1}  \text{ and } e^\Lambda = \begin{bmatrix}
+            e^{\lambda_1} &               &        &               \\
+                          & e^{\lambda_2} &        &               \\
+                          &               & \ddots &               \\
+                          &               &        & e^{\lambda_N}
+        \end{bmatrix}\]
+}
+
+\bigskip
+Given a forced linear system of the form \(\vx' - \vA\vx(t) = \mbf{f}(t).\) We can use the \textbf{variation of constants formula} to solve the vector equation.
+
+\[\vx(t) = e^{\vA t}\vx_0 + e^{\vA t} \int_0^t e^{-\vA s}\mbf{f}(s) \, ds.\]
+
+\paragraph{Fundamental Matrix}
+A fundamental matrix \(\Phi\) for the linear homogenous vector equation
+\[\vx'(t) = \vA\vx(t)\]
+satisfies the following two properties.
+\begin{enumerate}
+    \item The columns of \(\mbf{X}\) are linearly independent vector functions so that, in particular, \(|\mbf{X}(t)| \neq 0;\) and
+    \item \(\Phi\) solves the matrix equation \(\mbf{X}'(t) = \vA\mbf{X}(t)\).
+\end{enumerate}
+
+\thrm{Theorem}{
+    Suppose that \(\mbf{\Phi}\) is a fundamental matrix for the vector equations
+    \[\vx' = \vA\vx.\]
+    Then every solution of this equation has the form
+    \[\mbf{\Phi}\mbf{c}\]
+    for some constant vector \(\mbf{c}\).
+}
+
+\paragraph{Nilpotent Matrix}
+A matrix is nilpotent if there exists a positive integer \(k\) such that \(\vA^k = \mbf{O}\), where \(\mbf{O}\) denotes the zero matrix. \\
+
+If \(\vA\) is nilpotent then we can easily find \(e^{\vA t}\). In particular,
+\begin{align*}
+    e^{\vA}   & = \sum_{k=0}^{\infty} \frac{\vA^k}{k!}     \\
+    e^{\vA t} & = \vI + t\vA + \frac{1}{2}t^2\vA^2 + \dots
+\end{align*}
+
+\exmp{Example}{
+    \[\vA^2 = \vA\vA = \begin{bmatrix}
+            0 & 0 \\
+            1 & 0
+        \end{bmatrix}\begin{bmatrix}
+            0 & 0 \\
+            1 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            0 & 0 \\
+            0 & 0
+        \end{bmatrix} = \mbf{O}.\]
+
+    Therefore \(\vA\) is nilpotent and, in particular,
+    \[e^{\vA t} = \vI + t\vA = \begin{bmatrix}
+            1 & 0 \\
+            t & 1
+        \end{bmatrix}\]
+}
+
+\section{Stability}
+In many applications we are interested to know how the solution \(\vx(t)\) behaves as \(t \to \infty\), and might not care much about the precise details of the transient behaviour for finite \(t\).
+We say that \(\va \in \bR^N\) is an equilibrium point for the dynamical system \(d \vx / dt = \vF(\vx)\) if
+\[\vF(\va) = \vzero.\]
+Thus the solution of
+\[\frac{d\vx}{dt} = \vF(\vx) \quad  \text{ for all } t, \text{ with } \vx(0) = \va\]
+is just the constant function \(\vx(t) = \va\).
+
+An equilibrium point \(\va\) is \textbf{stable} if for every \(\epsilon > 0\) there exists \(\delta > 0\) such that whenever \(\norm*{\va_0 - \va} <\delta\) the solution of
+\[\fracxt = \vF(\vx) \quad  \text{ for } t > 0,  \text{ with } \vx(0) = \vx_0\]
+satisfies
+\[\norm*{\vx(t) - \va} < \epsilon  \text{ for all } t > 0.\]
+
+Let \(D\) be an open subset of \(\bR^N\) that contains an equilibrium point \(\va\). We say that \(\va\) is \textbf{asymptotically stable} in \(D\) if \(\va\) is stable and, whenever \(\va_0 \in D\), the solution of
+\[\fracxt = \vF(\vx) \quad  \text{ for } t > 0, \text{ with } \vx(0) = \vx_0\]
+satisfies
+\[\va(t) \to \va  \text{ as } t \to \infty.\]
+In this case \(D\) is called a \textbf{domain of attraction} for \(\va\).
+
+\thrm{Criteria for Stability}{
+Let \(A\) be a diagonlisable matrix with eigenvalues \(\lambda_1, \lambda_2, \dots, \lambda_N\). The equilibrium point \(\va = -A^{-1}\vb\) is of
+\[\fracxt = A\vx + \vb  \text{ with } \vx(0) = \vx_0  \text{ and } \det(A) \neq 0.\]
+\begin{enumerate}
+    \item \textbf{stable} if and only if \(\Re \lambda_j \leq 0\) for all \(j\)
+    \item \textbf{asymptotically stable} if and only if \(\Re \lambda_j < 0\) for all \(j\).
+\end{enumerate}
+In the second case, the domain of attraction is the whole of \(\bR^N\).
+}
+
+\section{Classification of 2D Linear Systems with \(\det A \neq 0\)}
+The equilibrium point \(\va = 0\) may be asymptotically stable, stable or unstable but may also have various other properties.
+
+\subsection{Case 1: Real Eigenvalues and Linearly Independent Eigenvectors}
+Suppose you have real eigenvalues \(\lambda_1\) and \(\lambda_2\) and two linearly independent eigenvectors \(\vv_1\) and \(\vv_2\).
+
+General solution:
+\[\vx = c_1 e^{\lambda_1 t}\vv_1 + c_2 e^{\lambda_2 t}\vv_2.\]
+Canonical form:
+\[\Lambda =
+    \begin{pmatrix}
+        \lambda_1 & 0         \\
+        0         & \lambda_2
+    \end{pmatrix}.
+\]
+
+\exmp{Stable Node Example \((\lambda_2 < \lambda_1 < 0)\)}{
+    \[\frac{dx}{dt} = -x, \quad \frac{dy}{dt} = -2y, A = \begin{pmatrix}
+            -1 & 0   \\
+            0  & - 2
+        \end{pmatrix}\]
+
+    Eigenvalues and eigenvectors:
+    \[\lambda_1 = -1, \lambda_2 = -2, \vv_1 = \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix}, \vv_2 = \begin{pmatrix}
+            0 \\ 1
+        \end{pmatrix}\]
+
+    The general solution is
+    \[\vx = c_1 e^{-t}\vv_1 + c_2 e^{-2t}\vv_2 = \begin{pmatrix}
+            c_1 e^{-t} \\
+            c_2 e^{-2t}
+        \end{pmatrix}.\]
+
+    Solution of the initial value problem:
+    \[\begin{pmatrix}
+            x(y) \\ y(t)
+        \end{pmatrix} = \begin{pmatrix}
+            x(0)e^{-t} \\ y(0) e^{-2t}
+        \end{pmatrix}.\]
+}
+
+\exmp{Unstable Node Example \((0 < \lambda_1 < \lambda_2)\)}{
+    \[\frac{dx}{dt} = x, \quad \frac{dy}{dt} = 2y, A = \begin{pmatrix}
+            1 & 0 \\
+            0 & 2
+        \end{pmatrix}\]
+
+    Eigenvalues and eigenvectors:
+    \[\lambda_1 = 1, \lambda_2 = 2, \vv_1 = \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix}, \vv_2 = \begin{pmatrix}
+            0 \\ 1
+        \end{pmatrix}\]
+
+    Solution of the initial value problem:
+    \[\begin{pmatrix}
+            x(y) \\ y(t)
+        \end{pmatrix} = \begin{pmatrix}
+            x(0)e^{t} \\ y(0) e^{2t}
+        \end{pmatrix}.\]
+    All trajectories (except \(\vx(t) = \vzero\)) are repelled from equilibrium point which is unstable.
+}
+
+\exmp{(Un)stable Stars \((\lambda_1 = \lambda_2 \neq 0)\)}{
+    \[\frac{dx}{dt} = \lambda_1x, \quad \frac{dy}{dt} = \lambda_1y, A = \lambda_1\begin{pmatrix}
+            1 & 0 \\
+            0 & 1
+        \end{pmatrix}\]
+
+    All vectors are eigenvectors.
+
+    The general solution is
+    \[\vx = e^{\lambda_1 t}\vv.\]
+
+    Solution of the initial value problem:
+    \[\vx(t) = e^{\lambda_1 t}\vx(0).\]
+
+    All orbits (except \(vx(t) = \vzero\)) are oriented half-lines which are either attracted \(\lambda_1 < 0\) or repelled (\(\lambda_1 > 0\)) by the equilibrium point.
+}
+
+\exmp{Saddle Node Example (unstable: \(\lambda_2 < 0 < \lambda_1\))}{
+\[\frac{dx}{dt} = x + 2y, \quad \frac{dy}{dt} = 3x + 2y, A = \lambda_1\begin{pmatrix}
+        1 & 2 \\
+        3 & 2
+    \end{pmatrix}\]
+
+Eigenvalues and eigenvectors:
+\[\lambda_1 = -1, \lambda_2 = 4, \vv_1 = \begin{pmatrix}
+        -1 \\ 1
+    \end{pmatrix}, \vv_2 = \begin{pmatrix}
+        2 \\ 3
+    \end{pmatrix}\]
+
+Solution of the initial value problem:
+\[\begin{pmatrix}
+        x(y) \\ y(t)
+    \end{pmatrix} = c_1e^{-t}\begin{pmatrix}
+        -1 \\ 1
+    \end{pmatrix} + c_2e^{4t}\begin{pmatrix}
+        2 \\ 3
+    \end{pmatrix}.\]
+
+Here the first solution is repelling and the section is attracting, so the solution is unstable.
+}
+
+\paragraph{Nonreal eigenstuff for \(A\)}
+\begin{align*}
+    e^{\lambda_1 t} \vv_1 & = e^{(\alpha + \beta i)t} (\mbf{p} + i \mbf{q})                                                                                                                                               \\
+                          & = e^{\alpha t} (\cos(\beta t) + i \sin(\beta t)) (\mbf{p} + i \mbf{q})                                                                                                                        \\
+                          & = \underbrace{e^{\alpha t} (\cos(\beta t) \mbf{p} - \sin(\beta t) \mbf{q})}_{:= \vx_{\Re}(t)} + i \underbrace{e^{\alpha t} (\sin(\beta t) \mbf{p} + \cos(\beta t) \mbf{q})}_{:= \vx_{\Im}(t)}
+\end{align*}
+
+So, a basis for the solution space is then
+\[\mathcal{B}:= \{\vx_{\Re}, \vx_{\Im}\}.\]
+
+The general solution is,
+\[\vx(t) := c_1 \vx_{\Re}(t) + c_2 \vx_{\Im}(t)\]
+for arbitrary constants \(c_1, c_2 \in \bR\).
+
+\subsection{Case 2: Complex Conjugate Eigenvalues}
+Suppose you have complex conjugate eigenvalues \(\lambda_1 = \bar{\lambda_2} \notin \bR\).
+
+General solution:
+\[\vx = c_1 \Re(e^{\lambda_1 t}\vv_1) + c_2 \Im(e^{\lambda_1 t}\vv_1).\]
+Canonical form:
+\[A = \begin{pmatrix}
+        \alpha & \beta  \\
+        -\beta & \alpha
+    \end{pmatrix}, \quad \lambda_1 = \alpha + i\beta.
+\]
+
+\paragraph{Interpretation}
+\[\vx(t) = e^{\alpha t}R(t)\vx(0), \quad R(t) = \begin{pmatrix}
+        \cos \beta t  & \sin \beta t \\
+        -\sin \beta t & \cos \beta t
+    \end{pmatrix}
+\]
+Thus, the initial vector \(\vx(0)\) is rotated by the rotation matrix \(R(t)\) and scaled by the factor \(e^{\alpha t}\).
+
+\exmp{Centre Example (stable: \(\Re(\lambda_1) = 0\))}{
+\[\frac{dx}{dt} = -2y, \quad \frac{dy}{dt} = 2x, A = \lambda_1\begin{pmatrix}
+        0 & -2 \\
+        2 & 0
+    \end{pmatrix}\]
+
+Eigenvalues:
+\[\lambda_1 = \bar{\lambda_2} = -2i\]
+
+Solution of the initial value problem:
+\[\begin{pmatrix}
+        x(y) \\ y(t)
+    \end{pmatrix} = \begin{pmatrix}
+        \cos 2t & -\sin 2t \\
+        \sin 2t & \cos 2t
+    \end{pmatrix} + c_2e^{4t}\begin{pmatrix}
+        y(0) \\ y(0)
+    \end{pmatrix}.
+\]
+
+The solution constitutes orbits which are oriented circles. These are stable (but not asymptotically stable).
+}
+
+\exmp{Stable Foci Example (\(\Re(\lambda_1) < 0\))}{
+\[\frac{dx}{dt} = -x - 2y, \quad \frac{dy}{dt} = 2x - y, A = \lambda_1\begin{pmatrix}
+        -1 & -2 \\
+        2  & -1
+    \end{pmatrix}\]
+
+Eigenvalues:
+\[\lambda_1 = \bar{\lambda_2} = -1 -2i\]
+
+Solution of the initial value problem:
+\[\begin{pmatrix}
+        x(y) \\ y(t)
+    \end{pmatrix} = e^{-t}\begin{pmatrix}
+        \cos 2t & -\sin 2t \\
+        \sin 2t & \cos 2t
+    \end{pmatrix} + c_2e^{4t}\begin{pmatrix}
+        x(0) \\ y(0)
+    \end{pmatrix} \to \vzero \text{ as } t \to \infty.
+\]
+
+Orbits are oriented spirals which are attracted to the asymptotically stable equilibrium point.
+}
+
+\section{Final Remarks on Nonlinear DEs}
+A function \(G: \bR^N \to \bR\) is a \textbf{first integral} (or constant of the motion) for the system of ODEs
+\[\fracxt = \vF(\vx)\]
+if \(G(\vx(t))\) is constant for every solution \(\vx(t)\).
+
+\exmp{Simple Example}{
+    The function \(G(x, y) = x^2 + y^2\) is a first integral of the linear system of ODEs
+    \[\frac{dx}{dt} = -y, \quad \frac{dy}{dt} = x.\]
+    In fact, putting
+    \[\vF(x, y) = \begin{bmatrix}
+            -y \\ x
+        \end{bmatrix}\]
+    we have
+    \[\grad \cdot \vF = \begin{bmatrix}
+            2x \\ 2y
+        \end{bmatrix} \cdot \begin{bmatrix}
+            -y \\ x
+        \end{bmatrix} = (2x)(-y) + (2y)(x) = 0,\]
+    or equivalently,
+    \[\frac{dG}{dt} = \frac{\partial G}{\partial x}\frac{dx}{dt} + \frac{\partial G}{\partial y}\frac{dy}{dt} = (2x)(-y) + (2y)(x) = 0.\]
+}
+
+\thrm{Cayley-Hamilton}{
+    Let \(\vA \in \bR^{n \times n}\). Then \(\vA\) satisfies its characteristic equation.
+}
+
+\thrm{Putzer's Algorithm}{
+Let \(\{\lambda_j\}_{j=1}^n\) be the collection of \(n\) not necessarily distinct eigenvalues of a given matrix \(\vA \in \bR^{n \times n}\). Then
+\[e^{\vA t} = \sum_{k=0}^{n-1} p_{k+1}(t) \mbf{M}_k,\]
+where
+\[\mbf{M}_0 := \vI  \text{ and } \mbf{M}_k := \Pi_{j=1}^k (\vA - \lambda_j \vI), 1 \leq k \leq n,\]
+and the vector-valued function \(\mbf{p}(t) := (p_1(t), \dots, p_n(t))\) satisfies the vectorial equation
+\[
+    \mbf{p}'(t) = \begin{bmatrix}
+        \lambda_1 & 0         & 0         & \cdots & 0         \\
+        1         & \lambda_2 & 0 \cdots  & 0                  \\
+        0         & 1         & \lambda_3 & \cdots & 0         \\
+        \vdots    & \vdots    & \vdots    & \ddots & \vdots    \\
+        0         & \cdots    & 0         & 1      & \lambda_n
+    \end{bmatrix}\mbf{p}(t), \quad
+    \mbf{p}(0) = \begin{bmatrix}
+        1 \\ 0 \\ 0 \\ \vdots \\ 0
+    \end{bmatrix}
+\]
+}
+
+\bigskip
+
+So in the case in which \(n = 2\), i.e., a two-dimensional vector equation,
+Putzer's algorithm reduces to
+\[e^{\vA t} = p_1(t) \vI + p_2(t) (\vA - \lambda_1 \vI),\]
+where
+\[\begin{bmatrix}
+        p'_1(t) \\
+        p'_2(t)
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \lambda_1 & 0         \\
+        1         & \lambda_2
+    \end{bmatrix}
+    \begin{bmatrix}
+        p_1(t) \\
+        p_2(t)
+    \end{bmatrix},
+    \quad
+    \mbf{p}(0) = \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\]
+
+Similarly, in the case in which \(n = 3\), i.e., a three-dimensional vector equation, Putzer's algorithm reduces to
+\[e^{\vA t} = p_1(t) \vI + p_2(t) (\vA - \lambda_1 \vI) + p_3(t)(\vA - \lambda_1 \vI)(\vA - \lambda_2 \vI),\]
+where
+\[\begin{bmatrix}
+        p'_1(t) \\
+        p'_2(t) \\
+        p'_3(t)
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \lambda_1 & 0         & 0         \\
+        1         & \lambda_2 & 0         \\
+        0         & 1         & \lambda_3
+    \end{bmatrix}
+    \begin{bmatrix}
+        p_1(t) \\
+        p_2(t) \\
+        p_3(t)
+    \end{bmatrix},
+    \quad
+    \mbf{p}(0) = \begin{bmatrix}
+        1 \\ 0 \\ 0
+    \end{bmatrix}
+\]

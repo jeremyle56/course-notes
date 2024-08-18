@@ -1,0 +1,195 @@
+\chapter{Initial-Boundary Value Problems in 1D}
+
+We have seen that an initial-value problem for a (nonsingular) linear ODE \(Lu = f\) always has a unique solution. However, matters are not so simple for a \textbf{boundary-value problem}: a solution might not exist, or if one exists it might not be unique.
+
+\section{Two-Point Boundary Value Problems}
+In an \(m\)th order \textbf{initial-value problem} we specify \(m\) initial conditions at the left end of the interval. In an \(m\)th order \textbf{boundary-value problem}, we again specify \(m\) conditions involving the solution and its derivatives, but some apply at the left end and some at the right end.
+
+\exmp{Boundary Conditions}{
+    Consider the second-order ODE
+    \[u'' + u' = 0 \quad \text{ for } 0 < x < \pi\]
+    whose general solution is
+    \[u(x) = A\cos x + B\sin x.\]
+
+    A \textbf{unique solution} \(u(x) = \sin x\) exists satisfying
+    \[u'(0) = 1 \text{ and } u(\pi) = 0.\]
+    \textbf{No solution} exists satisfying
+    \[u'(0) = 0 \text{ and } u(\pi) = 1.\]
+    \textbf{Infinitely many solutions} \(u(x) = C\sin x\) exists satisfying
+    \[u'(0) = 0 \text{ and } u(\pi) = 0.\]
+}
+
+\bigskip
+We want to solve (Inhomogeneous BVP):
+\[Lu = f \quad \text{ for } a < x < b, \quad \text{ with } B_1u = \alpha_1 \text{ and } B_2u = \alpha_2,\]
+where
+\[Lu = a_2u'' + a_1u' + a_0u\]
+is a 2nd-order linear differential operator, and the \textbf{boundary operators} have the form
+\begin{align*}
+    B_1u & = b_{11}u'(a) + b_{10}u(a), \\
+    B_2u & = b_{21}u'(b) + b_{20}u(b).
+\end{align*}
+
+\exmp{Linear Two-Point Bounary Value}{
+    \begin{alignat*}{3}
+        u'' -u  & = x - 1       & \quad & \text{ for } 0 < x < \log 2, \\
+        u       & = 2           & \quad & \text{ at } x = 0,           \\
+        u' - 2u & = 2\log 2 - 4 & \quad & \text{ at } x = \log 2.      \\
+    \end{alignat*}
+}
+
+\section{Existence and Uniqueness}
+Since \(L, B_1\) and \(B_2\) are all linear, the solutions of the \textbf{homogenous BVP}
+\[Lu = 0 \quad \text{ for } a < x < b, \quad \text{ with } B_1u = 0 \text{ and } B_2u = 0,\]
+form a vector space: if \(u_1\) and \(u_2\) are solutions of the inhomogeneous BVP then so is \(u = c_1u_! + c_2u_2\) for any constants \(c_1\) and \(c_2\).
+
+\thrm{Uniqueness}{
+    The inhomogenous BVP has \textbf{at most} one solution iff the homogenous BVP has only the \textbf{trivial solution} \(u \equiv 0\).
+}
+
+\thrm{Exactly One Solution}{
+    If the homogenous problem has only the trivial solution, then for every choice of \(f, \alpha_1\) and \(\alpha_2\) the inhomogenous problem
+    \[Lu = f \quad \text{ for } a < x < b, \quad \text{ with } B_1u = \alpha_1 \text{ and } B_2u = \alpha_2,\]
+    has a unique solution.
+}
+
+\section{Inner Products and Norms of Functions}
+If a homogenous initial boundary value problem admits non-trivial solutions, then the inhomogeneous problem might or might not have any solutions, depending on the forcing term and boundary values. \\
+
+To formulate a condition that guarantees existence we require a short digression that introduces some ideas from functional analysis. \\
+
+The \textbf{inner product} \(\langle f, g \rangle\) of a pair of continuous functions \(f, g : [a, b] \to \bR\) is defined by
+\[\langle f, g \rangle = \int_a^b f(x)g(x) \, dx.\]
+
+The corresponding \textbf{norm} of \(f\) is defined by
+\[\norm*{f} = \sqrt{\langle f, f \rangle} = \left(\int_{a}^{b}[f(x)]^2\right)^{1/2}.\]
+
+We say that \(f\) and \(g\) are \textbf{orthogonal} if \(\langle f, g \rangle = 0\).
+
+\exmp{Inner Product and Norms}{
+If
+\[[a, b] = [-1, 1], \quad f(x) = x, \quad g(x) = \cos\pi x,\]
+then
+\[\inp{f}{g} = \int_{-1}^{1} x\cos\pi x \, dx = 0, \quad \norm*{f} = \sqrt{\frac{2}{3}}, \quad \norm{g} = 1.\]
+Thus, \(f\)and \(g\) are orthogonal over the interval \([-1, 1]\).
+}
+
+\thrm{Cauchy-Schwarz Inequality}{
+    \(|\langle f, g \rangle \leq \norm*{f}\norm*{g}\).
+}
+
+\prop{Triangle Inequality}{
+    \(\norm*{f + g} \leq \norm*{f} + \norm*{g}\).
+}
+
+\section{Self-Adjoint Differential Operators}
+Define the \textbf{formal adjoint} as
+\begin{align*}
+    L^*v & = (a_2v)'' - (a_1v)' + a_0v                        \\
+         & = a_2v'' + (2a_2' - a_1)v' + (a_2'' - a_1' + a_0)v
+\end{align*}
+
+and the \textbf{bilinear concomitant}
+\[P(u, v) = u'(a_2 v) - u(a_2v)' + u(a_1v),\]
+we have the \textbf{Lagrange identity}
+\[\inp{Lu}{v} = \inp{u}{L^*v} + [P(u, v)]_a^b.\]
+
+\exmp{Adjoint Operators and Lagrange identity}{
+    If
+    \[Lu = 3xu'' - (\cos x)u' + e^xu\]
+    then
+    \begin{align*}
+        L^*v & = (3xv)'' + [(\cos x)v]' + e^xv            \\
+             & = 3xv'' + (6 + \cos x)v' + (e^x - \sin x)v
+    \end{align*}
+    and
+    \begin{align*}
+        P(u, v) & = u'(3xv) - u(3xv)' - uv\cos x     \\
+                & = 3x(u'v - uv') - (3 + \cos x) uv.
+    \end{align*}
+    Then \((Lu)v = uL^*v + \frac{d}{dx}P(u,v)\).
+}
+
+\bigskip
+The operator \(L\) is \textbf{formally self-adjoint} if \(L^* = L\).
+
+\thrm{Formally Self-Adjoint Condition}{
+    A second-order, linear differential operator L is formally self-adjoint iff it can be written in the form
+    \[Lu = -(pu')' + qu = -pu'' - p'u' + qu,\]
+    in which case the Lagrange identity takes the form
+    \[(Lu)v - u(Lv) = -(p(x)(u'v - uv'))',\]
+    or in other words, the bilinear concomitant it
+    \[P(u,v) = -p(x)(u'v - uv').\]
+}
+
+\exmp{Bessel and Legendre are Self-Adjoint}{
+Conside the Bessel equation
+\[x^2u'' +xu' + (x^2 - \nu^2)u = f(x).\]
+Dividing both sides by \(x\) gives \(Lu = -x^{-1}f(x)\) where
+\[Lu = -(xu')' + (\nu^2x^{-1}-x)u.\]
+
+The Legendre equation
+\[(1-x^2)u'' - 2xu' + \nu(\nu + 1)u = f(x)\]
+has the form \(Lu = -f(x)\) with \(Lu = -[(1-x^2)u']u' - \nu(\nu + 1)u\).
+}
+
+\paragraph{Transforming to Formally Self-Adjoint Form}
+If we can evaluate the integrating factor
+\[p(x) = \exp\left(\int \frac{a_1(x)}{a_2(x)} dx\right),\]
+then we can transform an ODE of the form \(a_2u'' + a_1u' + a_0u = f(x)\) to formally self-adjoint form:
+\begin{align*}
+    -pu'' - \frac{pa_1}{a_2}u' - \frac{pa_0}{a_2}u & = \frac{-pf(x)}{a_2}, \\
+    -(pu'' + p'u') - \frac{pa_0}{a_2}u             & = \frac{-pf(x)}{a_2}, \\
+    -(pu')' + qu                                   & = \tilde{f}(x)
+\end{align*}
+where \(q = -pa_0/a_2\) and \(\tilde{f} = -pf/a_2\).
+
+\exmp{Euler-Cauchy ODE}{
+Write the Euler-Cauchy ODE \(ax^2u'' + bxu' + cu = f(x)\) in formally self-adjoint form. Note that here \(a_2(x) = ax^2, a_1(x) = bx\) and \(a_0(x) \equiv c\).
+
+Define \(p\) by
+\[p(x) = \exp\left(\int \frac{bx}{ax^2} dx\right) = \exp\left(\frac{b}{a} \int \frac{1}{x} dx\right) = e^{\frac{b}{a}\ln x} = x^{\frac{b}{a}}.\]
+
+Then recalling that
+\[q = -\frac{pa_0}{a_2} \text{ and } \tilde{f} = \frac{pf}{a_2},\]
+the formally self-adjoint form is
+\[-(x^{\frac{b}{a}}u')' - \frac{c}{ax^2}x^{\frac{b}{a}}u = -\frac{1}{ax^2}x^{\frac{b}{a}}f(x).\]
+}
+
+\prop{Self-Adjointness and Boundary Operators}{
+    Any formally self-adjoint operator \(L = -(pu')' + qu\) satisfies the identity
+    \[\inp{Lu}{v} - \inp{u}{Lv} = \sum_{i=1}^{2}(B_iuR_iv - R_iuB_iv),\]
+    for all \(v\) and \(v\) where
+    \[R_1u = \frac{p(a)u(a)}{b_{11}} \text{ or } R_1u = -\frac{p(a)u'(a)}{b_{10}}\]
+    and
+    \[R_2u = -\frac{p(b)u(b)}{b_{21}} \text{ or } R2_u = \frac{p(b)u'(b)}{b_{20}}.\]
+}
+
+\paragraph{Necessary Condition for Existence}
+If \(u\) is a solution of the inhomogeneous BVP, and if \(v\) is a solution of the homogenous problem
+\begin{alignat*}{3}
+    Lv   & = 0 & \quad & \text{ for } a < x < b, \\
+    B_1v & = 0 & \quad & \text{ at } x = a,      \\
+    B_2v & = 0 & \quad & \text{ at } x = b.      \\
+\end{alignat*}
+
+then on the one hand
+\[\inp{Lv}{v} - \inp{u}{Lv} = \inp{f}{v} - \inp{u}{0} = \inp{f}{v}\]
+
+and on the other hand,
+\[\inp{Lv}{v} - \inp{u}{Lv} = \underbrace{\alpha_1}_{=B_1u} R_1 v - R_1u \times \underbrace{0}_{=B_1v} + \underbrace{\alpha_2}_{=B_2u} R_2v - R_2u \times \underbrace{0}_{=B_2v}.\]
+
+then the data \(f, \alpha_1\) and \(\alpha_2\) must satisfy
+\[\inp{f}{v} = \alpha_1 R_1v + \alpha_2R_2v.\]
+
+\thrm{Fredholm Alternative}{
+    Either the homogenous BVP has only the trivial solution \(v \equiv 0\), in which case
+    \begin{quote}
+        the inhomogeneous BVP has a unique solution \(u\) for every choice of \(f, \alpha_1\) and \(\alpha_2\),
+    \end{quote}
+    OR else the homogenous BVP admits non-trivial solutions, in which case
+    \begin{quote}
+        the inhomogeneous BVP has a solution \(u\) iff \(f, \alpha_1\) and \(\alpha_2\) satify \(\inp{f}{v} = \alpha_1 R_1v + \alpha_2R_2v\) for every solution \(v\) of the homogenous BVP.
+    \end{quote}
+    In the latter case, \(u + Cv\) is also a solution of the inhomogeneous BVP for any constant \(C\).
+}
