@@ -1,0 +1,47 @@
+\section{Transformations and Groups}
+
+\begin{definition}
+    A \textit{transformation} on \(\bR^n\) is a \textbf{bijection} from \(\bR^n\) to \(\bR^n\). We will denote \(\allTransformations\) the set of all transformations on \(\bR^n\).
+
+    In particular, a transformation on the Euclidean plane \(\bR^2\) is called a \textbf{plane transformation}.
+\end{definition}
+
+\begin{definition}[Group]
+    A group is a set \(G\) equipped with a map
+    \[* : G \times G \to G, (g, h) \mapsto g * h = gh,\]
+    that satisfies the following axioms:
+    \begin{statements}{G}
+        \item \label{item:G1} \textbf{Associativity}, i.e. \(g, h, k \in G\), then \((gh)k = g(hk)\).
+        \item \textbf{Existence of identity}, i.e. there is an element denoted by \(e\) in \(G\) called the \textit{identity} of \(G\) such that \(eg = g = ge\) for any \(g \in G.\) (Such \(e\) is unique; notation: \(1_G\).)
+        \item \textbf{Existence of inverse}, i.e. for any \(g \in G\), there is an element denoted by \(h \in G\) called the inverse of \(g\) such that \(gh = hg = e\). (\(h\) is also unique; notation: \(g^{-1}\).)
+    \end{statements}
+    A group \(G\) is called commutative or abelian if \(gh = hg\) for all \(g, h \in G\).
+\end{definition}
+
+\begin{proposition}
+    Examples of Transformation Groups
+    \begin{statements}{}
+        \item The set \(\mscr{B}(\bR^n)\) of all transformations on \(\bR^n\) together with the operation of composition forms a group.
+        \item The set \(\mscr{T}(\bR^n)\) of all translations on \(\bR^n\) together with the operation of composition forms a group.
+        \item The set \(\mscr{C}(\bR^n)\) of collineations of \(\bR^n\) together with the operation of composition forms a group.
+    \end{statements}
+\end{proposition}
+
+\begin{definition}[Subgroup]
+    Let \((G, *)\) be a group. A nonempty subset \(H \subseteq G\) is said to be a subgroup of \(G\), denoted by \(H \leq G\), if \((H, *)\) is a group.
+\end{definition}
+
+\begin{lemma}[Subgroup Lemma]
+    A nonempty subset \(H\) of a group \(G\) is a subgroup if and only if the following two closure conditions are satisfied:
+    \begin{statements}{SG}
+        \item Closure under multiplication, i.e. if \(h, k \in H\), then \(hk \in H\);
+        \item Closure under inverse, i.e. if \(h \in H\), then \(h^{-1} \in H\).
+    \end{statements}
+    In particular, \(1_H = 1_G \in H\).
+\end{lemma}
+
+\begin{definition}[Group Isomorphisms]
+    For groups \(G, H\), a map \(f : G \to H\) is called a group homomorphism if \(f(xy) = f(x)f(y)\) for all \(x, y \in G\). A bijective group homomorphism is called an isomorphism. In this case, we say that \(G\) is isomorphic to \(H\). Notation \(G \cong H\).
+\end{definition}
+
+\pagebreak

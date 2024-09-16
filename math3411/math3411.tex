@@ -1,0 +1,47 @@
+\documentclass[10pt, twocolumn]{article}
+
+\usepackage[margin=0.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\graphicspath{./assets}
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+% \setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{\bf Information, Codes and Ciphers}
+\author{By Jeremy Le for MATH3411 24T3}
+\date{}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\subfile{introduction.tex}
+\subfile{error_detection_and_correction_codes.tex}
+
+\end{document}
