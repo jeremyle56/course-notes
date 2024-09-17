@@ -1,0 +1,41 @@
+\section{Translations and Rotations on \(\bR^2\)}
+
+\begin{theorem}
+    An isometry \(\tau\) in \(\bR^n\) is a \textbf{translation} if and only if \(\tau\) is the product of two reflections in parallel hyperplanes.
+\end{theorem}
+
+\begin{corollary}
+    A plane isometry is a translation if and only if it is a product of two reflections in parallel lines.
+\end{corollary}
+
+\begin{definition}
+    A \textbf{rotation} on \(\bR^2\) about a point \(C\), through angle \(\theta\), is the transformation that fixes \(C\) and otherwise sends a point \(P\) to a point \(P'\), where \(d(C, P) = d(C, P')\), and the angle from \(\vec{CP}\) to \(\vec{CP'}\) is \(\theta\) (in anti-clockwise direction) if \(\theta > 0\), and clockwise if \(theta < 0\)). We denote this transformation by \(\rho_{C, \theta}\).
+\end{definition}
+
+\begin{theorem}
+    A plane isometry is a \textbf{rotation} if and only if it is the product of two reflections in intersecting lines. Further we have
+    \begin{statements}{}
+        \item if lines \(l, m\) intersect at \(C\), and the directed angle from \(l\) to \(m\) is \(\frac{\theta}{2} \in (-\frac{\pi}{2}, \frac{\pi}{2}]\), then \(\sigma_m \sigma_l = \rho_{C, \theta}\);
+        \item if lines \(p, q, r\) are concurrent, then there exists a line \(l\) such that \(\sigma_r \sigma_q \sigma_p = \sigma_l\).
+    \end{statements}
+\end{theorem}
+
+\begin{corollary}
+    \begin{statements}{}
+        \item A non-identity rotation (on \(\bR^2\)) fixes exactly one point.
+        \item A rotation with centre \(C\) fixes every circle with centre \(C\).
+        \item The set of all rotations about a particular point (i.e., with centre at a particular point) is a subgroup of the group \(\mscr{I}(\bR^2)\) of isometries; further still, it is a \textbf{commutative} subgroup. In other words,
+        \[\mscr{R}_C := \{\rho_{C, \theta} : \theta \in \bR \} \leq \mscr{I}(\bR^2) \text{ and } \rho\rho' = \rho'\rho, \forall \rho, \rho' \in \mscr{R}_C.\]
+    \end{statements}
+\end{corollary}
+
+\begin{theorem}[Equation of a rotation]
+    \begin{statements}{}
+        \item The rotation \(\rho_{\mbf{0}, \theta}: \bR^2 \to \bR^2\) about the origin \(\mbf{0}\) and through angle \(\theta\) is the linear isomorphism \(T_{Q, \mbf{0}} (\mbf{x}) = Q\mbf{x}\), where \(Q\) is the following matrix:
+        \[Q = \begin{bmatrix}
+                \cos(\theta) & -\sin(\theta) \\
+                \sin(\theta) & \cos(\theta)
+            \end{bmatrix}.\]
+        \item If \(\mbf{c}\) is the position vector of \(C\), then \(\rho_{C, \theta} = T_{\mbf{c}}(\rho_{\mbf{0}, \theta})T_{-\mbf{c}}\). Hence, \(\rho_{\mbf{C}, \theta}\) has the equation \(\rho_{C, \theta}(\mbf{x}) = Q\mbf{x} + \mbf{b}\), where \(Q\) defines \(\rho_{\mbf{0}, \theta}\) as in (1) and \(\mbf{b} = (I - Q)\mbf{c}\). At the group level, we have \(\mscr{R}_C = T_{\mbf{c}}\mscr{R}_{\mbf{0}}T_{-\mbf{c}}\). Call the group \(\mscr{R}_C\) is \textbf{conjugate} to the group \(\mscr{R}_\mbf{0}\).
+    \end{statements}
+\end{theorem}

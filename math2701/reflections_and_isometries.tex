@@ -1,0 +1,63 @@
+\section{Reflections and Isometries}
+
+\begin{definition}
+    Let \(\bH\) be a hyperplane. The reflection \(\sigma_\bH\) in \(\bH\) is the mapping defined by:
+    \[\sigma_\bH (P) =
+        \begin{cases*}
+            P & if \(P \in \bH\); \\
+            P' & if \(P\) is off \(\bH\) and \(\bH\) is the perpendicular bisector of \(\bar{PP'}\).
+        \end{cases*}
+    \]
+    (in the sense that \(d(P, X) = d(P', X)\) for all \(X \in \bH\).)
+\end{definition}
+
+\begin{proposition}
+    Let \(\bH\) be a hyperplane.
+    \begin{statements}{}
+        \item A reflection \(\sigma_\bH\) is an isometry satisfying \(\sigma_\bH^2 = 1\).
+        \item \(\sigma_\bH\) fixes a line \(m \nsubseteq \bH\) if and only if \(m \perp \bH\).
+        \item \(\sigma_\bH\) fixes a line \textbf{pointwise} if and only if \(m \subseteq \bH\).
+    \end{statements}
+\end{proposition}
+
+\begin{theorem}
+    If \(\bH = \bH_{\mbf{n, a}}\), then there exist \(Q = I - \frac{2}{\mbf{n \centerdot n}}\mbf{n n}^T \in O_n(\bR)\) and \(\mbf{b} = 2 \frac{\mbf{a \centerdot n}}{\mbf{n \centerdot n}}\mbf{n}\) such that
+    \[\sigma_\bH (\mbf{x}) = Q\mbf{x} + \mbf{b}.\]
+\end{theorem}
+
+\begin{corollary}
+    In \(\bR^2\), if line \(\ell\) has equation \(aX + bY + c = 0\), then the reflection \(\sigma_\ell\) in \(\ell\) has equation:
+    \begin{align*}
+        \sigma_\ell(\fx) & = \frac{1}{a^2 + b^2}\begin{bmatrix}
+            b^2 - a^2 & -2ab      \\
+            -2ab      & a^2 - b^2
+        \end{bmatrix} \fx + \frac{1}{a^2 + b^2} \begin{bmatrix}
+            -2ac \\ -2bc
+        \end{bmatrix} \\
+                         & = \begin{pmatrix}
+            x \\ y
+        \end{pmatrix} - 2 \frac{(ax + by + c)}{a^2 + b^2} \begin{pmatrix}
+            a \\ b
+        \end{pmatrix}.
+    \end{align*}
+\end{corollary}
+
+% \begin{corollary}
+%     If the hyperplane \(\bH\) has equation \(N_1X_1 + \cdots + N_nX_n + c = 0\), then the reflection \(\sigma_\bH\) in \(\bH\) has equation: for \(\fn = (N_1, \cdots, N_n)^T\),
+%     \[\sigma_\bH(\fn) = \fn - \frac{2}{\fn \cdot \fn}(N_1x_1 + \cdots + N_n x_n + c)\fn.\]
+% \end{corollary}
+
+\begin{definition} [Points in Generic Position]
+    We say that \(m\) points \(P_1(\mbf{p_1}), P_2(\mbf{p_2}), \dots, P_m(\mbf{p}_m)\) in \(\bR^n\) are in \textbf{generic position} if the vectors \(\mbf{p}_i - \mbf{p}_1\), for \(i = 2, 3, \dots, m\), are linearly independent. In particular, \(n + 1\) points in \(\bR^n\) are in generic position if every hyperplane contains at most \(n\) of the \(n + 1\) points.
+\end{definition}
+
+\begin{theorem}
+    \begin{statements}{}
+        \item An isometry on \(\bR^n\) that fixes \(n + 1\) points in generic position is the identity map.
+        \item An isometry on \(\bR^n\) that fixes \(n\) points in generic position is a reflection \textbf{or} the identity.
+        \item An isometry that fixes \(n - 1\) but not \(n\) points in generic position is a product of two \textbf{reflections}.
+        \item Every isometry (in \(\bR^n\)) is a product of \textbf{at most} \(n + 1\) reflections.
+    \end{statements}
+\end{theorem}
+
+\newpage
