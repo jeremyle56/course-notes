@@ -1,13 +1,50 @@
 \section{Error Detection and Correction Codes}
 
+We say that \(\fx\) \textbf{corrupted} to \(\fy\) is denoted by \(\fx \rightsquigarrow \fy\).
 \subsection{ISBN-10 Error Capability}
 ISBN-10 numbers are capable of detecting the two types of errors:
 \begin{enumerate}
-    \item getting a digit wrong
+    \item getting a digit wrong,
     \item interchanging two (unequal) digits.
 \end{enumerate}
 
+\subsection{Types of Codes}
+\begin{itemize}
+    \item \textbf{variable length code}: codewords have different lengths
+    \item \textbf{block code}: codewords have the same lengths
+    \item \textbf{\(t\)-error correcting code}: code can always correct up to \(t\) errors
+    \item \textbf{systematic code}: code with \textbf{information digits} and \textbf{check digits} distinct
+\end{itemize}
+
 \subsection{Binary Repetition Codes}
+A \textbf{binary \(r\)-repetition code} encodes \(0 \to \overbrace{0 \cdots 0}^r\) and \(1 \to \overbrace{1 \cdots 1}^r\). \\
+
 The binary \((2t + 1)\)-repetition code is \(t\)-error correcting.
 
 The binary \(2t\)-repetition code is \((t- 1)\)-error correcting and \(t\)-error detecting.
+
+\subsection{Information Rate and Redundancy}
+The \textbf{information rate} \(R\) is given by,
+\begin{itemize}
+    \item For a code \(C\) of radix \(r\) and length \(n\), \(R = \dfrac{\log_r|C|}{n}\)
+    \item For a \textbf{systematic code}, \(R = \dfrac{\text{\# information digits}}{\text{length of code}}\)
+\end{itemize}
+We then define \textbf{redundancy} = \(\frac{1}{R}\).
+
+\subsection{Binary Hamming Error-Correcting Codes}
+A Binary Hamming \((n, k)\) code is a code of length \(n\) with \(k\) information bits, such that it is a single error correcting and has a parity check matrix, \(H\), of size \(n - k\) by \(n\).
+
+\subsection{Hamming Distance, Weights}
+The \textbf{weight} of an \(n\)-bit word \(\fx\) is defined to be
+\[w(\fx) = \# \{i : 1 \leq i \leq n, x_i \neq 0\}.\]
+
+Given two \(n\)-bit words, the \textbf{Hamming distance} between them is
+\[d(\fx, \fy) = \# \{i : 1 \leq i \leq n, x_i \neq y_i \}.\]
+
+Given some code with set of codewords \(C\), we define \textbf{(minimum) weight} of \(C\) to
+\[w = w(C) = \min\{w(\fx) : \fx \in C, \fx \neq \fzero\}.\]
+
+Similarly, the \textbf{(minimum) distance of \(C\)} is defined by
+\[d = d(C) = \min\{d(\fx, \fy) : \fx, \fy \in C, \fx \neq \fy \}.\]
+
+If \(\fx \rightsquigarrow \fy\), then \(d(\fx, \fy)\) is the number of errors in \(\fy\).
