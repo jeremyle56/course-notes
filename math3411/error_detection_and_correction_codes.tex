@@ -48,3 +48,72 @@ Similarly, the \textbf{(minimum) distance of \(C\)} is defined by
 \[d = d(C) = \min\{d(\fx, \fy) : \fx, \fy \in C, \fx \neq \fy \}.\]
 
 If \(\fx \rightsquigarrow \fy\), then \(d(\fx, \fy)\) is the number of errors in \(\fy\).
+
+\subsection{Decoding Strategies}
+\paragraph{Minimum Distance Decoding Strategy}
+Given a received word \(y\), decode to \textit{closest} codeword \(x\).
+
+\paragraph{Standard Strategy} If received word \(y\) is distance at most \(t\) from a codeword \(x\), then decode \(y\) to \(x\); otherwise flag an error.
+
+\paragraph{Pure Error Detection}
+If received word \(y\) is not a codeword \(x\), then flag an error.
+
+% If \(e + f = d - 1\) and \(f \geq e\), then there is a strategy which is \(e\)-error correcting and \(f\)-error detecting.
+
+\subsection{Sphere Packing}
+The \textbf{sphere} of radius \(r\) around \(\mbf{c}\):
+\[S_r(\mbf{c}) = \{ \fx \in \bZ_2^n : d(\fx, \mbf{c}) \leq r \}.\]
+The volume of this sphere is its size \(|S_r(\mbf{c})|\).
+
+\paragraph{Sphere-Packing Condition Theorem}
+A \(t\)-error correcting binary code \(C\) of length \(n\) has minimum distance \(d = 2y + 1\) or \(2t + 2\), and
+\[|C|\sum_{i=0}^t \binom{n}{i} \leq 2^n.\]
+
+If we have equality in the bound, then we say that the code is perfect.  This means that codewords are evenly spread around in \(\bZ_2^n\) space.
+
+\subsection{Binary Linear Codes}
+A linear code \(C\) is a vector space over some field \(\bF\). Equivalently it is the null-space of
+\[C = \{\fx \in \bF^n : H\fx^T = \fzero \}\]
+of an \(m \times n\) parity check matrix \(H\) with \(m = \rank(H)\).
+\begin{itemize}
+    \item \(\dim C = k = n - m\) by the Rank-Nullity Theorem.
+    \item If \(C\) is binary, then \(|C| = 2^k\).
+    \item \(C\) is systematic.
+    \item If \(H\) is \textbf{reduced echelon form}, then we can choose the non-leading columns of \(H\) to be \textbf{information bits} and the leading columns of \(H\) to be \textbf{check bits}.
+\end{itemize}
+
+\paragraph{Minimum Distance for Linear Codes}
+If \(C\) is a linear code with parity check matrix \(H\), then
+\begin{itemize}
+    \item\(w(C) = d(C)\),
+    \item \(d(C) = \min\{ r: H \text{ has } r \text{ linearly dependent columns } \}\).
+\end{itemize}
+
+For a linear code \(C\), the \textbf{row space} (or \textbf{row span}) of a \(k \times n\) \textbf{generator matrix} \(G\) over \(\bF\) generates \(C\), in the sense that \(C\) is a set of linear combinations of \(G\).
+
+\subsection{Standard Form Matrices}
+For a linear code \(C\) of dimension \(k\) and length \(n = k + m\),
+\begin{itemize}
+    \item \(H = (I_m \mid B)\) is a parity check matrix for \(C\) \textit{if and only if}
+    \item \(G = (-B^T \mid I_k)\) is a generator matrix \(C\).
+\end{itemize}
+
+Linear codes \(C\)and \(C'\) are \textbf{equivalent} if \(C'\) is obtained by permuting the codeword entries of \(C\) by a fixed permutation:
+\[C' = CP = \{ \fx P : \fx \in C \} \text{ for some permutation matrix } P\]
+Note that \(G' = GP\) and \(H' = HP\).
+
+\subsection{Extending Linear Codes}
+The \textbf{extension} of a linear code \(C\):
+\[\hat{C} = \{ x_0x_1 \cdots x_n : x_1 \cdots x_n \in C, x_0 = -(x_1 + \cdots + x_n) \}.\]
+
+The \textbf{extension} \(\hat{C}\) is a linear code with minimum distance \(d(C)\) or \(d(C) + 1\).
+
+\subsection{Radix \(r\) Hamming Codes}
+\begin{itemize}
+    \item Let \(r\) be a prime number and \(m \geq 1\) some integer.
+    \item Write the numbers \(1, \dots, r^m - 1\) in base \(r\), as length \(m\) column vectors.
+    \item Of each set of \(r - 1\) parallel columns, delete all whose \textit{first nonzero entry} is not 1.
+    \item This gives the \textbf{radix \(r\) Hamming code} of length \(n = \frac{r^m - 1}{r - 1}\).
+\end{itemize}
+
+\newpage

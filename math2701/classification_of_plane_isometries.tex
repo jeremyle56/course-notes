@@ -1,0 +1,48 @@
+\section{Classification of Plane Isometries}
+
+\begin{definition}
+    A plane isometry \(\tau\) is called a \textbf{glide reflection} with axis \(c\) (a line) if there exist distinct lines \(a, b\) which are perpendicular to \(c\) such that \(\tau = \sigma_c \sigma_b \sigma_a (= \sigma_b  \sigma_a \sigma_c)\).
+\end{definition}
+
+\begin{proposition}
+    \begin{statements}{}
+        \item A glide reflection is a composition of a reflection in line \(a\) and a halfturn centred at a point off \(a\).
+        \item A glide reflection is a translation followed by a reflection.
+        \item A glide reflection fixes no points.
+        \item A glide reflection fixes exactly one line, the axis, \(c\).
+        \item The midpoint of any point and its image under a glide reflection lies on its axis (\(c\)).
+    \end{statements}
+\end{proposition}
+
+\begin{theorem}
+    Distinct lines \(p, q, r\) are neither concurrent, nor parallel, if and only if \(\sigma_r \sigma_q \sigma_p\) is a glide reflection.
+\end{theorem}
+
+\begin{definition}
+    An isometry that is a product of an even (resp., odd) number of reflections is said to be even (resp., odd) isometry.
+\end{definition}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item The set \(\scrE\) of even isometries in \(\bR^n\) forms a subgroup of \(\scrI\).
+        \item If \(\scrE'\) denotes the set of odd isometries, then \(\scrE \cap \scrE' = \emptyset\).
+        \item If \(\sigma = \sigma_\bH\) is a reflection, then \(\scrE' = \sigma \scrE := \{ \sigma \pi | \pi \in \scrE\}\).
+        \item We also have \(\sigma \scrE = \scrE \sigma\) and \(\scrI = \scrE \bigsqcup \sigma\scrE\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    For any non-identity plane isometries, it is either even or odd. All even isometries are either translations or rotations. All odd isometries are reflections or glide reflections.
+\end{corollary}
+
+\begin{theorem}
+    A product of 4 reflections in \(\bR^2\) is a product of 2 reflections.
+\end{theorem}
+
+\begin{definition}
+    Let \(\Omega \subseteq \bR^n\) be a geometric figure (or a subset). A \textbf{symmetry} of \(\Omega\) si an isometry \(\tau\) such that \(\tau(\Omega) = \Omega\).
+
+    All the symmetries of \(\Omega\) form a group \(\operatorname{sym}(\Omega)\), the \textbf{symmetry group} of \(\Omega\).
+\end{definition}
+
+\newpage

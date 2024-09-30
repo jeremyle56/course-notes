@@ -1,6 +1,6 @@
 \documentclass[12pt, letterpaper]{article}
 
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.5in, bottom=0.75in]{geometry}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -58,10 +58,15 @@
 
 \def\mscr#1{\mathscr{#1}}
 \newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrE}{\mathscr{E}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrS}{\mathscr{S}}
 
 \def\mbf#1{\mathbf{#1}}
+\newcommand{\fa}{\mbf{a}}
 \newcommand{\fn}{\mbf{n}}
 \newcommand{\fx}{\mbf{x}}
+\newcommand{\fzero}{\mbf{0}}
 
 \newcommand{\allTransformations}{\mathscr{B}(\mathbb{R}^n)}
 \newcommand\inp[2]{\langle #1, #2 \rangle}
@@ -89,4 +94,6 @@
 \subfile{subgroups_and_group_of_isometries.tex}
 \subfile{reflections_and_isometries.tex}
 \subfile{translations_and_rotations.tex}
+\subfile{classification_of_plane_isometries.tex}
+\subfile{similarities.tex}
 \end{document}
