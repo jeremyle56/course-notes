@@ -1,0 +1,21 @@
+\section{Normal Subgroups}
+\begin{definition}
+    A subgroup \(K\) of a group \(G\) is called a \textbf{normal subgroup} if \(g^{-1}Kg \leq K\) (equivalently, \(g^{-1}Kg = K, \) or \(gK = Kg\)) for all \(g \in G\). \textbf{Notation: } \(K \trianglelefteq G\).
+\end{definition}
+
+\begin{theorem}
+    Suppose \(\alpha \in \scrS\) is a similarity, and \(G \in \{\scrI, \scrE, \scrD, \scrH, \scrT\}\). Then \(\alpha \tau \alpha^{-1} \in G\), for all \(\tau \in G\). In other words, each of the groups \(\scrI, \scrE, \scrD,\scrH,\scrT\) is a normal subgroup of \(\scrS\).
+\end{theorem}
+
+\begin{corollary}
+    For \(\alpha \in \scrS\), a point \(C\) and a hyperplane \(\bH\) in \(\bR^n\), we have
+    \[\alpha\sigma_\bH\alpha^{-1} = \sigma_{\alpha(\bH)}, \quad \alpha\rho_C\alpha^{-1} = \rho_{\alpha(C)}, \quad \alpha\delta_{C, r}\alpha^{-1} = \delta_{\alpha(C), r}.\]
+    In particular, in \(\bR^2, \alpha\rho_{C, \theta}\alpha^{-1} = \rho_{\alpha(C), \pm \theta}\).
+\end{corollary}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item If \(H \leq G\), then \(G\) is a disjoint union of \textbf{cosets} \(gH, g \in G\).
+        \item If \(K \trianglelefteq G\), then \(G / K := \{gk \mid g \in G \}\) is a group with the subset multiplication. (\(G / K\) is called the \textbf{quotient group} of \(G\) by \(K\)).
+    \end{enumerate}
+\end{proposition}

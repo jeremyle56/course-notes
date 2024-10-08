@@ -1,0 +1,82 @@
+\section{Similarities}
+
+\begin{definition}
+    A transformation \(\alpha: \bR^n \to \bR^n\) is called a \textbf{similarity of ratio} \(r > 0\) if \[d(\alpha(P), \alpha(Q)) = rd(P, Q), \text{ for all } P, Q \in \bR^n.\]
+\end{definition}
+
+\begin{proposition}
+    \begin{statements}{}
+        \item An isometry is a similarity of ratio 1.
+        \item A similarity fixing two points is an isometry.
+        \item A similarity fixing \(n + 1\) points in generic position is the identity.
+        \item The set of all similarities in \(\bR^n\) forms a group, denote this set by \(\scrS\) or \(\scrS(\bR^n)\).
+    \end{statements}
+\end{proposition}
+
+\begin{definition}
+    A \textbf{stretch of ratio} \(r > 0\) about point \(C\) is a transformation \(\delta_{C, r}\) that fixes \(C\) and otherwise sends a point \(P\) to a point \(P'\), where \(P'\) is the unique point on the \textbf{ray} from \(C\) through \(P\) such that \(d(C, P') = r \cdot d(C, P)\).
+\end{definition}
+
+% \begin{proposition}
+%     For any \(r, s \in \bR_{> 0}\), and any \textbf{fixed} point \(C\), we have
+%     \begin{statements}{}
+%         \item \(\delta_{C, r}\delta_{C, s} = \delta_{C, rs}\);
+%         \item \(\delta_{C, r}^{-1} = \delta_{C, r^{-1}}\).
+%     \end{statements}
+
+%     Hence, \(\{ \delta_{C, r} \mid r \in \bR_{> 0} \}\) forms a group that is isomorphic to the group \((\bR_{> 0}, \cdot)\).
+% \end{proposition}
+
+\begin{theorem}{Decomposition of a similarity}
+    If \(\alpha\) is a similarity of ratio \(r > 0\), and \(P\) is any \textbf{fixed} point, then \(\alpha = \tau\delta_{P, r} = \delta_{P, r}\tau'\), for some isometries \(tau, \tau'\). Moreover, we have
+    \[\scrS = \bigsqcup_{r > 0} \scrI S_{P, r} = \bigsqcup_{r > 0} S_{P, r} \scrI \text{ (disjoint unions)},\]
+    where \(\scrI S_{P, r} = \{\tau S_{P ,r } \mid \tau \in \scrI \}\) and \(\S_{P, r} \scrI = \{ S_{P, r} \tau \mid \tau \in \scrI\}\).
+\end{theorem}
+
+\begin{corollary}
+    A similarity is a \textbf{collineation} that preserves betweenness, midpoints, angles, perpendicularity, etc.
+\end{corollary}
+
+\begin{definition}
+    \begin{statements}{}
+        \item A \textbf{point reflection} about \(C(\mbf{c})\) is the isometry \(\rho_C : \bR^n \to \bR^n\) defined by
+        \[\rho_C(\fx) = -(\fx - \mbf{c}) + \mbf{c} = -\fx + 2\mbf{c}.\]
+        \item A \textbf{dilation} about the point \(C\) is a stretch transformation \(\delta_{C ,r} (r > 0)\) about \(C\), or it is a stretch transformation followed by a point reflection both about \(C\) (i.e., \(\rho_C \delta_{C ,r}\)).
+    \end{statements}
+\end{definition}
+
+\begin{lemma}
+    \begin{statements}{}
+        \item A point reflection is an isometry.
+        \item The product of two point reflections is a translation.
+        \item The product of a translation and a point reflection is a point reflection.
+    \end{statements}
+\end{lemma}
+
+\begin{proposition}
+    All point reflections generate a subgroup \(\mathscr{H} (of \scrI)\). Moreover, \(\mathscr{H}\) is a (disjoint) union of the set \(\mathscr{T}\) of all translations and the set of all point reflections: for a fixed \(C\),
+    \[\mathscr{H} = \mathscr{T} \sqcup \rho_C \mathscr{T} = \mathscr{T} \sqcup = \mathscr{T} \rho_C = \mathscr{T} \sqcup \{\rho_P \mid P \in \bR^n\}.\]
+\end{proposition}
+
+% \begin{corollary}
+%     The set \(\{\mathscr{T}, \rho_C \mathscr{T}\}\) with the subset multiplication becomes a group.
+% \end{corollary}
+
+\begin{proposition}
+    The dilation \(\tau = \rho_C \delta_{C, r} (r > 0)\) has the following equation:
+    \[\tau(\fx) = (-r)\fx + (1 + r)\mbf{c}.\]
+\end{proposition}
+
+\begin{lemma}
+    Let \(R^\times = \{ r \in \bR \mid r \neq 0\}\). For any \(r, s \in \bR^\times\), and any point \(P(\mbf{p})\), we have
+    \begin{statements}{}
+        \item \(\delta_{P, -r} = \rho_O \delta_{P, r}\);
+        \item \(\delta_{P, 1} = 1, \delta_{P, -1} = \rho_P\);
+        \item \(\delta_{P, r} \delta_{P, s} = \delta_{P, rs}\);
+        \item \(\delta_{P ,r}^{-1} = \delta_{P, r^{-1}}\).
+    \end{statements}
+\end{lemma}
+
+\begin{proposition}
+    The set \(\{ \delta_{C, r} \mid r \in \bR^\times(:= \bR - 0)\}\) forms a group that is isomorphic to the group \((\bR^\times, \cdot)\).
+\end{proposition}
