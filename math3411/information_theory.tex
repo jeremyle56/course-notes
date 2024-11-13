@@ -1,0 +1,78 @@
+\section{Information Theory}
+Define \(I(s_i) = I(p_i) = -\log_2 p_i\).
+
+Define the (Shannon) \textbf{entropy} of \(S\):
+\[H_r(S) = \sum_{i = 1}^{q} p_iI_r(p_i) = -\sum_{i=1}^{q}p_i \log_r p_i\]
+This expresses the average information per source symbol.
+
+\paragraph{Gibb's Inequality}
+If \(p_1, \dots, p_q\) and \(p_1', \dots, p_q'\) are probability distributions, then
+\[-\sum_{i=1}^{q}p_i \log_r p_r \leq - \sum_{i=1}^{q}p_i \log_r p_i'.\]
+Equivalently,
+\[\sum_{i=1}^{q}p_i \log_r \frac{p_i'}{p_i} \leq 0.\]
+Furthermore, there is equality if and only if \(p_i = p_i'\) for all \(i\).
+
+\paragraph{Maximum Entropy Theorem}
+For any source \(S\) with \(q\) symbols, the base \(r\) entropy satisfies
+\[H_r(S) \leq \log_r q\]
+with equality if and only if all symbols are equally likely.
+
+\paragraph{First Source-Coding Theorem}
+For each radix \(r\) UD-code \(C\) for source \(S\),
+\[H_r(S) \leq L_r\]
+with equality iff \(p_i = r^{-\ell_i}\) for all \(i\) and \(K_r = \displaystyle{\sum_{i=1}^{q} r^{-\ell_i} = 1}\).
+
+% chapter 4.4 in the notes skipped
+
+\subsection{Entropy of Extensions for Memoryless Sources}
+\paragraph{Entropy of Extensions}
+\[H_r(S^n) = nH_r(S).\]
+
+\paragraph{Sannon's Source Coding Theorem}
+Encoding \(S^n\) by an SF-code or a Huffman code allows the average codeword lengths to be arbitrarily close to the entropy:
+\[\frac{L_r^{(n)}}{n} \to H_r(S) \quad \text{ for } n \to \infty.\]
+
+\subsection{Entropy for Markov Sources}
+Consider a Markov source \(S = \{s_1, \dots, s_q \}\) with probabilities \(p_1, \dots, p_q\), transition matrix \(M = (p_{ij}) = (P(s_i \mid s_j))\) and equilibrium \({\bf p} = (p_j)\).
+
+The \textbf{conditional information} of \(s_i\) given \(s_j\) is
+\[I(s_i \mid s_j) = -\log P(s_i \mid s_j) = -\log p_{ij}.\]
+
+The \textbf{conditional entropy given} \(s_j\) is
+\[H(S \mid s_j) = \sum_{i=1}^{q}p_{ij} I(s_i \mid s_j) = - \sum_{i=1}^{q} P(s_i \mid s_j) \log P(s_i \mid s_j)\]
+
+The \textbf{Markov entropy} of \(S\) is
+\begin{align*}
+    H_M (S) & = \sum_{j=1}^{q} p_j H(S \mid s_j)                              \\
+            & = - \sum_{i=1}^{q}\sum_{j=1}^{q}p_j p_{ij} \log p_{ij}          \\
+            & = -\sum_{i=1}^{q}\sum_{j=1}^{q}P(s_j s_i) \log P(s_i \mid s_j).
+\end{align*}
+
+The \textbf{equilibrium entropy} of \(S\) is
+\[H_E(S) = -\sum_{j=1}^{q}p_j \log p_j.\]
+
+\paragraph{Theorem on Markov Entropy}
+For a Markov source \(S\),
+\[H_M (S) \leq H_E(S).\]
+There is equality if and only if the symbols in \(S\) are independent.
+
+\subsection{Noisy Channels}
+\[
+    \begin{alignat*}{4}
+         & \text{Source entropy: }        & H(A)          & = -\sum_{j = 1}^{u}P(a_j)\log P(a_j)                                  \\
+         & \text{Output entropy: }        & H(B)          & = -\sum_{i=1}^{v} P(b_i) \log P(b_i)                                  \\
+         & \text{Conditional entropies: } & H(B \mid a_j) & = -\sum_{i=1}^{v} P(b_i \mid a_j) \log P(b_i \mid a_j)                \\
+         &                                & H(A \mid b_i) & = -\sum_{j=1}^{u} P(a_j \mid b_i) \log P(a_j \mid b_i)                \\
+         & \text{Joint entropy: }         & H(A, B)       & = -\sum_{i=1}^{v} \sum_{j=1}^{u} P(a_j \cap b_i) \log P(a_j \cap b_i)
+    \end{alignat*}
+\]
+
+\subsection{Channel Capacity}
+The \textbf{channel capacity} is
+\[C = C(A, B) = \max I(A, B)\]
+where the maximum is taken over all possible probabilities for \(A\)'s symbols.
+
+\paragraph{Theorem}
+The channel capacity of a binary symmetric channel with crossover probability  \(p\) is \(1 - H(p)\).
+
+\newpage

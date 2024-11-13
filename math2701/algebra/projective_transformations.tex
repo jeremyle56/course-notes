@@ -1,0 +1,29 @@
+\subsection{Projective Transformations in \(\bR P^n\)}
+
+\begin{definition}
+    A map \(\pi : \bR P^n \to \bR P^n\) is called a \textit{projective transformation} if there exists an \textbf{invertible} matrix \(A \in GL_{n + 1} (\bR)\) such that \(\pi\langle \fx \rangle = \langle A\fx \rangle\).
+\end{definition}
+
+\begin{proposition}
+    \begin{statements}{}
+        \item A \textbf{linear isomorphism} \(T_A : \bR^{n + 1} \to \bR\) induces a projective transformation \(\pi_A : \bR P^n \to \bR P^n, \langle x \rangle \mapsto \langle A\fx \rangle\).
+        \item For \(A, A' \in Gl_{n + 1}(\bR), \pi_A = \pi_{A'} \iff A = \lambda A',\) for some \(A \in \bR^\times\).
+    \end{statements}
+\end{proposition}
+
+\begin{theorem}
+    Let \(\scrP = \scrP(\bR P^n)\) be the set fo all projective transformations on \(\bR P^n\). Then \(\scrP\) is a group, called the \textbf{group of projective transformations}.
+\end{theorem}
+
+\begin{theorem}
+    \begin{statements}{}
+        \item The set \(PGL_{n+1}(\bR)\) with coset multiplication forms a group, the \textbf{projective linear group}. This is the \textbf{quotient group} \(GL_{n + 1}(\bR) / \mathcal{K}_{n + 1}\) with \(\mathcal{K}_{n + 1} := \bR^\times I_{n + 1} = \{ \lambda L_{n + 1} \mid \lambda in \bR^\times \}\).
+        \item The map \(\phi : PGL_{n + 1}(\bR) \to \scrP, [A] \mapsto \pi_A\) is a \textbf{bijection}, satisfying: \(\phi([A][B]) = \phi([A])\phi([B])\). That is, the map \(\phi\) is a group isomorphism.
+    \end{statements}
+\end{theorem}
+
+\begin{theorem}
+    Every affine transformation \(T_{A, \fb}\) on \(\bR^n\) can be \textbf{uniquely} extended to a projective transformation \(\pi_{\left(\begin{smallmatrix} 1 & 0 \\ \fb & A \end{smallmatrix}\right)}\) on \(\bR P^n\) which stabilises the ideal part and the ordinary part and preserves multiplication and inverses. In group theory, terminology, \(\scrA\) is (isomorphic to) a subgroup of \(\scrP\). That is, \(\scrA \equiv \scrA' \leq \scrP\).
+\end{theorem}
+
+\pagebreak

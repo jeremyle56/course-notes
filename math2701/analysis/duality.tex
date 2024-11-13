@@ -1,0 +1,54 @@
+\subsection{Duality}
+
+\subsubsection{Dual Norms}
+\begin{definition}
+    Suppose that \(\norm{\cdot}\) is a norm on \(\bR^n\). Its \textbf{dual norm} is defined by
+    \[\norm{\bf x}^* = \sup_{{\bf y} \in \bR^n} \frac{|\bf x \cdot y|}{\norm{\bf y}} = \sup_{\norm{\bf y} = 1} |{\bf x \cdot y}|.\]
+\end{definition}
+
+\begin{theorem}
+    The dual norm is a norm.
+\end{theorem}
+
+\subsubsection{Polar Bodies}
+\begin{definition}
+    Let \(K\) be a convex body in \(\bR^n\). The polar of \(K\) is the convex body associated t o the dual norm to \(\norm{\cdot}_K\).
+\end{definition}
+
+\begin{theorem}[Polar Duality Theorem]
+    Let \(K\) be a convex body. Then \(K^{\circ \circ} = K\).
+\end{theorem}
+
+\subsubsection{Seperating Hyperplanes}
+\begin{definition}
+    A hyperplane \(H_{\bf u} = \{{\bf y} \in \bR^n : {\bf y \cdot u} = 1 \}\) is a separating hyperplane for \(K\) and \(\bf p\) if
+    \begin{enumerate}
+        \item \({\bf x \cdot u} \leq 1\) for all \(\fx \in K\) (ie all of \(K\) is on the `low side' of \(H_{\bf u}\)), and
+        \item \({\bf p \cdot u } \geq 1\). (ie \({\bf p}\) is on the high side of \(H_{\bf u}\))
+    \end{enumerate}
+    W e say that \(H_{\bf u}\) is a strongly separating if \({\bf p \cdot u} > 1\).
+\end{definition}
+
+\begin{theorem}[Separating Hyperplane Theorem]
+    If \(K\) is a convex body and \(\bf p\) is a point not in \(K\), then there exists a hyperplane that strongly separates them.
+\end{theorem}
+
+\subsubsection{Mahler Volume}
+\begin{definition}
+    The Mahler volume of a convex body \(K\) is defined as
+    \[M(K) = \mathrm{vol}(K)\mathrm{vol}(K^\circ).\]
+\end{definition}
+
+\begin{lemma}
+    Suppose that \(A\) is an invertible \(n \times n\) matrix and that \(K\) is a convex body. Then \(AK\) is a convex body with polar \((A^T)^{-1}K^\circ.\)
+\end{lemma}
+
+\begin{theorem}
+    Let \(K \subseteq \bR^n\) be a convex body and let \(A \in M_n\) be invertible. Then
+    \begin{itemize}
+        \item \(M(K) = M(K^\circ)\).
+        \item \(M(AK) = M(K)\).
+    \end{itemize}
+\end{theorem}
+
+\newpage

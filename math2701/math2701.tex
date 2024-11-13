@@ -31,7 +31,7 @@
 
 % Heading Configuration
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -40,6 +40,10 @@
 \newtheorem{definition}[theorem]{Definition}
 
 \newtheorem{example}[theorem]{Example}
+
+\renewcommand{\thetheorem}{\arabic{subsection}.\arabic{theorem}}
+% \renewcommand{\thedefinition}{\arabic{subsection}.\arabic{definition}}
+% \renewcommand{\theexample}{\arabic{subsection}.\arabic{example}}
 
 % Statements Custom Enumerate
 \providecommand{\varitem}{} % to keep LaTeX quiet
@@ -53,7 +57,9 @@
 
 % Shorthand for Symbols
 \def\mbb#1{\mathbb{#1}}
+\newcommand{\bC}{\mbb{C}}
 \newcommand{\bH}{\mbb{H}}
+\newcommand{\bP}{\mbb{P}}
 \newcommand{\bR}{\mbb{R}}
 
 \def\mscr#1{\mathscr{#1}}
@@ -64,6 +70,7 @@
 \newcommand{\scrE}{\mathscr{E}}
 \newcommand{\scrI}{\mathscr{I}}
 \newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrP}{\mathscr{P}}
 \newcommand{\scrQ}{\mathscr{Q}}
 \newcommand{\scrT}{\mathscr{T}}
 \newcommand{\scrS}{\mathscr{S}}
@@ -75,6 +82,7 @@
 \newcommand{\fn}{\mbf{n}}
 \newcommand{\fp}{\mbf{p}}
 \newcommand{\fq}{\mbf{q}}
+\newcommand{\fr}{\mbf{r}}
 \newcommand{\fx}{\mbf{x}}
 \newcommand{\fzero}{\mbf{0}}
 
@@ -100,6 +108,7 @@
 \tableofcontents
 \newpage
 
+\section{Algebra (Geometry)}
 \subfile{algebra/transformations_and_groups.tex}
 \subfile{algebra/subgroups_and_group_of_isometries.tex}
 \subfile{algebra/reflections_and_isometries.tex}
@@ -115,4 +124,14 @@
 \subfile{algebra/real_projective.tex}
 \subfile{algebra/principle_of_duality.tex}
 \subfile{algebra/desargues_and_pappus.tex}
+\subfile{algebra/projective_transformations.tex}
+\subfile{algebra/projective_plane_transformations.tex}
+
+\section{Analysis}
+\subfile{analysis/asymptotics.tex}
+\subfile{analysis/inequalities.tex}
+\subfile{analysis/norms.tex}
+\subfile{analysis/duality.tex}
+\subfile{analysis/prime_numbers.tex}
+
 \end{document}
