@@ -1,1 +1,35 @@
-\section{The Real Numbers}
+\subsection{The Real Numbers}
+\begin{definition}
+    A sequence \(\{x_n\}\) of rationals is Cauchy if, for all integers \(j\), there exists \(N_0\) such that if \(n, m \geq N_0\) then \(|x_n - x_m| < 1/j\).
+\end{definition}
+
+\begin{definition}
+    A \textbf{cut} is a subset \(r\) of \(\mathbb{Q}\) such that
+    \begin{enumerate}
+        \item \(r\) is nonempty,
+        \item \(r \neq \mathbb{Q}\),
+        \item if \(x, y \in \mathbb{Q}\), if \(x < y\) and if \(y \in r\), then \(x \in r\) too,
+        \item for every \(x \in r\) there exists \(y \in r\) with \(x < y\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Suppose that \(\bF\) is an ordered field and suppose that \(\emptyset \neq S \subseteq \bF\).
+    \begin{enumerate}
+        \item We say that \(L \in \bF\) is an \textbf{upper bound} for \(S\) if \(x \leq L\) for all \(x \in S\).
+        \item \(L\) is the \textbf{least upper bound} for \(S\) if \(L\) is an upper bound, and if \(L'\) is any other upper bound then \(L \leq L'\). We call \(L\) the \textbf{supremum} of \(S\), written \(\sup S\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    An ordered field has the \textbf{least upper bound property} if every nonempty set which has an upper bound, has a least upper bound.
+\end{definition}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item There is an ordered field with the least upper bound property.
+        \item If \(\bF_1\) and \(\bF_2\) are ordered fields with the least upper bound property then there is an order preserving isomorphism between them. Informally, \(\bF_1\) and \(\bF_2\) are the same structures but with different names for the elements.
+    \end{enumerate}
+\end{theorem}
+
+\pagebreak
