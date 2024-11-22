@@ -69,7 +69,10 @@ The volume of this sphere is its size \(|S_r(\mbf{c})|\).
 A \(t\)-error correcting binary code \(C\) of length \(n\) has minimum distance \(d = 2t + 1\) or \(2t + 2\), and
 \[|C|\sum_{i=0}^t \binom{n}{i} \leq 2^n.\]
 
-If we have equality in the bound, then we say that the code is perfect.  This means that codewords are evenly spread around in \(\bZ_2^n\) space.
+If we have equality in the bound, then we say that the code is perfect.  This means that codewords are evenly spread around in \(\bZ_2^n\) space. \\
+
+More generally for radiux \(r\):
+\[|C| \leq \frac{r^n}{\sum_{i=0}^{t}\binom{n}{i}(r - 1)^i}.\]
 
 \subsection{Binary Linear Codes}
 A linear code \(C\) is a vector space over some field \(\bF\). Equivalently it is the null-space of

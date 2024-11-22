@@ -55,8 +55,47 @@ If \(p\) is prime, \(m(x)\) a monic irreducible in \(\bZ_p[x]\) of degree \(n\),
 if a field \(\bF\) has a finite number of elements, then \(|\bF| = p^n\) where \(p\) is prime, and \(\bF\)is isomorphic to \(\bZ_p[x] / \langle ,(x) \rangle\). Hence ALL fields with \(p^n\) elements are isomorphic to one another.
 
 \subsection{Primality Testing}
+\paragraph{Pseudo-Prime Test}
+No if we fine \(n\) is composite.
+\begin{itemize}
+    \item Let \(a \in \bN\) with \(a < n\).
+          \begin{itemize}
+              \item If \(\gcd(a, n) \neq 1\), then \(n\) must be composite so return no
+              \item Otherwise, if \(a^{n - 1} \neq 1 \pmod n\), then \(n\) is composite so return no
+          \end{itemize}
+\end{itemize}
+
 \paragraph{Lucas' Test}
-If there exists an \(a\) with \(\gcd(a, n) = 1\) and \(ord_n(a) = n - 1\), then \(n\) is prime.
+Possible answer as to whether \(n\) is prime
+\begin{itemize}
+    \item Let \(a \in \bN\) with \(a < n\).
+          \begin{itemize}
+              \item If \(\gcd(a, n) \neq 1\), then \(n\) must be composite so no
+              \item If \(a^{n - 1} \neq 1 \pmod n\), then \(n\) must be composite so no
+              \item If \(a^{(n - 1) / p} \neq 1 \pmod n\) for all primes \(p \mid n - 1\), then yes
+          \end{itemize}
+\end{itemize}
 
 \paragraph{Miller-Rabin Test}
-Let \(p\) be prime. Then if \(a^2 = 1 \pmod p, a \equiv \pm 1 \pmod p\).
+If \(n\) is composite, then return no
+\begin{itemize}
+    \item Write \(n = 2^s t + 1\) where \(t\) is odd
+    \item Choose some \(a \in \{1, \dots, n - 1\}\) at random
+    \item If \(a^t \equiv 1 \pmod n\), then it is probably prime
+    \item For \(r = 0, \dots, s - 1\),
+          \begin{itemize}
+              \item If \(a^{2^{r}t} \equiv -1 \pmod n\), then \(n\) is probably prime.
+          \end{itemize}
+    \item Otherwise, it is not prime.
+\end{itemize}
+
+\paragraph{Fermat Factorisation}
+a two-factorisation of \(n\)
+\begin{itemize}
+    \item For \(t = \ceil{\sqrt{n}}, \dots, n\):
+          \begin{itemize}
+              \item If \(s^2 = t^2 - n\) is square, then return \(n = ab = (t -s)(t + s)\)
+          \end{itemize}
+\end{itemize}
+
+\newpage

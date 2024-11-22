@@ -91,8 +91,9 @@ We will assume that
 
 Under the above assumptions, \(M\) has a non-zero equilibrium state.
 
+\onecolumn
 \subsection{Arithmetic Coding}
-Consider a source \(\{s_1, \dots, s_q\}\) where \(s_q = \bullet\) is called a stop symbol, with probabilities \(p_1, \dots, p_q\). In this context, a message will always end with a stop symbol. Encoding a message \(s_i_1 \dots s_i_n\) involves the following steps:
+Consider a source \(\{s_1, \dots, s_q\}\) where \(s_q = \bullet\) is called a stop symbol, with probabilities \(p_1, \dots, p_q\). In this context, a message will always end with a stop symbol. Encoding a message \(s_{i_1} \dots s_{i_n}\) involves the following steps:
 \begin{itemize}
     \item Split up the interval \([0, 1)\) into sub-intervals of size \(p_1, \dots, p_q\).
     \item Choose the \(i_1\)-th sub-interval.
@@ -121,4 +122,5 @@ Consider an encoded message \((k_1, c_1) \dots (k_n, c_n)\). To decode this mess
     \item Keep doing this until the message is fully decoded.
 \end{itemize}
 
+\twocolumn
 \newpage
