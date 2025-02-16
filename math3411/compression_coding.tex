@@ -1,0 +1,126 @@
+\section{Compression Coding}
+
+\paragraph{Definitions}
+\[
+    \begin{array}{l l l l}
+        \textbf{source } S & \text{ with } & \textbf{ symbols }          & s_1, \dots, s_q       \\
+                           & \text{ with } & \textbf{ probabilities }    & p_1, \dots, p_q       \\
+        \textbf{code } C   & \text{ with } & \textbf{ codewords }        & \fc_1, \dots, \fc_q   \\
+                           &               & \text{ of \textbf{lengths}} & \ell_1, \dots, \ell_q \\
+                           &               & \text{ and \textbf{radix}}  & r
+    \end{array}
+\]
+
+\subsection{Instantaneous and UD Codes}
+A code \(C\) is
+\begin{itemize}
+    \item \textbf{uniquely decodable (UD)} if it can always be decoded \textbf{unambiguously}
+    \item \textbf{instantaneous} if no codeword is a \textbf{prefix} of another. Such a code is an \textbf{I-code}.
+\end{itemize}
+
+\textbf{Decision trees} can represent I-codes.
+\begin{itemize}
+    \item Branches are numbered from the top down.
+    \item Any radix \(r\) is allowed.
+    \item Two codes are equivalent if their decision trees are isomorphic.
+    \item By shuffling source symbols, we may assume that \(\ell_1 \leq \ell_2 \leq \cdots \leq \ell_q\).
+\end{itemize}
+
+\paragraph{The Kraft-Mcmillan Theorem}
+The following are equivalent:
+\begin{enumerate}
+    \item There is a radix \(r\) \textbf{UD-code} with codeword lengths \(\ell_1 \leq \ell_2 \leq \cdots \leq \ell_q\)
+    \item There is a radix \(r\) \textbf{I-code} with codeword lengths \(\ell_1 \leq \ell_2 \leq \cdots \leq \ell_q\)
+    \item \(K = \sum_{i=1}^q (\frac{1}{r})^{\ell_i} \leq i\)
+\end{enumerate}
+
+\subsection{Minimal UD-Codes}
+The (expected or) \textbf{average length} and \textbf{variance} of codewords in \(C\) are
+\[L = \sum_{i=1}^q p_i \ell_i \quad \quad V = (\sum_{i=1}^{q}p_i \ell_i^2) - L^2\]
+A UD-code is \textbf{minimal} with respect to \(p_1, \dots, p_q\) if it has minimal length.
+
+\paragraph{Minimal UD-Codes}
+If a UD-code has minimal average length \(L\) with respect to \(p_1, \dots, p_q\), then, possibly after permuting codewords of equally likely symbols,
+\begin{itemize}
+    \item \(\ell_1 \leq \ell_2 \cdots \leq \ell_q\)
+    \item \(\ell_{q - 1} = \ell_q\)
+    \item If \(C\) is instantaneous, then \(\fc_{q - 1}\) and \(\fc_q\) differ only in their last place.
+    \item If \(C\) is binary, then
+          \[K = \sum_{i=1}^{q}2^{-\ell i} = 1\]
+\end{itemize}
+
+\subsection{Huffman's Algorithm}
+\paragraph{Binary Case}
+\begin{enumerate}
+    \item Write the symbols in a column, with highest probability at the top and lowest probability at the bottom.
+    \item Merge the bottom two (least frequent) symbols \(s_q\) and \(s_{q - 1}\) into one big symbol of probability \(p_q + p_{q - 1}\).
+    \item Write the resulting \(q - 1\) symbols in a new column to the right in same order as before. Make sure to place the newly created symbol as high as possible in this column.
+    \item Draw branches from the newly created symbol to its two constituent symbols, and label them 0 and 1.
+    \item Repeat the above, until there is only one symbol left.
+\end{enumerate}
+
+\paragraph{Huffman Code Theorem}
+For any given source \(S\) and corresponding probabilities, the Huffman Algorithm yields an instantaneous minimum UD-code.
+
+\paragraph{Knuth}
+The average codeword length \(L\) of each Huffman code is the sum of all child node probabilities.
+
+\subsection{Extensions}
+For a source \(S = \{s_1, \dots, s_q\}\) with probabilities \(p_1, \dots, p_q\), the \textbf{\(n\)-th extension} of \(S\) is the Cartesian product \(S^n\), containing all strings of \(n\) symbols in \(S\). \\
+
+The probability of each symbol in \(S^n\) is the product of the probabilities of constituent symbols. We also order the new symbols in non-increasing probability.
+
+\subsection{Markov Sources}
+A \(k\)-\textbf{memory source} \(S\) is one whose symbols each depend on the previous \(k\).
+\begin{itemize}
+    \item If \(k = 0\), then no symbol depends on any other, and \(S\) is \textbf{memoryless}.
+    \item If \(k = 1\), then \(S\) is a \textbf{Markov source}.
+    \item \(p_{ij} = P(s_i \mid s_j)\) is the probability of \(s_i\) occurring right after a given \(s_j\).
+    \item The matrix \(M = (p_{ij})\) is the \textbf{transition matrix}.
+    \item Entry \(p_{ij}\) is the probability of getting from state \(s_j\) to state \(s_i\).
+\end{itemize}
+
+A Markov process \(M\) is in \textbf{equilibrium} \(\fp\) if \(\fp = M\fp\). \\
+
+We will assume that
+\begin{itemize}
+    \item \(M\) is \textbf{ergodic}: we can get from any state \(j\) to any state \(
+          i\).
+    \item \(M\) is \textbf{aperiodic}: the \(\gcd\) of cycle lengths is \(1\).
+\end{itemize}
+
+Under the above assumptions, \(M\) has a non-zero equilibrium state.
+
+\onecolumn
+\subsection{Arithmetic Coding}
+Consider a source \(\{s_1, \dots, s_q\}\) where \(s_q = \bullet\) is called a stop symbol, with probabilities \(p_1, \dots, p_q\). In this context, a message will always end with a stop symbol. Encoding a message \(s_{i_1} \dots s_{i_n}\) involves the following steps:
+\begin{itemize}
+    \item Split up the interval \([0, 1)\) into sub-intervals of size \(p_1, \dots, p_q\).
+    \item Choose the \(i_1\)-th sub-interval.
+    \item Split up this sub-interval again, in proportion to \(p_1, \dots, p_q\).
+    \item Choose the \(i_2\)-th sub-interval.
+    \item Repeat this for the rest of the symbols, and output any number inside the final sub-interval found.
+\end{itemize}
+
+\subsection{Dictionary Methods}
+\paragraph{Encoding}
+Consider a message \(m = m_1m_2 \dots m_n\). To encode \(m\):
+\begin{itemize}
+    \item Begin with an empty table \(D\), and set the 0-th entry to \(\emptyset\), representing an empty string.
+    \item Find the longest prefix \(s\) of \(m\) in \(D\) (possibly the empty string \(\emptyset\)), and say \(s\) is in entry \(k\).
+    \item Find the symbol \(c\) just after \(s\).
+    \item Add a new entry \(sc\) to \(D\), remove \(sc\) from \(m\), and output \((k, c)\).
+    \item Repeat until \(m\) is fully encoded.
+\end{itemize}
+
+\paragraph{Decoding}
+Consider an encoded message \((k_1, c_1) \dots (k_n, c_n)\). To decode this message, take the following steps:
+\begin{itemize}
+    \item Begin with a table \(D\) with \(\emptyset\) in the 0-th entry.
+    \item Let \(s_1\) be the \(k_1\)-th entry in the table. Append \(s_1c_1\) to the table, and output \(s_1c_1\).
+    \item Let \(s_2\) be the \(k_2\)-th entry in the table. Append \(s_2c_2\) to the table, and output \(s_2c_2\).
+    \item Keep doing this until the message is fully decoded.
+\end{itemize}
+
+\twocolumn
+\newpage

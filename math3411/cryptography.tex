@@ -1,0 +1,24 @@
+\section{Cryptography (Ciphers)}
+\subsection{Some Classical Cryptosystems}
+\begin{itemize}
+    \item Caesar Ciphers
+    \item Simple (monoalphabetic) substitution Cipher
+    \item Transposition Cipher
+    \item Combined Systems
+    \item Polyalphabetic Substitution Ciphers
+    \item Non-Periodic Polyalphabetic Substitutions
+\end{itemize}
+\paragraph{Kasiski's Method} For a message \(m\) of length \(n\), the index of coincidence is given by
+\[I_c = \frac{\sum (f_i^2) - n}{n^2 - n}\]
+where \(f_i\) is the frequency of each letter in the message. Solving for \(r\) we get
+\[r \approx \frac{0.0273n}{(n - 1)I_c - 0.0385n + 0.0658}\]
+
+\subsection{Unicity Distance}
+The unicity distance is
+\[n_0 = \ceil{\frac{H_2(K)}{\log_2 q - R}}\]
+where \(K\) is the total number of keys, \(q\) is the number of letters in the source alphabet, and \(R\) is the rate of the language in bits per character. \\
+
+For English text, \(q = 26\) and \(R \approx 1.5\). So
+\[n_0 = \ceil{\frac{H_2(K)}{\log_2 q - R}} \approx \ceil{\frac{H_2(K)}{4.7 - 1.5}} = \ceil{\frac{H_2(K)}{3.2}}.\]
+If the keys are equally likely, then
+\[n_0 \approx \ceil{\frac{log_2|K|}{3.2}}\]

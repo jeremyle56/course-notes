@@ -1,0 +1,104 @@
+\section{Algebraic Coding}
+\subsection{Single Error Correcting BCH Codes}
+Let \(f(x) \in \bZ_2[x]\) be a polynomial of degree \(m\) with a primitive root \(\alpha\). Let \(n = 2^m - 1\) and \(k = n - m\). \\
+
+The matrix \(H = \begin{pmatrix}
+    1 & \alpha & \alpha^2 & \dots & \alpha^{n - 1}
+\end{pmatrix}\)
+is the check matrix of a binary Hamming \((n, k)\) code \(C\). Every binary Hamming \((n, k)\) code can be obtained in this way. \\
+
+Let \(\fc = (c_0, c_1, \dots, c_{n - 1}) \in C\) be a codeword.
+\begin{itemize}
+    \item \(c_0, \dots, c_{m - 1}\) are the check bits
+    \item \(c_m, \dots, c_{n - 1}\) are the information bits
+\end{itemize}
+
+The first \(m\) bits of the codeword are check bits, since the first \(m\) columns of \(H\) are the leading columns. Therefore the information bits and the check bits are neatly divided. \\
+
+The syndrome of the codeword \(\fc\) is
+\[S(\fc) = H\fc^T = c_0 + c_1 \alpha + c_2 \alpha^2 + \dots + c_{n - 1}\alpha^{n - 1} = C(\alpha)\]
+where \(C(x) = c_0 + c_1 x + c_2 x^2 + \dots + c_{n - 1}x^{n - 1}\) is the codeword polynomial corresponding to \(\fc\).
+\begin{itemize}
+    \item Since \(\fc\) is the codeword, its syndrome is 0. Therefore, \(S(\fc) = 0 = C(\alpha)\), so \(\alpha\) is a root of \(C(x)\).
+    \item Since \(\alpha\) is a root of \(C(x)\), the minimal polynomial, \(M_1(x)\) of \(\alpha\) must divide \(C(x)\) without a remainder.
+    \item \(M_1(x)\) is the primitive polynomial \(f(x)\).
+\end{itemize}
+
+\paragraph{BCH Encoding}
+\begin{enumerate}
+    \item From our message \(c_m, \dots, c_{n - 1}\), we form the \textbf{information polynomial}
+          \[I(x) = c_m x^m + c_{m + 1}x^{m + 1} + \dots + c_{n - 1}x^{n - 1}.\]
+    \item Using polynomial long division, we find the \textbf{check polynomial} of degree at most \(m - 1\)
+          \[R(x) = I(x)(\mod M_1(x)) = c_0 + c_1 x + \dots + c_{m - 1}x^{m - 1}.\]
+    \item Calculate the \textbf{codeword polynomial}
+          \[C(x) = I(x) + R(x).\]
+\end{enumerate}
+The codeword is \((c_0, c_1, \dots, c_{n - 1})\) where the first \(m\) bits are check bits and the last \(k\) bits are information bits.
+
+\paragraph{BCH Error Correcting and Decoding}
+Suppose that we receive \(\mathbf{d} = \fc + e_j\), where \(e_j\) is a unit vector with 1 in the \(a^j\) position and zero entries elsewhere.
+\begin{enumerate}
+    \item Let us represent \(\fc\) and \(\bf d\) as codeword polynomials \(C(x)\) and \(D(x)\)
+    \item Calculating the syndrome of \(d\) gives us
+          \[S({\bf d}) = D(\alpha) = C(\alpha) + a^j = a^j\]
+          The error is therefore in the \(\alpha^j\) position, which is the \(j + 1^{th}\) letter of the code. If the syndrome of the codeword we receive is 0, i.e \(D(\alpha) = 0\), then there is no error.
+    \item To decode a codeword, look at the last \(k\) bits, which are the information bits \((c_m, \dots, c_{n - 1})\).
+\end{enumerate}
+
+\subsection{Two Error Correcting BCH Codes}
+\paragraph{Theorem} If \(p\) is prime and \(\beta\) is a root of \(f(x) \in \bZ_2[x]\) then so is \(\beta^{p^i}\) for all \(i\).
+
+\paragraph{Construction}
+\begin{enumerate}
+    \item Find a primitive root of minimal polynomial \(M_1(x)\), with cyclotomic coset \(K_1\)
+    \item Select an index not belonging to \(K_1 (i \in \{1, \dots, p^m - 1\} \setminus K_1)\)
+    \item Find the minimal polynomial \(M_i(x)\) for \(\alpha^i\)
+    \item Define \(M(x) = M_1(x) M_i(x)\)
+    \item Define the check matrix
+          \[H = \begin{pmatrix}
+                  1 & \alpha   & \dots & \alpha^{n - 1}     \\
+                  1 & \alpha^i & \dots & (\alpha^i)^{n - 1}
+              \end{pmatrix}\]
+    \item Define the syndrome of a codeword \(\fc = (c_0, c_1, \dots, c_{n - 1})\) as
+          \[S(\fc) = H\fc^T = \begin{pmatrix}
+                  c_0 + c_1\alpha + \dots + c_{n - 1}\alpha^{n - 1} \\
+                  c_0 + c_1 \alpha^i + \dots + c_{n - 1}(\alpha^i)^{n - 1}
+              \end{pmatrix} = \begin{pmatrix}
+                  C(\alpha) \\
+                  C(\alpha^i)
+              \end{pmatrix}\]
+\end{enumerate}
+
+\paragraph{Encoding and Decoding}
+Encoding a double-error correcting BCH code is the same as encoding a single-error correcting BCH code, with the difference being
+\[R(x) = I(x)(\operatorname{mod} M(x))\]
+where \(M(x)\) is used instead of \(M_1(x)\).
+
+\paragraph{Error Correcting and Decoding}
+Suppose that we received \(\mathbf{d} = \fc + e_j + e_l\).
+\begin{enumerate}
+    \item Let us represent \(\fc\) and \(\mathbf{d}\) as codeword polynomials \(C(x)\) and \(D(x)\)
+    \item Calculate the syndrome
+          \[S(\fc) = \begin{pmatrix}
+                  D(\alpha) \\
+                  D(\alpha^i)
+              \end{pmatrix} = \begin{pmatrix}
+                  C(\alpha) + a^j + a^l \\
+                  C(\alpha^i) + (\alpha^i)^j + (\alpha^i)^l
+              \end{pmatrix} = \begin{pmatrix}
+                  \alpha^j + \alpha^l \\
+                  \alpha^{ij} + \alpha^{il}
+              \end{pmatrix} = \begin{pmatrix}
+                  S_1 \\
+                  S_i
+              \end{pmatrix}
+          \]
+\end{enumerate}
+The syndrome allows us to determine when there is \(0, 1\) or 2 errors.
+\begin{itemize}
+    \item 0 errors when \(D(\alpha) = D(\alpha^i) = 0\)
+    \item 1 error when \(D(\alpha) \neq 0\) and \(D(\alpha)^i = D(\alpha^i)\)
+    \item 2 errors when \(D(\alpha) \neq 0\) and \(D(\alpha)^i \neq D(\alpha^i)\)
+\end{itemize}
+
+\newpage

@@ -1,0 +1,45 @@
+\subsection{Classification of Plane Similarities}
+
+\begin{definition}
+    We say that figure \(f_1 \subseteq \bR^n\) and figure \(f_2 \subseteq \bR^n\) are \textbf{similar} if there is a similarity \(\alpha\) such that \(\alpha(f_1) = f_2\).
+\end{definition}
+
+\begin{theorem}
+    If \(\triangle ABC \sim \triangle A'B'C'\) in \(\bR^2\), then there exists a \textbf{unique} plane similarity \(\alpha\) such that
+    \[\alpha(A) = A', \alpha(B) = B', \alpha(C) = C'.\]
+\end{theorem}
+
+\begin{theorem}[Equations of Similarities]
+    If \(\alpha\) is a similarity in \(\bR^n\), then there exist \(Q \in O_n(\bR), \fb \in \bR^n\) and \(r \in \bR_{> 0}\) such that
+    \[\alpha(\fx) = rQ\fx + \fb, \quad \text{ for all } \fx \in \bR^n.\]
+\end{theorem}
+
+\begin{lemma}
+    A similarity without a fixed point is an isometry.
+\end{lemma}
+
+\begin{definition}
+    \begin{statements}{}
+        \item A \textbf{stretch reflection} in \(\bR^2\) is a non-identity stretch about some point \(C\) followed by a reflection about a line through \(C\).
+        \item A \textbf{stretch rotation} in \(\bR^2\) is a non-identity stretch about some point \(C\) followed by a non-identity rotation about \(C\).
+    \end{statements}
+\end{definition}
+
+\begin{theorem}
+    A non-identity plane similarity is exactly one of the following:
+    \begin{center}
+        Isometry, \quad Stretch of ratio \(r \neq 1\), \quad Stretch reflections, \quad Stretch rotation.
+    \end{center}
+\end{theorem}
+
+\begin{theorem}
+    In the equation of similarities, the algebraic classification is as follows:
+    \begin{enumerate}
+        \item \(\alpha\) is an isometry if \(r = 1\);
+        \item \(\alpha\) is a stretch (of ratio \(r \neq 1\)) if \(r \neq 1\) and \(Q = I\);
+        \item \(\alpha\) is a stretch reflection if \(r \neq 1, Q \neq I\) and \(\det(Q) = -1\);
+        \item \(\alpha\) is a stretch rotation if \(r \neq 1, Q \neq I\) and \(\det(Q) = 1\);
+    \end{enumerate}
+\end{theorem}
+
+\pagebreak

@@ -1,0 +1,142 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[margin=0.5in, bottom=0.75in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{pagecolor}
+\usepackage{physics}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% \setlength{\parindent}{0pt}
+
+% Heading Configuration
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+\renewcommand{\thetheorem}{\arabic{subsection}.\arabic{theorem}}
+% \renewcommand{\thedefinition}{\arabic{subsection}.\arabic{definition}}
+% \renewcommand{\theexample}{\arabic{subsection}.\arabic{example}}
+
+% Statements Custom Enumerate
+\providecommand{\varitem}{} % to keep LaTeX quiet
+\makeatletter
+\newenvironment{statements}[1]
+ {\renewcommand\varitem[1]{\item[\textbf{#1\arabic{enumi}\rlap{$##1$}.}]%
+    \edef\@currentlabel{#1\arabic{enumi}{$##1$}}}%
+  \enumerate[label=\textnormal{\textbf{(#1\arabic*)}}, ref=#1\arabic*]}
+ {\endenumerate}
+\makeatother
+
+% Shorthand for Symbols
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bC}{\mbb{C}}
+\newcommand{\bF}{\mbb{F}}
+\newcommand{\bH}{\mbb{H}}
+\newcommand{\bP}{\mbb{P}}
+\newcommand{\bQ}{\mbb{Q}}
+\newcommand{\bR}{\mbb{R}}
+\newcommand{\bZ}{\mbb{Z}}
+
+\def\mscr#1{\mathscr{#1}}
+\newcommand{\scrA}{\mathscr{A}}
+\newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrC}{\mathscr{C}}
+\newcommand{\scrD}{\mathscr{D}}
+\newcommand{\scrE}{\mathscr{E}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrP}{\mathscr{P}}
+\newcommand{\scrQ}{\mathscr{Q}}
+\newcommand{\scrT}{\mathscr{T}}
+\newcommand{\scrS}{\mathscr{S}}
+
+\def\mbf#1{\mathbf{#1}}
+\newcommand{\fa}{\mbf{a}}
+\newcommand{\fb}{\mbf{b}}
+\newcommand{\fc}{\mbf{c}}
+\newcommand{\fn}{\mbf{n}}
+\newcommand{\fp}{\mbf{p}}
+\newcommand{\fq}{\mbf{q}}
+\newcommand{\fr}{\mbf{r}}
+\newcommand{\fx}{\mbf{x}}
+\newcommand{\fzero}{\mbf{0}}
+
+\newcommand{\allTransformations}{\mathscr{B}(\mathbb{R}^n)}
+\newcommand\inp[2]{\langle #1, #2 \rangle}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{\textbf{Abstract Algebra and Fundamental Analysis}}
+\author{Jeremy Le --- UNSW MATH2701 24T3}
+\date{}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Algebra (Geometry)}
+\subfile{algebra/transformations_and_groups.tex}
+\subfile{algebra/subgroups_and_group_of_isometries.tex}
+\subfile{algebra/reflections_and_isometries.tex}
+\subfile{algebra/translations_and_rotations.tex}
+\subfile{algebra/classification_of_plane_isometries.tex}
+\subfile{algebra/similarities.tex}
+\subfile{algebra/dilatations.tex}
+\subfile{algebra/classification_of_plane_similarities.tex}
+\subfile{algebra/normal_subgroups.tex}
+\subfile{algebra/collineations.tex}
+\subfile{algebra/darboux's_theorem.tex}
+\subfile{algebra/affine_transformations.tex}
+\subfile{algebra/real_projective.tex}
+\subfile{algebra/principle_of_duality.tex}
+\subfile{algebra/desargues_and_pappus.tex}
+\subfile{algebra/projective_transformations.tex}
+\subfile{algebra/projective_plane_transformations.tex}
+
+\section{Analysis}
+\subfile{analysis/asymptotics.tex}
+\subfile{analysis/inequalities.tex}
+\subfile{analysis/norms.tex}
+\subfile{analysis/duality.tex}
+\subfile{analysis/prime_numbers.tex}
+\subfile{analysis/real_numbers.tex}
+\subfile{analysis/absolute_values_padic_numbers.tex}
+
+\end{document}

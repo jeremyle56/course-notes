@@ -1,0 +1,30 @@
+\subsection{Asymptotics}
+
+\begin{definition}[Big-Oh]
+    Let \(f, g\) be functions defined on an interval of the form \((a, \infty)\). We shall say that
+    \[f(x) = O(g(x)), \quad (\text{ as } x \to \infty)\]
+    if there exists \(M > 0\) and \(x_0 > a\) such that for all \(x > x_0\),
+    \[|f(x)| \leq M|g(x)|.\]
+\end{definition}
+
+\begin{definition}[Big-Oh at \(a\)]
+    Let \(f, g\) be functions defined on an open interval containing \(a\). We shall say that
+    \[f(x) = O(g(x)), \quad (\text{ as } x \to a)\]
+    if there exists \(M > 0\) and \(\delta > 0\) such that if \(|x - a| < \delta\),
+    \[|f(x)| \leq M|g(x)|.\]
+\end{definition}
+
+\begin{definition}
+    We shall say that \(f(x) = o(g(x))\) as \(x \to \infty\) if for all \(\epsilon > 0\), there exists \(x_0 = x_0(\epsilon)\) such that if \(x > x_0\), then \(|f(x)| < \epsilon|g(x)|\). We say \(f(x)\) is \textit{little-oh} of \(g(x)\).
+\end{definition}
+
+\begin{definition}
+    We shall write that \(f(x) = \theta(g(x))\) (as \(x \to \infty\)) if \(f(x) = O(g(x))\) and \(g(x) = O(f(x))\) (as \(x \to \infty\)). THat is, there are non-zero constants \(M_1, M_2\) and \(x_0\) such that for all \(x > x_0\)
+    \[M_1|g(x)| \leq |f(x)| \leq M_2|g(x)|.\]
+\end{definition}
+
+\begin{definition}
+    We shall say that \(f(x) \sim g(x)\) as \(x \to \infty\) if \(\frac{f(x)}{g(x)} \to 1\) as \(x \to \infty\).
+\end{definition}
+
+\pagebreak

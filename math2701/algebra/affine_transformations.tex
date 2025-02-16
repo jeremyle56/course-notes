@@ -1,0 +1,45 @@
+\subsection{Affine Transformations}
+
+\begin{theorem}
+    A collineation in \(\bR^n\) fixing \(n + 1\) points in generic position is the identity.
+\end{theorem}
+
+\begin{definition}
+    An \textbf{affine transformation} \(\alpha : \bR^n \to \bR^n\) is one that has an equation of the form \(\alpha(\fx) = A\fx + \fb\) for all \(\fx \in \bR^n\), where \(A \in GL_n(\bR), \fb \in \bR^n\). (In other words, \(\alpha = T_{A, \fb}.\))
+\end{definition}
+
+\begin{lemma}
+    The set \(\scrA\) of all affine transformations in \(\bR^n\) forms a group. Moreover, it contains the similarity group \(\scrS\) as a subgroup of \(\scrA\).
+\end{lemma}
+
+\begin{theorem}
+    Let \(\tau\) be a transformation. Then the following are equivalent:
+    \begin{enumerate}
+        \item \(\tau\) is an affine transformation;
+        \item \(\tau\) is a collineation.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+    A (non-degenerate) conic section
+    \[aX^2 + bXY + cY^2 +dX + eY + f = 0\]
+    is affine equivalent to one of the following \textbf{affine standard form:}
+    \[Y = X^2, \quad X^2 + Y^2 = 1, \quad XY = 1.\]
+\end{proposition}
+
+\begin{definition}
+    An affine transformation \(\alpha\) with equation \(\alpha(\fx) = A\fx + \fb\) is called an \textbf{equi-affine transformation} if \(\det(\alpha) := \det(A) = \pm 1\). An equi-affine transformation in \(\bR^2\) is called an \textbf{equiareal} transformation.
+\end{definition}
+
+\begin{proposition}[The group of equi-affine transformations]
+    The set \(\scrQ\) of all equi-affine transformations forms a subgroup of \(\scrA\) that has \(\scrQ^+ = \{\alpha \in \scrQ \mid \det(\alpha) = 1 \}\) as a normal subgroup.
+\end{proposition}
+
+\begin{theorem}
+    \begin{statements}{}
+        \item Let \(\alpha\) be an affine transformation in \(\bR^2\) with equation \(\alpha(\fx) = A\fx + \fb\) and let \(\alpha(P) = P'\), etc., then \(area(\triangle P'Q'R') = |\det A|area(\triangle PQR)\).
+        \item If \(\Omega\) is the parallelepiped spanned by the vectors \(\fa, \fb, \fc\) in \(\bR^3\) and \(\alpha\) is an affine transformation in \(\bR^3\), then \(\operatorname{vol}(\alpha \Omega) = |\det(A)|\operatorname{vol}(\Omega)\).
+    \end{statements}
+\end{theorem}
+
+\pagebreak

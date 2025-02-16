@@ -1,0 +1,68 @@
+\documentclass[10pt, twocolumn]{article}
+
+\usepackage[margin=0.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bN}{\mbb{N}}
+\newcommand{\bF}{\mbb{F}}
+\newcommand{\bU}{\mbb{U}}
+\newcommand{\bZ}{\mbb{Z}}
+
+\def\mbf#1{\mathbf{#1}}
+\newcommand{\fc}{\mbf{c}}
+\newcommand{\fp}{\mbf{p}}
+\newcommand{\fx}{\mbf{x}}
+\newcommand{\fy}{\mbf{y}}
+\newcommand{\fzero}{\mbf{0}}
+
+\graphicspath{./assets}
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+% \setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{\bf Information, Codes and Ciphers}
+\author{By Jeremy Le for MATH3411 24T3}
+\date{}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+\maketitle
+\subfile{introduction.tex}
+\subfile{error_detection_and_correction_codes.tex}
+\subfile{compression_coding.tex}
+\subfile{information_theory.tex}
+\subfile{number_theory.tex}
+\subfile{algebraic_coding.tex}
+\subfile{cryptography.tex}
+
+\end{document}

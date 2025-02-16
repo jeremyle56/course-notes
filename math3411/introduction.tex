@@ -1,0 +1,40 @@
+\section{Introduction}
+
+\subsection{Mathematical Model}
+To give a mathematical framework for digital data transmission, define
+\begin{itemize}
+    \item a \textbf{source alphabet} \(S = \{s_1, s_2, \dots, s_q\}\) of \(q\) symbols
+    \item a \textbf{code alphabet} \(A\) of \(r\) symbols probabilities \(p_i = P(s_i)\)
+    \item a \textbf{code} that encodes each symbol \(s_i\) by a codeword which is a \textbf{string} of code symbols.
+\end{itemize}
+
+\subsection{Assumed Knowledge}
+\begin{itemize}
+    \item Modular Arithmetic and the Division Algorithm
+    \item Probability (Binomial Distribution and Bayes' Rule)
+    \item Linear Algebra (Linear combination, independence, etc\dots)
+\end{itemize}
+
+\subsection{Morse Code}
+Morse code is a \textbf{ternary} code (radix 3). Its alphabet is
+\begin{enumerate}
+    \item $\bullet$ called \textbf{dot}
+    \item --- called \textbf{dash}
+    \item \texttt{p} a \textbf{pause}
+\end{enumerate}
+The codewords are strings of $\bullet$ and --- \textbf{terminated} by \texttt{p}.
+
+\subsection{ASCII}
+\textbf{\underline{A}}merican National \textbf{\underline{S}}tandard \textbf{\underline{C}}ode for \textbf{\underline{I}}nformation \textbf{\underline{I}}nterchange. \\
+
+Binary code of fixed codeword length, namely 7, with $2^7 = 128$ encoded symbols. \\
+
+The extended ASCII is a code like the 7-bit ASCII but with an extra bit in the front used as a check bit, requiring the number of 1's to be even.
+
+\subsection{ISBN}
+\textbf{\underline{I}}nternational \textbf{\underline{S}}tandard \textbf{\underline{B}}ook \textbf{\underline{N}}umber. \\
+
+They have 10 bits, with it's last bit being a check bit, requiring
+\[\sum_{i=1}^{10} i x_i \equiv 0 \pmod{11}.\]
+
+\pagebreak

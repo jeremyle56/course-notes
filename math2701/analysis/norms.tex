@@ -1,0 +1,56 @@
+\subsection{Norms and Convex Bodies}
+\subsubsection{\(p\)-norms}
+\begin{definition}
+    Let \(V\) be a vector space. A norm on \(V\) is a function \({\bf x} \mapsto \norm{\bf x}\) from \(V\) to \(\bR\) which satisfies
+    \begin{enumerate}
+        \item \(\norm{\bf x} \geq 0\) for all \({\bf x} \in V\) and \(\norm{\bf x} = 0\) if and only if \({\bf x} = 0\).
+        \item \(\norm{\lambda {\bf x}} = |\lambda|\norm{\bf x}\) for all \({\bf x} \in V\) and scalar \(\lambda\).
+        \item (Triangle Inequality): \(\norm{\bf x + y} \leq \norm{\bf x} + \norm{\bf y}\) for all \(\bf{x, y} \in V\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Let \(1 \leq p < \infty\). For \({\bf x} = (x_1, \dots, x_n) \in \bR^n\) define
+    \[\norm{\bf x}_p = \left(\sum_{k=1}^{n}|x_k|^p \right)^1/p.\]
+\end{definition}
+
+\begin{theorem}[Minkowski's Inequality]
+    If \({\bf x y} \in \bR^n\), then
+    \[\norm{\bf x + y}_p \leq \norm{\bf x}_p + \norm{\bf y}_p.\]
+\end{theorem}
+
+\subsubsection{Convex Bodies}
+\begin{definition}
+    A (nonempty) subset \(K\) of a vector space \(V\) is \textbf{convex} if for all \({\bf x y} \in K\) and all \(\lambda \in [0, 1]\),
+    \[\lambda {\bf x} + (1 - \lambda) {\bf y} \in K.\]
+    That is, \(K\) contains all the line segments joining points in \(K\).
+\end{definition}
+
+\begin{proposition}
+    Let \((V, \norm{\cdot})\) be a normed vector space. Then the set
+    \[K = \{{\bf x} \in V : \norm{\bf x} \leq 1 \}\]
+    is convex.
+\end{proposition}
+
+\begin{definition}
+    Suppose that \(\emptyset \neq K \subseteq \bR^n\). Then
+    \begin{enumerate}
+        \item \(K\) is said to be \textbf{centrally symmetric} with respect to the origin if \({\bf x} \in K \iff {\bf -x} \in K\).
+        \item \(K\) is \textbf{closed} if its complement is open (\(\iff\) it contains its boundary \(\iff\) it contains all its limit points).
+        \item \(K\) is \textbf{bounded above and below} if there exist \(0 < c \leq C < \infty\) such that \(B_c \subseteq K \subseteq B_C\) where \(B_c\) and \(B_C\) are the closed Euclidean \((\norm{\cdot}_2)\) balls of radius \(c\) and \(C\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Suppose that \(\emptyset \neq K \subseteq \bR^n\). We say that \(K\) is a \textbf{convex body} if it is convex, centrally symmetric, closed and bounded above and below.
+\end{definition}
+
+\begin{theorem}
+    There is a one-to-one correspondence between convex bodies in \(\bR^n\) and norms on \(\bR^n\).
+\end{theorem}
+
+\begin{lemma}
+    Let \(\norm{\cdot}\) be a norm on \(\bR^n\). Define \(f: \bR^n \to \bR\) by \(f({\bf x}) = \norm{x}\). THen \(f\) is a continuous function from \((\bR^n, \norm{\cdot}_2)\) to \(\bR\). That is, if \(\norm{{\bf x}_n - {\bf x}}_2 \to 0\), then \(f({\bf x}_n) \to f({\bf x})\) (ie \(|f({\bf x}_n) - f({\bf x} \to 0|\)).
+\end{lemma}
+
+\pagebreak

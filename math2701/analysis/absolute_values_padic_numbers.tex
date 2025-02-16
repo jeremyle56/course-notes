@@ -1,0 +1,58 @@
+\subsection{Absolute Values and \(p\)-adic Numbers}
+
+\begin{definition}
+    Let \(\bF\) be a field. A \textbf{multiplicative valuation} or \textbf{absolute value} on \(\bF\) is a function \(v : \bF \to \bR\) satisfying:
+    \begin{enumerate}
+        \item \(v(x) \geq 0\) for all \(x \in \bF\),
+        \item \(v(x) = 0\) if and only if \(x = 0\),
+        \item \(v(xy) = v(x)v(y), (x, y \in \bF)\),
+        \item \(v(x + y) \leq v(x) + v(y), (x, y \in \bF)\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[The \(p\)-adic valuation on \(\bQ\)]
+    Fix a prime \(p\). Define \(|0|_p = 0\). Any \(0 \neq n \in \bZ\) can be written as \(n = p^a b\) where \(p\) doesn't divide \(b\). Define \(|n|_p = p^{-a}\). For \(x = \frac{n}{m} \in \bQ\), define \(|x|_p = |n|_p / |m|_p\).
+\end{definition}
+
+\begin{theorem}
+    For any prime \(p, |\cdot|_p\) is a valuation.
+\end{theorem}
+
+\begin{definition}
+    Two valuations \(v\) and \(u\) on \(\bF\) are \textbf{equivalent} if there is some \(c > 0\) such that \(v(x) = u(x)^c\) for all \(x \in \bF\).
+\end{definition}
+
+\begin{definition}
+    The \(p\)-adic numbers \(\bQ_p\) are the set of equivalence classes of \(|\cdot|_p\) Cauchy sequences of rational numbers.
+\end{definition}
+
+\begin{proposition}
+    SUppose that \(\{x_n\}\) is a \(|\cdot|_p\) Cauchy sequence. Then \(\{|x_n|_p\}\) converges in \(\bR\).
+\end{proposition}
+
+\begin{definition}
+    The set of \(p\)-adic integers \(\bZ_p\) is a unit disk around 0 in \(\bQ_p\). That is
+    \[\bZ_p = \{\alpha \in \bQ_p : |\alpha|_p \leq 1\}.\]
+\end{definition}
+
+\begin{theorem}
+    \(\bZ_p\) is a ring.
+\end{theorem}
+
+\begin{theorem}
+    Every \(p\)-adic integer is the limit of a sequence of non-negative integers.
+\end{theorem}
+
+\begin{theorem}
+    Every \(p\)-adic number \(\alpha \in \bQ_p\) has a unique \(p\)-adic expansion
+    \[\alpha = \sum_{k=-r}^{\infty}\alpha_k p^k\]
+    with \(\alpha_k \in \bZ\) and \(0 \leq \alpha_k \leq p -1\). Also, \(alpha \in \bZ_p\) if and only if all the coefficients of negative powers of \(p\) are zero.
+\end{theorem}
+
+\begin{theorem}
+    A standard \(p\)-adic expansion \(\alpha = \sum_{k=-r}^{\infty}\alpha_k p^k\) represents a rational number if and only if it is eventually periodic to the left.
+\end{theorem}
+
+\begin{theorem}
+    Every infinite sequence of \(p\)-adic integers has a convergent subsequence.
+\end{theorem}

@@ -1,0 +1,35 @@
+\subsection{The Principle of Duality in \(\bR P^2\)}
+
+\begin{definition}
+    \begin{itemize}
+        \item A projective point in \(\bR P^n\) is a 1-dimensional subspace of \(\bR^{n + 1}\). For \(P[x_0, x_1, \dots] \in \bR P^n\), we also write \(P = \langle \fx \rangle\), the dimensional subspace spanned by \(\fx\) which is the column vector \((x_0, x_1, \dots, x_n)^T\).
+        \item A projective \textbf{line} in \(bR P^n\) is a 2-dimensional subspace of \(\bR^{n + 1}\). If \(P = \langle \fp \rangle, Q = \langle \fq \rangle\) are distinct projective points then \(p\ell(P, Q) = \langle \fp, \fq \rangle\), the subspace spanned by \(\fp, \fq\).
+        \item A projective \textbf{plane} in \(\bR P^n\) is a 3-dimensional subspace of \(\bR^{n + 1}\).
+        \item A projective \textbf{hyperplane} in \(bR P^n\) is a n-dimensional subspace of \(bR^{n + 1}\).
+        \item A projective point \(P = \langle \fx \rangle\) lies on a projective line \(h = \langle \fp, \fq \rangle\) if the one dimensional subspace \(\langle \fx \rangle\) is a \textbf{subspace} of the two dimensional subspace \(\langle \fp, \fq \rangle\).
+        \item The \textbf{Real Projective Plane} \(\bR P^2\) is the set of all projective points \(\langle \fx \rangle, \fx \in \bR^3 - \{ \fzero \}\), and lines \(\langle \fp, \fq \rangle\) with \(\langle \fp \rangle \neq \langle \fq \rangle\), together with the above incidence structure.
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    In \(bR P^2\), any two projective points lie on exactly one projective line, and any two projective lines intersect in exactly one projective point.
+\end{proposition}
+
+\begin{lemma}
+    For subspaces \(U, V\) of \(\bR^n\), we have
+    \[(U + V)^\perp = U^\perp \cap V^\perp \quad \text{ and } \quad (U \cap V)^\perp = U^\perp + V^\perp.\]
+\end{lemma}
+
+\paragraph{Principle of Duality}
+In \(\bR P^2\), any true statement involving points and straight lines remains true if the words ``points'' and ``lines'' are interchanged (i.e., \(\langle \fx \rangle \leftrightarrow \langle \fx \rangle^\perp\)). E.g.,
+\begin{itemize}
+    \item Any two projective points \textbf{lie on} exactly one projective line.
+    \item Any two projective lines \textbf{intersect in} exactly one projective point.
+\end{itemize}
+
+
+\begin{lemma}
+    Projective points \(\langle \fp \rangle, \langle \fq \rangle, \langle \mathbf{r} \rangle\) in \(\bR P^2\) are \textbf{collinear} if and only if projective lines \(\langle \fp \rangle^\perp, \langle \fq \rangle^\perp, \langle \mathbf{r} \rangle^\perp\) are \textbf{concurrent}.
+\end{lemma}
+
+\pagebreak

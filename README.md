@@ -32,6 +32,11 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 
 - [MATH2221 (Higher Theory and Applications of Differential Equations)](./math2221/math2221.pdf)
 
+## 2024 T3
+
+- [MATH2701 (Abstract Algebra and Fundamental Analysis)](./math2701/math2701.pdf)
+- [MATH3411 (Information, Codes and Ciphers)](./math3411/math3411.pdf)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.
