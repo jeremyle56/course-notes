@@ -1,0 +1,120 @@
+\documentclass[12pt, letterpaper, openany]{book}
+
+\usepackage[margin=0.5in, bottom=0.75in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{dirtytalk}                      % \say command for quotes
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{pagecolor}
+\usepackage{physics}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{esint}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{                                % Formatting for hyperlinks
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\setlength{\parindent}{0pt}
+
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+\definecolor{pastelyellow}{rgb}{1, 0.93, 0.55}
+
+% Heading Configuration
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{example}[theorem]{Example}
+
+% Statements Custom Enumerate
+\providecommand{\varitem}{} % to keep LaTeX quiet
+\makeatletter
+\newenvironment{statements}[1]
+ {\renewcommand\varitem[1]{\item[\textbf{#1\arabic{enumi}\rlap{$##1$}.}]%
+    \edef\@currentlabel{#1\arabic{enumi}{$##1$}}}%
+  \enumerate[label=\textnormal{\textbf{(#1\arabic*)}}, ref=#1\arabic*]}
+ {\endenumerate}
+\makeatother
+
+
+% Coloured boxes
+\renewcommand{\proof}[1]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=brightlavender!25!white,
+        coltitle=black,
+        colframe=brightlavender!75!black,
+        fonttitle=\bfseries,
+        title=Proof.
+    ]
+        #1
+    \end{tcolorbox}
+}
+\newcommand{\defn}[1]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=pastelyellow!25!white,
+        coltitle=black,
+        colframe=pastelyellow!75!black,
+        fonttitle=\bfseries,
+        title=Definition.
+    ]
+        #1
+    \end{tcolorbox}
+}
+
+
+
+% Shorthand for graph specific operators
+\newcommand{\diam}{\operatorname{diam}}
+
+% Shorthand for Symbols
+\def\mbb#1{\mathbb{#1}}
+\newcommand{\bN}{\mbb{N}}
+
+\graphicspath{./assets}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\title{\textbf{Graph Theory}}
+\author{Jeremy Le --- UNSW MATH5425 25T1}
+\date{}
+
+\rhead{}
+\lhead{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\subfile{introduction.tex}
+
+\end{document}
