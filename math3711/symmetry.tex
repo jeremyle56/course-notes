@@ -1,1 +1,74 @@
-\section{Symmetry}
+\section{The Mathematical Language of Symmetry}
+
+\begin{definition}[Isometry]
+    A function \(f: \bR^n \to \bR^n\) is an isometry if \(\norm{f(x) - f(y)} = \norm{x - y} \forall x, y \in \bR^n\). i.e. preserves distances.
+\end{definition}
+
+\begin{definition}[Symmetry]
+    Let \(F \subseteq \bR^n\), a symmetry of \(F\) is a (surjective) isometry \(T : \bR^n \to \bR^n\) such that \(T(F) = F\).
+\end{definition}
+
+\begin{properties}
+    Let \(S, T\) be symmetries of \(F \subseteq \bR^n\). Then \(S \cdot T : \bR^n \to \bR^n\) is also a symmetry of \(F\).
+\end{properties}
+
+\proof{
+    Given \(x, y \in \bR^n\).
+    \begin{align*}
+        \norm{ST x - ST y} & = \norm{Tx - Ty} \tag{\(S\) is an isometry} \\
+                           & = \norm{x - y}. \tag{\(T\) is an isometry}
+    \end{align*}
+    Therefore \(ST\) is an isometry. Clearly \(ST\) is surjective as both \(S\) and \(T\) are surjective. Also,
+    \begin{align*}
+        ST(F) & = S(F) \tag{\(T(F) = F\)} \\
+              & = F. \tag{\(S(F) = F\)}
+    \end{align*}
+    So \(ST\) is a symmetry of \(F\).
+    \qed
+}
+
+\begin{properties}
+    If \(G =\) set of symmetries of \(F \subseteq \bR^n\), then \(G\) satisfies:
+    \begin{enumerate}
+        \item Composition is associative, \(ST(R) = S(TR) \forall S,T,R \in G\).
+        \item \(\id_{\bR^n} \in G \quad (\id_{\bR^n}(x) = x \quad \forall x \in \bR^n)\). Also, \(\id_G T = T\) and \(T\id_G = T \forall T \in G\).
+        \item If \(T \in G\), then \(T\) is bijective and \(T^{-1} \in G\).
+              \proof{
+                  If \(Tx = Ty\), then \(\norm{Tx - Ty} = 0\). So \(\norm{x - y} = 0, x = y\), therefore \(T\) is injective. By definition \(T\) is surjective, hence, \(T\) is bijective and therefore \(T^{-1}\) is surjective. \\
+
+                  To prove \(T^{-1}\) is an isometry.
+                  \begin{align*}
+                      \norm{T^{-1}x - T^{-1}y} & = \norm{TT^{-1}x - TT^{-1}y} \\
+                                               & = \norm{\id x - \id y}       \\
+                                               & = \norm{x - y}.
+                  \end{align*}
+
+                  To prove symmetry, \(T^{-1}F = F\):
+                  \[T^{-1}F = T^{-1}(T(F)) = F.\]
+
+                  Thus \(T^{-1} \in G\).
+                  \qed
+              }
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}[Group]
+    A group is a set \(G\) equipped with a ``multiplication map'' \(\mu: G \times G \to G\) such that
+    \begin{enumerate}[label=\arabic*)]
+        \item Associativity: \((gh)k = g(hk) \forall g,h,j \in G\).
+        \item Existence of identity: There exists \(1 \in G\) such that \(1g = g\) and \(g1 = g \forall g \in G\).
+        \item Existence of inverses: \(\oldforall g \in G, \exists h \in G\) such that \(gh = 1\) and \(hg = 1\). Denoted by \(g^{-1}\).
+    \end{enumerate}
+\end{definition}
+
+\begin{properties}
+    Basic facts about groups.
+    \begin{itemize}
+        \item ``\textbf{Generalised Associativity}''. When multiplying three or more elements, the bracketing does not matter. E.g. \((a(b(cd)))e = (ab)(c(de))\).
+              \proof{Mathematical Induction as for matrix multiplication.}
+        \item \textbf{Cancellation Law}. If \(gh = gk\) then \(h = k \forall g, h, k \in G\).
+              \proof{
+                  \(gh = gk \implies g^{-1}(gh) = g^{-1}(gk) \implies (g^{-1}g)h = (g^{-1}g)k \implies 1h = 1k \implies h = k.\)
+              }
+    \end{itemize}
+\end{properties}

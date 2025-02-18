@@ -27,17 +27,21 @@
     urlcolor=black
 }
 
-% \setlength{\parindent}{0pt}
+\setlength{\parindent}{0pt}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+\setlist[enumerate,1]{label={\roman*)}}
 
 % Heading Configuration
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[subsection]
+% \theoremstyle{plain}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 
-\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{properties}[theorem]{Properties}
 
 \newtheorem{example}[theorem]{Example}
 
@@ -51,8 +55,39 @@
  {\endenumerate}
 \makeatother
 
+% Coloured boxes
+\renewcommand{\proof}[1]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        after skip= 0pt,
+        colback=brightlavender!25!white,
+        coltitle=black,
+        colframe=brightlavender!75!black,
+        fonttitle=\bfseries,
+        title=Proof.
+    ]
+        #1
+    \end{tcolorbox}
+}
+
+\let\oldforall\forall
+\renewcommand{\forall}{\text{ for all }}
+
+\let\oldexist\exists
+\renewcommand{\exists}{\text{ there exists }}
+
+\newcommand{\tand}{\text{ and }}
+
 % Shorthand for Symbols
 \def\mbb#1{\mathbb{#1}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\GL}{GL_n(\mathbb{R})}
 
 \graphicspath{./assets}
 
@@ -74,5 +109,6 @@
 \newpage
 
 \subfile{symmetry.tex}
+\subfile{matrix_groups.tex}
 
 \end{document}

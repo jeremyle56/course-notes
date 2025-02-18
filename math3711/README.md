@@ -2,4 +2,5 @@
 
 [Main](./math3711.tex)
 
-- [Symmetry](./symmetry.tex)
+- [The Mathematical Language of Symmetry](./symmetry.tex)
+- [Matrix Groups and Subgroups](./matrix_groups.tex)

@@ -1,0 +1,85 @@
+\section{Matrix Groups and Subgroups}
+
+Recall \(\GL\) and \(GL_n(\bC)\) which represent the set of real/complex invertible \(n \times n\) matrices.
+
+\begin{proposition}
+    \(\GL\) and \(GL_n(\bC)\) are groups when endowed with matrix multiplication.
+    \proof{
+        Product of real invertible matrices is in \(\GL\).
+        \begin{enumerate}
+            \item matrix multiplication is associative.
+            \item identity matrix \(I_n : I_n m = m\) and \(mI_n = m \forall m \in \GL\)
+            \item if \(m \in \GL\) then \(m^{-1}\). \(mm^{-1} = I \tand m^{-1}m = I\).
+        \end{enumerate}
+        \qed
+    }
+\end{proposition}
+
+\begin{proposition}
+    Let \(G =\) group.
+    \begin{enumerate}[label=\arabic*)]
+        \item Identity is unique i.e. suppose \(1 , e\) are both identities then \(1 = e\).
+              \proof{
+                  \(1 = 1 \cdot e = e\).
+                  \qed
+              }
+        \item Inverses are unique.
+              \proof{
+                  If \(g \in G, gh = hg = 1 \tand gk = kg = 1\) then \(h = k\).
+                  \qed
+              }
+        \item For \(g, h \in G\) we have \((gh)^{-1} = h^{-1}g^{-1}\).
+              \proof{
+              \((gh)(h^{-1}g^{-1}) = ghh^{-1}g^{-1} = g1g^{-1} = gg^{-1} = 1\). Similarly, \((h^{-1}g^{-1}(gh) = 1)\).
+              \qed
+              }
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}[Subgroup]
+    Let \(G\) be a group with multiplication \(\mu\). A subset \(H \subseteq G\) is called a subgroup of \(G\) (denoted \(H \leq G\)) if it satisfies:
+    \begin{enumerate}
+        \item \(1_G \in H\) (contains identity),
+        \item if \(g, h \in H\) then \(gh \in H\) (closed under multiplication),
+        \item if \(g \in H\) then \(g^{-1} \in H\) (closed under inverse).
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    \(H\) is a group with the induced multiplication map \(\mu_H: H \times H \to H\) by \(\mu_H(g, h) = \mu(g, h)\).
+    \proof{
+        (ii) tells us that \(\mu_H\) makes sense. \(\mu_H\) is associative because \(\mu\) is. \(H\) has an identity from (i). \(H\) has inverses from (iii).
+    }
+\end{proposition}
+
+\begin{proposition}
+    Set of orthogonal matrices \(O_n(\bR) = \{M \in \GL : M^T = M^{-1}\} \leq \GL\) forms a group. Namely the set of symmetries of an \(n - 1\) sphere, i.e. an \(n\) dimensional circle.
+    \proof{
+        Check axioms.
+        \begin{enumerate}
+            \item \(I_n \in O_n(\bR)\)
+            \item If \(M, N \in O_n(\bR)\) then \((MN)^T = N^TM^T = N^{-1}M^{-1} = (MN)^{-1}\), so \(MN \in O_n(\bR)\).
+            \item If \(M \in O_n(\bR)\) then \((M^{-1})^T = (M^T)^{-1} = (M^{-1})^{-1}\) so \(M^{-1} \in O_n(\bR)\).
+        \end{enumerate}
+    }
+\end{proposition}
+
+\begin{proposition}
+    Basic subgroup facts.
+    \begin{enumerate}
+        \item Any group \(G\) has two trivial subgroups: itself and \(1 = \{1_G\}\).
+        \item If \(J \leq H\) and \(H \leq G\) then \(J \leq G\).
+    \end{enumerate}
+\end{proposition}
+
+Here are some notations. For \(g \in G\)  where \(G\) is a group.
+\begin{enumerate}
+    \item If \(n\) positive integer, define \(g^n = g \cdot g \cdots g \, (n\) times)
+    \item \(g^0 = 1\)
+    \item \(n\) positive: \(g^{-n} = (g^{-1})^n\) or \((g^n)^{-1}\).
+    \item For \(m, n \in \bZ\), \(g^m \cdot g^n = g^{m + n}\) and \((g^m)^n = g^{mn}\).
+\end{enumerate}
+
+\begin{definition}
+    The order of a group \(G\), denoted \(|G|\) is the cardinality of \(G\). For \(g \in G\), the order of \(g\) is the smallest positive integer \(n\) such that \(g^n = 1\). If no such integer exists, order is \(\infty\).
+\end{definition}
