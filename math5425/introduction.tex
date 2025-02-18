@@ -81,14 +81,14 @@ An edge which joins two vertices of a cycle \(C\), but which is not an edge of \
 \bigskip
 The \textit{minimum length} of a cycle in \(G\) is the \textbf{girth} of \(G\), denoted by \(g(G)\). \\
 
-Given \(x, y \in V\), let \(d_G(x, y)\) be the length of a shortest path from \(x\) to \(y\) in \(G\), called the \textbf{distance} from \(x\) to \(y\) in \(G\). Set \(d_G(x, y) = \inf\) if no such path exists. \\
+Given \(x, y \in V\), let \(d_G(x, y)\) be the length of a shortest path from \(x\) to \(y\) in \(G\), called the \textbf{distance} from \(x\) to \(y\) in \(G\). Set \(d_G(x, y) = \infty\) if no such path exists. \\
 
 We say that \(G\) is \textbf{connected} if \(d_G(x, y)\) is finite for all \(x, y \in V\). \\
 
 Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
 
 \begin{proposition}
-    Every graph \(G\) with contains a cycle satisfies \(g(G) \leq 2 \diam(G) + 1\).
+    Every graph \(G\) which contains a cycle satisfies \(g(G) \leq 2 \diam(G) + 1\).
 \end{proposition}
 
 \proof{
@@ -101,7 +101,7 @@ Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
 A maximal connected subgraph of \(G\) is called a \textbf{component} (or \textbf{connected component}) of G.
 
 \begin{proposition}
-    The vertices of a connected graph can be labelled \(v_1, v_2, \dots, v_n\)such that \(G_n = G\) and \(G_i = G[v_1, \dots, v_i]\) is connected for all \(i\).
+    The vertices of a connected graph can be labelled \(v_1, v_2, \dots, v_n\) such that \(G_n = G\) and \(G_i = G[v_1, \dots, v_i]\) is connected for all \(i\).
 \end{proposition}
 
 \proof{
