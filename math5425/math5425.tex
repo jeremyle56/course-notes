@@ -33,13 +33,13 @@
 \definecolor{pastelyellow}{rgb}{1, 0.93, 0.55}
 
 % Heading Configuration
-\theoremstyle{plain}
+% \theoremstyle{plain}
+\theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 
-\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 
 \newtheorem{example}[theorem]{Example}
@@ -87,7 +87,13 @@
     \end{tcolorbox}
 }
 
+\let\oldforall\forall
+\renewcommand{\forall}{\text{ for all }}
 
+\let\oldexist\exists
+\renewcommand{\exists}{\text{ there exists }}
+
+\newcommand{\tand}{\text{ and }}
 
 % Shorthand for graph specific operators
 \newcommand{\diam}{\operatorname{diam}}

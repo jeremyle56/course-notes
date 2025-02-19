@@ -72,11 +72,12 @@ An edge which joins two vertices of a cycle \(C\), but which is not an edge of \
 
 \begin{proposition}
     Every graph \(G\) contains a path of length \(\delta(G)\) and a cycle of length at least \(\delta(G) + 1\), if \(\delta(G) \geq 2\).
+    \proof{
+        Let \(P = x_0x_1 \dots x_k\) be the longest path in \(G\). By maximality of \(P\), all neighbours of \(x_k\) lie on \(P\). Hence \(\delta(G) \leq d(x_k) \leq k = |\{x_0,x_1, \dots, x_{k - 1}\}|\), which proves the first statement. Let \(x_i\) be the smallest-indexed neighbour of \(x_k\) in \(P\). Then \(C = x_k x_i x_{i + 1} \dots x_{k-1}x_k\) is a cycle of length \(\geq \delta(G) + 1\) because \(C\) contains \(d(x_k) \geq \delta(G)\) neighbours of \(x_k\) as well as \(x_k\).
+        \qed
+    }
 \end{proposition}
 
-\proof{
-    Let \(P = x_0x_1 \dots x_k\) be the longest path in \(G\). By maximality of \(P\), all neighbours of \(x_k\) lie on \(P\). Hence \(\delta(G) \leq d(x_k) \leq k = |\{x_0,x_1, \dots, x_{k - 1}\}|\), which proves the first statement. Let \(x_i\) be the smallest-indexed neighbour of \(x_k\) in \(P\). Then \(C = x_k x_i x_{i + 1} \dots x_{k-1}x_k\) is a cycle of length \(\geq \delta(G) + 1\) because \(C\) contains \(d(x_k) \geq \delta(G)\) neighbours of \(x_k\) as well as \(x_k\).
-}
 
 \bigskip
 The \textit{minimum length} of a cycle in \(G\) is the \textbf{girth} of \(G\), denoted by \(g(G)\). \\
@@ -89,26 +90,28 @@ Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
 
 \begin{proposition}
     Every graph \(G\) which contains a cycle satisfies \(g(G) \leq 2 \diam(G) + 1\).
+    \proof{
+        Let \(C\) be a shortst cycle in \(G\), so \(|C| = g(G)\). For a contradiction, assume \(g(G) \geq 2 \diam(G) + 2\). \\
+
+        Choose vertices \(x, y\) on \(C\) with \(d_C(x, y) \geq \diam(G) + 1\). In \(G\) the distance \(d_G(x, y)\) is strictly smaller, so any shortest path \(P\) from \(x\) to \(y\) in \(G\) is not a subgraph of \(C\). But using \(P\) together with the shorter arc of \(C\) from \(x\) to \(y\) gives a closed walk of length \(< |C|\). This closed walk contains a shorter cycle than \(C\) which is a contradiction.
+        \qed
+    }
 \end{proposition}
 
-\proof{
-    Let \(C\) be a shortst cycle in \(G\), so \(|C| = g(G)\). For a contradiction, assume \(g(G) \geq 2 \diam(G) + 2\). \\
-
-    Choose vertices \(x, y\) on \(C\) with \(d_C(x, y) \geq \diam(G) + 1\). In \(G\) the distance \(d_G(x, y)\) is strictly smaller, so any shortest path \(P\) from \(x\) to \(y\) in \(G\) is not a subgraph of \(C\). But using \(P\) together with the shorter arc of \(C\) from \(x\) to \(y\) gives a closed walk of length \(< |C|\). This closed walk contains a shorter cycle than \(C\) which is a contradiction.
-}
 
 \section{Connectivity}
 A maximal connected subgraph of \(G\) is called a \textbf{component} (or \textbf{connected component}) of G.
 
 \begin{proposition}
     The vertices of a connected graph can be labelled \(v_1, v_2, \dots, v_n\) such that \(G_n = G\) and \(G_i = G[v_1, \dots, v_i]\) is connected for all \(i\).
+    \proof{
+        Choose \(v_1\) arbitrarily. Now suppose that we have labelled \(v_1, \dots, v_i\) such that \(G_j = G[v_1, \dots, v_j]\) is connected for all \(j = 1, \dots, i\). \\
+
+        If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_i]\) is connected. This completes the proof, by induction.
+        \qed
+    }
 \end{proposition}
 
-\proof{
-    Choose \(v_1\) arbitrarily. Now suppose that we have labelled \(v_1, \dots, v_i\) such that \(G_j = G[v_1, \dots, v_j]\) is connected for all \(j = 1, \dots, i\). \\
-
-    If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_i]\) is connected. This completes the proof, by induction.
-}
 
 Let \(A, B \subseteq V\) be sets of vertices. An \textbf{\((A, B)\)-path} in \(G\) is a path \(P = x_0x_1 \cdots x_k\) such that
 \[P \cap A = \{x_0\}, \quad P \cap B = \{x_k\}.\]
@@ -147,3 +150,66 @@ So, \(\kappa(G) = 0\) iff \(G\) is trivial or \(G\) is disconnected. Also, \(\ka
 \begin{proposition}
     If \(|G| \geq 2\) then \(\kappa(G) \leq \lambda(G) \leq \delta(G)\).
 \end{proposition}
+
+\begin{theorem}[Mader, 1973]
+    Let \(k\) be a positive integer. Every graph \(G\) with average degree at least \(4k\) has a \((k + 1)\)-connected subgraph \(H\) with
+    \[ \frac{|E(H)|}{|V(H)|} > \frac{|E(G)|}{|V(G)|} - k.\]
+    \proof{
+    We write \(|G|\) instead of \(|V(G)|\). Let \(\gamma = \frac{|E(G)|}{|G|} \geq 2k\). Consider subgraphs \(G'\) of G which satisfy:
+    \begin{equation} \label{mader-proof}
+        |G'| \geq 2k \quad \tand \quad |E(G')| > \gamma(|G'| - k).
+    \end{equation}
+    such graphs \(G'\) exists as \(G\) satisfies \ref{mader-proof}. (Average degree of \(G\) is \(\frac{2|E(G)|}{|G|} \geq 4k\), so \(|G| \geq 4k \tand \gamma(|G| - k) = |E(G)|\frac{(|G|-k)}{|G|} < |E(G)|\).) \\
+
+    Now let \(H\) be a subgraph of \(G\) of smallest order which satisfies \ref{mader-proof}. We continue the proof by proving three claims. \\
+
+    {\bf Claim 1.} If \(G'\) satisfies \ref{mader-proof} then \(|G'| > 2k\). \\
+    {\bf Proof.} If \(G'\) satisfies \ref{mader-proof} and \(|G'| = 2k\) then \(|E(G')| > \gamma(|G'| - k) \geq 2k^2 > \binom{|G'|}{2}\), contradiction. \\
+
+    {\bf Claim 2.} \(S(H) > \gamma\). \\
+    {\bf Proof.} For a contradiction, suppose that \(S(H) \leq \gamma\). Let \(G'\) be obtained from \(H\) by deleting a vertex of degree \(\leq \gamma\). Then \(|G'| < |H|\) and \(G'\) satisfies \ref{mader-proof}, which is a contradiction. To see this, check:
+    \begin{align*}
+        |G'| = |H| - 1               & \geq 2k, \quad \text{by Claim 1, and}                                          \\
+        |E(G')| \geq |E(H)| - \gamma & > \gamma(|H| - k - 1), \quad \text{as } H \text{ satisfies } \ref{mader-proof} \\
+                                     & = \gamma(|G'| - k).
+    \end{align*}
+
+    Hence \(S(H) > \gamma\). It follows that \(|H| \geq \gamma\). Thus,
+    \begin{align*}
+        \frac{|E(H)|}{|H|} & > \frac{\gamma(|H|- k)}{|H|} \tag{as \(H\) satisfies \ref{mader-proof}}.
+    \end{align*}
+
+    {\bf Claim 3.} \(H\) is \((k + 1)\)-connected. \\
+    {\bf Proof.} By Claim 1, \(|H| \geq 2k + 1 \geq k + 2\) as \(k \geq 1\). So \(H\) is large enough. For a contradiction, suppose that \(H\) is not \((k + 1)\)-connected. Then \(H\) has a proper separation \(\{U_1, U_2\}\) of order at most \(k\). \\
+
+    Let \(H_i = H[U_i]\) for \(i = 1, 2\). Since any vertex \(v \in U_1 - U_2\) has \(d_H(v) \geq S(H) > \gamma\) (by Claim 2), and all neighbours of \(v\) in \(H\) belong to \(H_1\), we have \(|H_1| \geq \gamma \geq 2k\). Similarly, \(|H_2| \geq 2k\). By minimality of \(H\), neither \(H_1\) nor \(H_2\) satisfies \ref{mader-proof}. Hence \(|E(H_i)| \leq \gamma(|H_i| - k)\) for \(i = 1, 2\). But then
+    \begin{align*}
+        |E(H)| & \leq |E(H_1)| + |E(H_2)|                           \\
+               & \leq \gamma(|H_1| + |H_2| - 2k)                    \\
+               & \leq \gamma(|H| - k), \tag{by inclusion-exclusion}
+    \end{align*}
+    since \(|U_1 \cup U_2| \leq k\). This contradicts \ref{mader-proof} for \(H\). So \(H\) is \((k + 1)\)-connected, completing the proof of Claim 3 and of the theorem.
+    \qed
+    }
+\end{theorem}
+
+\section{Trees and Forests}
+A graph with no cycles is a \textbf{forest} (also called an acyclic graph). A connected graph with no cycles is a \textbf{tree}.
+
+\begin{theorem} \label{tree-equiv}
+    The following are equivalent for a graph \(T\):
+    \begin{enumerate}[label=(\roman*)]
+        \item \(T\) is a tree;
+        \item Any two vertices of \(T\) are linked by a \textit{unique} path in \(T\);
+        \item \(T\) is \textit{minimally connected}: that is, \(T\) is connected but \(T - e\) is disconnected for every \(e \in E(T)\);
+        \item \(T\) is \textit{maximally acyclic}: that is, \(T\) is acyclic but \(T + xy\) has a cycle for any two nonadjacent vertices \(x, y\) in \(T\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    If \(G\) is connected then \(G\) has a spanning tree.
+    \proof{
+        Let be a connected graph and let \(H\) be a minimal connected spanning subgraph of \(G\). (Note \(H\) exists as \(G\) is a connected spanning subgraph of itself.) By theorem \ref{tree-equiv}, \(H\) is a tree.
+        \qed
+    }
+\end{corollary}
