@@ -1,0 +1,100 @@
+\section{Permutation Groups}
+
+\begin{definition}[Permutations]
+    Let \(S\) be a set. Let \(\Perm(S)\) be the set of permutations of \(S\). This is the set of bijections of form \(\sigma: S \to S\).
+\end{definition}
+
+\begin{proposition}
+    \(\Perm(S)\) is a group when endowed with composition of functions.
+    \proof{
+        Composition of bijections is a bijection. The identity is \(\id_S\) and group inverse is the inverse function.
+    }
+\end{proposition}
+
+\begin{definition}[Symmetric Group]
+    Let \(S = \{1, \dots, n\}\). The symmetric group \(S_n\) is \(\Perm(S)\).
+\end{definition}
+
+Two notations are used. With the two line notation, represent \(\sigma \in S_n\) by
+\[\begin{pmatrix}
+        1         & 2         & 3         & \cdots & n         \\
+        \sigma(1) & \sigma(2) & \sigma(3) & \cdots & \sigma(n)
+    \end{pmatrix}\]
+(\(\sigma(i)\)'s are all distinct, hence \(\sigma\) is one to one and bijective). Note this shows \(|S_n| = n!\). \\
+
+With the cyclic notation, let \(s_1, s_2, \dots, s_k \in S\) be distinct. We define a new permutation \(\sigma \in \Perm(S)\) by \(\sigma(s_i) = s_{i + 1}\) for \(i = 1, 2, \dots, k - 1, \sigma(s_k) = \sigma(s_1) \tand \sigma(s) = s\) for \(s \notin \{s_1, s_2, \dots, s_k\}\). Denoted \((s_1 s_2 \dots s_k)\) and called a k-cycle.
+
+\exmp{
+    For \(n = 4\),
+    \[
+        \sigma =
+        \begin{pmatrix}
+            1 & 2 & 3 & 4 \\
+            2 & 3 & 1 & 4
+        \end{pmatrix} \in S_4 \quad \text{ means } \quad
+        \begin{matrix}
+            \sigma(1) = 2, & \sigma(2) = 3  \\
+            \sigma(3) = 1, & \sigma(4) = 4.
+        \end{matrix}
+    \]
+    In cyclic notation this is \((123)(4)\) or \((123)\) where the cycle is \(1 \to 2 \to 3 \to 1\).
+}
+
+\bigskip
+Note that a 1-cycle is the identity and the order of a k-cycle is \(k\). So \(\sigma^k = 1\) and \(\sigma^{-1} = \sigma^{k - 1}\).
+
+\begin{definition}[Disjoint Cycles]
+    Cycles \(s_1 \dots s_k\) and \(t_1 \dots t_k\) are disjoint if \(\{s_1, \dots, s_k\} \cup \{t_1, \dots, t_k\} = \emptyset\).
+\end{definition}
+
+\begin{definition}[Commuativity]
+    In any group, two elements \(g, h\) commute if \(gh = hg\).
+\end{definition}
+
+\begin{proposition}
+    Disjoint cycles commute.
+\end{proposition}
+
+\begin{proposition}
+    Any permutation \(\sigma\) of a finite set \(S\) is a product of disjoint cycles.
+    \exmp{
+        \(\sigma = \begin{pmatrix}
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            2 & 4 & 6 & 1 & 5 & 3
+        \end{pmatrix} \in S_6 \) does \(1 \to 2 \to 4 \to 1\), \(3 \to 6 \to 3\) and \(5 \to 5\).
+
+        Thus \(\sigma = (124)(36)\) since \((5)\) is the identity.
+    }
+\end{proposition}
+
+\begin{proposition}
+    Let \(\sigma\) be a permutation of a finite set \(S\). Then \(S\) is a disjoint union of subsets, say \(S_1, \dots, S_r\), such that \(\sigma\) permutes the elements of each \(S_i\) cyclically.
+\end{proposition}
+
+\begin{definition}[Transposition]
+    A transposition is a \(2-\)cycle i.e. \((ab)\).
+\end{definition}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item The k-cycle \((s_1 s_2\dots s_k) = (s_1 s_k)(s_1 s_{k - 1}) \dots (s_1 s_3)(s_1 s_2)\)
+              \exmp{
+                  \((3625) = (35)(32)(36) = (36)(62)(25)\)
+              }
+              \proof{
+                  The RHS produces the mapping below which is equivalent to the LHS.
+                  \begin{align*}
+                      s_1       & \to s_2         \\
+                      s_2       & \to s_1 \to s_3 \\
+                      s_3       & \to s_1 \to s_4 \\
+                                & \vdots          \\
+                      s_{k - 1} & \to s_1 \to s_k \\
+                      s_k       & \to s_1.
+                  \end{align*}
+              }
+        \item Any permutations in \(S_n\) is a product of transpositions.
+              \proof{
+                  We can write any \(\sigma \in S_n\) as product of (disjoint) cycles. By part i), each cycle is a product of transpositions. So we can write \(\sigma\) as product of transpositions.
+              }
+    \end{enumerate}
+\end{proposition}
