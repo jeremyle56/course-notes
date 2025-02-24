@@ -1,0 +1,95 @@
+\chapter{Matchings and Hamilton Cycles}
+
+Two edges in a graph are called \textbf{independent} if they have no vertices in common.
+
+A set \(M\) of pairwise independent edges in a graph is called a \textbf{matching}. \\
+
+Given \(G = (V, E)\) and \(U \subseteq V\), say that \(M \subseteq E\) is a \textbf{matching of U} if \(M\) is matching and every vertex in \(U\) is incident with an edge of \(M\). We say that the vertices in \(U\) are matched by \(M\), and t hat the vertices not incident with any edge of \(M\) are \textbf{unmatched}. \\
+
+A matching \(M\) is a \textbf{maximal matching} of \(G\) if \(M \cup \{e\}\) is not a matching for any \(e \in E - M\).
+
+A \textbf{maximum matching} of \(G\) is a matching of \(G\) such that no set of edges with size greater than \(|M|\) is a matching. \\
+
+A \textbf{perfect matching} of \(G\) is a matching of \(G\) which matches every vertex of \(G\). Note: a perfect matching is a 1-regular spanning subgraph of \(G\) also called a \textbf{1-factor} of \(G\). \\
+
+A \textbf{\(k\)-factor} is a \(k\)-regular spanning subgraph. A \textbf{2-factor} in a graph is the union of disjoint cycles which covers all the vertices.
+
+\section{Matchings in Bipartite Graphs}
+Let \(G = (V, E)\) be a bipartite graph with vertex bipartition \(V = A \cup B\). Here \(A, B\) are nonempty disjoint sets. We use the convention that all vertices called \(a, a', a'', \dots\) belong to \(A\) and similarly for \(B\). \\
+
+Let \(M\) be matching in \(G\). A path in \(G\) which starts at an \textit{unmatched} vertex of \(A\) and contains, alternately, edges from \(E - M\) and from \(M\), is called an \textbf{alternating path} with respect to \(M\).
+
+If an alternating path \(P\) ends in an unmatched vertex of \(B\) then it is called an \textbf{augmenting path}.
+
+\begin{definition}
+    A set \(U \subseteq V\) is a \textbf{cover} (or \textbf{vertex cover}) of \(G\) if every edge of \(G\) is incident with a vertex in \(U\).
+\end{definition}
+
+\begin{theorem}[K\"{o}nig, 1931] \label{konig-theorem}
+    Let \(G\) be a bipartite graph. The size of a maximum matching in \(G\) is equal to the size of the minimum vertex cover of \(G\).
+    \proof{
+        Let \(\hat{U}\) be a cover in \(G\) and let \(M\)be a maximum matching. Then \(|\hat{U}| \geq |M|\) as we must cover every edge of \(M\). Hence it suffices to construct a cover \(U\) of \(G\) with \(|U| = |M|\). \\
+
+        We build \(U\) be choosing one vertex from each edge of \(M\) to place into \(U\), as follows:
+        \begin{itemize}
+            \item If \(ab \in M\) and some alternating path in \(G\) with respect to \(M\) ends in \(b\). Then put \(b\) into \(U\) otherwise put \(a\) into \(U\).
+        \end{itemize}
+        Let \(ab \in E\). If \(ab \in M\) then \(a \in U\) or \(b \in U\) by definition of \(U\). Now assume \(abb \notin M\). Since \(M\) is maximum, there exists \(a'b' \in M\) with \(a = a'\) or \(b = b'\). If \(a\) is unmatched in \(M\) then \(b = b'\) for some \(a'b' \in M\). Hence \(ab\) is an alternating path ending in \(b = b'\), so we chose \(b'\) to go into \(U\) from the edge \(a'b' \in M\). So the edge \(ab\) is covered by \(U\) in this case. \\
+
+        Hence we assume that \(a = a'\) for some \(a'b' \in M\). If \(a = a' \in U\) then we are done. Otherwise \(b' \in U\), so there is an alternating path \(P\) ending in \(b'\). Then \(P = a_1b_1a_2b_2 \dots b'\), and we have three cases:
+        \begin{enumerate}[label=(\roman*)]
+            \item \(P\) does not include \(a\) or \(b\). Then \(Pab = a_1a_2 \dots b'ab\) is an alternating path in \(G\) with respect to \(M\). By maximality of \(M\), \(b\) is matched or else we have an augmenting path. Hence \(b \in U\) as \(b\) is the chosen vertex from its matching edge.
+            \item If \(b\) is on \(P\) before \(a\), or \(b \in P\) and \(a \notin P\), then \(P = a_1b_1a_2 \dots b \dots b'\). Then we let \(P' = a_1b_1 \dots b\). This is an alternating path ending in b, so finish proof as case above.
+            \item If \(a\) is on \(P\) before \(b\), or \(a \in P\) and \(b \notin P\). Then \(P = a_1b_1\dots a_rb_r \dots b'\) and we take \(P' = a_1b_1 \dots ab\). This is an alternating path ending in \(b\), so finish proof as case above.
+        \end{enumerate}
+        This proves \(U\) is a cover of \(G\) and since \(|U| = |M|\), this completes the proof.
+    }
+\end{theorem}
+
+For a subset \(S \subseteq A\), let \(N(S) = \bigcup_{v \in S}N(v)\) be the set of vertices in \(B\) which are neighbours of some vertex in \(S\).
+
+\begin{theorem}[Hall, 1935]
+    Let \(G\) be a bipartite graph. Then \(G\) contains a matching of \(A\) if and only if
+    \begin{equation} \label{hall-condition}
+        |N(S)| \geq |S| \quad \text{ for all }  S \subseteq A.
+    \end{equation}
+    \proof{
+    We have that this condition is necessary. Now suppose that (\ref{hall-condition}) holds. For a contradiction, suppose that \(G\) has no matching of \(A\). Then K\"{o}nig's Theorem (Theorem \ref{konig-theorem}) says that \(G\) has a cover \(U\) with \(|U| < |A|\). Suppose that \(U = A' \cup B'\) with \(A' \subseteq A \tand B' \subseteq B\). Then \(|A'| + |B'| = |U| < |A|\), so \(|B'| < |A| - |A'| = |A - A'|\). Since \(U\) is a cover, \(G\) has no edges from \(A - A'\) to \(B - B'\). Hence \(N(A - A') \subseteq B'\), and so \(|N(A - A')| \leq |B'| < |A - A'|\). This contradicts Hall's condition \ref{hall-condition} for \(S = A - A'\). Hence \(G\) contains a matching of \(A\).
+    }
+\end{theorem}
+
+\begin{corollary}
+    Let \(G\) be a bipartite graph and \(d \in \bN\). If \(|N(S)| \geq |S| - d\) for all \(S \subseteq A\) then \(G\) has a matching of size \(|A| - d\).
+    \proof{
+    Add \(d\) new vertices to \(B\) and join each of them by an edge to each vertex of \(A\). Then for all \(S \subseteq A\), in the new graph \(G'\), \(|N_{G'}(S) \geq |S| - d + d = |S|\). Hall's condition is satisfied in \(G'\). Therefore there is a matching \(M\) in \(G'\) which matches all of \(A\). At least \(|A| - d\) edges in \(M\) are edges of \(G\).
+    }
+\end{corollary}
+
+\begin{corollary} \label{k-regular-perfect-matching}
+    If \(G\) is a \(k\)-regular bipartite graph then \(G\) has a perfect matching.
+    \proof{
+        Assume \(k \geq 1\). Since \(G\) is \(k\)-regular, \(|E(G) = k|A| = k|B|\), so \(|A| = |B|\). Hence it suffices to prove that \(G\) contains a matching of \(A\). Every set \(S \subseteq A\) is joined to \(N(S)\) by a total of \(k|S|\) edges. These edges are a subset of the \(k|N(S)|\) edges incident with \(|N(S)\). Hence \(k|S| \leq k|N(S)|\) and diving by \(k\) shows that Hall's condition holds. Thus, \(G\) has a matching of \(A\).
+    }
+\end{corollary}
+
+\begin{corollary}
+    Every regular graph of positive even degree has a 2-factor.
+    \proof{
+    Let \(G\) be any \(2k\)-regular graph, \(k \geq 1\). Without loss of generality, suppose that \(G\) is connected (or apply this argument to each component). By Theorem \ref{euler}, \(G\) has an Euler tour \(v_0v_1 \dots v_{l - 1}v_l\) where \(v_l = v_0, e_i = v_iv_{i + 1} \in E(G)\) using each edge exactly once. \\
+
+    Replace each vertex \(v \in V\) with a pair of vertices \(v^-, v^+\), and replace every edge \(e_i = v_iv_{i + 1}\) by the edge \(v_i^+v_{i+1}^-\). The resulting graph \(G'\) is a \(k\)-regular bipartite graph. Hence by Corollary \ref{k-regular-perfect-matching}, \(G'\) has a perfect matching (1-factor). Collapse every vertex pair \((v^-,v^+)\) back into a single vertex \(v\), for all \(v \in V\). The 1-factor of \(G'\) becomes a 2-factor of \(G\).
+    }
+\end{corollary}
+
+\section{Hamilton Cycles}
+A \textbf{Hamilton cycle} is a connected 2-factor. That is, it is a cycle which includes every vertex. \\
+
+Say \(G\) is \textbf{Hamiltonian} if it contains a Hamilton cycle.
+A Hamiltonian graph \(G\) must be connected with minimum degree \(\delta(G) \geq 2\).
+
+\begin{theorem}[Dirac, 1952]
+    Every graph with \(n \geq 3\) vertices and with minimum degree at least \(n / 2\) has a Hamilton cycle.
+    \proof{
+        Let \(G\) be a graph with minimum degree \(\geq n /2\) and \(n \geq 3\) vertices. Then \(G\) is connected, as otherwise the degree of any vertex in the smaller component must be \(< n /2\). Let \(P = x_0 \dots x_k\) be a longest path in \(G\). by maximality, all neighbours of \(x_0\) and \(x_k\) lie on \(P\). So at least \(n / 2\) of the vertices \(x_0, \dots, x_{k - 1}\) are adjacent to \(x_k\) and at least  \(n / 2\) of these same vertices satisfy \(x_0 x_{i + 1} \in E(G)\). By the pigeonhole principle, as \(k < n\), there exists \(i \in \{0, \dots, k - 1\}\) with \(x_0 x_{i + 1},, x_ix_k \in E(G)\).
+    }
+\end{theorem}

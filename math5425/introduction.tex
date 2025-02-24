@@ -60,7 +60,7 @@ A \textbf{walk} in the graph \(G\) is a sequence of vertices \(v_0v_1v_2 \cdots 
 
 An \textbf{Euler tour} is a \textit{closed walk} in a graph which uses every edge precisely once. A graph is Eulerian if it has an Euler tour.
 
-\begin{theorem}[Euler, 1736]
+\begin{theorem}[Euler, 1736] \label{euler}
     A connected graph is Eulerian if and only if every vertex has even degree.
 \end{theorem}
 
@@ -74,7 +74,6 @@ An edge which joins two vertices of a cycle \(C\), but which is not an edge of \
     Every graph \(G\) contains a path of length \(\delta(G)\) and a cycle of length at least \(\delta(G) + 1\), if \(\delta(G) \geq 2\).
     \proof{
         Let \(P = x_0x_1 \dots x_k\) be the longest path in \(G\). By maximality of \(P\), all neighbours of \(x_k\) lie on \(P\). Hence \(\delta(G) \leq d(x_k) \leq k = |\{x_0,x_1, \dots, x_{k - 1}\}|\), which proves the first statement. Let \(x_i\) be the smallest-indexed neighbour of \(x_k\) in \(P\). Then \(C = x_k x_i x_{i + 1} \dots x_{k-1}x_k\) is a cycle of length \(\geq \delta(G) + 1\) because \(C\) contains \(d(x_k) \geq \delta(G)\) neighbours of \(x_k\) as well as \(x_k\).
-        \qed
     }
 \end{proposition}
 
@@ -94,7 +93,6 @@ Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
         Let \(C\) be a shortst cycle in \(G\), so \(|C| = g(G)\). For a contradiction, assume \(g(G) \geq 2 \diam(G) + 2\). \\
 
         Choose vertices \(x, y\) on \(C\) with \(d_C(x, y) \geq \diam(G) + 1\). In \(G\) the distance \(d_G(x, y)\) is strictly smaller, so any shortest path \(P\) from \(x\) to \(y\) in \(G\) is not a subgraph of \(C\). But using \(P\) together with the shorter arc of \(C\) from \(x\) to \(y\) gives a closed walk of length \(< |C|\). This closed walk contains a shorter cycle than \(C\) which is a contradiction.
-        \qed
     }
 \end{proposition}
 
@@ -102,13 +100,12 @@ Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
 \section{Connectivity}
 A maximal connected subgraph of \(G\) is called a \textbf{component} (or \textbf{connected component}) of G.
 
-\begin{proposition}
+\begin{proposition} \label{connected-labelling}
     The vertices of a connected graph can be labelled \(v_1, v_2, \dots, v_n\) such that \(G_n = G\) and \(G_i = G[v_1, \dots, v_i]\) is connected for all \(i\).
     \proof{
         Choose \(v_1\) arbitrarily. Now suppose that we have labelled \(v_1, \dots, v_i\) such that \(G_j = G[v_1, \dots, v_j]\) is connected for all \(j = 1, \dots, i\). \\
 
         If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_i]\) is connected. This completes the proof, by induction.
-        \qed
     }
 \end{proposition}
 
@@ -189,7 +186,6 @@ So, \(\kappa(G) = 0\) iff \(G\) is trivial or \(G\) is disconnected. Also, \(\ka
                & \leq \gamma(|H| - k), \tag{by inclusion-exclusion}
     \end{align*}
     since \(|U_1 \cup U_2| \leq k\). This contradicts \ref{mader-proof} for \(H\). So \(H\) is \((k + 1)\)-connected, completing the proof of Claim 3 and of the theorem.
-    \qed
     }
 \end{theorem}
 
@@ -210,6 +206,27 @@ A graph with no cycles is a \textbf{forest} (also called an acyclic graph). A co
     If \(G\) is connected then \(G\) has a spanning tree.
     \proof{
         Let be a connected graph and let \(H\) be a minimal connected spanning subgraph of \(G\). (Note \(H\) exists as \(G\) is a connected spanning subgraph of itself.) By theorem \ref{tree-equiv}, \(H\) is a tree.
-        \qed
     }
+\end{corollary}
+
+\begin{corollary}
+    The vertices of a tree can be labelled as \(v_1, \dots, v_n\) so that for \(i \geq 2\), vertex \(v_i\) has a unique neighbour in \(\{v_1, \dots, v_{i - 1}\}\).
+    \proof{
+        We use the labelling from Proposition \ref{connected-labelling}. This labels the vertices of a given tree \(G\) as \(v_1, \dots, v_n\) such that \(G[v_1,\dots,v_n]\) is connected. Let \(i \geq 1\) then \(G[v_1,\dots,v_i]\) is a tree. Note \(G[v_1, \dots, v_{i + 1}]\) is connected by Proposition \ref{connected-labelling}, so \(v_{i + 1}\) has at least one neighbour in \(G[v_1, \dots, v_i]\).\\
+
+        For a contradiction, suppose that \(v_{i + 1}\) has two neighbours \(z\) and \(w\) in \(G[v_1,\dots,v_i]\). There is a (unique) path \(P\) in \(G[v_1,\dots,v_i]\) between \(z\) and \(w\), and this path does not visit \(v_{i + 1}\). Hence \(P \cup \{zv_{i + 1}, wv_{i + 1}\}\) is a cycle in \(G\), contradiction.
+    }
+\end{corollary}
+
+\begin{corollary}
+    A connected graph with \(n\) vertices is a tree if and only if it has \(n - 1\) edges.
+    \proof{
+        Suppose that \(G\) is a tree on \(n\) vertices. The result is true when \(n = 1\). Now suppose the result is true when \(n = k\). Let \(G\) be a tree on \(k + 1\) vertices. Let \(v\) be a leaf in \(G\) (e.g .take an end vertex of a longest path in \(G\).) Then \(G - v\) is a tree on \(k\) vertices, so \(G - v\) has \(k - 1\) edges (inductive hypothesis). Therefore \(G\) has \(k\) edges as \(v\) has degree 1. This concluses the proof, by induction. \\
+
+        Conversely, suppose that \(G\)is connected with \(n\) vertices and \(n - 1\) edges. Then \(G\) contains a spanning tree \(H\), by an earlier corollary. Then \(H\) has exactly \(n - 1\) edges, since it is a tree on \(n\) vertices. Hence \(H = G\), so \(G\) is a tree.
+    }
+\end{corollary}
+
+\begin{corollary}
+    If \(T\) is a tree and \(G\) is any graph with \(\delta(G) \geq |T| - 1\) then \(G\) has a subgraph isomorphic to \(T\).
 \end{corollary}
