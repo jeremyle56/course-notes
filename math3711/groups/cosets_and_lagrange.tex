@@ -1,0 +1,58 @@
+\section{Cosets and Lagrange's Theorem}
+
+Let \(H \leq G\) be a subgroup. This will apply to all statements in this section unless mentioned otherwise.
+
+\begin{definition}[Coset]
+    A left coset of \(H\) in \(G\) is a set of the form \(gH = \{gh : h \in H\} \subseteq G\) for some \(g \in G\). The set of left cosets is denoted byt \(G / H\).
+    \begin{example}
+        Let \(H = A_n \leq S_n = G\) for \(n \geq 2\). Let \(\tau\) be any transposition. We claim that \(\tau A_n = \{\text{odd permutations}\}\).
+        \begin{enumerate}
+            \item [\(\subseteq\)]: \(\tau A_n = \{\tau\sigma : \sigma \text{ even}\}\), they are all odd.
+            \item [\(\supseteq\)]: Suppose \(\sigma\) is odd, then \(\sigma = \tau \cdot (\tau^{-1}\sigma) \in \tau A_n\).
+        \end{enumerate}
+    \end{example}
+\end{definition}
+
+\begin{theorem}
+    Define a relation on \(G: g \equiv g'\) if and only if \(g \in g'H\). Then \(\equiv\) is an equivalence relation, the equivalence classes are the left cosets. Therefore \(G = \dot{\bigcup}_{i \in I} g_iH\) (disjoint union).
+    \proof{
+        \begin{enumerate}
+            \item Reflexive. i.e. \(g \in gH\) for all \(g \in G\). True because \(1 \in H\).
+            \item Symmetry. Suppose \(g \in g'H\), need to prove \(g' \in gH\). Since \(g \in g'H\) we have \(g = g'H\) for some \(h \in H\). \(g' = gh^{-1}\) so \(g' \in gH\) (as \(h^{-1} \in H\)).
+            \item Transitivity. Suppose \(g \in g'H\) and \(g' \in g''H\). Then \(g = g'h\) and \(g' = g''h'\) for \(h, h' \in H\). Therefore \(g = (g''h)h = g''(h'h) \in g''H\) from associativity and \(h'h \in H\).
+        \end{enumerate}
+        Thus \(\equiv\) is an equivalence relation and \(G\) is a disjoint union of equivalence classes.
+    }
+\end{theorem}
+
+Note \(1H = H\) is always a coset of \(G\) and the coset containing \(g \in G\) is \(gH\).
+
+\exmp{
+    \(H = A_n \leq S_n = G\) cosets are exactly \(S_n \tand \tau S_n\) where \(S_n = A_n \dot{\bigcup} \tau A_n\).
+}
+
+\begin{definition}[Index]
+    The index of \(H\) in \(G\) is the number of left cosets, i.e. \(|G/H|\). Denoted by \([G:H]\).
+\end{definition}
+
+\begin{lemma} \label{coset-cardinality-lemma}
+    Let \(g \in G\). Then \(H\) and \(gH\) have the same cardinality.
+    \proof{
+        Bijection, \(H \to gH, h \mapsto gh\). Surjective and injective (multiply on lefy by \(g^{-1}\)).
+    }
+\end{lemma}
+
+\begin{theorem}[Lagrange's Theorem]
+    Assume \(G\) finite. Then \(|G| = |H|[G:H]\) i.e. \(|G/H| = |G| / |H|\).
+    \proof{
+    Using Lemma \ref{coset-cardinality-lemma}, we have:
+    \[G = \bigcup_{i=1}^{[G:H]} g_iH \quad (\text{disjoint union}) \implies |G| = \sum_{i = 1}^{[G:H]} |g_i H| = \sum_{i=1}^{[G:H]}|H| = [G:H]|H|.\]
+    }
+\end{theorem}
+
+\exmp{
+    \(A_n \leq S_n\). \([S_n : A_n] = 2 \implies |S_n| = 2 |A_n| \implies n! = 2 * n!/2\).
+}
+
+\bigskip
+All above statements hold for right cosets which have form \(Hg = \{hg : h \in H\}\) denoted \(H \backslash G\). The number of left cosets are equal the number of right cosets.
