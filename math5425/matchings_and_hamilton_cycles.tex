@@ -90,6 +90,39 @@ A Hamiltonian graph \(G\) must be connected with minimum degree \(\delta(G) \geq
 \begin{theorem}[Dirac, 1952]
     Every graph with \(n \geq 3\) vertices and with minimum degree at least \(n / 2\) has a Hamilton cycle.
     \proof{
-        Let \(G\) be a graph with minimum degree \(\geq n /2\) and \(n \geq 3\) vertices. Then \(G\) is connected, as otherwise the degree of any vertex in the smaller component must be \(< n /2\). Let \(P = x_0 \dots x_k\) be a longest path in \(G\). by maximality, all neighbours of \(x_0\) and \(x_k\) lie on \(P\). So at least \(n / 2\) of the vertices \(x_0, \dots, x_{k - 1}\) are adjacent to \(x_k\) and at least  \(n / 2\) of these same vertices satisfy \(x_0 x_{i + 1} \in E(G)\). By the pigeonhole principle, as \(k < n\), there exists \(i \in \{0, \dots, k - 1\}\) with \(x_0 x_{i + 1},, x_ix_k \in E(G)\).
+        Let \(G\) be a graph with minimum degree \(\geq n /2\) and \(n \geq 3\) vertices. Then \(G\) is connected, as otherwise the degree of any vertex in the smaller component must be \(< n /2\). Let \(P = x_0 \dots x_k\) be a longest path in \(G\). by maximality, all neighbours of \(x_0\) and \(x_k\) lie on \(P\). So at least \(n / 2\) of the vertices \(x_0, \dots, x_{k - 1}\) are adjacent to \(x_k\) and at least  \(n / 2\) of these same vertices satisfy \(x_0 x_{i + 1} \in E(G)\). By the pigeonhole principle, as \(k < n\), there exists \(i \in \{0, \dots, k - 1\}\) with \(x_0 x_{i + 1}, x_ix_k \in E(G)\). This gives a cycle \(x_0 x_1 \dots x_i x_k \dots x_{i + 1}x_0\). We claim this is a Hamilton cycle. If not then, as \(G\) is connected, there is some \(u \notin C\) with a neighbour \(v \in C\). Then we can start at \(u\), go to\(v\) then go around \(C\) (in some direction) and stop just before we reach \(v\) again (i.e. stop at \(x \in N_C(v)\)). This gives a path which is longer than \(P\), contradiction.
+    }
+\end{theorem}
+
+\section{Matchings in General Graphs}
+
+Given a graph \(G\), let \(C_G\) be the set of its components and let \(q(G)\) denote the number of odd components (connected components having an odd number of vertices).
+
+\begin{theorem}[Tutte, 1947]
+    A graph \(G\) has a perfect matching if and only if
+    \begin{equation} \label{tutte-theorem}
+        q(G - S) \leq |S| \quad \forall S \subseteq V(G).
+    \end{equation}
+    \proof{
+    We have seen that the condition (\ref{tutte-theorem}) is necessary: if \(G\) has a perfect matching then (\ref{tutte-theorem}) holds. Now suppose that \(G\) has no perfect matching. We want to find a ``bad'' set \(S_0\) which fails condition (\ref{tutte-theorem}). If \(|G|\) is odd then, \(S_0 = \emptyset\) is bad. So assume \(|G|\) is even. \\
+
+    {\bf Claim 1.} If \(G'\) is obtained from \(G\) by adding edges and \(S_0 \subseteq V\) is bad for \(G'\) then \(S_0\) is bad for \(G\). \\
+    {\bf Proof.} If \(S_0\) bad for \(G'\) then \(q(G - S_0) > |S_0|\). But each odd component of \(G' - S\) is a disjoint union of components of \(G - S\), at least one of which must be odd. So \(q(G - S) \geq q(G' - S)\). \\
+
+    Hence by Claim 1, we can assume that \(G\) has no perfect matching but adding any edge to \(G\) gives a graph \(G'\) which has a perfect matching. \\
+
+    {\bf Claim 2.} \(S\) is a bad set for \(G\) if and only if all components of \(G - S\) are complete and every vertex in \(S\) is adjacent to all other vertices in \(G\). \\
+    {\bf Proof.} For proof, call the second half of the claim (*). If \(S\) is bad for \(G\) but does satisfy (*) then we can add an edge to \(G\) to get a graph \(G'\) with \(S\) still bad for \(G'\). This contradicts our assumption on the maximality of \(G\). Conversely suppose \(S\) satisfies (*) but \(S\) is not bad. Then we can form a perfect matching since \(|G|\) is even. This is a contradiction as \(G\) has no perfect matching. Hence \(S\) is bad. \\
+
+    Define \(S_0 = \{ v \in V : d_G(v) = n - 1 \}\) to be the set of all vertices \(v\) in \(G\) which are adjacent to every other vertex \(w \neq v\). \\
+
+    {\bf Claim 3.} \(S_0\) is bad. \\
+    {\bf Proof.} We need to show that \(S_0\) satisfies (*). For a contradiction, suppose that \(S_0\) does not satisfy (*). Then \(G - S_0\) has a component \(K\) which is not complete. Let \(a, a' \in V(K)\) with \(aa' \notin E(G)\). Fix a shortest path from \(a\) to \(a'\) in \(K\) which starts \(abc \dots a'\). Such a path has length \(\geq 2\) and \(ac \notin E(G)\). Note \(b \in K\), so \(b \in S_0\), so there is some \(d \in V\) with \(bd \notin E\). By maximality of \(G\), there is a perfect matching \(M_1\) in \(G + ac\) and a perfect matching \(M_2\) in \(G + bd\). Take a maximal path \(P\) in \(G\), starting at \(d\) with an edge from \(M_1\), and taking alternately edges from \(M_1\) and \(M_2\). Say \(P = d \dots v\).
+    \begin{itemize}
+        \item If the last edge of \(P\) is in \(M_1\) then \(v = b\) or we could extend \(P\). Let \(C = P + bd\) (cycle in \(G + bd\)).
+        \item If the last edge of \(P\) is in \(M_2\) then \(v \in \{a, c \}\) as the \(M_1\) edge incident with \(v\) must be \(ac\).  Let \(C\) be the cycle \(d \dots vbd \).
+    \end{itemize}
+
+    In each case, \(C\) is an alternating (even length) cycle in \(G + bd\) which contains \(bd\). Form \(M_2'\) from \(M_2\) by replacing \(M_2 \cap C\) by \(C-M_2\). This gives a perfect matching of \(G\), contradiction.
     }
 \end{theorem}
