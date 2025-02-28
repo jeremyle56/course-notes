@@ -1,0 +1,42 @@
+\section{Group Homomorphisms}
+
+\begin{definition}[Homomorphism]
+    Given groups \(G, H\). A function \(\phi: H \to G\) is a homomorphism of groups if \(\phi(hh') = \phi(h)\phi(h') \forall h, h' \in H\).
+\end{definition}
+
+
+\begin{prop-defn}[Isomorphisms and Automorphisms]
+Let \(\phi: H \to G\) be a group homomorphism. The following are equivalent:
+\begin{itemize}
+    \item There exists a group homomorphism, \(\psi: G \to H\) such that \(\psi\phi = \id_H \tand = \phi\psi = \id_G\)
+    \item \(\phi\) is bijective.
+\end{itemize}
+We call \(\phi\) is a group isomorphism. If \(H = G\), \(\phi\) is an automorphism.
+\end{prop-defn}
+
+\begin{proposition}
+    If \(\phi: H \to G, \psi: K \to H\) are group homomorphism then \(\phi \cdot \psi: K \to G\) is a homomorphism.
+    \proof{
+        \((\phi \cdot \psi)(kk') = \phi(\psi(kk')) = \phi(\psi(k)\psi(k')) = \phi(\psi(k))\phi(\psi(k'))\)
+    }
+\end{proposition}
+
+\begin{proposition}
+    Let \(\phi: H \to G\) be a group homomorphism.
+    \begin{enumerate}
+        \item \(\phi(1_H) = 1_G\).
+        \item \(\phi(h^{-1}) = \phi(h)^{-1} \forall h \in H\).
+        \item if \(H' \leq H\) then \(\phi(H') \leq G\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{prop-defn}
+Let \(G\) be a group with \(g \in G\). Conjugation by \(g\) is the map \(C_g: G \to G; h \mapsto ghg^{-1}\). Then \(C_g\) is an automorphism with inverse \(C_{g^{-1}}\).
+\proof{
+\(C_g\) is a homomorphism: \(C_g(h_1h_2) = C_g(h_1)C_g(h_2)\). Check: \(C_g(h_1h_2) = gh_1h_2g^{-1} = gh_1g^{-1}gh_2g^{-1} = C_g(h_1)C_g(h_2)\). Now check \(C_{g^{-1}}\) is an inverse. \(C_{g^{-1}}(C_g(h)) = C_{g^{-1}}(ghg^{-1}) = g^{-1}ghg^{-1}g = h\). Similarly \(C_g(C_{g^{-1}})(h) = h\), therefore \((C_g)^{-1} = C_{g^{-1}}\).
+}
+\end{prop-defn}
+
+\begin{corol-defn}
+For \(H \leq G\), a conjugate of \(H\) (in \(G\)) is a subgroup of \(G\) of the form \(gHg^{-1} := c_g(H)\).
+\end{corol-defn}

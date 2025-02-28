@@ -1,0 +1,48 @@
+\section{Normal Subgroups and Quotient Groups}
+
+Let \(G\) = group and \(J, K \subseteq G\). Define the subset product
+\(JK = \{jk : j \in J, k \in K\}\).
+
+\begin{proposition}
+    Let \(G\) = group.
+    \begin{enumerate}
+        \item If \(J' \subseteq J \subseteq G\) and \(K \subseteq G\) then \(KJ' \subseteq KJ\).
+        \item If \(H \leq G\), then \(HH = H (=H^2)\).
+        \item For \(J, K, L \subseteq G\) then \((JK)L = J(KL) = \{ jkl: j \in J, k \in K, \ell \in L\}\)
+    \end{enumerate}
+\end{proposition}
+
+\begin{prop-defn}[Normal Subgroup]
+Let \(N \leq G\). We say \(N\) is a normal subgroup of \(G\) and write \(N \trianglelefteq G\) if any of the following equivalent conditions hold:
+\begin{enumerate}
+    \item \(gN = Ng \forall g \in G\).
+    \item \(g^{-1}Ng = N \forall g \in G\).
+    \item \(g^{-1}Ng \subseteq N \forall g \in G\)
+\end{enumerate}
+\proof{
+    (i) \(\iff\) (ii), multiply both sides on the left by \(g^{-1}\). (ii) \(\implies\) (iii) by definition.
+    (iii) \(\implies\) (ii), assume \(g^{-1}Ng \subseteq N \forall g \in G\), apply this with \(g^{-1} : (g^{-1})Ng^{-1} \subseteq N \implies N \subseteq g^{-1}Ng\). Therefore \(g^{-1}Ng = N\).
+}
+\end{prop-defn}
+
+\begin{thrm-defn}[Quotient Group]
+Let \(N \trianglelefteq G\). Then subset product is a well-defined multiplication map on \(G / N\) which makes \(G / N\) into a group, called the quotient group. Also:
+\begin{enumerate}
+    \item \((gN)(g'N) = (gg')N\)
+    \item \(1_{G / N} = N\)
+    \item \((gN)^{-1} = g^{-1}N\).
+\end{enumerate}
+\proof{
+    Why is this well-defined? Why is the product of 2 cosets another coset? \\
+
+    Take cosets \(gN = \{g\}N\) and \(g'N\). Calculate
+    \begin{align*}
+        (gN)(g'N) & = g(Ng')N  \tag{associative}              \\
+                  & = g(g'N)N   \tag{\(N \trianglelefteq G\)} \\
+                  & = (gg')(NN) \tag{associative}             \\
+                  & = gg' N   \tag{\(N^2 = N\)}
+    \end{align*}
+
+    This is a coset. Also proves (i). For (ii), \((gN)N = g(NN) = gN \implies N(gN) = (Ng)N = (gN)N = gN\), \(N\) is an identity. For (iii), \((g^{-1}N)(gN) = g^{-1}(Ng)N = g^{-1}(gN)N = (g^{-1}g)(NN) = 1 \cdot N = N\).
+}
+\end{thrm-defn}
