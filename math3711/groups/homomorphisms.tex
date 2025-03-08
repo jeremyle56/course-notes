@@ -40,3 +40,52 @@ Let \(G\) be a group with \(g \in G\). Conjugation by \(g\) is the map \(C_g: G 
 \begin{corol-defn}
 For \(H \leq G\), a conjugate of \(H\) (in \(G\)) is a subgroup of \(G\) of the form \(gHg^{-1} := c_g(H)\).
 \end{corol-defn}
+
+\begin{definition}[Epimorphism and Monomorphism]
+    Let \(\phi: H \to G\) be a group homomorphism. \(\phi\) is an epimorphism if \(\phi\) is surjective. \(\phi\) is a monomorphism if \(\phi\) is injective.
+\end{definition}
+
+\exmp{
+    Linear map \(T: V \to W\) where \(V\) and \(W\) are vector spaces. Suppose \(T\) is a projection onto some subspace. What does \(T^{-1}(w) = \{v \in V: T(v) = w\}\) looks like, for a given \(w \in W\)? \\
+
+    If \(w \in L\), \(T^{-1}(w) = \emptyset\)
+
+    If \(w \in L, T^{-1}(w)\) = plane containing \(w\), orthogonal to \(L\) = \(w + K\) where \(K = \) kernel of \(T = T^{-1}(0)\).
+}
+
+\begin{definition}
+    Let \(\phi: H \to G\) be a group homomorphism. The kernel of \(\phi\) is
+    \[\ker \phi = \phi^{-1}(1_G) = \{h \in H: \phi(h) = 1_G\}\]
+\end{definition}
+
+\begin{proposition}
+    Let \(\phi: H \to G\) be a group homomorphism.
+    \begin{enumerate}
+        \item If \(G' \leq G\) then \(\phi^{-1}(G') \leq H\).
+        \item If \(G' \trianglelefteq G\) then \(\phi^{-1}(G') \trianglelefteq H\).
+              \proof{
+                  (Normality) Given \(h \in \phi^{-1}(G')\) and\(g \in H\). We need to prove \(ghg^{-1} \in \phi^{-1}(G') \implies \phi(ghg^{-1}) \in G \implies \phi(g)\phi(h)\phi(g)^{-1} \in G\) true because \(\phi(h) \in G'\) and \(G' \trianglelefteq G\).
+              }
+        \item \(K = \ker \phi \trianglelefteq H\).
+              \proof{
+                  Follows from (ii) because \(K = \phi^{-1}(\{1\})\) and \(\{1\} \trianglelefteq G\).
+              }
+        \item The non-empty fibres of \(\phi\), i.e. \(\phi^{-1}(g)\) for all \(g \in G\), are exactly the cosets of \(H\).
+              \proof{
+              Suppose \(g \in G\), consider \(\phi^{-1}(g)\). Assume \(\phi^{-1}(g) \neq \phi\). Let \(h \in \phi^{-1}(g)\). \\
+
+              {\bf Claim.} \(\phi^{-1}(g) = hK\). \\
+              {\bf Proof.} \(hK \subseteq \phi^{-1}(g)\) because \(\phi(hK) = \phi(h)\phi(j) = g \cdot 1 = g\).
+
+                  {\bf Converse:} \(\phi^{-1}(g) \subseteq hK\). Let \(h' \in \phi^{-1}(g)\). Then \(\phi(h') = g\), also \(\phi(h) = g\). Therefore \(\phi(h'h^{-1}) = \phi(gg^{-1}) = \phi(1) = 1\). So \(h'h^{-1} \in K, h' \in Kh = hK\), thus \(\phi^{-1}(g) = hK\).
+              }
+        \item \(\phi\) is one to one if and only if \(K = \{1\}\).
+              \proof{
+                  \((\implies)\) trivial. \((\impliedby)\) Assume \(K = \{1\}\). By part (iv) fibres \(\phi^{-1}(g)\) are cosets of \(\{1\}\) hence contain single element.
+              }
+    \end{enumerate}
+\end{proposition}
+
+\begin{prop-defn}
+Let \(N \trianglelefteq G\). The quotient monomorphism (of \(G\) by \(N\)) is the map \(\pi: G \to G/N; g \mapsto gN\). Its an epimorphism with kernel \(N\).
+\end{prop-defn}

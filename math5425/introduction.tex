@@ -105,7 +105,7 @@ A maximal connected subgraph of \(G\) is called a \textbf{component} (or \textbf
     \proof{
         Choose \(v_1\) arbitrarily. Now suppose that we have labelled \(v_1, \dots, v_i\) such that \(G_j = G[v_1, \dots, v_j]\) is connected for all \(j = 1, \dots, i\). \\
 
-        If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_i]\) is connected. This completes the proof, by induction.
+        If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_{i + 1}]\) is connected. This completes the proof, by induction.
     }
 \end{proposition}
 

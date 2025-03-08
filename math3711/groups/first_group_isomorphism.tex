@@ -1,0 +1,29 @@
+\section{First Group isomorphism Theorem}
+
+\begin{theorem}
+    Let \(N \trianglelefteq G \tand \pi: G \to G / N\) be quotient map. Suppose \(\phi: G \to H\) is a homomorphism such that \(N \leq \ker \phi\).
+    \begin{enumerate}
+        \item If \(g, g' \in G\) lie in the same coset of \(N\), i.e. \(gN = g'N\), then \(\phi(g) = \phi(g')\).
+        \item The map \(\psi: G / N \to H; gN \mapsto \phi(g)\) is a homomorphism (the induced homomorphism).
+        \item \(\psi\) is the unique homomorphism \(G / N \to H\) such that \(\phi = \psi \circ \pi\).
+        \item \(\ker \psi = (\ker \phi) / N = \{gN : g \in \ker \phi\}\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}[Universal Property of Quotient Morphism]
+    If \(N \trianglelefteq \bZ\) then \(N = m\bZ\) for some \(m \in \bN\).
+    \proof{
+        If \(N = 0 (= \{0\})\) then can take \(m = 0\). Suppose \(N \neq 0\). Must contain at least one nonzero element. Take \(m = \) smallest positive element in \(N\). \(m\bZ \subseteq N\) easy. \(N \subseteq m\bZ\). Let \(n \in N\), we write \(n = mq + r\) where \(0 \leq r < m\). We know \(n \in N, mq \in N\). Therefore \(r = n - mq \in N\) but \(r < m \implies r = 0\). Thus, \(n = mq \in m\bZ\).
+    }
+\end{lemma}
+
+\begin{proposition}
+    Let \(H = \langle h \rangle\) be a cyclic group. Then there exists an isomorphism: \(\phi: \bZ / m\bZ \to H\) where \(m\) is the order of \(h\)if this is finite and 0 if \(h\) has infinite order.
+    \proof{
+        Define \(\phi: \bZ \to H; i \mapsto h^i\). \(\phi\) is an epimorphism (because \(h^{i + j} = h^i \cdot h^j and H = \langle h \rangle\) gives surjective.) Let \(N = \ker \phi\). By lemma, \(N = m\bZ\) for some \(m \geq 0\). Apply Universal Property Theorem, gives \(\psi: \bZ / m\bZ \to H\). \(\psi\) surjective because \(\phi\) is surjective. Injective if \(i + m\bZ \in \ker \psi\), then \(\phi(i) = 1 \in H\) so \(i \in \ker \phi = N = m\bZ\). So \(H \cong \bZ / m\bZ\). Check \(m\) gives correct order.
+    }
+\end{proposition}
+
+\begin{theorem}[First isomorphism Theorem]
+    Let \(\phi: G \to H\) be a homomorphism. The isomorphism \(\pi\) given by \(G \to H\) induces \(G / \ker \phi \to H\) (by Universal Property) induces \(G / \ker \phi \to \Im \phi\).
+\end{theorem}

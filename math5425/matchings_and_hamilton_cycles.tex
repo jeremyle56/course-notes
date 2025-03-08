@@ -123,6 +123,15 @@ Given a graph \(G\), let \(C_G\) be the set of its components and let \(q(G)\) d
         \item If the last edge of \(P\) is in \(M_2\) then \(v \in \{a, c \}\) as the \(M_1\) edge incident with \(v\) must be \(ac\).  Let \(C\) be the cycle \(d \dots vbd \).
     \end{itemize}
 
-    In each case, \(C\) is an alternating (even length) cycle in \(G + bd\) which contains \(bd\). Form \(M_2'\) from \(M_2\) by replacing \(M_2 \cap C\) by \(C-M_2\). This gives a perfect matching of \(G\), contradiction.
+    In each case, \(C\) is an alternating (even length) cycle in \(G + bd\) which contains \(bd\). Form \(M_2'\) from \(M_2\) by replacing \(M_2 \cap C\) by \(C-M_2\). This gives a perfect matching of \(G\), contradiction. Hence \(S_0\) satisfies (*), so Claim 3 holds and the proof is complete.
     }
 \end{theorem}
+
+\begin{corollary}[Petersen, 1891]
+    Every bridge cubic (3-regular) graph has a perfect matching.
+    \proof{
+        Let \(G\) be a bridgeless cubic graph. We prove that \(G\) satisfies Tutte's condition. Let \(S \subseteq V(G)\) be given and consider an odd component \(C\) of \(G - S\). The sum of the degrees of vertices in \(C\) is \(3|C|\), which is an odd number. Every edge with both end vertices in \(C\) contributes an even number to this sum. Hence the number of edges from \(C\) to \(S\) is odd. \\
+
+        As \(G\) has no bridge, there must be at least 3 edges from \(S\) to \(C\). Therefore the number of edges from \(S\) to \(G - S\) is at least \(3q(G - S)\). But the number of edges from \(S\) to \(G - S\) is bounded above by the sum of the degrees of vertices in \(S\), which is \(3|S|\) as \(G\) is cubic. Hence \(3q(G-S) \leq \#\text{ edges from S to G - S} \leq 3|S|\) and thus \(q(G - S) \leq |S|\). Therefore by Tutte's Theorem, \(G\) has a perfect matching.
+    }
+\end{corollary}

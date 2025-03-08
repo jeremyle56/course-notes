@@ -1,0 +1,15 @@
+\chapter{Graph Colourings}
+
+A \textbf{vertex colouring} of a graph \(G = (V, E)\) is a function \(c: V \to S\) such that \(c(u) \neq c(v)\) whenever \(uv \in E\). Here \(S\) is the set of available colours, usually \(S = \{1, 2, \dots, k\}\) for some positive integer \(k\). \\
+
+A \text{\(k\)-colouring} of \(G\) is a colouring \(c: V \to \{1, 2, \dots, k\}\). Often we want the smallest value of \(k\) for which a \(k\)-colouring of \(G\) exists. This smallest value of \(k\) is called the \text{chromatic number} of \(G\), denoted \(\chi(G)\). \\
+
+If \(\chi(G) = k\) then \(G\) is said to be \(k\)-chromatic.
+
+If \(\chi(G) \leq k\) then \(G\) is said to be \(k\)-colourable. \\
+
+The set of all vertices in \(G\) with a given colour under \(c\) is called a \text{colour class}. Each colour class is an independent set. \(k\)-colouring is a partition of \(V(G)\) into \(k\) independent sets. \\
+
+A \textbf{clique} in a graph \(G\) is a complete subgraph of \(G\). The order of the largest clique in \(G\) is called the \textbf{clique number} of \(G\), denoted \(\omega(G)\). \\
+
+Fact: \(\chi(G) \geq \omega(G)\) and \(\chi(G) \geq n/\alpha(G)\).
