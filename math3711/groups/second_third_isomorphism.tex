@@ -1,0 +1,28 @@
+\section{Second and Third Isomorphism Theorems}
+
+\begin{proposition}[Subgroups of Quotient Groups]
+    Let \(N \trianglelefteq G \tand \pi: G \to G / N\) be the quotient map.
+    \begin{enumerate}
+        \item If \(N \leq H \leq G\) then \(N \trianglelefteq H\).
+        \item There is a bijection between subgroups \(H \leq G\) that contain \(N\) and subgroups \(\bar{H} \leq G / N\). \(H \mapsto \pi(H) = \{nH : h \in H\} = H / N\) and \(\bar{H} \mapsfrom \pi^{-1}(\bar{H})\).
+              \proof{
+                  Images and image images of subgroups are subgroups. If \(\bar{H} \leq G / N\), then \(\pi^{-1}(\bar{H})\) contains \(N\) (because \(1_{G/N} \in \bar{H}\)). Surjective: \(\pi(\pi^{-1}(\bar{H})) = \bar{H}\) because \(\pi\) surjective. Injective: If \(\pi(H_1) = \pi(H_2)\) then \(H_1 = H_2\). This follows from \(H_1 = \cup_{g \in H_1} gN\) (disjoint union of cosets).
+              }
+        \item Normal subgroups correspond i.e. \(H \trianglelefteq G\) iff \(\bar{H} \trianglelefteq G / N\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Second Isomorphism Theorem]
+    Suppose \(N \normal G\) and \(N \leq H \normal G\). Then \(\frac{G / N}{H / N} \cong G / H\).
+    \proof{
+        Since \(\pi_N, \pi_{H/N}\) are both onto, \(\phi = \pi_{H/N} \circ \pi_N\) is also onto. \(\ker(\phi) = \{g \in G: \pi_N(g) \in \ker(\pi_{H/N} : G / N \to \frac{G/N}{H/N}\} = \{g \in G: \pi_N(g) \in H / N\} = \pi^{-1}(H / N) = H\) by Proposition 10.1. First Isomorphism Theorem says \(G / \ker(\phi) \cong \Im(\phi) \implies G / N \cong \frac{G / N}{H / N}\) which proves the theorem.
+    }
+\end{theorem}
+
+\begin{theorem}
+    Suppose \(H \leq G, N \normal G\). Then
+    \begin{enumerate}
+        \item \(H \cap N \normal H\), \(HN \leq G\).
+        \item \(\frac{H}{H \cap N} \cong \frac{HN}{N}\).
+    \end{enumerate}
+\end{theorem}
