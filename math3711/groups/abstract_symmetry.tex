@@ -1,0 +1,21 @@
+\section{Abstract Symmetry and Group Actions}
+
+\begin{definition}[\(G\)-set, Group Action]
+    A \(G\)-set is a set \(S\) equipped with a map \(\alpha: G \times S \to S; (g, s) \mapsto \alpha(g, s) = g.s\) is called a group action and satisfies the following axioms:
+    \begin{enumerate}
+        \item \(g.(h.s) = (g.h).s\) for all \(g, h \in G, s \in S\).
+        \item \(1_G . s = s \forall s \in S\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Permutation Representation]
+    A permutation representation of a group \(G\) on a set \(S\) is a homomorphism \(\phi: G \to \Perm(S)\). This gives a \(G\)-set structure on \(S\). Action is \(g.s = (\phi(g))(s)\).
+\end{definition}
+
+\begin{proposition}
+    Every \(G\)-set S arises from some permutation representation. Given \(G\)-set \(S\), need to define homomorphism \(\phi: G \to \Perm(S)\), take \(\phi(g)(s) = g.s\).
+\end{proposition}
+
+\begin{definition}
+    Let \(S_1, S_2\) be \(G\)-sets. A morphism of \(G\)-sets is a function \(\psi: S_1 \to S_2\) such that \(g.\psi(S) = \psi(g.s) \forall g \in G, s \in S_1\). Say that \(\psi\) is \(G\)-equivalent or that \(\psi\) is compatible with the \(G\)-action.
+\end{definition}

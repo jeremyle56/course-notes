@@ -1,0 +1,26 @@
+\chapter{Connectivity}
+
+\section{2-Connected Graphs}
+Let \(G\) be a graph. A maximal connected subgraph of \(G\) with no cut vertex is called a \textbf{block}. Every block of \(G\) is either a maximal 2-connected subgraph of \(G\) or a bridge or an isolated vertex. \\
+
+By maximality, different blocks of \(G\) overlap in at most one vertex, which must be a \textbf{cut vertex} in \(G\). Hence every edge of \(G\) lies in a unique block, and \(G\) is the union of its blocks. \\
+
+Let \(A\) be the set of cut vertices in \(G\) and let \(\mathcal{B}\) be the set of blocks in \(G\). Form the bipartite graph on \(A \cup \mathcal{B}\) with edge set
+\[\{ aB : a \in A, B \in \mathcal{B} \tand a \in B\}.\]
+
+\begin{lemma}
+    The block graph of a connected graph is a tree.
+\end{lemma}
+
+Let \(H\) be a subgraph of a graph \(G\). An \textbf{\(H\)-path} is a path in \(G\) which intersects \(H\) only in its endvertices.
+
+\begin{proposition}
+    A graph is 2-connected if and only if it can be constructed from a cycle by successively adding \(H\)-paths to graphs \(H\) already constructed.
+    \proof{
+        Every graph constructs in this way is \(2\)-connected. Conversely, let \(G\) be 2-connected. Then \(|G| \geq 3 \tand G\) contains a cycle. Hence \(G\) has a maximal subgraph \(H\) which is constructible using the method described in the proposition stated. \\
+
+        If \(H = G\), then we are done. For a contradiction, suppose that \(H \neq G\). Since any edge \(xy \in E(G) - E(H)\) with \(x, y \in H\) is an \(H\)-path, by maximality we see that every \(xy \in E(G)\) with \(x,y \in H\) must belong to \(E(H)\). Hence, \(H\) is an induced subgraph of \(G\). \\
+
+        By the fact that \(G\) is connected, there is an edge \(vw\) with \(v \in G - H, w \in H\). Since \(G\) is 2-connected we know that \(G - W\) is connected. Let \(P\) be the shortest path from \(v\) to \(H\) in \(G - w\). Then \(wvP\) is a \(H\)-path in \(G\), and \(H \cup wvP\) is a larger constructible subgraph than \(H\), contradicting the maximality of \(H\).
+    }
+\end{proposition}

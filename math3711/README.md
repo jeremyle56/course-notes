@@ -13,3 +13,5 @@
 - [First Isomorphism Theorem](./groups/first_group_isomorphism.tex)
 - [Second and Third Isomorphism Theorem](./groups/second_third_isomorphism.tex)
 - [Product of Groups](./groups/products.tex)
+- [Symmetries of Regular Polygons](./groups/symmetries_polygons.tex)
+- [Abstract Symmetry and Group Actions](./groups/abstract_symmetry.tex)

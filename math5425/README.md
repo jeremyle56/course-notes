@@ -6,3 +6,4 @@
 - [Matchings and Hamilton Cycles](./matchings_and_hamilton_cycles.tex)
 - [The Probabilistic Method](./probabilistic_method.tex)
 - [Graph Colouring](./graph_colourings.tex)
+- [Connectivity](./connectivity.tex)
