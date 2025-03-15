@@ -15,3 +15,5 @@
 - [Product of Groups](./groups/products.tex)
 - [Symmetries of Regular Polygons](./groups/symmetries_polygons.tex)
 - [Abstract Symmetry and Group Actions](./groups/abstract_symmetry.tex)
+- [Orbits and Stabilisers](./groups/orbits_stabilisers.tex)
+- [Structure of G-orbits](./groups/structure_g_orbits.tex)

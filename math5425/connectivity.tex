@@ -24,3 +24,42 @@ Let \(H\) be a subgraph of a graph \(G\). An \textbf{\(H\)-path} is a path in \(
         By the fact that \(G\) is connected, there is an edge \(vw\) with \(v \in G - H, w \in H\). Since \(G\) is 2-connected we know that \(G - W\) is connected. Let \(P\) be the shortest path from \(v\) to \(H\) in \(G - w\). Then \(wvP\) is a \(H\)-path in \(G\), and \(H \cup wvP\) is a larger constructible subgraph than \(H\), contradicting the maximality of \(H\).
     }
 \end{proposition}
+
+\section{3-Connected Graphs}
+Let \(e = xy \in E(G)\). Define the graph \(G / e = (V', E')\) where \(V' = (V - \{x, y\}) \cup \{v_e\}\),
+\[E' = \{uw \in E(G): \{u, w\} \cup \{x, y\} = \emptyset\} \cup \{v_ew: xw \in E(G) \text{ or } yw \in E(G)\}.\]
+We say that \(G / e\) is formed by \textbf{contradicting} the edge \(e\) in \(G\). This creates a new vertex \(v_e\) which replaces the endvertices of \(e\).
+
+\begin{lemma}
+    Let \(G\) be a 3-connected graph with \(|G| \geq 5\). Then \(G\) has an edge \(e\) such that \(G / e\) is 3-connected.
+    \proof{
+        For a contradiction, suppose that no such edge exists. For any edge \(xy \in E(G)\), the graph \(G / xy\) is not 3-connected, but \(|G / xy| = |G| - 4 \geq 4\) by assumption that \(|G| \geq 5\). Hence \(G / xy\) has a separating set \(S\) with \(|S| \leq 2\). Since \(G\) is 3-connected, the contracted vertex \(v_{xy}\) must belong to \(S\), and \(|S| = 2\), or we would have a separating set in \(G\) with \(\leq 2\) vertices. So there is some \(z \in V(G), z \notin \{x, y\}\) such that \(S = \{v_{xy}, z\}\). Any two vertices separated in \(G /xy\) by \(S\) are also separated in \(G\) by the set \(T = \{x, y, z\}\). \\
+
+        \texttt{FACT}: Since no proper subset of \(T\) separates \(G\), by the 3-connectivity of \(G\), every vertex in \(T\) has a neighbour in every component \(C\) of \(G - T\). \\
+
+        Choose the edge \(xy\), vertex \(z\), and component \(C\) of \(G - \{x, y, z\}\) such that \(|C|\) is as small as possible. Let \(v\) be a neighbour of \(z\) in \(C\), which we know must exists by our \texttt{FACT}. By assumption, \(G / zv\) is not 3-connected, and \(|G / zv| = |G| - 1 \geq 4\). Hence (by our earlier argument) there is a vertex \(w \notin \{v, z\}\) such that \(\{v, w, z\}\) separates \(G\). Also by our \texttt{FACT}, every vertex in \(\{v, w, z\}\) has a neighbour in every component of \(G - \{v, w, z\}\). \\
+
+        Since \(x\) and \(y\) are adjacent, \(G - \{z, v, w\}\) has a component \(D\) such that \(D \cap \{x, y\} = \emptyset\). By our \texttt{FACT} we know that \(v\) has a neighbour in \(D\). Recall that \(v \in C\) in \(G - \{x, y, z\}\). Since \(D\) is connected and \((\{v\} \cup V(D)) \cap \{x, y, z\}\), it follows that \(\{v\} \cup V(D) \subseteq V(C)\). Hence \(D\) is a proper subgraph of \(C\), as \(v \notin V(D)\). Therefore \(|D| < |C|\), contradicting the minimality of \(C\). \\
+
+        Hence \(G / e\) is 3-connected for some \(e \in E(G)\).
+    }
+\end{lemma}
+
+Reversing this, we can construct all 3-connected graphs starting with \(K_4\) and ``uncontracting'' edges.
+
+\begin{theorem}
+    A graph \(G\) is 3-connected if and only if there exists a sequence \(G_0, G_1, \dots, G_r\) of graphs such that
+    \begin{enumerate}[label=(\roman*)]
+        \item \(G_0 = K_4\) and \(G_r = G\),
+        \item \(G_{i + 1}\) has an edge \(xy\) with degrees \(d(x), d(y) \geq 3\) such that \(G_i = G_{i + 1}/xy\), for \(i = 0, \dots, r - 1\).
+    \end{enumerate}
+\end{theorem}
+
+\section{Menger's Theorem}
+A set \(S \subset V\) separating \(A\) from \(B\) in \(G\) is called an \textbf{\((A, B)\)-separator}. This means that every \((A, B)\)-path intersects \(S\), and in particular \(A \cap B \subseteq S\). \\
+
+Let \(\mathcal{P}, \mathcal{Q}\) be sets of \textbf{disjoint \((A, B)\)-paths} in \(G\). Say that \(\mathcal{Q}\) \textbf{exceeds} \(\mathcal{P}\) if the set of vertices in \(A\) which belong to paths in \(\mathcal{P}\) is a \textit{proper subset} of the set of vertices in \(A\) which belong to paths in \(\mathcal{Q}\) and similarly for \(B\).
+
+\begin{theorem}
+    Let \(G = (V, E)\) be a graph and \(A, B \subseteq V\). Then the minimum number of vertices separating \(A\) from \(B\) in \(G\) equals the maximum number of disjoint \((A, B)\)-paths in \(G\).
+\end{theorem}

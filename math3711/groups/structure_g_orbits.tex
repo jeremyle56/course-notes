@@ -1,0 +1,44 @@
+\section{Structure of G-orbits}
+
+\begin{proposition}
+    Let \(H \leq G\). Then \(G / H\) is a \(G\)-set with the action \(g'.(gH) = (g'g)H \forall g, g' \in G\)
+    \proof{
+        Checking axioms to show \(G / H\) is a \(G\)-set.
+        \begin{enumerate}[label=(\roman*)]
+            \item \(1.(gH) = gH\)
+            \item \(g''.(g'.(gH)) = (g''g')(gH)\). LHS = \(g''.(g'gH) = g''g'g'H = (g''g')gH =\) RHS.
+        \end{enumerate}
+    }
+\end{proposition}
+
+\begin{theorem}
+    Suppose \(G\) acts transitively on \(S\). Let \(s \in S\) and \(H = \stab_G(s) \leq G\). Then there is an isomorphism of \(G\)-sets: \(\psi: G / H \to S; gH \mapsto g.s\).
+    \proof{
+        Well-defined: if \(gH = g'H\) then \(g' = gh\) for \(h \in H\). So we need to check \(g.s = g'.s\). RHS = \(g'.s = (gh).s = g.(h.s) = g.s =\) LHS, for \(h \in \stab(s)\). \\
+
+        Next we need to check its a morphism of \(G\)-sets. i.e. \(\psi(g'(gH)) = g'.\psi(gH) \implies (g'g).s = g'.(g.s)\). Next surjective because action is transitive. Injective: if \(\psi(gH) = \psi(g'H) \implies g.s = g'.s \implies s = (g^{-1}g').s\). So \(g^{-1}g' \in \stab(s) = H\) so \(g' \in gH, gH = g'H\).
+    }
+\end{theorem}
+
+\begin{corollary}
+    If \(G\) is finite then, \(|G.s|\) divides \(|G|\) by Lagrange's theorem.
+\end{corollary}
+
+\begin{proposition}
+    Let \(S = G\)-set, \(s \in S, g \in G\). Then \(\stab_G(g.s) = g.\stab_G(s).g^{-1}\).
+\end{proposition}
+
+\begin{corollary}
+    Let \(H_1, H_2 \leq G\) be conjugate. (i.e. \(H_2 = gH_1g^{-1}\) for some \(g \in G\)). Then \(G / H_1 \cong G / H_2\) as \(G\)-sets.
+\end{corollary}
+
+\begin{definition}
+    If \(S = \) a platonic solid (all faces same, and all regular polygons, and same number of faces at each vertex) and \(G = \) group of rotation symmetries = symmetries \(\cap SO_3\).
+\end{definition}
+
+\begin{proposition}
+    With notation as above, then \(|G| = \) number of faces \(\times \) number of edges on each face.
+    \proof{
+        Let \(F\) = set of faces, \(G\) acts on \(F\). Gives a \(G\)-set structure to \(F\). Let \(f \in F\) be a face, then \(G.f = F\) (i.e. action is transitive). By the theorem, \(F \cong G / \stab_G(f)\). But \(\stab_G(f) = \) rotations around axis through face. \(\stab_G(f) = \) number of edges on each face which implies \(|G| = |F||\stab_G(f)|\).
+    }
+\end{proposition}
