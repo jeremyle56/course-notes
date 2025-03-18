@@ -1,0 +1,62 @@
+\section{Counting Orbits and Cayley's Theorem}
+
+Let \(G\) be a group and \(S\) be a \(G\)-set.
+
+\begin{definition}[Fixed Point Set]
+    The fixed point set of a subset \(J \subseteq G\) is \(S^J = \{s \in S: j .s = s \forall j \in J\}\).
+\end{definition}
+
+\begin{proposition}
+    Let \(S\) be a \(G\)-set
+    \begin{enumerate}
+        \item If \(J_1 \subseteq J_2 \subseteq G\) then \(S^{J_2} \subseteq S^{j_1}\)
+        \item If \(J \subseteq G\) then \(S^J = S^{\langle J\rangle}\)
+    \end{enumerate}
+\end{proposition}
+
+\exmp{
+    \(G = \Perm(\bR^2)\) acts naturally on \(S = \bR^2\). Let \(\tau_1, \tau_2 \in G\) be reflections about lines \(L_1, L_2\). Then \(S^{\tau_i} = L_i\), \(S^{\{\tau_1, \tau2_2\}} = L_1 \cap L_2\) and \(S^{\langle \tau_1, \tau_2 \rangle} = L_1 \cap L_2\).
+}
+
+\begin{theorem}
+    Let \(G\) be a finite group and \(S\) be a finite \(G\)-set. Let \(|X|\) denote the cardinality of \(X\). Then
+    \[\text{number of orbits of } S = \frac{1}{|G|}\sum_{g \in G}|S^g| = \text{average size of the fixed point set}\]
+    \proof{
+        Let \(S = \dot{\bigcup}_i S_i\) where \(S_i\) are \(G\)-orbits. Then \(S^g = \dot{\bigcup}_i S_i^g\). LHS = \(\sum_i\) number of orbits of \(S_i\) (since \(S_i\)'s are union of \(G\)-orbits and \(S_i\)'s are disjoint) while RHS = \(\sum_i \frac{1}{|G|}\sum_{g \in G}|S_i^g|\). Thus it suffices to prove theorem for \(S = S_i\) and then just sum over \(i\). But \(S\) are disjoint union of \(G\)-orbits, so can assume \(S = S_i = G\)-orbit which by (Theorem 15.2), means \(S \cong G / H\) for some \(H \leq G\). So in this case
+        \begin{align*}
+            \text{RHS} & = \frac{1}{|G|}\sum_{g \in G}|S^g|                                                                                     \\
+                       & = \frac{1}{|G|} \times \text{number of } (g, s) \in G \times S: g.s = s \text{ by letting } g \text{ vary all over } G \\
+                       & = \frac{1}{|G|} \sum_{s \in S = G / H} |\stab_G(s)|
+        \end{align*}
+        Note by proposition 15.4, these stabilisers are all conjugates, and hence all have the same size. Since \(|\stab_G(1.H)|=|H|, |\stab_G(s)| = |H|\) for all \(s \in S\). Hence RHS = \(\frac{1}{G}|G/H||H| = \frac{|H|}{|G|}\frac{|G|}{|H|} = 1\) and LHS = number of orbits of \(S = 1\) as \(S\) is assumed to be a \(G\)-orbit.
+    }
+\end{theorem}
+
+\exmp{
+    Birthday cake with 8 slices. Red/green candle on each slide. How many ways? Notice that: two arrangments are the same if you can rotate one to get the other. \\
+
+    \(S = \{0, 1\}^8, |S| = 2^8 = 256\). \(\sigma \in \Perm(S)\) acts by \(\sigma(x_1, \dots ,x_8) = (x_2,x_3,\dots,x_8,x_1)\). \(G = \langle \sigma \rangle, |G| = 8\). We want to find number of \(G\)-orbits. By the theorem above, this is equal to \(\frac{1}{8}\sum_{g\in G} |S^g|\). Trying each \(g\):
+
+    \[
+        \begin{aligned}
+            g & = 1        & \implies |S^1|          & = 2^8 & \quad g & = \sigma^4 & \implies |S^{\sigma^4}| & = 2^4 \\
+            g & = \sigma   & \implies |S^\sigma|     & = 2   & \quad g & = \sigma^5 & \implies |S^{\sigma^5}| & = 2   \\
+            g & = \sigma^2 & \implies |S^{\sigma^2}| & = 2^2 & \quad g & = \sigma^6 & \implies |S^{\sigma^6}| & = 2^2 \\
+            g & = \sigma^3 & \implies |S^{\sigma^3}| & = 2   & \quad g & = \sigma^7 & \implies |S^{\sigma^7}| & = 2
+        \end{aligned}
+    \]
+    \[
+        \text{Final Answer: } \frac{1}{8}\left(256 + 16 + 4 +4 + 4 + 4 \cdot 2\right) = \frac{1}{8}\left(288\right) = 36.
+    \]
+}
+
+\begin{definition}[Faithful Permutation Representation]
+    A permutation representation \(\phi: G \to \Perm S\) is faithful if \(\ker \phi = 1\).
+\end{definition}
+
+\begin{theorem}[Cayley]
+    Let \(G\) be a group. Then \(G\) is isomorphic to a subgroup of \(\Perm(G)\). In particular, if \(|G| = n < \infty\), then \(G\) is isomorphic to a subgroup of \(S_n\).
+    \proof{
+        Let \(G\) act oon itself: \(g. h = gh\). This gives \(\phi: G \to \Perm(G)\). If \(g \in G\) has property that \(gh = h \forall h \in G\) then \(g = 1\). Clear, take \(h = 1\).
+    }
+\end{theorem}

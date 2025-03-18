@@ -58,8 +58,63 @@ Reversing this, we can construct all 3-connected graphs starting with \(K_4\) an
 \section{Menger's Theorem}
 A set \(S \subset V\) separating \(A\) from \(B\) in \(G\) is called an \textbf{\((A, B)\)-separator}. This means that every \((A, B)\)-path intersects \(S\), and in particular \(A \cap B \subseteq S\). \\
 
-Let \(\mathcal{P}, \mathcal{Q}\) be sets of \textbf{disjoint \((A, B)\)-paths} in \(G\). Say that \(\mathcal{Q}\) \textbf{exceeds} \(\mathcal{P}\) if the set of vertices in \(A\) which belong to paths in \(\mathcal{P}\) is a \textit{proper subset} of the set of vertices in \(A\) which belong to paths in \(\mathcal{Q}\) and similarly for \(B\).
+Let \(\mathcal{P}, \mathcal{Q}\) be sets of \textbf{disjoint \((A, B)\)-paths} in \(G\). Say that \(\mathcal{Q}\) \textbf{exceeds} \(\mathcal{P}\) if the set of vertices in \(A\) which belong to paths in \(\mathcal{P}\) is a \textit{proper subset} of the set of vertices in \(A\) which belong to paths in \(\mathcal{Q}\) and similarly for \(B\). \\
 
-\begin{theorem}
+If \(P = x_0 x_1 \cdots x_k\) then we write \(P_{x_i}\) for the subpath \(x_0 \cdots x_i\) and we write \(x_i P\) for the subpath \(x_i x_{i + 1} \cdots x_k\).
+
+\begin{theorem}[Menger's Theorem, 1927]
     Let \(G = (V, E)\) be a graph and \(A, B \subseteq V\). Then the minimum number of vertices separating \(A\) from \(B\) in \(G\) equals the maximum number of disjoint \((A, B)\)-paths in \(G\).
+    \proof{
+    Let \(k = k(G, A, B)\) be the minimum number of vertices separating \(A\) and \(B\) in \(G\). (That is, \(k = |S|\) where \(S \subseteq V\) is a smallest \((A, B)\)-separating set.) Then \(k\) is an upper bound on the maximum number of disjoint \((A, B)\)-paths or else we could not separate \(A\) and \(B\) by deleting any set of \(k\) vertices. So it suffices to prove that a set of \(k\) disjoint \((A, B)\)-paths exists. In fact, we will prove a stronger statement:
+    \begin{quote}
+        If \(\mathcal{P}\) is any set of \(< k\) disjoint \((A, B)\)-paths, then there is a set \(\mathcal{Q}\) of \(|\mathcal{P}| + 1\) disjoint \((A, B)\)-paths in \(G\) which exceeds \(\mathcal{P}\).
+    \end{quote}
+    We will keep \(G\) and \(A\) fixed and let \(B\) vary, applying induction on the number of vertices in \(\bigcup_{P \in \mathcal{P}} P\). \\
+
+    {\it Base Case:} If \(\mathcal{P} = \emptyset\) then \(|\bigcup_{P \in \mathcal{P}} P| = 0\). We can let \(\mathcal{Q} = \{\mathcal{P}\}\) for any \((A, B)\)-path \(P\). Then \(\mathcal{Q}\) exceeds \(\mathcal{P}\). \\
+
+    {\it Inductive Step:} Let \(\mathcal{P}\) be a set of \(< k\) disjoint \((A, B)\)-paths, and \(B_0 \subseteq B\) be the set of end vertices of paths in \(\mathcal{P}\) (``start vertices'' are in \(A\), ``endvertices'' are in \(B\)). Since \(|B_0| \leq k - 1, B_0\) is not an \((A, B)\)-separating set and hence there is an \((A, B)\)-path in \(G - B_0\). Call this \((A, B)\)-path \(R\). So \(R\) is disjoint from \(B_0\). If \(R\) avoids all vertices in \(\bigcup_{P \in \mathcal{P}}\) then \(\mathcal{Q} = \mathcal{P} \cup \{R\}\) exceeds \(\mathcal{P}\), as required. Otherwise, let \(x\) be the last vertex of \(R\) (traversing \(R\) from \(A\) to \(B\)) that lies on some path \(P \in \mathcal{P}\). Note that \(x \notin B\), by choice of \(R\), so \(Px\) is shorter than \(P\). \\
+
+    Let \(B' = B \cup V(xP \cup xR)\) and let \(\mathcal{P}' = (\mathcal{P} - \{P\}) \cup \{Px\}\). Then \(\mathcal{P}'\) is a set of disjoint \((A, B')\)-paths. Also \(|\mathcal{P}'| = |\mathcal{P}|\), but the union of paths in \(\mathcal{P'}\) is strictly smaller than \(|\bigcup_{\hat{P} \in \mathcal{P}} \hat{P}|\). Also, \(B \subseteq B'\), so an \((A, B')\)-separating set is also an \((A, B)\)-separating set. Hence \(k(G, A, B') \geq k(G, A, B)\). So \(|\mathcal{P'} < k(G, A, B) \leq k(G, A, B')\). Applying the inductive hypothesis to \(G, A, B', \mathcal{P'}\), we conclude that there is a set \(\mathcal{Q'}\) of \(|\mathcal{P}| + 1\) disjoint \((A, B')\)-paths in \(G\) which exceeds \(\mathcal{P}\)! Now \(\mathcal{Q'}\) contains a path \(Q\) which ends in \(x\), and a unique path \(Q'\) whose last vertex \(y\) is not among the last vertices of the paths in \(\mathcal{P}\)! In particular, \(y \neq x\).
+    \begin{quote}
+        {\it Case 1:} \(y \in B\).  If \(y \in B\), then define \(\mathcal{Q} = (\mathcal{Q'} - \{Q\}) \cup \{QxP\}\)
+
+        {\it Case 2:} \(y \notin B \tand y \in xR\). If \(y \in xR \tand y \notin B\), then \(y \notin xP\), and we define \(\mathcal{Q} = (\mathcal{Q'} - \{Q, Q'\}) \cup \{QxP, Q'yR\}\).
+
+            {\it Case 3:} \(y \notin B \tand y \in xP\). If \(y \in xP \tand y \notin\) then \(y \notin xR\), and we define \(\mathcal{Q} = (\mathcal{Q'} - \{Q, Q'\} \cup \{QxR, Q'yP\})\).
+    \end{quote}
+    In all cases, \(Q\) is a set of \(|\mathcal{P}| + 1\) disjoint \((A, B)\)-paths which exceeds \(\mathcal{P}\), proving the inductive step. Hence there is a set of \(k\) disjoint \((A, B)\)-paths in \(G\), as required.
+    }
+\end{theorem}
+
+\begin{corollary}
+    Let \(a, b\) be distinct vertices of \(G\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(ab \notin E\) then the minimum number of vertices (distinct from \(a\) and \(b\)) separating \(a\) from \(b\) is equal to the maximum number independent \((a, b)\)-paths in \(G\).
+        \item The minimum number of edges separating \(a\) from \(b\) in \(G\) equals the maximum number of edge-disjoint \((a, b)\)-paths in \(G\).
+    \end{enumerate}
+    \proof{
+        \begin{enumerate}[label=(\roman*)]
+            \item Apply Menger's Theorem with \(A = N(A), B = N(b)\). Note that a set of \(k\) disjoint \((A, B)\)-path corresponds to a set of independent \((a, b)\)-paths by adding vertex \(a\) at the start and vertex \(b\) to the end.
+            \item Apply Menger's Theorem to the line graph \(L(G)\) of \(G\) with \(A = E(a)\), the set of edges of \(G\) incident with \(a\), \(B = E(b)\), the set of edges of \(G\) incident with \(b\).
+        \end{enumerate}
+    }
+\end{corollary}
+
+\begin{theorem}[Global version of Menger's Theorem]
+    \phantom{}
+    \begin{enumerate}[label=(\roman*)]
+        \item A graph is \(k\)-connected if and only if it has order at least 2 and there are \(k\) independent paths between any two distinct vertices.
+        \item A graph is \(k\)-edge-connected if and only if it has at least two vertices and \(k\) edge-disjoint paths between any two distinct vertices.
+    \end{enumerate}
+    \proof{
+        \begin{enumerate}[label=(\roman*)]
+            \item Suppose that \(G\) is a graph and \(|G| \geq 2\). Now suppose that \(G\) has \(k\) independent paths between any two distinct vertices \(a, b \in V\). Then \(|G| \geq k\), as there are at least \(k - 1\) paths of length at least two between \(a\) and \(b\). Also, \(G\) cannot be disconnected by deleting a set of \(\leq k - 1\) vertices. Hence \(G\) is \(k\)-connected.
+
+                  For the converse, suppose that \(G\) is \(k\)-connected and assume for a contradiction that there are distinct vertices \(a, b\) with at most \(k - 1\) independent \((a, b)\)-paths. Since \(G\) is \(k\)-connected we have \(|G| \geq k + 1\). By Corollary 5.3.2, we must have \(ab \in E\). Let \(G' = G - ab\). Then \(G'\) has at most \(k - 2\) independent \((a, b)\)-paths. Hence by Corollary 5.3.2, there is an \((a, b)\)-separating set \(X \subseteq V\) with \(|X| \leq k - 2\). Since \(|G| \geq k + 1\), there is at least one more vertex \(v \notin X \cup \{a, b\}\) in \(G\). Now \(X\) separates \(v\) from at least one of \(a\) or \(b\), say from \(a\) (since \(a, b\) lie in distinct components of \(G' - X\)). But then \(X \cup \{b\}\) is a set of at most \(k - 1\) vertices which separates \(v\) from \(a\) in \(G\). This contradicts the fact that \(G\) is \(k\)-connected.
+
+                  Hence \(G\) has at least \(k\) independent \((a, b)\)-paths in \(G\), completing the proof.
+            \item Follows immediately from Corollary 5.3.2.
+        \end{enumerate}
+    }
 \end{theorem}

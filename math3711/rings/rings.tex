@@ -1,0 +1,54 @@
+\section{Rings}
+
+\begin{definition}[Ring]
+    A ring is an abelian group \(R\), with group addition together with ring multiplication map (\(\mu: R \times R \to R\)) satisfying:
+    \begin{enumerate}
+        \item associativity: \((rs)t = r(st) \forall r,s,t \in R\).
+        \item there exists \(1_R \in R\) such that \(1r = r \tand r1 = r \forall r \in R\).
+        \item distributive law: \(r(s + t) = rs + rt \tand (r + s) t = rt + st \forall r, s, t \in R\).
+    \end{enumerate}
+    Similar to a group, \(1\) is unique and \(0r = 0\).
+\end{definition}
+
+\exmp{
+    \(\bC, \bZ, \bR, \bQ\) are all rings.
+}
+
+\exmp{
+    Let \(V\) be a vector space over \(\bC\). Define \(\End_\bC(V)\) be the set of linear maps \(T: V \to V\). Then \(\End_\bC(V)\)is a ring when endowed with ring additional equal to sum of linear maps, ring multiplication equal to composition of linear maps. 0 = constant map to \(\fzero\) and \(1 = \id_V\).
+}
+
+\begin{prop-defn}[Subrings]
+A subset of \(S \subseteq R\) is a subring if:
+\begin{enumerate}
+    \item \(s + s' \in S \forall s, s' \in S\)
+    \item \(ss' \in S \forall s, s' \in S\)
+    \item \(-s \in S \forall s \in S\)
+    \item \(0_R \in S\)
+    \item \(1_R \in S\).
+\end{enumerate}
+Then \(S\) becomes a ring with restricted \(+, \cdot, 0, 1\). Note the identity \(1_R\) is the identity from \(R\).
+\end{prop-defn}
+
+\exmp{
+    \(\bZ, \bQ, \bR\) are all substrings of \(\bC\). Also the set of Gaussian integers \(\bZ[i] = \{a + bi: a, b \in \bZ\}\) is a subring.
+}
+
+\exmp{
+    Matrices \(M_n(\bR)\) and \(N_n(\bC)\) both form rings. The set of upper triangular matrices form a subring.
+}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item subrings of subrings are subrings
+        \item intersection of subrings is a subring
+    \end{enumerate}
+\end{proposition}
+
+\begin{prop-defn}[Units]
+Let \(R\) = ring. An element \(u \in R\) is called a unit or invertible if there exists \(v \in R\) such that \(uv = 1\) and \(vu = 1\). Define \(R^* = \{\text{ set of units in R}\}\) as a group (with multiplicative structure).
+\end{prop-defn}
+
+\exmp{
+    \(\bZ^* = \{1, -1\}\)
+}

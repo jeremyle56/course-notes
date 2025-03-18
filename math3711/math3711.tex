@@ -108,6 +108,7 @@
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bC}{\mathbb{C}}
 \newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
 \newcommand{\bR}{\mathbb{R}}
 \newcommand{\bZ}{\mathbb{Z}}
 
@@ -119,6 +120,7 @@
 
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\Perm}{\operatorname{Perm}}
+\newcommand{\End}{\operatorname{End}}
 \newcommand{\ord}{\operatorname{ord}}
 \newcommand{\stab}{\operatorname{stab}}
 \newcommand{\GL}{\operatorname{GL}_n(\mathbb{R})}
@@ -145,12 +147,15 @@
 \setlength{\cftbeforesecskip}{5pt}
 % \setlength{\cftbeforesubsecskip}{3pt}
 
+
 \begin{document}
 
 \maketitle
 \tableofcontents
 \newpage
 
+% Group Theory
+\part{Group Theory}
 \subfile{groups/symmetry.tex}
 \subfile{groups/matrix_groups.tex}
 \subfile{groups/permutation_groups.tex}
@@ -166,5 +171,11 @@
 \subfile{groups/abstract_symmetry.tex}
 \subfile{groups/orbits_stabilisers.tex}
 \subfile{groups/structure_g_orbits.tex}
+\subfile{groups/cayley_theorem.tex}
+
+% Rings
+\part{Ring Theory}
+\subfile{rings/rings.tex}
+
 
 \end{document}
