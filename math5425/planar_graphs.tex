@@ -1,0 +1,70 @@
+\chapter{Planar Graphs}
+
+A graph which is drawn in the plane so that no edges meet except at common endvertices is called a \textbf{plane graph}. An abstract graph which can be drawn in this way is called \textbf{planar}. \\
+
+A graph is drawn in the Euclidean plane \(\bR^2\) by representing each vertex by a point and each edge by a curve between two distinct points.
+
+\section{Plane Graphs}
+
+An \textbf{arc} (or \textbf{polygonal arc}) is a subset of \(\bR^2\) composed of the union of finitely many straight line segments, which is homeomorphic to \([0, 1]\). \\
+
+A \textbf{plane graph} is a pair \((V, E)\) of finite sets (with elements of \(V\) called vertices and elements of \(E\) called edges) such that
+\begin{enumerate}[label=(\roman*)]
+    \item \(V \subseteq \bR^2\);
+    \item Every edge is an arc between two distinct vertices (no loops);
+    \item Different edges have different sets of endvertices (no repeated edges);
+    \item The interior of an edge contains no vertex and no point of any other edge.
+\end{enumerate}
+
+Here the \textbf{interior} of an edge/arc \(e\), denoted \(\mathring{e}\), is the arc minus its endpoints: if \(e\) is the arc from \(x\) to \(y\) then \(\mathring{e} = e - \{x, y\}\). \\
+
+A \textbf{plane graph} defines a graph \(G\) in a natural way. We use the name \(G\) for abstract graph, the plane graph and the \textbf{point set}
+\[V \cup \left(\bigcup_{e \in E} e\right) \subseteq \bR^2.\]
+The point set of a plane graph \(G\) is a closed set in \(\bR^2\), and \(\bR^2 - G\) is open. Two points in an open set \(O\) are equivalent if they are equal or they can be linked by an arc in \(O\). This is an equivalence relation. \\
+
+The equivalence classes of \(\bR^2 - G\) are open connected regions, call the \textbf{faces} of \(G\). Since \(G\) is bounded (that is, it lies within some sufficiently large disc \(D \subseteq R^2\)), exactly \textbf{one} face of \(G\) is unbounded: it is the face that contains \(\bR^2 - D\). We call the unbounded faces the \textbf{outer face} of \(G\). All other faces of \(G\) are called inner faces. \\
+
+Let \(F(G)\) be the set of faces of \(G\). The \textbf{boundary} of a face \(f\) is called the \textbf{frontier} of \(f\). It is the set of all points \(y \in \bR^2\) such that every neighbourhood of \(y\) meets both \(f\) and \(\bR^2 - f\).
+
+\begin{lemma}
+    Let \(G\) be a plane graph with subgraph \(H \subseteq G\) and face \(f \in F(G)\).
+    \begin{enumerate}[label=(\roman*)]
+        \item There is a face \(f' \in F(H)\) which contains \(f\) (that is, \(f \subseteq f'\)).
+        \item If the frontier of \(f\) lies in \(H\) then \(f' = f\).
+    \end{enumerate}
+    \proof{
+        \begin{enumerate}[label=(\roman*)]
+            \item Points in \(f\) are also equivalent in \(\bR^2 - H\), so they belong to an equivalence class \(f'\) of \(\bR^2 - H\). That is, \(f \subseteq f' \tand f' \in F(H)\).
+            \item We prove the contrapositive. Suppose that \(f\) is a proper subset of \(f' (f \subsetneq f')\). Choose points \(a \in f\) and \(b \in f' - f\). Both \(a \tand b\) belong to \(f\) in \(\bR^2 - H\), so there is an arc between them in \(\bR^2 - H\).
+
+                  But \(a \tand b\) are not equivalent in \(\bR^2 - G\) as \(a \in f \tand b \notin f\). So the arc must meet a point \(x\) on the frontier \(X\) of \(f\), and \(x \notin H\) as \(x \in f' \subseteq \bR^2 - H\). Therefore \(X \notin H\).
+        \end{enumerate}
+    }
+\end{lemma}
+
+\begin{lemma}
+    Let \(G\) be a plane graph and let \(e\) be an edge of \(G\).
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(X\) is the frontier of a face of \(G\) then either \(e \subseteq X\) or \(X \cap \mathring{e} = \emptyset\).
+        \item If \(e\) lies on a cycle \(C \subseteq G\) then \(e\) lies on the frontier of exactly two faces of \(G\), and these are contained in the distinct faces of \(C\).
+        \item If \(e\) does not lie on a cycle then \(e\) lies on the frontier of exactly one face of \(G\).
+    \end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+    The frontier of a face of a plane graph \(G\) is always the point set of a subgraph of \(G\).
+\end{corollary}
+
+The subgraph of \(G\) whose point set is the frontier of a face \(f\) is said to bound \(f\) and is called the \textbf{boundary} of \(f\). Denote this subgraph by \(G[f]\). A face is said to be \textbf{incident} with the vertices and edges of its boundary. By Lemma 6.1.1 (ii), every face of \(G\) is also a face of it's boundary.
+
+\begin{proposition}
+    A plane forest has exactly one face.
+\end{proposition}
+
+\begin{lemma}
+    If a plane graph has two distinct faces with the same boundary then the graph is a cycle.
+\end{lemma}
+
+\begin{proposition}
+    In a 2-connected plane graph, every face is bounded by a cycle.
+\end{proposition}
