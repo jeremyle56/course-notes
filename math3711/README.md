@@ -21,3 +21,5 @@
   - [Counting Orbits and Cayley's Theorem](./groups/cayley_theorem.tex)
 - [Rings](./rings/)
   - [Rings](./rings/rings.tex)
+  - [Ideals and Quotient Rings](./rings/ideals_quotient.tex)
+  - [Ring Homomorphisms](./rings/ring_homomorphisms.tex)

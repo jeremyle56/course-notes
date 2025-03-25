@@ -1,0 +1,30 @@
+\section{Ring Homomorphisms}
+
+\begin{prop-defn}[Homomorphism]
+Let \(R, S\) be rings. A ring homomorphism is a group homomorphism \(\phi: R \to S\) such that:
+\begin{enumerate}
+    \item \(\phi(1_R) = 1_S\)
+    \item \(\phi(rr') = \phi(r)\phi(r') \forall r, r' \in R\).
+\end{enumerate}
+\end{prop-defn}
+
+\begin{definition}[Isomorphism]
+    A ring isomorphism is a bijective ring homomorphism \(\phi: R \to S\). In this case \(\phi^{-1}\) is also a ring homomorphism. We write \(R \cong S\) as rings.
+\end{definition}
+
+\begin{proposition}
+    Let \(\phi: R \to S\) be a ring homomorphism.
+    \begin{enumerate}
+        \item If \(R'\) is a subring of \(R\) then \(\phi(R')\) is a subring of \(S\).
+        \item If \(S'\) is a subring of \(S\) then \(\phi^{-1}(S')\) is a subring of \(R\).
+        \item If \(I \trianglelefteq S\) then \(\phi^{-1}(I) \trianglelefteq R\)
+    \end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+    In particular, \(\Im \phi = \phi(R)\) is a subring of S and \(\ker \phi = \phi^{-1}(0) \trianglelefteq R\).
+\end{corollary}
+
+\begin{theorem}
+    Let \(R \) = ring, \(I = \) ideal with \(\pi: R \to R / I\) be a quotient map. Suppose \(\phi: R \to S\) is a ring homomorphism such that \(I \subseteq \ker \phi\). Recall group situation gives a map \(\psi: R / I \to S\) then \(\psi\) is also a ring homomorphism. Special case for \(I = \ker \phi\): \(R / \ker\phi \cong \Im \phi\) (as rings).
+\end{theorem}
