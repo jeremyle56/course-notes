@@ -107,6 +107,7 @@
 % Shorthand for Symbols
 \def\mbb#1{\mathbb{#1}}
 \newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
 \newcommand{\bN}{\mathbb{N}}
 \newcommand{\bQ}{\mathbb{Q}}
 \newcommand{\bR}{\mathbb{R}}
@@ -121,6 +122,7 @@
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\Perm}{\operatorname{Perm}}
 \newcommand{\End}{\operatorname{End}}
+\newcommand{\Fun}{\operatorname{Fun}}
 \newcommand{\ord}{\operatorname{ord}}
 \newcommand{\stab}{\operatorname{stab}}
 \newcommand{\GL}{\operatorname{GL}_n(\mathbb{R})}
@@ -173,11 +175,26 @@
 \subfile{groups/structure_g_orbits.tex}
 \subfile{groups/cayley_theorem.tex}
 
-% Rings
+% Ring Theory
+\pagebreak
 \part{Ring Theory}
 \subfile{rings/rings.tex}
 \subfile{rings/ideals_quotient.tex}
 \subfile{rings/ring_homomorphisms.tex}
+\subfile{rings/polynomial_rings.tex}
+\subfile{rings/matrix_rings.tex}
+\subfile{rings/direct_product.tex}
+\subfile{rings/field_of_fractions.tex}
+\subfile{rings/factorisation_theory.tex}
+\subfile{rings/principal_ideal_domains.tex}
+\subfile{rings/euclidean_domains.tex}
+\subfile{rings/gauss_lemma.tex}
 
+% Field Theory
+\pagebreak
+\part{Field Theory}
+\subfile{fields/field_extensions.tex}
+\subfile{fields/finite_fields.tex}
+\subfile{fields/ruler_and_compass.tex}
 
 \end{document}

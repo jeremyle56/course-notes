@@ -1,0 +1,64 @@
+\section{Finite Fields}
+
+\begin{definition}[Characteristic of a Ring]
+    Let \(R\) be a ring. Consider the homomorphism \(\phi: \bZ \to R; n \mapsto 1 + 1 + \dots + 1 (n \text{times})\). Then \(\ker \phi \trianglelefteq \bZ = \langle n \rangle\) for some \(n\). This is called the characteristic of \(R, \operatorname{char} R\).
+    \exmp{
+        \(\operatorname{char} \bR = 0, \operatorname{char} \bZ = 0, \operatorname{char} (\bZ / n\bZ) = n\).
+    }
+\end{definition}
+
+\begin{definition}
+    A finite field is a field with only finitely many elements.
+    \exmp{
+        \(\bZ / p\bZ\) if \(p\)is prime is a finite field.
+    }
+\end{definition}
+
+\begin{proposition}
+    Let \(F\) be a finite field. Then \(|F| = p^n\) for some prime \(p\), integer \(n \geq 1\). \(p\) is the characteristic of \(F\). \(F\) contains \(\bZ / a /bZ\) as a subfield.
+    \proof{
+        Let \(n = \operatorname{char} F\). Since \(F\) finite, \(n \neq 0\). 
+        \begin{quote}
+            {\bf Claim.} \(n\) is prime.
+
+            {\bf Proof.} If \(n = n_1 n _2\) then \(0 = \phi(n) = \phi(n_1)(n_2)\). Since \(F\) is a field, either \(\phi(n_1) = 0\) or \(\phi(n_2) = 0\).
+        \end{quote}
+        Call \(p = n\). \(\Im(\phi) = \{ 0, 1, 1 + 1, \dots, p - 1 \}\). By First Isomorphism Theorem, \(\Im \phi \cong \bZ / \ker \phi = \bZ / p\bZ\). i.e. \(F\) contains \(\bZ / p \bZ\) as a subfield. Also \(F\) is a vector space over \(\bZ / p\bZ\) of finite dimension say \(t\), so \(|F| = p^t\), i.e. can write elements uniquely in form \(c_1b_ + \dots + c_n b_n\) where \(c_i \in \bZ / p\bZ\) and \(b_i\) forms a basis for \(F\) over \(\bZ / p \bZ\).
+    }
+\end{proposition}
+
+\begin{theorem}[Existence of Finite Fields]
+    Let \(p \geq 2\) be a prime, let \(n \geq 1\). Then there exists a field \(F\) with \(|F| = p^n\).
+    \proof{
+         Let \(q = p^n\). Let \(g(x) = x^q - x \in \bF_p[x]\). From the previous chapter, there eixsts a field extension \(E / \bF_p\) such that \(g(x)\) splits into linear factors in \(E[x]\). Define \(F = \{ \alpha \in E: g(\alpha) = 0 \} = \{ \alpha \in E : \alpha^q = \alpha \}\). Know \(|F| \leq q\), since \(g(x)\) has at most \(q\) roots.
+         \begin{quote}
+            {\bf Claim.} \(g(x)\) has no repeated roots.
+
+            {\bf Proof.} If \(g(x) = (x - a)^2h(x)\) for some \(\alpha \in E, h \in E[x]\). Then \(g'(x) = 2(x - \alpha)h(x) + (x - \alpha)2 h(x)\). So \(g'(\alpha) = 0\). But \(g'(x) = q x^{q - 1} - 1 = -1\), contradiction.
+         \end{quote}
+        Therefore \(|F| = q\). Need to show \(F\) is a subfield of \(E\). If \(\alpha, \beta \in F\) then \((\alpha \beta)^q = \alpha^q \beta^q = \alpha \beta\) so \(\alpha \beta \in F\).
+        \begin{align*}
+            (\alpha + \beta)^p &= \alpha^p + \beta^p \\
+            (\alpha + \beta)^{p^2} &= \alpha^{p^2} + \beta^{p^2} \\
+            & \vdots \\
+            (\alpha + \beta)^q &= \alpha^q + \beta^q = \alpha + \beta
+        \end{align*}
+        so \(\alpha + \beta \in F\) and closed under addition and multiplication. Inverses \(\alpha^{-1} = \alpha^{q - 2}\) because \(\alpha^{q - 1} = 1\) if \(\alpha \neq 0\).
+    }
+\end{theorem}
+
+\begin{theorem}[Existence of Generators]
+    Let \(F =\) finite field order \(q = p^n\). Then \(F^*\)is cyclic of order \(q - 1\).
+    \exmp{
+        \(\bF_4 = \bF_2 (\alpha)\) with \(\alpha^2 + \alpha + 1 = 0\). We have \(\alpha^0 = 1, \alpha^1 = \alpha, \alpha^2 = \alpha + 1\) so \(\bF_4^* = \langle \alpha \rangle\).
+    }
+\end{theorem}
+
+\begin{lemma}
+    Let \(m \in \bF_p [x]\) be irreducible with \(\deg n \geq 1\). Let \(q = p^n\) then \(m \mid x^q - x\).
+\end{lemma}
+
+\begin{theorem}
+    Let \(F, F'\) be finite fields. \(|F| = |F'|\) then \(F \cong F'\).
+\end{theorem}
+

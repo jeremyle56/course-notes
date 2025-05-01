@@ -1,0 +1,55 @@
+\section{Gauss's Lemma}
+
+\begin{proposition}
+    In a UFD, any irreducibles are primes.
+    \proof{
+        Follows from observation that \(q_1 \mid rt \implies q_1 = up_j \text{ or } q_1 = vr_l, u, v \in R^*\) by unique factorisation. Therefore \(q_1 \mid p_j \mid r\) or \(q_1 \mid r_l \mid t\).
+    }
+\end{proposition}
+
+\begin{definition}[Primitive Polynomials]
+    \(f \in R[x], f \neq 0\) is primitive if the \(\gcd\) of its coefficients is \(1\).
+    \exmp{
+        \(3x^2 + 2 \in \bZ[x]\) is primitive, but \(6x^2 + 4\) is not.
+    }
+\end{definition}
+
+\begin{proposition}
+    Let \(R\) be a UFD and \(K = K(R)\).
+    \begin{enumerate}
+        \item if \(f \in K[x], f \neq 0\), then there exists \(\alpha \in K^*\) such that \(\alpha f \in R[x]\) and \(\alpha f\) primitive
+        \item if \(f \in R[x], f \neq 0\) is primitive, and \(\alpha \in K^*\) such that \(\alpha f \in R[x]\) then \(\alpha \in R\).
+    \end{enumerate}
+    \proof{
+        \begin{enumerate}
+            \item Choose \(d =\) common denominator, then \(df \in R[x]\). Now choose \(e = \gcd(\text{coefficients of } df) \in R\). Then \(\frac{df}{e} \in R[x]\) and primitive so take \(\alpha = \frac{d}{e}\).
+            \item Let \(\alpha = \frac{n}{d}\) with \(n \in R, d \in R, d \neq 0\). Then \(\gcd(\text{coefficients of } nf) = n \gcd(\text{coefficients of } f) = n \times 1 = n = d\gcd(\text{coefficients of } (\frac{b}{d})f) = d\gcd(\text{coefficients of } \alpha f) \implies n = \text{multiple of } d \implies \alpha \in R\).
+        \end{enumerate}
+    }
+\end{proposition}
+
+\begin{lemma}[Gauss's Lemma]
+    Let \(R\) be a UFD and \(f = f_0 + \dots + f_m x^m, g = g_0 + \dots + g_n x^n \in R[x]\) be primitive polynomials. Then \(fg\) is primitive.
+    \proof{
+        We need to show that for any prime \(p\), \(p\) does not divide all coefficients of \(fg\). Consider \(\bar{f} =\) image of \(f\) in \((R / p)[x]\) and similarly for \(\bar{g}\) where \(R / p\) is a domain. Neither \(\bar{f}\) nor \(\bar{g}\) are 0 as they are primitive so \(\bar{f}\bar{g} = \bar{fg}\) is not the zero polynomial.
+        }
+\end{lemma}
+
+\begin{corollary}
+    Let \(R\) be a UFD and \(K = K(R)\). Let \(f \in R[x]\), assume \(f = gh\) with \(g, h \in K[x]\). Then \(f = \bar{g}\bar{h}\) where \(\bar{g}, \bar{h} \in R[x]\) and \(\bar{g} = \alpha g\), \(\bar{h} = \beta h\) where \(\alpha, \beta \in K^*\).
+    \proof{
+        Write \(g = \gamma g', h = \delta h'\) where \(\gamma, \delta \in K^*\) and \(g', h' \in R[x]\) with both \(g', h'\) primitive. Then \(f = \gamma \delta g'h'\) then by Gauss' lemma, \(g'h'\) is primitive. So \(\gamma \delta \in R\) then take \(\bar{g} = \gamma \delta g', \bar{h} = h'\).
+    }
+\end{corollary}
+
+\begin{theorem}
+    Let \(R\) be a UFD and \(K = K(R)\)
+    \begin{enumerate}
+        \item the primes in \(R[x]\) are either primes in \(R\) or primitive polynomials of positive degree that are irreducible in \(K[x]\)
+        \item \(R[x]\) is a UFD.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Let \(R\) be a UFD, then \(R[x_1, x_2, \dots, x_n]\) is also a UFD.
+\end{corollary}

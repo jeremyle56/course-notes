@@ -1,0 +1,59 @@
+\section{Field of Fractions}
+
+In this section let \(R\) be a commutative ring.
+
+\begin{definition}[Domain]
+    \(R\) is called a domain (or integral domain) if for all \(r, s \in R: rs = 0 \implies r = 0 \text{ or } s = 0\). i.e. \(R\) does not have non-trivial zer divisors.
+\end{definition}
+
+\exmp{
+    \(\bZ, \bC[x_1, \dots, x_n]\) are both domains. \(\bZ / 6\bZ\) is not a domain as \(2 \times 3 = 0\) but neither \(2 \neq 0, 3 \neq 0\). However \(\bZ / p \bZ\) for a prime \(p\) is a domain. In fact, any field is a domain.
+}
+
+Then we define \(\tilde{R} = R \times (R - 0) = \left\{ \begin{pmatrix}
+    a \\ b
+\end{pmatrix} : a \in R, b \in R - 0 \right\}\). Now define a relation on \(\tilde{R}\): \(\begin{pmatrix}
+    a \\ b
+\end{pmatrix} \sim \begin{pmatrix}
+    a' \\ b'
+\end{pmatrix}\) if \(ab' = a'b\).
+
+\begin{lemma}
+    \(\sim\) is an equivalence relation on \(\tilde{R}\).
+    \proof{
+        Reflexive and symmetric are easy. For transitivity, if \(ab' = a'b\) and \(a'b'' = a''b'\) then the first equation implies \(ab'b'' = a'bb'' = a''bb' \implies (ab'' - a''b)b' = 0\). Since \(R\) is a domain then \(ab'' = a''b\).
+    }
+\end{lemma}
+
+\paragraph{Notation}
+Let \(\frac{a}{b}\) denote the equivalence class of \(\begin{pmatrix} a \\ b \end{pmatrix}\) and \(K(R) = \tilde{R} / \sim\), the set of fractions.
+
+\begin{lemma}
+    The operations \(\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}\) and \(\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}\) give well-defined addition and multiplication on \(K(R)\).
+\end{lemma}
+
+\begin{theorem}
+    These ring addition/multiplication maps make \(K(R)\) into a field, with \(0_{K(R)} = \frac{0_R}{1_R}\) and \(1_{K(R)} = \frac{1_R}{1_R}\).
+\end{theorem}
+
+\exmp{
+    \(K(\bZ) = \bQ\) and \(K(\bR[x]) = \text{ set of real rational functions } = \left\{ \frac{f(x)}{g(x)} : f,g \in \bR[x], g\neq 0 \right\}\). Similarly, \(K(\bQ[x]) = \left\{ \frac{f(x)}{g(x)} : f, g \in \bQ[x], g\neq 0 \right\} = K(\bZ[x])\). Let \(F\) be a field, then \(K(F[x_1, \dots, x_n]) = F(x_1, \dots, x_n)\), where this indicates a field of rational functions in \(x_1, \dots, x_n\) over \(F\).
+}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item The map \(\iota : R \to K(R); \alpha \mapsto \frac{\alpha}{1}\) is an injective ring homomorphism. This allows us to consider \(R\) as a subring of \(K(R)\).
+        \item If \(S\) is a subring of \(R\) then \(K(S)\) is essentially a subring of \(K(R)\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    If \(F\) is a field, then \(K(F) = F\). i.e. the map \(\iota: F \to K(F)\) is an isomorphism.
+    \proof{
+        Injective from above. Surjectivity as given \(\frac{a}{b} \in K(F), b \neq 0\), then \(\iota(ab^{-1}) = \frac{ab^{-1}}{1} = \frac{a}{b}\) because \((ab^{-1})b = 1a\).
+    }
+\end{proposition}
+
+\exmp{
+    By the above proposition we have \(K(\bQ[i]) = \bQ[i] = \{r + si : r,s \in \bQ \}\). But by Proposition 23.7, \(\bZ[i] \leq \bQ[i] \implies K(Z[i]) \leq K(\bQ[i])\) and hence \(K(\bZ[i]) = \bQ[i]\). More generally, \(K(R)\) is the smallest field containing \(R\).
+}

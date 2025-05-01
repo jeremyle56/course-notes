@@ -26,7 +26,7 @@ The equivalence classes of \(\bR^2 - G\) are open connected regions, call the \t
 
 Let \(F(G)\) be the set of faces of \(G\). The \textbf{boundary} of a face \(f\) is called the \textbf{frontier} of \(f\). It is the set of all points \(y \in \bR^2\) such that every neighbourhood of \(y\) meets both \(f\) and \(\bR^2 - f\).
 
-\begin{lemma}
+\begin{lemma} \label{lemma-6.1.1}
     Let \(G\) be a plane graph with subgraph \(H \subseteq G\) and face \(f \in F(G)\).
     \begin{enumerate}[label=(\roman*)]
         \item There is a face \(f' \in F(H)\) which contains \(f\) (that is, \(f \subseteq f'\)).
@@ -42,7 +42,7 @@ Let \(F(G)\) be the set of faces of \(G\). The \textbf{boundary} of a face \(f\)
     }
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma} \label{lemma-6.1.2}
     Let \(G\) be a plane graph and let \(e\) be an edge of \(G\).
     \begin{enumerate}[label=(\roman*)]
         \item If \(X\) is the frontier of a face of \(G\) then either \(e \subseteq X\) or \(X \cap \mathring{e} = \emptyset\).
@@ -57,14 +57,134 @@ Let \(F(G)\) be the set of faces of \(G\). The \textbf{boundary} of a face \(f\)
 
 The subgraph of \(G\) whose point set is the frontier of a face \(f\) is said to bound \(f\) and is called the \textbf{boundary} of \(f\). Denote this subgraph by \(G[f]\). A face is said to be \textbf{incident} with the vertices and edges of its boundary. By Lemma 6.1.1 (ii), every face of \(G\) is also a face of it's boundary.
 
-\begin{proposition}
+\begin{proposition} \label{prop-6.1.4}
     A plane forest has exactly one face.
 \end{proposition}
 
 \begin{lemma}
     If a plane graph has two distinct faces with the same boundary then the graph is a cycle.
+    \proof{
+        Let \(G\) be a plane graph and let \(f_1, f_2\) be distinct fac es of \(G\) with the same boundary \(H = G[f_1] = G[f_2]\). Since \(f_1, f_2\) are also faces of \(H\), the above proposition imples that \(H\) contains a cycle \(C\). \\
+
+        We claim \(H = C\). For a contradiction, suppose that \(H\) has a vertex or edge which is not in \(C\). This additional vertex or edge of \(H\) lies in one of the faces of \(C\) and hence cannot lie on the boundary of whichever \(f_i\) is contained in the other face of \(C\). \\
+
+        Thus \(f_1\) and \(f_2\) are exactly the two distinct faces of \(C\). Hence \(f_1 \cup C \cup f_2 = \bR^2\). But \(f_1 \cup C \cup f_2 \subseteq f_1 \cup G \cup f_2 \cup \{ \text{other faces of } G \} = \bR^2\) and therefore \(G = C\).
+    }
 \end{lemma}
 
-\begin{proposition}
+\begin{proposition} \label{prop-6.1.6}
     In a 2-connected plane graph, every face is bounded by a cycle.
+    \proof{
+        Let \(f\) be a face in a \(2\)-connected plane graph \(G\). We proceed by induction using Proposition \ref{prop-5.1.2}. If \(G\) is a cycle then the result is true. Now assume that \(G\) is not a cycle. Then by Proposition \ref{prop-5.1.2}, there is a 2-connected plane subgraph \(H\) of \(G\) and a plane \(H\)-path \(P\) such that \(G = H \cup P\). By the inductive hypothesis, every face of \(H\) is bounded by a cycle. \\
+
+        The interior of \(P\) lies in the face \(f'\) of \(H\), and \(f'\) is bounded by a cycle \(C\). If \(f\) is a face of \(H\) then we are done. Otherwise, the frontier of \(f\) intersects \(P - H\), so \(f \subseteq f\)! Therefore \(f\) is a face of \(C \cup P\) and hence \(f\) is bounded by a cycle, by observation.
+    }
 \end{proposition}
+
+\begin{theorem}[Euler's Formula, 1752]
+    Let \(G\) be a connected plane graph with \(n\) vertices, \(m\) edges and \(\ell\) faces. Then
+    \[n - m + \ell = 2.\]
+    \proof{
+        Fix \(n\) and apply induction on \(m\). For \(m \leq n - 1\) then, as \(G\) is connected we must have \(m = n - 1\) and \(G\) is a tree. Then the result follows Proposition \ref{prop-6.1.4}. \\
+
+        Now suppose that \(m \geq n\). Then \(G\) has an edge \(e\) which belongs to a cycle. Let \(G' = G - e\) which is a connected plane graph. By Lemma \ref{lemma-6.1.2} (ii), \(e\) lies on the boundary of exactly two distinct faces \(f_1\) and \(f_2\) of \(G\). There is a face \(f_e\) of \(G'\) which contains \(\mathring{e}\), since all points of \(\mathring{e}\) are equivalent in \(\bR^2 - G'\).
+
+        \begin{quote}
+            {\bf Claim.} We claim the following result, \(F(G) - \{f_1, f_2\} = F(G') - \{f_e\}.\)
+
+            {\bf Proof.} First let \(f \in F(G) - \{f_1, f_2\}\). By Lemma \ref{lemma-6.1.2} \(G[f] \subseteq G - \mathring{e} = G'\) and hence \(f \in F(G')\) by Lemma \ref{lemma-6.1.2} (ii). Also \(f \neq f_e\) as \(\mathring{e} \subseteq f_e\) but \(\mathring{e} \cap f = \emptyset\). So \(f \in F(G') - \{f_e\}\) proving \(``\subseteq''\) part of the claim.
+
+            Next let \(f' \in F(G') - \{f_e\}\). Then \(f' \neq f_1, f_2\) (as open sets): for any \(x \in \mathring{e}\), any open set around \(x\) intersects both \(f_1\) and \(f_2\). But there are open sets containing \(x\) which are disjoint from \(f'\), as \(\mathring{e} \in f_e, f_e\) open, \(f'\)and \(f_e\) are disjoint.
+
+            Also \(f' \cap \mathring{e} = \emptyset\) as \(\mathring{e} \subseteq f_e\) and \(f_e\) is disjoint from \(f'\). Hence every pair of points in \(f'\) belong to \(\bR^2 - G\), and they are equivalent in \(\bR^2 - G\). Thus, \(G\) has a face \(f\) which contains \(f'\). By Lemma \ref{lemma-6.1.2} (i), \(f\) is contained in a face \(f''\) of \(G'\). Hence \(f' \subseteq f \subseteq f''\). Therefore \(f' = f''\) (faces of \(G'\) which overlap must be equal) and \(f' = f \in F(G)\). So \(f' \in F(G) - \{f_1, f_2\},\) completing the proof of the claim.
+        \end{quote}
+
+        Then \(G'\) has exactly one less face and exactly one less edge than \(G\). So the result for \(G\) follows by the formula for \(G'\), which holds by induction: \(n - (m - 1) + (\ell - 1) = 2\).
+    }
+\end{theorem}
+
+\begin{corollary}
+    The graphs \(K_5, K_{3,3}\) are not planar.
+    \proof{
+        For a contradiction, suppose that \(K_5\) is planar. Any planar embedding of \(K_5\) must have \(\ell\) faces where \(5 - 10 + \ell = 2\) by Euler's Formula (note that \(K_5\) is connected). Rearranging gives \(\ell = 7\). But \(K_5\) is 2-connected and hence every face is bounded by a cycle (of length at least 3), by Proposition \ref{prop-6.1.6}. Also, every edge of \(G\) lies on the boundary of exactly two faces, as \(K_5\) has no bridges and using Lemma \ref{lemma-6.1.2} (ii). We will double count elements of the set \(S = \{ (e, f) : e \in E(K_5), f \in F(K_5), e \subseteq G[f] \}\) (incident edge-face pairs). We get \(3\ell \leq |S| = 2 \times 10\). Hence \(\ell \leq 20 / 3 < 7\), contradiction. So \(K_5\) is not planar. \\
+
+        Similarly, as \(K_{3,3}\) is connected, any planar embedding of \(K_{3, 3}\) would have \(\ell\) faces, where \(6 - 9 + \ell = 2\) by Eulers formula. So \(\ell = 5\). Also, every face is bounded by a cycle of length at least 4, as \(K_{3, 3}\) is 2-connected and bipartite (using Proposition \ref{prop-6.1.6}) and every edge is incident with exactly 2 faces, as above. \\
+
+        Double counting incident (edge, face) pairs gives \(4 \ell \leq 2 \times 9, \) so \(\ell \leq \frac{9}{2} < 5\). This contradiction shows that \(K_{3,3}\) is not planar.
+    }
+\end{corollary}
+
+A \textbf{subdivision} of a graph \(G\) is obtained by replacing each edge of \(G\) by an independent path between its endvertices. \\
+
+\textbf{Kuratowski's Theorem (1930)} says that a graph \(G\) is planar if and only if no subgraph of \(G\) is a subdivision of \(K_5\) or \(K_{3, 3}\). \\
+
+A plane graph \(G\) is \textbf{maximally plane} (or just \textbf{maximal}) if we cannot add a new edge to form a new plane graph \(G'\) with \(V(G') = V(G)\) such that \(E(G')\) strictly contains \(E(G)\). \\
+
+Call \(G\) a \textbf{plane triangulation} if every face of \(G\) (including the outer face) is bounded by a triangle.
+
+\begin{proposition} \label{prop-6.1.9}
+    A plane graph of order at least 3 is maximally plane if and only if it is a plane triangulation.
+    \proof{
+        Let \(G\) be a plane graph with \(|G| \geq 3\). First suppose that \(G\) is a plane triangulation. Then \(G\) is maximally plane, any additional edge \(e\) would have its interior completely within a face \(f\) of \(G\), and the endvertices of \(e\) would lie on the boundary of \(f\). But all these edges are already present as \(G[f] \cong K_3\) which is complete, and repeated edges are not allowed. \\
+
+        For the converse, suppose that \(G\) is maximally plane. Let \(f \in F(G)\) be a face and let \(H = G[f]\).
+        \begin{quote}
+                {\bf Claim 1.} The induced subgraph \(G[H]\) is complete. If not, say vertices \(x, y\) of \(G[H]\) are not adjacent in \(G\). But we can add an edge through the face \(f\) between \(x\) and \(y\), giving a plane graph with more edges than \(G\). This contradicts maximality of \(G\).
+        \end{quote}
+        Hence \(G[H] = K_r\) for some \(r\). Then \(r \leq 4\) as \(K_5\) is not planar. Note: \(H\) might not be complete (that is, it might not be a induced subgraph of \(G\)).
+
+        \begin{quote}
+            {\bf Claim 2.} \(H\) contains a cycle. If not, then \(H\) is a forest. Either \(r \geq 3\), and \(H \subsetneq K_r = G[H] \subseteq G\) or \(r = 2 \tand |G| \geq 3\) while \(|H| = r = 2\). In either case, \(H \neq G\). But by Proposition \ref{prop-6.1.4}, \(H\) has exactly one face \(f\) and hence \(f \cup H = \bR^2\). Therefore \(G = H\), contradiction.
+
+            {\bf Claim 3.} \(r = 3\), and hence \(H = K_3\). We know that \(r \leq 4\) and by Claim 2 we have \(r \geq 3\). So it is enough to rule out \(r = 4\). For a contradiction, suppose that \(r = 4\) and let \(V(H) = \{v_1, v_2, v_3, v_4\}\). Without loss of generality let \(C = v_1 v_2v_3v_4v_1\) be a cycle in \(H\) (note, \(H\) contains a cycle by Claim 2: how do we know it is a 4-cycle?).
+
+            Since \(C \subseteq G\), by Lemma \ref{lemma-6.1.1} (i), the face \(f\) is contained within a face \(f_c\) of \(C\). let \(f'_c\) be the other face of \(C\).
+
+            \begin{quote}
+                {\bf FACT.} Edges \(v_1 v_3\) and \(v_2 v_4\) lie in different faces of \(C\). If not, we can add a new vertex \(u\) in the face of \(C\) which does not contain these edges, and add edges \(uv_1, uv_2, uv_3, uv_4\) giving a plane embedding of \(K_5\), contradiction.
+            \end{quote}
+
+            But, since \(v_1\) and \(v_3\) lie on \(G[f]\), they can be linked by an arc whose interior lies in \(f_c\) which avoids \(G\). Hence the plane edge \(v_2v_4\) of \(G[H]\) goes through \(f_c'\), not \(f_c\).
+
+            Similarly, since \(v_2\) and \(v_4\) lie on \(G[f]\), they can be linked by an arc whose interior lies in \(f_C\) and which avoids \(G\). Hence the plane edge \(v_1 v_3\) of \(G[H]\) runs through \(f_c'\), not \(f_c\). This contradicts our \textit{FACT}. Hence \(r \neq 4\) so \(r = 3\) and Claim 3 holds.
+        \end{quote}
+
+        So every face of \(G\) is bounded by a 3-cycle.
+    }
+\end{proposition}
+
+\begin{corollary} \label{coro-6.1.10}
+    A plane graph with \(n \geq 3\) vertices has at most \(3n - 6\) edges. Every plane triangulation has \(3n - 6\) edges.
+    \proof{
+        By Proposition \ref{prop-6.1.9} it suffices to prove the second statement. Let \(G\) be a plane triangulation. If \(G\) was disconnected then at least one face of \(G\) must have a disconnected boundary. But all faces of \(G\) are bounded by \(3\)-cycles, so \(G\) is connected. \\
+
+        Next, every edge lies on the boundary of some face, which is a 3-cycle. So every edge of \(G\) belongs to a cycle and hence lies on the boundary of exactly two faces. Furthermore, every face boundary has exactly 3 edges. Let \(n = |G|, m = |E(G)|\) and \(\ell = |F(G)|\). Double-counting incident (edge - face) pairs  gives \(3\ell = 2m\). Thus \(\ell = \frac{2m}{3}\). Substituting this into Euler's formula, as \(G\) is connected gives \(n - m + \frac{2m}{3} = 2\). Hence \(m = 3(n - 2) = 3n - 6\) as required.
+    }
+\end{corollary}
+
+\section{Colouring Maps}
+
+\begin{theorem}[Four Colour Theorem]
+    Every planar graph is 4-colourable. (That is, there exists a proper 4-colouring of the vertices of any planar graph.)
+\end{theorem}
+
+\begin{proposition}
+    Every planar graph is 5-colourable.
+    \proof{
+        Let \(G\) be a plane graph with \(n\) vertices and \(m\) edges. If \(n \leq 5\) then 5-colouring is easy. So we assume that \(n \geq 6\). Assume by induction that every plane graph with at most \(n - 1\) vertices can be 5-coloured. By Corollary \ref{coro-6.1.10}, the average degree of \(G\) satisfies
+        \[\bar{d}(G) = \frac{2m}{n} \leq \frac{2(3n - 6)}{n} < 6.\]
+        Hence \(G\) has at least one vertex of degree \(\leq 5\). Let \(v\) be a vertex of \(G\) with degree \(\leq 5\). If \(d_G(v) \leq 4\) then by induction we can \(5\)-colour \(G - v\) and extend this colouring to a 5-colouring of \(G\) by choosing a colour for \(v\) which does not appear on \(N(v)\). So we can assume that \(d_G(v) = 5\). \\
+
+        Note, some pair of distinct neighbours \(u, w \in N(v)\) must not be adjacent, as \(K_5\) is not planar. Contract the edge \(uv\) and then contract the edge \(vw\), preserving planarity. This gives a plane graph \(\hat{G}\) with \(n - 2\) vertices. By induction, \(\hat{G}\) is 5-colourable. Let \(\hat{c}\) be a 5-colouring of \(\hat{G}\). We define a 5-colouring \(c\) of \(G - v\) by 
+        \[c(x) = \begin{cases}
+            \hat{c}(x) & \text{ if } x \notin \{ u, w \}, \\
+            \hat{c}(uwv) & \text{ if } x \in \{u, w \}.
+        \end{cases}
+        \]
+        Now at most 4 colours appear on \(N(v)\) under \(c\), so we can colour \(v\) with a missing colour to give a 5-colouring of \(G\). This completes the proof, by induction.
+    }
+\end{proposition}
+
+\begin{theorem}
+    Every planar graph which does not contain a triangle is 3-colourable.
+\end{theorem}

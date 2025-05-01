@@ -28,3 +28,54 @@ Let \(R, S\) be rings. A ring homomorphism is a group homomorphism \(\phi: R \to
 \begin{theorem}
     Let \(R \) = ring, \(I = \) ideal with \(\pi: R \to R / I\) be a quotient map. Suppose \(\phi: R \to S\) is a ring homomorphism such that \(I \subseteq \ker \phi\). Recall group situation gives a map \(\psi: R / I \to S\) then \(\psi\) is also a ring homomorphism. Special case for \(I = \ker \phi\): \(R / \ker\phi \cong \Im \phi\) (as rings).
 \end{theorem}
+
+\begin{proposition}
+    Let \(J \trianglelefteq R\) and let \(\pi: R \to R / J\) be quotient map. Then there is a 1-1 correspondence:
+    \[\{I \trianglelefteq R \text{ such that } J \subseteq I \} \leftrightarrow	\{\text{ideals } \bar{I} \trianglelefteq R / J\}\]
+\end{proposition}
+
+\begin{definition}
+    An ideal \(I \trianglelefteq R\), with \(I \neq R\), is called maximal if it is not contained in any strictly larger ideal \(J \neq R\).
+\end{definition}
+
+\exmp{
+    \(10 \bZ \trianglelefteq \bZ\) is not maximal as \(10\bZ \subsetneqq 2\bZ \triangle \bZ\). However \(2\bZ \trianglelefteq \bZ\) is maximal.
+}
+
+
+\begin{proposition}
+    Let \(R \neq 0\) be a commutative ring.
+    \begin{enumerate}
+        \item \(R\) is a field \(\iff\) every proper ideal is maximal
+        \item if \(I \trianglelefteq R\), with \(I \neq R\), \(I\) is maximal \(\iff R / I\) is a field
+    \end{enumerate}
+    \proof{
+        Assume \(R\) is a field. Let \(I \trianglelefteq R\), adn assume \(I \neq 0\). Then can choose \(x \in I, x \neq 0\). Then \(x\) is invertible, let \(y = x^{-1}\) then \(1 = yx \in I\) therefore \(I = R\). \\
+
+        Converse: assume only ideals of \(R\) are \(0\) and \(R\). Take any \(x \in R, x \neq 0\). Consider \(I = \langle x \rangle\), cannot be 0, since \(x \in I\) then \(I = R\) so \(xy = 1\) for some \(y\). This proves \(x\) is invertible so \(R\) is a field.
+    }
+\end{proposition}
+
+\begin{theorem}[Second Isomorphism Theorem]
+    \(R\) is a ring. \(I \trianglelefteq R, J \trianglelefteq\) with \(J \subseteq I\). Then \(\frac{R / J}{I / J} \cong R / I\).
+    \proof{
+        Consider \(R \to R / J \to \frac{R/J}{I/J}\), show kernel is \(I\). Then follows from First Isomorphism Theorem.
+    }
+\end{theorem}
+
+\begin{theorem}[Third Isomorphism Theorem]
+    Let \(S \subseteq R\) be a subring and \(I \trianglelefteq R\). Then \(S + I\) is a subring of \(R\) and \(S \cap I \trianglelefteq S\).
+    \[\frac{S}{S \cap I} \cong \frac{S + I}{I}.\]
+\end{theorem}
+
+\exmp{
+    \(S = \bC[x]\) subring of \(R = \bC[x, y].\) Let \(I = \langle y \rangle = y\bC[x, y]\). \\
+
+    \begin{itemize}
+        \item \(S \cap I = \bC[x] \cap \langle y \rangle = 0\).
+        \item \(S + I = \bC[x, y] = R\)
+    \end{itemize}
+    Then by the Third Isomorphism Theorem,
+    \[\frac{S}{S \cap I} = \frac{\bC[x]}{0} = \bC[x] \quad \text{and} \quad \frac{S + I}{I} = \frac{\bC[x, y]}{\langle y \rangle},\]
+    \[\bC[x, y] / \langle y \rangle \cong \bC[x].\]
+}
