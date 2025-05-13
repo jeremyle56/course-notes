@@ -50,14 +50,14 @@ Let \(R, S\) be rings. A ring homomorphism is a group homomorphism \(\phi: R \to
         \item if \(I \trianglelefteq R\), with \(I \neq R\), \(I\) is maximal \(\iff R / I\) is a field
     \end{enumerate}
     \proof{
-        Assume \(R\) is a field. Let \(I \trianglelefteq R\), adn assume \(I \neq 0\). Then can choose \(x \in I, x \neq 0\). Then \(x\) is invertible, let \(y = x^{-1}\) then \(1 = yx \in I\) therefore \(I = R\). \\
+        Assume \(R\) is a field. Let \(I \trianglelefteq R\), and assume \(I \neq 0\). Then can choose \(x \in I, x \neq 0\). Then \(x\) is invertible, let \(y = x^{-1}\) then \(1 = yx \in I\) therefore \(I = R\). \\
 
         Converse: assume only ideals of \(R\) are \(0\) and \(R\). Take any \(x \in R, x \neq 0\). Consider \(I = \langle x \rangle\), cannot be 0, since \(x \in I\) then \(I = R\) so \(xy = 1\) for some \(y\). This proves \(x\) is invertible so \(R\) is a field.
     }
 \end{proposition}
 
 \begin{theorem}[Second Isomorphism Theorem]
-    \(R\) is a ring. \(I \trianglelefteq R, J \trianglelefteq\) with \(J \subseteq I\). Then \(\frac{R / J}{I / J} \cong R / I\).
+    \(R\) is a ring. \(I \trianglelefteq R, J \trianglelefteq R\) with \(J \subseteq I\). Then \(\frac{R / J}{I / J} \cong R / I\).
     \proof{
         Consider \(R \to R / J \to \frac{R/J}{I/J}\), show kernel is \(I\). Then follows from First Isomorphism Theorem.
     }

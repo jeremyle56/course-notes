@@ -36,7 +36,7 @@ The \textbf{line graph}, denoted \(L(G)\), has vertex set \(E(G)\) and \(e, f \i
 Fact: \(\chi(G) = \Delta(G) + 1\) if \(G\) is a complete graph or an odd cycle.
 
 \begin{theorem}[Brooks, 1941] \label{brooks-thrm}
-    Let \(G\) be a connected graph. If \(G\) is neither complete nor a \(n\) odd cycle then \(\chi(G) \leq \Delta(G)\). In fact we will prove the following restatement of Brooks Theorem, due to Zajac (2018):
+    Let \(G\) be a connected graph. If \(G\) is neither complete nor an odd cycle then \(\chi(G) \leq \Delta(G)\). In fact we will prove the following restatement of Brooks Theorem, due to Zajac (2018):
     \begin{mdframed}
         \begin{center}
             Let \(k \geq 3\) be an integer and let \(G\) be a graph with \(\Delta(G) \leq k\). If \(G\) does not contain \(K_{k + 1}\) as a subgraph then \(G\) is \(k\)-colourable.
@@ -89,7 +89,7 @@ Fact: \(\chi(G) = \Delta(G) + 1\) if \(G\) is a complete graph or an odd cycle.
 \section{Edge Colourings}
 By considering a vertex of maximum degree, we see that the chromatic index \(\chi'(G)\) satisfies \(\chi'(G) \geq \Delta(G)\)for all graphs \(G\).
 
-\begin{proposition}[K\"oning, 1916]
+\begin{proposition}[K\"onig, 1916]
     If \(G\) is bipartite then \(\chi'(G) = \Delta(G)\).
     \proof{
         We prove t his by induction on \(m = |E(G)|\). If \(m = 0\) then the result is trivially true. So, assume that \(m \geq 1\) and that the result holds for all bipartite graphs with at most \(m - 1\) edges. \\
