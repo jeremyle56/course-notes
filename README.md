@@ -37,6 +37,11 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 - [MATH2701 (Abstract Algebra and Fundamental Analysis)](./math2701/math2701.pdf)
 - [MATH3411 (Information, Codes and Ciphers)](./math3411/math3411.pdf)
 
+## 2025 T1
+
+- [MATH3711 (Higher Algebra)](./math3711/math3711.pdf)
+- [MATH5425 (Graph Theory)](./math5425/math5425.pdf)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.

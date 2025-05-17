@@ -1,0 +1,43 @@
+\section{Symmetries of Regular Polygons}
+
+\(AO_n\), the set of surjective symmetries \(T : \bR^n \to \bR^n\) forms a subgroup of \(\Perm(\bR^n)\).
+
+\begin{proposition}
+    Let \(T \in AO_n\), then \(T = T_{\fv} \circ T'\), where \(\fv = T(\fzero)\) and \(T'\) is an isometry with \(T'(\fzero) = \fzero\).
+    \proof{
+        Set \(T' = T_{\fv}^{-1} \circ T = T_{-\fv} \circ T\) where \(\fv = T(\fzero)\). \(T'\) is an isometry because \(T\) and \(T_{\fv}\) are isometries. Also \(T'(\fzero) = T_{-\fv}(T(\fzero)) = T_{-\fv}(\fv) = \fv - \fv = 0\).
+    }
+\end{proposition}
+
+\begin{theorem}
+    Let \(T: \bR^n \to \bR^n\) be an isometry such that \(T(\fzero) = \fzero\). Then \(T\) is linear.
+\end{theorem}
+
+The centre of mass \(V = \{\fv^1, \dots, \fv^m\} \subseteq \bR^n\) is \(\fc_V = \frac{1}{m}(\fv^1 + \dots + \fv^m)\).
+
+\begin{corollary}
+    Let \(V = \{\fv^1, \dots, \fv^m\}\) and let \(T: \bR^n \to \bR^n\) be an isometry such that \(T(V) = V\). Then \(T(\fc_V) = \fc_V\).
+    \proof{
+        Decomposte \(T = T_\fw \circ T'\) for some \(\fw \in \bR^n\) and isometry \(T'\) with \(T'(\fzero) = \fzero\). So \(T'\) is linear. Then
+        \begin{align*}
+            T(\fc_V) & = \fw + T'(\fc_V) = \fw + T'\left(\frac{1}{m}\sum_{i} \fv^i\right)               \\
+                     & = \fw + \frac{1}{m} \sum_i T'(\fv^i) \tag{using linearity}                       \\
+                     & = \frac{1}{m}\sum_{i} \left(T'(\fv^i) + \fw\right) = \frac{1}{m} \sum_i T(\fv^i) \\
+                     & = \frac{1}{m}\sum_i \fv^i \tag{since \(T(\fv) = \fv\)}                           \\
+                     & = \fc_V
+        \end{align*}
+    }
+\end{corollary}
+
+\begin{corollary}
+    Let \(G \leq AO_n\) be finite. Then there exists \(\fc \in \bR^n\) such that \(T\fc = \fc\) for any \(T \in G\). If we translate to change coordinates so \(\fc = \fzero\), then \(G < O_n\).
+    \proof{
+        Pick any \(\fw \in \bR^n\) and let \(V = \{S\fw : S \in G\} \subseteq \bR^n\). \(V\) is finite because \(G\) is finite. Also \(T(V) = \{TS\fw : S \in G \} = \{S \fw : S \in G \} = V\). Take \(\fc = \fc_V\) then by the previous corollary \(T(\fc) = \fc \forall T \in G\).
+    }
+\end{corollary}
+
+% Let \(F \subset \bR^2\) be a regular \(n\)-gon and \(V =\) set of vertices. Let \(G =\) set of symmetries of \(F\) i.e. isometries \(T: T(F) = F\). Then \(G \cong D_n\) i.e. the group \(\langle \sigma, \tau \rangle\).
+
+\begin{proposition}[Symmetries of Regular Polygons]
+    The group of symmetries of a regular \(n\)-gon is in fact \(D_n\).
+\end{proposition}

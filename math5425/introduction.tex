@@ -1,0 +1,230 @@
+\chapter{Introduction}
+
+\section{Definitions}
+
+A \textbf{graph} \(G = (V, E)\) is a set \(V\) of \textit{vertices} and a set \(E\) of unordered pairs of distinct vertices, called \textit{edges}. Write \(vw\) or \(\{v, w\}\) for the edge joining \(v\) and \(w\), and say that \(v\) and \(w\) are \textbf{neighbours} or that they are \textit{adjacent}. \\
+
+In these notes, unless otherwise stated, graphs are:
+\begin{itemize}
+    \item \textbf{finite}: \(|V| \in \bN\).
+    \item \textbf{labelled}: vertices are distinguishable, usually \(V = [n] := \{1, 2, \dots, n\}\) for some \(n \in \bN\).
+    \item \textbf{undirected}: edges are \textit{unordered} pairs of vertices.
+    \item \textbf{simple}: no loops \(\{v, v\}\) or multiple edges (since \(E\) is not a multiset).
+\end{itemize}
+
+A graph \(G\) with vertex set \(\{v_1, \dots, v_n\}\) has \textbf{adjacency matrix} \(A(G) = (a_{ij})\) where
+\[a_{ij} =
+    \begin{cases}
+        1 & \text{if } v_i v_j \in E, \\
+        0 & \text{otherwise}.
+    \end{cases}
+\]
+\(A(G)\) is a \textbf{symmetric} \(n \times n\) 0-1 matrix with zero diagonal. \\
+
+The \textbf{trivial graph} has at most one vertex. Hence it has no edges. \\
+
+A \textbf{subgraph} of a graph \(G = (V, E)\) is a graph \(H = (W, F)\) such that \(W \subseteq V\) and \(F \subseteq E\). \\
+
+We say that \(H\) is an \textbf{induced subgraph} if for all \(v, w \in W\) if \(vw \in E(G)\) then \(vw \in E(H)\). Write \(H = G[W]\), and say that \(H\) is the subgraph of \(G\) \textit{induced by} the vertex set \(W\).
+
+The number of \textbf{vertices} of \(G\), written \(|G| = |V(G)|\), is called the \textit{order} of \(G\). The number of \textbf{edges} of \(G\), sometimes written \(||G|| = |E(G)|\), is called the \textit{size} of \(G\). \\
+
+Two graphs \(G = (V, E)\) and \(H = (W, F)\) are \textbf{isomorphic} if there exists a \textit{bijection} \(\phi: V \to W\) such that \(\phi(v)\phi(w) \in F\) if and only if \(vw \in E\). The map \(\phi\) is called a \textit{graph isomorphism} or \textit{isomorphism}.
+
+\section{The Degree of a Vertex}
+If \(v \in e\) where \(v\) is a vertex and \(e\) is an edge, then we say that \(e\) is \textit{incident with} \(v\). The \textbf{degree} \(d_G(v)\) of vertex \(v\) in a graph \(G\) is the number of \textit{edges} of \(G\) which are \textit{incident with} \(v\). A vertex of degree 0 is an \textit{isolated vertex}. \\
+
+Let \(N_G(v)\) be the set of all \textbf{neighbours} of \(v\) in \(G\), then \(d(v) = |N(v)|.\)
+
+\begin{lemma}[The Handshaking Lemma]
+    In any graph, \(G = (V, E)\),
+    \[\sum_{v \in V} d(v) = 2|E|.\]
+    Let \(\delta(G) = \min_{v \in V}d(v)\) be the minimum degree in \(G\), and \(\Delta(G) = \max_{v \in V} d(v)\) be the maximum degree in \(G\).
+\end{lemma}
+
+\subsection{Some Special Graphs}
+A graph is \textbf{\(k\)-partite} if there exists a partition of its vertex set
+\[V = V_1 \cup V_2 \cup \cdots V_k\]
+into \(k\) nonempty disjoint subsets (parts) such that there are no edges between vertices in the same part. \\
+
+The \textbf{complete graph} on \(r\) vertices, denoted \(K_r\), has all \(\binom{r}{2}\) edges present. The \textbf{complete bipartite graph} \(K_r, s\) has \(r\) vertices in one part of the vertex bipartition, \(s\) vertices in the other, and all \(rs\) present. \\
+
+A graph is \textbf{regular} if every vertex has the same degree. If every vertex of a graph has degree \(d\) then we say that the graph is \(d\)-regular. \\
+
+The \textbf{complement} of a graph \(G\) is the graph \(\bar{G} = (V, \bar{E})\) where \(vw \in \bar{E}\) if and only if \(vw \notin E\). Note that \(\bar{K_n}\) is the graph with \(n\) vertices and no edges. \\
+
+If \(G = (V, E)\) and \(X \subset V\) then \(G - X\) denotes the graph obtained from \(G\) by deleting all vertices in \(X\) and all edges which are incident with vertices in \(X\). If \(F \subseteq E\) then \(G - F\) denotes the graph \((V, E - F)\) obtained from \(G\) by deleting the edges in \(F\).
+
+\section{Paths and Cycles}
+A \textbf{walk} in the graph \(G\) is a sequence of vertices \(v_0v_1v_2 \cdots v_k\) such that \(v_i v_{i + 1} \in E\) for \(i = 0, 1, \dots, k - 1\). The \textbf{length} of this walk is \(k\). The walk is \textbf{closed} if \(v_0 = v_k\). \\
+
+An \textbf{Euler tour} is a \textit{closed walk} in a graph which uses every edge precisely once. A graph is Eulerian if it has an Euler tour.
+
+\begin{theorem}[Euler, 1736] \label{euler}
+    A connected graph is Eulerian if and only if every vertex has even degree.
+\end{theorem}
+
+A walk is a \textbf{path} if it does not visit any vertex more than once. A path is a sequence of \textit{disinct} vertices, with subsequence vertices joined by an edge. A path \(v_0v_1 \dots v_k\) with \(k\) edges is called a \(k\)-path and has length \(k\). \\
+
+If \(k \geq 3\) and \(P = v_0 v_1 \cdots v_{k - 1}\) is a path of length \(k - 1\) then \(C = P + v_0v_{k - 1}\) is a \textbf{cycle} of length \(k\), also called a \(k-cycle\). It is a closed walk which visits no internal vertex more than once. \\
+
+An edge which joins two vertices of a cycle \(C\), but which is not an edge of \(C\), is called a \textbf{chord}. An \textbf{induced cycle} is a cycle which has no chords.
+
+\begin{proposition}
+    Every graph \(G\) contains a path of length \(\delta(G)\) and a cycle of length at least \(\delta(G) + 1\), if \(\delta(G) \geq 2\).
+    \proof{
+        Let \(P = x_0x_1 \dots x_k\) be the longest path in \(G\). By maximality of \(P\), all neighbours of \(x_k\) lie on \(P\). Hence \(\delta(G) \leq d(x_k) \leq k = |\{x_0,x_1, \dots, x_{k - 1}\}|\), which proves the first statement. Let \(x_i\) be the smallest-indexed neighbour of \(x_k\) in \(P\). Then \(C = x_k x_i x_{i + 1} \dots x_{k-1}x_k\) is a cycle of length \(\geq \delta(G) + 1\) because \(C\) contains \(d(x_k) \geq \delta(G)\) neighbours of \(x_k\) as well as \(x_k\).
+    }
+\end{proposition}
+
+The \textit{minimum length} of a cycle in \(G\) is the \textbf{girth} of \(G\), denoted by \(g(G)\). \\
+
+Given \(x, y \in V\), let \(d_G(x, y)\) be the length of a shortest path from \(x\) to \(y\) in \(G\), called the \textbf{distance} from \(x\) to \(y\) in \(G\). Set \(d_G(x, y) = \infty\) if no such path exists. \\
+
+We say that \(G\) is \textbf{connected} if \(d_G(x, y)\) is finite for all \(x, y \in V\). \\
+
+Let the \textbf{diameter} of \(G\) be \(\diam(G) = \max_{x,y \in V} d_G(x, y)\).
+
+\begin{proposition}
+    Every graph \(G\) which contains a cycle satisfies \(g(G) \leq 2 \diam(G) + 1\).
+    \proof{
+        Let \(C\) be a shortst cycle in \(G\), so \(|C| = g(G)\). For a contradiction, assume \(g(G) \geq 2 \diam(G) + 2\). \\
+
+        Choose vertices \(x, y\) on \(C\) with \(d_C(x, y) \geq \diam(G) + 1\). In \(G\) the distance \(d_G(x, y)\) is strictly smaller, so any shortest path \(P\) from \(x\) to \(y\) in \(G\) is not a subgraph of \(C\). But using \(P\) together with the shorter arc of \(C\) from \(x\) to \(y\) gives a closed walk of length \(< |C|\). This closed walk contains a shorter cycle than \(C\) which is a contradiction.
+    }
+\end{proposition}
+
+
+\section{Connectivity}
+A maximal connected subgraph of \(G\) is called a \textbf{component} (or \textbf{connected component}) of G.
+
+\begin{proposition} \label{connected-labelling}
+    The vertices of a connected graph can be labelled \(v_1, v_2, \dots, v_n\) such that \(G_n = G\) and \(G_i = G[v_1, \dots, v_i]\) is connected for all \(i\).
+    \proof{
+        Choose \(v_1\) arbitrarily. Now suppose that we have labelled \(v_1, \dots, v_i\) such that \(G_j = G[v_1, \dots, v_j]\) is connected for all \(j = 1, \dots, i\). \\
+
+        If \(i < n\) then \(G_i \neq G\), so there exists some \(v_j \in \{v_1, \dots, v_i\}\) with a \(w \notin \{v_1, \dots, v_i\}\) in \(G\). (Otherwise \(G_i \neq G\) is a component of \(G\), impossible as \(G\) is connected.) Let \(v_{i + 1} = w\), then \(G_{i + 1} = G[v_1, \dots, v_{i + 1}]\) is connected. This completes the proof, by induction.
+    }
+\end{proposition}
+
+
+Let \(A, B \subseteq V\) be sets of vertices. An \textbf{\((A, B)\)-path} in \(G\) is a path \(P = x_0x_1 \cdots x_k\) such that
+\[P \cap A = \{x_0\}, \quad P \cap B = \{x_k\}.\]
+
+Let \(A, B \subseteq V\) and let \(X \subseteq V \cup E\) be a set of vertices and edges. We say that \(X\) \textbf{separates} A and \(B\) in \(G\) if every \((A, B)-\)path in \(G\) contains a vertex or edge from \(X\).
+
+Note that we do not assume that \(A\) and \(B\) are disjoint and if \(X\) separates \(A\) and \(B\) then \(A \cap B \subseteq X\).
+
+We say that \(X\) \textbf{separates} two vertices \(a, b\) if \(a, b \notin X\) and \(X\) separates the sets \(\{a\}, \{b\}\). \\
+
+More generally, we say that \(X\) \textit{separates} \(G\), and call \(X\) a \textbf{separating set} for \(G\), if \(X\) separates two vertices of \(G\). That is, \(X\) separates \(G\) if there exist distinct vertices \(a, b \notin X\) such that \(X\) separates \(a\) and \(b\). \\
+
+If \(X = \{x\}\) is a separating set for \(G\), where \(x \in V\), then we say that \(x\) is a \textbf{cut vertex}. \\
+
+If \(e \in E\) and \(G - e\) has more components than \(G\) then \(e\) is a \textbf{bridge}. \\
+
+The unordered pair \((A, B)\) is a \textbf{separation} of \(G\) if \(A \cup B = V\) and \(G\) has no edge between \(A - B\) and \(B - A\). The second conditions says that \(A \cap B\) separates \(A\) from \(B\) in \(G\). If both \(A - B\) and \(B - A\) are nonempty then the separation is \textbf{proper}. The order of the separation is \(|A \cap B|\).
+
+\defn{
+    Let \(k \in \bN\). The graph \(G\) is \textbf{k-connected} if \(|G| > k\) and \(G - X\) is connected for all subsets \(X \subseteq V\) with \(|X| < k.\) \\
+
+    The \textbf{connectivity \(\kappa(G)\)} of \(G\) is defined by
+    \[\kappa(G) = \max\{k : G \text{ is \(k\)-connected}\}.\]
+}
+
+\bigskip
+So, \(\kappa(G) = 0\) iff \(G\) is trivial or \(G\) is disconnected. Also, \(\kappa(K_n) = n - 1\) for all positive integers \(n\).
+
+\defn{
+    Let \(\ell \in \bN\) and let \(G\) be a graph with \(|G| \geq 2\). If \(G - F\) is connected for all \(F \subseteq E\) with \(|F| < \ell\) then \(G\) is \textbf{\(\ell\)-edge-connected}. \\
+
+    The \textbf{edge connectivity \(\lambda(G)\)} is defined by
+    \[\lambda(G) = \max\{\ell: G \text{ is \(\ell\)-edge-connected}\}.\]
+}
+
+\begin{proposition}
+    If \(|G| \geq 2\) then \(\kappa(G) \leq \lambda(G) \leq \delta(G)\).
+\end{proposition}
+
+\begin{theorem}[Mader, 1973]
+    Let \(k\) be a positive integer. Every graph \(G\) with average degree at least \(4k\) has a \((k + 1)\)-connected subgraph \(H\) with
+    \[ \frac{|E(H)|}{|V(H)|} > \frac{|E(G)|}{|V(G)|} - k.\]
+    \proof{
+    We write \(|G|\) instead of \(|V(G)|\). Let \(\gamma = \frac{|E(G)|}{|G|} \geq 2k\). Consider subgraphs \(G'\) of G which satisfy:
+    \begin{equation} \label{mader-proof}
+        |G'| \geq 2k \quad \tand \quad |E(G')| > \gamma(|G'| - k).
+    \end{equation}
+    such graphs \(G'\) exists as \(G\) satisfies \ref{mader-proof}. (Average degree of \(G\) is \(\frac{2|E(G)|}{|G|} \geq 4k\), so \(|G| \geq 4k \tand \gamma(|G| - k) = |E(G)|\frac{(|G|-k)}{|G|} < |E(G)|\).) \\
+
+    Now let \(H\) be a subgraph of \(G\) of smallest order which satisfies \ref{mader-proof}. We continue the proof by proving three claims. \\
+
+    {\bf Claim 1.} If \(G'\) satisfies \ref{mader-proof} then \(|G'| > 2k\). \\
+    {\bf Proof.} If \(G'\) satisfies \ref{mader-proof} and \(|G'| = 2k\) then \(|E(G')| > \gamma(|G'| - k) \geq 2k^2 > \binom{|G'|}{2}\), contradiction. \\
+
+    {\bf Claim 2.} \(S(H) > \gamma\). \\
+    {\bf Proof.} For a contradiction, suppose that \(S(H) \leq \gamma\). Let \(G'\) be obtained from \(H\) by deleting a vertex of degree \(\leq \gamma\). Then \(|G'| < |H|\) and \(G'\) satisfies \ref{mader-proof}, which is a contradiction. To see this, check:
+    \begin{align*}
+        |G'| = |H| - 1               & \geq 2k, \quad \text{by Claim 1, and}                                          \\
+        |E(G')| \geq |E(H)| - \gamma & > \gamma(|H| - k - 1), \quad \text{as } H \text{ satisfies } \ref{mader-proof} \\
+                                     & = \gamma(|G'| - k).
+    \end{align*}
+
+    Hence \(S(H) > \gamma\). It follows that \(|H| \geq \gamma\). Thus,
+    \begin{align*}
+        \frac{|E(H)|}{|H|} & > \frac{\gamma(|H|- k)}{|H|} \tag{as \(H\) satisfies \ref{mader-proof}}.
+    \end{align*}
+
+    {\bf Claim 3.} \(H\) is \((k + 1)\)-connected. \\
+    {\bf Proof.} By Claim 1, \(|H| \geq 2k + 1 \geq k + 2\) as \(k \geq 1\). So \(H\) is large enough. For a contradiction, suppose that \(H\) is not \((k + 1)\)-connected. Then \(H\) has a proper separation \(\{U_1, U_2\}\) of order at most \(k\). \\
+
+    Let \(H_i = H[U_i]\) for \(i = 1, 2\). Since any vertex \(v \in U_1 - U_2\) has \(d_H(v) \geq S(H) > \gamma\) (by Claim 2), and all neighbours of \(v\) in \(H\) belong to \(H_1\), we have \(|H_1| \geq \gamma \geq 2k\). Similarly, \(|H_2| \geq 2k\). By minimality of \(H\), neither \(H_1\) nor \(H_2\) satisfies \ref{mader-proof}. Hence \(|E(H_i)| \leq \gamma(|H_i| - k)\) for \(i = 1, 2\). But then
+    \begin{align*}
+        |E(H)| & \leq |E(H_1)| + |E(H_2)|                           \\
+               & \leq \gamma(|H_1| + |H_2| - 2k)                    \\
+               & \leq \gamma(|H| - k), \tag{by inclusion-exclusion}
+    \end{align*}
+    since \(|U_1 \cup U_2| \leq k\). This contradicts \ref{mader-proof} for \(H\). So \(H\) is \((k + 1)\)-connected, completing the proof of Claim 3 and of the theorem.
+    }
+\end{theorem}
+
+\section{Trees and Forests}
+A graph with no cycles is a \textbf{forest} (also called an acyclic graph). A connected graph with no cycles is a \textbf{tree}.
+
+\begin{theorem} \label{tree-equiv}
+    The following are equivalent for a graph \(T\):
+    \begin{enumerate}[label=(\roman*)]
+        \item \(T\) is a tree;
+        \item Any two vertices of \(T\) are linked by a \textit{unique} path in \(T\);
+        \item \(T\) is \textit{minimally connected}: that is, \(T\) is connected but \(T - e\) is disconnected for every \(e \in E(T)\);
+        \item \(T\) is \textit{maximally acyclic}: that is, \(T\) is acyclic but \(T + xy\) has a cycle for any two nonadjacent vertices \(x, y\) in \(T\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    If \(G\) is connected then \(G\) has a spanning tree.
+    \proof{
+        Let be a connected graph and let \(H\) be a minimal connected spanning subgraph of \(G\). (Note \(H\) exists as \(G\) is a connected spanning subgraph of itself.) By theorem \ref{tree-equiv}, \(H\) is a tree.
+    }
+\end{corollary}
+
+\begin{corollary}
+    The vertices of a tree can be labelled as \(v_1, \dots, v_n\) so that for \(i \geq 2\), vertex \(v_i\) has a unique neighbour in \(\{v_1, \dots, v_{i - 1}\}\).
+    \proof{
+        We use the labelling from Proposition \ref{connected-labelling}. This labels the vertices of a given tree \(G\) as \(v_1, \dots, v_n\) such that \(G[v_1,\dots,v_n]\) is connected. Let \(i \geq 1\) then \(G[v_1,\dots,v_i]\) is a tree. Note \(G[v_1, \dots, v_{i + 1}]\) is connected by Proposition \ref{connected-labelling}, so \(v_{i + 1}\) has at least one neighbour in \(G[v_1, \dots, v_i]\).\\
+
+        For a contradiction, suppose that \(v_{i + 1}\) has two neighbours \(z\) and \(w\) in \(G[v_1,\dots,v_i]\). There is a (unique) path \(P\) in \(G[v_1,\dots,v_i]\) between \(z\) and \(w\), and this path does not visit \(v_{i + 1}\). Hence \(P \cup \{zv_{i + 1}, wv_{i + 1}\}\) is a cycle in \(G\), contradiction.
+    }
+\end{corollary}
+
+\begin{corollary}
+    A connected graph with \(n\) vertices is a tree if and only if it has \(n - 1\) edges.
+    \proof{
+        Suppose that \(G\) is a tree on \(n\) vertices. The result is true when \(n = 1\). Now suppose the result is true when \(n = k\). Let \(G\) be a tree on \(k + 1\) vertices. Let \(v\) be a leaf in \(G\) (e.g .take an end vertex of a longest path in \(G\).) Then \(G - v\) is a tree on \(k\) vertices, so \(G - v\) has \(k - 1\) edges (inductive hypothesis). Therefore \(G\) has \(k\) edges as \(v\) has degree 1. This concluses the proof, by induction. \\
+
+        Conversely, suppose that \(G\)is connected with \(n\) vertices and \(n - 1\) edges. Then \(G\) contains a spanning tree \(H\), by an earlier corollary. Then \(H\) has exactly \(n - 1\) edges, since it is a tree on \(n\) vertices. Hence \(H = G\), so \(G\) is a tree.
+    }
+\end{corollary}
+
+\begin{corollary}
+    If \(T\) is a tree and \(G\) is any graph with \(\delta(G) \geq |T| - 1\) then \(G\) has a subgraph isomorphic to \(T\).
+\end{corollary}

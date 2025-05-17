@@ -1,0 +1,94 @@
+\chapter{Ramsey Theory}
+
+For integers \(s, t \geq 2\), let \(R(s, t)\) be the least positive integer \(n\) such that any red-blue colouring of \(K_n\) has either a red copy of \(K_s\) or a blue copy of \(K_t\). \\
+
+The numbers \(R(s, t)\) are called \textbf{Ramsey numbers}. Write \(R(s)\) instead of \(R(s, s)\) (this is the \textit{diagonal} case).
+
+\section{Upper Bounds}
+
+\begin{theorem}[Erd\H os \& Szekeres, 1935]
+    For all integers \(s, t \geq 2\), the Ramsey number \(R(s, t)\) is finite. If \(s > 2\) and \(t > 2\) then
+    \begin{equation} \label{equation-7.1}
+        R(s, t) \leq R(s - 1, t) + R(s, t - 1)
+    \end{equation}
+    and hence
+    \begin{equation} \label{equation-7.2}
+        R(s, t) \leq \binom{s + t -2}{s - 1}.
+    \end{equation}
+    \proof{
+        We know that \(R(s, 2) = R(2, s)\) for all \(s \geq 2\). Assume by induction that \(R(s - 1, t)\) and \(R(s, t - 1)\) are both finite. Let \(n = R(s - 1, t) + R(s, t - 1)\). Consider any red-blue colouring of the edges of \(K_n\). Let \(x\) be a vertex of \(K_n\). Then \(x\) has degree \(n - 1 = R(s - 1, t) + R(s, t - 1) - 1\). \\
+
+        By the pingeonhole principle, either
+        \begin{itemize}
+            \item there are at least \(n_1 = R(s - 1, t)\) red edges incident with \(x\)
+            \item there are at least \(n_2 = R(s, t - 1)\) blue edges incident with \(x\).
+        \end{itemize}
+        Without loss of generality, assume the former. Consider the subgraph \(K_{n_1}\) spanned by a set of \(n_1\) vertices which are joined to \(x\) by red edges.
+        \begin{itemize}
+            \item If \(K_{n_1}\) contains a blue copy of \(K_t\) then we are done.
+            \item Otherwise, \(K_{n_1}\) contains a red copy of \(K_{s - 1}\), since \(n_1 = R(s - 1, t)\).
+        \end{itemize}
+        Together with \(x\) this gives a red copy of \(K_s\), completing the proof of (\ref{equation-7.1}). Then we use induction on \(s + t\) to prove (\ref{equation-7.2}).
+    }
+\end{theorem}
+
+\section{Lower Bounds}
+
+\begin{theorem}[Erd\H os, 1947]
+    If \(\binom{n}{s} 2^{1 - \binom{s}{2}} < 1\) then \(R(s) > n\). Hence \(R(s) > \lfloor {2^{s / 2}} \rfloor\) for \(s \geq 3\).
+    \proof{
+        Take a random red-blue colouring of the edges of \(K_n\), where each edge is coloured independently red or blue, each with proability \(1 / 2\). For any fixed set \(R\) of \(s\) vertices, let \(A_R\) b e the event that the induced subgraph \(K_n[R]\) is monochromatic. Then, using independence,
+        \[Pr(A_R) = (\frac{1}{2})^{\binom{s}{2}} + (\frac{1}{2})^{\binom{s}{2}} = \frac{2}{2^{\binom{s}{2}}},\]
+        since there are \(\binom{s}{2}\) edges in \(K_n[R]\) and the events ``all red'' and ``all blue'' on \(K_n[R]\) are disjoint. Let \(X\) be the number of monochromatic copies of \(K_s\) in the random red-blue colouring. Then \(X = \sum_{R \leq [n], |R| = s} A_R\), where \([n] = \{1, 2, \dots, n\} = V(K_n)\) and \(\bI(A_R)\) is the indicator variable for the event \(A_R\). \\
+
+        Hence, by linearity of expectation,
+        \[\bE X = \sum_{R \subseteq [n], |R| = s} \bE(\bI(A_R)) = \sum_{R \subseteq [n], |R| = s} Pr(A_s) = \binom{n}{s} \frac{2}{2^{\binom{s}{2}}}.\]
+        By the assumption we have \(\bE X = \binom{n}{s} 2^{1 - \binom{s}{2}} < 1\). Therefore there is a fixed red-blue colouring of the edges of \(K_n\) with no monochromatic copy of \(K_s\). Hence \(R(s) > n\). This proves the first statement. \\
+
+        Now suppose that \(s \geq 3\) and \(n = \lfloor 2^{s/2} \rfloor = \lfloor \sqrt{2}^3 \rfloor\). Then
+        \[\binom{n}{s} 2^{1 - \binom{s}{2}} \leq \frac{2^{1 + s/2 - s^2 / 2} n^s}{s!} \leq \frac{2^{1 + s/2 - s^2 / 2} 2^{s^2 / 2}}{s!} \leq \frac{2^{1 + s / 2}}{s!} < 1\]
+        (as \(n^s \leq 2^{s^2 / 2}\) by choice of \(n\)) and this holds for \(s \geq 3\).
+    }
+\end{theorem}
+
+\section{Graph Ramsey Theory}
+Let \(H_1, H_2\) be fixed graphs with no isolated vertices, and let \(R(H_1, H_2)\) be the least positive integer \(n\) such that in every red-blue colouring of the edges of \(K_n\), then there is either a red copy of \(H_1\) or a blue copy of \(H_2\). \\
+
+Write \(R(H) = R(H , H)\) and note that \(R(K_s, K_t) = R(s, t)\), the Ramsey numbers.
+
+\begin{theorem}
+    Write \(\ell K_2\) for a set of \(\ell\) independent edges. For \(\ell \geq 1\) and \(p \geq 2\),
+    \[R(\ell K_2, K_p) = 2\ell + p - 2.\]
+    \proof{
+        First consider \(K_{2\ell + p -3}\). We colour the edges of \(K_{2\ell + p -3}\) so that there is a red \(K_{2\ell - 1}\) and all other edges are blue. Then we cannot find \(\ell\) independent red edges as this would require \(2 \ell\) vertices which are incident with red edges, but we only have \(2\ell - 1\). That is, there is no red copy of \(\ell K_2\).  \\
+        
+        Next, the largest blue complete subgraph \(2\ell + p - 3 - (2 \ell - 2) = p - 1\) vertices, noting that we can keep exactly one vertex which is incident with a red edge. Hence there is no blue \(K_p\), so \(R(\ell K_2, K_p) \geq 2\ell + p - 2\). \\
+
+        Next, take any red-blue colouring of the edges of \(K_n\), where \(n = 2 \ell + p - 2\). If we can find a red \(\ell K_2\) then we are done. So suppose that there are at most \(s\) independent red edges, where \(s \leq \ell - 1\). Then the set of \(n - 2s \geq 2\ell + p - 2 - 2(\ell - 1) = p\) vertices which are not incident with these red edges must span a blue complete subgraph: if not, we can find a larger red matching, contradicting the definition of \(s\). \\
+        
+        Hence \(R(\ell K_2, K_p) \leq 2 \ell + p - 2\), so \(R(\ell K_2, K_p) = 2 \ell + p -2\) as claimed.
+    }
+\end{theorem}
+
+For a graph \(G\), let  \(c(G)\) be the number of vertices in the largest component of \(G\), and let \(u(G)\) be the \textbf{chromatic surplus} of \(G\), which is the maximum size of the smallest colour class of \(G\), taken over all \(\chi(G)\)-colourings of \(G\). Note that \(u(C_{2k}) = k\) and \(u(C_{2k + 1}) = 1\).
+
+\begin{theorem}
+    For all graphs \(H_1, H_2\) with no isolated vertices, we have
+    \[R(H_1, H_2) \geq (\chi(H_1) - 1)(c(H_2) - 1) + u(H_1).\]
+    In particular, if \(H_2\) is connected then
+    \[R(H_1, H_2) \geq (\chi(H_1) - 1)(|H_2| - 1) + 1.\]
+    \proof{
+        Let \(k = \chi(H_1), u = u(H_1)\) and \(c = c(H_2)\). Then
+        \[R(H_1, H_2) \geq R(H_1, K_2) = |H_1| \geq \chi(H_1)u(H_1) = ku.\]Hence if \(c \leq u\) then
+        \[R(H_1, H_2) \geq ku \geq (k - 1)c + u \geq (k - 1)(c - 1) + u,\]
+        as required. Now suppose that \(c > u\) and let \(n = (k - 1)(c - 1) + u - 1\). Partition the vertices of \(K_n\) into parts \(A_1, A_2, \dots, A_{k - 1}, B\) where \(|A_j| = c - 1\) for \( j = 1, \dots, k - 1\)and \(|B| = u - 1\). \\
+
+        Let \(K_n[A_i]\) be a blue \(K_{c - 1}\) for all \(i = 1, \dots, k - 1\) and let \(K_n[B]\) be a blue \(K_{u - 1}\). Colour all remaining edges red. \\
+
+        The largest component in \(H_2\) has order \(c\), but the largest component of the blue subgraph of \(K_n\) has order \(c - 1\), since \(c > u\). Hence there is no blue copy of \(H_2\). \\
+
+        Next, if there is a red copy of \(H_1\) then the \(k\)-partite sets \(A_1, \dots, A_{k - 1}, B\) induce a \(k\)-colouring (proper vertex colouring) of \(H_1\). Furthermore, \(k = \chi(H_1)\) and the smallest colour class in this vertex colouring contains \(u - 1\) vertices, as \(u < c\). But this contradicts the definition of \(u = u(H_1)\). Hence there is no red \(H_1\) either, so \(R(H_1, H_2) > n\). So \(R(H_1, H_2) \geq n + 1 = (k - 1)(c - 1) + u\). \\
+
+        The second statement follows as \(u(H_1) \geq 1\) for all  graphs \(H_1\) with no isolated vertices, and \(c(H_2) = |H_2|\) if \(H_2\) is connected.
+    }
+\end{theorem}

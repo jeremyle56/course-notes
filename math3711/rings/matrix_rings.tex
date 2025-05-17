@@ -1,0 +1,37 @@
+\section{Matrix Rings}
+
+Let \(R\) be a ring. Then \(M_n(R)\) is the set of \(n \times n\) matrices with entries in \(R\). Denoted,
+\[(r_{ij}) = \begin{pmatrix}
+    r_{11} & r_{12} & \cdots & r_{1n} \\
+    r_{21} & r_{22} & \cdots & r_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    r_{n1} & r_{n2} & \cdots & r_{nn}
+\end{pmatrix} \quad r_{ij} \in R.\]
+
+\begin{proposition}
+    \(M_n(R)\)is a ring with operations
+    \begin{itemize}
+        \item \((a_{ij}) + (b_{ij}) = (a_{ij} + b_{ij})\)
+        \item \((a_{ij})(b_{ij}) = (c_{ij})\) where \(c_{ij} = \sum_{k = 1}^n a_{ik}b_{kj}\). Here order of multiplication is significant.
+        \item \(1_{M_n{(R)}} = \begin{pmatrix}
+            1_R & 0 & \cdots & 0 \\
+            0 & 1_R & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & 1_R
+        \end{pmatrix}\)
+    \end{itemize}
+    Note \(R\) not necessarily commutative. e.g. \(M_3(M_2(\bR))\).
+\end{proposition}
+
+\exmp{
+    In \(M_2(\bC[x])\), \(\begin{pmatrix}
+        1 & x \\
+        0 & 2
+    \end{pmatrix}\begin{pmatrix}
+        x^3 & 0 \\
+        4 & -x^5
+    \end{pmatrix} = \begin{pmatrix}
+        4x + x^3 & -x^6 \\
+        8 & -2x^5
+    \end{pmatrix}\)
+}

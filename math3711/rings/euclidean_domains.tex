@@ -1,0 +1,97 @@
+\section{Euclidean Domains}
+
+The motivation here is to give a useful criterion for a commutative domain to be a PID and UFD.
+
+\begin{proposition}
+    \(R = \bC[x]\) is a PID.
+    \proof{
+        Let \(I\) be a nonzero ideal in \(\bC[x]\). Let \(f \in I\) be a nonzero element of smallest degree. It is clear that \(\langle f \rangle \subseteq I\). Now given any \(g \in I\), divide \(g\) by \(f: g = fq + r\), where either \(r = 0\) or \(\deg r < \deg f\) (This uses the fact that \(\bC[x]\) has a division algorithm). Thus \(f \in I\), so \(qf \in I\) also \(g \in I \implies r = g - qf \in I\). By choice of \(f\) (minimal degree in \(I\)) we must have \(r = 0\). Therefore \(f \mid g\) i.e. \(g \in \langle f \rangle\) so \(I = \subseteq \langle f \rangle\). This proves \(I = \langle f \rangle\).
+    }
+\end{proposition}
+
+\begin{definition}[Euclidean Domain]
+    Let \(R\) be a commutative domain. A function \(\nu: R - \{ 0 \} \to \bN\) is called a Euclidean function on \(R\) if:
+    \begin{enumerate}
+        \item for all \(f, p \in R, p \neq 0\), there exists \(q, r \in R\) such that \(f = pq + r\) where either \(r = 0\) or \(\nu(r) < \nu(p)\).
+        \item if \(f, g \in R - \{ 0 \}\) then \(\nu(f) \leq \nu(fg)\).
+    \end{enumerate}
+    If \(R\) has such a function, we call it an Euclidean domain.
+    \exmp{
+        If \(R = F[x]\) where \(F\) is a field. Then \(\nu(f) = \deg f\). If \(R = \bZ\), then \(\nu(n) = |n|\).
+    }
+\end{definition}
+
+\begin{theorem}
+    Let \(R\) be a Euclidean domain with \(\nu\). Then \(R\) is a PID and hence a UFD.
+    \proof{
+        Let \(I \trianglelefteq R\) be nonzero ideal. Choose \(f \in I\) with minimal \(\nu(f)\). Clearly \(\langle f \rangle \subseteq I\). Given \(g \in I\) write \(g = qf + r\) with \(r = 0\) or \(\nu(r) < \nu(f)\) as before (previous proof) \(r \in I\). So \(r = 0\) then \(f \mid g\) so \(I \subseteq \langle g \rangle\).
+    }
+\end{theorem}
+
+\begin{lemma}
+    Let \(R\) be one of \(\bZ[i] = \bZ[\sqrt{-1}], \bZ[\sqrt{-2}], \bZ[\frac{1 + \sqrt{-3}}{2}], \bZ[\frac{1 + \sqrt{-7}}{2}], \bZ[\frac{1 + \sqrt{-11}}{2}]\). Define \(\nu: R \to \bR\) by \(\nu(z) = |z|^2\). Then
+    \begin{enumerate}
+        \item \(\nu\) takes integer values on \(R\)
+        \item for any \(z \in \bC\), there is some \(s \in R\) such that \(\nu(z - s) < 1\).
+    \end{enumerate}
+    \proof{
+        We prove this for \(\bZ[\sqrt{-2}] = \{ a + b\sqrt{-2} : a, b \in \bZ \}\). Then \(\nu(a + b\sqrt{-2}) = | a+ b\sqrt{-2}|^2 = a^2 + 2b^2 \in \bN\). Let \(z = x + iy \in \bC\). Choose \(s\) to be closest \(a + b\sqrt{-2}\) to \(z\). Then \(| a- x| \leq \frac{1}{2}\tand |b\sqrt{2} - y| \leq \frac{\sqrt{2}}{2}\). Then \[|s - z|^2 = |(a + b\sqrt{-2}) - (x + iy)^2 \leq (\frac{1}{2})^2 + (\frac{\sqrt{2}}{2})^2 = \frac{3}{4} < 1.\]
+        So \(\nu(s - z) < 1\). We can repeat this argument for the other cases with simple modification of the argument.
+    }
+\end{lemma}
+
+\begin{theorem}
+    Let \(R\) be one of the rings from the previous lemma. Then \(\nu\) is a Euclidean norm on \(R\).
+\end{theorem}
+
+\paragraph{Note} For the remainder of this section, denote \(R\) to be a Euclidean domain and \(\nu: R \to \bZ_+\) the Euclidean norm.
+
+\begin{proposition}
+    Let \(I \trianglelefteq R\) be an ideal. Let \(p \in I, p \neq 0\). Then \(p\) generates \(I \iff \nu(p)\) is minimal (on \(I\)). In particular, \(p \in R^* \iff \nu(p) = \nu(1)\).
+    \proof{
+        If \(\nu(p)\) minimal then by the results prior \(I = \langle p \rangle\). Conversely, if \(I = \langle p \rangle\) and \(f =gp \in I\) for some \(g\) then \(\nu(f) = \nu(gp) \geq \nu(p)\).
+    }
+    \exmp{
+        In \(\bZ[i]: \nu(z) = |z|^2\). \(u \in \bZ[i]^* \implies |u|^2 = 1 \implies u = \pm 1, \pm i\). Also, \(\bZ[\sqrt{-2}]^* = \{ \pm 1 \}\) for \(\nu(z) = |z|^2\).
+    }
+\end{proposition}
+
+\begin{theorem}[Euclidean Algorithm]
+    To find the \(\gcd\) of two elements \(f\) and \(g\) we can use the following algorithm.  Assume \(\nu(f) \geq \nu(g)\). Find \(q, r \in R\) such that \(f = qg + r\) with either \(r = 0\)or \(\nu(r) < \nu(g)\). If \(r = 0\), then \(\langle f, g \rangle = \langle g \rangle\) because \(f \in \langle f \rangle\) so the gcd is \(g\). If \(r \neq 0\), then \(\langle f, g \rangle = \langle g, r \rangle\) since \(f \in \langle g, r \rangle (f = qg + r), r \in \langle f, g \rangle (r = f -qg)\). So \(\gcd(f, g) = \gcd(g, r)\). In this case, repeat first step with \(g, r\) instead of \(f, g\). The algorithm terminates because \(\nu(r) < \nu(g) \tand \bN\) has minimum at 0.
+\end{theorem}
+
+\exmp{
+    In \(R = \bZ[\sqrt{-2}]\), find \(\gcd(y + \sqrt{-2}, 2 \sqrt{-2})\) for \(y\) odd. Answer is 1, see course notes for computation.
+}
+
+\begin{theorem}
+    The only integer solutions to \(y^2 + 2 = x^3\) are \(y = \pm 5, x = 3\).
+    \proof{
+        If \(y\) is even, then \(x^3\) is even, then \(x\) is even. So \(x^3 = 0 \mod 8\). But \(LHS\) can only be 2 or 6 \(\mod 8\), hence \(y\)must be odd. \\
+
+        Let's work in \(\bZ[\sqrt{-2}]\). The equation becomes \((y + \sqrt{-2})(y - \sqrt{-2}) = x^3\).
+        \begin{align*}
+            \gcd(y + \sqrt{-2}, y - \sqrt{-2}) &= \gcd(y + \sqrt{-2}, (y - \sqrt{-2}) - (y + \sqrt{-2})) \\
+            &= \gcd(y + \sqrt{-2}, 2\sqrt{-2}) \\
+            &= 1.
+        \end{align*}
+        Now have: \((y + \sqrt{-2})(y - \sqrt{-2}) = x^3\). By UFD, \(y + \sqrt{-2} = u\alpha^3\) where \(u \in \bZ[\sqrt{-2}]^*, \alpha \in \bZ[\sqrt{-2}]\).
+        \begin{quote}
+            More detail: consider prime factorisation of \(y + \sqrt{-2}, y - \sqrt{-2}, x^3\). Any prime must occur as \(p^{3e}\) on RHS for some \(e \in \bZ\). If \(e \geq 1\), then \(p \mid \text{either } y + \sqrt{-2} \text{ or } y - \sqrt{-2}\) but not both. So \(p^{3e}\) is the exact power of \(p\) divides either \(y + \sqrt{-2}\) or \(y - \sqrt{-2}\).
+        \end{quote}
+        Possible units: \(u \pm 1\) which are both cubes. So
+        \begin{align*}
+            y + \sqrt{-2} &= \beta^3 = (a + b\sqrt{-2})^3 \\
+            &= a^3 + 3a^2b \sqrt{-2} - 6ab^2 - 2b^3\sqrt{-2} \\
+            &= (a^3 - 6ab^2) + \sqrt{-2}(3a^2b - 2b^3) \\
+            y - \sqrt{-2} &= (a^3 - 6ab^2) - \sqrt{-2}(3a^2b - 2b^3).
+        \end{align*}
+        Subtract both sides
+        \begin{align*}
+            2\sqrt{-2} &= 2\sqrt{-2}(3a^2b - 2b^3) \\
+            1 &= 3a^2b - 2b^3 = b(3a^2 - 2b^2) \\
+            b &= \pm 1
+        \end{align*}
+        Then you can find \(a\), deduce \(y\) which then gives \(x\).
+    }
+\end{theorem}

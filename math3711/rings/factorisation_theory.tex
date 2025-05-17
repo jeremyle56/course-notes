@@ -1,0 +1,72 @@
+\section{Introduction to Factorisation Theory}
+
+In this section let \(R\) be a commutative domain.
+
+\begin{definition}[Prime Ideal]
+    An ideal \(P \trianglelefteq R, P \neq R\) is called prime if \(R / P\) is a domain. Equivalently, if \(rs \in P\) then either \(r \in P\) or \(s \in P\) (or both).
+\end{definition}
+
+\exmp{
+    \(\bZ / p \bZ\) for prime \(p\), is a domain, so \(p \bZ \trianglelefteq \bZ\). \((0) \trianglelefteq \bZ\) is prime but not maximal. \\
+
+    \(\langle y \rangle \trianglelefteq \bC[x, y]\) is prime because \(\bC[x, y] / \langle y \rangle \cong \bC[x]\) is a domain. \\
+
+    If \(m \trianglelefteq R\) is maximal, then \(m\) is prime because \(R / m\) is a field which implies \(R / m\) is a domain.
+}
+
+\begin{definition}[Divsibility]
+    Let \(r, s \in R\). We say \(r \mid s\), ``\(r\) divides \(s\)'' if \(s = rt\) for some \(t \in R\). Equivalently \(s \in \langle r \rangle\) or \(\langle s \rangle \subseteq \langle r \rangle\).
+\end{definition}
+
+\exmp{
+    \(3 \mid 6\) as \(6 \bZ \subseteq 3\bZ\).
+}
+
+\begin{definition}[Associates]
+    Let \(r, s \in R - 0\) are associates if one of the following two equivalent conditions hold:
+    \begin{itemize}
+        \item \(\langle r \rangle = \langle s \rangle\) i.e. \(r \mid s \tand s \mid r\).
+        \item There is a unit \(u \in R^*\) (\(u\) is a unit of \(R\)) with \(r = us\).
+    \end{itemize}
+    \exmp{
+        In \(\bZ: \langle - 2 \rangle = \langle 2 \rangle\) so \(2, -2\) are associates. In \(\bZ[i]: \langle 3i \rangle = \langle 3 \rangle = \langle -3 \ \rangle\).
+    }
+\end{definition}
+
+\begin{definition}[Primes]
+    An element \(p \in R, p \neq 0\) is prime if \(\langle p \rangle\) is prime. Equivalently \(p\) is not a unit, and \(p \mid rs \implies p \mid r\) or \(p \mid s\).
+\end{definition}
+
+\begin{definition}[Irreducibles]
+    An element \(p \in R, p \neq 0, p\) is not a unit, is irreducible whenever \(p = rs\), either \(r\) or \(s\) is a unit.
+    \exmp{
+        \(p = 5 = 5 \cdot 1 = (-5)(-1) = 1 \cdot 5 = (-1)(-5)\), so \(5\) is irreducible. \(p = 4 = 2 \cdot 2\) but neither 2 nor 2 are units, so 4 is not irreducible.
+    }
+\end{definition}
+
+\begin{proposition}[Prime implies Irreducible]
+    Suppose \(p \in R\) is prime. Then \(p\) is not a unit (otherwise \(\langle p \rangle = R\) is not prime). Suppose \(p = rs, r,s \in R\) then \(p \mid rs\). Without loss of generality say \(p \mid r\), so \(r = pq\) for some \(q \in R\). Then \(p = pqs \implies 1 = qs\), so \(s\) is a unit.
+\end{proposition}
+
+\begin{definition}[Unique Factorisation Domains]
+    \(R\) is a unique factorisation domain (UFD) if
+    \begin{enumerate}
+        \item every nonzero non-unit \(r \in R\) can be written as \(r = p_1 \cdots p_n\) with all \(p_i\) irreducible.
+        \item if \(r = p_1 \cdot p_n = q_1 \cdots q_m\) with all \(p_i, q_i\) irreducible, then \(n = m\) and we can re-index the \(q_i\) such that \(p_i\) and \(q_i\) are associates for all \(i\).
+    \end{enumerate}
+    \exmp{
+        \(\bZ\) is a UDF. In \(\bZ, 30 = 2 \cdot 3 \cdot 5 = (-5)(-3)2\). \(12 = 2 \cdot 2 \cdot 3 = (-2)2(-3)\).
+    }
+\end{definition}
+
+\begin{lemma}
+    Assume every irreducible is prime. If \(r\) can be factored into irreducible (as in (i)) then the factorisation is unique (i.e. as in (ii)).
+    \exmp{
+        \(R = \bC[x]\) so \(\bC[x]^\times = \bC^\times\). Any complex polynomial factors into linear factors (Fundamental Theorem of Algebra) so the irreducibls are linear polynomias, i.e. \(\alpha(x - \beta)\), \(\beta \in \bC, \alpha \in \bC^\times\). We prove \(x - \beta\) is prime as \(\bC[x] / \langle x - \beta \rangle \cong \bC\) is a domain. i.e. every irreducible is prime.
+    }
+    \proof{
+        Suppose \(r \in R, r = p_1 \cdots p_n = q_1 \cdots q_m\) (both products of irreducibles). Induction on \(n\). \(n = 1, p_1 = q_1 \cdots q_m\). Then by definition of irreducible, \(m = 1\) and \(p_1 = q_1\). \\
+
+        Now suppose \(n > 1\), \(p_1 \cdots p_n = q_1 \cdots q_m\). THen \(p_1 \mid q_1 \cdots q_m\), but \(p_1\) irreducible which means \(p_1\) is prime. Then \(p_1\) divides some \(q_i\). After permuting \(q_i\)'s, assume \(p_1 \mid q_1\). So \(q_1 = p_1 u\) where \(u\) is a unit. Cancel out \(p_1, q_1\) from relation, \(p_2 \cdots p_n = (uq_2)q_3 \cdots q_m\). By induction, \((p_2 \cdots p_n)\) is a permutation \((uq_2 \cdots q_m)\) up to associates.
+    }
+\end{lemma}

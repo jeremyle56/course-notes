@@ -1,0 +1,157 @@
+\chapter{Random Graphs}
+
+We define the uniform model of random graphs in a similar manner to what was done in the Probabilistic Method chapter. \\
+
+For some probability \(p \in [0, 1]\), each pair of distinct vertices \(\{i, j \}\) let \(\Pr(ij \in E) = p\) independently for each \(i \neq j\). This gives a random graph model called the binomial model denoted \(G(n, p)\). Note \(G(n, \frac{1}{2})\) is the uniform model. \\
+
+We write \(G \in G(n, p)\) to mean that \(G\) is a random graph chosen from the binomial model. For a fixed \(G_0 \in \Omega_n\), the probability that the random graph \(G\) equals \(G_0\) is
+\[\Pr(G = G_0) = p^{|E(G_0)|} (1 - p)^{\binom{n}{2} - |E(G_0)|}\]
+which depends only on \(|E(G_0)|\) using independence. \\
+
+For \(G \in G(n, p)\), the expected number of edges of \(G\) is \(p\binom{n}{2}\). \\
+
+For fixed \(p \in [0, 1]\), we have a \textbf{sequence} of probability spaces,
+\[(G(n, p))_{n \in \bZ^+}.\]
+We can also let \(p\) be a function of \(n\), where \(p(n) \in [0, 1]\) for all \(n \in \bZ^+\). This gives the sequence of probability spaces
+\[(G(n, p(n)))_{n \in \bZ^+}.\]
+
+Recall that \(\omega(G)\) is the clique number of \(G\), and \(\alpha(G)\) is the independence number of \(G\).
+
+\begin{lemma} \label{lemma-8.0.1}
+    Let \(G \in G(n, p)\). Then for any integer \(k \geq 2\),
+    \begin{align*}
+        \Pr(\omega(G) \geq k) & \leq \binom{n}{k} p^{\binom{k}{2}}, \\
+        \Pr(\alpha(G) \geq k) & \leq \binom{n}{k} (1 - p)^{\binom{k}{2}}.
+    \end{align*}
+    \proof{
+        Let \(G \in G(n, p)\). If \(G\) has a clique of order \(\geq k\) then \(G\) has a clique of order \(k\). For a set \(S\) of \(k\) vertices, let \(A_s\) be the event ``\(G[S]\) is a clique''. Then \(\Pr[A_s] = p^{\binom{k}{2}}\), using independence, since \(\binom{k}{2}\) edges within in \(S\) must be present. Hence
+        \[\Pr(\omega(G) \geq k) = \Pr \left(\bigcup_{|S| = k} A_s \right) \leq \sum_{|S| = k} \Pr(A_s) = \binom{n}{k} p^{\binom{k}{2}}\]
+        (using the union bound), the result as required.
+    }
+\end{lemma}
+
+For \(a \in \bR\) and \(r \in \bN\), let
+\[(a)_r = a(a - 1) \cdots (a - r + 1)\]
+denote the \textbf{falling factorials}.
+
+\begin{lemma} \label{lemma-8.0.2}
+    Let \(k \geq 3\) be an integer. The expected number of \(k\)-cycle in \(G \in G(n, p)\) is
+    \[\frac{(n)_k}{2k} p^k.\]
+    \proof{
+        Let \(X\) be the number of \(k\)-cycles in \(G \in G(n, p)\). Given a sequence \((v_1, v_2, \dots, v_k)\) of \(k\) distinct vertices, the probability that this sequence describes a walk around a \(k\)-cycle is
+        \[\Pr(v_1v_2, v_2,v_3, \dots, v_{k-1}v_k, v_kv_1 \in E(G)) = p^k, \text{ using independence}\]
+        There are \((n)_k\) ways to choose this sequence of \(k\) distinct vertices. Each cycle in \(G\) corresponds to exactly \(2k\) such sequences corresponding to the choice of start vertex and direction. \\
+
+        Hence, by linearity of expectation, \(\bE X = \frac{(n)_k}{2k} p^k, \text{ as claimed.}\)
+    }
+\end{lemma}
+
+If \(\Pr(G \in \mathcal{P}) \to 1\) as \(n \to \infty\), for some graph property \(\mathcal{P}\), we say that \(G \in P\) holds \textbf{asymptotically almost surely}, abbreviated to ``a.a.s.''.
+
+\begin{proposition}
+    For fixed \(p \in (0, 1)\) and every graph \(H\), a.a.s. \(G \in G(n, p)\) has an induced subgraph which is isomorphic to \(H\).
+    \proof{
+        Let \(k = |V(H)|\). Suppose that \(n \geq k\) and let \(\mathcal{U} \subseteq \{1, 2, \dots, n\}\) be a fixed set of \(k\) vertices. The probability that \(G[\mathcal{U}] \cong H\) is some fixed constant \(r \in (0, 1)\) which depends only on \(H\) and \(P\) but not on \(n\). \\
+
+        Now we can find \(\lfloor \frac{n}{k} \rfloor\) disjoint sets of \(k\) vertices, \(\mathcal{U}_1, \dots, \mathcal{U}_{\lfloor \frac{n}{k} \rfloor}\), within \(V(G) = [n]\). The probability that none of \(\mathcal{U}_1, \dots, \mathcal{U}_{\lfloor \frac{n}{k} \rfloor}\) induces a copy of \(H\) is \((1 - r)^{\lfloor \frac{n}{k} \rfloor}\), since the \(\mathcal{U}_j\) are disjoint and hence the events \(G[\mathcal{U}_j] \ncong H\) are independent of each other (for \(j = 1, \dots, \lfloor \frac{n}{k} \rfloor\)). \\
+
+        But \((1 - r)^{\lfloor \frac{n}{k} \rfloor} \to 0\) as \(n \to \infty\), since \(1 - r \in (0, 1)\) and \(\lfloor \frac{n}{k} \rfloor \to \infty\) as \(n \to \infty\). Hence a.a.s., one of \(\mathcal{U}_1, \dots, \mathcal{U}_{\lfloor \frac{n}{k} \rfloor}\) induces a copy of \(H\).
+    }
+\end{proposition}
+
+Given \(i, j \in \bN\), let \(\mathcal{P}_{ij}\) be the property that given any disjoint vertex set \(U, W\) with \(|U| \leq i\) and \(|W| \leq j\), the graph contains a vertex \(v \in U \cup W\) that is adjacent to all vertices in \(U\) but none in \(W\).
+
+\begin{lemma} \label{lemma-8.0.4}
+    For every constant \(p \in (0, 1)\) and all \(i, j \in \bN\), let \(G \in G(n, p)\). Then a.a.s. \(G \in \mathcal{P}_{ij}\).
+    \proof{
+        Assume that \(n \geq i + j + 1\). For fixed disjoint set \(U, W \subseteq [n]\) and \(v \in [n] - (U \cup W)\), the probability that \(v\) is adjacent to all vertices of \(U\) and to no vertices of \(W\) is \(p^{|U|}(1 - p)^{|W|} \geq p^i(1 - p)^j\) using independence. To simplify notation we write \(q = 1 - p\). Hence the probability that no such \(v\) exists for the given sets \(U\) and \(W\) is
+        \[(1 - p^{|U|}q^{|W|})^{n - |U| - |W|}\]
+        since these events are independent for distinct \(v \in U \cup W\) (no edge/non-edge choices are considered in more than one of these events). Now
+        \begin{align*}
+            (1 - p^{|U|}q^{|W|})^{n - |U| - |W|} &\leq (1 - p^jq^j)^{n - |U| - |W|} \\
+            &\leq (1 - p^i q^j)^{n - i - j}.
+        \end{align*}
+        There are at most \(n^{i + j + 2}\) pairs of disjoint sets \(U, W\) with \(|U| \leq i\) and \(|W| \leq j\), as
+        \[\sum_{s = 0}^i \binom{n}{s} \leq \sum_{s = 0}^i n^s = \frac{n^{i + 1} - 1}{n - 1} \leq n^{i + 1},\]
+        and similarly for \(W\). Hence the probability that some \(U, W\) has no suitable \(v\) is at most
+        \[n^{i + j + 2}(1 - p^i q^j)^{n - i - j} \to 0 \text{ as } n \to \infty\]
+        since \(1 - p^i q^j \in (0, 1)\). Hence a.a.s. \(\mathcal{P}_{ij}\) holds, as required.
+    }
+\end{lemma}
+
+\begin{corollary}
+    For every constant \(p \in (0 , 1)\) and all \(k \in \bN\), a.a.s. \(G \in G(n, p)\) is \(k\)-connected.
+    \proof{
+        By Lemma \ref{lemma-8.0.4}, it is enough to show that every graph in \(\mathcal{P}_{2, k - 1}\) is \(k\)-connected when \(n\) is sufficiently large. Assume that \(n \geq k + 2\) (one more than is needed for \(k\)-connectivity). Let \(W\) be any set of at most \(k - 1\) vertices. We want to prove that \(G - W\) is still connected. So let \(x, y\) be distinct vertices in \([n] - W\) and define \(U = \{x, y\}\). By definition of \(\mathcal{P}_{2, k - 1}\) there is a vertex \(v\) in \([n] - (U \cup W)\) such that \(v\) is adjacent to both \(x\) and \(y\). Hence \(xvy\) is a path between \(x\) and \(y\) in \(G - W\), proving that \(G - W\) is connected.
+    }
+\end{corollary}
+
+\begin{proposition}
+    For every constant \(p \in (0, 1)\) and all \(\epsilon > 0\), a.a.s. \(G \in G(n, p)\) satisfies
+    \[\chi(G) \geq \frac{\ln(1 / q)n}{(2 + \epsilon) \ln n}\]
+    where \(q = 1 - p\).
+    \proof{
+        Let \(a\) be any fixed integer, \(2 \leq a \leq n\). Then by Lemma \ref{lemma-8.0.1}
+        \begin{align*}
+            \Pr (\alpha(G) \geq a) &\leq \binom{n}{a}(1 - p)^{\binom{a}{2}} \\
+            &\leq n^a(1 - p)^{\binom{a}{2}} \\
+            &= q^{a \frac{\ln n}{\ln q} + \frac{a(a - 1)}{2}} \\
+            &= q^{\frac{a}{2}(\frac{2 \ln n}{\ln q} + a - 1)} \\
+            &= q^{\frac{a}{2}(a - 1 - \frac{2 \ln n}{\ln(1 / q)})}
+        \end{align*}
+        Set \(a = \lceil \frac{(2 + \epsilon) \ln n}{\ln(1 / q)} \rceil\). Then
+        \[\lim_{n \to \infty} \frac{a}{2}\left(a - 1 - \frac{2 \ln n}{\ln(1/q)}\right) \geq \lim_{n \to \infty} \frac{(2 + \epsilon)\ln n}{2\ln(1/q)}\left(\frac{\epsilon \ln n}{\ln(1 / q)} - 1\right) = \infty\]
+        Hence \(\Pr(\alpha(G) \geq a) \to \infty\) as \(n \to \infty\), since \(q \in (0, 1)\). \\
+
+        This shows that a.a.s. \(G \in G(n, p)\) has no independent set of order \(\lceil \frac{(2 + \epsilon)\ln n}{\ln (1 / q)}\rceil\), and hence a.a.s. \(\alpha(G) < \frac{(2 + \epsilon) \ln n}{\ln (1 / q)}\). Therefore a.a.s. for \(G \in G(n, p)\),
+        \[\chi(G) \geq \frac{n}{\alpha(G)} > \frac{\ln (1 / q) n}{(2 + \epsilon) \ln n}.\]
+    }
+\end{proposition}
+
+\begin{lemma} \label{lemma-8.0.7}
+    Let \(k\) be a positive integer and let \(p = p(n)\) be a function of \(n\) such that \(p(n) \in (0, 1)\) and
+    \[p(n) \geq \frac{6k \ln n}{n}\]
+    for sufficiently large \(n\). Then for \(G \in G(n, p)\), a.a.s.
+    \[\alpha(G) < \frac{n}{2k}.\]
+    \proof{
+        Let \(n, r \in \bZ, n \geq r \geq 2\). By Lemma \ref{lemma-8.0.1} for \(G \in G(n, p)\) we have
+        \begin{align*}
+            \Pr(\alpha(G) \geq r) &\leq \binom{n}{r}(1 - p)^{\binom{r}{2}} \\
+            &\leq n^r(1 - p)^{\binom{r}{2}} \\
+            &= (n(1 - p)^{\frac{r -1}{2}})^r \\
+            &\leq (ne^{\frac{-p(r - 1)}{2}})^r
+        \end{align*}
+        since \(1 - p \leq e^{-p}\). If \(p \geq \frac{6k \ln n}{n}\) and \(r \geq \frac{n}{2k}\) then
+        \begin{align*}
+            ne^{-\frac{p(r - 1)}{2}} &= ne^{-\frac{pr}{2} + \frac{p}{2}} \\
+            &\leq ne^{-\frac{3}{2}\ln n + \frac{p}{2}} \\
+            &\leq ne^{-\frac{3}{2} \ln n + \frac{1}{2}} \\
+            &= n \cdot n^{-\frac{3}{2}} \tag{since \(p \leq 1\)} \\
+            &= \sqrt{\frac{e}{n}} \to 0 \text{ as } n \to \infty.
+        \end{align*}
+        Since \(p = p(n) \geq \frac{6k \ln n}{n}\) for sufficiently large \(n\), we take \(r = \lceil \frac{n}{2k} \rceil\) to conclude that
+        \[\lim_{n \to \infty} \Pr(\alpha(G) \geq \frac{n}{2k}) = \lim_{n \to \infty} \Pr(\alpha(G) \geq r) = 0.\]
+    }
+\end{lemma}
+
+Recall that the \textbf{girth} of a graph is the length of its smallest cycle and Markov's inequality: if \(X: \Omega \to \bN\) is a nonnegative integer-valued random variable on a set \(\Omega\), and \(k > 0\), then
+\[\Pr(X \geq k) \leq \frac{\bE X}{k}.\]
+
+\begin{theorem}[Erd\H os, 1959]
+    For every integer \(k \geq 3\) there exists a graph \(H\) with girth \(g(H) > k\) and chromatic number \(\chi(H) > k\).
+    \proof{
+        Fix \(\epsilon\) with \(0 < \epsilon < \frac{1}{k}\) and let \(p = p(n) = n^{\epsilon - 1}\). Let \(X(G)\) be the number of cycles in \(G \in G(n, p)\) with length \(\leq k\). By Lemma \ref{lemma-8.0.2} and linearity of expectation,
+        \[\bE X = \sum_{i = 3}^{k} \frac{(n)_i}{2i} p^i \leq \frac{1}{2} \sum_{i = 3}^k (np)^i \leq \frac{k - 2}{2}(np)^k,\]
+        as \(np = n^\epsilon > 1\). Using Markov's inequality
+        \[\Pr(X \geq \frac{n}{2}) \leq \frac{\bE X}{\frac{n}{2}} \leq (k - 2)n^{k - 1}p^k = (k - 2)n^{k - 1}n^{(\epsilon - 1)k} = (k - 2)n^{k \epsilon - 1}.\]
+        Note \(k\epsilon < 1\) by choice of \(\epsilon\). Hence
+        \[\lim_{n \to \infty} \Pr(X \geq \frac{n}{2}) = 0.\]
+        That is, a.a.s. \(X(G) < \frac{n}{2}\). Note also that, \(p = n^{\epsilon} - 1 \geq \frac{6k \ln n}{n}\) for large enough \(n\), as \(k\) is constant. Hence by Lemma \ref{lemma-8.0.7}, we can choose \(n\) large enough so that
+        \[\Pr(X \geq \frac{n}{2}) < \frac{1}{2} \tand \Pr(\alpha(G) \geq \frac{n}{2k}) < \frac{1}{2}.\]
+        This shows that for some fixed graph \(G_0\) on \(n\) vertices we have \(\alpha(G) < \frac{n}{2k}\) and \(G_0\) has fewer than \(\frac{n}{2}\) cycles of length \(\leq k\). Construct \(H\) from \(G_0\) by deleting one vertex from every cycle in \(G_0\) of length \(\leq k\). Then \(|H| \geq \frac{n}{2}\) and by construction, \(g(H) > k\). \\
+
+        Also \(\alpha(H) \leq \alpha(G_0) < \frac{n}{2k}\) since every independent set in \(H\) is also an independent set in \(G_0\). Therefore
+        \[\chi(H) \geq \frac{|H|}{\alpha(H)} \geq \frac{\frac{n}{2}}{\alpha(H)} > \frac{\frac{n}{2}}{\frac{n}{(2k)}} = k,\]
+        completing the proof.
+    }
+\end{theorem}

@@ -1,0 +1,112 @@
+\chapter{Graph Colourings}
+
+A \textbf{vertex colouring} of a graph \(G = (V, E)\) is a function \(c: V \to S\) such that \(c(u) \neq c(v)\) whenever \(uv \in E\). Here \(S\) is the set of available colours, usually \(S = \{1, 2, \dots, k\}\) for some positive integer \(k\). \\
+
+A \textbf{\(k\)-colouring} of \(G\) is a colouring \(c: V \to \{1, 2, \dots, k\}\). Often we want the smallest value of \(k\) for which a \(k\)-colouring of \(G\) exists. This smallest value of \(k\) is called the \textbf{chromatic number} of \(G\), denoted \(\chi(G)\). \\
+
+If \(\chi(G) = k\) then \(G\) is said to be \(k\)-chromatic.
+
+If \(\chi(G) \leq k\) then \(G\) is said to be \(k\)-colourable. \\
+
+The set of all vertices in \(G\) with a given colour under \(c\) is called a \textbf{colour class}. Each colour class is an independent set. \(k\)-colouring is a partition of \(V(G)\) into \(k\) independent sets. \\
+
+A \textbf{clique} in a graph \(G\) is a complete subgraph of \(G\). The order of the largest clique in \(G\) is called the \textbf{clique number} of \(G\), denoted \(\omega(G)\). \\
+
+Fact: \(\chi(G) \geq \omega(G)\) and \(\chi(G) \geq n/\alpha(G)\). \\
+
+An \textbf{edge colouring} of \(G\) is a map \(c : E \to S\) such that \(c(e) \neq c(f)\) whenever \(e\) and \(f\) share an endvertex. If \(S = \{1, 2, \dots, k\}\) then \(c\) is a \textbf{\(k\)-edge-colouring} and \(G\) is \(k\)-edge-colourable. \\
+
+Let \(\chi'(G)\) be the smallest positive integer \(k\) for which \(G\) is \(k\)-edge-colourable. We call \(\chi'(G)\) the \textbf{chromatic index} of \(G\). \\
+
+A \textbf{colour class} in an edge colouring is a matching of \(G\). Hence an edge colouring displays \(E(G)\) as a union of disjoint matchings. \\
+
+The \textbf{line graph}, denoted \(L(G)\), has vertex set \(E(G)\) and \(e, f \in E(G)\) form an edge of \(L(G)\) if and only if \(e, f\) share an endvertex in \(G\). Every edge-colouring of \(G\) is a vertex colour of \(L(G)\) and vice-versa. So \(\chi'(G) = \chi(L(G))\).
+
+\section{Vertex Colourings}
+
+\begin{proposition}
+    If graph \(G\) has \(m\) edges then \(\chi(G) \leq \frac{1}{2} + \sqrt{2m + \frac{1}{4}}\).
+    \proof{
+        Fix a \(k\)-colouring of \(G\) with \(k = \chi(G)\) colours. Then \(G\)has at least one edge between any two distinct colour classes, or we could merge them to give a colouring of \(G\) with \(\leq k - 1\) colours. Hence \(m \geq \binom{k}{2} = \frac{1}{2}(k)(k - 1)\) then solve for \(k\) to complete the proof.
+    }
+\end{proposition}
+
+\paragraph{Greedy Algorithm} Given a graph \(G\), fix an ordering \(v_1, v_2, \dots, v_n\) on the vertices of \(G\) and colour them one by one in this order using the first available colour (least positive integer) as you go along. Since \(v_i\) has at most \(\Delta(G)\) neighbours, this produces a \(k\)-colouring of \(G\) with \(k \leq \Delta(G) + 1 \implies \chi(G) \leq \Delta(G) + 1\). \\
+
+Fact: \(\chi(G) = \Delta(G) + 1\) if \(G\) is a complete graph or an odd cycle.
+
+\begin{theorem}[Brooks, 1941] \label{brooks-thrm}
+    Let \(G\) be a connected graph. If \(G\) is neither complete nor an odd cycle then \(\chi(G) \leq \Delta(G)\). In fact we will prove the following restatement of Brooks Theorem, due to Zajac (2018):
+    \begin{mdframed}
+        \begin{center}
+            Let \(k \geq 3\) be an integer and let \(G\) be a graph with \(\Delta(G) \leq k\). If \(G\) does not contain \(K_{k + 1}\) as a subgraph then \(G\) is \(k\)-colourable.
+        \end{center}
+    \end{mdframed}
+
+    We call this the ``new'' version of Brooks Theorem and prove that this implies Brooks Theorem.
+    \proof{
+        Suppose that \(G\) is a graph which satisfies the assumptions of Brooks Theorem. That is, \(G\) be a connected graph which is not an odd cycle and which is not complete. Let \(\Delta = \Delta(G)\) be the maximum degree of \(G\). We want to show that \(\chi(G) \leq \Delta\), as this is the conclusion required for Brooks Theorem. \\
+
+        First suppose that \(\Delta \leq 2\). Then \(G\) is either a path or an even cycle, as \(G\) is connected. Hence \(G\) is bipartite and so \(\chi(G) \leq 2 = \Delta\), as required. \\
+
+        Now suppose that \(\Delta \geq 3\). We wish to apply the new version of Brooks Theorem with \(k = \Delta\), so we must check that \(G\) does not contain \(K_{\Delta + 1}\) as a subgraph. For a contradiction, suppose that \(G\) does have a subgraph \(H\) which is isomorphic to \(K_{\Delta + 1}\). Then \(H\) is \(\Delta\)-regular, and \(G\) has maximum degree \(\Delta\), so there is no edge from a vertex of \(H\) to a vertex of \(G - V(H)\). It follows that \(H\) is a component of \(G\). But \(G\) is connected, so the only possibility is that \(G = H\). BUt this contradicts our assumption that \(G\) is not complete. \\
+
+        Therefore, \(G\) satisfies the assumptions of the new version of Brooks Theorem, and by applying this result we find that \(G\) is \(\Delta\)-colourable. From this we conclude that \(\chi(G) \leq \Delta\), as required. \\
+
+        In both cases, the conclusion of Brooks Theorem holds, completing the proof.
+    }
+    We now prove that this ``new'' version is true.
+    \proof{
+        First an obversation, let \(G\) be a graph with maximum degree \(\Delta(G) \leq k\), where \(\{1, \dots, k\}\) will be our set of colours. Suppose that \(G\) is partially coloured. Let \(P = v_1 v_2\dots v_j\) be a path in \(G\) such that all vertices of \(P\) are uncoloured. Then we can colour vertices \(v_1, v_2, \dots, v_{j - 1}\) in this order, since at the moment that we colour \(v_i (1 \leq i \leq j - 1)\), we know that \(v_i\)has an uncoloured neighbour \(v_{i+1}\) and hence aat most \(\Delta - 1\) neighbours. Call this procedure \texttt{PATHCOLOUR}\((v_1, \dots, v_{j-1};v_j)\). Note that this procedure colours \(v_1, \dots, v_{j-1}\) but it leaves \(v_j\) uncoloured. In particular if \(j = 1\) then \texttt{PATHCOLOUR}\((v_1)\) leaves the graph unchanged. \\
+
+        Proof by induction on \(n = |G|\), where \(G\) is a graph with \(\Delta(G) \leq k\) and \(k \geq 3\). If \(n \leq k\) then we can \(k\)-colour \(G\) by giving each vertex a distinct colour.
+        \begin{quote}
+            {\bf Claim.} If \(G\) has a vertex of degree \(< k\) then \(G\) is \(k\)-colourable.
+
+            {\bf Proof.} Let \(v\) be a vertex of degree \(< k\) and let \(G' = G - v\). By the inductive hypothesis we can \(k\)-colour \(G'\). Fix one such colouring \(C\). Then at most \(k - 1\) colours are used by \(C\) on neighbours of \(v\), so we have an available colour which we can use to colour \(v\).
+        \end{quote}
+        Now we assume that \(G\) is \(k\)-regular. Let \(v\) be a vertex of \(G\) and consider \(G[\{v\} \cup N(v)]\). Since \(G\) has no subgraph isomorphic to \(K_{k + 1}\), we know that \(v\) has two neighbours \(x, y\) which are not adjacent. Let \(v_1 = x, v_2 = v, v_3 = y\), and extend the path \(v_1 v_2 v_3\) to a maximal length path in \(G, P = v_1v_2v_3 \dots v_r\) which starts with \(v_1v_2v_3\).
+        \begin{quote}
+            {\bf Case 1.} Suppose that \(r = n\). This means that all vertices of \(G\) lie on \(P\) (Hamilton Path). Let \(v_j\) be any neighbour of \(v_2\) other than \(v_2\) and \(v_3\). Since \(G\) is \(k\)-regular and \(k \geq 3\) we can choose such a vertex \(v_j\). We now describe how to \(k\)-colour \(G\).
+            \begin{itemize}
+                \item First colour \(v_1\) and \(v_3\) the same colour.
+                \item Next apply \(\texttt{PATHCOLOUR}(v_4, v_5, \dots, v_{j - 1};v_j)\) which colours \(v_4, \dots, v_{j-1}\) and leaves \(v_j\) uncoloured.
+                \item Next apply \(\texttt{PATHCOLOUR}(v_n, v_{n - 1}, \dots, v_j ; v_2)\) which will colour all remaining vertices of \(G\) except \(v_2\).
+                \item Finally we have an available colour for \(v_2\) since two of its neighbour (\(v_1 \tand v_3\)) have the same colour. Colour \(v_2\) with an available colour.
+            \end{itemize}
+
+            {\bf Case 2.} Now suppose that \(r < n\). Recall that all neighbours of \(v_r\) lie on \(P\). Let \(v_j\) be the neighbour of \(v_r\) with the smallest index. Then \(C = v_jv_{j + 1} \dots v_rv_j\) is a cycle in \(G\). Let \(G' = G - V(C)\). We can \(k\)-colour \(G'\) by induction. If there is no edge between \(G'\) and \(C\) then we can also \(k\)-colour \(G[V(C)]\), by induction and we are done. Otherwise (\(G[V(C)]\) is not a component of \(G\)): let \(v_\ell\) be the vertex on \(C\) with largest index which has a neighbour in \(G'\), and let \(u\) be a neighbour of \(v_\ell\) in \(G'\). Note, \(v_\ell\) is well defined as \(v_j\) has a neighbour in \(G'\) if \(j \geq 2\). Note \(\ell \leq r - 1\) since all neighbours of \(v_r\)belong to \(V(C)\). Also \(v_{\ell + 1}\) has no neighbours outside \(C\), by choice of \(v_\ell\). We now describe how to \(k\)-colour vertices of \(C\), giving a \(k\)-colouring of \(G\).
+            \begin{itemize}
+                \item First, colour \(v_{\ell + 1}\) with the colour assigned to \(u\).
+                \item Next, apply \(\texttt{PATHCOLOUR}(v_{\ell + 2}, \dots, v_r, v_j, v_{j + 1}, \dots, v_{\ell - 1}; v_\ell)\) which colours all remaining vertices of \(G\) except \(v_\ell\).
+                \item Finally, colour \(v_\ell\) with an available colour which exists because \(v_\ell\) has two neighbours with the same colour.
+            \end{itemize}
+        \end{quote}
+        This completes thr proof in Case 2, by mathematical induction.
+    }
+\end{theorem}
+
+\section{Edge Colourings}
+By considering a vertex of maximum degree, we see that the chromatic index \(\chi'(G)\) satisfies \(\chi'(G) \geq \Delta(G)\)for all graphs \(G\).
+
+\begin{proposition}[K\"onig, 1916]
+    If \(G\) is bipartite then \(\chi'(G) = \Delta(G)\).
+    \proof{
+        We prove t his by induction on \(m = |E(G)|\). If \(m = 0\) then the result is trivially true. So, assume that \(m \geq 1\) and that the result holds for all bipartite graphs with at most \(m - 1\) edges. \\
+
+        Let \(\Delta = \Delta(G)\), choose \(xy \in E\) and let \(G' = G - xy\). By induction, we can fix a \(\Delta\)-edge-colouring of \(G'\). We call edges coloured \(\alpha\), ``\(\alpha\)-edges'', etc. In \(G'\), vertices \(x, y\) both have degree \(\Delta - 1\). So there are colours \(\alpha, \beta \in \{1, 2, \dots, \Delta\}\) such that \(x\) is not incident with an \(\alpha\)-edge, and \(y\) is not incident with a \(\beta\)-edge. \\
+
+        If \(\alpha = \beta\) then we can colour the edge \(xy\) with colour \(\alpha\) to give a \(\Delta\)-edge-colouring of \(G\), and we are done. Now assume that \(\alpha \neq \beta\). Without loss of generality, we can assume that \(x\) is incident with a \(\beta\)-edge \(xu\). Extend the \(\beta\)-edge \(xu\) to a maximal walk \(W\) whose edges are coloured \(\alpha, \beta\) alternately. Since no such walk can contain a vertex colour twice, \(W\) is a path.
+        \begin{quote}
+            {\bf Claim.} \(W\) does not contain \(y\).
+
+                {\bf Proof.} For a contradiction, suppose that \(y\) lies on \(W\). Then \(y\) must be an endvertex of \(W\), and the edge of \(W\) incident with \(y\) must be an \(\alpha\)-edge. Hence \(W\) has even length, and so \(W + xy\) is an odd cycle in the bipartite graph \(G\). This is a contradiction.
+        \end{quote}
+        By maximality of \(W\), we can swap the colours \(\alpha\) and \(\beta\) on all edges of \(W\). This gives a new \(\Delta\)-edge-colouring of \(G'\) such that \(\beta\) does not appear on any edge incident with \(x\). Since y does not lie on \(W\), there is still no \(\beta\)-edge incident with \(y\). FInally we can colour edge \(xy\) with colour \(\beta\) in \(G\), giving a \(\Delta\)-edge-colouring of \(G\). This completes the proof, by induction.
+    }
+\end{proposition}
+
+\begin{theorem}[Vizing, 1964]
+    Every graph \(G\) satisfies
+    \[\Delta(G) \leq \chi'(G) \leq \Delta(G) + 1.\]
+\end{theorem}

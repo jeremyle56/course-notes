@@ -1,0 +1,42 @@
+\section{Orbits and Stabilisers}
+
+Let \(G =\) group, \(S = G-\)set. Define relation \(\sim\) on \(S\) by \(s \sim t \iff\) there exists \(g \in G\) such that \(t = g. s\).
+
+\begin{proposition}
+    This \(\sim\) is an equivalence relation.
+    \proof{
+        Reflexive: \(1 \in G\).
+        Symmetric: if \(t = g. s\) then \(s = g^{-1}. t\).
+        Transitive: if \(t = g.s\) and \(u = g'.t\) then \(u = g'.(g.s) = (g'g).s\).
+    }
+\end{proposition}
+
+\begin{corol-defn}[Orbits]
+The equivalence classes of \(\sim\) are called \(G\)-orbits. Also, \(S\) is a disjoint union of orbits. The \(G\)-orbit containing \(s \in S\) is denoted \(G.s = \{g.s : g \in G\}\). \(S / G\) denotes the set of \(G\)-orbits of \(S\).
+\end{corol-defn}
+
+\begin{prop-defn}[\(G\)-stable]
+Let \(S\) be a \(G\)-set. A subset \(T \subseteq S\) is called \(G\)-stable if \(g.t \in T \forall g \in G, t \in T\).
+\end{prop-defn}
+
+\begin{proposition}
+    Let \(S = G\)-set and \(s \in S\). The orbit \(G.s\) is the smallest \(G\)-stable subset of \(S\) containing \(s\).
+    \proof{
+        \(G.s\) is \(G\)-stable. If \(T\) is a \(G\)-stable subset containing \(s\) then \(G.s \subseteq T\). Check these.
+    }
+\end{proposition}
+
+\begin{definition}
+    We say \(G\) acts transitively on \(G\)-set \(S\), if \(S\) consists of a single orbit. i.e. for all \(t,s \in S, \exists g: g.s = t\).
+    \exmp{
+    Let \(G = \GL_n(\bC)\). \(G\) acts on \(S = M_n(\bC)\), the set of \(n \times n\) matrices over \(\bC\), by conjugation, i.e. \(\forall A \in G = \operatorname{GL}_n(\bC), M \in S, A.M = AMA^{-1}\). Let us check indeed this gives a group action. Check axioms. \((i) I_n.M = I_nMI^{-1} = M. (ii) A.(B.M) = A.(BMB^{-1}) = ABMB^{-1}A_1 = (AB)M(AB)^{-1} = (AB).M.\) What are the orbits? \(GM = \{AMA^{-1}: A \in \operatorname{GL}_n(\bC)\}\).
+    }
+\end{definition}
+
+\begin{definition}[Stabilisers]
+    Let \(s \in S\). Then the stabiliser of \(s\) is \(\stab_G(s) = \{g \in G: g.s = s\} \subseteq G\)
+\end{definition}
+
+\begin{proposition}
+    Let \(S\) be a \(G\)-set and let \(s \in S\). Then \(\stab_G(s) \leq G\).
+\end{proposition}

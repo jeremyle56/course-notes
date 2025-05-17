@@ -1,0 +1,49 @@
+\section{Direct Products}
+
+
+\begin{proposition}
+    Let \(R_i, i \in I\) be rings. \(\Pi_{i \in I} R_i\) is already an abelian group under addition. It becomes a ring with multiplication: \((r_i)(s_i) = (r_i s_i)\) and identity \((1_R, 1_R, \dots, )\)
+
+    \exmp{
+        For \(\bR \times \bR\), we define
+        \begin{itemize}
+            \item Addition: \((a, b) + (a', b') = (a + a', b + b')\)
+            \item Multiplication: \((a, b)(a', b') = (aa', bb')\)
+            \item Identity: \((1, 1)\)
+        \end{itemize}
+        Note \(\bR\) is a field. But \(\bR \times \bR\) is not a field because \((1, 0)\) has no inverse.
+    }
+\end{proposition}
+
+\begin{lemma}
+    Let \(R\) be a commutative ring and \(I_1, \dots, I_n \trianglelefteq R\) such that \(I_i + I_j = R\) for each pair of \(i, j\). Then \(I_1 + \cap_{i \geq 2} I_i = R\).
+    \proof{
+        Choose \(a_i \in I_1, b_i \in I_i\) such that \(a_i + b_i = 1\) for \(i = 2, \dots, n\) since \(I_1 + I_i = R\). Then
+        \begin{align*}
+            1 &= (a_2 + b_2)(a_3 + b_3) \dots (a_n + b_n) \\
+            &= [\text{sum of terms involving} a_i] + (b_2 b_3\dots b_n) \\
+            & \in I_1 + \cap_{i \geq 2} I_i.
+        \end{align*}
+        So \(R = I_1 + \cap_{i \geq 2} I_i\) as \(r \in R, r1 = r \in I_1 + \cap_{i \geq 2} I_i\).
+    }
+\end{lemma}
+
+\begin{theorem}[Chinese Remainder Theorem]
+    Let \(R\) be a commutative ring and \(I_1, \dots, I_n \trianglelefteq R\) such that \(I_i + I_j = R\) for each pair of \(i, j\). Then the natural map
+    \begin{align*}
+        R / \cap_{i = 1}^n I_i & \to R/I_1 \times R/I_2 \times \dots \times R/I_n \\
+        r + \cap_{i = 1}^n I_i & \mapsto (r + I_1, r + I_2, \dots, r + I_n)
+    \end{align*}
+    is an isomorphism.
+    \proof{
+        (Missing some details). We prove the result by induction on \(n\). Let \(n = 2\). Consider \(\psi: R / (I_1 \cap I_2) \to R / I_1 \times R / I_2\) with \(r + (I_1 \cap I_2) \mapsto (r + I_1, r + I_2)\). Then \(\psi\) is well-defined if \(r - s \in I_1 \cap I_2\) then \(r + I_1 = s + I_1\) and \(r + I_2 = s + I_2\). If \(\psi(r + (I_1  \cap I_2)) = 0\) then \(r \in I_1\) and \(r \in I_2\) so \(r \in I_1 \cap I_2\) so \(\psi\) is injective. Choose \(x_1 \in I_1, x_2 \in I_2\) such that \(x_1 + x_2 = 1\). Now given \(r_1\) and \(r_2\), observe \(\psi(r_2x_1 + r_1x_2) = (r_2 x_1 + r_1x_2 + I_1, r_2x_1 + r_1x_2 + I_2)\). Consider \(r_2 x_1 + r_1 x_2 + I_1\). Then \(r_2 x_1 \in I_1\) as \(x_1 \in I_1\) and \(r_1x_2 = r_1(1-x_1) = r_1 -r_1x_1\) with \(x_1 \in I_1\) which implies \(r_2 x_1 + r_1x_2 + I_1 = r_1 + I_1\). Similarly \(r_2 x_1 + r_1x_2 + I_2 = r_2 + I_2\). So \(\psi(r_2 x_1 + r_1x_2) = (r_1 + I_1, r_2 + I_2)\) hence \(\psi\) is onto. Using the above lemma, we have the \(n = 2\) case.
+    }
+    \exmp{
+        If \(R = \bZ\), \(I_1 = 3\bZ, I_2 = 5\bZ\) then \(I_1 \cap I_2 = 15\bZ\). So we have the following isomorphism,
+        \begin{align*}
+            \bZ / 15\bZ & \to \bZ / 3\bZ \times \bZ / 5\bZ \\
+            n + 15\bZ & \mapsto (r + 3\bZ, r + 5\bZ)
+        \end{align*}
+        Note \(\bZ / 24\bZ \to \bZ / 4\bZ \times \bZ / 6 \bZ\) is not an isomorphism.
+    }
+\end{theorem}

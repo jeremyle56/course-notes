@@ -1,0 +1,102 @@
+\chapter{The Probabilistic Method}
+
+This chapter assumes knowledge of elementary probability knowledge. Content from first year is sufficient.
+
+\begin{example}
+    Let \(\Omega\) be the set of all graphs on the vertex set \(\{1, 2, \dots, n\}\). Then \(|\Omega| = 2^{\binom{n}{2}}\). Define \(\pi(G) = 2^{\binom{n}{2}}\) for all \(G \in \Omega\). This is the \textit{uniform model of random graphs}.
+\end{example}
+
+\begin{lemma}
+    The expected number of edges in a uniformly chosen graph on the vertex set \(\{1, 2, \dots n\}\) is \(\frac{1}{2}\binom{n}{2}\).
+    \proof{
+        (From Definition) For \(0 \leq m \leq \binom{n}{2} = N\), there \(\binom{N}{m}\) are exactly of graphs on vertex set \(\{1, \dots, n\}\) with \(m\) edges. Let \(X\) be the number of edges in the random graph. Then
+        \begin{align*}
+            EX & = \sum_{m=0}^{N} \Pr(X = m) \cdot m                              \\
+               & = \sum_{m=0}^{N} \frac{\binom{N}{m}}{2^N} \cdot m                \\
+               & = \frac{N}{2^N} \sum_{m=1}^{N} \frac{(N-1)!}{(m-1)!(N-m)!}       \\
+               & = \frac{N}{2^N} \sum_{j=0}^{N-1} \binom{N - 1}{j} \tag{j = m -1} \\
+               & = \frac{N}{2^N} 2^{N-1} \tag{by the binomal theorem}             \\
+               & = \frac{N}{2} = \frac{1}{2}\binom{n}{2}.
+        \end{align*}
+    }
+\end{lemma}
+
+Let \(A \subseteq \Omega\) be an event. The indicator variable \(I_A\) for \(A \subseteq \Omega\) is
+\[I_A(z) = \begin{cases}
+        1 & \text{ if } z \in A \\
+        0 & \text{ otherwise.}
+    \end{cases}\]
+
+\begin{definition}[Linearity of Expectation]
+    Let \(X_1, \dots, X_k\) be random variables on \(\Omega\) and let \(c_1, \dots, c_k \in \bR\). Define the random variable \(X = c_1X_1 + \cdots + c_k X_k\). Then
+    \[\bE[X] = c_1\bE[X_1] + c_2\bE[X_2] + \cdot + c_k\bE[X_k].\]
+\end{definition}
+
+\begin{definition}[Markov's Inequality]
+    Suppose that \(X: \Omega \to [0, \infty)\) is a nonnegative random variable on \(\Omega\) and let \(k > 0\). Then
+    \[\Pr(X \geq k) \leq \frac{\bE[X]}{k}.\]
+    In particular, if \(X\) is a nonnegative integer-valued random variable then
+    \[\Pr(X \neq 0) \leq \bE[X].\]
+\end{definition}
+
+Let \(k \geq 2\) be an integer. Events \(A_1, \dots, A_k\) in \(\Omega\) are \textbf{mutually independent} if for all \(j, \ell_1, \dots, \ell_j\) with \(2 \leq j \leq k\) and \(1 \leq \ell_1 < \ell_2 < \cdots < \ell_j \leq k\),
+\[\Pr\left(\bigcap_{i=1}^j A_{\ell_i}\right) = \prod_{i = 1}^j \Pr(A_{\ell_i}).\]
+
+\begin{lemma}
+    Let \(\Omega\) be the set of all subsets of some given set \(S\), where \(|S| = n\). Define a random set \(X \subseteq S\) by setting \(\Pr(x \in X) = \frac{1}{2}\), independently for each \(x \in S\). Then \(\Pr(X = A) = 2^{-n}\) for all \(A \subseteq S\), so this gives the uniform probability space on \(\Omega\).
+    \proof{
+        Fix \(A \subseteq \Omega\). Then
+        \begin{align*}
+            \Pr(X = A) & = \prod_{x \in A} \Pr(\text{heads}) \cdot \prod_{x \notin A}\Pr(\text{tails}) \tag{using independence} \\
+                       & = \left(\frac{1}{2}\right)^{|A|} \cdot \left(\frac{1}{2}\right)^{n - |A|}                              \\
+                       & = \left(\frac{1}{2}\right)^n = 2^{-n}
+        \end{align*}
+        as claimed.
+    }
+\end{lemma}
+
+\begin{theorem}[Alon \& Spencer, Theorem 2.2.1]
+    Let \(G\) be a graph with \(n\) vertices and \(m\) edges. Then \(G\) contains a bipartite subgraph with at least \(m / 2\) edges.
+    \proof{
+        Let \(\Omega\) be the set of all subsets of \(V(G)\). Then \(|\Omega| = 2^n\). Consider the uniform probability space on \(\Omega\). Let \(A \subseteq V\) be a randomly chosen element of \(\Omega\) and define \(B = V - A\). Call \(xy \in E(G)\) a crossing edge if exactly one of \(x, y\) belongs to \(A\). Let \(X\) be the number of crossing edges. Finally, for each edge \(e \in E(G)\) define the indicator variable
+        \[X_e = \begin{cases}
+                1 & \text{ if \(e\) is a crossing edge}, \\
+                0 & \text{ otherwise}.
+            \end{cases}\]
+        Then \(X = \sum_{e \in E(G)} X_e\). For any \(e = xy \in E(G)\), we have,
+        \begin{align*}
+            \Pr(x \in A \text{ and } y \notin A) & = \Pr(x \in A)\Pr(y \in A) \tag{using independence} \\
+                                                 & = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}.
+        \end{align*}
+        Therefore
+        \begin{align*}
+            \bE X_e & = \Pr((x \in A \tand y \notin A) \text{ or } (x \notin A \tand y \in A))                  \\
+                    & = \Pr(x \in A \tand y \notin A) + \Pr(x \notin A \tand y \in A) \tag{events are disjoint} \\
+                    & = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}.
+        \end{align*}
+        Hence, by linearity of expectation,
+        \[\bE X = \sum_{e\in E(G)} \bE X_e = \frac{m}{2}.\]
+        Thus there exists a fixed set \(A_0 \subseteq V(G)\) which has at least \(\frac{m}{2}\) crossing edges. The corresponding bipartition \((A_0, V(G) - A_0)\) defines a bipartite subgraph consisting of the \(\geq \frac{m}{2}\) crossing edges.
+    }
+\end{theorem}
+
+An \textbf{independent set} in a graph \(G\) is a subset \(U \subseteq V\) such that if \(v, w \in U\) then \(vw \in E(G)\). Let \(\alpha(G)\) be the size of a maximum independent set in \(G\), called the \textbf{independence number}.
+
+\begin{theorem}
+    Let \(G\) have \(n\) vertices and \(nd / 2\) edges, where \(d \geq 1\). Then \(\alpha(G) \geq \frac{n}{2d}\). Note \(d\), is the average degree of \(G\).
+    \proof{
+        Define the random subset \(S \subseteq V(G)\) by \(\Pr(v \in S) = p\), independently for all \(v \in V\). Here \(p \in [0, 1]\) which we will fix later. \\
+
+        Let \(X = |S|\) and let \(Y\) be the number of edges of \(G\) with both endvertices in \(S\). Then \(\bE X = pn\). For \(e \in E(G)\) let \(Y_e\) be the indicator variable for the event \(e \subseteq S\). Then for every \(e = xy \in E(G)\),
+        \begin{align*}
+            \bE Y_e & = \Pr(x \in S \tand y \in S)                            \\
+                    & = \Pr(x \in S) \cdot \Pr(y \in S) \tag{by independence} \\
+                    & = p^2.
+        \end{align*}
+        Therefore, by linearity of expectation and the fact that \(Y = \sum_{e \in E(G)}\) we have
+        \[\bE Y = \sum_{e \in E(G)} \bE Y_e = \frac{nd}{2} p^2.\]
+        By linearity of expectation,
+        \[\bE(X - Y) = \bE X - \bE Y = pn - p^2 \frac{nd}{2}.\]
+        Want to choose \(p\) to maximise this, so \(p = \frac{1}{d}\) and \(p \in [0, 1]\). Substituting gives \(\bE (X - Y) = \frac{n}{2d}\). Hence there exists a fixed set \(S_0 \subseteq V(G)\) with \(|S_0| - (\text{\# edges in} S_0) \geq \frac{n}{2d}\). Delete one vertex from each edge within \(S_0\) to give a set \(S^*\) of at least \(\frac{n}{2d}\) vertices which is an independent set.
+    }
+\end{theorem}
