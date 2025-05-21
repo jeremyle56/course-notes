@@ -79,18 +79,21 @@ jobs:
           cd gh-pages
           git add .
 
-          # If no changes, skip committing
+          # Check if anything is staged
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
+          fi
 
-            # Check if branch exists on remote
-            if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
-              echo "Pushing to existing remote gh-pages branch"
-              git push origin gh-pages
-            else
-              echo "First-time push — setting upstream"
-              git push --set-upstream origin gh-pages
-            fi
+          # Ensure we're on a real gh-pages branch (not detached HEAD)
+          current_branch=$(git symbolic-ref --short HEAD || echo "")
+
+          if [ "$current_branch" = "gh-pages" ]; then
+            echo "On gh-pages branch — pushing"
+            git push origin gh-pages || git push --set-upstream origin gh-pages
+          else
+            echo "Not on gh-pages branch — setting it now"
+            git checkout -B gh-pages
+            git push --set-upstream origin gh-pages
           fi
