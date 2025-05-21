@@ -88,5 +88,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
+            git log
             git push origin gh-pages
           fi
