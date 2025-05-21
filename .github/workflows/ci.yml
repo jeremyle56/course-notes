@@ -15,13 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure Git Credentials
+      - name: Checkout to branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.command:
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -51,6 +48,8 @@ jobs:
 
       - name: Commit built site to docs/
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
           git add docs/
           commit -m "Deploy MkDocs sites [CI]" || echo "No changes to commit"
           git push origin HEAD
