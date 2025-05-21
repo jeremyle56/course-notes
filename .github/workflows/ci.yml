@@ -63,12 +63,14 @@ jobs:
 
       - name: Sync content and build site
         run: |
+          # Clean up previous site
+          rm -rf gh-pages/math3611
+
           # Copy static content (PDFs, etc.)
           rsync -av --exclude='math3611/' ./ gh-pages/
 
-          # Build MkDocs into gh-pages/comp3611
+          # Build MkDocs into gh-pages/math3611
           cd math3611
-          rm -rf ../gh-pages/math3611
           mkdocs build -d ../gh-pages/math3611
           cd ..
 
