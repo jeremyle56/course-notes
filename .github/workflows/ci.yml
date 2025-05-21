@@ -46,27 +46,29 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Prepare gh-pages branch
+      - name: Prepare gh-pages worktree
         run: |
-          # Remove any stale worktree folder
+          # Remove previous worktree if it exists
           rm -rf gh-pages
+          git worktree prune
 
-          # If remote gh-pages exists, fetch and attach it
+          # Check if gh-pages branch exists
           if git ls-remote --exit-code --heads origin gh-pages; then
-            echo "Remote gh-pages exists, checking it out"
+            echo "Remote gh-pages exists. Setting up worktree..."
             git fetch origin gh-pages
-            git worktree add -B gh-pages gh-pages origin/gh-pages
+            git worktree add gh-pages origin/gh-pages
           else
-            echo "gh-pages doesn't exist yet — creating it"
-            git worktree add -B gh-pages gh-pages
+            echo "Creating new orphan gh-pages branch"
+            git worktree add gh-pages
+            cd gh-pages
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            cd ..
           fi
 
-      - name: Sync content and build site
+      - name: Build and copy site
         run: |
-          # Clean up previous site
-          rm -rf gh-pages/math3611
-
-          # Copy static content (PDFs, etc.)
+          # Copy PDFs and non-MkDocs content
           rsync -av --exclude='math3611/' ./ gh-pages/
 
           # Build MkDocs into gh-pages/math3611
@@ -77,14 +79,17 @@ jobs:
       - name: Commit and push to gh-pages
         run: |
           cd gh-pages
-          git branch --show-current
+
+          echo "Verifying we are on correct branch..."
+          git branch --show-current  # Should be 'gh-pages'
 
           touch .nojekyll
-          git add .
+          date > .build-timestamp
 
+          git add -A
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "✅ No changes to commit."
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
-            git push -u origin gh-pages
+            git push origin gh-pages
           fi
