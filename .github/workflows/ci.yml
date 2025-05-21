@@ -20,6 +20,11 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
+      - name: Setup Git credentials
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -41,15 +46,15 @@ jobs:
             mkdocs-git-authors-plugin \
             mkdocs-git-revision-date-localized-plugin
 
-      - name: Build MkDocs site for MATH3611
-        run: |
-          cd math3611
-          mkdocs build
+      - run: mkdocs gh-deploy --force
 
-      - name: Commit built site to docs/
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
-          git add docs/
-          commit -m "Deploy MkDocs sites [CI]" || echo "No changes to commit"
-          git push origin HEAD
+      # - name: Build MkDocs site for MATH3611
+      #   run: |
+      #     cd math3611
+      #     mkdocs build
+      #
+      # - name: Commit built site to docs/
+      #   run: |
+      #     git add docs/
+      #     commit -m "Deploy MkDocs sites [CI]" || echo "No changes to commit"
+      #     git push origin HEAD
