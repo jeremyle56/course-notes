@@ -48,18 +48,16 @@ jobs:
 
       - name: Prepare gh-pages branch
         run: |
-          # Create a temp folder for worktree
           rm -rf gh-pages
-          mkdir gh-pages
 
           # Check if remote gh-pages exists
           if git ls-remote --exit-code --heads origin gh-pages; then
             echo "Remote gh-pages exists, checking it out"
             git fetch origin gh-pages
-            git worktree add gh-pages gh-pages
+            git worktree add gh-pages origin/gh-pages
           else
-            echo "Creating orphan gh-pages branch"
-            git worktree add gh-pages
+            echo "gh-pages doesn't exist yet — creating it"
+            git worktree add --detach gh-pages
             cd gh-pages
             git checkout --orphan gh-pages
             git rm -rf . || true
