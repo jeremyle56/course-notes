@@ -46,28 +46,39 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
 
-      - name: Create gh-pages worktree and sync content
+      - name: Prepare gh-pages branch
         run: |
-          # Remove old deployment folder if exists
+          # Create a temp folder for worktree
           rm -rf gh-pages
+          mkdir gh-pages
 
-          # Fetch gh-pages or create orphan branch
-          git fetch origin gh-pages || true
-          git worktree add gh-pages gh-pages || git worktree add gh-pages --orphan gh-pages
+          # Check if remote gh-pages exists
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            echo "Remote gh-pages exists, checking it out"
+            git fetch origin gh-pages
+            git worktree add gh-pages gh-pages
+          else
+            echo "Creating orphan gh-pages branch"
+            git worktree add gh-pages
+            cd gh-pages
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            cd ..
+          fi
 
-          # Clear everything inside gh-pages/
-          rm -rf gh-pages/*
-
-          # Copy over all non-MkDocs content
+      - name: Sync content and build site
+        run: |
+          # Copy static content (PDFs, etc.)
           rsync -av --exclude='math3611/' ./ gh-pages/
 
-          # Build MkDocs for MATH3611 and place in gh-pages/math3611
+          # Build MkDocs into gh-pages/comp3611
           cd math3611
           mkdocs build -d ../gh-pages/math3611
           cd ..
 
-          # Commit to gh-pages branch
+      - name: Commit and push to gh-pages
+        run: |
           cd gh-pages
           git add .
-          git commit -m "Full site deploy from ${{ github.ref_name }}" || echo "No changes to commit"
+          git commit -m "Deploy site from ${{ github.ref_name }}" || echo "No changes to commit"
           git push origin gh-pages
