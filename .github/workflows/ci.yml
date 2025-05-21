@@ -48,48 +48,51 @@ jobs:
 
       - name: Prepare gh-pages worktree
         run: |
-          # Remove previous worktree if it exists
           rm -rf gh-pages
           git worktree prune
 
-          # Check if gh-pages branch exists
           if git ls-remote --exit-code --heads origin gh-pages; then
-            echo "Remote gh-pages exists. Setting up worktree..."
+            echo "✅ Remote gh-pages exists — checking it out"
             git fetch origin gh-pages
-            git worktree add gh-pages origin/gh-pages
+            git worktree add -B gh-pages gh-pages origin/gh-pages
           else
-            echo "Creating new orphan gh-pages branch"
+            echo "🚀 Creating new orphan gh-pages branch"
             git worktree add gh-pages
             cd gh-pages
             git checkout --orphan gh-pages
-            git rm -rf . || true
+            git reset --hard
+            git clean -fdx
             cd ..
           fi
 
       - name: Build and copy site
         run: |
-          # Copy PDFs and non-MkDocs content
-          rsync -av --exclude='math3611/' ./ gh-pages/
+          # Copy over other static content
+          rsync -av --exclude='gh-pages/' ./ gh-pages/
+          rm -rf gh-pages/gh-pages
+          rm -rf .git
 
-          # Build MkDocs into gh-pages/math3611
+          # Build MkDocs into subdirectory
           cd math3611
+          rm -rf ../gh-pages/math3611
           mkdocs build -d ../gh-pages/math3611
           cd ..
 
       - name: Commit and push to gh-pages
         run: |
           cd gh-pages
-
-          echo "Verifying we are on correct branch..."
-          git branch --show-current  # Should be 'gh-pages'
+          echo "✅ On branch: $(git branch --show-current)"
 
           touch .nojekyll
           date > .build-timestamp
 
           git add -A
+
           if git diff --cached --quiet; then
             echo "✅ No changes to commit."
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
-            git push origin gh-pages
+
+            # ✅ Fix: force set upstream on first push
+            git push -u origin gh-pages || git push --set-upstream origin gh-pages
           fi
