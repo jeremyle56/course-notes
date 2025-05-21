@@ -2,6 +2,7 @@
 
 site_name: MATH3611 Higher Analysis
 site_url: https://jeremyle56.github.io/course-notes/math3611
+site_dir: ../docs/math3611
 theme:
   name: material
   palette:
@@ -75,7 +76,9 @@ markdown_extensions:
 
 plugins:
   - search
-  - git-authors
+  - git-committers:
+      repository: jeremyle56/course-notes
+      branch: 25T2
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago

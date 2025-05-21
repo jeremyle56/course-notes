@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout to branch
+      - name: Checkout the current branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
@@ -43,20 +43,16 @@ jobs:
         run: |
           pip install \
             mkdocs-material \
-            mkdocs-git-authors-plugin \
+            mkdocs-git-committers-plugin-2 \
             mkdocs-git-revision-date-localized-plugin
 
-      - run: |
+      - name: Build MkDocs site for MATH3611
+        run: |
           cd math3611
-          mkdocs gh-deploy --force
+          mkdocs build
 
-      # - name: Build MkDocs site for MATH3611
-      #   run: |
-      #     cd math3611
-      #     mkdocs build
-      #
-      # - name: Commit built site to docs/
-      #   run: |
-      #     git add docs/
-      #     commit -m "Deploy MkDocs sites [CI]" || echo "No changes to commit"
-      #     git push origin HEAD
+      - name: Commit built site to docs/
+        run: |
+          git add docs/ || echo "No changes to commit"
+          git diff --cached --quiet || git commit -m "Deploy MkDocs sites [CI]"
+          git push origin HEAD
