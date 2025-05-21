@@ -2,7 +2,6 @@
 
 site_name: MATH3611 Higher Analysis
 site_url: https://jeremyle56.github.io/course-notes/math3611
-site_dir: ../docs/math3611
 theme:
   name: material
   palette:
