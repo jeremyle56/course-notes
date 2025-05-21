@@ -48,20 +48,17 @@ jobs:
 
       - name: Prepare gh-pages branch
         run: |
+          # Remove any stale worktree folder
           rm -rf gh-pages
 
-          # Check if remote gh-pages exists
+          # If remote gh-pages exists, fetch and attach it
           if git ls-remote --exit-code --heads origin gh-pages; then
             echo "Remote gh-pages exists, checking it out"
             git fetch origin gh-pages
-            git worktree add gh-pages origin/gh-pages
+            git worktree add -B gh-pages gh-pages origin/gh-pages
           else
             echo "gh-pages doesn't exist yet — creating it"
-            git worktree add --detach gh-pages
-            cd gh-pages
-            git checkout --orphan gh-pages
-            git rm -rf . || true
-            cd ..
+            git worktree add -B gh-pages gh-pages
           fi
 
       - name: Sync content and build site
@@ -78,23 +75,12 @@ jobs:
         run: |
           cd gh-pages
 
-          # Always create a .nojekyll file so GitHub Pages treats paths correctly
           touch .nojekyll
-
           git add .
 
-          # Only commit if there are changes
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
-
-            # Check if remote branch exists (first-time push needs --set-upstream)
-            if git ls-remote --exit-code --heads origin gh-pages; then
-              echo "Pushing to existing gh-pages branch"
-              git push origin gh-pages
-            else
-              echo "First-time push — setting upstream"
-              git push --set-upstream origin gh-pages
-            fi
+            git push origin gh-pages
           fi
