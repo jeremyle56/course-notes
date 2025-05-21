@@ -68,6 +68,7 @@ jobs:
 
           # Build MkDocs into gh-pages/comp3611
           cd math3611
+          rm -rf ../gh-pages/math3611
           mkdocs build -d ../gh-pages/math3611
           cd ..
 
