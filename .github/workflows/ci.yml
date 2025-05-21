@@ -77,12 +77,10 @@ jobs:
       - name: Commit and push to gh-pages
         run: |
           cd gh-pages
+          git branch --show-current
 
           touch .nojekyll
           git add .
-          git status
-          git diff --cached --stat
-          git branch --show-current
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
