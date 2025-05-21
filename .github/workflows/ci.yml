@@ -1,0 +1,56 @@
+name: Deploy MkDocs Notes
+
+on:
+  push:
+    paths:
+      - "math3611/**"
+      - "github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure Git Credentials
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.command:
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-git-authors-plugin \
+            mkdocs-git-revision-date-localized-plugin
+
+      - name: Build MkDocs site for MATH3611
+        run: |
+          cd math3611
+          mkdocs build
+
+      - name: Commit built site to docs/
+        run: |
+          git add docs/
+          commit -m "Deploy MkDocs sites [CI]" || echo "No changes to commit"
+          git push origin HEAD
