@@ -1,10 +1,9 @@
-name: Deploy MkDocs Sites
+name: Deploy Site
 
 on:
   push:
     paths:
-      - "math3611/**"
-      - ".github/workflows/**"
+      - "**"
   workflow_dispatch:
 
 permissions:
@@ -19,11 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
-
-      - name: Setup Git credentials
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -46,13 +41,33 @@ jobs:
             mkdocs-git-committers-plugin-2 \
             mkdocs-git-revision-date-localized-plugin
 
-      - name: Build MkDocs site for MATH3611
+      - name: Setup Git credentials
         run: |
-          cd math3611
-          mkdocs build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.command:"
 
-      - name: Commit built site to docs/
+      - name: Create gh-pages worktree and sync content
         run: |
-          git add docs/ || echo "No changes to commit"
-          git diff --cached --quiet || git commit -m "Deploy MkDocs sites [CI]"
-          git push origin HEAD
+          # Remove old deployment folder if exists
+          rm -rf gh-pages
+
+          # Fetch gh-pages or create orphan branch
+          git fetch origin gh-pages || true
+          git worktree add gh-pages gh-pages || git worktree add gh-pages --orphan gh-pages
+
+          # Clear everything inside gh-pages/
+          rm -rf gh-pages/*
+
+          # Copy over all non-MkDocs content
+          rsync -av --exclude='math3611/' ./ gh-pages/
+
+          # Build MkDocs for MATH3611 and place in gh-pages/math3611
+          cd math3611
+          mkdocs build -d ../gh-pages/math3611
+          cd ..
+
+          # Commit to gh-pages branch
+          cd gh-pages
+          git add .
+          git commit -m "Full site deploy from ${{ github.ref_name }}" || echo "No changes to commit"
+          git push origin gh-pages
