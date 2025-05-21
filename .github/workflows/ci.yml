@@ -70,16 +70,16 @@ jobs:
           # Copy over other static content
           rsync -av --exclude='gh-pages/' ./ gh-pages/
           rm -rf gh-pages/gh-pages
-          rm -rf .git
 
           # Build MkDocs into subdirectory
           cd math3611
-          rm -rf ../gh-pages/math3611
+          rm -rf ../gh-pages/math3611/
           mkdocs build -d ../gh-pages/math3611
           cd ..
 
       - name: Commit and push to gh-pages
         run: |
+          rm -rf .git
           cd gh-pages
           echo "✅ On branch: $(git branch --show-current)"
 
