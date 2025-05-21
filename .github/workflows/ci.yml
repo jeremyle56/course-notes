@@ -46,7 +46,9 @@ jobs:
             mkdocs-git-authors-plugin \
             mkdocs-git-revision-date-localized-plugin
 
-      - run: mkdocs gh-deploy --force
+      - run: |
+          cd math3611
+          mkdocs gh-deploy --force
 
       # - name: Build MkDocs site for MATH3611
       #   run: |
