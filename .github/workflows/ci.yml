@@ -77,23 +77,24 @@ jobs:
       - name: Commit and push to gh-pages
         run: |
           cd gh-pages
+
+          # Always create a .nojekyll file so GitHub Pages treats paths correctly
+          touch .nojekyll
+
           git add .
 
-          # Check if anything is staged
+          # Only commit if there are changes
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Deploy from ${{ github.ref_name }}"
-          fi
 
-          # Ensure we're on a real gh-pages branch (not detached HEAD)
-          current_branch=$(git symbolic-ref --short HEAD || echo "")
-
-          if [ "$current_branch" = "gh-pages" ]; then
-            echo "On gh-pages branch — pushing"
-            git push origin gh-pages || git push --set-upstream origin gh-pages
-          else
-            echo "Not on gh-pages branch — setting it now"
-            git checkout -B gh-pages
-            git push --set-upstream origin gh-pages
+            # Check if remote branch exists (first-time push needs --set-upstream)
+            if git ls-remote --exit-code --heads origin gh-pages; then
+              echo "Pushing to existing gh-pages branch"
+              git push origin gh-pages
+            else
+              echo "First-time push — setting upstream"
+              git push --set-upstream origin gh-pages
+            fi
           fi
