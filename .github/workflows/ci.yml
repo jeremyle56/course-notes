@@ -64,6 +64,8 @@ jobs:
               cd ..
             else
               echo "Directory ${COURSE} does not exist. Skipping..."
+            fi
+          done
 
           AU_TIME=$(TZ="Australia/Sydney" date +"%Y-%m-%d %H:%M:%S %Z")
           COMMIT_MSG="📘 Deploy from branch ${{ github.ref_name }} on ${AU_TIME}"
