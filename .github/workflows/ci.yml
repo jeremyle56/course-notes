@@ -48,15 +48,26 @@ jobs:
 
       - name: Prepare branch, build, commit and push to gh-pages
         run: |
+          # Checkout gh-pages branch based on source branch
           git checkout -B gh-pages ${{ github.ref_name }}
 
-          rm -rf math3611_prebuild
-          mv math3611 math3611_prebuild
+          # Define list of MkDocs courses
+          COURSES=("math3611")
 
-          cd math3611_prebuild
-          mkdocs build -d ../math3611
-          cd ..
+          # Loop through courses and build each
+          for COURSE in "${COURSES[@]}"; do
+            if [ -d "${COURSE}" ]; then
+              echo "Building ${COURSE}..."
+              mv "$COURSE" "${COURSE}_prebuild"
+              cd "${COURSE}_prebuild"
+              mkdocs build -d "../${COURSE}"
+              cd ..
+            else
+              echo "Directory ${COURSE} does not exist. Skipping..."
+
+          AU_TIME=$(TZ="Australia/Sydney" date +"%Y-%m-%d %H:%M:%S %Z")
+          COMMIT_MSG="📘 Deploy from branch ${{ github.ref_name }} on ${AU_TIME}"
 
           git add .
-          git commit -m "Deploy from ${{ github.ref_name }}"
+          git commit -m "${COMMIT_MSG}" | echo "No changes to commit."
           git push origin gh-pages
