@@ -2,7 +2,7 @@
 title: Home
 ---
 
-# MATH3611 Higher Algebra
+# MATH3611 Higher Analysis
 
 This website servers as a platform to host my lecture notes and tutorial problems for MATH3611 Higher Analysis in 2025T2 @ UNSW. In this iteration, the course was taught by Dr Denis Potapov.
 
@@ -16,7 +16,7 @@ This course goes through the following topics:
 4. [Topological Spaces](./course_notes/topological_spaces.md)
 5. [Compactness and Connectedness](./course_notes/compactness_and_connectedness.md)
 
-There will no doubt be typos, errors and inaccuracies scattered throughout these notes as I a student learning the content for the first time. If you come across any of these, please feel free to reach out and correct me. You can do so by creating a [pull-request](https://github.com/jeremyle56/course-notes/pulls) or an [issue](https://github.com/jeremyle56/course-notes/issues) detailing the corrections. If in doubt --- look up a proper textbook (the recommended textbook for this course is Kolmogorov and Fomin's "Introductory Real Analysis").
+There will no doubt be typos, errors and inaccuracies scattered throughout these notes as I am student learning the content for the first time. If you come across any of these, please feel free to reach out and correct me. You can do so by creating a [pull-request](https://github.com/jeremyle56/course-notes/pulls) or an [issue](https://github.com/jeremyle56/course-notes/issues) detailing the corrections. If in doubt --- look up a proper textbook (the recommended textbook for this course is Kolmogorov and Fomin's "Introductory Real Analysis").
 
 ??? abstract "Ian Doust Course Notes (2022)"
 
