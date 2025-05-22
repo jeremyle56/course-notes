@@ -72,4 +72,4 @@ jobs:
 
           git add .
           git commit -m "${COMMIT_MSG}" | echo "No changes to commit."
-          git push origin gh-pages
+          git push origin gh-pages --force
