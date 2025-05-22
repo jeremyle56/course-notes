@@ -71,5 +71,5 @@ jobs:
           COMMIT_MSG="📘 Deploy from branch ${{ github.ref_name }} on ${AU_TIME}"
 
           git add .
-          git commit -m "${COMMIT_MSG}" | echo "No changes to commit."
+          git commit -m "${COMMIT_MSG}" || echo "No changes to commit."
           git push origin gh-pages --force

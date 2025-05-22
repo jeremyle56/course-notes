@@ -1,77 +1,27 @@
-# Welcome to MkDocs
+---
+title: Home
+---
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# MATH3611 Higher Algebra
 
-## Commands
+This website servers as a platform to host my lecture notes and tutorial problems for MATH3611 Higher Analysis in 2025T2 @ UNSW. In this iteration, the course was taught by Dr Denis Potapov.
 
-it not working :(
+Compiled pages are published at [https://jeremyle56.github.io/course-notes/math3611/](https://jeremyle56.github.io/course-notes/math3611/).
 
-- `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.
+This course goes through the following topics:
 
-- `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.
+1. [Cardinality](./course_notes/cardinality.md)
+2. [Metric Spaces](./course_notes/metric_spaces.md)
+3. [Sequences of Series and Functions](./course_notes/sequence_and_series_of_functions.md)
+4. [Topological Spaces](./course_notes/topological_spaces.md)
+5. [Compactness and Connectedness](./course_notes/compactness_and_connectedness.md)
 
-## Project layout
+There will no doubt be typos, errors and inaccuracies scattered throughout these notes as I a student learning the content for the first time. If you come across any of these, please feel free to reach out and correct me. You can do so by creating a [pull-request](https://github.com/jeremyle56/course-notes/pulls) or an [issue](https://github.com/jeremyle56/course-notes/issues) detailing the corrections. If in doubt --- look up a proper textbook (the recommended textbook for this course is Kolmogorov and Fomin's "Introductory Real Analysis").
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+??? abstract "Ian Doust Course Notes (2022)"
 
-- `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exi\* `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.t.
+    <div>
+    <object data="assets/Ian_Doust_course_notes.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    <embed src="assets/Ian_Doust_course_notes.pdf" type="application/pdf"/>
+    </object>
+    </div>
