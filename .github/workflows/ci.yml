@@ -3,7 +3,7 @@ name: Deploy Site
 on:
   push:
     paths:
-      - "**"
+      - '**'
   workflow_dispatch:
 
 permissions:
@@ -46,53 +46,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Prepare gh-pages worktree
+      - name: Prepare branch, build, commit and push to gh-pages
         run: |
-          rm -rf gh-pages
-          git worktree prune
+          git checkout -B gh-pages ${{ github.ref_name }}
 
-          if git ls-remote --exit-code --heads origin gh-pages; then
-            echo "✅ Remote gh-pages exists — checking it out"
-            git fetch origin gh-pages
-            git worktree add -B gh-pages gh-pages origin/gh-pages
-          else
-            echo "🚀 Creating new orphan gh-pages branch"
-            git worktree add gh-pages
-            cd gh-pages
-            git checkout --orphan gh-pages
-            git reset --hard
-            git clean -fdx
-            cd ..
-          fi
+          rm -rf math3611_prebuild
+          mv math3611 math3611_prebuild
 
-      - name: Build and copy site
-        run: |
-          # Copy over other static content
-          rsync -av --exclude='gh-pages/' ./ gh-pages/
-          rm -rf gh-pages/gh-pages
-
-          # Build MkDocs into subdirectory
-          cd math3611
-          rm -rf ../gh-pages/math3611/
-          mkdocs build -d ../gh-pages/math3611
+          cd math3611_prebuild
+          mkdocs build -d ../math3611
           cd ..
 
-      - name: Commit and push to gh-pages
-        run: |
-          rm -rf .git
-          cd gh-pages
-          echo "✅ On branch: $(git branch --show-current)"
-
-          touch .nojekyll
-          date > .build-timestamp
-
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "✅ No changes to commit."
-          else
-            git commit -m "Deploy from ${{ github.ref_name }}"
-
-            # ✅ Fix: force set upstream on first push
-            git push -u origin gh-pages || git push --set-upstream origin gh-pages
-          fi
+          git add .
+          git commit -m "Deploy from ${{ github.ref_name }}"
+          git push origin gh-pages
