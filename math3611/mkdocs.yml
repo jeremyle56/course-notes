@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: MATH3611 Higher Analysis
+site_url: https://jeremyle56.github.io/course-notes/math3611
+theme:
+  name: material
+  palette:
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to Light Mode
+      primary: blue
+      accent: teal
+
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to Dark Mode
+      primary: blue
+      accent: teal
+  logo: assets/limit-icon.png
+  favicon: assets/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - toc.integrate
+    - toc.follow
+    - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+
+repo_url: https://github.com/jeremyle56/course-notes
+repo_name: jeremyle56/course-notes
+# edit_uri: edit/main/docs/
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jeremyle56
+      name: GitHub
+#   generator: false
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search
+  - git-committers: # this isn't working
+      repository: jeremyle56/course-notes
+      branch: gh-pages
+      enabled: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+
+nav:
+  - index.md
+  - Course Notes:
+      - course_notes/cardinality.md
+      - course_notes/metric_spaces.md
+      - course_notes/sequence_and_series_of_functions.md
+      - course_notes/topological_spaces.md
+      - course_notes/compactness_and_connectedness.md
+  - Problem Sheets:
+      - problem_sheets/1.md
