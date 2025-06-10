@@ -1,1 +1,0 @@
-# Compactness and Connectedness
