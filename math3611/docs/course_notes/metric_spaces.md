@@ -85,11 +85,70 @@
                 </object>
             </div>
 
+        ??? abstract "Boundary and Interior of $c_{00}$"
+
+            <div>
+                <object data="../../assets/lecture_notes/12062025-boundary_and_interior_of_c_00.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
+    === "Lecture 5 - 18/06"
+
+        1. The definition of convergence in a metric space can be equivalently stated using the concepts of neighbourhoods and open neighbourhoods.
+        2. The collection of open sets in a metric space forms a topology.
+        3. A topology satisfies three fundamental properties: it includes the empty set and the whole space; it is closed under arbitrary unions; and it is closed under finite intersections.
+        4. The intersection of finitely many open sets is open, but this does not hold for infinite intersections.
+        5. In the discrete metric, the topology coincides with the power set.
+        6. Whether a set is open or closed depends on the surrounding metric space.
+        7. The set of interior points of a set can be described as the union of all open subsets contained within it.
+        8. A set is closed if and only if it contains all of its limit points.
+        9. A function is continuous if it satisfies the epsilon–delta definition.
+        10. A function is continuous if and only if the preimage of every open set is open.
+        11. The topologies on $\mathbb{R}^n$ induced by the $d_p$ metrics (for $1 \leq p \leq \infty$) are all the same.
+        12. The composition of continuous functions is continuous; the quickest proof uses the preimage characterisation of continuity.
+        13. A bounded subset of a metric space can be defined in three different but equivalent ways.
+        14. A Cauchy sequence is a powerful substitute for a convergent sequence, especially in spaces that are not complete.
+        15. Every Cauchy sequence is bounded.
+
+        ??? abstract "18/06 Lecture Slides"
+
+            <div>
+                <object data="../../assets/lecture_notes/18062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
+    === "Lecture 6 - 19/06"
+
+        1. Every convergent sequence is Cauchy.
+        2. The metric spaces $(0, 1), \mathbb{Q}$ and $C[0, 1]$ with the $d_1$ metric are not complete.
+        3. A complete metric space is one in which every Cauchy sequence converges to a point in that space.
+        4. $\mathbb{R}$ (the set of real numbers) is complete.
+        5. Any set with the discrete metric is complete.
+        6. The set of $n$-tuples with any $d_p$ metric is complete.
+        7. A subset of a complete metric space is complete (with the induced metric) if and only if it is closed.
+        8. The metric space $C[0, 1]$ with $d_\infty$ metric is complete.
+        9. This extends to the space $C(I, J)$ where $I$ and $J$ are subsets of $\mathbb{R}$, with $I$ closed and bounded, and $J$ closed.
+        10. In every metric space, the set of all Cauchy sequences has a natural equivalence relation.
+        11. This relation is an equivalence relation, meaning it is reflexive, symmetric, and transitive.
+        12. The set of Cauchy sequences under this equivalence splits into equivalence classes.
+        13. If one sequence in an equivalence class converges, then all sequences in that class also converge to the same limit.
+        14. The set of all equivalence classes can be given a metric induced by the original metric space.
+
+        ??? abstract "19/06 Lecture Slides"
+
+            <div>
+                <object data="../../assets/lecture_notes/19062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
 Recall the definition of a limit $\lim_{x \to a} f(x) = b$ means that "for any number $\epsilon > 0$, there is a number $\delta(\epsilon)$ such that $|f(x) - b| < \epsilon$ whenever $|x - a| < \delta$".
 
 ## What is a metric space?
 
-A __metric space__ is a pair $(X, d)$, where $X$ is a (non-empty) set and $d: X \times X \to [0, \infty)$ is a function, such that the following conditions hold for all $x, y, z \in X$:
+A **metric space** is a pair $(X, d)$, where $X$ is a (non-empty) set and $d: X \times X \to [0, \infty)$ is a function, such that the following conditions hold for all $x, y, z \in X$:
 
 1. $d(x, y) = 0$ if and only if $x = y$
 2. $d(x, y) = d(y, x)$
@@ -128,7 +187,7 @@ A sequence in a set $X$ is a function from $\mathbb{N}$ (or $\mathbb{Z}_+$) to $
 
 Recall: a sequence $\{x_n \}_{n = 0}^\infty \subset \mathbb{R}$ converges to a limit $x \in \mathbb{R}$ if for every $\epsilon > 0$, there is a $K(\epsilon) \in \mathbb{N}$ such that $|x_n - x| < \epsilon$ whenever $n > K(\epsilon)$.
 
-__Theorem:__ A sequence in a metric space can have at most one limit.
+**Theorem:** A sequence in a metric space can have at most one limit.
 
 <!-- !!! example
 
@@ -136,10 +195,10 @@ __Theorem:__ A sequence in a metric space can have at most one limit.
 
 ## Topology of Metric Spaces
 
-For a point $x$ in a metric space $(X, d)$ and a number $\epsilon > 0$, define the (open) __$\epsilon$-ball__
+For a point $x$ in a metric space $(X, d)$ and a number $\epsilon > 0$, define the (open) **$\epsilon$-ball**
 
 \[
-    B(x, \epsilon) = \{ y \in X : d(y, x) < \epsilon \}
+B(x, \epsilon) = \{ y \in X : d(y, x) < \epsilon \}
 \]
 
 !!! example
@@ -148,16 +207,16 @@ For a point $x$ in a metric space $(X, d)$ and a number $\epsilon > 0$, define t
     - For $X = \mathbb{R}^2, d = d_2$ then $B(\mathbf{0}, 1) = \{ \mathbf{x} \in \mathbb{R}^2 : |x_1|^2 + |x_2|^2  < 1 \}$.
     - For $X = \mathbb{R}, d = |\cdot|$-value then $B(a, \epsilon) = \{ x \in \mathbb{R} : |x - a| < \epsilon \}$.
 
-Let $(X, d)$ be a metric space, and consider $Y \subseteq X$. Define the __interior__
+Let $(X, d)$ be a metric space, and consider $Y \subseteq X$. Define the **interior**
 
 \[
-    \mathrm{Int}(Y) = \{ y \in Y: \exists \epsilon > 0 \text{ such that } B(y, \epsilon) \subseteq Y \}
+\mathrm{Int}(Y) = \{ y \in Y: \exists \epsilon > 0 \text{ such that } B(y, \epsilon) \subseteq Y \}
 \]
 
-Define the __boundary__
+Define the **boundary**
 
 \[
-    \mathrm{Bd}(Y) = X \setminus (\mathrm{Int}(Y) \cup \mathrm{Int}(Y^c)).
+\mathrm{Bd}(Y) = X \setminus (\mathrm{Int}(Y) \cup \mathrm{Int}(Y^c)).
 \]
 
 Then we can write $X = \mathrm{Int}(Y) \cup \mathrm{Bd}(Y) \cup \mathrm{Int}(Y^c)$.
@@ -170,20 +229,27 @@ Then we can write $X = \mathrm{Int}(Y) \cup \mathrm{Bd}(Y) \cup \mathrm{Int}(Y^c
 
     - ($\impliedby$) Suppose for all $\epsilon > 0$ we have $B(x, \epsilon) \not\subseteq Y$ and $B(x, \epsilon) \not\subseteq Y^c$. Then this means $x \notin \mathrm{Int}(Y)$ and $x \notin \mathrm{Int}(Y^c)$. However by the result, this means $x \in x \in \mathrm{Bd}(Y) = \mathrm{Bd}(Y^c)$.
 
-A subset $Y$ in $(X, d)$ is __open__ if $Y = \mathrm{Int}(Y)$.
+A subset $Y$ in $(X, d)$ is **open** if $Y = \mathrm{Int}(Y)$.
 
-A subset $Y$ in $(X, d)$ is __closed__ if $Y^c$ is open.
+A subset $Y$ in $(X, d)$ is **closed** if $Y^c$ is open.
 
-__Lemma__: Let $(X, d)$ be a metric space, and let $Y \subseteq X$. Then $\mathrm{Int}(\mathrm{Int}(Y)) = \mathrm{Int}(Y)$,
+!!! warning
+
+    Is $[0, 1]$ open? Is $[0, 1]$ closed?
+
+    - If $Y = [0, 1] \subseteq \mathbb{R} = X$. Then $Y$ is closed but not open.
+    - If $Y = [0, 1] \subseteq [0, 1] = X$. Then $Y$ is both closed and open.
+
+**Lemma**: Let $(X, d)$ be a metric space, and let $Y \subseteq X$. Then $\mathrm{Int}(\mathrm{Int}(Y)) = \mathrm{Int}(Y)$,
 
 ??? success "Proof"
 
     - $\mathrm{Int}(\mathrm{Int}(Y)) \subseteq \mathrm{Int}(Y)$. Let $Z = \mathrm{Int}(Y)$. Then by definition $\mathrm{Int}(Z) \subseteq Z$, which proves the result.
     - $\mathrm{Int}(Y) \subseteq \mathrm{Int}(\mathrm{Int}(Y))$. Consider $x \in \mathrm{Int}(Y)$ then $\exists \epsilon_0 > 0$ such that $B(x, \epsilon_0) \subseteq Y$. Now we consider $y \in B(x, \epsilon_0)$. We argue that $y$ is an interior point of $Y$ by showing $B(y, \delta) \subseteq Y$. Choose $\delta = \epsilon - d(x, y) > 0$. Then for $z \in B(y, \delta)$ this implies $d(y, z) < \delta$. Then by the triangle inequality, $d(z, y) \leq d(z, y) + d(y, z) < \epsilon_0 - d(x, y) + d(y, x) = \epsilon_0$. So $z \in B(x, \epsilon_0)$ which means $B(y, \delta) \subseteq Y$. This implies $y \in \mathrm{Int}(Y)$, further implying $B(x, \epsilon) \subseteq \mathrm{Int}(Y)$ which in turn shows $x \in \mathrm{Int}(\mathrm{Int}(Y))$ which proves the result.
 
-__Corollary__: For a subset $Y$ of a metric space $(X, d)$, the set $\mathrm{Int}(Y)$ is open.
+**Corollary**: For a subset $Y$ of a metric space $(X, d)$, the set $\mathrm{Int}(Y)$ is open.
 
-The __closure__ of $Y$ is $\mathrm{Cl}(Y) = \mathrm{Int}(Y) \sqcup \mathrm{Bd}(Y)$ (disjoint union).
+The **closure** of $Y$ is $\mathrm{Cl}(Y) = \mathrm{Int}(Y) \sqcup \mathrm{Bd}(Y)$ (disjoint union).
 
 !!! example
 
@@ -196,4 +262,97 @@ The __closure__ of $Y$ is $\mathrm{Cl}(Y) = \mathrm{Int}(Y) \sqcup \mathrm{Bd}(Y
 
     Hence since $\mathbb{R} = \mathrm{Int}(\mathbb{R}) \cup \mathrm{Bd}(\mathbb{R}) \cup \mathrm{Int}(\mathbb{R}^c) = \mathbb{R} \cup \emptyset \cup \emptyset$. So the closure of $\mathbb{R}$ is $\mathbb{R}$.
 
-We say $Y$ is __dense__ if $\mathrm{CI}(Y) = X$.
+We say $Y$ is **dense** if $\mathrm{CI}(Y) = X$.
+
+Let $(X, d)$ be a metric space.  An **open neighbourhood** of a point $x \in X$ is an open set $V \subseteq X$ such that $x \in V$. A **neighbourhood** of $x$ is a set $U \subseteq X$ such that there is an open neighbourhood $V$ of $x$ with $V \subseteq U$.
+
+The set of open sets in a metric space $X$ is called the __topology__ of $X$. We will denote the topology by $\mathcal{O}(X)$.
+
+Let $(X, d)$ be a metric space. The topology has the following properties:
+
+1. $\emptyset, X, \in \mathcal{O}(X)$
+2. If $\{V_i\}_{i \in I} \subseteq \mathcal{O}(X)$, then $\bigcup_{i \in I} V_i \in \mathcal{O}(X)$. ("a union of open sets is open")
+3. If $V_1, V_2 \in \mathcal{O}(X)$, then $V_1 \cap V_2 \in \mathcal{O}(X)$. ("a finite intersection of open sets is open")
+
+**Theorem**: Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. A function $f: X \to Y$ is continuous if and only if
+
+\[
+    \text{For every } V \in \mathcal{O}(Y), \text{ we have } f^{-1}(V) \in \mathcal{O}(X).
+\]
+
+(In words: "the pre-image of every open set is open.")
+
+**Theorem**: Let $(X, d_X), (Y, d_Y), (Z, d_Z)$ be metric spaces, and suppose $f: X \to Y$ and $g: Y \to Z$ are continuous functions. Then the composition $g \circ f: X \to Z$ is continuous.
+
+## Boundedness
+
+**Lemma**: Let $(X, d)$ be a metric space, and let $\emptyset \neq Y \subseteq X$. The following are equivalent:
+
+1. For every $x \in X$, there is an $R(x) > 0$ such that $Y \subseteq B(x, R)$.
+2. There exists $y \in Y$ and $R$ such that $Y \subseteq B(y, R)$
+3. There is an $R > 0$ such that for any $y_1, y_2 \in Y$, we have $d(y_1, y_2) < R$.
+
+A subset of a metric space $Y \subseteq X$ satisfying these equivalent conditions is called **bounded**. (If $Y = X$ we say that metric space is bounded.)
+
+!!! example
+
+    Let $X = C[0, 1]$, and consider the sequence of functions $\{f_n\}_{n = 1,2, \dots}.
+
+    \[
+        f_n(x) = \begin{cases}
+        n - n^2 x & 0 \leq x \leq \frac{1}{n},
+        0 & \frac{1}{n} < x \leq 1.
+        \end{cases}
+    \]
+
+    Is this sequence bounded?
+
+    Take $x = 0$, then $d_\infty(f_n, x) = \sup_{x \in [0, 1]} |f_n(x)| = n < R(0)$. So the first statement fails, hence the sequence is not bounded.
+
+## Completeness
+
+A sequence $\{ x_n \}_{n = 0}^\infty$ in a metric space $(X, d)$ is a **Cauchy sequence** if for every $\epsilon > 0$, there is a $K(\epsilon)$ such that $d(x_m, x_n) < \epsilon$ whenever $m ,n > K(\epsilon)$.
+
+Every Cauchy sequence is bounded.
+
+Every convergent sequence is a Cauchy sequence.
+
+A metric space $(X, d)$ is called **complete** if every Cauchy sequence in $X$ converges to a point in $X$.
+
+!!! example
+
+    The following are listed below without proof but you should prove them yourself to confirm these results:
+
+    - $(0, 1)$ and $\mathbb{Q}$, with the metrics inherited from $\mathbb{R}$, are not complete.
+    - $C[0, 1]$ with the metric $d_1$ is not complete.
+    - A discrete metric space is complete.
+    - $\mathbb{R}$ (with the usual metric$ is complete).
+    - $(\mathbb{R}^2, d_2) is complete. Similarly, $(\mathbb{R}^n, d_p)$ is complete for any $n$ and any $p \in [1, \infty]$.
+
+**Theorem**: Let $(X, d)$ be a complete metric space, and let $Y \subseteq X$. Then $Y$ is complete (with the subset metric) if and only if $Y$ is closed.
+
+**Theorem**: The metric space $(C[0, 1], d_\infty)$ is complete.
+
+??? proof "Outline of Proof for Cauchy convergent to a function"
+
+    Given a Cauchy sequence $\{ f_n \}_{n = 0}^\infty$ in $(C[0, 1], d_\infty)$, we want to show that this sequence converges to some function $f$.
+
+    There are three steps:
+    
+    1. Show that for each specific $x \in [0, 1]$, the sequence $\{f_n\}_{n = 0}^\infty$ is a Cauchy sequence in $\mathbb{R}$ (and therefore converges to a number by completeness of $\mathbb{R}$.)
+    2. Define $f(x)$ to be the limit of $\{ f_n \}_{n = 0}^\infty$ for each $x$. Show that $f(x)$ is continuous (and therefore belong to $C[0, 1]$).
+    3. Show that $\{ f_n \}_{n = 0}^\infty$ converges to $f(x)$ in the $d_\infty$ metric.
+
+Two Cauchy sequences $\{ a_n \}_{n = 1}^\infty$ and $\{ b_n \}_{n = 1}^\infty$ in a metric space $(X, d)$ are said to be **equivalent** if the sequence $\{ d(a_n, b_n) \}_{n = 1}^\infty$ converges to $0$ (in $\mathbb{R}$).
+
+Two Cauchy sequences in a complete metric space are equivalent if and only if they have the same limit.
+
+Let $(X, d)$ be a metric space. Let $\bar{X}$ be the set of **equivalence classes** of Cauchy sequences in $X$. We write $[\{a_n\}]$ for the equivalence class of the sequence $\{a_n\}$.
+
+Define $\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)$ as follows:
+
+\[
+    \bar{d}([\{a_n\}], [\{b_n\}]) = \lim_{n \to \infty} d(a_n, b_n)
+\]
+
+(Note that this definition assume that the limit exists, and does not depend on which representatives of the equivalence classes are taken.)
