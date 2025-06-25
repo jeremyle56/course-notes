@@ -144,6 +144,16 @@
                 </object>
             </div>
 
+    === "Lecture 7 - 25/06"
+
+        ??? abstract "25/06 Lecture Slides"
+
+            <div>
+                <object data="../../assets/lecture_notes/25062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
 Recall the definition of a limit $\lim_{x \to a} f(x) = b$ means that "for any number $\epsilon > 0$, there is a number $\delta(\epsilon)$ such that $|f(x) - b| < \epsilon$ whenever $|x - a| < \delta$".
 
 ## What is a metric space?
@@ -333,7 +343,7 @@ A metric space $(X, d)$ is called **complete** if every Cauchy sequence in $X$ c
 
 **Theorem**: The metric space $(C[0, 1], d_\infty)$ is complete.
 
-??? proof "Outline of Proof for Cauchy convergent to a function"
+??? success "Outline of Proof for Cauchy convergent to a function"
 
     Given a Cauchy sequence $\{ f_n \}_{n = 0}^\infty$ in $(C[0, 1], d_\infty)$, we want to show that this sequence converges to some function $f$.
 
@@ -347,7 +357,7 @@ Two Cauchy sequences $\{ a_n \}_{n = 1}^\infty$ and $\{ b_n \}_{n = 1}^\infty$ i
 
 Two Cauchy sequences in a complete metric space are equivalent if and only if they have the same limit.
 
-Let $(X, d)$ be a metric space. Let $\bar{X}$ be the set of **equivalence classes** of Cauchy sequences in $X$. We write $[\{a_n\}]$ for the equivalence class of the sequence $\{a_n\}$.
+**Definition**: Let $(X, d)$ be a metric space. Let $\bar{X}$ be the set of **equivalence classes** of Cauchy sequences in $X$. We write $[\{a_n\}]$ for the equivalence class of the sequence $\{a_n\}$.
 
 Define $\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)$ as follows:
 
@@ -356,3 +366,63 @@ Define $\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)$ as follows:
 \]
 
 (Note that this definition assume that the limit exists, and does not depend on which representatives of the equivalence classes are taken.)
+
+**Theorem**: Let $(X, d)$ be a metric space.
+
+1. The completion $(\bar{X}, \bar{d})$ (as defined above) is a complete metric space.
+2. Consider the function $i: X \to \bar{X}$ which sends $x \in X$ to the equivalence class of the constant sequence $\{ x\}$. Then $i$ is an \textbf{isometry}. (i.e. $\bar{d}(i(x), i(y)) = d(x,y), \forall x,y \in X$), and $i(X)$ is dense in $\bar{X}$.
+3. The completion is unique in the following sense. Suppose $Y$ is another complete metric space and $j: X \to Y$ is an isometry such that $j(X)$ is dense in $Y$. Then there is a bijective isometry $f: Y \to \bar{X}$ such that $f \circ j = i$.
+
+## Normed Spaces
+
+Let $V$ be a vector space (over $k = \mathbb{R}$ or $k = \mathbb{C}$). A **norm** on $V$ is a function
+
+\[
+    \lVert\cdot\rVert: V \to [0, \infty), \quad \mathbf{x} \mapsto \lVert\mathbf{x}\rVert,
+\]
+
+satisfying the following conditions for all $\mathbf{x}, \mathbf{y} \in V$ and $\lambda \in k$
+
+1. $\lVert\mathbf{x}\rVert = 0 \implies \mathbf{x} = \mathbf{0}$
+2. $\lVert\lambda\mathbf{x\rVert} = |\lambda| \cdot \lVert\mathbf{x}\rVert$
+3. $\lVert\mathbf{x + \mathbf{y}}\rVert \leq \lVert\mathbf{x}\rVert + \lVert\mathbf{y}\rVert$.
+
+**Theorem**: Let $(V, \lVert\cdot\rVert)$ be a normed vector space. Then $(V, d_{\lVert\cdot\rVert})$ is a metric space, where $d_{\lVert\cdot\rVert}$ is defined by
+
+\[
+    d_{\lVert\cdot\rVert}(\mathbf{x}, \mathbf{y}) = \lVert\mathbf{x} - \mathbf{y}\rVert, \forall \mathbf{x}, \mathbf{y} \in V.
+\]
+
+A complete normed space is called a **Banach** space.
+
+For $p \in [1, \infty)$, let
+
+\[
+    \ell^p = \{\{x_n\}_{n = 1}^\infty \subset \mathbb{R} : \sum_{n = 1}^\infty |x_n|^p < \infty\},
+\]
+
+which is a vector space with pointwise operations. Define the norm
+
+\[
+    \lVert \{x_n\}_{n=1}^\infty \rVert_p = \left(\sum_{n = 1}^\infty |x_n|^p)^{\frac{1}{p}} \right).
+\]
+
+**Theorem**: The normed vector space $(\ell^p, \lVert \cdot \rVert_p)$ is a Banach space.
+
+??? success "Outline of Proof"
+
+    1. Show that for each coordinate $k \in \mathbb{N}$, we get a Cauchy sequence of numbers.
+    2. Show that the pointwise limit is a sequence in $\ell^p$.
+    3. Show that the sequence (of sequences) converges to the pointwise limit in $d_p$.
+
+An **inner product space** is a vector space $V$ (over $k = \mathbb{R}$ or $k = \mathbb{C}$), together with a function
+
+\[
+    \langle \cdot, \cdot \rangle: V \times V \to k, \quad (\mathbf{x}, \mathbf{y}) \mapsto \langle \mathbf{x}, \mathbf{y} \rangle,
+\]
+
+such that for any $\mathbf{x}, \mathbf{y}, \mathbf{z} \in V$ and $\lambda \in k$, we have
+
+1. $\langle \mathbf{x}, mathbb{x} \rangle > 0$ for $\mathbf{x} \neq \mathbf{0}$
+2. $\langle \mathbf{x}, \mathbf{y} \rangle = \overline{\langle\mathbf{y}, \mathbf{x}\rangle}$
+3. $\langle \mathbf{x} + \lambda\mathbf{y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \lambda \langle \mathbf{y}, \mathbf{z} \rangle$.
