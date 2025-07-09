@@ -274,9 +274,9 @@ The **closure** of $Y$ is $\mathrm{Cl}(Y) = \mathrm{Int}(Y) \sqcup \mathrm{Bd}(Y
 
 We say $Y$ is **dense** if $\mathrm{CI}(Y) = X$.
 
-Let $(X, d)$ be a metric space.  An **open neighbourhood** of a point $x \in X$ is an open set $V \subseteq X$ such that $x \in V$. A **neighbourhood** of $x$ is a set $U \subseteq X$ such that there is an open neighbourhood $V$ of $x$ with $V \subseteq U$.
+Let $(X, d)$ be a metric space. An **open neighbourhood** of a point $x \in X$ is an open set $V \subseteq X$ such that $x \in V$. A **neighbourhood** of $x$ is a set $U \subseteq X$ such that there is an open neighbourhood $V$ of $x$ with $V \subseteq U$.
 
-The set of open sets in a metric space $X$ is called the __topology__ of $X$. We will denote the topology by $\mathcal{O}(X)$.
+The set of open sets in a metric space $X$ is called the **topology** of $X$. We will denote the topology by $\mathcal{O}(X)$.
 
 Let $(X, d)$ be a metric space. The topology has the following properties:
 
@@ -287,7 +287,7 @@ Let $(X, d)$ be a metric space. The topology has the following properties:
 **Theorem**: Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. A function $f: X \to Y$ is continuous if and only if
 
 \[
-    \text{For every } V \in \mathcal{O}(Y), \text{ we have } f^{-1}(V) \in \mathcal{O}(X).
+\text{For every } V \in \mathcal{O}(Y), \text{ we have } f^{-1}(V) \in \mathcal{O}(X).
 \]
 
 (In words: "the pre-image of every open set is open.")
@@ -348,7 +348,7 @@ A metric space $(X, d)$ is called **complete** if every Cauchy sequence in $X$ c
     Given a Cauchy sequence $\{ f_n \}_{n = 0}^\infty$ in $(C[0, 1], d_\infty)$, we want to show that this sequence converges to some function $f$.
 
     There are three steps:
-    
+
     1. Show that for each specific $x \in [0, 1]$, the sequence $\{f_n\}_{n = 0}^\infty$ is a Cauchy sequence in $\mathbb{R}$ (and therefore converges to a number by completeness of $\mathbb{R}$.)
     2. Define $f(x)$ to be the limit of $\{ f_n \}_{n = 0}^\infty$ for each $x$. Show that $f(x)$ is continuous (and therefore belong to $C[0, 1]$).
     3. Show that $\{ f_n \}_{n = 0}^\infty$ converges to $f(x)$ in the $d_\infty$ metric.
@@ -362,7 +362,7 @@ Two Cauchy sequences in a complete metric space are equivalent if and only if th
 Define $\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)$ as follows:
 
 \[
-    \bar{d}([\{a_n\}], [\{b_n\}]) = \lim_{n \to \infty} d(a_n, b_n)
+\bar{d}([\{a_n\}], [\{b_n\}]) = \lim\_{n \to \infty} d(a_n, b_n)
 \]
 
 (Note that this definition assume that the limit exists, and does not depend on which representatives of the equivalence classes are taken.)
@@ -378,7 +378,7 @@ Define $\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)$ as follows:
 Let $V$ be a vector space (over $k = \mathbb{R}$ or $k = \mathbb{C}$). A **norm** on $V$ is a function
 
 \[
-    \lVert\cdot\rVert: V \to [0, \infty), \quad \mathbf{x} \mapsto \lVert\mathbf{x}\rVert,
+\lVert\cdot\rVert: V \to [0, \infty), \quad \mathbf{x} \mapsto \lVert\mathbf{x}\rVert,
 \]
 
 satisfying the following conditions for all $\mathbf{x}, \mathbf{y} \in V$ and $\lambda \in k$
@@ -390,7 +390,7 @@ satisfying the following conditions for all $\mathbf{x}, \mathbf{y} \in V$ and $
 **Theorem**: Let $(V, \lVert\cdot\rVert)$ be a normed vector space. Then $(V, d_{\lVert\cdot\rVert})$ is a metric space, where $d_{\lVert\cdot\rVert}$ is defined by
 
 \[
-    d_{\lVert\cdot\rVert}(\mathbf{x}, \mathbf{y}) = \lVert\mathbf{x} - \mathbf{y}\rVert, \forall \mathbf{x}, \mathbf{y} \in V.
+d\_{\lVert\cdot\rVert}(\mathbf{x}, \mathbf{y}) = \lVert\mathbf{x} - \mathbf{y}\rVert, \forall \mathbf{x}, \mathbf{y} \in V.
 \]
 
 A complete normed space is called a **Banach** space.
@@ -398,13 +398,13 @@ A complete normed space is called a **Banach** space.
 For $p \in [1, \infty)$, let
 
 \[
-    \ell^p = \{\{x_n\}_{n = 1}^\infty \subset \mathbb{R} : \sum_{n = 1}^\infty |x_n|^p < \infty\},
+\ell^p = \{\{x*n\}*{n = 1}^\infty \subset \mathbb{R} : \sum\_{n = 1}^\infty |x_n|^p < \infty\},
 \]
 
 which is a vector space with pointwise operations. Define the norm
 
 \[
-    \lVert \{x_n\}_{n=1}^\infty \rVert_p = \left(\sum_{n = 1}^\infty |x_n|^p)^{\frac{1}{p}} \right).
+\lVert \{x*n\}*{n=1}^\infty \rVert*p = \left(\sum*{n = 1}^\infty |x_n|^p)^{\frac{1}{p}} \right).
 \]
 
 **Theorem**: The normed vector space $(\ell^p, \lVert \cdot \rVert_p)$ is a Banach space.
@@ -418,11 +418,72 @@ which is a vector space with pointwise operations. Define the norm
 An **inner product space** is a vector space $V$ (over $k = \mathbb{R}$ or $k = \mathbb{C}$), together with a function
 
 \[
-    \langle \cdot, \cdot \rangle: V \times V \to k, \quad (\mathbf{x}, \mathbf{y}) \mapsto \langle \mathbf{x}, \mathbf{y} \rangle,
+\langle \cdot, \cdot \rangle: V \times V \to k, \quad (\mathbf{x}, \mathbf{y}) \mapsto \langle \mathbf{x}, \mathbf{y} \rangle,
 \]
 
 such that for any $\mathbf{x}, \mathbf{y}, \mathbf{z} \in V$ and $\lambda \in k$, we have
 
-1. $\langle \mathbf{x}, mathbb{x} \rangle > 0$ for $\mathbf{x} \neq \mathbf{0}$
+1. $\langle \mathbf{x}, \mathbb{x} \rangle > 0$ for $\mathbf{x} \neq \mathbf{0}$
 2. $\langle \mathbf{x}, \mathbf{y} \rangle = \overline{\langle\mathbf{y}, \mathbf{x}\rangle}$
 3. $\langle \mathbf{x} + \lambda\mathbf{y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \lambda \langle \mathbf{y}, \mathbf{z} \rangle$.
+
+!!! example
+
+    Show that if $(V, \langle \cdot, \cdot \rangle)$ is an inner product space, then the function
+
+    \[
+        \lVert \mathbf{x} \rVert = \langle \mathbf{x}, \mathbf{x} \rangle^\frac{1}{2}
+    \]
+
+    gives a norm (and hence a metric) on $V$. (Hint: Use the Cauchy-Schwartz inequality: $|\langle u, v \rangle| \leq \lVert u \rVert \lVert v \rVert$)
+
+    \[
+        \lVert u + v \rVert^2 = \langle u + v, u + v \rangle = \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle = \lVert u \rVert^2 + \lVert v \rVert^2 + 2 \Re(z),
+    \]
+
+    where $z$ = \langle u, v \rangle. Then
+
+    \[
+        \leq # TODO COMPLTE THIS
+    \]
+
+A complte inner product space is called a **Hilbert space**.
+
+!!! example
+
+    1. $\mathbb{R}^n$ is a real Hilbert space with the dot product
+    2. $\mathbb{C}^n$ is a complex Hilbert space with the inner product
+
+        \[
+            \langle (x_1, \dots, x_n), (y_1, \dots, y_n) \rangle = \sum_{k = 1}^n x_k \overline{y_k}.
+        \]
+
+## Contraction Mappings
+
+A **contraction** on a metric space $(X, d)$ is a function $f: X \to X$ such that there is a number $c < 1$ for which
+
+\[
+d(f(x), f(y)) \leq c \cdot d(x, y), \forall x, y \in X.
+\]
+
+**Contraction Mapping Theorem**: Let $(X, d)$ be a complete metric space, and let $f: X \to X$ be a contraction. Then $f$ has a unique **fixed point** $x = f(x)$.
+
+Moreover, for any $x_0 \in X$, the recursively defined sequence $x_{n + 1} = f(x_n)$ converges to the fixed point $x$.
+
+**Picard-Lindelof Theorem**: Consider the differential equation
+
+\[
+y' = \cos(xy).
+\]
+
+Does this have a solution?
+
+??? succcess "Solution"
+
+    Integrate both sides gives, $g(x) = \int_a^x \cos(ty) \, dt + b$. Then we have $T(y) = \int_a^t \cos(ty(t)) \, dx + b$. This means $y(x) \to T(y)(x)
+
+    ## TODO
+
+    X = C(I, J) continious functions $f: I \to J$
+
+    P-L theorem chooses I and J such that $T$ is a contraction
