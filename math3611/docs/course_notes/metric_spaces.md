@@ -146,10 +146,77 @@
 
     === "Lecture 7 - 25/06"
 
+        1. The classes of equivalent Cauchy sequences can be given a metric that turns them into a metric space.
+        2. The definition of this metric requires checking that it is well-defined; that is:
+
+            a. the limit defining the metric is always converging, and
+            b. it is independent of the choice of representatives from each equivalence class.
+
+        3. A careful exposition of the result showing that the completion procedure yields a complete metric space—and that this space is unique up to isometry—can be found in Kolmogorov and Fomin, Section 7.4.
+        4. The space of real numbers $\mathbb{R}$ is the completion of $\mathbb{Q}$ with the absolute value metric.
+        5. The completion of $C[0, 1]$ with the $d_1$ metric is the space of equivalence classes of Lebesgue integrable functions.
+        6. Many of the metric spaces we have encountered can also be viewed as normed spaces.
+        7. A complete normed space is called a Banach space.
+        8. The space $c_{00}$ is a normed space with the $\lVert \cdot \rVert_p$ norm but not Banach.
+        9. The space $\ell^p$ is a Banach space with the $\lVert \cdot \rVert_p$ norm.
+        10. The space $\ell^p$ is the completion of $c_{00}$.
+        11. The proof that $\ell^p$ is a Banach space follows the same strategy as the proof that $C[0, 1]$ is Banach; we studied the argument in detail when we proved that $C[0, 1]$ is a complete metric space.
+        12. Other spaces that fall into this category include $\mathbb{R}^n, \ell^\infty$ and $c_{0}$.
+
         ??? abstract "25/06 Lecture Slides"
 
             <div>
                 <object data="../../assets/lecture_notes/25062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
+    === "Lecture 8 - 26/06"
+
+        1. Some normed spaces can be defined via inner product spaces.
+        2. The norm defined via an inner product is indeed a norm; that is, it satisfies the triangle inequality.
+        3. The key to proving the triangle inequality is the Cauchy–Schwarz inequality.
+        4. This inequality is proved using a neat trick within the setting of inner product spaces.
+        5. A complete inner product space is called a Hilbert space.
+        6. $\mathbb{R}^n$, $\mathbb{C}^n$ and $\ell^2$ are examples of inner product spaces (and hence Hilbert spaces).
+        7. The inner product in $\ell^2$ (and hence its status as a Hilbert space) requires verifying that the defining series always converges.
+        8. $\ell^1$ is an inner product space but not a Hilbert space.
+        9. A contraction is a special class of map that can be used to demonstrate the existence of solutions.
+        10. Contractions are continuous.
+        11. Recursive sequences defined via a contraction are Cauchy, and hence converge in complete metric spaces.
+        12. Contraction Mapping Theorem: A contraction always have a unique fixed point in a complete metric space.
+        13. We can use contractions to prove the existence of solutions to first-order ordinary differential equations (ODEs).
+        15. This result is known as the Picard-Lindelöf Theorem.
+        16. The key idea is to rewrite the ODE as an integral equation and consider the corresponding map.
+        17. This map can be turned into a contraction if the metric space $C(I, J)$ is chosen carefully.
+        18. The Picard–Lindelöf Theorem explains how to choose the intervals $I$ and $J$ to ensure that a contraction is obtained.
+
+        ??? abstract "26/06 Lecture Slides"
+
+            <div>
+                <object data="../../assets/lecture_notes/26062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
+                </object>
+            </div>
+
+    === "Lecture 9 - 02/07"
+
+        1. The Picard–Lindelöf Theorem has two versions of sufficient conditions.
+        2. The conditions on page 109 help prove the theorem by showing the integral operator is a contraction, but are hard to apply in practice.
+        3. A simpler version uses the boundedness of the function $gg$ and its partial derivative with respect to $yy$.
+        4. The link between the two versions is the concept of Lipschitz functions.
+        5. Lipschitz functions lie between continuous and differentiable functions:
+
+            - Every continuously differentiable function with bounded derivative is Lipschitz (by MVT).
+            - Some continuous functions (e.g. $x^{1/3}$) are not Lipschitz.
+            - Some Lipschitz functions (e.g. $|x|$) are not differentiable.
+
+        6. For Picard–Lindelöf, the Lipschitz condition applies to gg with respect to yy; this reduces to boundedness of the yy-partial derivative.
+
+        ??? abstract "02/07 Lecture Slides"
+
+            <div>
+                <object data="../../assets/lecture_notes/02072025-01-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
                 <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
@@ -427,7 +494,7 @@ such that for any $\mathbf{x}, \mathbf{y}, \mathbf{z} \in V$ and $\lambda \in k$
 2. $\langle \mathbf{x}, \mathbf{y} \rangle = \overline{\langle\mathbf{y}, \mathbf{x}\rangle}$
 3. $\langle \mathbf{x} + \lambda\mathbf{y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \lambda \langle \mathbf{y}, \mathbf{z} \rangle$.
 
-!!! example
+<!-- !!! example
 
     Show that if $(V, \langle \cdot, \cdot \rangle)$ is an inner product space, then the function
 
@@ -438,16 +505,18 @@ such that for any $\mathbf{x}, \mathbf{y}, \mathbf{z} \in V$ and $\lambda \in k$
     gives a norm (and hence a metric) on $V$. (Hint: Use the Cauchy-Schwartz inequality: $|\langle u, v \rangle| \leq \lVert u \rVert \lVert v \rVert$)
 
     \[
-        \lVert u + v \rVert^2 = \langle u + v, u + v \rangle = \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle = \lVert u \rVert^2 + \lVert v \rVert^2 + 2 \Re(z),
-    \]
-
-    where $z$ = \langle u, v \rangle. Then
-
-    \[
-        \leq # TODO COMPLTE THIS
+        \lVert u + v \rVert^2 = \langle u + v, u + v \rangle = \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle = \lVert u \rVert^2 + \lVert v \rVert^2 + 2 \mathrm{Re}(z),
     \]
 
-A complte inner product space is called a **Hilbert space**.
+    where $z = \langle u, v \rangle$. Then
+
+    \begin{align*}
+        &\leq \lVert u \rVert^2 + \lVert v \rVert^2 + 2 |\langle u, v \rangle| \\
+        &\leq \lVert u \rVert^2 + \lVert v \rVert^2 + 2\lVert u \rVert \lVert v \rVert \\
+        &= (\lVert u \rVert + \lVert v \rVert)^2
+    \end{align*} -->
+
+A complete inner product space is called a **Hilbert space**.
 
 !!! example
 
@@ -468,22 +537,43 @@ d(f(x), f(y)) \leq c \cdot d(x, y), \forall x, y \in X.
 
 **Contraction Mapping Theorem**: Let $(X, d)$ be a complete metric space, and let $f: X \to X$ be a contraction. Then $f$ has a unique **fixed point** $x = f(x)$.
 
-Moreover, for any $x_0 \in X$, the recursively defined sequence $x_{n + 1} = f(x_n)$ converges to the fixed point $x$.
+Moreover, for any $x_0 \in X$, the recursively defined sequence $x_{n + 1} = f(x_n)$ converges to the fixed point $x$.
 
-**Picard-Lindelof Theorem**: Consider the differential equation
+<!-- **Picard-Lindelof Theorem**: Consider the differential equation
 
 \[
 y' = \cos(xy).
-\]
+\]
 
 Does this have a solution?
 
 ??? succcess "Solution"
 
-    Integrate both sides gives, $g(x) = \int_a^x \cos(ty) \, dt + b$. Then we have $T(y) = \int_a^t \cos(ty(t)) \, dx + b$. This means $y(x) \to T(y)(x)
-
-    ## TODO
+    Integrate both sides gives, $y(x) = \int_a^x \cos(ty(t)) \, dt + b$. Then we have $T(y)(x) = \int_0^x \cos(ty(t)) \, dt + b$.
+    This means $y(x) \to T(y)(x)
 
     X = C(I, J) continious functions $f: I \to J$
 
-    P-L theorem chooses I and J such that $T$ is a contraction
+    P-L theorem chooses I and J such that $T$ is a contraction. -->
+
+Let $X \subseteq \mathbb{R}$. A function $f: X \to \mathbb{R}$ is called **Lipschitz continuous** if there is a $K > 0$ such that
+
+\[
+|f(x) - f(y)| \leq K|x - y|, \forall x, y \in X.
+\]
+
+The number $K$ is then called a **Lipschitz constant** for $f$.
+
+If $X \subseteq \mathbb{R}^2$, then $f: X \to \mathbb{R}$ is **Lipschitz continuous in the second variable** if there is a $K > 0$ such that
+
+\[
+|f(x, y_1) - f(x, y_2)| \leq K \cdot |y_1 - y_2|, \forall (x, y_1), (x, y_2) \in X.
+\]
+
+**Theorem (Picard–Lindelöf):** Let $g$ be a continous function on a neighbourhood of $(a, b) \in \mathbb{R}^2$ which is Lipschitz continuous in the second variable. Then there is an interval around $a$ on which the differential equation
+
+\[
+y' = g(x, y), \quad y(a) = b
+\]
+
+has a unique solution.
