@@ -38,7 +38,6 @@
 
             <div>
             <object data="../../assets/lecture_notes/11062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-            <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
             </object>
             </div>
 
@@ -81,7 +80,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/12062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -89,7 +87,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/12062025-boundary_and_interior_of_c_00.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -115,7 +112,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/18062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -140,7 +136,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/19062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -167,7 +162,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/25062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -195,7 +189,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/26062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 
@@ -217,7 +210,6 @@
 
             <div>
                 <object data="../../assets/lecture_notes/02072025-01-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-                <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
                 </object>
             </div>
 

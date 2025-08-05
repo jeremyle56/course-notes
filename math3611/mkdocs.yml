@@ -97,8 +97,8 @@ nav:
       - course_notes/cardinality.md
       - course_notes/metric_spaces.md
       - course_notes/sequence_and_series_of_functions.md
-      # - course_notes/topological_spaces.md
-      # - course_notes/compactness_and_connectedness.md
+      - course_notes/topological_spaces.md
+      - course_notes/compactness_and_connectedness.md
   - Problem Sheets:
       - problem_sheets/index.md
       - problem_sheets/1.md

@@ -18,7 +18,6 @@
 
             <div>
             <object data="../../assets/lecture_notes/04062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-            <embed src="../../assets/04062025-lecture-slides.pdf.pdf" type="application/pdf"/>
             </object>
             </div>
 
@@ -42,7 +41,6 @@
 
             <div>
             <object data="../../assets/lecture_notes/05062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
-            <embed src="../../assets/05062025-lecture-slides.pdf.pdf" type="application/pdf"/>
             </object>
             </div>
 

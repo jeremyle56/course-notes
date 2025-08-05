@@ -86,7 +86,7 @@ Let $\sum_{n = 0}^\infty a_n x^n$ be a power series, and suppose the sequence $\
     b_n = \sup\{|a_n|^{\frac{1}{n}}, |a_{n + 1}|^{\frac{1}{n + 1}}, |a_{n + 2}|^{\frac{1}{n + 2}}, \dots\}.
 \]
 
-and let 
+and let
 
 \[
     b = \lim_{n \to \infty} b_n
