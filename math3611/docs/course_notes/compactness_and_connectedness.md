@@ -11,6 +11,24 @@
             </object>
             </div>
 
+    === "Lecture 16 - 06/08"
+
+        ??? abstract "06/08 Lecture Slides"
+
+            <div>
+            <object data="../../assets/lecture_notes/06082025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+            </object>
+            </div>
+
+    === "Lecture 16 - 07/08"
+
+        ??? abstract "07/08 Lecture Slides"
+
+            <div>
+            <object data="../../assets/lecture_notes/07082025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+            </object>
+            </div>
+
 ## Introduction
 
 A topological space $(X, \tau)$ is **compact** if for every $\{V_i\}_{i \in I} \subseteq \tau$ such that
