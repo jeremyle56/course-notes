@@ -1,0 +1,35 @@
+\section{Neural Learning}
+
+\subsection{The Multi-layer Perceptron}
+
+Perceptrons are linear models with a (discontinuous) activation function, i.e., a threshold on the output. Linear units are differentiable, but do not have a non-linear activation function, so combining multiple linear units is still a linear model. \\
+
+Sigmoid unit is the same as a perceptron expect that the step function has been replaced by a smoothed version, a sigmoid function.
+
+The sigmoid function has a nice property:
+
+\[\sigma(x) = \frac{1}{1 + e^{-x}}, \quad \frac{d\sigma(x)}{dx} = \sigma(x)(1 - \sigma(x)).\]
+
+Notation:
+\begin{itemize}
+    \item \(x_{ji} =\) the \(i\)th input to unit \(j\)
+    \item \(w_{ji} =\) weight associated with \(i\)th input to unit \(j\)
+    \item \(net_j = \sum_i w_{ji}x_{ji}\) = (weight sum of inputs for unit \(j\))
+    \item \(o_j =\) output computed by unit \(j\)
+    \item \(t_j =\) the target output for unit \(j\)
+    \item \(\sigma =\) the sigmoid function
+    \item \(outputs =\) the set of units in the final layer of the network
+    \item \(Downstream(j) =\) the set of units whose immediate inputs include the output of unit \(j\)
+\end{itemize}
+
+\subsection{Back-Propagation}
+
+Spam chain rule. Back-propagation is ``just the chain rule'' of calculus
+
+\[\frac{dz}{dx} = \frac{dz}{dy}\frac{dy}{dx}\]
+
+Jacobian times gradient
+
+\[\nabla_{\mathbf{x}} z = \left(\frac{\partial \vec{y}}{\partial \vecx}\right)^\top \nabla_{\vec{y}} z\]
+
+But it's a particular implementation of the chain rule on graphs. Uses dynamic programming (table filling), avoids recomputing repeated subexpressions with a speed vs. memory tradeoff.

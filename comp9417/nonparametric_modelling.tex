@@ -1,0 +1,115 @@
+\section{Nonparametric Modelling}
+
+\subsection{Distances}
+
+If \(\mathcal{X} = \mathbb{R}^d\), the Minkowski distance of order \(p > 0\) between \(\vec{x}, \vec{y} \in \mathcal{X}\) is defined as:
+
+\[\mathrm{Dis}_p(\vec{x}, \vec{y}) = \left(\sum_{j = 1}^d |x_j - y_j|^p\right)^{1 / p} = \lVert \vec{x} - \vec{y}\rVert_p\]
+where, for some \(\vec{z} \in \mathcal{X}, \lVert \vec{z} \rVert_p = \left(\sum_{j = 1}^d |z_j|^p\right)^{1/p}\) is the \(p\)-norm of the vector \(\vec{z}\).
+
+\textbf{Theorem:} The arithmetic mean minimises squared Euclidean distance. The arithmetic mean \(\mu\) of a set of data points \(D\) in a Euclidean space is the unique point that minimises the sum of squared Euclidean distances to those data points.
+
+\subsection{Nearest Neighbour}
+
+Stores all training examples \((x_i, f(x_i))\).
+
+Nearest neighbour:
+\begin{itemize}
+    \item Given query instance \(x_q\), first locate nearest training example \(x_n\), then estimate \(\hat{f}(x_q) \leftarrow f(x_n)\).
+\end{itemize}
+
+\(k\)-Nearest neighbour:
+\begin{itemize}
+    \item Given \(x_q\), take vote among its \(k\) nearest neighbours (if discrete-valued target function)
+    \item take mean of \(f\) values of \(k\) nearest neighbours (if real-valued)
+    \[\hat{f}(x_q) \leftarrow \frac{\sum_{i = 1}^k f(x_i)}{k}\]
+\end{itemize}
+
+\subsubsection{\(k\)-Nearest Neighbour (\(k\)NN) Algorithm}
+
+Training algorithm:
+\begin{itemize}
+    \item For each training example \((x_i, f(x_i))\), add the example to the list \textit{training\_examples}.
+\end{itemize}
+
+Classification algorithm:
+\begin{itemize}
+    \item Given a query instance \(x_q\) to be classified,
+    \begin{itemize}
+        \item Let \(x_1 \dots x_k\) be the \(k\) instances from \textit{training\_examples} that are nearest to \(x_q\) by the distance function
+        \item Return
+        \[\hat{f}(x_q) \leftarrow \argmax_{y \in \mathcal{Y}} \sum_{i = 1}^k I[y, f(x_i)]\]
+        where \(I[a, b] = 1\) if \(a = b\) and 0 otherwise.
+    \end{itemize}
+\end{itemize}
+
+Use Nearest Neighbour when
+\begin{itemize}
+    \item Instances map to points in \(\mathbb{R}^d\)
+    \item Low-dimensional data, say less than 20 features per instance (Curse of Dimensionality)
+    \item Lots of training data
+    \item Target function (classification or regression) is ``local''
+    \item No requirement for ``explanatory'' model to be learned
+    \item Small \(k\) has low bias, high variance. Increasing \(k\) increases bias and decreases variance.
+\end{itemize}
+
+\subsection{Tree Learning}
+
+\subsubsection{Top-Down Induction of Decision Trees (TDIDT)}
+
+\begin{enumerate}
+    \item Select \(A\) as the ``best'' decision attribute for the next \textit{node}
+    \item Assign \(A\) as decision attribute for \textit{node}
+    \item For each value of \(A\), create new descendant of \textit{node}
+    \item Sort training examples to leaf nodes
+    \item If training examples perfectly classified, then STOP, else iterate over new leaf nodes
+\end{enumerate}
+
+\subsubsection{Information Gain}
+
+Entropy measures the ``impurity'' of \(S\). \(Entropy(S) = \) expected number of bits needed to encode class (\(\oplus\) or \(\ominus\)) of randomly drawn member of \(S\) (under the optimal, shortest-length code).
+
+\[Entropy(S) = -p_\oplus \log_2 p_\oplus - p_\ominus \log_2 p_\ominus\]
+
+\(Gain(S, A) = \) expected reduction in entropy due to sorting on \(A\).
+
+\[Gain(S, A) \equiv Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|}Entropy(S_v)\]
+
+\subsubsection{Overfitting}
+
+To avoid overfitting in Tree learning there are two main approaches
+\begin{itemize}
+    \item \textbf{pre-pruning}: stop growing when further data splits are not useful
+    \item \textbf{post-pruning} grow full tree, then remove sub-trees which may be overfitting
+\end{itemize}
+
+Post-pruning more common:
+\begin{itemize}
+    \item can prune using a pessimistic estimate of error
+    \begin{itemize}
+        \item measure training set error
+        \item adjust by a factor dependent on ``confidence'' hyperparameter
+    \end{itemize}
+    \item or can use cross-validation to estimate error during pruning
+\end{itemize}
+
+\subsubsection{Regression Trees}
+
+Difference to decision trees:
+\begin{itemize}
+    \item Splitting criterion: minimising intra-subset variation
+    \item Pruning criterion: based on numeric error measure
+    \item Leaf node predicts average class values of training instances reaching that node
+\end{itemize}
+
+Can approximate piecewise constant functions, easy to interpret, more sophisticated version: model trees.
+
+% tree learning as variance reduction slide 63
+
+\subsubsection{Model Trees}
+\begin{itemize}
+    \item Like regression trees but with linear regression functions at each node
+    \item Linear regression applied to instances that reach a node after full tree has been built
+    \item Only a subset of the attributes is used for linear regression. Attributes occurring in subtree (+ maybe attributes occurring in path to the root)
+    \item Fast: overhead for linear regression not large because usually only a small subset of attributes is used in tree
+\end{itemize}

@@ -1,0 +1,75 @@
+name: Deploy Site
+
+on:
+  push:
+    paths:
+      - '**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the current branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-git-committers-plugin-2 \
+            mkdocs-git-revision-date-localized-plugin
+
+      - name: Setup Git credentials
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare branch, build, commit and push to gh-pages
+        run: |
+          # Checkout gh-pages branch based on source branch
+          git checkout -B gh-pages ${{ github.ref_name }}
+
+          # Define list of MkDocs courses
+          COURSES=("math3611")
+
+          # Loop through courses and build each
+          for COURSE in "${COURSES[@]}"; do
+            if [ -d "${COURSE}" ]; then
+              echo "Building ${COURSE}..."
+              mv "$COURSE" "${COURSE}_prebuild"
+              cd "${COURSE}_prebuild"
+              mkdocs build -d "../${COURSE}"
+              cd ..
+            else
+              echo "Directory ${COURSE} does not exist. Skipping..."
+            fi
+          done
+
+          AU_TIME=$(TZ="Australia/Sydney" date +"%Y-%m-%d %H:%M:%S %Z")
+          COMMIT_MSG="📘 Deploy from branch ${{ github.ref_name }} on ${AU_TIME}"
+
+          git add .
+          git commit -m "${COMMIT_MSG}" || echo "No changes to commit."
+          git push origin gh-pages --force

@@ -1,0 +1,119 @@
+\section{Regression}
+
+\subsection{Introduction to Regression}
+
+A regression equation a simple model of numerical prediction. This models an output \(y\) as a function of input \(x\). Given a set of data:
+
+\[(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\]
+
+If there is a linear relationship, simple linear regression should be a suitable model:
+\[\hat{y} = a + bx\]
+
+For each \(x_i\) in the data, we have a corresponding \(y_i\), and a corresponding prediction \(\hat{y}_i = a + bx_i\). The difference \(e_i = y_i - \hat{y}_i\) between the actual and predicted values of our model tells us something about how well it fits the data.
+
+\subsection{Covariance and Correlation}
+
+The correlation coefficient is a number between -1 and +1 that indicates whether a pair of variables \(X\) and \(Y\) are associated or not, and whether the scatter in the association is high or low. \\
+
+Only appropriate when X and Y are roughly linearly associated. \\
+
+Correlation between \(X\) and \(Y\) as a population quantity is
+\[r = \frac{\cov(X, Y)}{\sqrt{\var(X)}\sqrt{\var(Y)}}\]
+where given data \(((x_1, y_2), (x_2, y_2), \dots, (x_n, y_n))\),
+\[\var(X) = \frac{1}{n - 1} \sum(x_i - \overline{x})^2, \quad \var(Y) = \frac{1}{n - 1}\sum(y_i - \overline{y})^2, \quad \cov(X, Y) = \frac{1}{n - 1}\sum(x_i - \overline{x})(y_i - \overline{y}).\]
+
+The sign of \(r\) is a quick way to checking whether there is some linear association, and the sign gives you the direction of the association. However correlation coefficient does not model any relationship.
+
+\subsection{Multivariate Regression}
+
+Data has \(p\) numeric features, and we need numeric prediction \(\implies\) regression. \\
+
+Linear models, i.e., outcomes is \textit{linear} combinations of attributes
+\[y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_p x_p\]
+
+\textbf{Predicted} value for first training instance \(\vec{x}^{(1)}\) is:
+\[b_0x_0^{(1)} + b_1x_1^{(1)} + \dots + b_px_p^{(1)} = \sum_{i=0}^p b_ix_i^{(1)}\]
+
+\(p + 1\) weights or coefficients must be learned on training data. We have \(x_0^{(1)} = 1\). \\
+
+Difference between predicted and actual values is the error. \(p + 1\) coefficients are chosen so that mean of sum of squared errors on all instances in training data is minimized. \\
+
+Mean Squared Error (MSE):
+\[\frac{1}{n} \sum_{j = 1}^n \left(y^{(j)} - \sum_{i = 0}^p b_ix_i^{(j)}\right)^2\]
+
+The solution for the model parameters \(\theta\) under univariate linear regression is:
+\[\hat{b} = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top \mathbf{y})\]
+
+\subsection{Optimization by Gradient Descent}
+
+We want to
+
+\[\underset{\text{maximise}}{\mathbf{x}} f(\mathbf{x}) \text{ subject to } \mathbf{x} \in \mathcal{X} \]
+
+which is equivalent to
+
+\[\underset{\text{minimise}}{-\mathbf{x}} f(\mathbf{x}) \text{ subject to } \mathbf{x} \in \mathcal{X} \]
+
+\begin{itemize}
+    \item The problem is to find some \(\vec{x}\) which is called a design point, which is a \(p\)-dimensional vector of values for \(p\) design variables.
+    \item These values are manipulated by an optimization algorithm to find a minimizer, a solution \(\mathbf{x}^*\) that minimizes the objective function \(f\).
+    \item A solution must be an element of the feasible set \(\mathcal{X}\), and may be subject to additional constraints called constrained optimization.
+\end{itemize}
+
+A general iterative algorithm to optimise some function \(f\):
+\begin{enumerate}
+    \item start with initial point \(\mathbf{x} = \mathbf{x}_0\)
+    \item select a search direction \(\mathbf{g}\), usually to decrease \(f(\mathbf{x})\)
+    \item select a step length \(\alpha\)
+    \item set \(\mathbf{s} = \alpha\mathbf{g}\)
+    \item set \(\mathbf{x} = \mathbf{x} + \mathbf{s}\)
+    \item go to step 2, unless convergence criteria are met
+\end{enumerate}
+
+\subsubsection{Batch Mode Gradient Descent}
+
+Do until termination condition is satisfied
+\begin{itemize}
+    \item Compute the gradient \(\nabla E_D[\mathbf{w}]\)
+    \item \(\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla E_D[\mathbf{w}]\)
+\end{itemize}
+
+\subsubsection{Incremental mode (Stochastic) Gradient Descent}
+
+Do until satisfied
+\begin{itemize}
+    \item For each training example \(d\) in \(D\)
+    \begin{itemize}
+        \item Compute the gradient \(\nabla E_d[\mathbf{w}]\)
+        \item \(\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla E_D[\mathbf{w}]\)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Regularisation}
+
+Regularisation is a general method to avoid overfitting by applying additional constraints to the weight vector. A common approach is to make sure the weights are, one average, small in magnitude: this is referred to as shrinkage.
+
+For example, MSE as a loss function given data \((\mathbf{x_1}, y_1), \dots, (\mathbf{x_n}, y_n)\):
+
+\[\mathcal{L}(\theta) = \frac{1}{n}\sum_{i = 1}^n (y_i - f_\theta(\mathbf{x}_1))^2\]
+and with a penalty function:
+\[\mathcal{L}(\theta) = \frac{1}{n}\sum_{i = 1}^n (y_i - f_\theta(\mathbf{x}_1))^2 + \lambda\sum_j \theta_j^2\]
+or:
+\[\mathcal{L}(\theta) = \frac{1}{n}\sum_{i = 1}^n (y_i - f_\theta(\mathbf{x}_1))^2 + \lambda\sum_j |\theta_j|\]
+
+\subsubsection{Regularised Multivariate Least-Squares Regression}
+
+The multivariate least-squares regression problem is often written as an optimisation problem using vector notation:
+\[\mathbf{w}^* = \argmin_{\mathbf{w}} (\mathbf{y} - \mathbf{Xw})^\top(\mathbf{y} - \mathbf{Xw})\]
+where \(\mathbf{w}\) represents the parameters as ``weights''. The regularised versions of this optimisation is then as follows:
+\[\mathbf{w}^* = \argmin_{\mathbf{w}} (\mathbf{y} - \mathbf{Xw})^\top(\mathbf{y} - \mathbf{Xw}) + \lambda\lVert\mathbf{w}\rVert^2\]
+where \(\lVert\mathbf{w}\rVert^2 = \sum_i w_i^2\) is the squared norm of the parameters or weights vector \(\mathbf{w}\), or, equivalently, the dot product \(\mathbf{w}^\top \mathbf{w}\); \(\lambda\) a scalar determining the amount of regularisation. \\
+
+This regularisation problem still has a closed-form solution:
+\[\hat{\mathbf{w}} = (\mathbf{X}^\top \mathbf{X} + \lambda \mathbf{I})^{-1}\mathbf{X}^\top \mathbf{y}\]
+where \(\mathbf{I}\) denotes the identity matrix.
+
+\subsection{Bias-Variance Decomposition}
+
+It can be shown that
+\[\operatorname{MSE}(\theta) := \var(\theta) + \bias(\theta)^2.\]

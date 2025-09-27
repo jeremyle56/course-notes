@@ -42,6 +42,10 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 - [MATH3711 (Higher Algebra)](./math3711/math3711.pdf)
 - [MATH5425 (Graph Theory)](./math5425/math5425.pdf)
 
+## 2025 T2
+
+- [MATH3611 (Higher Analysis)](./math3611/)
+
 ### Issues
 
 If you spot any issues, mistakes or typos within the notes feel free to create a pull request with the corrections, or mention it in an `issue`.
