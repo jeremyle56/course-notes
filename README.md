@@ -45,6 +45,12 @@ Notes are deployed at: [https://jeremyle56.github.io/course-notes/](https://jere
 ## 2025 T2
 
 - [MATH3611 (Higher Analysis)](./math3611/)
+- [COMP9417 (Machine Learning and Data Mining)](./comp9417/comp9417.pdf)
+
+## 2025 T3
+
+- [MATH3171 (Linear and Discrete Optimization Modelling)](./math3171/math3171.pdf)
+- [MATH3511 (Transformations, Groups and Geometry)](./math3511/math3511.pdf)
 
 ### Issues
 

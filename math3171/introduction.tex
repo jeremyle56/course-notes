@@ -1,0 +1,78 @@
+\chapter{Introduction to Optimization}
+
+\section{Optimization: An Introduction}
+
+Many problems we counter in a large number of area entail trying to achieve the ``best'' outcome subject to some ``restrictions''. The mathematical field that encompasses these problems is called Optimization. \\
+
+An optimization problem consist of three parts: decision variables, object functions and constraints.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item \textbf{Decision variables}: what can you change or what  you wish to determine.
+
+          Denote the decision variable \(\fx \in H\) where \(H\) is a finite dimensional space. For example,
+          \begin{itemize}
+              \item \(H = \bR^n\) and the decision variable is a vector \(\fx \in \bR^n\), the number of variables \(n\).
+                    \begin{itemize}
+                        \item Column vector \(\fx = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix}\);
+                        \item Univariate: \(n = 1\);
+                        \item Multivariate: \(n = 2, 3, 4, \dots\) up to millions;
+                    \end{itemize}
+              \item \(H = \bR^{p \times n}\) where \(\bR^{p \times n}\) is the set of \((p \times n)\) matrices, and the decision variable \(\fx = X \in \bR^{p \times n}\) is an \((p \times n)\) matrix.
+          \end{itemize}
+    \item \textbf{Objective functions}: a mathematical function of the variables quantifying the idea of ``best''.
+          \begin{itemize}
+              \item \(H = \bR^n\), the decision variable is a vector \(\fx \in \bR^n\) and objective function \(f: \bR^n \to \bR\). For example,
+                    \begin{itemize}
+                        \item Linear: \(f(\fx) = \fc^T \fx, \quad \fc \in \bR^n\) fixed;
+                        \item Affine: \(f(\fx) = \fc^T \fx + \gamma, \quad \fc \in \fx^n, \gamma \in \bR\) fixed;
+                        \item Quadratic: \(f(\fx) = \frac{1}{2}\fx^T G\fx + \fc^T \fx + \gamma \quad G \in \bR^{n \times n}, \fc \in \bR^n, \gamma \in \bR\) fixed.
+                    \end{itemize}
+              \item \(H = \bR^{p \times n}\), the decision variable is an \((p \times n)\) matrix \(X\) and objective function \(f: \bR^{p \times n} \to \bR\). For example,
+                    \begin{itemize}
+                        \item \(f(X) = \sum_{i=1}^p\sum_{j=1}^n A_{ij}X_{ij}\), where \(A\) is given \((p \times n)\) matrix \(X\);
+                        \item \(f(X) = \rank(X)\), where \(\rank(X)\) is the rank of a matrix \(X\).
+                    \end{itemize}
+          \end{itemize}
+    \item \textbf{Constraints}: describe restrictions on the allowable values of variables.
+          \begin{itemize}
+              \item \(H = \bR^n\),
+                    \begin{itemize}
+                        \item Equality constraints \(g_i(\fx) = 0, \quad i = 1, \dots, m_E\) (e.g. binary constraint: \(x_i \in \{0, 1\}\));
+                        \item Inequality constraints \(g_i(\fx) \leq 0, \quad i = m_E + 1, \dots, m\);
+                        \item Geometric constraints \(\fx \in C \subseteq \bR^n\);
+                        \item Feasible region \(\Omega \in \bR^n\)
+                              \[\Omega = \begin{Bmatrix}
+                                      \fx \in C : & g_i(\fx) = 0, i = 1, \dots, m_E;       \\
+                                                  & g_i(\fx) \leq 0, i = m_E + 1, \dots, m
+                                  \end{Bmatrix}\]
+                    \end{itemize}
+              \item The case for \(H = \bR^{p \times n}\) is similar, except the constraint functions \(g_i\) are functions on \(\bR^{p \times n}\) and the set \(C\) in the geometric constraints is a set in \(\bR^{p \times n}\). In this case, the feasible region \(\Omega \subset \bR^{p \times n}\)
+                    \[\Omega = \begin{Bmatrix} X \in C \subseteq \bR^{p \times n} : & g_i(X) = 0, i = 1, \dots, m_E; \\ &g_i(X) \leq 0, i = m_E + 1, \dots, m \end{Bmatrix}\]
+          \end{itemize}
+\end{enumerate}
+
+\paragraph{Optimization Problem} A typical optimization problem looks like
+\begin{align*}
+    \min_{x \in H} \quad    & f(\fx)                                  \\
+    \text{such that}  \quad & g_i(\fx) = 0, i = 1, \dots, m_E,        \\
+                            & g_i(\fx) \leq 0, i = m_E + 1, \dots, m, \\
+                            & x \in C \subseteq H
+\end{align*}
+where \(H\) is the finite dimensional space.
+
+\paragraph{Linear Programming} A linear program is an optimization problem where the underlying space \(H = \bR^n\), all the functions \(f, g_i, i = 1, \dots, m\) are affine functions on \(\bR^n\) and there is no geometric constraints:
+\begin{align*}
+    \min_{x \in \bR^n} \quad & \fc^T \fx + \gamma                               \\
+    \text{such that}\quad    & \fa_i^T \fx + b_i = 0, i = 1, \dots, m_E,        \\
+                             & \fa_i^T \fx + b_i \leq 0, i = m_E + 1, \dots, m.
+\end{align*}
+
+\paragraph{Conic Linear Program} A conic linear program is an optimization problem where the underlying space \(H\) is a general finite dimensional space, all the functions \(f, g, i = 1, \dots, m\), are affine functions on \(H\) and the set in the geometric constraint is a specific set called convex cone.
+
+\paragraph{Linear Integer Programming} A linear integer programming problem is an optimization problem where the underlying space \(H = \bR^n\), all functions \(f, g_i, i = 1, \dots, m\) are affine functions on \(\bR^n\) and the geometric constraint \(C\) is contained in the set of integers:
+\begin{align*}
+    \min_{x \in \bR^n} \quad & f(\fx)                                  \\
+    \text{such that}  \quad  & g_i(\fx) = 0, i = 1, \dots, m_E,        \\
+                             & g_i(\fx) \leq 0, i = m_E + 1, \dots, m, \\
+                             & x \in C \subseteq \bZ^n
+\end{align*}
