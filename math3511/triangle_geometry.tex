@@ -147,3 +147,48 @@ The line these points lie on is called the \textbf{Euler Line}.
 \begin{proposition}
     The three Euler points uniquely define a triangle.
 \end{proposition}
+
+\subsection{The Cross Ratio}
+
+\begin{theorem}
+    Let \(\triangle ABC\) have points \(D, E, F\) on the sides opposite \(A, B, C\) respectively and suppose the cevians \(AD, BE\) and \(CF\) are concurrent at a point \(P\) inside \(\triangle ABC\). Let \(Q\) be a point on \(BC\).
+
+    Then \(F, E\) and \(Q\) are collinear if and only if \(\displaystyle{\frac{BD \cdot CQ}{CD \cdot BQ} = -1}\).
+\end{theorem}
+
+\defn{Cross Ratio}{
+    Let \(A, B, C, D\) be any four points. The cross ratio \((A, B; C, D)\) is defined by
+    \[(A, B; C, D) = \frac{AC}{BC} \divisionsymbol \frac{AD}{BD} = \frac{AC \cdot BD}{BC \cdot AD}.\]
+}
+
+Note that changing the order of the points in \((A, B; C, D)\) may change the value of the cross ratio. However
+
+\[(A, B; C, D) = (B, A; D, C) = (C, D; A, B) = (D, C; B, A),\]
+
+so there are at most 6 different values of the cross ratio.
+
+\defn{Harmonic}{
+    A set of collinear points \(\{A, B, C, D\}\) for which \((A, B; C, D) = -1\) are said to be harmonic, and \(C, D\) are called the harmonic conjugates of \(A, B\).
+}
+
+\begin{theorem}
+    In the diagram below, we have \\
+    \begin{minipage}{0.3\textwidth}
+        \begin{center}
+            \includegraphics{assets/triangle/cross_product_angles.png}
+        \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.65\textwidth}
+        \[(A, B; C, D) = (A', B'; C', D') = \left(\frac{\sin \angle ASC}{\sin \angle BSC}\right) \cdot \left(\frac{\sin \angle BSD}{\sin \angle ASD}\right).\]
+    \end{minipage}
+\end{theorem}
+
+The sets \(\{A, B, C, D\}\) and \(\{A', B', C', D'\}\) are said to be in perspective from \(S\), or one set if projected from \(S\). Our result can then be stated as the cross ratio of collinear points is a projective invariant.
+
+\begin{theorem}
+    \setlength{\parindent}{1em}
+    Suppose that in \(\triangle ABC, X\) and \(Y\) are points on \(AB\) such that \(CX\) is the internal bisector of \(\angle ACB\) and \(CY\) its external bisector. Then \((A, B; X, Y) = -1\), i.e. the four points are harmonic.
+
+    Conversely, given points \(X\) and \(Y\) on side \(AB\) of \(\triangle ABC\) with \(CX\) orthogonal to \(CY\), if \((A, B; X, Y) = -1\) then \(CX\) is the internal and \(CY\) the external bisector of \(\angle ACB\).
+\end{theorem}
