@@ -94,6 +94,22 @@
         #1
     \end{tcolorbox}
 }
+\newcommand{\lem}[2]{
+    \begin{tcolorbox}[
+        attach title to upper={\quad},
+        enhanced,
+        breakable,
+        before skip = 2mm,
+        after skip= 3mm,
+        colback=lightgreen!25!white,
+        coltitle=black,
+        colframe=lightgreen!75!black,
+        fonttitle=\bfseries,
+        title=Lemma. (#1)
+    ]
+        #2
+    \end{tcolorbox}
+}
 \newcommand{\thrm}[2]{
     \begin{tcolorbox}[
         attach title to upper={\quad},
@@ -150,7 +166,11 @@
 \def\mbf#1{\mathbf{#1}}
 \newcommand{\fzero}{\mathbf{0}}
 \newcommand{\fa}{\mathbf{a}}
+\newcommand{\fb}{\mathbf{b}}
 \newcommand{\fc}{\mathbf{c}}
+\newcommand{\fp}{\mathbf{p}}
+\newcommand{\fq}{\mathbf{q}}
+\newcommand{\fu}{\mathbf{u}}
 \newcommand{\fv}{\mathbf{v}}
 \newcommand{\fx}{\mathbf{x}}
 \newcommand{\fy}{\mathbf{y}}
@@ -177,5 +197,7 @@
 \subfile{revision.tex}
 \subfile{triangle_geometry.tex}
 \subfile{circle_geometry.tex}
+\subfile{transformation_geometry.tex}
+\subfile{projective_geometry.tex}
 
 \end{document}
