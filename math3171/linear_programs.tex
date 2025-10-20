@@ -1,0 +1,235 @@
+\chapter{Linear Programs}
+
+The standard form of a linear programming problem can be formulated as follows
+
+\begin{align*}
+    \text{Minimise}_{\fx \in \bR^n} \quad & \fc^T \fx + \gamma                    \\
+    \text{subject to} \quad               & \fa_i^T \fx = b_i, i = 1, \dots, m_E, \\
+                                          & \fx \geq 0,
+\end{align*}
+where \(\fc, \fa_i \in \bR^n, b_i \geq 0, i = 1, \dots, m\) and \(\gamma \in \bR^n\). Throughout this chapter, we always assume that the feasible region is not empty.
+
+\section{Geometry of Linear Programming Problems}
+
+The geometry of the feasible region:
+
+\begin{itemize}
+    \item A \textbf{hyperplane} in \(\bR^n\) is the set of all points \(\fx\) that satisfy a linear equation
+          \[\fa^T \fx = b,\]
+          for some \(\fa = (a_1, \dots, a_n) \in \bR^n \setminus \{\fzero\}\) and \(b \in \bR\);
+    \item A (closed) \textbf{halfspace} in \(\bR^n\) is the set of all points \(\fx\) that satisfy the linear inequality
+          \[\fa^T \fx \leq b,\]
+          for some \(\fa = (a_1, \dots, a_n) \in \bR^n \setminus \{\fzero\}\) and \(b \in \bR\).
+    \item The intersection of a finite number of halfspaces is called a \textbf{polyhedron}.
+    \item A polyhedron that is bounded is called a \textbf{polytope}.
+\end{itemize}
+
+Note: (1) Finite intersection of polyhedrons is still a polyhedron. (2) Polyhedron is a convex set and the feasible region of a linear programming problem is a polyhedron. In particular, the feasible region of a linear programming problem is a convex set.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item The sum \(\lambda_1 \fx_1 + \cdots + \lambda_k \fx_k\) is called a \textbf{convex} combination of \(\fx_1, \dots, \fx_k\) if the \(\lambda_i\) are all nonnegative and \(\lambda_1 + \dots + \lambda_k = 1\).
+    \item The \textbf{convex hull} of a set \(S\) is denoted by \(\operatorname{co}S\) and is defined by
+          \[\operatorname{co}(S) = \left\{\lambda_1 \fx_1 + \cdots + \lambda_k \fx_k : \fx_1, \dots, \fx_k \in S, \lambda_i \in [0, 1], \sum_{i = 1}^k \lambda_i = 1\right\}.\]
+          That is, convex hull of \(S\) is the set of all convex combinations of elements of \(S\).
+\end{enumerate}
+
+Let \(P\) be a convex set in \(\bR^n\). A vector \(\fx \in P\) is a \textbf{extreme point} of \(P\) if whenever \(\fx = \lambda \fy + (1 - \lambda)\fz\) for some points \(\fy, \fz \in P\) and \(\lambda \in [0, 1]\) then \(\fy = \fz = \fx\).
+
+In other words, the vector \(\fx\) cannot be written as non-trivial convex combination of two different vectors \(\fy\) and \(\fz\). Roughly speaking, \(\fx\) is an extreme point of \(P\) if \(\fx\) does not lie in any open line segment joining two points of \(P\).
+
+\begin{theorem}
+    Let \(P\) be a bounded polyhedron (or \(P\) is a polytope) in \(\bR^n\). Then, \(P\) has only finitely many extreme points, and \(P\) is a convex hull of its extreme points.
+\end{theorem}
+
+\begin{theorem}
+    Consider a linear programming problem \(P\) in standard form. Let \(\Omega\) be the feasible region of \(P\), that is,
+    \[\Omega = \{\fx \in \bR^n: \fa_i^T \fx = b_i, i = 1, \dots, m \text{ and } \fx \geq 0\}.\]
+    Suppose that \(\Omega\) is bounded. Then, there must exist an optimal solution of \(P\) which is an extreme point of the feasible region \(\Omega\).
+\end{theorem}
+
+\begin{theorem}
+    Let \(\Omega\) be the feasible region of a linear programming problem in standard formulation. Suppose that \(m \leq n\) and the collection of vectors \(\{\fa_1, \dots, \fa_m\}\) are linearly independent. Denote \(A = \begin{pmatrix}
+        \fa_1^T \\ \vdots \\ \fa_m^T
+    \end{pmatrix} \in \bR^{m \times n}\) and let \(A_j \in \bR^m, j = 1, \dots, n\) be the \(j\)th column of \(A\). Then \(\fx^* = (x_1^*, \dots, x_n^*) \in \bR^n\) is an extreme point of \(\Omega\) if and only if the  following two conditions hold
+    \begin{enumerate}[label=(\arabic*)]
+        \item \(\fa_i^T \fx^8 = b_i, i = 1, \dots, m, \fx^* \geq 0\);
+        \item there exists indices \(1 \leq j_1, \dots, j_m \leq n\) such that the column vector \(\{A_{j_1}, \dots, A_{j_m}\}\) is linearly independent and \(x_j^* = 0\) for all \(j \notin \{j_1, \dots, j_m\}\).
+    \end{enumerate}
+\end{theorem}
+
+\section{Simplex Method}
+
+\begin{definition}
+    Consider a linear programming problem (LP) in standard form and denote its feasible region by \(\Omega\). A point \(\fx^*\) is called a \textbf{basic feasible solution} of (LP) if \(\fx^*\) is an extreme point of the feasible region \(\Omega\).
+\end{definition}
+
+\begin{definition}
+    Let \(\fx\) be a basic feasible solution of the linear programming problem in standard form. The variables with zero values are called \textbf{nonbasic variables} associated with the point \(\fx\). The remaining variables are called \textbf{basic variables}.
+\end{definition}
+
+\underline{Summary of the basic simplex method}
+\begin{enumerate}
+    \item Form the initial simplex tableau and find out an initial basic feasible solution. If this is feasible then proceed to the next step.
+    \item Determine the largest positive entry associated with the nonbasic variables in the cost row. This will indicate the entering basic variable. If no entries in the firsr row are positive the STOP, this is the optimal solution.
+    \item Determine the outgoing basic variable by finding the minimum ratio of the \(b\) entry over the (positive) entry in the column of the incoming variable. The entry in this row and column is the pivot. Use Gaussian elimination to make all other entries in this pivot column zero and divide through the pivot row by the pivot so that the pivot changes to 1. Go back to item 2.
+\end{enumerate}
+
+We now introduce the two phase simplex method. In this method, we first find an initial basic feasible solution in phase 1. Then, we perform the basic simplex method to find the desired optimal solution.
+\begin{enumerate}
+    \item Convert the problem to the correct form yb adding slack, surplus and artificial variables.
+    \item Consider an artificial problem by minimizing the sum of all artificial variables.
+    \item Eliminate the entries in the first row of the tableau corresponding to the basic artificial variables.
+    \item Use the basic simplex method on this problem. This will give an initial basic feasible solution (if it exists) for phase 2. If the solution in phase 1 has any of the artificial variables being nonzero then a feasible solution does not exist for this problem.
+    \item Create the initial tableau for phase 2 by using the final tableau in phase 1 and
+          \begin{enumerate}
+              \item removing all columns associated with artificial variables
+              \item replacing the cost row with the correct one for this new problem
+          \end{enumerate}
+    \item Change the entries in the cost row corresponding to the basic variables to zero using the usual updating mechanism and then continue with the basic simplex method.
+\end{enumerate}
+
+\section{Duality Theory and Sensitivity Analysis}
+
+Consider the linear programming problem in standard form:
+\begin{align*}
+    (P) \quad \text{Minimise}_{\fx \in \bR^n} \quad & \fc^T \fx + \gamma                    \\
+    \text{subject to} \quad                         & \fa_i^T \fx = b_i, i = 1, \dots, m_E, \\
+                                                    & \fx \geq 0,
+\end{align*}
+
+Let us call it the primal problem. The dual problem will be defined as
+
+\begin{align*}
+    (D) \quad \text{Maximize}_{\fy \in \bR^m} \quad & \gamma + \sum_{i = 1}^m y_ib_i             \\
+    \text{subject to} \quad                         & \fc - \sum_{i = 1}^m y_i \fa_i \geq \fzero \\
+                                                    & \fy \text{ unrestricted}
+\end{align*}
+
+\thrm{Weak Duality}{
+    Let \(\fx\) be feasible for (P) and \(\fy\) be feasible for (D), then
+    \[\fc^T\fx \geq \fb^T \fy = \sum_{i = 1}^m y_ib_i.\]
+    In particular, the objective function of the dual problem is a lower bound of the objective function for the primal problem.
+}
+
+\thrm{Strong Duality}{
+    The following statements hold:
+    \begin{itemize}
+        \item If either problem (P) or problem (D) has an optimal solution then so does the other and their objective values are equal.
+        \item If either problem has an unbounded objective value then the other problem has no feasible solution.
+    \end{itemize}
+}
+
+\thrm{Complementary Slackness Condition}{
+    Let \(\fx^*\) be optimal for (P) and \(\fy^*\) optimal for (D), then the following conditions hold
+    \[x_j^*(\fc - \sum_{i = 1}^m y_i^* \fa_i)_j = 0, \quad j = 1, \dots, n.\]
+}
+
+\thrm{Optimality Conditions}{
+    Let \(\fx^*\) be feasible for a primal linear programming problem (P) and let \(\fy^*\) be feasible for its dual problem (D). Then, \(\fx^*\) and \(\fy^*\) are optimal solutions for (P) and (D) respectively if and only if \((\fx, \fy) = (\fx^*, \fy^*)\) solves the following equations
+    \begin{align*}
+        \fa_i^T\fx & = b_i, i = 1, \dots, m, \quad x \geq 0 \\
+        \fc -      & \sum_{i = 1}^m y_i \fa_i \geq 0        \\
+        \fc^T \fx  & = \sum_{i = 1}^m y_ib_i.
+    \end{align*}
+}
+
+% \section{Sensitivity Analysis}
+
+\section{Further Development of Linear Programs}
+
+\subsection{Interior Point Methods}
+
+The basic idea of this method, is moving towards the optimum via points in the (relative)-interior of the feasible region of the linear program.
+
+\paragraph{Standing Assumptions:} We suppose that the feasible regions
+\[F_P = \{\fx \in \bR^n: \fa_i^T\fx = b_i, i = 1,\dots,m, \fx \geq 0\}\]
+and
+\[F_D = \{\fy \in \bR^m: \fc - \sum_{i = 1}^m y_i\fa_i \geq 0\}\]
+both satisfy the (relative) interior point condition, in the sense that
+\[
+    \begin{align*}
+        F_P^+ & = \{\fx \in \bR^n : \fa_i^T \fx = b_i, i = 1, \dots, m, \fx > 0\} \neq \emptyset \text{ and} \\
+        F_D^+ & = \{\fy \in \bR^m: \fc - \sum_{i = 1}^m y_i\fa_i > 0\} \neq \emptyset,
+    \end{align*}
+\]
+where (P) and (D) are the primal and dual linear programs in standard form. We also assume that \(\{\fa_1, \dots, \fa_m\}\) is linearly independent. \\
+
+We then construct the \(\mu\)-perturbed optimality conditions, \(\mu > 0\), as follows
+\[
+    \begin{cases*}
+        \fa_i^T\fx = b_i, i=1,\dots,m, & \(\fx \geq 0\) \\
+        \fw = \fc - \sum_{i=1}^m  y_i\fa_i, & \(\fw \geq 0\) \\
+        w_jx_j = \mu, & \(j=1,\dots,n\).
+    \end{cases*}
+\]
+
+For each \(\mu > 0\), let \((\fx(\mu), \fy(\mu), \fw(\mu))\) be a solution of the above system. Then, let
+\[(\fx(\mu), \fy(\mu), \fw(\mu)) \to (\fx, \fy, \fw)\]
+as \(\mu \to 0\). Then \((\fx, \fy, \fw)\) is a solution for the system above and so \(\fx\) and \(\fy\) are solutions for (P) and (D) respectively. \\
+
+The sets \(\{\fx(\mu): \mu > 0\}\) and \(\{\fy(\mu): \mu > 0\}\) are called the \textbf{central path} of (P) and (D) respectively, where the parameter \(\mu > 0\) is called the \textbf{central path parameter}. \\
+
+\underline{General Interior Point Method (Outline)}
+\begin{itemize}
+    \item Start with an initial point \((x_0, y_0) \in F_P^+ \times F_D^+\). Let \(\mu > 0\) and \(\gamma \in (0, 1)\).
+    \item Solve the following perturbed optimality system
+          \[
+              \begin{cases*}
+                  \fa_i^T\fx = b_i, i=1,\dots,m, & \(\fx \geq 0\) \\
+                  \fw = \fc - \sum_{i=1}^m  y_i\fa_i, & \(\fw \geq 0\) \\
+                  w_jx_j = \mu, & \(j=1,\dots,n\).
+              \end{cases*}
+          \]
+    \item Replace \(\mu\) by \(\gamma\mu\).
+\end{itemize}
+
+\subsection{Lagrange Multiplier Method and Necessary Optimality Conditions}
+
+Consider an optimization problem with equality constraints
+\begin{align*}
+    (P_E) \text{Minimize}_{\fx \in \bR^n} & f(\fx)                         \\
+    \text{Subject to}                     & g_i(\fx) = 0, i = 1, \dots, m.
+\end{align*}
+
+The Lagrangian function for \((P_E)\) is
+\[L(\fx, \fy) = f(\fx) + \sum_{i=1}^m y_ig_i(\fx).\]
+
+We say the Lagrange multiplier necessary optimality conditions for problem \((P_E)\) holds at \(\fx\) if
+\begin{enumerate}[label=(\arabic*)]
+    \item \(f(\fx) < +\infty\);
+    \item \(g_i(\fx) = 0, i = 1, \dots, m\);
+    \item there exist multipliers \(y_i \in \bR, i = 1, \dots, m\) such that
+          \[\nabla_\fx L(\fx, \fy) = \nabla f(\fx) + \sum_{i = 1}^m y_i\nabla g_i(\fx) = \fzero.\]
+\end{enumerate}
+
+We say a point \(\fx\) is a regular point for \((P_E)\) if \(\{\nabla g_i(\fx): 1 \leq i \leq m\}\) is linearly independent.
+
+\prop{Lagrange Multiplier Necessary Optimality Conditions}{
+    For problem \((P_E)\), let \(\fx^*\) be a local minimizer which is a regular point. Suppose that \(f, g_i, i = 1,\dots,m\) are continuously differentiable functions around \(\fx^*\). Then Lagrange multipler optimality conditions for problem \((P_E)\) holds at \(\fx^*\), that is,
+    \begin{enumerate}[label=(\arabic*)]
+        \item \(f(\fx^*) < +\infty\);
+        \item \(g_i(\fx^*) = 0, i = 1, \dots, m\);
+        \item there exist multipliers \(y_i^* \in \bR, i = 1, \dots, m\) such that
+              \[\nabla_\fx L(\fx^*, \fy^*) = \nabla f(\fx^*) + \sum_{i = 1}^m y_i^*\nabla g_i(\fx^*) = \fzero.\]
+    \end{enumerate}
+}
+
+\section{Applications of Linear Programs}
+
+\begin{itemize}
+    \item Transportation problems, involving the transport of goods between various locations.
+    \item Zero sum game theory, in particular, theory of two player zero sum games where each participant's gains or losses are exactly balanced by those of the other participants.
+          \begin{itemize}
+              \item Rock-Paper-Scissors
+              \item \begin{theorem}
+                        For any 2 person zero sum game, let \(P\) be the payoff matrix for this game. Then, we have
+                        \[V_1^* = V_2^* = V^* \quad (\text{called the minimax value of the game}).\]
+                        where
+                        \begin{align*}
+                            V_1^* & = \max_{\fx \in S_n}\min_{\fy \in S_m} \fy^T P\fx \\
+                            V_2^* & = \min_{\fy \in S_m}max_{\fx \in S_n} \fy^T P\fx
+                        \end{align*}
+                    \end{theorem}
+          \end{itemize}
+    \item Radiotherapy treatment planning problem.
+\end{itemize}

@@ -1,0 +1,72 @@
+\chapter{Network Problems}
+
+Network representations of problems appear in many areas. There are electrical networks, communications networks, road networks, networks that represent project planning, networks that represent relationships between objects and quite a few more.
+
+\defn{Network}{
+    A network contains two types of object: \textit{nodes} and \textit{arcs} which join the nodes. The nodes are represented by circles and the arcs by lines (in an undirected network) or arrows (in a directed network). For each arc, there is a number associated with it which is called the length of the arc. Arcs that start and finish at the same node (loops) are not allowed.
+}
+
+Numerically, we can recognise a directed (or undirected) network \(G\) with \(n\) nodes (labelled as \(1, 2,\dots, n\)) via an associated \((n \times n)\) matrix \(A = (A_{ij})_{1 \leq i \leq n, 1 \leq j \leq n}\) formed by
+\[A_{ij} = \begin{cases*}
+        w_{ij}, & if there is an arc from node \(i\) to node \(j\) and \(w_{ij}\) is the corresponding arc length; \\
+        0, & if there is no arc from node \(i\) to node \(j\).
+    \end{cases*}\]
+provided that \(w_{ij} \neq 0\) for all \(i, j\).
+
+\section{The Shortest Path Problem}
+
+\defn{Paths and Cycles - Undirected Network Case}{
+    \begin{itemize}
+        \item A \textbf{path} in a undirected network is a sequence of connected, distinct arcs. The length of the path is the sum of the length of the arcs traversed.
+        \item A \textbf{cycle} in a undirected network is a path where the starting node and end node are the same.
+    \end{itemize}
+
+}
+
+\defn{Paths and Cycles - Directed Network Case}{
+    \begin{itemize}
+        \item A \textbf{path} in a directed network is a sequence of connected, distinct arcs where the arcs must be traversed in the direction of the arrows, so that the tip of one arrow must join the tail of the next arrow. The length of the path is the sum of the length of the arcs traversed.
+        \item A \textbf{directed cycle} is a directed path where the starting node and ending node are the same.
+    \end{itemize}
+}
+
+Let the length of the arc from node \(i\) to node \(j\) be denoted by \(a_{ij}\). If there is no arc connect from node \(i\) to node \(j\), let \(a_{ij} = \infty\). \\
+
+\underline{Dijkstra's Method (directed network)}
+\begin{enumerate}
+    \item Initialisation: Set \(u_1 = 0\). This is the permanent label for node \(1\). For each node \(j\) that has an arc connecting it to node 1 set \(u_j = a_{1j}\). For all other nodes set \(u_j = \infty\). There are tentative labels and these nodes are assigned to the set \(T\) of tentatively labelled nodes. The set of permanent labels is \(P = \{1\}\). Set iteration number \(i = 0\).
+    \item Update the label: Find \(k \in T\) where \(u_k = \min_{j \in T} u_j\). Set \(T = T \setminus \{k\}\) and \(P = P \cup \{k\}\). If \(k = n\) stop, the shortest path from node \(1\) to node \(n\) has been found with length \(u_n\).
+    \item Update the cost: Set \(u_j = \min\{u_j, u_k + a_{kj}\}\) for all \(j \in T\). Update iteration number \(i\) as \(i + 1\). GO back to the previous step (that is, the step of updating the label).
+\end{enumerate}
+
+For an undirected network, we convert it as a directed network and apply the previous Dijkstra algorithm. In implementing the Dijkstra algorithm for undirected network, we proceeds at the same line as for directed network. The only difference is to ignore the direction of the arcs between the two nodes.
+
+\section{Network Flow Problem}
+
+Another important problem for networks is the network flow problem. For this kind of problem we wish to determine a collection of paths from a given starting point (called the source) to a given destination node (called the sink) whereby the amount of material sent from the starting point to the destination is a maximum. \\
+
+General formula for a maximum flow problem with a single source and single sink. Denote the set of all nodes by \(\mathcal{N}\) and the set of all the arcs by \(\mathcal{A}\).
+
+\defn{Flow; Capacity; Source; Sink}{
+    \begin{itemize}
+        \item We denote the \textbf{flow} in an arc \((i, j) \in \mathcal{A}\) by \(x_{ij}\) and this represents the amount of material going from node \(i\) to node \(j\) along that arc.
+        \item The \textbf{capacity} \(c_{ij}\) of an arc \((i, j) \in \mathcal{A}\), where node \(i \in \mathcal{N}\) is at the tail of the arc and node \(j \in \mathcal{N}\) is at the tip of the arc, is the maximum amount of goods that can be sent through that arc in that direction. We will assume that the minimum amount that can be sent through is zero.
+        \item A \textbf{source} is a node where the flow out of that node exceeds the flow into the node. A source is often denoted by \(s\).
+        \item A \textbf{sink} is a node where the flow into that node exceeds the flow out of the node. A sink is often denoted by \(t\).
+        \item The arc \((i, j)\) is said to be \textit{outgoing} from node \(i\), \textit{incoming} to node \(j\), and \textit{incident} to both \(i\) and \(j\). Define
+              \[I(i) = \{j \in \mathcal{N}: (j, i) \in \mathcal{A}\} \text{ and } O(i) = \{j \in \mathcal{N}: (i, j) \in \mathcal{A}\}.\]
+    \end{itemize}
+}
+
+\textbf{Conservation law of the network:} For each node \(i\) where \(i\) is not a source or the sink, total flow into \(i\) equals total flow out of a node. Mathematically,
+\[\sum_{j \in I(i)} x_{ji} = \sum_{j \in O(i)} x_{ij} \quad \forall i \in \mathcal{N} \setminus \{s, t\}.\]
+
+\textbf{Capacity constraints} \[0 \leq x_{ij} \leq c_{ij} \quad (i, j) \in \mathcal{A}.\]
+
+\textbf{General Maximum Flow Problems} for single source and single sink (which arcs may carry factional units of flow)
+
+\begin{align*}
+    \text{Maximise } \sum_{i \in I(t)}    x_{it} &                                                                               \\
+    \text{subject to } \sum_{j \in I(i)}  x_{ji} & = \sum_{j \in O(i)} x_{ij} \quad \forall i \in \mathcal{N} \setminus \{s, t\} \\
+    0 \leq                               x_{ij}  & \leq c_{ij} \quad (i, j) \in \mathcal{A}.
+\end{align*}
