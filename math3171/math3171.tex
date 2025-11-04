@@ -38,15 +38,17 @@
 
 % Heading Configuration
 % \theoremstyle{plain}
+% \newtheoremstyle{custom}{3pt}{3pt}{\normalfont}{}{\bfseries}{.}{1em}{\setlength{\parindent}{1em}\thmname{#1}\thmnote{ (#3)}}
+
 \theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{proposition}{Proposition}
 
-\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition}{Definition}
 
-\newtheorem{example}[theorem]{Example}
+\newtheorem*{example}{Example}
 
 % Statements Custom Enumerate
 \providecommand{\varitem}{} % to keep LaTeX quiet
@@ -76,7 +78,7 @@
         #1
     \end{tcolorbox}
 }
-\newcommand{\prop}[1]{
+\newcommand{\prop}[2]{
     \begin{tcolorbox}[
         attach title to upper={\quad},
         enhanced,
@@ -87,9 +89,9 @@
         coltitle=black,
         colframe=lightgreen!75!black,
         fonttitle=\bfseries,
-        title=Proposition.
+        title=Proposition. (#1)
     ]
-        #1
+        #2
     \end{tcolorbox}
 }
 \newcommand{\thrm}[2]{
@@ -147,11 +149,15 @@
 \def\mbf#1{\mathbf{#1}}
 \newcommand{\fzero}{\mathbf{0}}
 \newcommand{\fa}{\mathbf{a}}
+\newcommand{\fb}{\mathbf{b}}
 \newcommand{\fc}{\mathbf{c}}
 \newcommand{\fe}{\mathbf{e}}
+\newcommand{\fu}{\mathbf{u}}
 \newcommand{\fv}{\mathbf{v}}
+\newcommand{\fw}{\mathbf{w}}
 \newcommand{\fx}{\mathbf{x}}
 \newcommand{\fy}{\mathbf{y}}
+\newcommand{\fz}{\mathbf{z}}
 
 \graphicspath{./assets}
 
@@ -174,6 +180,9 @@
 
 \subfile{introduction.tex}
 \subfile{background.tex}
+\subfile{linear_programs.tex}
+\subfile{network_problems.tex}
+\subfile{conic_linear_programs.tex}
 
 \subfile{tutorial_solutions.tex}
 

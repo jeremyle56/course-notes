@@ -1,0 +1,104 @@
+\section{Projective Geometry}
+
+\subsection{Perspectivities of Lines}
+
+\defn{Perspective Transformation}{
+    Let \(\ell\) and \(\lambda\) be distinct lines and \(O\) a fixed point on neither. A perspective transformation of the lines, also called a perspectivity or central projection is a map \(p: \ell \to \lambda\) that takes every point \(P \in \ell\) to the point where \(OP\) meets \(\lambda\), if such a point eixsts.
+    \begin{center}
+        \includegraphics{assets/projective/perspectivity.png}
+    \end{center}
+}
+
+As the points on \(\ell\) approach \(V\), their images on \(\lambda\) get further and further away to the left until at \(V\), when \(OV\) is parallel to \(\lambda\), the image point vanishes: we call \(V\) the \textbf{vanishing point} on \(\ell\).
+
+\defn{Projectively Extended Real Line}{
+    The projectively extended real line, \(\overline{\bR}\) is the set \(\bR \cup \{\infty\}\) where \(\infty\) is the point at infinity.
+}
+
+\defn{Projective Transformation}{
+    A projective transformation or projectivity is any composition of perspectivities.
+}
+
+Any projectivity on a line that has more than two fixed points must be the identity. It also follows that a projectivity of a line to itself is uniquely defined given the images of three distinct points.
+
+\begin{theorem}
+    Suppose \(\{A, B, C, D\}\) and \(\{A', B', C', D'\}\) are two sets of four coolinear points (not necessarily in the same plane) such that \([A, B; C, D] = [A', B'; C', D']\). Then there is a projectivity that maps \(A\) to \(A'\) etc.
+\end{theorem}
+
+\subsection{Perspectivities of Planes}
+
+\defn{Perspective Transformation}{
+    A perspective transformation, perspectivity or central projection between planes \(\Pi\) and \(\Pi'\)from \(O \notin \Pi \cup \Pi'\) is given by mapping a point \(P\) on \(\Pi\) to a point \(P'\) on \(\Pi'\), if it exists, where \(O, P\) and \(P'\) are collinear.
+}
+
+\begin{theorem}
+    Let \(\Pi\) have Cartesian coordinates \((x, y)\) and \(\Pi'\) Cartesian coordinates \((x', y')\). Then a perspectivity from a point \(O\) on neither plane maps coordinates by
+    \[x' = \frac{a_1 x + b_1 y + c_1}{a_3 x + b_3 y + c_3}, \quad y' = \frac{a_2 x + b_2 y + c_2}{a_3 x + b_3 y + c_3},\]
+    where the constants \(a_i, b_i\) etc satisfy \(\Delta = \begin{vmatrix}
+        a_1 & b_1 & c_ 1 \\
+        a_2 & b_2 & c_2  \\
+        a_3 & b_3 & c_3
+    \end{vmatrix} \neq 0\).
+    If the plans are parallel, then \(a_3 = b_3 = 0\) and the perspectivity is an affinity.
+\end{theorem}
+
+\defn{Projectivity}{
+    A composition of perspectivities of planes is called a projectivity of planes.
+}
+
+\begin{theorem}
+    Let \(T\) be a perspectivity of planes. THen \(T\) preserves collinearity and rectilinear figures. For lines and figures not crossing the vanishing line, \(T\) preserves betweenness and line segments, and hence polygons. In general \(T\) does not preserve betweenness, parallelism, line segments, distance and ratios of distance.
+\end{theorem}
+
+\begin{theorem}
+    \begin{enumerate}[label=(\alph*)]
+        \item Every conic is mapped to another conic under a perspectivity.
+        \item A degenerate conic is mapped to a degenerate conic under a perspectivity.
+        \item A non-degenerate conic is mapped to a non-degenerate conic under a perspectivity and is the image of a circle under some perspectivity.
+    \end{enumerate}
+\end{theorem}
+
+Since collinearity and coincidence are preserved under perspectivities, we can now generalise Pascal's Theorem to any non-degenerate conic \(\mathcal{C}\). \\
+
+\subsection{The Real Projective Plane}
+\defn{Real Projective Plane}{
+    The real projective plane, \(\bR\mathbb{P}^2\), is the set whose elements are pairs of antipodal points on the (2-dimensional) sphere \(S^2\). The lines in \(\bR\mathbb{P}^2\) are the great circles on the sphere, with the antipodal points identified.
+}
+
+You should think of \(\bR \mathbb{P}^2\) as what we get from identifying the image points on \(S^2\) with the plane \(\bR^2\) under the gnomonic projection, but with the addition of an ideal line ``at infinity'' corresponding to the equator. In other words, \(\bR\mathbb{P}^2\) is \(\bR^2 \cup \ell_\infty \cup \{\infty\} = \bR^2 \cup \overline{\bR}\), where we have added an extended real line to the plane: this is our second model of \(\bR\mathbb{P}^2\). \\
+
+As we know, in standard Euclidean geometry, any pair of points defines a unique line, and the same is still true in \(\bR\mathbb{P}^2\). But in \(\bR\mathbb{P}^2\) we now have any pair of lines defining a unique points, their intersection. \\
+
+In fact, in \(\bR\mathbb{P}^2\) (either model) we have the \textbf{principal of plane duality}: any theorem (or definition) involving lines and points remains true (or is equivalent) if we interchange the words ``point'' and ``line''. We also need to exchange ``concurrent'' and ``collinear'' of course, and we not that the dual of a point on a curve is the tangent at the at point. We sometimes use the word \textbf{join} for both concepts dually: the join of two points is the line going through them both and the join of two lines is the point where they meet. \\
+
+The dual of Pascal's Theorem is the following:
+\thrm{Brianchon's Theorem}{
+    Suppose hexagon with vertices \(B_1, \dots, B_6\) has edges \(B_1B_2, B_2,B_3\) etc tangent to a non-degenerate conic section. Then the lines \(B_1B_4, B_2B_5\) and \(B_3B_6\) joining opposite veritces are concurrent.
+    \begin{center}
+        \includegraphics{assets/projective/pascal_and_brianchon.png}
+    \end{center}
+}
+
+\subsubsection{Synthetic Geometry in \(\bR\mathbb{P}^2\)}
+
+Taking the \(\bR^2 \cup \ell_\infty\) model of \(\bR\bP^2\), we consider the ratio \(\frac{AC}{CB}\) where exactly one of the points is ideal:
+\begin{enumerate}
+    \item if \(A\) is ideal, then we are dividing an infinite length by a finite one, so \(\frac{A_\infty C}{CB} = \infty\);
+    \item if \(B\) is ideal, then we are dividing a finite length by an infinite one, so \(\frac{AC}{CB_\infty} = 0\);
+    \item if \(C\) is ideal, then we are dividing an infinite length by another infinite one, as their direction are opposite we adopt the useful convention that \(\frac{AC_\infty}{C_\infty B} = -1\).
+\end{enumerate}
+
+\thrm{Menelaus' Theorem in \(\bR\bP^2\)}{
+    Let \(\triangle ABC\) have at most one ideal vertex, and let \(D, E\) and \(F\) be non-vertex points on sides \(BC, CA, AB\) (or their extensions, and possibly ideal) respectively. Then \(D, E\) and \(F\) are collinear if and only if
+    \[\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = -1.\]
+}
+
+\defn{Perspective from points and lines}{
+    We say that \(\triangle ABC\) and \(\triangle A'B'C'\) are perspective from a point \(P\) if the lines \(AA', BB'\) and \(CC'\) are concurrent at \(P\). We say that \(\triangle ABC\) and \(\triangle A'B'C'\) are perspective from a line \(\ell\) if the points \(AB \cap A'B', BC \cap B'C'\) and \(CA \cap C'A'\) all lie on \(\ell\).
+}
+
+\thrm{Desargues' Theorem (1648)}{
+    Two real triangles \(\triangle ABC\) and \(\triangle A'B'C'\) are perspective from some point if and only if they are perspective from some line.
+}
+
+\subsection{Analytic Projective Geometry}
