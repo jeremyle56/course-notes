@@ -1,0 +1,108 @@
+\chapter{Conic Linear Programs}
+
+\section{Convex Cones and Conic Programs}
+
+\subsection{Inner Product Spaces}
+
+Let \(H\) be a finite dimensional space. We say a mapping \(\langle \cdot, \cdot \rangle: H \times H \to \bR\) is an inner product in \(H\) if
+\begin{enumerate}[label=(\arabic*)]
+    \item \(\langle x + y, z \rangle = \langle x, z \rangle + \langle y, z \rangle\);
+    \item \(\langle x, y \rangle = \langle y, x \rangle\);
+    \item \(\langle \alpha x, y \rangle = \alpha \langle x, y \rangle\), for \(\alpha \in \bR\);
+    \item \(\langle x, x \rangle \geq 0\) for all \(x \in H\), and \(\langle x, x \rangle = 0\) if and only if \(x = 0\).
+\end{enumerate}
+
+A finite dimensional space \(H\) together with an inner product on it is called a finite dimensional inner product space. Examples:
+
+\begin{itemize}
+    \item \(H = \bR^n\) where \(\langle x, y \rangle = x^T y\) for all \(x, y \in \bR^n\);
+    \item \(H = \bR^{p \times n}\) where \(\langle X, Y \rangle = \tr(X^T Y)\) for all \(X, Y \in \bR^{p \times n}\);
+    \item \(H = S^n\) where \(\langle X, Y \rangle = tr(XY)\) for all \(X, Y \in S^n\).
+\end{itemize}
+
+
+\defn{Cone}{
+    A set \(K\) in a finite dimensional inner product space is called a cone if, for all \(x \in K\) and \(\alpha \geq 0\), \(\alpha x \in K\).
+    In other words, \(K\) is a cone if, for any point \(x \in K\), the ray
+    \[\bR_+ x = \{\alpha x: \alpha \geq 0\}\]
+    is a subset of \(K\).
+}
+
+Basic examples of cones:
+\begin{enumerate}
+    \item Nonnegative cone: \(K = \bR_+^n\);
+    \item Second-order cone:
+          \[K = \text{SOC}^n := \{(x_1, x_2, \dots, x_n) \in \bR^n : \sqrt{x_2^2 + \dots + x_n^2} \leq x_1\};\]
+    \item Positive semi-definite cone:
+          \[K = \mathbb{S}_+^n := \{X \in \bR^{n \times n}: X \text{ is a symmetric positive semi-definite matrix}\};\]
+    \item A simple two dimensional cone:
+          \[K = \{(x_1, x_2) \in \bR^2: x_1x_2 \geq 0\}.\]
+\end{enumerate}
+
+\defn{Convex Cones}{
+    A convex cone is a cone that is also a convex set.
+}
+
+\thrm{Alterntive Definition of a Convex Cone}{
+    A cone \(K \subseteq \bR^n\) is convex if and only if
+    \[x + y \in K \quad \forall x, y \in K.\]
+}
+
+\begin{proposition}
+    The positive semi-definite cone \(S_+^n\) is a convex cone.
+\end{proposition}
+
+\begin{theorem}
+    Let \(C_i\) be convex cones, \(i = 1, \dots, p\). Then, the following statements hold:
+    \begin{enumerate}
+        \item \(\bigcap_{i = 1}^p C_i\)is a convex cone if \(H_1 = H_2 = \cdots H_p = H\) and \(C_i \subseteq H\).
+        \item \(\prod_{i = 1}^p C_i := C_1 \times C_2 \times \cdots C_p\) is also a convex cone.
+        \item The Minikowski sum
+              \[C_1 + C_2 + \cdots + C_p = \{x : x = \sum_{i = 1}^p x_i, x_i \in C_i\}\]
+              is also a convex cone if \(H_1 = H_2 = \cdots = H_p = H\).
+    \end{enumerate}
+\end{theorem}
+
+Note: For two convex cones, \(C_1 \cup C_2\) need not be convex!
+
+\defn{Dual Cone}{
+    Let \(K\) be a convex cone in an inner product space \(H\). The (positive) dual cone is defined as \(K^*\) which is defined by
+    \[K^* = \{x \in H: \langle z, x \rangle \geq 0 \text{ for all } z \in K\}.\]
+    In the literature, there is also a notation called polar cone of \(K\) is denoted as \(K^\circ\) and is defined by
+    \[K^\circ = -K^* = \{x \in H: \langle z, x \rangle \leq 0 \text{ for all } z \in K\}.\]
+}
+
+\begin{proposition}
+    The positive dual cone of positive semi-definite cones \(S_+^n\) is itself (equivalently, the polar cone of positive semi-definite cone \(S_+^n\) is \(-S_+^n\)).
+\end{proposition}
+
+\begin{definition}
+    We say a convex cone \(K\) is self-dual if \(K^* = K\). The nonnegative cone, the second order cone and the positive semidefinite cone are all self-dual convex cones.
+\end{definition}
+
+Let \(H\) be a finite dimensional inner produce space and let \(K \subseteq H\) be a convex cone in \(H\). A conic programming problem has the form
+\begin{align*}
+    \text{Minimise}_{x \in H} \quad & \langle c, x \rangle                           \\
+    \text{subject to} \quad         & \langle a_i, x \rangle = b_i, i = 1, \dots, m, \\
+                                    & x \in K,
+\end{align*}
+where \(c\) and \(a_i, i = 1, \dots, m\) are elements of an inner product space \(H, b_i, i = 1, \dots, m\) are real numbers and \(K\) is a closed convex cone in \(H\). The program is a convex program in which the only non-linearities appear in the cone constraint \(x \in K\). \\
+
+Some special cases of conic programming problems:
+\begin{itemize}
+    \item For \(H = \bR^n, \langle \fu, \fv \rangle = \fu^T\fv\) and \(K = \bR_+^n\), then the associated conic programming problem is just the \textbf{linear programming problem}.
+    \item For \(H = \bR^n, \langle \fu, \fv \rangle := \fu^T\fv\) and \(K = \prod_{j = 1}^p \text{SOC}^{n_j}\) with \(\sum_{j = 1}^n n_j = n\), then the associated conic programming problem
+          \begin{align*}
+              \text{Minimise}_{x \in \bR^n} \quad & \fc^T\fx                                  \\
+              \text{subject to} \quad             & \fa_i^T\fx = b_i, i = 1,\dots, m,         \\
+                                                  & \fx \in \prod_{j = 1}^p \text{SOC}^{n_j},
+          \end{align*}
+          is called a primal form (or conic form) of \textbf{second-order cone programming problem}.
+          For \(H = S^n, \langle A, B \rangle := \tr(AB)\) and \(K = S_+^n\), then the associated conic programming problem
+          \begin{align*}
+              \text{Minimise}_{x \in S^n} \quad & \tr(CX)                               \\
+              \text{subject to} \quad           & \tr(A_i X) = b_i, i = 1,\dots,m,      \\
+                                                & X \in S_+^n (\text{or } X \succeq 0),
+          \end{align*}
+          is called a primal form (or conic form) of \textbf{semi-definite programming problem}.
+\end{itemize}

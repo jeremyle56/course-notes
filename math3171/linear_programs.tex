@@ -146,12 +146,10 @@ The basic idea of this method, is moving towards the optimum via points in the (
 and
 \[F_D = \{\fy \in \bR^m: \fc - \sum_{i = 1}^m y_i\fa_i \geq 0\}\]
 both satisfy the (relative) interior point condition, in the sense that
-\[
-    \begin{align*}
-        F_P^+ & = \{\fx \in \bR^n : \fa_i^T \fx = b_i, i = 1, \dots, m, \fx > 0\} \neq \emptyset \text{ and} \\
-        F_D^+ & = \{\fy \in \bR^m: \fc - \sum_{i = 1}^m y_i\fa_i > 0\} \neq \emptyset,
-    \end{align*}
-\]
+\begin{align*}
+    F_P^+ & = \{\fx \in \bR^n : \fa_i^T \fx = b_i, i = 1, \dots, m, \fx > 0\} \neq \emptyset \text{ and} \\
+    F_D^+ & = \{\fy \in \bR^m: \fc - \sum_{i = 1}^m y_i\fa_i > 0\} \neq \emptyset,
+\end{align*}
 where (P) and (D) are the primal and dual linear programs in standard form. We also assume that \(\{\fa_1, \dots, \fa_m\}\) is linearly independent. \\
 
 We then construct the \(\mu\)-perturbed optimality conditions, \(\mu > 0\), as follows

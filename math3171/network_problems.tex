@@ -70,3 +70,11 @@ General formula for a maximum flow problem with a single source and single sink.
     \text{subject to } \sum_{j \in I(i)}  x_{ji} & = \sum_{j \in O(i)} x_{ij} \quad \forall i \in \mathcal{N} \setminus \{s, t\} \\
     0 \leq                               x_{ij}  & \leq c_{ij} \quad (i, j) \in \mathcal{A}.
 \end{align*}
+
+\begin{theorem}
+    Consider a linear programming problem \(\text{maximize}\{\fc^T\fx : A\fx \leq b, \fx \geq 0\}\) with an integer vector \(b\) such that the optimal value is finite. If the matrix \(A\) is a totally unimodular matrix in the sense that every square submatrix of \(A\) has determinant \(+1, -1\) or \(0\), then
+    \begin{itemize}
+        \item All the extreme point of \(\{A \fx \leq b, \fx \geq 0\}\) are integral vectors, and so, this linear programming problem has an integral optimal solution.
+        \item Moreover, the integral solution of \(\text{maximize}\{\fc^T \fx : A\fx \leq b, \fx \geq 0\}\) is also a solution of \(\text{maximize}\{\fc^T \fx : A\fx \leq b, \fx \geq 0, \fx \text{ is an integral vector}\}\).
+    \end{itemize}
+\end{theorem}
