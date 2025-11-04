@@ -3,8 +3,303 @@
 Note the problems are not available here. Please see course resources for reference.
 
 \section{Optimization Model Formulations}
+
+\begin{enumerate}
+    \item
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - exterior paints to produce (in tons)
+                  \item \(x_2\) - interior paints to produce (in tons)
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2) = 3000x_1 + 2000x_2\)
+              \end{itemize}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(2x_1 + x_2 \leq 6\) (raw material A)
+                  \item \(x_2 + 2x_1 \leq 8\) (raw material B)
+                  \item \(x_2 \leq x_1 + 1\) (daily demand)
+                  \item \(x_2 \leq 2\) (maximum demand)
+                  \item \(x_1, x_2 \geq 0\) (hidden constraint)
+              \end{itemize}
+          \end{minipage}
+
+          So the problem can be formulated as,
+          \begin{align*}
+              \max_{\fx = (x_1, x_2) \in \bR^2} \quad & 3000x_1 + 2000x_2 \\
+              \text{subject to}\quad                  & 2x_1 + x_2 \leq 6 \\
+                                                      & x_2 + 2x_1 \leq 8 \\
+                                                      & x_2 \leq x_1 + 1  \\
+                                                      & x_2 \leq 2        \\
+                                                      & x_1, x_2 \geq 0
+          \end{align*}
+
+    \item
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - quantity of corn (in kgs)
+                  \item \(x_2\) - quantity of tankage (in kgs)
+                  \item \(x_3\) - quantity of alfalfa (in kgs)
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2, x_3) = 42x_1 + 36x_2 + 30x_3\)
+              \end{itemize}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(90x_1 + 20x_2 + 40x_3 \geq 200\) (carbohydrates)
+                  \item \(30x_1 + 80x_2 + 60x_3 \geq 180\) (proteins)
+                  \item \(10x_1 + 20x_3 + 60x_3 \geq 150\) (vitamins)
+                  \item \(x_1, x_2, x_3 \geq 0\) (hidden constraint)
+              \end{itemize}
+          \end{minipage}
+
+          So the problem can be formulated as,
+          \begin{align*}
+              \min_{\fx = (x_1, x_2, x_3) \in \bR^3} \quad & 42x_1 + 36x_2 + 30x_3          \\
+              \text{subject to}\quad                       & 90x_1 + 20x_2 + 40x_3 \geq 200 \\
+                                                           & 30x_1 + 80x_2 + 60x_3 \geq 180 \\
+                                                           & 10x_1 + 20x_3 + 60x_3 \geq 150 \\
+                                                           & x_1, x_2, x_3 \geq 0\end{align*}
+\end{enumerate}
+
 \section{Mathematical Background}
+
+\begin{enumerate}
+    \item \begin{enumerate}
+              \item \(A = \begin{pmatrix}
+                        1 & 2 \\
+                        2 & 4
+                    \end{pmatrix}\). Observe that \(\lambda_1 + \lambda_2 = \trace(A) = 1 + 4 > 0\) and \(\lambda_1 \lambda_2 = \det(A) = 4 - 4 = 0\). Hence either \(\lambda_1 = 5, \lambda_2 = 0\) or \(\lambda_1 = 0, \lambda_2 = 5\) so \(\lambda_1, \lambda_2 \geq 0\). Thus \(A\) is positive semi-definite.
+              \item \(A = \begin{pmatrix}
+                        1 & 2 \\
+                        2 & 3
+                    \end{pmatrix}\). Observe that \(\lambda_1 \lambda_2 = \det(A) = 3 - 4 < 0\). Thus \(A\) is indefinite.
+              \item \(A = \begin{pmatrix}
+                        6 & 1 & 2 \\
+                        1 & 3 & 1 \\
+                        2 & 1 & 4
+                    \end{pmatrix}\). Observe that \(|6| > |1| + |2|, |3| > |1| + |1|, |4| > |2| + |1|\), so \(A\) is strictly diagonal dominant. Furthermore, it has positive diagonal entries. Thus \(A\) is positive definite.
+              \item \(A = \begin{pmatrix}
+                        6 & 1 & 2  \\
+                        1 & 3 & 1  \\
+                        2 & 1 & -1
+                    \end{pmatrix}\). Let \(d_1 = \begin{pmatrix}
+                        1 \\ 0 \\ 0
+                    \end{pmatrix}\) and \(d_2 = \begin{pmatrix}
+                        0 \\ 0 \\ 1
+                    \end{pmatrix}\). Then, \(d_1^T A d_1 = 6 > 0\) and \(d_2^T A d_2 = -1\). Thus \(A\) is indefinite.
+              \item \(A = \begin{pmatrix}
+                        1 & 2 & 0 \\
+                        2 & 6 & 0 \\
+                        0 & 0 & 2
+                    \end{pmatrix}\). The eigenvalues of \(A\) are \(2, \lambda_1\) and \(\lambda_2\). The eigenvalues \(\lambda_1\) and \(\lambda_2\) are eigenvalues of the submatrix \(A_0 = \begin{pmatrix}
+                        1 & 2 \\ 2 & 6
+                    \end{pmatrix}\) which is positive definite as \(\tr(A_0) = 7 > \det(A_0) = 2 > 0\). Thus \(A\) is positive definite.
+              \item \(A = \begin{pmatrix}
+                        2  & -1     &        &        &    & \\
+                        -1 & 2      & -1     &        &      \\
+                           & \ddots & \ddots & \ddots &      \\
+                           &        & -1     & 2      & -1   \\
+                           &        &        & -1     & 2
+                    \end{pmatrix}\). Observe that \(A\) is diagonal dominant with non-negative diagonal elements. Thus \(A\) is positive semi-definite.
+          \end{enumerate}
+    \item \begin{enumerate}
+              \item {\color{red} HI}
+              \item \(\Omega = \{\fx = (x_1, x_2) \in \bR^2 : x_1^2 + x_2^2 < 1\}\). Let \(y, z \in \Omega\) and \(\lambda \in [0, 1]\). Then
+                    \begin{align*}
+                        \norm{\lambda y + (1 - \lambda)z}_2 & \leq \norm{\lambda y}_2 + \norm{(1 -\lambda)z}_2 \\
+                                                            & = \lambda \norm{y}_2 + (1 - \lambda)\norm{z}_2   \\
+                                                            & < 1
+                    \end{align*}
+                    since \(y, z \in \Omega \implies \norm{y}, \norm{z} < 1\) and \(\lambda \in [0, 1]\). Hence \(\Omega\) is convex.
+              \item \(\Omega = \{\fx = (x_1, x_2) \in \bR^2: x_1^2 + x_2 \leq 1\} \cup \{\fx = (x_1, x_2) \in \bR^2: x_1 \geq 0, x_2 \geq 0\}\). Consider \(y = (-1, 0)\) and \(z = (0, 10)\) then \(y, z \in \Omega\). However the midpoint \((-\frac{1}{2}, 5) \notin \Omega\). Hence \(\Omega\) is not convex.
+          \end{enumerate}
+    \item {\color{red} HI}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item {\color{red} HI}
+              \item {\color{red} HI}
+              \item \(f(x_1, x_2, x_3) = x_1^4 + x_2^4 + x_3^4 - \cos(x_1^2 + x_2^2 + x_3^2)\). Observe that as \(\norm{\fx} \to \infty\), \(x_1^4 + x_2^4 + x_3^4 \to \infty\) and \(\cos(x_1^2 + x_2^2 + x_3^2) \leq 1\) for all \(\fx\).So their difference approaches \(\infty\). Hence \(f\) is coercive.
+              \item \(f(x_1, x_2) = e^{x_1^2} + e^{x_2^2} - x_1^2 - x_2^2\). We have
+                    \begin{align*}
+                        e^{x_1^2} + e^{x_2^2} - x_1^2 - x_2^2 & = e^{x_1^2} + e^{x_2^2} - (x_1^2 + x_1^2)                                                                 \\
+                                                              & = e^{x_1^2} + e^{x_2^2} - \norm{\fx}_2^2                                                                  \\
+                                                              & \geq 2 \left(e^{x_1^2}e^{x_2^2}\right)^\frac{1}{2} - \norm{\fx}_2^2 \tag{using \(a + b \geq 2\sqrt{ab}\)} \\
+                                                              & = 2\left(e^{x_1^2 + x_2^2}\right)^\frac{1}{2} - \norm{\fx}_2^2                                            \\
+                                                              & = 2e^{\frac{\norm{\fx}_2^2}{2}} - \norm{\fx}_2^2
+                    \end{align*}. Then since \(\lim_{\norm{x} \to \infty} \frac{e^{\frac{\norm{\fx}_2^2}{2}}}{\norm{\fx}_2^2} \to \infty\) then \(f \to \infty\). Hence \(f\) is coercive.
+          \end{enumerate}
+    \item {\color{red} HI}
+    \item {\color{red} HI}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item {\color{red} HI}
+              \item \(f(X) = \rank(X)\) for all \(X \in S^n\). Let \(X = \begin{pmatrix}
+                        1 & 0 \\ 0 & 0
+                    \end{pmatrix}\) and \(Y = \begin{pmatrix}
+                        0 & 0 \\ 0 & 1
+                    \end{pmatrix}\). Then \(\rank(X) = 1\) and \(\rank(Y) = 1\), but \(\rank(\frac{X + Y}{2}) = 2\). So \(\rank(\frac{X + Y}{2}) > \rank(A) + \rank(B)\). Thus \(f\) is not convex.
+              \item \(f(X) = \det(X)\) for all \(X \in S^n\). Similarly to above, \(f(\frac{X + Y}{2}) = \frac{1}{4} > f(\frac{X}{2}) + f(\frac{Y}{2}) = 0 + 0\). Thus \(f\) is not convex.
+          \end{enumerate}
+
+\end{enumerate}
+
 \section{Geometry of Linear Programs and Simplex Methods}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+              \item \(\Omega_1 = \{\fx = (x_1, x_2, x_3) \in \bR^3: x_1 + x_2 + x_3 = 1, x_i \geq 0, i = 1, 2, 3\}\). We see that \(n = 3\) and \(m = 1\), then hence an extreme point has \(n - m = 2\) entries are zero. So candidates for extreme points are
+                    \[\fx_1^* = \begin{pmatrix}
+                            1 & 0 & 0
+                        \end{pmatrix}, \quad \fx_2^* = \begin{pmatrix}
+                            0 & 1 & 0
+                        \end{pmatrix}, \quad \fx_3^* = \begin{pmatrix}
+                            0 & 0 & 1
+                        \end{pmatrix}.\]
+                    Now \(x_1 + x_2 + x_3 = 1 \iff \fa_1^T \fx = b_i\) with \(\fa_1 = \begin{pmatrix}
+                        1 & 1 & 1
+                    \end{pmatrix}^T\) and \(b_i = 1\). So \(A = \fa_1^T = \begin{pmatrix}
+                        1 & 1 & 1
+                    \end{pmatrix}\). For \(\fx_1^*\), as only the first component is non-zero and \(\{A_1\}\) is linearly independent then \(\fx_1^*\) is an extreme point of \(\Omega_1\). Similarly \(\fx_2^*\) and \(\fx_3^*\) are also extreme points of \(\Omega_1\).
+              \item \(\Omega_2 = \{\fx = (x_1, \dots, x_n) \in \bR^n : \sum_{i = 1}^n x_i = 2, x_i \geq 0, i = 1, \dots, n \}\). Similarly \(m = 1\), so there are \(n - 1\) zero entries in the extreme points. Then from above, it follows that each \(2\fe_i = \begin{pmatrix}
+                        0 & \cdots & 2 & \cdots & 0
+                    \end{pmatrix} \in \bR^n\) is an extreme point of \(\Omega_2\).
+              \item \(\Omega_3 = \{\fx = (x_1, x_2, x_3, x_4) \in \bR^4 : x_1 + x_2 + x_3 = 1, x_2 + x_4 = 2, x_i \geq 0, i = 1, \dots, 4\}\). Note that \(n = 4\) and \(m = 2\), so extreme points have \(n - m = 2\) entries are zero. Then note that
+                    \begin{align*}
+                        x_1 + x_2 + x_3 = 1 & \iff \fa_1^T \fx = 1 \\
+                        x_2 + x_4 = 2       & \iff \fa_2^T \fx = 1
+                    \end{align*}
+                    where \(\fa_1 = \begin{pmatrix}
+                        1 & 1 & 1 & 0
+                    \end{pmatrix}^T\) and \(\fa_2 = \begin{pmatrix}
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}^T\). So, \(A = \begin{pmatrix}
+                        \fa_1^T \\ \fa_2^T
+                    \end{pmatrix} = \begin{pmatrix}
+                        1 & 1 & 1 & 0 \\
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}\).
+                    \begin{enumerate}
+                        \item If \(x_1 = x_2 = 0\), then \(x_3 = 1, x_4 = 2\). As \(\{A_3, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  0 & 0 & 1 & 2
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_1 = x_3 = 0\), then \(x_2 = 1, x_4 = 1\). As \(\{A_2, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  0 & 1 & 0 & 1
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_1 = x_4 = 0\), then \(x_2 = 2\) and \(x_3 = -1\) which is not in the feasible region.
+                        \item If \(x_2 = x_3 = 0\), then \(x_1 = 1, x_4 = 2\). As \(\{A_1, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  1 & 0 & 0 & 2
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_2 = x_4 = 0\), then \(x_2 + x_4 \neq 2\) which is impossible.
+                        \item If \(x_3 = x_4 = 0\), then \(x_2 =2, x_1 = -1\) which is not in the feasible region.
+                    \end{enumerate}
+                    Thus extreme points for \(\Omega_3\) are \(\fx = \begin{pmatrix}
+                        0 & 0 & 1 & 2
+                    \end{pmatrix}, \begin{pmatrix}
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}, \begin{pmatrix}
+                        1 & 0 & 0 & 2
+                    \end{pmatrix}\).
+          \end{enumerate}
+    \item {\color{red} HI}
+    \item {\color{red} HI}
+    \item           \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - number of inkjet printers
+                  \item \(x_2\) - number of laser printers
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2) = 30x_1 + 25x_2\)
+              \end{itemize}
+              So the problem can be formulated as,
+              \begin{align*}
+                  \max_{\fx = (x_1, x_2) \in \bR^2} \quad & 30x_1 + 25x_2      \\
+                  \text{subject to}\quad                  & x_1 + 2x_2 \leq 40 \\
+                                                          & 3x_1 + x_2 \leq 45 \\
+                                                          & x_2 \leq 12        \\
+                                                          & x_1, x_2 \geq 0.
+              \end{align*}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(x_1 + 2x_2 \leq 40\) (total hours)
+                  \item \(3x_1 + x_2 \leq 45\) (storage space)
+                  \item \(x_2 \leq 12\) (market capacity)
+                  \item \(x_1, x_2 \geq 0\) (hidden constraint)
+              \end{itemize}
+              In terms of standard form, we have
+              \begin{align*}
+                  \min_{\fx = (x_1, x_2) \in \bR^2} \quad & -30x_1 - 25x_2                  \\
+                  \text{subject to}\quad                  & x_1 + 2x_2 + s_1 = 40           \\
+                                                          & 3x_1 + x_2 + s_2 = 45           \\
+                                                          & x_2 + s_3 = 12                  \\
+                                                          & x_1, x_2, s_1, s_2, s_3 \geq 0.
+              \end{align*}
+          \end{minipage}
+          To use simplex method, we first rewrite the above standard form as
+          \begin{align*}
+              \text{Minimise} \quad  & z                               \\
+              \text{subject to}\quad & z + 30x_1 + 25x_2 = 0           \\
+                                     & x_1 + 2x_2 + s_1 = 40           \\
+                                     & 3x_1 + x_2 + s_2 = 45           \\
+                                     & x_2 + s_3 = 12                  \\
+                                     & x_1, x_2, s_1, s_2, s_3 \geq 0.
+          \end{align*}
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\) & \(s_3\) & \(b\) &                             \\
+                  \hline
+                                  & 1     & 30      & 25      & 0       & 0       & 0       & 0     &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 1       & 2       & 1       & 0       & 0       & 40    & \text{non-basic variables:} \\
+                  \(s_2\)         & 0     & 3       & 1       & 0       & 1       & 0       & 45    & \(x_1, x_2\)                \\
+                  \(s_3\)         & 0     & 0       & 1       & 0       & 0       & 1       & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          With our entering variable \(x_1\) and outgoing variable \(s_2\):
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\)         & \(s_1\) & \(s_2\)          & \(s_3\) & \(b\) &                             \\
+                  \hline
+                                  & 1     & 0       & 15              & 0       & -10              & 0       & -450  &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 0       & \(\frac{5}{3}\) & 1       & \(-\frac{1}{3}\) & 0       & 25    & \text{non-basic variables:} \\
+                  \(x_1\)         & 0     & 1       & \(\frac{1}{3}\) & 0       & \(\frac{1}{3}\)  & 0       & 15    & \(s_2, x_2\)                \\
+                  \(s_3\)         & 0     & 0       & 1               & 0       & 0                & 1       & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          Now entering variable \(x_2\) and outgoing variable \(s_3\):
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\)          & \(s_3\)          & \(b\) &                             \\
+                  \hline
+                                  & 1     & 0       & 0       & 0       & -10              & -15              & -630  &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 0       & 0       & 1       & \(-\frac{1}{3}\) & \(-\frac{5}{3}\) & 5     & \text{non-basic variables:} \\
+                  \(x_1\)         & 0     & 1       & 0       & 0       & \(\frac{1}{3}\)  & \(-\frac{1}{3}\) & 11    & \(s_2, s_3\)                \\
+                  \(x_2\)         & 0     & 0       & 1       & 0       & 0                & 1                & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          Thus, an optimal solution is \(x_1^* = 11, x_2^* = 12\).
+\end{enumerate}
+
 \section{Duality and Sensitivity Analysis for Linear Programs}
 \section{Interior Point Method for Linear Programs and Applications for Linear Programs}
 \section{Network Problems}
