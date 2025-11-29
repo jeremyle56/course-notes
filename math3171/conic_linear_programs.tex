@@ -100,9 +100,171 @@ Some special cases of conic programming problems:
           is called a primal form (or conic form) of \textbf{second-order cone programming problem}.
           For \(H = S^n, \langle A, B \rangle := \tr(AB)\) and \(K = S_+^n\), then the associated conic programming problem
           \begin{align*}
-              \text{Minimise}_{x \in S^n} \quad & \tr(CX)                               \\
-              \text{subject to} \quad           & \tr(A_i X) = b_i, i = 1,\dots,m,      \\
-                                                & X \in S_+^n (\text{or } X \succeq 0),
+              \text{Minimise}_{x \in S^n} \quad & \tr(CX)                                  \\
+              \text{subject to} \quad           & \tr(A_i X) = b_i, i = 1,\dots,m,         \\
+                                                & X \in S_+^n \, (\text{or } X \succeq 0),
           \end{align*}
           is called a primal form (or conic form) of \textbf{semi-definite programming problem}.
 \end{itemize}
+
+\section{Dual Problems of Conic Program and Duality Theory}
+
+Recall the form for a conic programming problem. Its dual problem reads
+\begin{align*}
+    \text{Maximise}_{y \in \bR^m} \quad & \sum_{i = 1}^m y_ib_i             \\
+    \text{subject to} \quad             & c - \sum_{i = 1}^m y_ia_i \in K^*
+\end{align*}
+
+The. pair rof problems (P) and (D) is called a primal and dual pair of conic problems. The dual problem of the previous special cases are as follows:
+
+\begin{itemize}
+    \item \textbf{Linear Programming}:
+          \begin{align*}
+              \text{Maximise} \quad   & \sum_{i = 1}^m b_iy_i                \\
+              \text{subject to} \quad & \fc - \sum_{i = 1}^m y_i\fa_i \geq 0
+          \end{align*}
+    \item \textbf{Second-order Cone Programming}:
+          \begin{align*}
+              \text{Maximise}_{\fy \in \bR^m} \quad & \sum_{i = 1}^m b_iy_i                                              \\
+              \text{subject to} \quad               & \fc - \sum_{i = 1}^m y_i\fa_i \in \prod_{j = 1}^p \text{SOC}^{n_j}
+          \end{align*}
+    \item \textbf{Semidefinite Programming}:
+          \begin{align*}
+              \text{Maximise}_{\fy \in \bR^m} \quad & \sum_{i = 1}^m b_iy_i              \\
+              \text{subject to} \quad               & C - \sum_{i = 1}^m y_iA_i \succ 0.
+          \end{align*}
+\end{itemize}
+
+\thrm{Weak Duality}{
+    Let \(x \in H\) be a feasible point to the problem (P) and let \(\fy \in \bR^m\) be a feasible point to (D). Then, we have
+    \[\langle c, x \rangle \geq \sum_{i = 1}^m b_iy_i.\]
+    In particular, we have \(\min(P) \geq \max(D)\).
+}
+
+\defn{Duality Gap}{
+    We define the duality gap \(\vartheta\) between the problem (P) aand its dual problem (D) by
+    \[\vartheta := \min(P) - \max(D).\]
+}
+
+\thrm{Strong Duality Theorem}{
+    Asume that both primal (P) and dual problems have nonempty feasible regions. Moreover, suppose that the primal problem (P) satisfies the following interior point condition: there exists \(\overline{x} \in H\) such that
+    \[\langle a_i, \overline{x} \rangle = b_i, i = 1, \dots, m, \text{ and } \overline{x} \in \operatorname{int}(K).\]
+    Then,
+    \begin{enumerate}[label=(\arabic*)]
+        \item \(\min(P) = \max(D)\);
+        \item the maximum in the dual problem (D) is attained.
+    \end{enumerate}
+}
+
+\section{Modelling with Conic Programs}
+
+In this section, we examine several important classes (second order cone programs, semi-definite programs, other conic programs) of conic programs and discuss specific modelling techniques for these classes.
+
+\subsection{Second-order Cone Programs}
+
+Note: A primal or a dual form of second order cone program is a convex program.
+
+\subsubsection{Secord-order Cone Representable Set}
+
+\paragraph{Case 1: Epigraph set of Euclidean norms.} Note that
+\[\norm{x}_2 \iff \begin{bmatrix}
+        t \\ \fx
+    \end{bmatrix} \in \text{SOC}^{n + 1}.\]
+So,
+\[\{(\fx, t) : \norm{\fx}_2 \leq t\} = \left\{(\fx, t) : \begin{bmatrix}
+        t \\ \fx
+    \end{bmatrix} \in \text{SOC}^{n + 1}\right\}\]
+
+\paragraph{Case 2: Sets described by norm inequalities.} Consider a set \(\Omega\) given by
+\[\Omega = \{\fx \in \bR^n : \norm{A\fx + \fb}_2 \leq \fc^T\fx+ d\}\]
+where \(A\) is an \((m \times n)\) matrix, \(\fb \in \bR^m, \fc \in \bR^n\) and \(d \in \bR\). Then, we see that
+\[
+    \Omega = \left\{\fx \in \bR^n : \begin{bmatrix}
+        \fc^T\fx + d \\ A\fx + \fb
+    \end{bmatrix} \in \SOC^{m + 1}\right\}
+\]
+
+\paragraph{Case 3: Epigraph set of square Euclidean norms}
+The epigraph of the squared Euclidean norm can be described aas the intersection of a rotated quadratic cone with an affine hyperplane. Note that,
+\begin{align*}
+         & \norm{\fx}_2^2 \leq t = \frac{(t + 1)^2 - (t - 1)^2}{4}                                             \\
+    \iff & \norm{\fx}_2^2 + \left(\frac{t - 1}{2}\right)^2 \leq \left(\frac{t + 1}{2}\right)^2, \quad t \geq 0 \\
+    \iff & \sqrt{\norm{\fx}_2^2 + \left(\frac{t - 1}{2}\right)^2} \leq \frac{t + 1}{2}                         \\
+    \iff & \norm{\begin{bmatrix}\fx \\ \frac{t - 1}{2} \end{bmatrix}}_2 \leq \frac{t + 1}{2}
+    \iff & \begin{bmatrix}
+               \frac{t + 1}{2} \\ \fx \\ \frac{t - 1}{2}
+           \end{bmatrix} \in \SOC^{n + 2}.
+\end{align*}
+
+% So, we have
+% \[\fx \in \bR^n : \fx^T Q\fx + \fc^T \fx + r \leq 0\}\]
+
+\paragraph{Case 4: Sets defined by convex quadratic inequality}
+
+Assume \(Q \in \bR^{n \times n}\) is a symmetric positive semidefinite matrix. We consider a set \(\Omega\) described by a convex inequality, that is,
+\[\Omega = \{\fx: \fx^T Q\fx + \fc^T \fc + r \leq 0\}.\]
+The set \(\Omega\) can be rewritten as
+\[\fx^T Q \fx \leq -\fc^T\fx - r.\]
+Since \(Q\) is symmetric positive semidefinite, there exists a matrix \(F \in \bR^{k \times n}\) such that
+\[Q = F^TF.\]
+Then
+\[\fx^T Q\fx \leq -\fc^T\fx - r \iff \norm{F\fx}^2 \leq -\fc^T\fx - r.\]
+
+So we have,
+\begin{align*}
+    \{\fx \in \bR^n : \fx^T Q\fx + \fc^T \fx + r \leq 0\}                                        \\
+    = & \{\fx \in \bR^n : \norm{F\fx}_2^2 \leq -\fc^T\fx - r\}                                   \\
+    = & \left\{\fx \in \bR^n : \begin{bmatrix}
+                                   \frac{-\fc^T\fx - r + 1}{2} \\ F\fx \\ \frac{-\fc^T\fx - r - 1}{2}
+                               \end{bmatrix} \in \SOC^{k + 2}\right\}.
+\end{align*}
+
+\paragraph{Case 5: Sets involving simple power functions}
+
+Some sets described by power-like functions can be representable by second order cone, even though they need not be obvious at first glance. For example, we have
+
+\[\left\{(x, t) \in \bR \times \bR : \frac{1}{x} \leq t, x > 0\right\} = \left\{(x, t) \in \bR \times \bR : \begin{bmatrix}
+        x + t \\ x - t \\ 2
+    \end{bmatrix} \in \SOC^3\right\}.\]
+
+\subsubsection{Modelling with Second-Order Cone Programming}
+
+Consider a general convex quadratically constrained quadratic optimization problem (QCQP) can be written as
+\begin{align*}
+    \text{minimise }   & \fx^TQ_0\fx + \fc_0^T\fx + r_0                                \\
+    \text{subject to } & \fx^TQ_i\fx + \fc_i^T\fx + r_i \leq 0, \quad i = 1, \dots, p,
+\end{align*}
+
+where all \(Q_i \in \bR^{n \times n}\) are symmetric positive semidefinite matrices. Let
+\[Q_i = F_i^T F_i, \quad i = 0,\dots, p,\]
+where \(F_i \in \bR^{k_i \times n}\). We can equivalently rewrite a convex QCQP as a second-order cone program. \\
+
+\paragraph{Special Case 1 of QCQP: Markowitz Protfolio Optimization}
+AN important special case of the previous general model is the Markovitz portfolio optimization problem.
+\begin{itemize}
+    \item One divides his/her capital over \(n\) possible investments (like stocks or bonds);
+    \item \(x_i\) is the fraction of the investment capital one puts in investments \(i\);
+    \item \(r_i\) is the expected return on investment \(i\);
+    \item \(\fx^T\Sigma x\) is the risk (or volatility) associated with the portfolio \(\fx\), where \(\Sigma\) is a positive semi-definite matrix;
+    \item \(\mathbf{r}^T\fx\) is the expected return on the portfolio.
+    \item One wish to maximise the expected return given an upper bound \(\gamma\) on the tolerable risk.
+\end{itemize}
+
+The Markovitz portfolio optimization problem can be formulated as
+\begin{align*}
+    \text{maximize} \quad   & \mathbf{r}^T\fx              \\
+    \text{subject to} \quad & \fx^T \Sigma \fx \leq \gamma \\
+                            & \mathbf{e}^T \fx = 1         \\
+                            & \fx \geq 0,
+\end{align*}
+
+where \(\mathbf{e} = (1, \dots, 1)^T \in \bR^n\). Let \(\Sigma = GG^T\) (e.g., using a Cholesky or a eigenvalue decomposition). We then obtain a second-order cone programming formulation.
+
+\paragraph{Special Case 2 of QCQP: Support Vector Machine}
+
+Optimization formula for Support Vector Machine (SVM):
+\begin{align*}
+    \text{Minimize }_{\mathbf{w} \in \bR^, \gamma \in \bR} \quad & \norm{\mathbf{w}}_2^2                                                       \\
+    \text{subject to }                         \quad             & \mathbf{w}^T\overline{\fx_i} + \gamma \geq \phantom{-}1, \quad \text{if } A \\
+                                                                 & \mathbf{w^T}\overline{\fx_i} + \gamma \leq - 1, \quad \text{if } B
+\end{align*}
