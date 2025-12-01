@@ -1,0 +1,112 @@
+\section{Integer Programs}
+
+A typical integer programming problem (IP) looks like
+
+\begin{align*}
+    \text{Minimize/Maximize } \quad & c_1x_1 + \cdots c_n x_n                 \\
+    \text{subject to } \quad        & a_{11}x_1 + \cdots + a_{1n}x_n \leq b_1 \\
+                                    & \vdots                                  \\
+                                    & a_{m1}x_1 + \cdots + a_{mn}x_n \leq n_m \\
+    x_i geq 0 \quad i = 1, \dots, n                                           \\
+    x_i \text{ integers} \quad i \in I,
+\end{align*}
+where \(I\) is an nonempty subset of \(\{1, \dots, n\}\). \\
+
+If \(I \neq \{1, \dots, n\}\), then we have a \textbf{mixed integer programming problem}. On the other hand, if \(I = \{1, \dots, n\}\) then we have a \textbf{pure integer programming problem}.
+
+We present a few characterisations on integer programming problems.
+\begin{itemize}
+    \item \textbf{Fixed Charge Problems.} The objective function is discontinuous.
+    \item \textbf{Problems with either-Or Constraints.} In some situations, we are given two constraints of the form
+          \[f(x_1, \dots, x_n) \leq 0 \text{ and } g(x_1, \dots, x_n) \leq 0.\]
+          We want to ensure that \textit{at least} one of the above two inequalities is satisfied, often call either-or constraints. In general, to handle these we choose a large number \(M\) so that
+          \[f(x_1, \dots, x_n) \leq M \text{ and } g(x_1, \dots, x_n) \leq M\]
+          holds for all values of \(x_1, \dots, x_n\) that satisfy the other constraints in the problem and introduce an auxiliary binary variable \(y\). Then the above either-or constraints can be converted to
+          \[
+              \begin{cases*}
+                  f(x_1, \dots, x_n) \leq My \quad & \(\quad y \in \{0, 1\}\) \\
+                  g(x_1, \dots, x_n) \leq M(1 - y)
+              \end{cases*}
+          \]
+    \item \textbf{\(K\) out of \(N\) Constraints Must Hold.} This is a generalisation of the previous situation where \(K\) constraints hold and \(N - K\) do not. This can be solved similarly to the approach detailed above, but to all \(N\) constraints. We also need to introduce a summation constraint
+          \[\sum_{i = 1}^N y_i = N - K.\]
+          The summation constraint forces \(N - K\) of the \(y_i\)'s to be 1 so that the corresponding \(N - K\) constrains will have right hand sides \(b_i + M\) and therefore not constrain the values of the \(x_i\). The remaining \(K\) \(y_i\) values will be zero so that the right hand sides of those constraints will simply be \(b_i\), the same as the original constraints.
+    \item \textbf{Constraints with a Choice of Values.} The general formulation for such problem is
+          \[a_{11}x_1 + \cdots + a_{n1}x_n = b_1^{(1)} \text{ or } b_1^{(2)} \text{ or } \dots \text{ or } b_1^{(k)}\]
+          and to reformulate this appropriately we introduce \(k\) binary variables \(y_i\), one for each possible constraints value and replace the above constraint with
+          \begin{align*}
+              a_{11}x_1 + \cdots + a_{n1}x_n & = \sum_{i = 1}^k b_1^{(i)}y_i \\
+              \sum_{i = 1}^k y_i             & = 1                           \\
+              y_i \text{ binary } \quad      & \quad i = 1, 2 \dots, k
+          \end{align*}
+    \item \textbf{Binary Representations of General Integer Variables.} If all but a few variables in an integer programming problem are binary then it may be worthwhile to convert the remaining integer variables to binary ones as well and treat the problem with a method for binary integer programming problems. Suppose \(x\) is an integer variable with bounds
+          \[0 \leq x \leq u, \quad\text{ where } 2^N \leq u < 2^{N + 1}\]
+          then we can replace \(x\) by its binary representation
+          \[x = \sum_{i = 0}^N 2^i y_i \quad \text{ with } y_i \in \{0, 1\}.\]
+\end{itemize}
+
+\subsection{Branch and Bound Method}
+One approach to solving integer programming problems is to solve the corresponding linear programming problem, where we remove the conditions that the variables are integers (this is referred to as its \(LP\)-relaxation) and round the solution variables to the nearest feasible integer values. Of course if the solution to the LP-relaxation happens to be integers then the optimal solution to the original integer programming problem has been found. \\
+
+The difficulty with this procedure is that none of the rounded solutions may be feasible, and the other difficulty is that it will probably not be optimal. \\
+
+For now on, we will focus on integer programming problems with the form
+\begin{align*}
+    \text{(IP) } Minimize \quad & c_1x_1 + \cdots + c_nx_n                \\
+    \text{subject to } \quad    & a_{11}x_1 + \cdots + a_{1n}x_n \leq b_1 \\
+                                & \vdots                                  \\
+                                & a_{m1}x_1 + \cdots + a_{mn}x_n \leq b_m \\
+                                & x_i \geq 0, i = 1, \dots, m             \\
+                                & x_i \text{ integers}, i = 1, \dots, n,
+\end{align*}
+where all the coefficients \(c_i, i = 1,\dots, n\) (in the objective function) are all integers. If \(c_i\) are rational numbers, then we can multiply by a constant to force \(c_i\) to be integers. \\
+
+\subsubsection{Branch and Bound}
+
+At each step in the procedure we will divide the current LP-relaxation into 2 subproblems (this is called \textit{branching}). These are solved (in our case by the Simplex method) and their optimal values give a bound as to the best possible solution that can be found for that subproblem. If there can be no integer solution in that subproblem which will be better than the current best integer solution then that branch is discarded (this is called \textit{fathoming}). \\
+
+\begin{enumerate}[label=Step \arabic*.]
+    \setcounter{enumi}{-1}
+    \item Solve the LP-relaxation of the problem. If the optimal solution is integer then the optimal solution to the original problem has also been found and the calculations are stopped. Otherwise treat this as the one remaining unfathomed subproblem and go to step 1.
+    \item Branching: Among the remaining unfathomed subproblems, select one variable which takes non-integer value \(x\), and branch from this subproblem by choosing one variable to be smaller than \(\lfloor x \rfloor\) (the largest integer smaller than \(x\)) for one branch and greater than \(\lceil x \rceil\) (the smallest integer larger than \(x\)) for the other branch.
+    \item Bounding: For each new subproblem obtain its bound by applying the Simplex method to its LP-relaxation and rounding up the value of \(Z\) for the resulting optimal solution.
+    \item Fathoming: For each new subproblem, apply the three fathoming test summarised below, and discard those subproblems that are fathomed by any of the tests.
+    \item Optimality: If there are no remaining subproblems then the best integer solution found so far will be optimal. Otherwise return to step 1.
+\end{enumerate}
+
+\textbf{The Three Fathoming Tests.}
+In the process of carrying out the branch and bound method suppose you have found an integer solution to one of the subproblems with value \(Z^*\) that is the best integer solution found so far (if no integer solution has yet been found let \(Z^* = +\infty\)).
+
+A subproblem is fathomed (dismissed from further consideration) if
+\begin{itemize}
+    \item Test 1: Its optimal value \(> Z^*\) or
+    \item Test 2: Its LP-relaxation has no feasible solutions or
+    \item Test 3: The optimal solution for its LP-relaxation is integer.
+\end{itemize}
+
+The steps in this method are recorded on a tree, where the root of the tree is the inital LP relaxation, and the branching in Step 1 forms two new branches in the tree.
+
+\subsection{Cutting Plane Techniques}
+We now see one method that could potentially speed up the branch and bound method, called cutting plane techniques. \\
+
+Cutting planes, sometimes called cuts or valid inequalities are linear inequalities that can be inferred from an integer or mixed integer constraint set. Cutting planes are added to the constraint set to ``cut off'' noninteger solutions of its LP relaxation, thus resulting in a tighter relaxation. \\
+
+Consider an integer programming problem \((IP)\) from before and it's relaxation \((LP)\). One can solve \((LP)\) via simplex method and obtain a solution \(\fx_{LP}^*\).
+
+\begin{definition}
+    Consider an inequality with the form
+    \[\fw^T \fx + r \leq 0\]
+    where \(\fw \in \bR^n\) and \(r \in \bR\). We say this inequality is a cutting plane for the integer programming problem \((IP)\) if
+    \begin{itemize}
+        \item \(\fw^T\fx + r \leq 0\) for all \(\fx \in \bR^n\) which is feasible for \((IP)\).
+        \item \(\fw^T \fx_{LP}^* + r > 0\) where \(\fx_{LP}^*\) is a solution for the linear programming relaxation problem.
+    \end{itemize}
+\end{definition}
+
+From the definition, if a cutting plane is added to the linear program relaxation, then
+\begin{itemize}
+    \item it will not cut off any feasible points for the integer program
+    \item the solution obtained from solving the linear program relaxation will be cut off.
+\end{itemize}
+
+Thus, adding a cutting plane to the linear program relaxation will lead to tighter relaxation, that is, a solution with better lower bound.
