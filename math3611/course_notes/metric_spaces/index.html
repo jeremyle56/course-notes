@@ -1,0 +1,1596 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jeremyle56.github.io/course-notes/math3611/course_notes/metric_spaces/">
+      
+      
+        <link rel="prev" href="../cardinality/">
+      
+      
+        <link rel="next" href="../sequence_and_series_of_functions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Metric Spaces - MATH3611 Higher Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#metric-spaces" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MATH3611 Higher Analysis" class="md-header__button md-logo" aria-label="MATH3611 Higher Analysis" data-md-component="logo">
+      
+  <img src="../../assets/limit-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MATH3611 Higher Analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Metric Spaces
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="teal"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="teal"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeremyle56/course-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeremyle56/course-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MATH3611 Higher Analysis" class="md-nav__button md-logo" aria-label="MATH3611 Higher Analysis" data-md-component="logo">
+      
+  <img src="../../assets/limit-icon.png" alt="logo">
+
+    </a>
+    MATH3611 Higher Analysis
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeremyle56/course-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeremyle56/course-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardinality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cardinality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metric Spaces
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metric Spaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-metric-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a metric space?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology-of-metric-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topology of Metric Spaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundedness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completeness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completeness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normed-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normed Spaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contraction-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contraction Mappings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequence_and_series_of_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequences and Series of Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topological_spaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topological Spaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compactness_and_connectedness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compactness and Connectedness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../problem_sheets/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheets
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Problem Sheets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problem_sheets/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="metric-spaces">Metric Spaces<a class="headerlink" href="#metric-spaces" title="Permanent link">&para;</a></h1>
+<details class="note">
+<summary>Course Material</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Lecture 3 - 11/06</label><label for="__tabbed_1_2">Lecture 4 - 12/06</label><label for="__tabbed_1_3">Lecture 5 - 18/06</label><label for="__tabbed_1_4">Lecture 6 - 19/06</label><label for="__tabbed_1_5">Lecture 7 - 25/06</label><label for="__tabbed_1_6">Lecture 8 - 26/06</label><label for="__tabbed_1_7">Lecture 9 - 02/07</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li><strong>Definition of a metric space</strong> and <strong>axioms of a metric</strong>:<ul>
+<li><strong>Non-negativity and exactness</strong>: <span class="arithmatex">\(d(x, y) \geq 0\)</span>, and <span class="arithmatex">\(d(x, y) = 0\)</span> if and only if <span class="arithmatex">\(x = y\)</span>.</li>
+<li><strong>Symmetry</strong>: <span class="arithmatex">\(d(x, y) = d(y, x)\)</span></li>
+<li><strong>Triangle inequality</strong>: <span class="arithmatex">\(d(x, z) \leq d(x, y) + d(y, z)\)</span></li>
+</ul>
+</li>
+<li>The <strong>absolute value</strong> defines a metric on the real numbers: <span class="arithmatex">\(d(x, y) = |x - y|\)</span>.</li>
+<li>The <span class="arithmatex">\(d_p\)</span> metric on the space of <span class="arithmatex">\(n\)</span>-tuples <span class="arithmatex">\(\mathbb{R}^n\)</span>.<ul>
+<li>The triangle inequality in this case is known as the <strong>Minkowski inequality</strong>.</li>
+<li>The proof is non-trivial and relies on <strong>Hölder's inequality</strong>, which is itself proved using <strong>Young's inequality</strong>.</li>
+</ul>
+</li>
+<li>The <strong>discrete metric</strong> defines a metric on any set: <span class="arithmatex">\(d(x, y) = 1\)</span> if <span class="arithmatex">\(x \neq y\)</span>, and <span class="arithmatex">\(0\)</span> otherwise.</li>
+<li>The space <span class="arithmatex">\(c_{00}\)</span> (sequences with finitely many non-zero terms) is a metric space under the <span class="arithmatex">\(d_p\)</span> metric:<ul>
+<li>There is no issue with convergence, as all sequences in <span class="arithmatex">\(c_{00}\)</span> are eventually zero.</li>
+</ul>
+</li>
+<li>
+<p>The set of continuous functions <span class="arithmatex">\(C[0, 1]\)</span> becomes a metric space with the integral version of the <span class="arithmatex">\(d_p\)</span> metric:</p>
+<div class="arithmatex">\[
+    d_p(f, g) = \left(\int_0^1 |f(x) - g(x)|^p \, dx \right)^{1/p}
+\]</div>
+<ul>
+<li>The triangle inequality follows a similar argument to the finite-dimensional case <span class="arithmatex">\(\mathbb{R}^n\)</span>.</li>
+</ul>
+</li>
+<li>
+<p>A <strong>subset</strong> of a metric space becomes a <strong>metric subspace</strong> when equipped with the restricted metric.</p>
+</li>
+<li>The set of <strong>Riemann integrable functions</strong> is <strong>not</strong> a metric space under the <span class="arithmatex">\(d_p\)</span> metric, as it may fail the exactness axiom.</li>
+<li>The <span class="arithmatex">\(d_{1/2}\)</span> function is <strong>not</strong> a metric, as it fails the triangle inequality.</li>
+<li>The <span class="arithmatex">\(d_{\infty}\)</span> (supremum) metric:<ul>
+<li>Is valid on <span class="arithmatex">\(\mathbb{R}^n: d_{\infty} (x, y) = \max_i |x_i - y_i|\)</span></li>
+<li>May not be defined on functions over <span class="arithmatex">\([0, 1]\)</span> if there are unbounded.</li>
+<li>On <strong>bounded functions</strong>, it is a metric; the triangle inequality relies on the definition of the supremum.</li>
+</ul>
+</li>
+<li>The <strong>definition of the limit of a sequence</strong> extends to metric spaces:<ul>
+<li><span class="arithmatex">\(x_n \to x\)</span> if for every <span class="arithmatex">\(\epsilon &gt; 0\)</span>, there exists <span class="arithmatex">\(N\)</span> such that <span class="arithmatex">\(d(x_n, x) &lt; \epsilon\)</span> for all <span class="arithmatex">\(n &gt; N\)</span>.</li>
+</ul>
+</li>
+<li><strong>Limits are unique</strong> in metric spaces: a sequence cannot converge to two different points.</li>
+</ol>
+<details class="abstract">
+<summary>11/06 Lecture Slides</summary>
+<p><div>
+<object data="../../assets/lecture_notes/11062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+</object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>We can extend the <strong>definition of the limit of a function</strong> in the context of metric spaces using sequences.<ul>
+<li>In this setting, we say the function is <strong>sequentially continuous</strong> if it preserves limit of sequences.</li>
+</ul>
+</li>
+<li>
+<p>We define an <span class="arithmatex">\(\epsilon\)</span>-ball in a metric space as:</p>
+<div class="arithmatex">\[
+    B(x, \epsilon) = \{y \in X \mid d(x, y) &lt; \epsilon \}
+\]</div>
+</li>
+<li>
+<p>The statement of a <strong>limit of a sequence</strong> <span class="arithmatex">\(x_n \to x\)</span> in a metric space can be __reduced to a numerical sequence <span class="arithmatex">\(d(x_n, x) \to 0\)</span>.</p>
+</li>
+<li>Once the <span class="arithmatex">\(\epsilon\)</span>-ball is defined, we can introduce key topological concepts:<ul>
+<li><strong>Interior points</strong>: points that belong to some <span class="arithmatex">\(\epsilon\)</span>-ball fully contained in the set</li>
+<li><strong>Boundary points</strong>: points where every <span class="arithmatex">\(\epsilon\)</span>-ball insects both the set and its complement</li>
+</ul>
+</li>
+<li>Using these, we define:<ul>
+<li><strong>Open sets</strong>: sets where all points are interior</li>
+<li><strong>Closed sets</strong>: sets that contain all their boundary points</li>
+</ul>
+</li>
+<li>The set of <strong>interior points</strong> of a set <span class="arithmatex">\(Y\)</span>, denoted <span class="arithmatex">\(\mathrm{Int}(Y)\)</span>, is always <strong>open</strong>.<ul>
+<li>The proof is non-trivial: it involves careful reasoning about set identities and a clever use of the triangle inequality.</li>
+</ul>
+</li>
+<li>
+<p>The <strong>closure</strong> of a set is defined as the union of its interior and boundary:</p>
+<div class="arithmatex">\[
+    \mathrm{Cl}(Y) = \mathrm{Int}(Y) \cup \mathrm{Bd}(Y)
+\]</div>
+</li>
+<li>
+<p>A set is said to be <strong>dense</strong> if its closure equals the entire metric space:</p>
+<div class="arithmatex">\[
+    \mathrm{CI}(Y) = X
+\]</div>
+</li>
+<li>
+<p>The space <span class="arithmatex">\(c_{00}\)</span> (sequences with finitely many non-zero terms) provides a challenging example:</p>
+<ul>
+<li>The <strong>interior of</strong> <span class="arithmatex">\(c_{00}\)</span> is empty under the <span class="arithmatex">\(d_\infty\)</span> metric.</li>
+<li>The <strong>interior of its complement</strong> requires introducing the space <span class="arithmatex">\(c_0\)</span>, the set of sequences that converge to zero.</li>
+</ul>
+</li>
+</ol>
+<details class="abstract">
+<summary>12/06 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/12062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+<details class="abstract">
+<summary>Boundary and Interior of <span class="arithmatex">\(c_{00}\)</span></summary>
+<p><div>
+    <object data="../../assets/lecture_notes/12062025-boundary_and_interior_of_c_00.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>The definition of convergence in a metric space can be equivalently stated using the concepts of neighbourhoods and open neighbourhoods.</li>
+<li>The collection of open sets in a metric space forms a topology.</li>
+<li>A topology satisfies three fundamental properties: it includes the empty set and the whole space; it is closed under arbitrary unions; and it is closed under finite intersections.</li>
+<li>The intersection of finitely many open sets is open, but this does not hold for infinite intersections.</li>
+<li>In the discrete metric, the topology coincides with the power set.</li>
+<li>Whether a set is open or closed depends on the surrounding metric space.</li>
+<li>The set of interior points of a set can be described as the union of all open subsets contained within it.</li>
+<li>A set is closed if and only if it contains all of its limit points.</li>
+<li>A function is continuous if it satisfies the epsilon–delta definition.</li>
+<li>A function is continuous if and only if the preimage of every open set is open.</li>
+<li>The topologies on <span class="arithmatex">\(\mathbb{R}^n\)</span> induced by the <span class="arithmatex">\(d_p\)</span> metrics (for <span class="arithmatex">\(1 \leq p \leq \infty\)</span>) are all the same.</li>
+<li>The composition of continuous functions is continuous; the quickest proof uses the preimage characterisation of continuity.</li>
+<li>A bounded subset of a metric space can be defined in three different but equivalent ways.</li>
+<li>A Cauchy sequence is a powerful substitute for a convergent sequence, especially in spaces that are not complete.</li>
+<li>Every Cauchy sequence is bounded.</li>
+</ol>
+<details class="abstract">
+<summary>18/06 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/18062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Every convergent sequence is Cauchy.</li>
+<li>The metric spaces <span class="arithmatex">\((0, 1), \mathbb{Q}\)</span> and <span class="arithmatex">\(C[0, 1]\)</span> with the <span class="arithmatex">\(d_1\)</span> metric are not complete.</li>
+<li>A complete metric space is one in which every Cauchy sequence converges to a point in that space.</li>
+<li><span class="arithmatex">\(\mathbb{R}\)</span> (the set of real numbers) is complete.</li>
+<li>Any set with the discrete metric is complete.</li>
+<li>The set of <span class="arithmatex">\(n\)</span>-tuples with any <span class="arithmatex">\(d_p\)</span> metric is complete.</li>
+<li>A subset of a complete metric space is complete (with the induced metric) if and only if it is closed.</li>
+<li>The metric space <span class="arithmatex">\(C[0, 1]\)</span> with <span class="arithmatex">\(d_\infty\)</span> metric is complete.</li>
+<li>This extends to the space <span class="arithmatex">\(C(I, J)\)</span> where <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(J\)</span> are subsets of <span class="arithmatex">\(\mathbb{R}\)</span>, with <span class="arithmatex">\(I\)</span> closed and bounded, and <span class="arithmatex">\(J\)</span> closed.</li>
+<li>In every metric space, the set of all Cauchy sequences has a natural equivalence relation.</li>
+<li>This relation is an equivalence relation, meaning it is reflexive, symmetric, and transitive.</li>
+<li>The set of Cauchy sequences under this equivalence splits into equivalence classes.</li>
+<li>If one sequence in an equivalence class converges, then all sequences in that class also converge to the same limit.</li>
+<li>The set of all equivalence classes can be given a metric induced by the original metric space.</li>
+</ol>
+<details class="abstract">
+<summary>19/06 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/19062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>The classes of equivalent Cauchy sequences can be given a metric that turns them into a metric space.</li>
+<li>
+<p>The definition of this metric requires checking that it is well-defined; that is:</p>
+<p>a. the limit defining the metric is always converging, and
+b. it is independent of the choice of representatives from each equivalence class.</p>
+</li>
+<li>
+<p>A careful exposition of the result showing that the completion procedure yields a complete metric space—and that this space is unique up to isometry—can be found in Kolmogorov and Fomin, Section 7.4.</p>
+</li>
+<li>The space of real numbers <span class="arithmatex">\(\mathbb{R}\)</span> is the completion of <span class="arithmatex">\(\mathbb{Q}\)</span> with the absolute value metric.</li>
+<li>The completion of <span class="arithmatex">\(C[0, 1]\)</span> with the <span class="arithmatex">\(d_1\)</span> metric is the space of equivalence classes of Lebesgue integrable functions.</li>
+<li>Many of the metric spaces we have encountered can also be viewed as normed spaces.</li>
+<li>A complete normed space is called a Banach space.</li>
+<li>The space <span class="arithmatex">\(c_{00}\)</span> is a normed space with the <span class="arithmatex">\(\lVert \cdot \rVert_p\)</span> norm but not Banach.</li>
+<li>The space <span class="arithmatex">\(\ell^p\)</span> is a Banach space with the <span class="arithmatex">\(\lVert \cdot \rVert_p\)</span> norm.</li>
+<li>The space <span class="arithmatex">\(\ell^p\)</span> is the completion of <span class="arithmatex">\(c_{00}\)</span>.</li>
+<li>The proof that <span class="arithmatex">\(\ell^p\)</span> is a Banach space follows the same strategy as the proof that <span class="arithmatex">\(C[0, 1]\)</span> is Banach; we studied the argument in detail when we proved that <span class="arithmatex">\(C[0, 1]\)</span> is a complete metric space.</li>
+<li>Other spaces that fall into this category include <span class="arithmatex">\(\mathbb{R}^n, \ell^\infty\)</span> and <span class="arithmatex">\(c_{0}\)</span>.</li>
+</ol>
+<details class="abstract">
+<summary>25/06 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/25062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Some normed spaces can be defined via inner product spaces.</li>
+<li>The norm defined via an inner product is indeed a norm; that is, it satisfies the triangle inequality.</li>
+<li>The key to proving the triangle inequality is the Cauchy–Schwarz inequality.</li>
+<li>This inequality is proved using a neat trick within the setting of inner product spaces.</li>
+<li>A complete inner product space is called a Hilbert space.</li>
+<li><span class="arithmatex">\(\mathbb{R}^n\)</span>, <span class="arithmatex">\(\mathbb{C}^n\)</span> and <span class="arithmatex">\(\ell^2\)</span> are examples of inner product spaces (and hence Hilbert spaces).</li>
+<li>The inner product in <span class="arithmatex">\(\ell^2\)</span> (and hence its status as a Hilbert space) requires verifying that the defining series always converges.</li>
+<li><span class="arithmatex">\(\ell^1\)</span> is an inner product space but not a Hilbert space.</li>
+<li>A contraction is a special class of map that can be used to demonstrate the existence of solutions.</li>
+<li>Contractions are continuous.</li>
+<li>Recursive sequences defined via a contraction are Cauchy, and hence converge in complete metric spaces.</li>
+<li>Contraction Mapping Theorem: A contraction always have a unique fixed point in a complete metric space.</li>
+<li>We can use contractions to prove the existence of solutions to first-order ordinary differential equations (ODEs).</li>
+<li>This result is known as the Picard-Lindelöf Theorem.</li>
+<li>The key idea is to rewrite the ODE as an integral equation and consider the corresponding map.</li>
+<li>This map can be turned into a contraction if the metric space <span class="arithmatex">\(C(I, J)\)</span> is chosen carefully.</li>
+<li>The Picard–Lindelöf Theorem explains how to choose the intervals <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(J\)</span> to ensure that a contraction is obtained.</li>
+</ol>
+<details class="abstract">
+<summary>26/06 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/26062025-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>The Picard–Lindelöf Theorem has two versions of sufficient conditions.</li>
+<li>The conditions on page 109 help prove the theorem by showing the integral operator is a contraction, but are hard to apply in practice.</li>
+<li>A simpler version uses the boundedness of the function <span class="arithmatex">\(gg\)</span> and its partial derivative with respect to <span class="arithmatex">\(yy\)</span>.</li>
+<li>The link between the two versions is the concept of Lipschitz functions.</li>
+<li>
+<p>Lipschitz functions lie between continuous and differentiable functions:</p>
+<ul>
+<li>Every continuously differentiable function with bounded derivative is Lipschitz (by MVT).</li>
+<li>Some continuous functions (e.g. <span class="arithmatex">\(x^{1/3}\)</span>) are not Lipschitz.</li>
+<li>Some Lipschitz functions (e.g. <span class="arithmatex">\(|x|\)</span>) are not differentiable.</li>
+</ul>
+</li>
+<li>
+<p>For Picard–Lindelöf, the Lipschitz condition applies to gg with respect to yy; this reduces to boundedness of the yy-partial derivative.</p>
+</li>
+</ol>
+<details class="abstract">
+<summary>02/07 Lecture Slides</summary>
+<p><div>
+    <object data="../../assets/lecture_notes/02072025-01-lecture-slides.pdf" type="application/pdf" style="width: 100%; min-height: 100vh">
+    </object>
+</div></p>
+</details>
+</div>
+</div>
+</div>
+</details>
+<p>Recall the definition of a limit <span class="arithmatex">\(\lim_{x \to a} f(x) = b\)</span> means that "for any number <span class="arithmatex">\(\epsilon &gt; 0\)</span>, there is a number <span class="arithmatex">\(\delta(\epsilon)\)</span> such that <span class="arithmatex">\(|f(x) - b| &lt; \epsilon\)</span> whenever <span class="arithmatex">\(|x - a| &lt; \delta\)</span>".</p>
+<h2 id="what-is-a-metric-space">What is a metric space?<a class="headerlink" href="#what-is-a-metric-space" title="Permanent link">&para;</a></h2>
+<p>A <strong>metric space</strong> is a pair <span class="arithmatex">\((X, d)\)</span>, where <span class="arithmatex">\(X\)</span> is a (non-empty) set and <span class="arithmatex">\(d: X \times X \to [0, \infty)\)</span> is a function, such that the following conditions hold for all <span class="arithmatex">\(x, y, z \in X\)</span>:</p>
+<ol>
+<li><span class="arithmatex">\(d(x, y) = 0\)</span> if and only if <span class="arithmatex">\(x = y\)</span></li>
+<li><span class="arithmatex">\(d(x, y) = d(y, x)\)</span></li>
+<li><span class="arithmatex">\(d(x, y) + d(y, z) \geq d(x, z)\)</span> (<em>triangle inequality</em>)</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Examples</p>
+<p>The following are examples of metric spaces (proofs have not been included):</p>
+<ul>
+<li><span class="arithmatex">\(X = \mathbb{R}; d(x, y) = |x - y|\)</span> is a metric space.</li>
+<li><span class="arithmatex">\(X = \mathbb{R}^n; d_p((x_1, \dots, x_n), (y_1, \dots, y_n)) = (\sum_{k = 1}^n |x_k - y_k|^p)^{\frac{1}{p}}\)</span>, where <span class="arithmatex">\(p \geq 1\)</span> is a fixed number.</li>
+<li><span class="arithmatex">\(X = \mathbb{R}^n; d_\infty ((x_1, \dots, x_n), (y_1, \dots, y_n)) = \max\{ |x_1 - y_1 |, \dots, |x_n - y_n|\}\)</span>.</li>
+<li><span class="arithmatex">\(X\)</span> is any (non-empty) set, and <span class="arithmatex">\(d(x, y) = \begin{cases} 0 &amp; \text{if } x = y \\
+1 &amp; \text{if } x \neq y \end{cases}\)</span> which is the <em>discrete</em> metric.</li>
+<li>Let <span class="arithmatex">\(X = c_{00} = \{(x_n) : x_n = 0 \text{ all but finitely many} n\}\)</span>, the set of infinite sequences without only finitely many non-zero coordinates. Define metrics <span class="arithmatex">\(d_p, p \geq 1\)</span> and <span class="arithmatex">\(d_\infty\)</span> in a similar way as for <span class="arithmatex">\(\mathbb{R}^n\)</span>.</li>
+<li>Let <span class="arithmatex">\(X = C[0, 1]\)</span>, the set of continuous real-valued functions on the interval <span class="arithmatex">\([0, 1]\)</span>. For fixed <span class="arithmatex">\(p \geq 1\)</span>, define</li>
+</ul>
+<div class="arithmatex">\[
+    d_p(f, g) = \left(\int_0^1 |f(x) - g(x)|^p \, dx \right)^{\frac{1}{p}} \quad \text{ and } \quad d_\infty (f, g) = \sup_{x \in [0, 1]} |f(x) - g(x)|.
+\]</div>
+<ul>
+<li>Let <span class="arithmatex">\((X, d)\)</span> be any metric space, and let <span class="arithmatex">\(Y\)</span> be any (non-empty) subset of <span class="arithmatex">\(X\)</span>. Then <span class="arithmatex">\(d / Y \times Y\)</span> is a metric on <span class="arithmatex">\(Y\)</span> (<em>subset metric</em>).</li>
+</ul>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Non-examples</p>
+<p>There are also a few non-examples of metric spaces (proofs not included):</p>
+<ul>
+<li><span class="arithmatex">\(X = R[0, 1]\)</span>, the set of Riemann integrable functions on <span class="arithmatex">\([0, 1]\)</span>, with <span class="arithmatex">\(d_1\)</span>. This fails axiom 1 with <span class="arithmatex">\(f(0) = 1, f(x \neq 0) = 0\)</span>.</li>
+<li><span class="arithmatex">\(X = \mathbb{R}^2\)</span> with "<span class="arithmatex">\(d_{\frac{1}{2}}\)</span>".</li>
+<li>The set of all international airports with "flying time metric" or "flight prince metric". Not symmetric.</li>
+<li><span class="arithmatex">\(X = \mathbb{R}^{[0, 1]}\)</span> (the set of real-valued functions on <span class="arithmatex">\([0, 1]\)</span>), with "<span class="arithmatex">\(d_\infty\)</span>". <span class="arithmatex">\(d_\infty\)</span> isn't always defined on discontinuous function.</li>
+</ul>
+</div>
+<h2 id="sequences">Sequences<a class="headerlink" href="#sequences" title="Permanent link">&para;</a></h2>
+<p>A sequence in a set <span class="arithmatex">\(X\)</span> is a function from <span class="arithmatex">\(\mathbb{N}\)</span> (or <span class="arithmatex">\(\mathbb{Z}_+\)</span>) to <span class="arithmatex">\(X\)</span>. (Notation: <span class="arithmatex">\(\{x_n \}_{n = 0}^\infty\)</span>)</p>
+<p>Recall: a sequence <span class="arithmatex">\(\{x_n \}_{n = 0}^\infty \subset \mathbb{R}\)</span> converges to a limit <span class="arithmatex">\(x \in \mathbb{R}\)</span> if for every <span class="arithmatex">\(\epsilon &gt; 0\)</span>, there is a <span class="arithmatex">\(K(\epsilon) \in \mathbb{N}\)</span> such that <span class="arithmatex">\(|x_n - x| &lt; \epsilon\)</span> whenever <span class="arithmatex">\(n &gt; K(\epsilon)\)</span>.</p>
+<p><strong>Theorem:</strong> A sequence in a metric space can have at most one limit.</p>
+<!-- !!! example
+
+    For metric spaces $X$ and $Y$, a function $f: X \to Y$ is said to be __sequentially continuous__ if for every convergent sequence $\{ x_0 \}_{n = 0}^\infty \subseteq X$ with limit $x$, the sequences $\{ f(x_n) \}_{n = 0}^\infty$ converges to $f(x)$ (in $Y$) -->
+
+<h2 id="topology-of-metric-spaces">Topology of Metric Spaces<a class="headerlink" href="#topology-of-metric-spaces" title="Permanent link">&para;</a></h2>
+<p>For a point <span class="arithmatex">\(x\)</span> in a metric space <span class="arithmatex">\((X, d)\)</span> and a number <span class="arithmatex">\(\epsilon &gt; 0\)</span>, define the (open) <strong><span class="arithmatex">\(\epsilon\)</span>-ball</strong></p>
+<div class="arithmatex">\[
+B(x, \epsilon) = \{ y \in X : d(y, x) &lt; \epsilon \}
+\]</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>For <span class="arithmatex">\(X = \mathbb{R}^2, d = d_1(\mathbf{x}, \mathbf{y}) = |x_1 - y_1| + |x_2 - y_2|\)</span> then <span class="arithmatex">\(B(\mathbf{0}, 1) = \{ \mathbf{x} \in \mathbb{R}^2 : |x_1| + |x_2| &lt; 1 \}\)</span>.</li>
+<li>For <span class="arithmatex">\(X = \mathbb{R}^2, d = d_2\)</span> then <span class="arithmatex">\(B(\mathbf{0}, 1) = \{ \mathbf{x} \in \mathbb{R}^2 : |x_1|^2 + |x_2|^2  &lt; 1 \}\)</span>.</li>
+<li>For <span class="arithmatex">\(X = \mathbb{R}, d = |\cdot|\)</span>-value then <span class="arithmatex">\(B(a, \epsilon) = \{ x \in \mathbb{R} : |x - a| &lt; \epsilon \}\)</span>.</li>
+</ul>
+</div>
+<p>Let <span class="arithmatex">\((X, d)\)</span> be a metric space, and consider <span class="arithmatex">\(Y \subseteq X\)</span>. Define the <strong>interior</strong></p>
+<div class="arithmatex">\[
+\mathrm{Int}(Y) = \{ y \in Y: \exists \epsilon &gt; 0 \text{ such that } B(y, \epsilon) \subseteq Y \}
+\]</div>
+<p>Define the <strong>boundary</strong></p>
+<div class="arithmatex">\[
+\mathrm{Bd}(Y) = X \setminus (\mathrm{Int}(Y) \cup \mathrm{Int}(Y^c)).
+\]</div>
+<p>Then we can write <span class="arithmatex">\(X = \mathrm{Int}(Y) \cup \mathrm{Bd}(Y) \cup \mathrm{Int}(Y^c)\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Show that <span class="arithmatex">\(x \in \mathrm{Bd}(Y)\)</span> if and only if <span class="arithmatex">\(\forall \epsilon &gt; 0\)</span>, the sets <span class="arithmatex">\(B(x, \epsilon) \cap Y\)</span> and <span class="arithmatex">\(B(x, \epsilon) \cap Y^c\)</span> are both nonempty.</p>
+<ul>
+<li>
+<p>(<span class="arithmatex">\(\implies\)</span>) Suppose that there exists an <span class="arithmatex">\(\epsilon_0 &gt; 0\)</span> such that <span class="arithmatex">\(B(x, \epsilon_0) \cap Y = \emptyset\)</span>. This implies that <span class="arithmatex">\(B(x, \epsilon_0) \subseteq Y^c\)</span> which means <span class="arithmatex">\(x \in \mathrm{Int}(Y^c)\)</span>. Similarly suppose that <span class="arithmatex">\(B(x, \epsilon_0) \cap Y^c = \emptyset\)</span> Then <span class="arithmatex">\(B(x, \epsilon_0) \subseteq Y\)</span> so <span class="arithmatex">\(x \in \mathrm{Int}(Y)\)</span>. In either case the forward implication is true.</p>
+</li>
+<li>
+<p>(<span class="arithmatex">\(\impliedby\)</span>) Suppose for all <span class="arithmatex">\(\epsilon &gt; 0\)</span> we have <span class="arithmatex">\(B(x, \epsilon) \not\subseteq Y\)</span> and <span class="arithmatex">\(B(x, \epsilon) \not\subseteq Y^c\)</span>. Then this means <span class="arithmatex">\(x \notin \mathrm{Int}(Y)\)</span> and <span class="arithmatex">\(x \notin \mathrm{Int}(Y^c)\)</span>. However by the result, this means <span class="arithmatex">\(x \in x \in \mathrm{Bd}(Y) = \mathrm{Bd}(Y^c)\)</span>.</p>
+</li>
+</ul>
+</div>
+<p>A subset <span class="arithmatex">\(Y\)</span> in <span class="arithmatex">\((X, d)\)</span> is <strong>open</strong> if <span class="arithmatex">\(Y = \mathrm{Int}(Y)\)</span>.</p>
+<p>A subset <span class="arithmatex">\(Y\)</span> in <span class="arithmatex">\((X, d)\)</span> is <strong>closed</strong> if <span class="arithmatex">\(Y^c\)</span> is open.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Is <span class="arithmatex">\([0, 1]\)</span> open? Is <span class="arithmatex">\([0, 1]\)</span> closed?</p>
+<ul>
+<li>If <span class="arithmatex">\(Y = [0, 1] \subseteq \mathbb{R} = X\)</span>. Then <span class="arithmatex">\(Y\)</span> is closed but not open.</li>
+<li>If <span class="arithmatex">\(Y = [0, 1] \subseteq [0, 1] = X\)</span>. Then <span class="arithmatex">\(Y\)</span> is both closed and open.</li>
+</ul>
+</div>
+<p><strong>Lemma</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a metric space, and let <span class="arithmatex">\(Y \subseteq X\)</span>. Then <span class="arithmatex">\(\mathrm{Int}(\mathrm{Int}(Y)) = \mathrm{Int}(Y)\)</span>,</p>
+<details class="success">
+<summary>Proof</summary>
+<ul>
+<li><span class="arithmatex">\(\mathrm{Int}(\mathrm{Int}(Y)) \subseteq \mathrm{Int}(Y)\)</span>. Let <span class="arithmatex">\(Z = \mathrm{Int}(Y)\)</span>. Then by definition <span class="arithmatex">\(\mathrm{Int}(Z) \subseteq Z\)</span>, which proves the result.</li>
+<li><span class="arithmatex">\(\mathrm{Int}(Y) \subseteq \mathrm{Int}(\mathrm{Int}(Y))\)</span>. Consider <span class="arithmatex">\(x \in \mathrm{Int}(Y)\)</span> then <span class="arithmatex">\(\exists \epsilon_0 &gt; 0\)</span> such that <span class="arithmatex">\(B(x, \epsilon_0) \subseteq Y\)</span>. Now we consider <span class="arithmatex">\(y \in B(x, \epsilon_0)\)</span>. We argue that <span class="arithmatex">\(y\)</span> is an interior point of <span class="arithmatex">\(Y\)</span> by showing <span class="arithmatex">\(B(y, \delta) \subseteq Y\)</span>. Choose <span class="arithmatex">\(\delta = \epsilon - d(x, y) &gt; 0\)</span>. Then for <span class="arithmatex">\(z \in B(y, \delta)\)</span> this implies <span class="arithmatex">\(d(y, z) &lt; \delta\)</span>. Then by the triangle inequality, <span class="arithmatex">\(d(z, y) \leq d(z, y) + d(y, z) &lt; \epsilon_0 - d(x, y) + d(y, x) = \epsilon_0\)</span>. So <span class="arithmatex">\(z \in B(x, \epsilon_0)\)</span> which means <span class="arithmatex">\(B(y, \delta) \subseteq Y\)</span>. This implies <span class="arithmatex">\(y \in \mathrm{Int}(Y)\)</span>, further implying <span class="arithmatex">\(B(x, \epsilon) \subseteq \mathrm{Int}(Y)\)</span> which in turn shows <span class="arithmatex">\(x \in \mathrm{Int}(\mathrm{Int}(Y))\)</span> which proves the result.</li>
+</ul>
+</details>
+<p><strong>Corollary</strong>: For a subset <span class="arithmatex">\(Y\)</span> of a metric space <span class="arithmatex">\((X, d)\)</span>, the set <span class="arithmatex">\(\mathrm{Int}(Y)\)</span> is open.</p>
+<p>The <strong>closure</strong> of <span class="arithmatex">\(Y\)</span> is <span class="arithmatex">\(\mathrm{Cl}(Y) = \mathrm{Int}(Y) \sqcup \mathrm{Bd}(Y)\)</span> (disjoint union).</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>What is the closure of <span class="arithmatex">\(\mathbb{R}\)</span> in <span class="arithmatex">\(\mathbb{R}\)</span>?</p>
+<p>We first argue that <span class="arithmatex">\(\mathrm{Int}(\mathbb{R}) = \mathbb{R}\)</span>.</p>
+<ul>
+<li><span class="arithmatex">\(\mathrm{Int}(\mathbb{R}) \subseteq \mathbb{R}\)</span>. Follows from the definition.</li>
+<li><span class="arithmatex">\(\mathbb{R} \subseteq \mathrm{Int}(\mathbb{R})\)</span>. For all <span class="arithmatex">\(x \in \mathbb{R}, B(x, 1) \subseteq \mathbb{R} \implies x \in \mathrm{Int}(\mathbb{R})\)</span></li>
+</ul>
+<p>Hence since <span class="arithmatex">\(\mathbb{R} = \mathrm{Int}(\mathbb{R}) \cup \mathrm{Bd}(\mathbb{R}) \cup \mathrm{Int}(\mathbb{R}^c) = \mathbb{R} \cup \emptyset \cup \emptyset\)</span>. So the closure of <span class="arithmatex">\(\mathbb{R}\)</span> is <span class="arithmatex">\(\mathbb{R}\)</span>.</p>
+</div>
+<p>We say <span class="arithmatex">\(Y\)</span> is <strong>dense</strong> if <span class="arithmatex">\(\mathrm{CI}(Y) = X\)</span>.</p>
+<p>Let <span class="arithmatex">\((X, d)\)</span> be a metric space. An <strong>open neighbourhood</strong> of a point <span class="arithmatex">\(x \in X\)</span> is an open set <span class="arithmatex">\(V \subseteq X\)</span> such that <span class="arithmatex">\(x \in V\)</span>. A <strong>neighbourhood</strong> of <span class="arithmatex">\(x\)</span> is a set <span class="arithmatex">\(U \subseteq X\)</span> such that there is an open neighbourhood <span class="arithmatex">\(V\)</span> of <span class="arithmatex">\(x\)</span> with <span class="arithmatex">\(V \subseteq U\)</span>.</p>
+<p>The set of open sets in a metric space <span class="arithmatex">\(X\)</span> is called the <strong>topology</strong> of <span class="arithmatex">\(X\)</span>. We will denote the topology by <span class="arithmatex">\(\mathcal{O}(X)\)</span>.</p>
+<p>Let <span class="arithmatex">\((X, d)\)</span> be a metric space. The topology has the following properties:</p>
+<ol>
+<li><span class="arithmatex">\(\emptyset, X, \in \mathcal{O}(X)\)</span></li>
+<li>If <span class="arithmatex">\(\{V_i\}_{i \in I} \subseteq \mathcal{O}(X)\)</span>, then <span class="arithmatex">\(\bigcup_{i \in I} V_i \in \mathcal{O}(X)\)</span>. ("a union of open sets is open")</li>
+<li>If <span class="arithmatex">\(V_1, V_2 \in \mathcal{O}(X)\)</span>, then <span class="arithmatex">\(V_1 \cap V_2 \in \mathcal{O}(X)\)</span>. ("a finite intersection of open sets is open")</li>
+</ol>
+<p><strong>Theorem</strong>: Let <span class="arithmatex">\((X, d_X)\)</span> and <span class="arithmatex">\((Y, d_Y)\)</span> be metric spaces. A function <span class="arithmatex">\(f: X \to Y\)</span> is continuous if and only if</p>
+<div class="arithmatex">\[
+\text{For every } V \in \mathcal{O}(Y), \text{ we have } f^{-1}(V) \in \mathcal{O}(X).
+\]</div>
+<p>(In words: "the pre-image of every open set is open.")</p>
+<p><strong>Theorem</strong>: Let <span class="arithmatex">\((X, d_X), (Y, d_Y), (Z, d_Z)\)</span> be metric spaces, and suppose <span class="arithmatex">\(f: X \to Y\)</span> and <span class="arithmatex">\(g: Y \to Z\)</span> are continuous functions. Then the composition <span class="arithmatex">\(g \circ f: X \to Z\)</span> is continuous.</p>
+<h2 id="boundedness">Boundedness<a class="headerlink" href="#boundedness" title="Permanent link">&para;</a></h2>
+<p><strong>Lemma</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a metric space, and let <span class="arithmatex">\(\emptyset \neq Y \subseteq X\)</span>. The following are equivalent:</p>
+<ol>
+<li>For every <span class="arithmatex">\(x \in X\)</span>, there is an <span class="arithmatex">\(R(x) &gt; 0\)</span> such that <span class="arithmatex">\(Y \subseteq B(x, R)\)</span>.</li>
+<li>There exists <span class="arithmatex">\(y \in Y\)</span> and <span class="arithmatex">\(R\)</span> such that <span class="arithmatex">\(Y \subseteq B(y, R)\)</span></li>
+<li>There is an <span class="arithmatex">\(R &gt; 0\)</span> such that for any <span class="arithmatex">\(y_1, y_2 \in Y\)</span>, we have <span class="arithmatex">\(d(y_1, y_2) &lt; R\)</span>.</li>
+</ol>
+<p>A subset of a metric space <span class="arithmatex">\(Y \subseteq X\)</span> satisfying these equivalent conditions is called <strong>bounded</strong>. (If <span class="arithmatex">\(Y = X\)</span> we say that metric space is bounded.)</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Let <span class="arithmatex">\(X = C[0, 1]\)</span>, and consider the sequence of functions ${f_n}_{n = 1,2, \dots}.</p>
+<div class="arithmatex">\[
+    f_n(x) = \begin{cases}
+    n - n^2 x &amp; 0 \leq x \leq \frac{1}{n},
+    0 &amp; \frac{1}{n} &lt; x \leq 1.
+    \end{cases}
+\]</div>
+<p>Is this sequence bounded?</p>
+<p>Take <span class="arithmatex">\(x = 0\)</span>, then <span class="arithmatex">\(d_\infty(f_n, x) = \sup_{x \in [0, 1]} |f_n(x)| = n &lt; R(0)\)</span>. So the first statement fails, hence the sequence is not bounded.</p>
+</div>
+<h2 id="completeness">Completeness<a class="headerlink" href="#completeness" title="Permanent link">&para;</a></h2>
+<p>A sequence <span class="arithmatex">\(\{ x_n \}_{n = 0}^\infty\)</span> in a metric space <span class="arithmatex">\((X, d)\)</span> is a <strong>Cauchy sequence</strong> if for every <span class="arithmatex">\(\epsilon &gt; 0\)</span>, there is a <span class="arithmatex">\(K(\epsilon)\)</span> such that <span class="arithmatex">\(d(x_m, x_n) &lt; \epsilon\)</span> whenever <span class="arithmatex">\(m ,n &gt; K(\epsilon)\)</span>.</p>
+<p>Every Cauchy sequence is bounded.</p>
+<p>Every convergent sequence is a Cauchy sequence.</p>
+<p>A metric space <span class="arithmatex">\((X, d)\)</span> is called <strong>complete</strong> if every Cauchy sequence in <span class="arithmatex">\(X\)</span> converges to a point in <span class="arithmatex">\(X\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>The following are listed below without proof but you should prove them yourself to confirm these results:</p>
+<ul>
+<li><span class="arithmatex">\((0, 1)\)</span> and <span class="arithmatex">\(\mathbb{Q}\)</span>, with the metrics inherited from <span class="arithmatex">\(\mathbb{R}\)</span>, are not complete.</li>
+<li><span class="arithmatex">\(C[0, 1]\)</span> with the metric <span class="arithmatex">\(d_1\)</span> is not complete.</li>
+<li>A discrete metric space is complete.</li>
+<li><span class="arithmatex">\(\mathbb{R}\)</span> (with the usual metric$ is complete).</li>
+<li>$(\mathbb{R}^2, d_2) is complete. Similarly, <span class="arithmatex">\((\mathbb{R}^n, d_p)\)</span> is complete for any <span class="arithmatex">\(n\)</span> and any <span class="arithmatex">\(p \in [1, \infty]\)</span>.</li>
+</ul>
+</div>
+<p><strong>Theorem</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a complete metric space, and let <span class="arithmatex">\(Y \subseteq X\)</span>. Then <span class="arithmatex">\(Y\)</span> is complete (with the subset metric) if and only if <span class="arithmatex">\(Y\)</span> is closed.</p>
+<p><strong>Theorem</strong>: The metric space <span class="arithmatex">\((C[0, 1], d_\infty)\)</span> is complete.</p>
+<details class="success">
+<summary>Outline of Proof for Cauchy convergent to a function</summary>
+<p>Given a Cauchy sequence <span class="arithmatex">\(\{ f_n \}_{n = 0}^\infty\)</span> in <span class="arithmatex">\((C[0, 1], d_\infty)\)</span>, we want to show that this sequence converges to some function <span class="arithmatex">\(f\)</span>.</p>
+<p>There are three steps:</p>
+<ol>
+<li>Show that for each specific <span class="arithmatex">\(x \in [0, 1]\)</span>, the sequence <span class="arithmatex">\(\{f_n\}_{n = 0}^\infty\)</span> is a Cauchy sequence in <span class="arithmatex">\(\mathbb{R}\)</span> (and therefore converges to a number by completeness of <span class="arithmatex">\(\mathbb{R}\)</span>.)</li>
+<li>Define <span class="arithmatex">\(f(x)\)</span> to be the limit of <span class="arithmatex">\(\{ f_n \}_{n = 0}^\infty\)</span> for each <span class="arithmatex">\(x\)</span>. Show that <span class="arithmatex">\(f(x)\)</span> is continuous (and therefore belong to <span class="arithmatex">\(C[0, 1]\)</span>).</li>
+<li>Show that <span class="arithmatex">\(\{ f_n \}_{n = 0}^\infty\)</span> converges to <span class="arithmatex">\(f(x)\)</span> in the <span class="arithmatex">\(d_\infty\)</span> metric.</li>
+</ol>
+</details>
+<p>Two Cauchy sequences <span class="arithmatex">\(\{ a_n \}_{n = 1}^\infty\)</span> and <span class="arithmatex">\(\{ b_n \}_{n = 1}^\infty\)</span> in a metric space <span class="arithmatex">\((X, d)\)</span> are said to be <strong>equivalent</strong> if the sequence <span class="arithmatex">\(\{ d(a_n, b_n) \}_{n = 1}^\infty\)</span> converges to <span class="arithmatex">\(0\)</span> (in <span class="arithmatex">\(\mathbb{R}\)</span>).</p>
+<p>Two Cauchy sequences in a complete metric space are equivalent if and only if they have the same limit.</p>
+<p><strong>Definition</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a metric space. Let <span class="arithmatex">\(\bar{X}\)</span> be the set of <strong>equivalence classes</strong> of Cauchy sequences in <span class="arithmatex">\(X\)</span>. We write <span class="arithmatex">\([\{a_n\}]\)</span> for the equivalence class of the sequence <span class="arithmatex">\(\{a_n\}\)</span>.</p>
+<p>Define <span class="arithmatex">\(\bar{d}: \bar{X} \times \bar{X} \to [0, \infty)\)</span> as follows:</p>
+<div class="arithmatex">\[
+\bar{d}([\{a_n\}], [\{b_n\}]) = \lim\_{n \to \infty} d(a_n, b_n)
+\]</div>
+<p>(Note that this definition assume that the limit exists, and does not depend on which representatives of the equivalence classes are taken.)</p>
+<p><strong>Theorem</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a metric space.</p>
+<ol>
+<li>The completion <span class="arithmatex">\((\bar{X}, \bar{d})\)</span> (as defined above) is a complete metric space.</li>
+<li>Consider the function <span class="arithmatex">\(i: X \to \bar{X}\)</span> which sends <span class="arithmatex">\(x \in X\)</span> to the equivalence class of the constant sequence <span class="arithmatex">\(\{ x\}\)</span>. Then <span class="arithmatex">\(i\)</span> is an \textbf{isometry}. (i.e. <span class="arithmatex">\(\bar{d}(i(x), i(y)) = d(x,y), \forall x,y \in X\)</span>), and <span class="arithmatex">\(i(X)\)</span> is dense in <span class="arithmatex">\(\bar{X}\)</span>.</li>
+<li>The completion is unique in the following sense. Suppose <span class="arithmatex">\(Y\)</span> is another complete metric space and <span class="arithmatex">\(j: X \to Y\)</span> is an isometry such that <span class="arithmatex">\(j(X)\)</span> is dense in <span class="arithmatex">\(Y\)</span>. Then there is a bijective isometry <span class="arithmatex">\(f: Y \to \bar{X}\)</span> such that <span class="arithmatex">\(f \circ j = i\)</span>.</li>
+</ol>
+<h2 id="normed-spaces">Normed Spaces<a class="headerlink" href="#normed-spaces" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(V\)</span> be a vector space (over <span class="arithmatex">\(k = \mathbb{R}\)</span> or <span class="arithmatex">\(k = \mathbb{C}\)</span>). A <strong>norm</strong> on <span class="arithmatex">\(V\)</span> is a function</p>
+<div class="arithmatex">\[
+\lVert\cdot\rVert: V \to [0, \infty), \quad \mathbf{x} \mapsto \lVert\mathbf{x}\rVert,
+\]</div>
+<p>satisfying the following conditions for all <span class="arithmatex">\(\mathbf{x}, \mathbf{y} \in V\)</span> and <span class="arithmatex">\(\lambda \in k\)</span></p>
+<ol>
+<li><span class="arithmatex">\(\lVert\mathbf{x}\rVert = 0 \implies \mathbf{x} = \mathbf{0}\)</span></li>
+<li><span class="arithmatex">\(\lVert\lambda\mathbf{x\rVert} = |\lambda| \cdot \lVert\mathbf{x}\rVert\)</span></li>
+<li><span class="arithmatex">\(\lVert\mathbf{x + \mathbf{y}}\rVert \leq \lVert\mathbf{x}\rVert + \lVert\mathbf{y}\rVert\)</span>.</li>
+</ol>
+<p><strong>Theorem</strong>: Let <span class="arithmatex">\((V, \lVert\cdot\rVert)\)</span> be a normed vector space. Then <span class="arithmatex">\((V, d_{\lVert\cdot\rVert})\)</span> is a metric space, where <span class="arithmatex">\(d_{\lVert\cdot\rVert}\)</span> is defined by</p>
+<div class="arithmatex">\[
+d\_{\lVert\cdot\rVert}(\mathbf{x}, \mathbf{y}) = \lVert\mathbf{x} - \mathbf{y}\rVert, \forall \mathbf{x}, \mathbf{y} \in V.
+\]</div>
+<p>A complete normed space is called a <strong>Banach</strong> space.</p>
+<p>For <span class="arithmatex">\(p \in [1, \infty)\)</span>, let</p>
+<div class="arithmatex">\[
+\ell^p = \{\{x*n\}*{n = 1}^\infty \subset \mathbb{R} : \sum\_{n = 1}^\infty |x_n|^p &lt; \infty\},
+\]</div>
+<p>which is a vector space with pointwise operations. Define the norm</p>
+<div class="arithmatex">\[
+\lVert \{x*n\}*{n=1}^\infty \rVert*p = \left(\sum*{n = 1}^\infty |x_n|^p)^{\frac{1}{p}} \right).
+\]</div>
+<p><strong>Theorem</strong>: The normed vector space <span class="arithmatex">\((\ell^p, \lVert \cdot \rVert_p)\)</span> is a Banach space.</p>
+<details class="success">
+<summary>Outline of Proof</summary>
+<ol>
+<li>Show that for each coordinate <span class="arithmatex">\(k \in \mathbb{N}\)</span>, we get a Cauchy sequence of numbers.</li>
+<li>Show that the pointwise limit is a sequence in <span class="arithmatex">\(\ell^p\)</span>.</li>
+<li>Show that the sequence (of sequences) converges to the pointwise limit in <span class="arithmatex">\(d_p\)</span>.</li>
+</ol>
+</details>
+<p>An <strong>inner product space</strong> is a vector space <span class="arithmatex">\(V\)</span> (over <span class="arithmatex">\(k = \mathbb{R}\)</span> or <span class="arithmatex">\(k = \mathbb{C}\)</span>), together with a function</p>
+<div class="arithmatex">\[
+\langle \cdot, \cdot \rangle: V \times V \to k, \quad (\mathbf{x}, \mathbf{y}) \mapsto \langle \mathbf{x}, \mathbf{y} \rangle,
+\]</div>
+<p>such that for any <span class="arithmatex">\(\mathbf{x}, \mathbf{y}, \mathbf{z} \in V\)</span> and <span class="arithmatex">\(\lambda \in k\)</span>, we have</p>
+<ol>
+<li><span class="arithmatex">\(\langle \mathbf{x}, \mathbb{x} \rangle &gt; 0\)</span> for <span class="arithmatex">\(\mathbf{x} \neq \mathbf{0}\)</span></li>
+<li><span class="arithmatex">\(\langle \mathbf{x}, \mathbf{y} \rangle = \overline{\langle\mathbf{y}, \mathbf{x}\rangle}\)</span></li>
+<li><span class="arithmatex">\(\langle \mathbf{x} + \lambda\mathbf{y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \lambda \langle \mathbf{y}, \mathbf{z} \rangle\)</span>.</li>
+</ol>
+<!-- !!! example
+
+    Show that if $(V, \langle \cdot, \cdot \rangle)$ is an inner product space, then the function
+
+    \[
+        \lVert \mathbf{x} \rVert = \langle \mathbf{x}, \mathbf{x} \rangle^\frac{1}{2}
+    \]
+
+    gives a norm (and hence a metric) on $V$. (Hint: Use the Cauchy-Schwartz inequality: $|\langle u, v \rangle| \leq \lVert u \rVert \lVert v \rVert$)
+
+    \[
+        \lVert u + v \rVert^2 = \langle u + v, u + v \rangle = \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle = \lVert u \rVert^2 + \lVert v \rVert^2 + 2 \mathrm{Re}(z),
+    \]
+
+    where $z = \langle u, v \rangle$. Then
+
+    \begin{align*}
+        &\leq \lVert u \rVert^2 + \lVert v \rVert^2 + 2 |\langle u, v \rangle| \\
+        &\leq \lVert u \rVert^2 + \lVert v \rVert^2 + 2\lVert u \rVert \lVert v \rVert \\
+        &= (\lVert u \rVert + \lVert v \rVert)^2
+    \end{align*} -->
+
+<p>A complete inner product space is called a <strong>Hilbert space</strong>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ol>
+<li><span class="arithmatex">\(\mathbb{R}^n\)</span> is a real Hilbert space with the dot product</li>
+<li>
+<p><span class="arithmatex">\(\mathbb{C}^n\)</span> is a complex Hilbert space with the inner product</p>
+<div class="arithmatex">\[
+    \langle (x_1, \dots, x_n), (y_1, \dots, y_n) \rangle = \sum_{k = 1}^n x_k \overline{y_k}.
+\]</div>
+</li>
+</ol>
+</div>
+<h2 id="contraction-mappings">Contraction Mappings<a class="headerlink" href="#contraction-mappings" title="Permanent link">&para;</a></h2>
+<p>A <strong>contraction</strong> on a metric space <span class="arithmatex">\((X, d)\)</span> is a function <span class="arithmatex">\(f: X \to X\)</span> such that there is a number <span class="arithmatex">\(c &lt; 1\)</span> for which</p>
+<div class="arithmatex">\[
+d(f(x), f(y)) \leq c \cdot d(x, y), \forall x, y \in X.
+\]</div>
+<p><strong>Contraction Mapping Theorem</strong>: Let <span class="arithmatex">\((X, d)\)</span> be a complete metric space, and let <span class="arithmatex">\(f: X \to X\)</span> be a contraction. Then <span class="arithmatex">\(f\)</span> has a unique <strong>fixed point</strong> <span class="arithmatex">\(x = f(x)\)</span>.</p>
+<p>Moreover, for any <span class="arithmatex">\(x_0 \in X\)</span>, the recursively defined sequence <span class="arithmatex">\(x_{n + 1} = f(x_n)\)</span> converges to the fixed point <span class="arithmatex">\(x\)</span>.</p>
+<!-- **Picard-Lindelof Theorem**: Consider the differential equation
+
+\[
+y' = \cos(xy).
+\]
+
+Does this have a solution?
+
+??? succcess "Solution"
+
+    Integrate both sides gives, $y(x) = \int_a^x \cos(ty(t)) \, dt + b$. Then we have $T(y)(x) = \int_0^x \cos(ty(t)) \, dt + b$.
+    This means $y(x) \to T(y)(x)
+
+    X = C(I, J) continious functions $f: I \to J$
+
+    P-L theorem chooses I and J such that $T$ is a contraction. -->
+
+<p>Let <span class="arithmatex">\(X \subseteq \mathbb{R}\)</span>. A function <span class="arithmatex">\(f: X \to \mathbb{R}\)</span> is called <strong>Lipschitz continuous</strong> if there is a <span class="arithmatex">\(K &gt; 0\)</span> such that</p>
+<div class="arithmatex">\[
+|f(x) - f(y)| \leq K|x - y|, \forall x, y \in X.
+\]</div>
+<p>The number <span class="arithmatex">\(K\)</span> is then called a <strong>Lipschitz constant</strong> for <span class="arithmatex">\(f\)</span>.</p>
+<p>If <span class="arithmatex">\(X \subseteq \mathbb{R}^2\)</span>, then <span class="arithmatex">\(f: X \to \mathbb{R}\)</span> is <strong>Lipschitz continuous in the second variable</strong> if there is a <span class="arithmatex">\(K &gt; 0\)</span> such that</p>
+<div class="arithmatex">\[
+|f(x, y_1) - f(x, y_2)| \leq K \cdot |y_1 - y_2|, \forall (x, y_1), (x, y_2) \in X.
+\]</div>
+<p><strong>Theorem (Picard–Lindelöf):</strong> Let <span class="arithmatex">\(g\)</span> be a continous function on a neighbourhood of <span class="arithmatex">\((a, b) \in \mathbb{R}^2\)</span> which is Lipschitz continuous in the second variable. Then there is an interval around <span class="arithmatex">\(a\)</span> on which the differential equation</p>
+<div class="arithmatex">\[
+y' = g(x, y), \quad y(a) = b
+\]</div>
+<p>has a unique solution.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 24, 2026 11:26:55 UTC">May 24, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 24, 2026 11:26:55 UTC">May 24, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jeremyle56" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "toc.follow", "navigation.top", "navigation.indexes", "navigation.sections", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

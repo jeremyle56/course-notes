@@ -1,0 +1,1214 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jeremyle56.github.io/course-notes/math3611/problem_sheets/2/">
+      
+      
+        <link rel="prev" href="../1/">
+      
+      
+        <link rel="next" href="../3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Problem Sheet 2 - MATH3611 Higher Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#problem-sheet-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MATH3611 Higher Analysis" class="md-header__button md-logo" aria-label="MATH3611 Higher Analysis" data-md-component="logo">
+      
+  <img src="../../assets/limit-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MATH3611 Higher Analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Problem Sheet 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="teal"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="teal"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeremyle56/course-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeremyle56/course-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MATH3611 Higher Analysis" class="md-nav__button md-logo" aria-label="MATH3611 Higher Analysis" data-md-component="logo">
+      
+  <img src="../../assets/limit-icon.png" alt="logo">
+
+    </a>
+    MATH3611 Higher Analysis
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeremyle56/course-notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeremyle56/course-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_notes/cardinality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cardinality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_notes/metric_spaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metric Spaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_notes/sequence_and_series_of_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequences and Series of Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_notes/topological_spaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topological Spaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_notes/compactness_and_connectedness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compactness and Connectedness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheets
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Problem Sheets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#question-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 5.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 7
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 10
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 12
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 15
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Sheet 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="problem-sheet-2">Problem Sheet 2<a class="headerlink" href="#problem-sheet-2" title="Permanent link">&para;</a></h1>
+<h2 id="question-1">Question 1<a class="headerlink" href="#question-1" title="Permanent link">&para;</a></h2>
+<p><strong>Show that <span class="arithmatex">\(d_1(f, g) = \int_0^1 |f(t) - g(t)| \, dt\)</span> and <span class="arithmatex">\(d_2(f, g) = \left(\int_0^1 |f(t) - g(t)|^2 \, dt \right)^{1/2}\)</span> are both metrics on the set <span class="arithmatex">\(C[0,1]\)</span>.</strong></p>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<p>We first prove <span class="arithmatex">\(d_1\)</span> is a metric on the set <span class="arithmatex">\(C[0, 1]\)</span>.</p>
+<ul>
+<li>
+<p>For positive definiteness we prove the contrapositive, that is suppose that <span class="arithmatex">\((f - g)(t) \neq 0\)</span> for some <span class="arithmatex">\(t \in [0, 1]\)</span>. As <span class="arithmatex">\(f - g\)</span> is continuous, then there is some <span class="arithmatex">\(\delta\)</span> such that for all <span class="arithmatex">\(x \in [0, 1] \cap [t - \delta, t + \delta]\)</span>, we have that</p>
+<div class="arithmatex">\[|(f - g)(x) - (f - g)(t)| &lt; |(f - g)(t)| / 2 \implies |(f - g)(x)| &gt; |(f - g)(t)| / 2.\]</div>
+<p>And so we have that,</p>
+<div class="arithmatex">\[d_1(f, g) \geq \int_{[0, 1] \cap [t - \delta, t + \delta]} |(f - g)(x)| \, dx &gt; \delta|(f - g)(t)| / 2 &gt; 0.\]</div>
+</li>
+<li>
+<p>For symmetry, clearly we have,</p>
+<div class="arithmatex">\[d_1(f, g) = \int_0^1 |f(t) - g(t)| \, dt = \int_0^1 |g(t) - f(t)| \, dt = d_1(g, f).\]</div>
+</li>
+<li>
+<p>For triangle inequality for <span class="arithmatex">\(d_1\)</span> we use the triangle inequality on real numbers to give,</p>
+<div class="arithmatex">\[d_1(f, g) + d_1(g, h) = \int_0^1 |f(t) - g(t)| \, dt + \int_0^1 |g(t) - h(t)| \, dt = \int_0^1 |f(t) - g(t)| + |g(t) - h(t)| \, dt \geq \int_0^1 |f(t) - h(t)| = d_1(f, h).\]</div>
+</li>
+</ul>
+<p>Very similar ideas follow for proving <span class="arithmatex">\(d_2\)</span> is a metric.</p>
+</div>
+<h2 id="question-3">Question 3<a class="headerlink" href="#question-3" title="Permanent link">&para;</a></h2>
+<p><strong>Which of the following are metrics on <span class="arithmatex">\(\mathbb{R}^n\)</span>?</strong></p>
+<ol>
+<li><span class="arithmatex">\(d(\mathbf{x}, \mathbf{y}) = \left| |\sum_{j = 1}^n x_j| - |\sum_{j = 1}^n y_j| \right|\)</span>.</li>
+<li><span class="arithmatex">\(d(\mathbf{x}, \mathbf{y}) = \sum_{j = 1}^n \sqrt{|x_j - y_j}\)</span>.</li>
+<li><span class="arithmatex">\(d(\mathbf{x}, \mathbf{y}) = \sum_{j = 1}^n (x_j - y_j)^2\)</span>.</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Proof</p>
+<ol>
+<li>No. Consider <span class="arithmatex">\(\mathbf{x} = (0, 1)\)</span> and <span class="arithmatex">\(\mathbf{y} = (1, 0)\)</span> in <span class="arithmatex">\(\mathbb{R}^2\)</span>. Then <span class="arithmatex">\(d(\mathbf{x}, \mathbf{y}) = |1 - 1| = 0\)</span> but <span class="arithmatex">\(\mathbf{x} \neq \mathbf{y}\)</span>.</li>
+<li>Yes. Positive definiteness and symmetry are clear. We can show triangle inequality by applying the <span class="arithmatex">\(\sqrt{a + b} \leq \sqrt{a} + \sqrt{b}\)</span> inequality on real numbers, element wise.</li>
+<li>No. Consider <span class="arithmatex">\(d((1, 0), (-1, 0)) = 4 &gt; d((1, 0), (0, 0)) + d((0, 0), (-1, 0)) = 1  + 1 = 2\)</span>.</li>
+</ol>
+</div>
+<h2 id="question-5">Question 5.<a class="headerlink" href="#question-5" title="Permanent link">&para;</a></h2>
+<p><strong>Suppose that <span class="arithmatex">\((X, d)\)</span> is a metric space and that <span class="arithmatex">\(\alpha \geq 0\)</span>. Define <span class="arithmatex">\(d'(x, y) = d(x, y)^\alpha\)</span>. For which <span class="arithmatex">\(\alpha\)</span> are you guaranteed that <span class="arithmatex">\(d'\)</span> is a metric on <span class="arithmatex">\(X\)</span>?</strong></p>
+<div class="admonition success">
+<p class="admonition-title">Proof</p>
+<p>From Question 3, it looks as if <span class="arithmatex">\(0 &lt; \alpha \leq 1\)</span> should be the values we require. Notably if <span class="arithmatex">\(\alpha = 1\)</span> then the result follows. Now suppose that <span class="arithmatex">\(0 &lt; \alpha &lt; 1\)</span>. For positive definiteness and symmetric, these follow for any <span class="arithmatex">\(\alpha &gt; 0\)</span> we now we show triangle inequality.</p>
+<p>We need <span class="arithmatex">\(d(x, z)^\alpha \leq d(x, y)^\alpha + d(y, z)^\alpha\)</span>. However since <span class="arithmatex">\(d(a, b) \in \mathbb{R}\)</span> it suffices to show for all <span class="arithmatex">\(a, b \geq 0\)</span></p>
+<div class="arithmatex">\[(a + b)^\alpha \leq a^\alpha + b^\alpha.\]</div>
+<p>Fix <span class="arithmatex">\(b \geq 0\)</span> and consider <span class="arithmatex">\(f : \mathbb{R}^+ \to \mathbb{R}^+\)</span> defined by <span class="arithmatex">\(f(a) = a^\alpha + b^\alpha - (a + b)^\alpha\)</span>. Then</p>
+<div class="arithmatex">\[f'(a) = \alpha a^{\alpha - 1} - \alpha(a + b)^{\alpha - 1} = \alpha(a^{\alpha - 1} - (a + b)^{\alpha - 1}).\]</div>
+<p>For <span class="arithmatex">\(0 &lt; \alpha \leq 1\)</span> we have <span class="arithmatex">\(a^{\alpha - 1} \geq (a + b)^{\alpha - 1}\)</span> hence <span class="arithmatex">\(f'(a) &gt; 0\)</span> for all <span class="arithmatex">\(a\)</span>. Thus <span class="arithmatex">\(f(a) &gt; 0\)</span> for all <span class="arithmatex">\(a &gt; 0\)</span> since <span class="arithmatex">\(f(0^{-}) = 0\)</span>.</p>
+<p>However if <span class="arithmatex">\(\alpha &gt; 1\)</span>, then <span class="arithmatex">\(d'\)</span> may or may not be a metric. For example if <span class="arithmatex">\(d\)</span> is the discrete metric, then <span class="arithmatex">\(d' = d\)</span>. But similar to Question 3c), if we consider <span class="arithmatex">\((\mathbb{R}, \left| \cdot \right|)\)</span>, then take <span class="arithmatex">\(x = 1, y = -1\)</span> and <span class="arithmatex">\(z = 0\)</span>. Then <span class="arithmatex">\(d'(x, y) = 2^\alpha &gt; 2 = d'(x, z) + d'(y, z) = 1\)</span>.</p>
+</div>
+<h2 id="question-6">Question 6<a class="headerlink" href="#question-6" title="Permanent link">&para;</a></h2>
+<p><strong>Let <span class="arithmatex">\(X = C[0, 1]\)</span> under the metric <span class="arithmatex">\(d_\infty\)</span>. Let</strong></p>
+<div class="arithmatex">\[ Y = \{ f \in C[0, 1] : f(0) \neq 0\}.\]</div>
+<ol>
+<li><strong>Prove that <span class="arithmatex">\(Y\)</span> is open in <span class="arithmatex">\((C[0, 1], d_\infty)\)</span></strong></li>
+<li><strong>Is <span class="arithmatex">\(Y\)</span> open in <span class="arithmatex">\((C[0, 1], d_1)?\)</span></strong></li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<ol>
+<li>
+<p>We show that <span class="arithmatex">\(Y = \mathrm{Int}(Y)\)</span>. The reverse direction is obvious. Now let <span class="arithmatex">\(f \in Y\)</span>, then there is some <span class="arithmatex">\(g \in B(f, |f(0)|)\)</span>.</p>
+<div class="arithmatex">\[\begin{align*}
+    |g(0)| &amp;= |f(0) - (f(0) - g(0))| \\
+    &amp;\geq |f(0)| - |f(0) - g(0)| \\
+    &amp;\geq |f(0)| - d_\infty (f,g) \\
+    &amp;&gt; |f(0)| - |f(0)| \\
+    &amp;= 0
+\end{align*}\]</div>
+<p>hence <span class="arithmatex">\(g \in Y\)</span>. Thus <span class="arithmatex">\(Y\)</span> is open in <span class="arithmatex">\((X, d_\infty)\)</span>.</p>
+</li>
+<li>
+<p>We claim that <span class="arithmatex">\(Y\)</span> is open in <span class="arithmatex">\((X, d_1)\)</span>. The sequence <span class="arithmatex">\((f_n)_{n=1}^\infty\)</span> where <span class="arithmatex">\(f_n(t) = (1 - t)^n\)</span> is in <span class="arithmatex">\(Y\)</span> and converges to <span class="arithmatex">\(0\)</span> in <span class="arithmatex">\(d_1\)</span> but <span class="arithmatex">\(0 \notin Y\)</span>.</p>
+</li>
+</ol>
+</div>
+<h2 id="question-7">Question 7<a class="headerlink" href="#question-7" title="Permanent link">&para;</a></h2>
+<p><strong>Let <span class="arithmatex">\(X = \mathbb{R}^2\)</span> with the usual metric. For each of the following sets, identify the interior points and the boundary points, and decide whether the set is open, closed or neither.</strong></p>
+<ol>
+<li><span class="arithmatex">\(Y_1 = \{(x, y) \in \mathbb{R}^2: \sin x &lt; y &lt; \cos x\}\)</span>,</li>
+<li><span class="arithmatex">\(Y_2 = \mathbb{Q} \times \mathbb{R}\)</span>,</li>
+<li><span class="arithmatex">\(Y_3 = \{(\cos \frac{1}{t}, t) : t &gt; 0\}\)</span>,</li>
+<li><span class="arithmatex">\(Y_4 = \cup_{k=1}^\infty B((\frac{1}{k}, 0), \frac{1}{3k^2})\)</span>.</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<ol>
+<li>
+<p>Open since we can define continuous functions <span class="arithmatex">\(f_1, f_2 : \mathbb{R}^2 \to \mathbb{R}\)</span> by <span class="arithmatex">\(f_1(x, y) = y - \sin x\)</span> and <span class="arithmatex">\(f_2(x, y) = y - \cos x\)</span>. Then <span class="arithmatex">\(Y_1 = f_1^{-1}((0, \infty)) \cap f_2^{-1}((-\infty, 0))\)</span>. So <span class="arithmatex">\(\mathrm{Int}(Y_1) = Y_1\)</span>. The boundary can be identified as</p>
+<div class="arithmatex">\[\mathrm{Bd}(Y_1) = \{(x, y) : \sin x = y \leq \cos x\} \cup \{(x, y) : \sin x \leq y = \cos x\}.\]</div>
+</li>
+<li>
+<p>No interior points and the boundary is <span class="arithmatex">\(\mathbb{R}^2\)</span>. Since between any two rational numbers you can find a real number. Neither open nor closed.</p>
+</li>
+<li>No interior, and the boundary is <span class="arithmatex">\(Y_3 \cup [-1, 1] \times \{0\}\)</span> so neither open nor closed.</li>
+<li>
+<p>This is the union of open balls so clearly <span class="arithmatex">\(Y_4\)</span> is open. We can see that its boundary includes <span class="arithmatex">\(\{(0, 0)\}\)</span>. Observe that the distance between the <span class="arithmatex">\(k\)</span>th ball and the <span class="arithmatex">\((k + 1)\)</span>th ball is</p>
+<div class="arithmatex">\[\frac{1}{k} - \frac{1}{3k^2} - \left(\frac{1}{k + 1} + \frac{1}{3(k + 1)^2} \right) = \frac{3k^2 + k - 1}{3k^2(k + 1)^2}.\]</div>
+<p>which is positive for <span class="arithmatex">\(k \geq 1\)</span>, and so the boundary of <span class="arithmatex">\(Y_4\)</span> is the circumferences of all the circles unioned with <span class="arithmatex">\(\{(0, 0)\}\)</span>.</p>
+</li>
+</ol>
+</div>
+<h2 id="question-9">Question 9<a class="headerlink" href="#question-9" title="Permanent link">&para;</a></h2>
+<p><strong>Prove that a finite union of closed sets is closed. Prove that the intersection of closed sets is closed.</strong></p>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<p>Let</p>
+<div class="arithmatex">\[
+    F = \bigcup_{k = 1}^n F_k
+\]</div>
+<p>be the union of a finite number of closed sets <span class="arithmatex">\(F_k\)</span>, and suppose <span class="arithmatex">\(x\)</span> does not belong to <span class="arithmatex">\(F\)</span>. Then <span class="arithmatex">\(x\)</span> does not belong to any of the sets <span class="arithmatex">\(F_k\)</span> and hence cannot be a limit point of any of them. But then, for every <span class="arithmatex">\(k\)</span>, there is a ball <span class="arithmatex">\(B(x, \epsilon_k)\)</span> containing no more than a finite number of points of <span class="arithmatex">\(F_k\)</span>. Choosing</p>
+<div class="arithmatex">\[
+    \epsilon = \min \{ \epsilon_1, \dots, \epsilon_n \},
+\]</div>
+<p>we get a ball <span class="arithmatex">\(B(x, \epsilon)\)</span> so that <span class="arithmatex">\(x\)</span> cannot be a limit point of <span class="arithmatex">\(F\)</span>. This proves that a point <span class="arithmatex">\(x \notin F\)</span> cannot be a limit point of <span class="arithmatex">\(F\)</span>. Therefore <span class="arithmatex">\(F\)</span> is closed.</p>
+<p>Given arbitrary number of closed sets <span class="arithmatex">\(F_{\alpha}\)</span> indexed by a parameter <span class="arithmatex">\(\alpha\)</span>, let <span class="arithmatex">\(x\)</span> be a limit point of the intersection</p>
+<div class="arithmatex">\[
+    F = \bigcap_\alpha F_{alpha}.
+\]</div>
+<p>Then any ball <span class="arithmatex">\(B(x, \epsilon)\)</span> contains infinitely many points of <span class="arithmatex">\(F\)</span>, and hence infinitely many points of each <span class="arithmatex">\(F_\alpha\)</span>. Therefore <span class="arithmatex">\(x\)</span> is a limit point of each <span class="arithmatex">\(F_\alpha\)</span> and hence belongs to each <span class="arithmatex">\(F_\alpha\)</span>, since the sets <span class="arithmatex">\(F_\alpha\)</span> are all closed. It followws that <span class="arithmatex">\(x \in F\)</span>, and hence that <span class="arithmatex">\(F\)</span> itself is closed.</p>
+</div>
+<h2 id="question-10">Question 10<a class="headerlink" href="#question-10" title="Permanent link">&para;</a></h2>
+<p><strong>Give examples of a metric space <span class="arithmatex">\((X, d)\)</span> and a infinite family of closed sets <span class="arithmatex">\(\{E_j\}_{j = 1}^\infty\)</span> in <span class="arithmatex">\(X\)</span> such that</strong></p>
+<ol>
+<li><span class="arithmatex">\(\cup_{j = 1}^\infty E_j\)</span> is not closed,</li>
+<li><span class="arithmatex">\(\cup_{j = 1}^\infty E_j\)</span> is closed,</li>
+<li><span class="arithmatex">\(\cup_{j = 1}^\infty E_j\)</span> is open and closed.</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<p>We take the metric space <span class="arithmatex">\((\mathbb{R}, |\cdot|)\)</span> for all of the parts:</p>
+<ol>
+<li><span class="arithmatex">\(E_j = [\frac{1}{j}, j]\)</span> gives <span class="arithmatex">\(\cup_{j = 1}^\infty E_j = (0, \infty)\)</span>, which is not closed.</li>
+<li><span class="arithmatex">\(E_j = [0, 1]\)</span> gives <span class="arithmatex">\(\cup_{j = 1}^\infty E_j = [0, 1]\)</span>, which is closed.</li>
+<li><span class="arithmatex">\(E_j = [-j, j]\)</span> gives <span class="arithmatex">\(\cup_{j = 1}^\infty E_j = \mathbb{R}\)</span>, which both open and closed.</li>
+</ol>
+</div>
+<h2 id="question-12">Question 12<a class="headerlink" href="#question-12" title="Permanent link">&para;</a></h2>
+<p><strong>Are there any metric spaces in which there are exactly 5 sets which are both open and closed? What about 6 open and closed sets?</strong></p>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<p>Let <span class="arithmatex">\((X, d)\)</span> be a metric space. Then obviously we have that <span class="arithmatex">\(\emptyset\)</span> and <span class="arithmatex">\(X\)</span> are both open and closed. Now observe that sets which are both open and closed must occur in pairs. Since if <span class="arithmatex">\(A\)</span> is closed and open, then <span class="arithmatex">\(A^c\)</span> is also closed and open. So a metric space with exactly 5 clopen sets is impossible.</p>
+<p>If a metric space has a finite number of clopen sets, then it must be a power of 2. Write <span class="arithmatex">\(X \sqcup_{i = 1}^n A_i\)</span> where <span class="arithmatex">\(A_i\)</span> is a clopen set. Then there are <span class="arithmatex">\(2^n\)</span> ways to take unions of the <span class="arithmatex">\(A_i\)</span>s, all of which are clopen. So there can also not be 6.</p>
+</div>
+<h2 id="question-15">Question 15<a class="headerlink" href="#question-15" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Suppose that <span class="arithmatex">\(f: \mathbb{R} \to \mathbb{Z}\)</span> (with their usual metrics). Can <span class="arithmatex">\(f\)</span> be continuous?</strong></li>
+<li><strong>Suppose that <span class="arithmatex">\(f: \mathbb{Z} \to \mathbb{R}\)</span>. Can <span class="arithmatex">\(f\)</span> be continuous? Must <span class="arithmatex">\(f\)</span> be continuous?</strong></li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+<ol>
+<li>Only if <span class="arithmatex">\(f\)</span> is constant.</li>
+<li>Every <span class="arithmatex">\(f\)</span> is continuous.</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 24, 2026 11:26:55 UTC">May 24, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 24, 2026 11:26:55 UTC">May 24, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jeremyle56" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "toc.follow", "navigation.top", "navigation.indexes", "navigation.sections", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
