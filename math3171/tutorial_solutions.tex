@@ -1,0 +1,967 @@
+\chapter{Solutions to Tutorial Problems}
+
+Note the problems are not available here. Please see course resources for reference.
+
+\section{Optimization Model Formulations}
+
+\begin{enumerate}
+    \item
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - exterior paints to produce (in tons)
+                  \item \(x_2\) - interior paints to produce (in tons)
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2) = 3000x_1 + 2000x_2\)
+              \end{itemize}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(2x_1 + x_2 \leq 6\) (raw material A)
+                  \item \(x_2 + 2x_1 \leq 8\) (raw material B)
+                  \item \(x_2 \leq x_1 + 1\) (daily demand)
+                  \item \(x_2 \leq 2\) (maximum demand)
+                  \item \(x_1, x_2 \geq 0\) (hidden constraint)
+              \end{itemize}
+          \end{minipage}
+
+          So the problem can be formulated as,
+          \begin{align*}
+              \max_{\fx = (x_1, x_2) \in \bR^2} \quad & 3000x_1 + 2000x_2 \\
+              \text{subject to}\quad                  & 2x_1 + x_2 \leq 6 \\
+                                                      & x_2 + 2x_1 \leq 8 \\
+                                                      & x_2 \leq x_1 + 1  \\
+                                                      & x_2 \leq 2        \\
+                                                      & x_1, x_2 \geq 0
+          \end{align*}
+
+    \item
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - quantity of corn (in kgs)
+                  \item \(x_2\) - quantity of tankage (in kgs)
+                  \item \(x_3\) - quantity of alfalfa (in kgs)
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2, x_3) = 42x_1 + 36x_2 + 30x_3\)
+              \end{itemize}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(90x_1 + 20x_2 + 40x_3 \geq 200\) (carbohydrates)
+                  \item \(30x_1 + 80x_2 + 60x_3 \geq 180\) (proteins)
+                  \item \(10x_1 + 20x_3 + 60x_3 \geq 150\) (vitamins)
+                  \item \(x_1, x_2, x_3 \geq 0\) (hidden constraint)
+              \end{itemize}
+          \end{minipage}
+
+          So the problem can be formulated as,
+          \begin{align*}
+              \min_{\fx = (x_1, x_2, x_3) \in \bR^3} \quad & 42x_1 + 36x_2 + 30x_3          \\
+              \text{subject to}\quad                       & 90x_1 + 20x_2 + 40x_3 \geq 200 \\
+                                                           & 30x_1 + 80x_2 + 60x_3 \geq 180 \\
+                                                           & 10x_1 + 20x_3 + 60x_3 \geq 150 \\
+                                                           & x_1, x_2, x_3 \geq 0\end{align*}
+\end{enumerate}
+
+\section{Mathematical Background}
+
+\begin{enumerate}
+    \item \begin{enumerate}
+              \item \(A = \begin{pmatrix}
+                        1 & 2 \\
+                        2 & 4
+                    \end{pmatrix}\). Observe that \(\lambda_1 + \lambda_2 = \trace(A) = 1 + 4 > 0\) and \(\lambda_1 \lambda_2 = \det(A) = 4 - 4 = 0\). Hence either \(\lambda_1 = 5, \lambda_2 = 0\) or \(\lambda_1 = 0, \lambda_2 = 5\) so \(\lambda_1, \lambda_2 \geq 0\). Thus \(A\) is positive semi-definite.
+              \item \(A = \begin{pmatrix}
+                        1 & 2 \\
+                        2 & 3
+                    \end{pmatrix}\). Observe that \(\lambda_1 \lambda_2 = \det(A) = 3 - 4 < 0\). Thus \(A\) is indefinite.
+              \item \(A = \begin{pmatrix}
+                        6 & 1 & 2 \\
+                        1 & 3 & 1 \\
+                        2 & 1 & 4
+                    \end{pmatrix}\). Observe that \(|6| > |1| + |2|, |3| > |1| + |1|, |4| > |2| + |1|\), so \(A\) is strictly diagonal dominant. Furthermore, it has positive diagonal entries. Thus \(A\) is positive definite.
+              \item \(A = \begin{pmatrix}
+                        6 & 1 & 2  \\
+                        1 & 3 & 1  \\
+                        2 & 1 & -1
+                    \end{pmatrix}\). Let \(d_1 = \begin{pmatrix}
+                        1 \\ 0 \\ 0
+                    \end{pmatrix}\) and \(d_2 = \begin{pmatrix}
+                        0 \\ 0 \\ 1
+                    \end{pmatrix}\). Then, \(d_1^T A d_1 = 6 > 0\) and \(d_2^T A d_2 = -1\). Thus \(A\) is indefinite.
+              \item \(A = \begin{pmatrix}
+                        1 & 2 & 0 \\
+                        2 & 6 & 0 \\
+                        0 & 0 & 2
+                    \end{pmatrix}\). The eigenvalues of \(A\) are \(2, \lambda_1\) and \(\lambda_2\). The eigenvalues \(\lambda_1\) and \(\lambda_2\) are eigenvalues of the submatrix \(A_0 = \begin{pmatrix}
+                        1 & 2 \\ 2 & 6
+                    \end{pmatrix}\) which is positive definite as \(\tr(A_0) = 7 > \det(A_0) = 2 > 0\). Thus \(A\) is positive definite.
+              \item \(A = \begin{pmatrix}
+                        2  & -1     &        &        &    & \\
+                        -1 & 2      & -1     &        &      \\
+                           & \ddots & \ddots & \ddots &      \\
+                           &        & -1     & 2      & -1   \\
+                           &        &        & -1     & 2
+                    \end{pmatrix}\). Observe that \(A\) is diagonal dominant with non-negative diagonal elements. Thus \(A\) is positive semi-definite.
+          \end{enumerate}
+    \item \begin{enumerate}
+              \item {\color{red} SKIPPED}
+              \item \(\Omega = \{\fx = (x_1, x_2) \in \bR^2 : x_1^2 + x_2^2 < 1\}\). Let \(y, z \in \Omega\) and \(\lambda \in [0, 1]\). Then
+                    \begin{align*}
+                        \norm{\lambda y + (1 - \lambda)z}_2 & \leq \norm{\lambda y}_2 + \norm{(1 -\lambda)z}_2 \\
+                                                            & = \lambda \norm{y}_2 + (1 - \lambda)\norm{z}_2   \\
+                                                            & < 1
+                    \end{align*}
+                    since \(y, z \in \Omega \implies \norm{y}, \norm{z} < 1\) and \(\lambda \in [0, 1]\). Hence \(\Omega\) is convex.
+              \item \(\Omega = \{\fx = (x_1, x_2) \in \bR^2: x_1^2 + x_2 \leq 1\} \cup \{\fx = (x_1, x_2) \in \bR^2: x_1 \geq 0, x_2 \geq 0\}\). Consider \(y = (-1, 0)\) and \(z = (0, 10)\) then \(y, z \in \Omega\). However the midpoint \((-\frac{1}{2}, 5) \notin \Omega\). Hence \(\Omega\) is not convex.
+          \end{enumerate}
+    \item {\color{red} SKIPPED}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item {\color{red} SKIPPED}
+              \item {\color{red} SKIPPED}
+              \item \(f(x_1, x_2, x_3) = x_1^4 + x_2^4 + x_3^4 - \cos(x_1^2 + x_2^2 + x_3^2)\). Observe that as \(\norm{\fx} \to \infty\), \(x_1^4 + x_2^4 + x_3^4 \to \infty\) and \(\cos(x_1^2 + x_2^2 + x_3^2) \leq 1\) for all \(\fx\).So their difference approaches \(\infty\). Hence \(f\) is coercive.
+              \item \(f(x_1, x_2) = e^{x_1^2} + e^{x_2^2} - x_1^2 - x_2^2\). We have
+                    \begin{align*}
+                        e^{x_1^2} + e^{x_2^2} - x_1^2 - x_2^2 & = e^{x_1^2} + e^{x_2^2} - (x_1^2 + x_1^2)                                                                 \\
+                                                              & = e^{x_1^2} + e^{x_2^2} - \norm{\fx}_2^2                                                                  \\
+                                                              & \geq 2 \left(e^{x_1^2}e^{x_2^2}\right)^\frac{1}{2} - \norm{\fx}_2^2 \tag{using \(a + b \geq 2\sqrt{ab}\)} \\
+                                                              & = 2\left(e^{x_1^2 + x_2^2}\right)^\frac{1}{2} - \norm{\fx}_2^2                                            \\
+                                                              & = 2e^{\frac{\norm{\fx}_2^2}{2}} - \norm{\fx}_2^2
+                    \end{align*}. Then since \(\lim_{\norm{x} \to \infty} \frac{e^{\frac{\norm{\fx}_2^2}{2}}}{\norm{\fx}_2^2} \to \infty\) then \(f \to \infty\). Hence \(f\) is coercive.
+          \end{enumerate}
+    \item {\color{red} SKIPPED}
+    \item {\color{red} SKIPPED}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item {\color{red} SKIPPED}
+              \item \(f(X) = \rank(X)\) for all \(X \in S^n\). Let \(X = \begin{pmatrix}
+                        1 & 0 \\ 0 & 0
+                    \end{pmatrix}\) and \(Y = \begin{pmatrix}
+                        0 & 0 \\ 0 & 1
+                    \end{pmatrix}\). Then \(\rank(X) = 1\) and \(\rank(Y) = 1\), but \(\rank(\frac{X + Y}{2}) = 2\). So \(\rank(\frac{X + Y}{2}) > \rank(A) + \rank(B)\). Thus \(f\) is not convex.
+              \item \(f(X) = \det(X)\) for all \(X \in S^n\). Similarly to above, \(f(\frac{X + Y}{2}) = \frac{1}{4} > f(\frac{X}{2}) + f(\frac{Y}{2}) = 0 + 0\). Thus \(f\) is not convex.
+          \end{enumerate}
+
+\end{enumerate}
+
+\section{Geometry of Linear Programs and Simplex Methods}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+              \item \(\Omega_1 = \{\fx = (x_1, x_2, x_3) \in \bR^3: x_1 + x_2 + x_3 = 1, x_i \geq 0, i = 1, 2, 3\}\). We see that \(n = 3\) and \(m = 1\), then hence an extreme point has \(n - m = 2\) entries are zero. So candidates for extreme points are
+                    \[\fx_1^* = \begin{pmatrix}
+                            1 & 0 & 0
+                        \end{pmatrix}, \quad \fx_2^* = \begin{pmatrix}
+                            0 & 1 & 0
+                        \end{pmatrix}, \quad \fx_3^* = \begin{pmatrix}
+                            0 & 0 & 1
+                        \end{pmatrix}.\]
+                    Now \(x_1 + x_2 + x_3 = 1 \iff \fa_1^T \fx = b_i\) with \(\fa_1 = \begin{pmatrix}
+                        1 & 1 & 1
+                    \end{pmatrix}^T\) and \(b_i = 1\). So \(A = \fa_1^T = \begin{pmatrix}
+                        1 & 1 & 1
+                    \end{pmatrix}\). For \(\fx_1^*\), as only the first component is non-zero and \(\{A_1\}\) is linearly independent then \(\fx_1^*\) is an extreme point of \(\Omega_1\). Similarly \(\fx_2^*\) and \(\fx_3^*\) are also extreme points of \(\Omega_1\).
+              \item \(\Omega_2 = \{\fx = (x_1, \dots, x_n) \in \bR^n : \sum_{i = 1}^n x_i = 2, x_i \geq 0, i = 1, \dots, n \}\). Similarly \(m = 1\), so there are \(n - 1\) zero entries in the extreme points. Then from above, it follows that each \(2\fe_i = \begin{pmatrix}
+                        0 & \cdots & 2 & \cdots & 0
+                    \end{pmatrix} \in \bR^n\) is an extreme point of \(\Omega_2\).
+              \item \(\Omega_3 = \{\fx = (x_1, x_2, x_3, x_4) \in \bR^4 : x_1 + x_2 + x_3 = 1, x_2 + x_4 = 2, x_i \geq 0, i = 1, \dots, 4\}\). Note that \(n = 4\) and \(m = 2\), so extreme points have \(n - m = 2\) entries are zero. Then note that
+                    \begin{align*}
+                        x_1 + x_2 + x_3 = 1 & \iff \fa_1^T \fx = 1 \\
+                        x_2 + x_4 = 2       & \iff \fa_2^T \fx = 1
+                    \end{align*}
+                    where \(\fa_1 = \begin{pmatrix}
+                        1 & 1 & 1 & 0
+                    \end{pmatrix}^T\) and \(\fa_2 = \begin{pmatrix}
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}^T\). So, \(A = \begin{pmatrix}
+                        \fa_1^T \\ \fa_2^T
+                    \end{pmatrix} = \begin{pmatrix}
+                        1 & 1 & 1 & 0 \\
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}\).
+                    \begin{enumerate}
+                        \item If \(x_1 = x_2 = 0\), then \(x_3 = 1, x_4 = 2\). As \(\{A_3, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  0 & 0 & 1 & 2
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_1 = x_3 = 0\), then \(x_2 = 1, x_4 = 1\). As \(\{A_2, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  0 & 1 & 0 & 1
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_1 = x_4 = 0\), then \(x_2 = 2\) and \(x_3 = -1\) which is not in the feasible region.
+                        \item If \(x_2 = x_3 = 0\), then \(x_1 = 1, x_4 = 2\). As \(\{A_1, A_4\}\) are linearly independent, \(\begin{pmatrix}
+                                  1 & 0 & 0 & 2
+                              \end{pmatrix}\) is an extreme point.
+                        \item If \(x_2 = x_4 = 0\), then \(x_2 + x_4 \neq 2\) which is impossible.
+                        \item If \(x_3 = x_4 = 0\), then \(x_2 =2, x_1 = -1\) which is not in the feasible region.
+                    \end{enumerate}
+                    Thus extreme points for \(\Omega_3\) are \(\fx = \begin{pmatrix}
+                        0 & 0 & 1 & 2
+                    \end{pmatrix}, \begin{pmatrix}
+                        0 & 1 & 0 & 1
+                    \end{pmatrix}, \begin{pmatrix}
+                        1 & 0 & 0 & 2
+                    \end{pmatrix}\).
+          \end{enumerate}
+    \item {\color{red} SKIPPED}
+    \item {\color{red} SKIPPED}
+    \item           \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Decision Variables}
+              \begin{itemize}
+                  \item \(x_1\) - number of inkjet printers
+                  \item \(x_2\) - number of laser printers
+              \end{itemize}
+              \textbf{Objective Function}
+              \begin{itemize}
+                  \item \(f(x_1, x_2) = 30x_1 + 25x_2\)
+              \end{itemize}
+              So the problem can be formulated as,
+              \begin{align*}
+                  \max_{\fx = (x_1, x_2) \in \bR^2} \quad & 30x_1 + 25x_2      \\
+                  \text{subject to}\quad                  & x_1 + 2x_2 \leq 40 \\
+                                                          & 3x_1 + x_2 \leq 45 \\
+                                                          & x_2 \leq 12        \\
+                                                          & x_1, x_2 \geq 0.
+              \end{align*}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Constraints}
+              \begin{itemize}
+                  \item \(x_1 + 2x_2 \leq 40\) (total hours)
+                  \item \(3x_1 + x_2 \leq 45\) (storage space)
+                  \item \(x_2 \leq 12\) (market capacity)
+                  \item \(x_1, x_2 \geq 0\) (hidden constraint)
+              \end{itemize}
+              In terms of standard form, we have
+              \begin{align*}
+                  \min_{\fx = (x_1, x_2) \in \bR^2} \quad & -30x_1 - 25x_2                  \\
+                  \text{subject to}\quad                  & x_1 + 2x_2 + s_1 = 40           \\
+                                                          & 3x_1 + x_2 + s_2 = 45           \\
+                                                          & x_2 + s_3 = 12                  \\
+                                                          & x_1, x_2, s_1, s_2, s_3 \geq 0.
+              \end{align*}
+          \end{minipage} \\
+          To use simplex method, we first rewrite the above standard form as
+          \begin{align*}
+              \text{Minimise} \quad  & z                               \\
+              \text{subject to}\quad & z + 30x_1 + 25x_2 = 0           \\
+                                     & x_1 + 2x_2 + s_1 = 40           \\
+                                     & 3x_1 + x_2 + s_2 = 45           \\
+                                     & x_2 + s_3 = 12                  \\
+                                     & x_1, x_2, s_1, s_2, s_3 \geq 0.
+          \end{align*}
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\) & \(s_3\) & \(b\) &                             \\
+                  \hline
+                                  & 1     & 30      & 25      & 0       & 0       & 0       & 0     &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 1       & 2       & 1       & 0       & 0       & 40    & \text{non-basic variables:} \\
+                  \(s_2\)         & 0     & 3       & 1       & 0       & 1       & 0       & 45    & \(x_1, x_2\)                \\
+                  \(s_3\)         & 0     & 0       & 1       & 0       & 0       & 1       & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          With our entering variable \(x_1\) and outgoing variable \(s_2\):
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\)         & \(s_1\) & \(s_2\)          & \(s_3\) & \(b\) &                             \\
+                  \hline
+                                  & 1     & 0       & 15              & 0       & -10              & 0       & -450  &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 0       & \(\frac{5}{3}\) & 1       & \(-\frac{1}{3}\) & 0       & 25    & \text{non-basic variables:} \\
+                  \(x_1\)         & 0     & 1       & \(\frac{1}{3}\) & 0       & \(\frac{1}{3}\)  & 0       & 15    & \(s_2, x_2\)                \\
+                  \(s_3\)         & 0     & 0       & 1               & 0       & 0                & 1       & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          Now entering variable \(x_2\) and outgoing variable \(s_3\):
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\)          & \(s_3\)          & \(b\) &                             \\
+                  \hline
+                                  & 1     & 0       & 0       & 0       & -10              & -15              & -630  &                             \\
+                  \hline
+                  \(s_1\)         & 0     & 0       & 0       & 1       & \(-\frac{1}{3}\) & \(-\frac{5}{3}\) & 5     & \text{non-basic variables:} \\
+                  \(x_1\)         & 0     & 1       & 0       & 0       & \(\frac{1}{3}\)  & \(-\frac{1}{3}\) & 11    & \(s_2, s_3\)                \\
+                  \(x_2\)         & 0     & 0       & 1       & 0       & 0                & 1                & 12    &                             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          Thus, an optimal solution is \(x_1^* = 11, x_2^* = 12\).
+\end{enumerate}
+
+\section{Duality and Sensitivity Analysis for Linear Programs}
+
+\begin{enumerate}
+    \item           \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Primal Problem}
+              \begin{align*}
+                  \text{minimize} \quad   & -5x_1 + 3x_2                \\
+                  \text{subject to} \quad & x_1 - 2x_2 + x_3 = 1        \\
+                                          & 3x_1 + 4x_2 + x_4 = 12      \\
+                                          & 7x_1 - x_2 + x_5 = 14       \\
+                                          & x_i \geq 0, i = 1, \dots, 5
+              \end{align*}
+          \end{minipage}
+          \hfill
+          \begin{minipage}[t]{0.45\textwidth}
+              \textbf{Dual Problem}
+              \begin{align*}
+                  \text{maximize} \quad   & y_1 + 12y_2 + 14y_3       \\
+                  \text{subject to} \quad & y_1 + 3y_2 + 7y_3 \leq -5 \\
+                                          & -2y_1 + 4y_2 - y_3 \leq 3 \\
+                                          & y_1, y_2, y_3 \leq 0
+              \end{align*}
+          \end{minipage}
+    \item \begin{enumerate}
+              \item       \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            \text{minimize} \quad   & 2x_1 - x_2 + x_3          \\
+                            \text{subject to} \quad & 5x_1 - 4x_2 + 3x_2 \leq 2 \\
+                                                    & 5x_1 - x_3 \geq -4        \\
+                                                    & x_1 + x_2 = 1             \\
+                                                    & x_1 + 2x_2 + x_3 \leq 14  \\
+                                                    & x_1, x_2, x_3 \geq 0
+                        \end{align*}
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            \text{maximize} \quad   & 2y_1 - 4y_2 + y_3 + 14y_4                             \\
+                            \text{subject to} \quad & 2 - 5y_1 - 5y_2 - y_3 - y_4 \geq 0                    \\
+                                                    & -1 + 4y_1 - y_3 - 2y_4 \geq 0                         \\
+                                                    & 1 - 3y_1 + y_2 - y_4 \geq 0                           \\
+                                                    & y_1, y_4 \leq 0, y_2 \geq 0, y_3 \text{ unrestricted}
+                        \end{align*}
+                    \end{minipage}
+              \item        \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            \text{minimize} \quad   & -5x_1 -2x_2       \\
+                            \text{subject to} \quad & x_1 + x_2 \leq 1  \\
+                                                    & 2x_1 - x_2 \geq 2 \\
+                                                    & x_1 \geq 0        \\
+                        \end{align*}
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            \text{maximize} \quad   & y_1 + 2y_2             \\
+                            \text{subject to} \quad & 5 - y_1 - 2y_2 \geq 0  \\
+                                                    & -2 - y_1 + y_2 = 0     \\
+                                                    & y_1 \leq 0, y_2 \geq 0
+                        \end{align*}
+                    \end{minipage}
+          \end{enumerate}
+    \item \begin{enumerate}[label=\roman*)]
+              \item        \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            (EP) \text{ minimize} \quad & -x_1 -x_2                      \\
+                            \text{subject to} \quad     & x_1 + 2x_2 + x_3 = 4           \\
+                                                        & 4x_1 + 2x_2 + x_4 = 12         \\
+                                                        & -x_1 + x_2 + x_5 = 1           \\
+                                                        & x_1, x_2, x_3, x_4, x_5 \geq 0
+                        \end{align*}
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            (ED) \text{ maximize} \quad & 4y_1 + 12y_2 + y_3            \\
+                            \text{subject to} \quad     & -1 - y_1 - 4y_2 + y_3 \geq 0  \\
+                                                        & -1 - 2y_1 - 2y_2 - y_3 \geq 0 \\
+                                                        & y_1, y_2, y_3 \leq 0.
+                        \end{align*}
+                    \end{minipage}
+              \item By complementary slackness, we have the following equations then substituting \(\fx^*\) and multiplying,
+                    \[
+                        \left.
+                        \begin{aligned}
+                            x_1^* (-1 - y_1^* - 4y_2^* + y_3^*)  & = 0 \\
+                            x_2^* (-1 - 2y_1^* - 2y_2^* - y_3^*) & = 0 \\
+                            x_3^* (-y_1^*)                       & = 0 \\
+                            x_4^* (-y_2^*)                       & = 0 \\
+                            x_5^* (-y_3^*)                       & = 0
+                        \end{aligned}
+                        \right\}
+                        \implies
+                        \left.
+                        \begin{aligned}
+                            -1 - y_1^* - 4y_2^* + y_3^*  & = 0 \\
+                            -1 - 2y_1^* - 2y_2^* - y_3^* & = 0 \\
+                            -y_3^*                       & = 0
+                        \end{aligned}
+                        \right\}
+                        \implies
+                        \left.
+                        \begin{aligned}
+                            y_1^* & = -\frac{1}{3} \\
+                            y_2^* & = -\frac{1}{6} \\
+                            y_3^* & = 0
+                        \end{aligned}
+                        \right\}
+                    \]
+                    So, the solution for the dual problem is \(\fy^* = (-\frac{1}{3}, -\frac{1}{6}, 0)\).
+              \item Optimal value for \((EP) = -x_1^* - x_2^* = -\frac{10}{3}\) \\
+                    Optimal value for \((ED) = 4y_1^* + 12y_2^* + y_3^* = (-\frac{4}{3}) + 12(-\frac{1}{6}) = -\frac{10}{3}\).
+          \end{enumerate}
+    \item Consider the perturbed problem
+          \begin{align*}
+              \text{Minimize} \quad   & -3x_1 - 5x_2                   \\
+              \text{subject to} \quad & x_1 + s_1 = 4 + r_1            \\
+                                      & 2x_2 + s_2 = 12 + r_2          \\
+                                      & 3x_1 + 2x_2 + s_3 = 18 + r_3   \\
+                                      & x_1, x_2, s_1, s_2, s_3 \geq 0
+          \end{align*}
+          Then computing the simplex table reads,
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c c c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\) & \(s_3\) & \(b\) & \(r_1\) & \(r_2\) & \(r_3\) &                      \\
+                  \hline
+                                  & 1     & 3       & 5       & 0       & 0       & 0       & 0     & 0       & 0       & 0       &                      \\
+                  \hline
+                  \(s_1\)         & 0     & 1       & 0       & 1       & 0       & 0       & 4     & 1       & 0       & 0       & non-basic variables: \\
+                  \(s_2\)         & 0     & 0       & 2       & 0       & 1       & 0       & 12    & 0       & 1       & 0       & \(x_1, x_2\)         \\
+                  \(s_3\)         & 0     & 3       & 2       & 0       & 0       & 1       & 18    & 0       & 0       & 1       &                      \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c c c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\)          & \(s_3\) & \(b\) & \(r_1\) & \(r_2\)           & \(r_3\) &                      \\
+                  \hline
+                                  & 1     & 3       & 0       & 0       & \(-\frac{5}{2}\) & 0       & -30   & 0       & \(-\frac{-5}{2}\) & 0       &                      \\
+                  \hline
+                  \(s_1\)         & 0     & 1       & 0       & 1       & 0                & 0       & 4     & 1       & 0                 & 0       & non-basic variables: \\
+                  \(x_2\)         & 0     & 0       & 1       & 0       & \(\frac{1}{2}\)  & 0       & 6     & 0       & \(\frac{1}{2}\)   & 0       & \(x_1, s_2\)         \\
+                  \(s_3\)         & 0     & 3       & 0       & 0       & -1               & 1       & 6     & 0       & -1                & 1       &                      \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          \begin{center}
+              \begin{tabular}{|c|c|c c c c c|c|c c c|c|}
+                  \hline
+                  Basic Variables & \(Z\) & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\)          & \(s_3\)          & \(b\) & \(r_1\) & \(r_2\)          & \(r_3\)          &                      \\
+                  \hline
+                                  & 1     & 0       & 0       & 0       & \(-\frac{3}{2}\) & -1               & -36   & 0       & \(-\frac{3}{2}\) & -1               &                      \\
+                  \hline
+                  \(s_1\)         & 0     & 0       & 0       & 1       & \(\frac{1}{3}\)  & \(-\frac{1}{3}\) & 2     & 1       & \(\frac{1}{3}\)  & \(-\frac{1}{3}\) & non-basic variables: \\
+                  \(x_2\)         & 0     & 0       & 1       & 0       & \(\frac{1}{2}\)  & 0                & 6     & 0       & \(\frac{1}{2}\)  & 0                & \(s_3, s_2\)         \\
+                  \(x_1\)         & 0     & 1       & 0       & 0       & \(-\frac{1}{3}\) & \(\frac{1}{3}\)  & 2     & 0       & \(-\frac{1}{3}\) & \(\frac{1}{3}\)  &                      \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          So we have
+          \begin{align*}
+              \text{optimal value } & = -36 - \frac{3}{2}r_2 - r_3                \\
+              s_1                   & = 2 + r_1 + \frac{1}{3}r_2 - \frac{1}{3}r_3 \\
+              x_2                   & = 6 + \frac{1}{2}r_2                        \\
+              x_1                   & = 2 - \frac{1}{3} r_2 + \frac{1}{3} r_3
+          \end{align*}
+          Provided that each of the above equations are \(\geq 0\), then we note \(r_1 = 3.8 - 4 = -0.2, r_2 = 12.2 - 12 = 0.2\) and \(r_3 = 17.9 - 17 = -0.1\). The equations are satisfied. So we have
+          \begin{align*}
+              \text{optimal value } & = -36 - \frac{3}{2}(0.2) - (-0.1)               = -36.2 \\
+              x_1                   & = 2 - \frac{1}{3}(0.2) + \frac{1}{3}(-0.1) = 1.9        \\
+              x_2                   & = 6 + \frac{1}{2}(0.2)        = 6.1
+          \end{align*}
+          So expected change in objective value is \(-0.2\) and the new solution is \((1.9, 6.1)\).
+    \item {\color{red} SKIPPED}
+\end{enumerate}
+
+\section{Interior Point Method for Linear Programs and Applications for Linear Programs}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+              \item
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            (P_0) \, \underset{\fx = (x_1, x_2, x_3, x_4) \in \bR^4}{\text{ Minimize}} \quad & -2x_1 - 3x_2               \\
+                            \text{subject to} \quad                                                          & x_1 + x_3 = 1              \\
+                                                                                                             & x_2 + x_4 = 1              \\
+                                                                                                             & x_1, x_2, x_3, x_4 \geq 0. \\
+                        \end{align*}
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            (D_0) \, \underset{\fx = (x_1, x_2, x_3, x_4) \in \bR^4}{\text{ Maximize}} \quad & y_1 + y_2          \\
+                            \text{subject to} \quad                                                          & -2 - y_1 \geq 0    \\
+                                                                                                             & -3 - y_2 \geq 0    \\
+                                                                                                             & -y_1, -y_2 \geq 0. \\
+                        \end{align*}
+                    \end{minipage}
+
+              \item The \(\mu\)-pertubed optimality condition is
+                    \[(*) \begin{cases*}
+                            x_1 + x_3 = 1  \quad             & \(w_1 = - 2 - y_1 \)          \\
+                            x_2 + x_4  = 1  \quad            & \(w_2 = -3 - y_2\)            \\
+                            x_1, x_2, x_3, x_4 \geq 0  \quad & \(w_3 = -y_1\)                \\
+                            x_1w_1 = \mu    \quad            & \(w_4 = -y_2\)                \\
+                            x_2w_2 = \mu  \quad              & \(w_1, w_2, w_3, w_4 \geq 0\) \\
+                            x_3w_3 = \mu                                                     \\
+                            x4 w_4 = \mu
+                        \end{cases*}\]
+              \item For any \(\fx(\mu), \mu > 0\), on the central path, it satisfies the \(\mu\)-perturbed optimality system (*) for some \(\fy \in \bR^2\) and \(\fw \in \bR^4\). We now solve (*) to obtain \(\fx(\mu)\).
+                    \begin{enumerate}[label=(\arabic*)]
+                        \item As \(x_1w_1 = \mu\) and \(w_1 = -2 - y_1\), we have \(x_1(-2-y_1) = \mu\). Moreover, \(x_3w_4 = \mu\) and \(w_3 = -y_1\), so \(x_3(-y_1) = \mu\). Note that \(x_1 + x_3 = 1\) so \((1 - x_1)(-y_1) = \mu\) so \(y_1 = \frac{\mu}{-(1 - x_1)}\). Substituting gives \(x_1(-2 + \frac{\mu}{1 - x_1}) = \mu\). Multiplying both sides gives,
+                              \begin{align*}
+                                  x_1[-2(1 - x_1) + \mu]                 & = \mu(1 - x_1)                                                         \\
+                                  2x_1^2 + (\mu - 2)x_1                  & = \mu - \mu x_1                                                        \\
+                                  2x_1^2 + (2\mu - 2)x_1                 & = \mu                                                                  \\
+                                  x_1^2 + (\mu - 1)x_1                   & = \frac{\mu}{2}                                                        \\
+                                  \left[x_1 + \frac{\mu - 1}{2}\right]^2 & = \frac{\mu}{2} + \frac{(\mu - 1)^2}{4}                                \\
+                                  x_1                                    & = - \frac{\mu - 1}{2} \pm \sqrt{\frac{\mu}{2} + \frac{(\mu - 1)^2}{4}}
+                              \end{align*}
+                              As \(x_1 \geq 0\), we have \\
+                              \begin{minipage}[t]{0.45\textwidth}
+                                  \[x_1 = - \frac{\mu - 1}{2} + \sqrt{\frac{\mu}{2} + \frac{(\mu - 1)^2}{4}}\]
+                              \end{minipage}
+                              \hfill
+                              \begin{minipage}[t]{0.45\textwidth}
+                                  \begin{align*}
+                                      x_3 = 1 -x_1 & = 1 + \frac{\mu - 1}{2} - \sqrt{\frac{\mu}{2} + \frac{(\mu - 1)^2}{4}} \\
+                                                   & = \frac{\mu + 1}{2} - \sqrt{\frac{\mu}{2} + \frac{(\mu - 1)^2}{4}}.
+                                  \end{align*}
+                              \end{minipage}
+                        \item Similarly, as \(x_2 w_2 = \mu\) and \(w_2 = -3 - y_2\) we get
+                              \[x_2 = - \frac{2\mu - 3}{6} + \sqrt{\frac{\mu}{3} + \frac{(2\mu - 3)^2}{36}} \text{ and } x_4 = 1 - x_2 = \frac{2\mu + 3}{6} - \sqrt{\frac{\mu}{3} + \frac{(2\mu - 3)^2}{36}}\]
+                    \end{enumerate}
+                    Thus \(\fx(\mu) = (x_1(\mu), x_2(\mu), x_3(\mu), x_4(\mu))\) as functions as above.
+              \item Let \(\mu \to 0\), then \(x_1(\mu) \to 1, x_2(\mu) \to 1, x_3(\mu) \to 0, x_4(\mu) \to 0\). So \(\fx(\mu) = \fx^* = (1, 1, 0, 0)\). We now see that \(\fx^*\) is an optional solution of \((P_0)\). Clearly, it is a feasible point. Next, take any feasible point \(\fx\) of \((P_0)\) then let \(\fx = (x_1, x_2, x_3, x_4)\). Then \(x_1 \leq 1\) and \(x_2 \leq 1\) and so \[-2x_1 - 3x_2 \geq (-2) \cdot 1 + (-3) \cdot 1 = -5 = (-2)x_1^* + (-3)x_2^*.\]
+                    So \(\fx^*\) is an optimal solution of \((P_0)\).
+          \end{enumerate}
+    \item Note that \(\norm{\fx}_1 = \sum_{i = 1}^n |x_i|\) with \(\fx = (x_1, \dots, x_n) \in \bR^n\). So we can write
+          \begin{align*}
+              \underset{\fx \in \bR^n, t_i \in \bR, i = 1, \dots, n}{\text{Maximize}} \quad & \sum_{i = 1}^n t_i                                                                    \\
+              \text{subject to} \quad                                                       & |x_i| \leq t_i, \quad i = 1, \dots, n                                                 \\
+                                                                                            & A\fx                                                                           = \fb.
+          \end{align*}
+          Now notice that \(|x_i| \leq t_i \iff \max\{x_i, -x_i\} \leq t_i \iff x_i \leq t_i \text{ and } -x_i \leq t_i\). So the problem can be reformulated as the following linear program
+          \begin{align*}
+              \underset{\fx \in \bR^n, t_i \in \bR, i = 1, \dots, n}{\text{Maximize}} \quad & \sum_{i = 1}^n t_i                       \\
+              \text{subject to} \quad                                                       & x_i - t_i \leq 0, \quad i = 1, \dots, n  \\
+                                                                                            & -x_i - t_i \leq 0, \quad i = 1, \dots, n \\
+                                                                                            & A\fx = \fb.
+          \end{align*}
+    \item Let \(x_{ij}\) be the number of kilowatt-hours (kwh) of electricity sent from power plant \(i\) to city \(j\) for \(i = \{1, 2, 3\}\) and \(j = \{1, 2, 3, 4\}\). Then the linear programming problem is
+          \begin{align*}
+              \text{Minimize} \quad   & 4x_{11} + 3x_{12} + 10x_{13} + 9x_{14}                                    \\
+                                      & 9x_{21} + 6x_{22} + 13x_{23} + 7x_{24}                                    \\
+                                      & 12x_{31} + 9x_{32} + 16x_{33} + 6x_{34}                                   \\
+              \text{subject to} \quad &
+              \sum_{j=1}^4 x_{1j} \leq 35; \quad \sum_{i=1}^3 x_{i1} \geq 45;                                     \\
+                                      & \sum_{j=1}^4 x_{2j} \leq 50; \quad \sum_{i=1}^3 x_{i2} \geq 20;           \\
+                                      & \sum_{j=1}^4 x_{3j} \leq 40; \quad \sum_{i=1}^3 x_{i3} \geq 30;           \\
+                                      & \phantom{\sum_{j=1}^4 x_{3j} \leq 40;} \quad \sum_{i=1}^3 x_{i4} \geq 30; \\
+                                      & x_{ij} \geq 0 \text{ for } i = 1,2,3 \text{ and } j = 1,2,3,4.
+          \end{align*}
+    \item {\color{red} SKIPPED}
+    \item {\color{red} SKIPPED}
+\end{enumerate}
+
+\section{Network Problems}
+\begin{enumerate}
+    \item We apply Dijkstra's algorithm to find the shortest path between nodes \(S\) and \(T\). Let \(P\) be the permanent label set in each step of Dijkstra's algorithm. Then we have \\
+          \begin{enumerate}[label=(\arabic*)]
+              \item \begin{tabular}{|c|c|c|}
+                        \hline
+                               & \(P\)                                 & distance to \(S\)                \\
+                        \hline
+                        Step 0 & \(P = \{S\}\)                         & 0                                \\
+                        Step 1 & \(P = \{S, A\}\)                      & 0, 8                             \\
+                        Step 2 & \(P = \{S, A, B\}\)                   & 0, 8, 10                         \\
+                        Step 3 & \(P = \{S, A, B, C\}\)                & 0, 8, 10, 14                     \\
+                        Step 4 & \(P = \{S, A, B, C, D\}\)             & 0, 8, 10, 14, 16                 \\
+                        Step 5 & \(P = \{S, A, B, C, D, E\}\)          & 0, 8, 10, 14, 16, 17             \\
+                        Step 6 & \(P = \{S, A, B, C, D, E, F\}\)       & 0, 8, 10, 14, 16, 17, 21         \\
+                        Step 7 & \(P = \{S, A, B, C, D, E, F, G\}\)    & 0, 8, 10, 14, 16, 17, 21, 22     \\
+                        Step 8 & \(P = \{S, A, B, C, D, E, F, G, T\}\) & 0, 8, 10, 14, 16, 17, 21, 22, 27 \\
+                        \hline
+                    \end{tabular} \\
+                    So the shortest distance between \(S\) and \(T\) is 27 and the shortest path is \(S \to A \to D \to G \to T\).
+              \item {\color{red} SKIPPED}
+          \end{enumerate}
+
+    \item An arc \((i, j)\) from node \(i\) to node \(j\) corresponds to purchasing a tractor at the end of year \(i\) and trading it at the end of year \(j\), and the length of the arc \((i, j)\) is the net discounted cost associated with this strategy. Running Dijkstra gives a shortest path of \(0 \to 1 \to 3\) with cost 29.
+    \item Here an arc \((i, j)\) from node \(i\) to node \(j\) corresponds to purchasing a car at the end of the year \(i\) and sell it at the end of year \(j\), and the length of the arc \((i, j)\) is the net discounted cost associate with this strategy.
+          \begin{center}
+              \begin{tikzpicture}[
+                      vertex/.style={circle, draw, thick, minimum size=1cm, inner sep=0pt, font=\large},
+                      edge/.style={thick, ->},
+                      weight/.style={font=\small, midway, fill=white, inner sep=1pt}
+                  ]
+
+                  \node[vertex] (v0) at (0,0) {0};
+                  \node[vertex] (v1) at (2,0) {1};
+                  \node[vertex] (v2) at (4,0) {2};
+                  \node[vertex] (v3) at (6,0) {3};
+                  \node[vertex] (v4) at (8,0) {4};
+
+                  \draw[edge] (v0) -- (v1) node[weight, above] {4};
+                  \draw[edge] (v1) -- (v2) node[weight, above] {5};
+                  \draw[edge] (v2) -- (v3) node[weight, above] {6};
+                  \draw[edge] (v3) -- (v4) node[weight, above] {7};
+
+                  \draw[edge, bend left=40] (v0) to node[weight, above] {7} (v2);
+                  \draw[edge, bend right=40] (v0) to node[weight, below] {12} (v3);
+                  \draw[edge, bend left=40] (v0) to node[weight, above] {19} (v4);
+
+                  \draw[edge, bend left=40] (v1) to node[weight, above] {9} (v3);
+                  \draw[edge, bend right=40] (v1) to node[weight, below] {11} (v4);
+
+                  \draw[edge, bend left=40] (v2) to node[weight, above] {12} (v4);
+              \end{tikzpicture}
+          \end{center}
+          Running Dijkstra's algorithm results in the shortest path of \(0 \to 1 \to 4\) with distance 15.
+    \item Note that finding the most reliable route from \(S\) to \(T\) is equivalent to finding the shortest path from node \(S\) to node \(T\) in the network where weights are set to \(-\ln(w_i)\). Then the shortest path from node \(S\) to node \(T\) is \(S \to A \to C \to F \to T\) which is also the most reliable route.
+    \item The linear programming problem formulation is
+          \begin{align*}
+              \text{Maximize} \quad
+               & x_{SA} + x_{SB} + x_{SC}                            \\
+              \text{subject to} \quad
+               & x_{SA} = x_{AD} + x_{AF}                            \\
+               & x_{SB} + x_{CB} + x_{DB} = x_{BC} + x_{BD} + x_{BE} \\
+               & x_{SC} + x_{BC} = x_{CB} + x_{CE}                   \\
+               & x_{AD} + x_{BD} = x_{DB} + x_{DF} + x_{DG}          \\
+               & x_{BC} + x_{CE} = x_{EG}                            \\
+               & x_{AF} + x_{DF} + x_{GF} = x_{FG} + x_{FT}          \\
+               & x_{DG} + x_{EG} + x_{FG} = x_{GF} + x_{GT}          \\
+               & \begin{array}{ll}
+                  0 \leq x_{SA} \leq 6 & 0 \leq x_{DB} \leq 3 \\
+                  0 \leq x_{SB} \leq 5 & 0 \leq x_{DG} \leq 3 \\
+                  0 \leq x_{SC} \leq 3 & 0 \leq x_{DF} \leq 4 \\
+                  0 \leq x_{AD} \leq 3 & 0 \leq x_{EG} \leq 4 \\
+                  0 \leq x_{AF} \leq 6 & 0 \leq x_{FT} \leq 8 \\
+                  0 \leq x_{BC} \leq 4 & 0 \leq x_{GF} \leq 4 \\
+                  0 \leq x_{BD} \leq 5 & 0 \leq x_{FG} \leq 2 \\
+                  0 \leq x_{BE} \leq 4 & 0 \leq x_{CE} \leq 5 \\
+              \end{array}
+          \end{align*}
+    \item {\color{red} SKIPPED}
+\end{enumerate}
+
+\section{Conic Programs}
+\subsection{Introduction, Geometry, Duality Theory}
+\begin{enumerate}
+    \item Let \(C = \{(\fx, t) : \norm{\fx} \leq t\}\). Take any \((\fx, t) \in C\) and let \(\alpha \geq 0\). Then \(\alpha(\fx, t) \in C\) because \(\norm{\alpha\fx} = |\alpha|\cdot \norm{\fx} = \alpha \norm{\fx} \leq at.\) So, \(C\) is a cone. Moreover, let \((\fx_1, t_1) \in C, (\fx_2, t_2) \in C\) and \(\lambda \in [0, 1]\). Then
+          \begin{align*}
+              \norm{\lambda \fx_1 + (1 - \lambda)\fx_2} & \leq \norm{\lambda \fx_1} + \norm{(1 - \lambda)\fx_2} \tag{triangle inequality}                     \\
+                                                        & = |\lambda| \cdot \norm{\fx_1} + |1 - \lambda| \cdot \norm{\fx_2} \tag{homogenous propery for norm} \\
+                                                        & = \lambda \cdot \norm{\fx_1} + (1 - \lambda) \norm{\fx_2} \tag{\(\lambda \in [0, 1]\)}              \\
+                                                        & \leq \lambda \cdot t_1 + (1 - \lambda) t_2 \tag{as \((\fx_1, t_1), (\fx_2, t_2) \in C\)}
+          \end{align*}
+          So \(\lambda(\fx_1, t_1) + (1 - \lambda)(\fx_2, t_2) \in C\). So \(C\) is convex and hence \(C\) is a convex cone.
+    \item Let \(\Omega = \{X \in S_+^n : |X_{ij}| \leq 1, \text{ for all } i,j = 1, \dots, n\}\).
+          \begin{itemize}
+              \item Closed. Let \(X_k \in \Omega\) and \(X_k \to X\). Then \(X_k \in S_+^n\) and \(|(X_k)_{ij}| \leq 1\). In particular for all \(\fd \in \bR^n\), \(\fd^T X_k \fd \geq 0\) and \(|(X_k)_{ij}| \leq 1\). Let \(k \to +\infty\), then \(\fd^T X \fd \geq 0\) for all \(\fd \in \bR^n\) and \(|X_{ij}| \leq 1\). So \(X \in \Omega\), so \(\Omega\) is closed.
+              \item Convex. Let \(\Omega_0 = \{X \in \bR^{n \times n} : |X_{ij}| \leq 1, \text{ for all } i, j = 1, \dots, n\}\). Then \(\Omega = S_+^n \cap \Omega_0\). Let \(X_1, X_2 \in \Omega_0\) and \(\lambda \in [0, 1]\). Then for all \(i, j = 1, \dots, n\)
+                    \[|(X_1)_{ij}| \leq 1 \text{ and } |(X_2)_{ij}| \leq 1.\]
+                    Then
+                    \begin{align*}
+                        |\lambda (X_1)_{ij} + (1 - \lambda)(X_2)_{ij}| & \leq \lambda |(X_1)_{ij}| + (1 - \lambda)|(X_2)_{ij}| \\
+                                                                       & \leq \lambda 1 + (1 - \lambda)                        \\
+                                                                       & = 1
+                    \end{align*}
+                    So, \(\Omega_0\) is convex. Since \(S_+^n\) is convex, then the intersection of two convex sets is convex, i.e. \(\Omega\) is convex.
+              \item Bounded. For all \(X \in \Omega\), \(|X_{ij} \leq 1, i,j = 1, \dots, n\). So, \(\norm{X}_F = \left[\sum_{i,j} |X_{ij}|^2\right]^\frac{1}{2} \leq n\) for all \(X \in \Omega\). Thus \(\Omega \subseteq \{X : \norm{X}_F \leq n\}\) and so \(\Omega\) is a bounded set.
+          \end{itemize}
+
+    \item {\color{red} SKIPPED}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item Let \(C_1, C_2\) be convex cones such that \(C_1 \subseteq C_2\). Let \(x \in C_2^*\) then \(\langle x, c_2 \rangle \geq 0\) for all \(c_2 \in C_2\). As \(C_1 \subseteq C_2\) this implies \(\langle x, c_1 \rangle \geq 0\) for all \(c_1 \in C_1\). So \(x \in C_1^*\). Thus \(C_2^* \subseteq C_1^*\).
+              \item We show forward inclusion. Let \(x \in (C_1 + C_2)^*\) then for all \(c_1 \in C_1, c_2 \in C_2\), \(\langle x, c_1 + c_2\rangle \geq 0\). Letting \(c_1 = 0 \in C_1\), then \(\langle x, c_2 \rangle \geq 0\) for all \(c_2 \in C_2\), so \(x \in C_2^*\). Similarly for \(x \in C_1^*\). Thus \(x \in C_1^* \cap C_2^*\). \\
+
+                    For reverse, since \(x \in C_1^* \cap C_2^*\) then \(\langle x, c_1\rangle \geq 0\) and \(\langle x, c_2 \rangle \geq 0\). Summing these equations gives the result.
+          \end{enumerate}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item The interior point condition means that the system has a solution (feasible region is non-empty). This can be satisfied with \(X = \begin{pmatrix}
+                        1 & 0 & 0 \\
+                        0 & 1 & 0 \\
+                        0 & 0 & 0
+                    \end{pmatrix}\).
+              \item The objective function can be rewritten as \(2X_{12}\), since we take the trace of \(CX\) where \(X\) is a symmetric matrix. For any feasible point \(X\), we have
+                    \begin{align*}
+                        X & = \begin{pmatrix}
+                            1      & X_{12} & X_{13} \\
+                            X_{12} & 1      & X_{23} \\
+                            X_{13} & X_{23} & 1
+                        \end{pmatrix} \succeq 0 \\
+                          & \begin{pmatrix}
+                            1      & X_{12} \\
+                            X_{12} & 1
+                        \end{pmatrix} \succeq 0
+                    \end{align*}
+                    and so \(X_{12}^2 \leq 1\) so \(X_{12} \geq -1\). So its objective value is \(2X_{12} \geq -2\), so optimal value of \((P) \geq -2\).  \\
+
+                    On the other hand, let \(X = \begin{pmatrix}
+                        1  & -1 & 0 \\
+                        -1 & 1  & 0 \\
+                        0  & 0  & 1
+                    \end{pmatrix}\), then \(X\) is feasible and \(\tr(CX) = -2\). So optimal value \(\leq -2\), thus optimal value must be \(= 2\).
+              \item \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            (P) \text{ minimize} \quad & \tr(CX)                     \\
+                            \text{subject to} \quad    & \tr(A_i X) = 1, i = 1, 2, 3 \\
+                                                       & X \succeq 0
+                        \end{align*}
+                        where \(A_i\) is the zero matrix except \(A_{ii} = 1\).
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            (D) \text{ maximize} \quad & y_1 + y_2 + y_3                       \\
+                            \text{subject to} \quad    & \begin{pmatrix}
+                                -y_1 & 1    & 0    \\
+                                1    & -y_2 & 0    \\
+                                0    & 0    & -y_3
+                            \end{pmatrix} \succeq 0.
+                        \end{align*}
+                    \end{minipage}
+              \item The optimal value of \((D) = -2\) as the primal problem and dual have non-empty feasible regions, and the interior point condition is satisfied. By the strong duality theorem for conic programs, this implies that the optimal value of \((D)\) is the optimal value of \((P)\).
+          \end{enumerate}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item Let \(C_1 = \SOC^3 = \{ \fx \in \bR^2: x_1 \geq \sqrt{x_2^2 + x_3^2} \}\) and \(C_2 = \bR_+ = \{x \in \bR : x \geq 0\}\). Then \(K = C_1 \times C_2\). Now,
+                    \begin{align*}
+                        K^* & = (C_1 \times C_2)^* \\
+                            & = C_1^* \times C_2^*
+                            & = C_1 \times C_2     \\
+                            & = K.
+                    \end{align*}
+                    as \(C_1^* = (\SOC^3)^* = \SOC^3 = C_1\) and \(C_2^* = (\bR_+)^* = \bR_+ = C_2\). So \(K\) is a self-dual cone.
+              \item    \begin{align*}
+                        \text{maximize} \quad   & 1 \cdot y_1 + 0 \cdot y_2               \\
+                        \text{subject to} \quad & \begin{pmatrix}
+                            -y_2 \\ -1 - y_1 \\ -y_2 \\ -y_1
+                        \end{pmatrix} \in K^* = K.
+                    \end{align*}
+              \item For the primal problem, take any \(\fx\) which is feasible. Then \(x_1 + x_3 = 0\) and \(x_1 \geq \sqrt{x_2^2 + x_3^2}\) so \(x_1^2 \geq x_2^2 + x_3^2 = x_2^2 + x_1^2 \implies x_2 = 0\). So the optimal value of the primal problem is 0. \\
+
+                    Now take any feasible point for the dual. Since \(\begin{pmatrix}
+                        -y_2 \\ -1 - y_1 \\ -y_2 \\ -y_1
+                    \end{pmatrix} \in \SOC^3\) we have
+                    \begin{align*}
+                        -y_2 \geq \sqrt{(-1 - y_1)^2 + (-y_2)^2} \\
+                        (-y_2)^2 \geq (-1 - y_1)^2 + (-y)^2      \\
+                        y_1 = -1.
+                    \end{align*}
+                    So optimal value is -1 since for any feasible point \(y_1 = -1\). Thus duality gap is optimal value of primal - optimal value of dual gives \(0 - (-1) = 1\).
+              \item We note that the primal problem does not satisfy the interior point condition which causes the duality gap to be non-zero. Indeed the interior point condition requires that the system has a solution. However if \(\fx \in \operatorname{int} K\), then \(x_1 > \sqrt{x_2^2 + x_3^2} \geq |x_3|\) which contradicts with \(x_1 + x_3 = 0\).
+          \end{enumerate}
+\end{enumerate}
+
+\subsection{Modelling, Numerical Methods and Applications}
+
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+              \item \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Primal Problem}
+                        \begin{align*}
+                            (P_0) \text{ Minimize}_{X \in S^2} \quad & \tr(CX)               \\
+                            \text{Subject to} \quad                  & X_{ii} = 1, i = 1, 2, \\
+                                                                     & X \succeq 0
+                        \end{align*}
+                        where \(C = \begin{pmatrix}
+                            1 & 2 \\ 2 & 1
+                        \end{pmatrix}\)
+                    \end{minipage}
+                    \hfill
+                    \begin{minipage}[t]{0.45\textwidth}
+                        \textbf{Dual Problem}
+                        \begin{align*}
+                            (D_0) \text{ Maximise} \quad & y_1 + y_2           \\
+                            \text{subject to} \quad      & c - y_1A_1 - y_2A_2 \\ &= \begin{pmatrix}
+                                1 - y_1 & 2       \\
+                                2       & 1 - y_2 \\
+                            \end{pmatrix} \succeq 0.
+                        \end{align*}
+                        where \(A_1 = \begin{pmatrix}
+                            1 & 0 \\ 0 & 0
+                        \end{pmatrix}\) and \(A_2 = \begin{pmatrix}
+                            0 & 0 \\ 0 & 1
+                        \end{pmatrix}\)
+                    \end{minipage}
+              \item The logarithmic barrier problem \((P_\mu)\) for \((P_0)\) is, for each \(\mu > 0\),
+                    \begin{align*}
+                        (P_\mu) \text{ Minimise}_{X \in S^2} \quad & \tr(CX) + \mu\phi_{\SDP}(X) \\
+                        \text{subject to} \quad                    & X_{ii} = 1, i = 1, 2        \\
+                        \text{where} \quad \phi_{\SDP}(X) =        & \begin{cases}
+                            -\log \det(X) & \text{ if } X \succeq 0 \\
+                            +\infty       & \text{ else.}
+                        \end{cases}
+                    \end{align*}
+              \item Any minimiser \(X(\mu)\) of \((P_\mu)\) satisfies the optimality condition
+                    \begin{align*}
+                        \tr(A_i X)                 & = 1, i = 1, 2 \\
+                        X \succeq                  & 0             \\
+                        c - \sum_{i = 1}^2 y_i A_i & = \mu X^{-1}
+                    \end{align*}
+                    for some \(\fy = (y_1, y_2) \in \bR^2\). We now solve the condition to obtain \(X(\mu)\). From the last equation,
+                    \begin{align*}
+                        c - \sum y_iA_i) X                                   & = \mu I_2                    \\
+                        \begin{pmatrix}
+                            1 - y_1 & 2       \\
+                            2       & 1 - y_2
+                        \end{pmatrix}\begin{pmatrix}
+                            X_{11} & X_{12} \\
+                            X_{12} & X_{22}
+                        \end{pmatrix} & = \begin{pmatrix}
+                            \mu & 0 \\ 0 & \mu
+                        \end{pmatrix}
+                    \end{align*}
+                    This then shows that
+                    \begin{align*}
+                        (1 - y_1) + 2X_{12} & = (1 - y_1)X_{11} + 2X_{12} = \mu \\
+                        (1 - y_1)X_{12} + 2 & = (1 - y_1)X_{12} + 2X_{22} = 0
+                    \end{align*}
+                    Rearranging the first gives
+                    \[(1 - y_1) = \frac{-2}{X_{12}}.\]
+                    Substituting this into the other equation gives,
+                    \begin{align*}
+                        \frac{-2}{X_{12}} + 2X_{12}    & = \mu \tag{since \(X_{11} = X_{22} = 1\)}       \\
+                        -2 + 2X_{12}^2                 & = \mu X_{12}                                    \\
+                        X_{12}^2 - \frac{\mu}{2}X_{12} & = 1                                             \\
+                        (X_{12} - \frac{\mu}{4})^2     & = 1 + \frac{\mu^2}{16}                          \\
+                        X_{12}                         & = \frac{\mu}{4} \pm \sqrt{1 + \frac{\mu^2}{16}}
+                    \end{align*}
+                    Then \(X = \begin{pmatrix}
+                        1 & X_{12} \\ X_{12} & 1
+                    \end{pmatrix} \succ 0 \implies \det X > 0 \implies X_{12} < 1\). Thus
+                    \[X(\mu) = \begin{pmatrix}
+                            1                                           & \frac{\mu}{4} - \sqrt{1 + \frac{\mu^2}{16}} \\
+                            \frac{\mu}{4} - \sqrt{1 + \frac{\mu^2}{16}} & 1
+                        \end{pmatrix} \quad \text{ with } \mu > 0.\]
+              \item When \(\mu \to 0\), \(X_{12} \to -1\) so \(X^* = \begin{pmatrix}
+                        1 & -1 \\ -1 & 1
+                    \end{pmatrix}\). Note that \(X^*\) is feasible since \(X_{ii}^* = 1, i = 1, 2\) and \(X^* \succeq 0\). Moreover, for all \(X\) which is feasible for \((P_0)\) we have
+                    \(X_{12}^2 \leq 1 \implies -1 \leq X_{12} \leq 1\) (since \(\det X \geq 0\)). Thus,
+                    \begin{align*}
+                        \tr(CX) & = 2 + 4X_{12}   \\
+                                & \geq 2 + 4(-1)
+                                & -2 = \tr(CX^*).
+                    \end{align*}
+                    So, for all feasible \(X\) for \((P_0)\), \(\tr(CX) \geq tr(CX^*)\). This shows that \(X^*\) is an optimal solution for \((P_0)\).
+          \end{enumerate}
+    \item Observe that the problem is equivalent to
+          \begin{enumerate}[label=(\arabic*)]
+              \item \begin{align*}
+                        \text{Minimise} \quad   & t                                      \\
+                        \text{subject to} \quad & x_1^2 + x_2^2 + x_3^2 - x_1 - t \leq 0 \\
+                                                & x_1^2 + x_2^2 + x_3^2 \leq 1
+                                                & x_i \geq 0, i = 1, 2, 3.
+                    \end{align*}
+                    Also note that, \(x_1^2 + x_2^2 + x_3^2 = \norm{\fx}_2^2\). So we again reformulate this as
+                    \begin{align*}
+                        \text{Minimise} \quad   & t                                                                                                                                                                                                   \\
+                        \text{subject to} \quad & \norm{\fx}_2^2 \leq x_1 + t \iff \norm{\fx}^2 \leq \left(\frac{x_1 + t + 1}{2}\right)^2 - \left(\frac{x_1 + t - 1}{2}\right)^2 \iff \norm{\begin{bmatrix} \fx \\ \frac{x_1 + t - 1}{2}\end{bmatrix}}_2 \leq \frac{x_1 + t + 1}{2} \\
+                                                & \norm{\fx}_2^2 \leq 1 \iff \norm{\fx}_2 \leq 1                                                                                                                                                      \\
+                                                & \fx \geq 0.
+                    \end{align*}
+                    which is a conic program (indeed a second order cone program).
+                    \begin{align*}
+                        \text{Minimise} \quad   & t                                      \\
+                        \text{subject to} \quad & \begin{bmatrix}
+                            \frac{(x_1 + t + 1)}{2} \\ \fx \\ \frac{(x_1 + t - 1)}{2}
+                        \end{bmatrix} \in \SOC^5 \\
+                                                & \frac{1}{\fx} \in \SOC^4               \\
+                        x_i \in \SOC^1, i = 1, 2, 3.
+                    \end{align*}
+              \item This can be rewritten as
+                    \[\text{Minimise}_{\fx \in \bR^3} \norm{\begin{bmatrix} x_1 - 1 \\ x_2 - 2 \\ x_3 - 1\end{bmatrix}}_2 + 2 \norm{\begin{bmatrix} x_1 - 1 \\ x_2 - 1 \\ x_3 - 2\end{bmatrix}}\]
+                    Which is then equivalent to
+                    \begin{align*}
+                        \text{Minimise} \quad   & t_1 + 2t_2                                    \\
+                        \text{subject to} \quad & \norm{\begin{bmatrix} x_1 - 1 \\ x_2 - 2 \\ x_3 - 1\end{bmatrix}}_2 \leq t_1 \\
+                                                & \norm{\begin{bmatrix} x_1 - 1 \\ x_2 - 1 \\ x_3 - 2\end{bmatrix}}_2 \leq t_2
+                    \end{align*}
+                    which is a conic program (indeed a second order cone program)
+                    \begin{align*}
+                        \text{Minimise} \quad   & t_1 + 2t_2                                      \\
+                        \text{subject to} \quad & \norm{\begin{bmatrix} t_1 \\ x_1 - 1 \\ x_2 - 2 \\ x_3 - 1\end{bmatrix}}_2 \in \SOC^4 \\
+                                                & \norm{\begin{bmatrix} t_2 \\ x_1 - 1 \\ x_2 - 1 \\ x_3 - 2\end{bmatrix}}_2 \in \SOC^4
+                    \end{align*}
+          \end{enumerate}
+
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item {\color{red} SKIPPED}
+              \item {\color{red} SKIPPED}
+              \item The problem is equivalent to the following semi-definite program
+                    \begin{align*}
+                        \text{Minimise} \quad & x_1                                    \\
+                        \text{subject to}     & \begin{pmatrix}
+                            x_1 & 1 \\ 1 & x_2
+                        \end{pmatrix} \succeq 0.
+                    \end{align*}
+          \end{enumerate}
+    \item {\color{red} SKIPPED}
+    \item Using the fact that, for any symmetric matrix \(A \in S^n\) and \(\fa \in \bR^n\), \(\fa^T A \fa = \tr(A\fa\fa^T)\), we have
+          \begin{align*}
+              \fx^T C_0 \fx         & = \tr(C_0\fx\fx^T)  \\
+              x_i^2 = \fx^T E_i \fx & = \tr(E_i \fx\fx^T)
+          \end{align*}
+          where \(E_i\) is the diagonal matrix whose \((i, i)\)-th element is one and zero otherwise. Therefore, \((QP)\) can be rewritten as
+          \begin{align*}
+              \text{Minimise}_{X \in S^n} \quad & \tr(C_0 X)                                                                   \\
+              \text{subject to} \quad           & \tr(E_i X) = 1, i = 1, \dots, n                                              \\
+                                                & = X \in \Omega = \{X \in S^n : X = \fx\fx^T \text{ for some } \fx \in \bR\}.
+          \end{align*}
+          Further, note that \(\Omega \subseteq S_+^n\) (the cone of all positive semi-definite matrices). Thus, we see that \(f_1^* = \min(QP) \geq \min(AP) = f_2^*\), since \((AP)\)'s first constraint can be written as \(\tr(E_i X) = 1, i = 1, \dots, n\). Finally the conclusion follows by noticing \(\tr(E_i X) = X_{ii}, i = 1, \dots, n\) by the construction of \(E_i\).
+\end{enumerate}
+
+\section{Integer Programs}
+
+\begin{enumerate}
+    \item Let \(x_i\) be the number of works employed on line \(i, i = 1, 2\). Then the problem can be formulated as
+          \begin{align*}
+              \text{Minimise} \quad   & 1000y_1 + 500x_1 + 2000y_2 + 900x_2       \\
+              \text{subject to} \quad & 20x_1 + 50x_2 \geq 120                    \\
+                                      & 30x_1 + 35x_2 \geq 150                    \\
+                                      & 40x_1 + 45x_2 \geq 200                    \\
+                                      & x_1 \leq 7y_1                             \\
+                                      & x_2 \leq 7y_2                             \\
+                                      & x_1, x_2 \text{ are nonnegative integers}
+                                      & y_1, y_2 \in \{0, 1\}
+          \end{align*}
+    \item {\color{red} SKIPPED}
+    \item {\color{red} SKIPPED}
+    \item {\color{red} SKIPPED}
+    \item \begin{enumerate}[label=(\arabic*)]
+              \item From the final simplex table, as the entries associated with the non-basic variables are all non-positive in the cost row, the solution can be found by letting the nonbasic variables \(x_3 = x_4 = 0\). Then the solution is \(x_1^* = \frac{25}{14}, x_2^* = \frac{23}{7}, x_3^* = x_4^* = 0\).
+              \item \(\fx^*\) is not a solution as \(x_1^*, x_2^*\) are not integers.
+              \item The two constraints of the final simplex table read as follows:
+                    \begin{align*}
+                        x_2 + \left(\frac{2}{7}\right)x_3 + \left(-\frac{1}{7}\right)x_4 & = \frac{23}{7} \\
+                        x_1 + \left(\frac{-3}{14}\right)x_3 + \left(\frac{5}{14}\right)x_4 = \frac{25}{14}
+                    \end{align*}
+                    Further simplifying gives the following expressions.
+                    \begin{align*}
+                        (x_2 - x_4) + \left(\frac{2}{7}x_3 + \frac{6}{7}\right)x_4    & = 3 + \frac{2}{7}   \implies \frac{2}{7}x_3 + \frac{6}{7}x_4 - \frac{2}{7} = 3 - (x_2 - x_4)      \\
+                        (x_1 - x_3) + \left(\frac{11}{14}x_3 + \frac{5}{14}x_4\right) & = 1 + \frac{11}{14} \implies \frac{11}{14}x_3 + \frac{5}{14}x_4 - \frac{11}{14} = 1 - (x_1 - x_3)
+                    \end{align*}
+                    This shows that for any point feasible for the integer program, one must have
+                    \begin{align*}
+                        x_2 - x_4 & = x_2 + 0 \cdot x_3 - x_4 \leq 3 \\
+                        x_1 - x_3 & = x_1 - x_3 + 0 \cdot x_4 \leq 1
+                    \end{align*}
+                    These are the Gomory cuts generated by the first and second constraint of the linear program relaxation.
+          \end{enumerate}
+
+\end{enumerate}

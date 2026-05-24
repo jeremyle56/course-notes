@@ -1,0 +1,99 @@
+\section{Tutorial Questions}
+
+This contains solution sketches to some of the key questions from the tutorial problems.
+
+\subsection{Triangle Geometry}
+
+\begin{enumerate}[font=\bfseries]
+    \item[2] Using the cosine rule in \(\triangle ACD\) and \(\triangle ABD\) respectively gives the following equations
+          \[|\overrightarrow{CD}|^2 = \overrightarrow{AC}^2 + \overrightarrow{AD}^2 - 2|AC||AD|\cos(\angle CAD) \text{ and } |\overrightarrow{BD}|^2 = \overrightarrow{AB}^2 + \overrightarrow{AD}^2 - 2|AB||AD|\cos(\angle BAD).\]
+          However, we know \(|\overrightarrow{CD}| = |\overrightarrow{BD}| = \frac{1}{2}\overrightarrow{BC}\). Further \(\angle CAD = \angle BAD = \alpha\) since \(AD\) is a bisector. Since both \(\triangle ACD\) and \(\triangle ABD\) are right angle triangles, \(\cos \alpha = \frac{m}{b} = \frac{m}{c}\). Adding both equations and substituting the usual notation gives
+          \begin{align*}
+              \left(\frac{1}{2}a\right)^2 + \left(\frac{1}{2}a\right)^2 & = b^2 + c^2 + 2m^2 - 2bm\cos\alpha - 2cm\cos\alpha     \\
+              \frac{1}{2}a^2                                            & = b^2 + c^2 + 2m^2 - 2bm \frac{m}{b} - 2cm \frac{m}{c} \\
+                                                                        & = b^2 + c^2 - 2m^2                                     \\
+              b^2 + c^2                                                 & = \frac{1}{2}a^2 + 2m^2.
+          \end{align*}
+          \qed
+    \item[3] \begin{enumerate}[font=\bfseries]
+              \item[a.] By cosine rule,
+                    \begin{align*}
+                        7^2                & = 3^2 + 5^2 - 2(3)(5)\cos(\angle ACB) \\
+                        30\cos(\angle ACB) & = 9 + 25 - 49                         \\
+                        \cos(\angle ACB)   & = -\frac{1}{2}                        \\
+                        \angle ACB         & = \frac{2}{3}\pi.
+                    \end{align*} \qed
+              \item[b.] By cosine rule twice we get the following equations
+                    \begin{align*}
+                        \cos \angle CAB & = \frac{5^2 + 6^2 - 4^2}{2 \cdot 5 \dot 6} = \frac{3}{4}   \\
+                        \cos \angle ACB & = \frac{4^2 + 5^2 - 6^2}{2 \cdot 4 \cdot 5} = \frac{1}{8}.
+                    \end{align*}
+                    We now are required to show \(\cos \angle ACB = \cos (2 \angle CAB)\). Using the identity that \(\cos (2 \alpha) = 2\cos^2 \alpha - 1\), we get
+                    \[2 \left(\cos \angle ACB\right)^2 - 1 = \frac{1}{8}.\]
+                    This confirms that \(\cos \angle ACB = \cos (2 \angle CAB) \implies \angle ACB = 2 \angle CAB\). \qed
+          \end{enumerate}
+\end{enumerate}
+
+\subsection{Circle Geometry}
+\begin{enumerate}[font=\bfseries]
+    \item[27] We have three cases where \(P\) lies outside, on or inside the circle.
+          \begin{itemize}
+              \item \textit{Case 1: P lies outside the circle}. Here we notice that \(\triangle PAB' \approx \triangle PB'A\) since \(\angle APB' = \angle B'PA\) (same angle) and \(\angle PB'A = \angle PA'B\) are on the same arc \(AB\). Then we have \(PA / PB = PB' / PA' \implies PA \cdot PA' = PB = PB'\).
+              \item \textit{Case 2: P lies on the circle}. Then one of the intersection points of any line through \(P\) is exactly \(P\). WLOG say one secant meets the circle at \(A = P\) and \(A'\). So \(PA \cdot PA' = 0\) since \(PA = 0\). Then for any other line, intersections are \(P = B\) and \(B'\) so likewise \(PB \cdot PB' = 0\). So \(PA \cdot PA' = PB \cdot PB'\).
+              \item \textit{Case 3: P lies inside the circle}. We use the same argument except the first angles are equal because they are vertically opposite.
+          \end{itemize}
+          If \(B = B'\), then the line through \(P\) is tangent to the circle at \(B\). Then \(PB = PB'\) so we have \(PA \cdot PA' = PB^2\). \qed
+    \item[28] To prove that \(P'\) is the inverse of \(P\) we need to show that it lies on \(OP\) and has ratio \(OP \cdot OP' = r^2\). First observe that \(XY\) is perpendicular to \(OP\) due to being a line through two intersection points of two circles with centre \(O\) and \(P\). Further \(X\) and \(Y\) are perpendicular bisectors of \(OP'\) because \(XP' = XO = r\) and \(YP' = YO = r\), each \(X\) and \(Y\) are equidistance from \(O\) and \(P'\). Since \(XY\) is perpendicular to both \(OP'\) and \(OP\), \(OP'\) and \(OP\) are collinear. Let \(O = (0, 0)\) and \(P = (d, 0)\) (these are arbitrary and can be translated). The two circles whose intersections are \(X, Y\) are
+          \[x^2 + y^2 = r^2 \text{ and } (x - d)^2 + y^2 = d^2.\]
+          Subtracting the second from the first and rearranging gives \(x = r^2 / 2d\). The \(x\) coordinate of the midpoint of \(OP'\) has coordinate \(OP' / 2\). Then \(OP' = r^2 / d\). Multiplying both sides by \(d = OP\) gives \(OP \cdot OP' = d \cdot r^2 / d = r^2\), which shows \(P'\) is the inverse of \(P\) through \(\mathcal{C}(O, r)\). \qed \\
+
+          This construction fails when \(OP < r / 2\) since you only create two distinct intersections exactly when for \(d = OP\), \(|r - d| < d < r + d\).
+    \item[30] \begin{enumerate}[font=\bfseries]
+              \item[a.] We know that \(|OP| = 5\). Hence we have \(OP \cdot OP' = r^2 = 1\). Thus \(|OP'| = 1 / 5\). So the polar of \(P = (4, 3)\) is \(\fx = \frac{1}{25} \begin{pmatrix}
+                        4 \\ 3
+                    \end{pmatrix} + \lambda \begin{pmatrix}
+                        -3 \\ 4
+                    \end{pmatrix}\) i.e. \(4x + 3y = 1\).
+              \item[b.] \(L'\) is a point on \(\ell \, (y = x - 1)\) closest to \(O\). Now \(OC\) is \(y = -x\) so \(C'\) is \((\frac{1}{2}, \frac{1}{2})\) and \(|OC'| = \frac{1}{\sqrt{2}}\). So \(C\) is on \(y = -x\) and \(|OC| = \sqrt{2}\). The unit vector in the direction of \(\overrightarrow{OC}\) is \(\frac{1}{\sqrt{2}}\begin{pmatrix}
+                        1 \\ -1
+                    \end{pmatrix}\) thus \(C\) is \((1, -1)\).
+          \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Transformations}
+\begin{enumerate}[font=\bfseries]
+    \item[37] Let the set of all affinities be denoted \(\mathscr{A}\). Clearly the identity element is present within this set as it is an affinity. Affine transformation compositions are associative so this holds. Let \(T_1(\fx) = A\fx + \fb, T_2(\fx) = C\fx + \mathbf{d} \in \mathscr{A}\). Then \(T_1(T_2(\fx)) = T_1(C\fx + \mathbf{d}) = A(C\fx + \mathbf{d}) + \mathbf{b} = AC\fx + A\mathbf{d} + \mathbf{b} = E\fx + \mathbf{f} \in \mathscr{A}\). For inverse, we see that \(T_1^{-1}(\fx) = A^{-1}(\fx - \fb) = A^{-1}\fx - A^{-1}\fb \in \mathscr{A}\) and \(T_1(T^{-1}(\fx)) = A(A^{-1}\fx - \fb) + \fb = (\fx - \fb) + \fb = \fx\). So \(\mathscr{A}\) is a group.
+    \item[39] An affinity is considered direct if it preserves the orientation of the space. This means that the transformation does not perform a ``flip'' or a reflection. The orientation-preserving nature of an affine map is determined solely by the orientation of its linear part. The orientation of a linear transformation is preserved if and only if its determine is positive. Hence by equivalence this proves the result. \qed
+\end{enumerate}
+
+\subsection{Projective Geometry}
+\begin{enumerate}[font=\bfseries]
+    \item[61]
+          \begin{enumerate}[font=\bfseries]
+              \item[a.] Vanishing point for domain when \(x + 2 = 0 \implies x = -2\). Vanishing point for codomain when \(\lim_{x \to \infty} \frac{x + 6}{x + 2} = 1\), so \(x' = 1\). Fixed points for \(x(x + 2) = x + 6 \implies (x + 3)(x - 2) = 0 \implies x = 2, -3\) are fixed.
+              \item[b.] Vanishing point for domain when \(x + 3 = 0 \implies x = -3\). Vanishing point for codomain when \(\lim_{x \to \infty} \frac{x + 1}{x + 3} = 1\), so \(x' = 1\). Fixed points when \(x(x + 3) = x + 1 \implies x -1 \pm \sqrt{2}\).
+              \item[c.] Vanishing point for domain when \(x + 3 = 0 \implies x = -3\). Vanishing point for codomain when \(\lim_{x \to \infty} \frac{x - 1}{x + 3} = 1\). Fixed points when \(x(x - 1) = x + 3 \implies x = -1\).
+          \end{enumerate}
+    \item[62] Yes. \(x ' = (6x - 12) / (2x - 3)\), vanishing point \(x = 3 / 2\), no fixed points.
+\end{enumerate}
+
+\subsection{Groups}
+
+\begin{enumerate}[font=\bfseries]
+    \item[76] \begin{enumerate}[font=\bfseries]
+              \item[a.] Suppose \(G\) has two identity elements \(e_1, e_2\). Then for any \(g \in G\),
+                    \[e_1 \cdot g = g \cdot e_1 = g \quad \text{ and } \quad e_2 \cdot g = g \cdot e_2 = g\]
+                    but then \(e_1 = e_1e_2 = e_2\) (using cancellation law). Hence the identity is unique. \qed
+              \item[b.] Suppose an element \(g \in G\) has two inverses \(h_1, h_2 \in G\). Then,
+                    This gives \(h_1 = h_1 e = h_1(gh_2) = (h_1 g)h_2 = eh_2 = h_2\), so inverses are unique. \qed
+              \item[c.] Since \(\phi\) is a homomorphism \(\phi(e) = e\). Then
+                    \[\phi(g)\phi(g^{-1}) = \phi(g \cdot g^{-1}) = e.\]
+                    Then this means \(\phi(g)\) and \(\phi(g^{-1})\) are inverses so \((\phi(g))^{-1} = \phi(g^{-1})\). \qed
+              \item[d.] If \(\phi(g) = e\) then
+                    \[\phi(gg^{-1}) = \phi(g)\phi(g^{-1}) = e\phi(g^{-1}) = \phi(e) = e.\]
+                    Cancelling terms gives \(\phi(g^{-1}) = e\) as required. \qed
+          \end{enumerate}
+    \item[77] In \(C_4\), the generators are \(a\) and \(a^3\). In \(C_6\) the generators are \(a, a^5\). In general, \(a^q\) generates \(C_n\) if \(\gcd(q, n) = 1\) otherwise if \(\gcd(q, n) = d\) then \(a^q\) generates \(C_{n / d}\).
+    \item[80] All subgroups are then \(C_{n / d}\) by the result from 77 where \(d\) is all the divisors of \(n\).
+\end{enumerate}

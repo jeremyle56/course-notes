@@ -1,0 +1,394 @@
+\chapter{Conic Linear Programs}
+
+\section{Convex Cones and Conic Programs}
+
+\subsection{Inner Product Spaces}
+
+Let \(H\) be a finite dimensional space. We say a mapping \(\langle \cdot, \cdot \rangle: H \times H \to \bR\) is an inner product in \(H\) if
+\begin{enumerate}[label=(\arabic*)]
+    \item \(\langle x + y, z \rangle = \langle x, z \rangle + \langle y, z \rangle\);
+    \item \(\langle x, y \rangle = \langle y, x \rangle\);
+    \item \(\langle \alpha x, y \rangle = \alpha \langle x, y \rangle\), for \(\alpha \in \bR\);
+    \item \(\langle x, x \rangle \geq 0\) for all \(x \in H\), and \(\langle x, x \rangle = 0\) if and only if \(x = 0\).
+\end{enumerate}
+
+A finite dimensional space \(H\) together with an inner product on it is called a finite dimensional inner product space. Examples:
+
+\begin{itemize}
+    \item \(H = \bR^n\) where \(\langle x, y \rangle = x^T y\) for all \(x, y \in \bR^n\);
+    \item \(H = \bR^{p \times n}\) where \(\langle X, Y \rangle = \tr(X^T Y)\) for all \(X, Y \in \bR^{p \times n}\);
+    \item \(H = S^n\) where \(\langle X, Y \rangle = tr(XY)\) for all \(X, Y \in S^n\).
+\end{itemize}
+
+
+\defn{Cone}{
+    A set \(K\) in a finite dimensional inner product space is called a cone if, for all \(x \in K\) and \(\alpha \geq 0\), \(\alpha x \in K\).
+    In other words, \(K\) is a cone if, for any point \(x \in K\), the ray
+    \[\bR_+ x = \{\alpha x: \alpha \geq 0\}\]
+    is a subset of \(K\).
+}
+
+Basic examples of cones:
+\begin{enumerate}
+    \item Nonnegative cone: \(K = \bR_+^n\);
+    \item Second-order cone:
+          \[K = \text{SOC}^n := \{(x_1, x_2, \dots, x_n) \in \bR^n : \sqrt{x_2^2 + \dots + x_n^2} \leq x_1\};\]
+    \item Positive semi-definite cone:
+          \[K = \mathbb{S}_+^n := \{X \in \bR^{n \times n}: X \text{ is a symmetric positive semi-definite matrix}\};\]
+    \item A simple two dimensional cone:
+          \[K = \{(x_1, x_2) \in \bR^2: x_1x_2 \geq 0\}.\]
+\end{enumerate}
+
+\defn{Convex Cones}{
+    A convex cone is a cone that is also a convex set.
+}
+
+\thrm{Alterntive Definition of a Convex Cone}{
+    A cone \(K \subseteq \bR^n\) is convex if and only if
+    \[x + y \in K \quad \forall x, y \in K.\]
+}
+
+\begin{proposition}
+    The positive semi-definite cone \(S_+^n\) is a convex cone.
+\end{proposition}
+
+\begin{theorem}
+    Let \(C_i\) be convex cones, \(i = 1, \dots, p\). Then, the following statements hold:
+    \begin{enumerate}
+        \item \(\bigcap_{i = 1}^p C_i\)is a convex cone if \(H_1 = H_2 = \cdots H_p = H\) and \(C_i \subseteq H\).
+        \item \(\prod_{i = 1}^p C_i := C_1 \times C_2 \times \cdots C_p\) is also a convex cone.
+        \item The Minikowski sum
+              \[C_1 + C_2 + \cdots + C_p = \{x : x = \sum_{i = 1}^p x_i, x_i \in C_i\}\]
+              is also a convex cone if \(H_1 = H_2 = \cdots = H_p = H\).
+    \end{enumerate}
+\end{theorem}
+
+Note: For two convex cones, \(C_1 \cup C_2\) need not be convex!
+
+\defn{Dual Cone}{
+    Let \(K\) be a convex cone in an inner product space \(H\). The (positive) dual cone is defined as \(K^*\) which is defined by
+    \[K^* = \{x \in H: \langle z, x \rangle \geq 0 \text{ for all } z \in K\}.\]
+    In the literature, there is also a notation called polar cone of \(K\) is denoted as \(K^\circ\) and is defined by
+    \[K^\circ = -K^* = \{x \in H: \langle z, x \rangle \leq 0 \text{ for all } z \in K\}.\]
+}
+
+\begin{proposition}
+    The positive dual cone of positive semi-definite cones \(S_+^n\) is itself (equivalently, the polar cone of positive semi-definite cone \(S_+^n\) is \(-S_+^n\)).
+\end{proposition}
+
+\begin{definition}
+    We say a convex cone \(K\) is self-dual if \(K^* = K\). The nonnegative cone, the second order cone and the positive semidefinite cone are all self-dual convex cones.
+\end{definition}
+
+Let \(H\) be a finite dimensional inner produce space and let \(K \subseteq H\) be a convex cone in \(H\). A conic programming problem has the form
+\begin{align*}
+    \text{Minimise}_{x \in H} \quad & \langle c, x \rangle                           \\
+    \text{subject to} \quad         & \langle a_i, x \rangle = b_i, i = 1, \dots, m, \\
+                                    & x \in K,
+\end{align*}
+where \(c\) and \(a_i, i = 1, \dots, m\) are elements of an inner product space \(H, b_i, i = 1, \dots, m\) are real numbers and \(K\) is a closed convex cone in \(H\). The program is a convex program in which the only non-linearities appear in the cone constraint \(x \in K\). \\
+
+Some special cases of conic programming problems:
+\begin{itemize}
+    \item For \(H = \bR^n, \langle \fu, \fv \rangle = \fu^T\fv\) and \(K = \bR_+^n\), then the associated conic programming problem is just the \textbf{linear programming problem}.
+    \item For \(H = \bR^n, \langle \fu, \fv \rangle := \fu^T\fv\) and \(K = \prod_{j = 1}^p \text{SOC}^{n_j}\) with \(\sum_{j = 1}^n n_j = n\), then the associated conic programming problem
+          \begin{align*}
+              \text{Minimise}_{x \in \bR^n} \quad & \fc^T\fx                                  \\
+              \text{subject to} \quad             & \fa_i^T\fx = b_i, i = 1,\dots, m,         \\
+                                                  & \fx \in \prod_{j = 1}^p \text{SOC}^{n_j},
+          \end{align*}
+          is called a primal form (or conic form) of \textbf{second-order cone programming problem}.
+          For \(H = S^n, \langle A, B \rangle := \tr(AB)\) and \(K = S_+^n\), then the associated conic programming problem
+          \begin{align*}
+              \text{Minimise}_{x \in S^n} \quad & \tr(CX)                                  \\
+              \text{subject to} \quad           & \tr(A_i X) = b_i, i = 1,\dots,m,         \\
+                                                & X \in S_+^n \, (\text{or } X \succeq 0),
+          \end{align*}
+          is called a primal form (or conic form) of \textbf{semi-definite programming problem}.
+\end{itemize}
+
+\section{Dual Problems of Conic Program and Duality Theory}
+
+Recall the form for a conic programming problem. Its dual problem reads
+\begin{align*}
+    \text{Maximise}_{y \in \bR^m} \quad & \sum_{i = 1}^m y_ib_i             \\
+    \text{subject to} \quad             & c - \sum_{i = 1}^m y_ia_i \in K^*
+\end{align*}
+
+The. pair rof problems (P) and (D) is called a primal and dual pair of conic problems. The dual problem of the previous special cases are as follows:
+
+\begin{itemize}
+    \item \textbf{Linear Programming}:
+          \begin{align*}
+              \text{Maximise} \quad   & \sum_{i = 1}^m b_iy_i                \\
+              \text{subject to} \quad & \fc - \sum_{i = 1}^m y_i\fa_i \geq 0
+          \end{align*}
+    \item \textbf{Second-order Cone Programming}:
+          \begin{align*}
+              \text{Maximise}_{\fy \in \bR^m} \quad & \sum_{i = 1}^m b_iy_i                                              \\
+              \text{subject to} \quad               & \fc - \sum_{i = 1}^m y_i\fa_i \in \prod_{j = 1}^p \text{SOC}^{n_j}
+          \end{align*}
+    \item \textbf{Semidefinite Programming}:
+          \begin{align*}
+              \text{Maximise}_{\fy \in \bR^m} \quad & \sum_{i = 1}^m b_iy_i              \\
+              \text{subject to} \quad               & C - \sum_{i = 1}^m y_iA_i \succ 0.
+          \end{align*}
+\end{itemize}
+
+\thrm{Weak Duality}{
+    Let \(x \in H\) be a feasible point to the problem (P) and let \(\fy \in \bR^m\) be a feasible point to (D). Then, we have
+    \[\langle c, x \rangle \geq \sum_{i = 1}^m b_iy_i.\]
+    In particular, we have \(\min(P) \geq \max(D)\).
+}
+
+\defn{Duality Gap}{
+    We define the duality gap \(\vartheta\) between the problem (P) aand its dual problem (D) by
+    \[\vartheta := \min(P) - \max(D).\]
+}
+
+\thrm{Strong Duality Theorem}{
+    Asume that both primal (P) and dual problems have nonempty feasible regions. Moreover, suppose that the primal problem (P) satisfies the following interior point condition: there exists \(\overline{x} \in H\) such that
+    \[\langle a_i, \overline{x} \rangle = b_i, i = 1, \dots, m, \text{ and } \overline{x} \in \operatorname{int}(K).\]
+    Then,
+    \begin{enumerate}[label=(\arabic*)]
+        \item \(\min(P) = \max(D)\);
+        \item the maximum in the dual problem (D) is attained.
+    \end{enumerate}
+}
+
+\section{Modelling with Conic Programs}
+
+In this section, we examine several important classes (second order cone programs, semi-definite programs, other conic programs) of conic programs and discuss specific modelling techniques for these classes.
+
+\subsection{Second-order Cone Programs}
+
+Note: A primal or a dual form of second order cone program is a convex program.
+
+\subsubsection{Secord-order Cone Representable Set}
+
+\paragraph{Case 1: Epigraph set of Euclidean norms.} Note that
+\[\norm{x}_2 \iff \begin{bmatrix}
+        t \\ \fx
+    \end{bmatrix} \in \text{SOC}^{n + 1}.\]
+So,
+\[\{(\fx, t) : \norm{\fx}_2 \leq t\} = \left\{(\fx, t) : \begin{bmatrix}
+        t \\ \fx
+    \end{bmatrix} \in \text{SOC}^{n + 1}\right\}\]
+
+\paragraph{Case 2: Sets described by norm inequalities.} Consider a set \(\Omega\) given by
+\[\Omega = \{\fx \in \bR^n : \norm{A\fx + \fb}_2 \leq \fc^T\fx+ d\}\]
+where \(A\) is an \((m \times n)\) matrix, \(\fb \in \bR^m, \fc \in \bR^n\) and \(d \in \bR\). Then, we see that
+\[
+    \Omega = \left\{\fx \in \bR^n : \begin{bmatrix}
+        \fc^T\fx + d \\ A\fx + \fb
+    \end{bmatrix} \in \SOC^{m + 1}\right\}
+\]
+
+\paragraph{Case 3: Epigraph set of square Euclidean norms}
+The epigraph of the squared Euclidean norm can be described aas the intersection of a rotated quadratic cone with an affine hyperplane. Note that,
+\begin{align*}
+         & \norm{\fx}_2^2 \leq t = \frac{(t + 1)^2 - (t - 1)^2}{4}                                             \\
+    \iff & \norm{\fx}_2^2 + \left(\frac{t - 1}{2}\right)^2 \leq \left(\frac{t + 1}{2}\right)^2, \quad t \geq 0 \\
+    \iff & \sqrt{\norm{\fx}_2^2 + \left(\frac{t - 1}{2}\right)^2} \leq \frac{t + 1}{2}                         \\
+    \iff & \norm{\begin{bmatrix}\fx \\ \frac{t - 1}{2} \end{bmatrix}}_2 \leq \frac{t + 1}{2}
+    \iff & \begin{bmatrix}
+        \frac{t + 1}{2} \\ \fx \\ \frac{t - 1}{2}
+    \end{bmatrix} \in \SOC^{n + 2}.
+\end{align*}
+
+% So, we have
+% \[\fx \in \bR^n : \fx^T Q\fx + \fc^T \fx + r \leq 0\}\]
+
+\paragraph{Case 4: Sets defined by convex quadratic inequality}
+
+Assume \(Q \in \bR^{n \times n}\) is a symmetric positive semidefinite matrix. We consider a set \(\Omega\) described by a convex inequality, that is,
+\[\Omega = \{\fx: \fx^T Q\fx + \fc^T \fc + r \leq 0\}.\]
+The set \(\Omega\) can be rewritten as
+\[\fx^T Q \fx \leq -\fc^T\fx - r.\]
+Since \(Q\) is symmetric positive semidefinite, there exists a matrix \(F \in \bR^{k \times n}\) such that
+\[Q = F^TF.\]
+Then
+\[\fx^T Q\fx \leq -\fc^T\fx - r \iff \norm{F\fx}^2 \leq -\fc^T\fx - r.\]
+
+So we have,
+\begin{align*}
+    \{\fx \in \bR^n : \fx^T Q\fx + \fc^T \fx + r \leq 0\}                           \\
+    = & \{\fx \in \bR^n : \norm{F\fx}_2^2 \leq -\fc^T\fx - r\}                      \\
+    = & \left\{\fx \in \bR^n : \begin{bmatrix}
+        \frac{-\fc^T\fx - r + 1}{2} \\ F\fx \\ \frac{-\fc^T\fx - r - 1}{2}
+    \end{bmatrix} \in \SOC^{k + 2}\right\}.
+\end{align*}
+
+\paragraph{Case 5: Sets involving simple power functions}
+
+Some sets described by power-like functions can be representable by second order cone, even though they need not be obvious at first glance. For example, we have
+
+\[\left\{(x, t) \in \bR \times \bR : \frac{1}{x} \leq t, x > 0\right\} = \left\{(x, t) \in \bR \times \bR : \begin{bmatrix}
+        x + t \\ x - t \\ 2
+    \end{bmatrix} \in \SOC^3\right\}.\]
+
+\subsubsection{Modelling with Second-Order Cone Programming}
+
+Consider a general convex quadratically constrained quadratic optimization problem (QCQP) can be written as
+\begin{align*}
+    \text{minimise }   & \fx^TQ_0\fx + \fc_0^T\fx + r_0                                \\
+    \text{subject to } & \fx^TQ_i\fx + \fc_i^T\fx + r_i \leq 0, \quad i = 1, \dots, p,
+\end{align*}
+
+where all \(Q_i \in \bR^{n \times n}\) are symmetric positive semidefinite matrices. Let
+\[Q_i = F_i^T F_i, \quad i = 0,\dots, p,\]
+where \(F_i \in \bR^{k_i \times n}\). We can equivalently rewrite a convex QCQP as a second-order cone program. \\
+
+\paragraph{Special Case 1 of QCQP: Markowitz Protfolio Optimization}
+AN important special case of the previous general model is the Markovitz portfolio optimization problem.
+\begin{itemize}
+    \item One divides his/her capital over \(n\) possible investments (like stocks or bonds);
+    \item \(x_i\) is the fraction of the investment capital one puts in investments \(i\);
+    \item \(r_i\) is the expected return on investment \(i\);
+    \item \(\fx^T\Sigma x\) is the risk (or volatility) associated with the portfolio \(\fx\), where \(\Sigma\) is a positive semi-definite matrix;
+    \item \(\mathbf{r}^T\fx\) is the expected return on the portfolio.
+    \item One wish to maximise the expected return given an upper bound \(\gamma\) on the tolerable risk.
+\end{itemize}
+
+The Markovitz portfolio optimization problem can be formulated as
+\begin{align*}
+    \text{maximize} \quad   & \mathbf{r}^T\fx              \\
+    \text{subject to} \quad & \fx^T \Sigma \fx \leq \gamma \\
+                            & \mathbf{e}^T \fx = 1         \\
+                            & \fx \geq 0,
+\end{align*}
+
+where \(\mathbf{e} = (1, \dots, 1)^T \in \bR^n\). Let \(\Sigma = GG^T\) (e.g., using a Cholesky or a eigenvalue decomposition). We then obtain a second-order cone programming formulation.
+
+\paragraph{Special Case 2 of QCQP: Support Vector Machine}
+
+Optimization formula for Support Vector Machine (SVM):
+\begin{align*}
+    \text{Minimize }_{\mathbf{w} \in \bR^, \gamma \in \bR} \quad & \norm{\mathbf{w}}_2^2                                                       \\
+    \text{subject to }                         \quad             & \mathbf{w}^T\overline{\fx_i} + \gamma \geq \phantom{-}1, \quad \text{if } A \\
+                                                                 & \mathbf{w^T}\overline{\fx_i} + \gamma \leq - 1, \quad \text{if } B
+\end{align*}
+
+\subsection{Semi-definite Programs}
+
+\paragraph{The Trace Product}
+\begin{itemize}
+    \item \(\tr(AB) = \tr(BA)\) for symmetric \((n \times n)\) matrices \(A, B\);
+    \item \(\tr(A(xx^T)) = x^TAx\) for symmetric \((n \times n)\) matrices \(A\);
+\end{itemize}
+
+\paragraph{Schur's Complement}
+
+Let \(X\) be a symmetric \((p + q) \times (p + q)\) matrix given by
+\[X = \begin{pmatrix}
+        A & B \\ B^T & C
+    \end{pmatrix}
+\]
+where \(A \in \bR^{p \times p}\) is a symmetric matrix, \(B \in \bR^{p \times q}\) and \(C \in \bR^{q \times q}\) is a symmetric matrix. \\
+
+If \(C\) is positive definite, then \(X\) is positive semi-definite if and only if
+\[A - BC^{-1}B^T\]
+is positive semi-definite.
+
+\subsubsection{Modelling with semi-definite programming}
+
+We first see that any linear programs and second-order cone programs can be regarded as a special semi-definite programs.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item Consider a linear program
+          \begin{align*}
+              \text{Minimize}_{\fx \in \bR^n} \quad & \fc^T \fx                           \\
+              \text{Subject to} \quad               & \fa_i^T \fx = b_i, i = 1, \dots, m, \\
+                                                    & \fx \geq \fzero.
+          \end{align*}
+          Then, the above linear program can be written as
+          \begin{align*}
+              \text{Minimize}_{X \in S^n} \quad & \sum_{j = 1}^n c_j X_{jj}                           \\
+              \text{Subject to} \quad           & \sum_{j = 1}^n a_{ij}X_{jj} = b_i, i = 1, \dots, m, \\
+                                                & X_{ij} = 0, i \neq j                                \\
+                                                & X = \begin{pmatrix}
+                  X_{11} & \cdots & X_{1n} \\
+                  \vdots & \ddots & \vdots \\
+                  X_{1n} & \cdots & X_{nn}
+              \end{pmatrix} \succeq 0.
+          \end{align*}
+    \item Consider a second order cone program
+          \begin{align*}
+              \text{Minimize}_{\fx \in \bR^n} \quad & \fc^T \fx                           \\
+              \text{Subject to} \quad               & \fa_i^T \fx = b_i, i = 1, \dots, m, \\
+                                                    & \fx\in \text{SOC}^n.
+          \end{align*}
+          Note that
+          \begin{align*}
+              x_1 \geq \sqrt{x_2^2 + \dots + x_n^2} = \norm{\begin{pmatrix} x_2 \\ \vdots \\ x_n\end{pmatrix}}_2 & \iff x_1^2 \geq \norm{\begin{pmatrix} x_2 \\ \vdots \\ x_n \end{pmatrix}}, x_1 \geq 0, \\
+                                                                                          & \iff \begin{pmatrix}
+                  x_1        & \mathbf{v}^T  \\
+                  \mathbf{v} & x_1 I_{n - 1}
+              \end{pmatrix} \succeq 0
+          \end{align*}
+          where \(\mathbf{v} = \begin{pmatrix}
+              x_2 \\ \vdots \\ x_n
+          \end{pmatrix}\). This occurs since in both cases \(x_1 = 0\) (then all \(x_2 = \dots = x_n = 0\)) and \(x_1 \neq 0\) (by Schur's complement) the equivalence holds. So, second order cone program is a special semi-definite program with the form
+          \begin{align*}
+              \text{Minimize}_{X \in S^n} \quad & \sum_{j = 1} c_j X_{1j}                                 \\
+              \text{Subject to} \quad           & \sum_{j = 1}^n a_{ij} X_{1j} = b_i, i = 1, \dots, m     \\
+                                                & X_{jj} = X_{11}, j = 1, \dots, n                        \\
+                                                & X_{jk = 0}, j \neq k, 2 \leq j \leq n, 2 \leq k, \leq n \\
+                                                & X = \begin{pmatrix}
+                  X_{11} & X_{12} & \cdots & X_{1n} \\
+                  X_{12} & X_{22} & \cdots & X_{2n} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  X_{1n} & X_{2n} & \cdots & X_{nn}
+              \end{pmatrix} \succeq 0.
+          \end{align*}
+
+    \item Maximum eigenvalue minimization problem. Consider
+          \[\text{Minimize}_{\fx \in \bR^n} \lambda_{\max} \left(A_0 + \sum_{j = 1}^n x_j A_j \right)\]
+          where \(A_0\) and \(A_j, j = 1, \dots, n,\) are \((n \times n)\) symmetric matrices. \\
+
+          Note that \(\lambda_max(X) \leq t\) if and only if
+          \[\max\{R_X(\fx) : \fx \neq 0\} \leq t\]
+          where \(R_X(\fx)\) is the Rayleigh quotient of the matrix \(X\) defined as \(R_X(\fx) = \frac{\fx^T X\fx}{\norm{\fx}^2}\) with \(\fx \neq 0\). So, \(\lambda_{\max} (X) \leq t\) is equivalent to, for all \(\fx \neq 0\)
+          \[\fx^T X \fx \leq t \norm{\fx}_2^2,\]
+          which is further equivalent to
+          \begin{align*}
+                   & \fx^T X\fx \leq t \norm{\fx}_2^2 \text{ for all } \fx \in \bR^m \\
+              \iff & \fx^T X \fx \leq t \fx^T I_m                                    \\
+              \iff & \fx^T (t I_m - X) \fx \geq 0 \text{ for all } \fx \in \bR^m     \\
+              \iff & tI_m - X \succeq 0.
+          \end{align*}
+          Thus, the problem can be reformulated as a semidefinite programming problem:
+          \begin{align*}
+              \text{Minimize}_{\fx \in \bR^n, t \in \bR} \quad & t                                                  \\
+              \text{Subject to} \quad                          & -A_0 + \sum_{j = 1}^n x_j (-A_j) + t I_m \succeq 0
+          \end{align*}
+
+    \item Consider the following fraction programs
+          \begin{align*}
+              \text{Minimize}_{\fx \in \bR^n} \quad & \frac{(\fc^T\fx + r)^2}{\mathbf{d}^T \fx + s} \\
+              \text{Subject to} \quad               & \fa^T \fx = b_i, i = 1, \dots, m.             \\
+          \end{align*}
+          Here, \(\fc \in \bR^n, \mathbf{d} \in \bR^n\) and \(\mathbf{a} \in \bR^n\), \(r, s, b_i\) are real numbers, and we assume that for all \(\fx\) with \(\fa^T \fx = b_i, i = 1, \dots, m\),
+          \[\mathbf{d}^T \fx + s > 0.\]
+          Denote the feasible set
+          \[\Omega = \{\fx : \fa^T \fx = b_i, i = 1, \dots, m\}.\]
+          Note that (using Schur's complement)
+          \[\frac{(\fc^T\fx + r)^2}{\mathbf{d}^T \fx + s} \leq t \text{ and } \fa^T \fx = b_i, i = 1, \dots, m\]
+          if and only if
+          \[
+              \begin{pmatrix}
+                  t             & \fc^T \fx + r \\
+                  \fc^T \fx + r & \fd^T \fx + s
+              \end{pmatrix} \succeq 0 \text{ and } \fa^T \fx = b_i, i = 1, \dots, m.\]
+          So, the fractional program can be reformulated as the following semi-definite programs:
+          \begin{align*}
+              \text{Minimize}_{\fx \in \bR^n, t \in \bR} \quad & t                                    \\
+              \text{Subject to} \quad                          & \begin{pmatrix}
+                  t            & \fc^T\fx + r  & 0                 & \cdots & 0                 \\
+                  \fc^T\fx + r & \fd^T \fx + s & 0                 & \cdots & \vdots            \\
+                  0            & 0             & b_1 - \fa_1^T \fx & \cdots & \vdots            \\
+                  \vdots       & \vdots        & 0                 & \ddots & \vdots            \\
+                  0            & 0             & 0                 & \cdots & b_m - \fa_m^T \fx
+              \end{pmatrix} \succeq 0
+          \end{align*}
+\end{enumerate}

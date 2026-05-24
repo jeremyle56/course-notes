@@ -1,0 +1,225 @@
+\chapter{Mathematical Background}
+
+\section{Vectors and Matrices}
+
+These notes will skip some preliminaries that you should know from first and second year. \\
+
+If \(\fx^T y = 0\), then we say the two vectors are \(\fx\) and \(\fy\) are orthogonal.
+
+\defn{Vector Norm}{
+    A \textit{vector norm} on \(\bR^n\) is a function \(\norm{\cdot}\) from \(\bR^n\) to \(\bR\) such that
+    \begin{enumerate}
+        \item \(\norm{\fx} \geq 0\) for all \(\fx \in \bR^n\) and \(\norm{\fx} = 0 \iff \fx = 0\).
+        \item \(\norm{\fx + \fy} \leq \norm{\fx} + \norm{\fy}\) for all \(\fx, \fy \in \bR^n\). (Triangle inequality)
+        \item \(\norm{\alpha \fx} = |\alpha|\norm{\fx}\) for all \(\alpha \in \bR, \fx \in \bR^n\).
+    \end{enumerate}
+}
+
+An \((n \times n)\) matrix \(A\) is said to be symmetric if \(A = A^T\). We consider eigenvalues in non-ascending order. \\
+
+\textbf{Theorem. (Spectral Decomposition Theorem)}
+Let \(A \in \bR^{n \times n}\) be a symmetric \(n \times n\) matrix. Then, there exists an orthogonal matrix \(Q\) (that is, \(Q^TQ = QQ^T = I_n\)) such that \(A = QDQ^T\) where \(D = \diag(\lambda_1, \dots, \lambda_n)\) and \(Q = \begin{bmatrix}
+    \fv_1 & \fv_2 & \cdots & \fv_n
+\end{bmatrix}\) where \(\fv_i\) is an eigenvector of \(A\) corresponding to the eigenvalue \(\lambda_i\). \\
+
+For a symmetric \((n \times n)\) matrix \(A\) and any \(\fx \neq 0\), we define the so-called Rayleigh quotient as
+\[R_A(\fx) = \frac{\fx^T A\fx}{\norm{\fx}_2^2}.\]
+Then, we have, for any \(\fx \neq \fzero\),
+\[\lambda_{\min}(A) \leq R_A(\fx) \leq \lambda_{\max}(A).\]
+
+\textbf{Theorem. (Variational Characterization for Extremal Eigenvalues)}
+For a symmetric \((n \times n)\) matrix \(A\),
+\[\lambda_{\max}(A) = \max\{R_A(\fx) : \fx \neq 0\} = \max_{\fx \in \bR^n}\{\fx^T A\fx : \norm{\fx}_2 = 1\}\]
+and
+\[\lambda_{\min}(A) = \min\{R_A(\fx) : \fx \neq 0\} = \min_{\fx \in \bR^n} \{\fx^T A\fx : \norm{fx}_2 = 1\}.\]
+
+\defn{Positive Definite Matrices}{
+    A matrix \(A \in \bR^{n \times n}\) is
+    \begin{itemize}
+        \item \textit{positive definite} \(\iff \fx^T A\fx > 0\) for all \(\fx \in \bR^n, \fx \neq 0\)
+        \item \textit{positive semi-definite} \(\iff \fx^T A\fx \geq 0\) for all \(\fx \in \bR^n\)
+        \item \textit{negative definite} \(\iff \fx^T A\fx \leq 0\) for all \(\fx \in \bR^n\)
+        \item \textit{indefinite} \(\iff\) there exists \(\fx, \fy \in \bR^n : \fx^T A\fx > 0\) and \(\fy^T A \fy < 0\)
+    \end{itemize}
+}
+
+A symmetric matrix \(A \in \bR^{n \times n}\)
+\begin{itemize}
+    \item has \(n\) real eigenvalues \(\lambda_i, i = 1, \dots, n\)
+    \item Determinant: \(\det(A) = \prod_{i=1}^n \lambda_i\)
+    \item Trace: \(\trace(A) := \sum_{i = 1}^n a_{ii} = \sum_{i = 1}^n \lambda_i\)
+\end{itemize}
+
+\prop{Matrix Definitness}{
+    A symmetric matrix \(A \in \bR^{n \times n}\) is
+    \begin{itemize}
+        \item \textit{positive definite} \(\iff \lambda_i > 0\) for all \(i = 1, \dots, n\)
+        \item \textit{positive semi-definite} \(\iff \lambda_i \geq 0\) for all \(i = 1, \dots, n\)
+        \item \textit{negative definite} \(\iff \lambda_i < 0\) for all \(i = 1, \dots, n\)
+        \item \textit{negative semi-definite} \(\iff \lambda_i \leq 0\) for all \(i = 1, \dots, n\)
+        \item \textit{indefinite} \(\iff\) there exists \(i, j: \lambda_i > 0\) and \(\lambda_j < 0\)
+    \end{itemize}
+}
+
+\thrm{Checking Positive (Semi-)definitness}{
+For any eigenvalues \(\lambda\) of a symmetric matrix \(A \in \bR^{n \times n}\), there exists \(i_0 \in \{1, \dots, n\}\) such that
+\[\lambda - A_{i_{0}i_{0}} \leq \sum_{j \neq i_0} |A_{i_0}j.\]
+}
+
+\defn{Diagonally Dominant}{
+A symmetric matrix \(A \in \bR^{n \times n}\) is called diagonally dominant if
+\[|A_{ii}| \geq \sum_{j \neq i} |A_{ij}|, \text{ for each } i \in \{1, \dots, n\}.\]
+In addition, if
+\[|A_{ii}| > \sum_{j \neq i}|A_{ij}|, \text{ for each } i \in \{1, \dots, n\},\]
+then we say \(A\) is strictly diagonally dominant.
+}
+
+Let \(A \in \bR^{n \times n}\) be a symmetric matrix. Suppose that \(A\) is diagonally dominant and all of its diagonal elements are non-negative, then any eigenvalue of \(A\) must be non-negative, and so, \(A\) is positive semi-definite.
+
+\defn{Matrix Norm}{
+    A \textit{matrix norm} on \(\bR^{p \times n}\) is a function \(\norm{\cdot}\) from \(\bR^{p \times n}\) to \(\bR\) such that
+    \begin{enumerate}
+        \item \(\norm{X} \geq 0\) for all \(X \in \bR^{p \times n}\) and \(\norm{X} = 0 \iff X = 0_{p \times n}\).
+        \item \(\norm{X + Y} \leq \norm{X} + \norm{Y}\) for all \(X, Y \in \bR^{p \times n}\). (Triangle inequality)
+        \item \(\norm{\alpha X} = |\alpha|\norm{X}\) for all \(\alpha \in \bR, X \in \bR^{p \times n}\).
+    \end{enumerate}
+}
+
+One of the most widely used matrix norm is: \textbf{Frobenius norm}: \(\norm{X}_F = \left(\sum_{i = 1}^p \sum_{j = 1}^n X_{ij}^2\right)^\frac{1}{2}\). \\
+
+We can also define a dot product between two matrices \(A, B \in \bR^{p \times n}\) as
+\[A \cdot B = \trace(A^T B).\]
+
+\section{Local and Global Minima}
+
+Let \(H\) be a finite dimensional space and let \(\Omega\) be a set in \(H\). Let \(f: H \to \bR\) be a function on \(H\) and let \(\norm{\cdot}\) be a norm in \(H\).
+
+\defn{Global Minimum}{
+    A point \(\fx^* \in \Omega\) is a \textit{global minimizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if \(f(\fx^*) \leq f(\fx)\) for all \(\fx \in \Omega\). The global minimum is \(f(\fx^*)\).
+}
+
+\textbf{Definition. (Strict Global Minimum)} A point \(\fx^* \in \Omega\) is a \textit{strict global minimizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if \(f(\fx^*) < f(\fx)\) for all \(\fx \in \Omega, \fx \neq \fx^*\).
+
+\defn{Local Minimum}{
+    A point \(\fx^* \in \Omega\) is a \textit{local minimizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if there exists a \(\delta > 0\) such that \(f(\fx^*) \leq f(\fx)\) for all \(\fx \in \Omega\) with \(\norm{\fx - \fx^*} \leq \delta\). Then \(f(\fx^*)\) is a local minimum.
+}
+
+\textbf{Definition. (Strict Local Minimum)} A point \(\fx^* \in \Omega\) is a \textit{strict local minimizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if there exists a \(\delta > 0\) such that \(f(\fx^*) < f(\fx)\) for all \(\fx \in \Omega\) with \(0 < \norm{\fx - \fx^*} \leq \delta\).
+
+\defn{Global Maximum}{
+    A point \(\fx^* \in \Omega\) is a \textit{global maximizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if \(f(\fx^*) \geq f(\fx)\) for all \(\fx \in \Omega\). The global minimum is \(f(\fx^*)\).
+}
+
+\textbf{Definition. (Strict Global Maximum)} A point \(\fx^* \in \Omega\) is a \textit{strict global maximizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if \(f(\fx^*) > f(\fx)\) for all \(\fx \in \Omega, \fx \neq \fx^*\).
+
+\defn{Local Maximum}{
+    A point \(\fx^* \in \Omega\) is a \textit{local maximizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if there exists a \(\delta > 0\) such that \(f(\fx^*) \geq f(\fx)\) for all \(\fx \in \Omega\) with \(\norm{\fx - \fx^*} \leq \delta\). Then \(f(\fx^*)\) is a local minimum.
+}
+
+\textbf{Definition. (Strict Local Maximum)} A point \(\fx^* \in \Omega\) is a \textit{strict local maximizer} of \(f(\fx)\) over \(\Omega \subseteq H\) if and only if there exists a \(\delta > 0\) such that \(f(\fx^*) > f(\fx)\) for all \(\fx \in \Omega\) with \(0 < \norm{\fx - \fx^*} \leq \delta\).
+
+\defn{Closed Sets}{
+    A set \(\Omega\) is said to be closed if it contains all the limits of convergent sequences of points in \(\Omega\).
+}
+
+\defn{Bounded Sets}{
+    A set \(\Omega\) is said to be bounded if there exists \(R > 0\) such that \(\Omega \subseteq \{x : \norm{x} \leq R\}\).
+}
+
+\prop{Existence of Global Solution: Type I}{
+    Let \(H\) be a finite dimensional space and let \(\Omega\) be a closed and bounded set in \(H\) and let \(f\) be continuous on \(\Omega\). Then the global minima of \(f\)over \(\Omega\) exist.
+}
+
+\prop{Existence of Global Solution: Type II}{
+    Let \(H\) be a finite dimensional space and let \(\norm{\cdot}\) be a norm in \(H\). Let \(\Omega\) be a closed set in \(H\) and let \(f\) be continuous on \(\Omega\). Suppose that \(f\) is coercive in the sense that
+    \[\lim_{\norm{x} \to \infty} f(x) = +\infty.\]
+    Then the global minima of \(f\) over \(\Omega\) exist. \\
+}
+
+\textbf{Relaxation} Let \(H\) be a finite dimensional space. If \(f : H \to \bR\) and \(\overline{\Omega} \subseteq \Omega\) then
+\[\min_{x \in \Omega} f(\fx) \leq \min_{\fx \in \overline{\Omega}} f(\fx).\]
+
+\section{Convexity for Functions/Sets in Euclidean Spaces}
+
+\subsection{Convex Functions}
+
+\begin{definition}
+    A set \(C \subseteq \bR^n\) is convex if for any \(\fx, \fy \in C\) and any \(\lambda \in [0, 1]\) the following is true
+    \[\lambda \fx + (1 - \lambda)\fy \in C.\]
+    In other words, \(C\) is convex means the line segment joining the two points \(\fx \in C\) and \(\fy \in C\) is completely contained in the set \(C\).
+\end{definition}
+
+Basic properties of convexity:
+\begin{itemize}
+    \item Intersection of convex sets is still convex: Let \(\Omega_1, \Omega_2 \subseteq \bR^n\) be convex. Then the intersection \(\Omega = \Omega_1 \cap \Omega_2\) is convex.
+    \item Intersection of any finite number of convex sets is convex.
+    \item Union of convex sets may or may not be convex.
+\end{itemize}
+
+\defn{Convex Functions}{
+    Let \(\Omega \subseteq \bR^n\)be a convex set. The function \(f: \Omega \to \bR\) is said to be convex if for all \(\theta \in [0, 1]\) and for all \(\fx, \fy \in \Omega\),
+    \[f(\theta \fx + (1 - \theta)\fy) \leq \theta f(\fx) + (1 - \theta)f(\fy).\]
+}
+
+\(f\) is strictly convex if and only if \(f(\theta \fx + (1 - \theta)\fy) < \theta f(\fx) + (1 - \theta)f(\fy)\).
+
+\defn{Graident}{
+    Let \(f: \bR^n \to \bR\) be continuously differentiable. The graident \(\grad f: \bR^n \to \bR^n\) of \(f\) at \(\fx\) is
+    \[\grad f(\fx) = \begin{bmatrix}
+            \frac{\partial f(\fx)}{\partial x_1} \\
+            \vdots                               \\
+            \frac{\partial f(\fx)}{\partial x_n}.
+        \end{bmatrix}\]
+}
+
+\defn{Hessian}{
+    Let \(f: \bR^n \to \bR\) be twice continuously differentiable. The Hessian \(\grad^2 : \bR^n \to \bR^{n \times n}\) of \(f\) at \(\fx\) is
+    \[\grad^2 f(\fx) = \begin{bmatrix}
+            \frac{\partial^2 f(\fx)}{\partial x_1^2}   & \cdots & \frac{\partial^2 f(\fx)}{\partial x_1 x_n} \\
+            \vdots                                     & \ddots & \vdots                                     \\
+            \frac{\partial^2 f(\fx)}{\partial x_n x_1} & \cdots & \frac{\partial^2 f(\fx)}{\partial x_n^2}
+        \end{bmatrix}\]
+}
+
+\begin{proposition}
+    Let \(\Omega \subseteq \bR^n\) be a convex set and \(f \in C^2(\Omega)\) (\(f\) is twice differentiable on \(\Omega\)).
+    \begin{itemize}
+        \item \(\grad^2 f(\fx)\) positive semi-definite for all \(\fx \in \Omega\) if and only if \(f\) is convex on \(\Omega\).
+        \item If \(\grad^2 f(\fx)\) positive definite for all \(\fx \in \Omega\), then \(f\)is strictly convex on \(\Omega\).
+    \end{itemize}
+\end{proposition}
+
+\paragraph{Operations that preseve convexity of functions: } Let \(\Omega\) be a convex set.
+\begin{enumerate}
+    \item Nonnegative scaling: If \(f\)is a convex function on \(\Omega\) and \(\alpha \geq 0\), then \(\alpha f\) is also convex on \(\Omega\);
+    \item Sum: If \(f_1, f_2\) are convex on \(\Omega\), then \(f_1 + f_2\) is also convex on \(\Omega\);
+    \item Pointwise maximum: If \(f_i, i = 1, \dots, m\) are convex function on \(\Omega\), then \(\max_{1 \leq u \leq m} f_i\) is also convex on \(\Omega\).
+\end{enumerate}
+
+\begin{proposition}
+    Let \(I\) be an index set and let \(c_i: \bR^n \to \bR\) be convex functions, \(i \in I\). Then
+    \[\Omega = \{\fx \in \bR^n: c_i(\fx) \leq 0, i \in I\}\]
+    is a convex set.
+\end{proposition}
+
+\defn{Convexity in the Space of Matrices}{
+    A set \(C \subseteq \bR^{p \times n}\) is convex if for any \(X, Y \in C\) and any \(\lambda \in [0, 1]\)the following is true
+    \[\lambda X + (1 - \lambda) Y \in C.\]
+}
+
+\defn{Convex Functions in Matirx Variable}{
+    Let \(\Omega \subseteq \bR^{p \times n}\) be a convex set. The function \(f: \bR^{p \times n} \to \bR\) is said to be convex if for all \(\theta \in [0, 1]\), and for all \(X, Y \in \Omega\),
+    \[f(\theta X + (1 - \theta)Y) \leq \theta f(X) + (1 - \theta)f(Y).\]
+}
+
+\begin{definition}
+    Let \(H\) be a finite dimensional space. Let \(f: H \to \bR\) be a function on \(H\) and let \(\Omega\) be a set in \(H\). A \textbf{convex programming problem} has
+    \begin{itemize}
+        \item a convex feasible region \(\Omega\)
+        \item a convex objection function \(f(\fx)\)
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    For a convex programming problem, any local minimizer of \(f\) on \(\Omega\) is a global minimizer of \(f\) on \(\Omega\).
+\end{proposition}
